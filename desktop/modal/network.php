@@ -82,29 +82,29 @@ if (!isConnect('admin')) {
 				<div class="tab-pane active" id="summary_network">
 					<br>
 					<div class="panel panel-primary">
-						<div class="panel-heading"><h4 class="panel-title">{{Contrôleur}}</h4></div>
+						<div class="panel-heading"><h4 class="panel-title"><i class="fas fa-chess-king"></i> {{Contrôleur}}</h4></div>
 						<div class="panel-body">
-							<p>{{Réseau démarré depuis}} <span class="getInfo-uptime label label-default" style="font-size : 1em;"></span></p>
-							<p>{{Node id du contrôleur :}}<span class="getInfo-controllerId label label-default" style="font-size : 1em;"></span></p>
-							<p>{{Home id : }}<span class="getInfo-name label label-default" style="font-size : 1em;"></span> <span class="getInfo-homeid label label-default" style="font-size : 1em;"></span></p>
-							<p>{{Voisins : }}<span class="getNodes-controllerNeighbors label label-default" style="font-size : 1em;"></span></p>
+							<p><b>{{Réseau démarré depuis : }} </b><span class="getInfo-uptime label label-info" style="font-size : 1em;"></span></p>
+							<p><b>{{Node id du contrôleur : }} </b><span class="getInfo-controllerId label label-info" style="font-size : 1em;"></span></p>
+							<p><b>{{Home id : }} </b><span class="getInfo-name label label-info" style="font-size : 1em;"></span> <span class="getInfo-homeid label label-default" style="font-size : 1em;"></span></p>
+							<p><b>{{Voisins : }} </b><span class="getNodes-controllerNeighbors label label-info" style="font-size : 1em;"></span></p>
 						</div>
 					</div>
 					<div class="panel panel-primary">
-						<div class="panel-heading"><h4 class="panel-title">{{Réseau}}</h4></div>
+						<div class="panel-heading"><h4 class="panel-title"><i class="fas fa-sitemap"></i> {{Réseau}}</h4></div>
 						<div class="panel-body">
-							<p>{{Nombre de noeuds : }} <span class="getNodes-totalNodes label label-default"></span></p>
-							<p>{{Noeuds endormis : }} <span class="getNodes-sleepingNodes label label-default"></span></p>
-							<p>{{Etat actuel : }} <span class="getInfo-status label label-default" style="font-size : 1em;"></span> </p> 
-							<p>{{Dernier action réseau : }} <span class="getInfo-cntStatus label label-default" style="font-size : 1em;"></span> </p>
+							<p><b>{{Nombre de noeuds : }} </b><span class="getNodes-totalNodes label label-info"></span></p>
+							<p><b>{{Noeuds endormis : }} </b><span class="getNodes-sleepingNodes label label-info"></span></p>
+							<p><b>{{Etat actuel : }} </b><span class="getInfo-status label label-info" style="font-size : 1em;"></span> </p> 
+							<p><b>{{Dernière action réseau : }} </b><span class="getInfo-cntStatus label label-info" style="font-size : 1em;"></span> </p>
 						</div>
 					</div>
 					<div class="panel panel-primary">
-						<div class="panel-heading"><h4 class="panel-title">{{Système}}</h4></div>
+						<div class="panel-heading"><h4 class="panel-title"><i class="fas fa-cog"></i> {{Système}}</h4></div>
 						<div class="panel-body">
-							<p>{{Version application : }} <span class="getInfo-appVersion label label-default" style="font-size : 1em;"></span></p>
-							<p>{{Version serveur :}}<span class="getInfo-serverVersion label label-default"style="font-size : 1em;"></span></p>
-							<p>{{Version zwave :}} <span class="getInfo-zwaveVersion label label-default"  style="font-size : 1em;"></span></p>
+							<p><b>{{Version application : }} </b><span class="getInfo-appVersion label label-info" style="font-size : 1em;"></span></p>
+							<p><b>{{Version serveur : }} </b><span class="getInfo-serverVersion label label-info"style="font-size : 1em;"></span></p>
+							<p><b>{{Version zwave : }} </b><span class="getInfo-zwaveVersion label label-info"  style="font-size : 1em;"></span></p>
 						</div>
 					</div>
 				</div>

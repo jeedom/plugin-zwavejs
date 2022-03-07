@@ -64,7 +64,7 @@ include_file('3rdparty', 'jsonTree/jsonTree', 'js', 'zwavejs');
 					<div class="col-sm-6">
 						<div class="panel panel-primary template">
 						<div class="panel-heading">
-							<h4 class="panel-title"><i class="fas fa-info-circle"></i> {{Statut Noeud}}</h4>
+							<h4 class="panel-title"><i class="fas fa-heartbeat"></i> {{Statut Noeud}}</h4>
 						</div>
 						<div class="panel-body">
 							<p><b>{{Statut : }}</b><span class="getNodeInfo-status label label-info" style="font-size : 1em;"></span></p>
@@ -82,7 +82,7 @@ include_file('3rdparty', 'jsonTree/jsonTree', 'js', 'zwavejs');
 					<div class="col-sm-6">
 						<div class="panel panel-primary template">
 							<div class="panel-heading">
-								<h4 class="panel-title"><i class="fas fa-info-circle"></i> {{Informations Protocole}}
+								<h4 class="panel-title"><i class="fas fa-wifi"></i> {{Informations Protocole}}
 								</h4>
 							</div>
 							<div class="panel-body">
@@ -100,7 +100,7 @@ include_file('3rdparty', 'jsonTree/jsonTree', 'js', 'zwavejs');
 					<div class="col-sm-6">
 						<div class="panel panel-primary template">
 							<div class="panel-heading">
-								<h4 class="panel-title"><i class="fas fa-info-circle"></i> {{Classe du module}}</h4>
+								<h4 class="panel-title"><i class="fas fa-clipboard-list"></i> {{Classe du module}}</h4>
 							</div>
 							<div class="panel-body">
 								<p><b>{{Basique :}} </b><span class="getNodeInfo-classBasic label label-info"></span></p>
