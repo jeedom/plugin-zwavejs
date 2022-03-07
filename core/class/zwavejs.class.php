@@ -60,7 +60,7 @@ class zwavejs extends eqLogic {
 		//}
 		$settings['zwave']['port'] = jeedom::getUsbMapping(config::byKey('port', 'zwavejs'));
 		$settings['zwave']['commandsTimeout'] = 60;
-		$settings['zwave']['logLevel'] = 'debug';
+		$settings['zwave']['logLevel'] = 'info';
 		$settings['zwave']['logEnabled'] = true;
 		$settings['zwave']['logToFile'] = false;
 		$settings['zwave']['serverEnabled'] = false;
@@ -82,6 +82,7 @@ class zwavejs extends eqLogic {
 		$settings['gateway']['sendEvents'] = true;
 		$settings['gateway']['includeNodeInfo'] = false;
 		$settings['gateway']['publishNodeDetails'] = true;
+		$settings['gateway']['logLevel'] = 'info';
 		$settings['gateway']['logToFile'] = false;
 		
 		file_put_contents($file, json_encode($settings, JSON_FORCE_OBJECT));
