@@ -13,7 +13,7 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 37,
-                "endpoint": 0,
+                "endpoint": 1,
                 "property": "currentValue"
             },
             "subtype": "binary",
@@ -29,7 +29,7 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 37,
-                "endpoint": 0,
+                "endpoint": 1,
                 "property": "targetValue",
                 "value": "true"
             },
@@ -50,7 +50,7 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 37,
-                "endpoint": 0,
+                "endpoint": 1,
                 "property": "targetValue",
                 "value": "false"
             },
@@ -71,7 +71,7 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 37,
-                "endpoint": 1,
+                "endpoint": 2,
                 "property": "currentValue"
             },
             "subtype": "binary",
@@ -87,7 +87,7 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 37,
-                "endpoint": 1,
+                "endpoint": 2,
                 "property": "targetValue",
                 "value": "true"
             },
@@ -108,7 +108,7 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 37,
-                "endpoint": 1,
+                "endpoint": 2,
                 "property": "targetValue",
                 "value": "false"
             },
@@ -129,7 +129,7 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 37,
-                "endpoint": 2,
+                "endpoint": 3,
                 "property": "currentValue"
             },
             "subtype": "binary",
@@ -145,7 +145,7 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 37,
-                "endpoint": 2,
+                "endpoint": 3,
                 "property": "targetValue",
                 "value": "true"
             },
@@ -166,7 +166,7 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 37,
-                "endpoint": 2,
+                "endpoint": 3,
                 "property": "targetValue",
                 "value": "false"
             },
@@ -187,7 +187,7 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 37,
-                "endpoint": 3,
+                "endpoint": 4,
                 "property": "currentValue"
             },
             "subtype": "binary",
@@ -203,7 +203,7 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 37,
-                "endpoint": 3,
+                "endpoint": 4,
                 "property": "targetValue",
                 "value": "true"
             },
@@ -224,7 +224,7 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 37,
-                "endpoint": 3,
+                "endpoint": 4,
                 "property": "targetValue",
                 "value": "false"
             },
@@ -245,7 +245,7 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 37,
-                "endpoint": 4,
+                "endpoint": 5,
                 "property": "currentValue"
             },
             "subtype": "binary",
@@ -261,7 +261,7 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 37,
-                "endpoint": 4,
+                "endpoint": 5,
                 "property": "targetValue",
                 "value": "true"
             },
@@ -282,7 +282,7 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 37,
-                "endpoint": 4,
+                "endpoint": 5,
                 "property": "targetValue",
                 "value": "false"
             },
@@ -303,7 +303,7 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 37,
-                "endpoint": 5,
+                "endpoint": 6,
                 "property": "currentValue"
             },
             "subtype": "binary",
@@ -319,7 +319,7 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 37,
-                "endpoint": 5,
+                "endpoint": 6,
                 "property": "targetValue",
                 "value": "true"
             },
@@ -340,7 +340,7 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 37,
-                "endpoint": 5,
+                "endpoint": 6,
                 "property": "targetValue",
                 "value": "false"
             },
@@ -363,7 +363,7 @@
                 "minValue": 0,
                 "maxValue": 2500,
                 "class": 50,
-                "endpoint": 0,
+                "endpoint": 1,
                 "property": "value-66049"
             },
             "subtype": "numeric",
@@ -384,7 +384,7 @@
                 "minValue": 0,
                 "maxValue": 2500,
                 "class": 50,
-                "endpoint": 1,
+                "endpoint": 2,
                 "property": "value-66049"
             },
             "subtype": "numeric",
@@ -405,7 +405,7 @@
                 "minValue": 0,
                 "maxValue": 2500,
                 "class": 50,
-                "endpoint": 2,
+                "endpoint": 3,
                 "property": "value-66049"
             },
             "subtype": "numeric",
@@ -426,7 +426,7 @@
                 "minValue": 0,
                 "maxValue": 2500,
                 "class": 50,
-                "endpoint": 3,
+                "endpoint": 4,
                 "property": "value-66049"
             },
             "subtype": "numeric",
@@ -447,7 +447,7 @@
                 "minValue": 0,
                 "maxValue": 2500,
                 "class": 50,
-                "endpoint": 4,
+                "endpoint": 5,
                 "property": "value-66049"
             },
             "subtype": "numeric",
@@ -468,7 +468,7 @@
                 "minValue": 0,
                 "maxValue": 2500,
                 "class": 50,
-                "endpoint": 5,
+                "endpoint": 6,
                 "property": "value-66049"
             },
             "subtype": "numeric",
@@ -488,7 +488,7 @@
             "configuration": {
                 "minValue": 0,
                 "class": 50,
-                "endpoint": 0,
+                "endpoint": 1,
                 "property": "value-65537"
             },
             "subtype": "numeric",
@@ -508,7 +508,7 @@
             "configuration": {
                 "minValue": 0,
                 "class": 50,
-                "endpoint": 1,
+                "endpoint": 2,
                 "property": "value-65537"
             },
             "subtype": "numeric",
@@ -528,7 +528,7 @@
             "configuration": {
                 "minValue": 0,
                 "class": 50,
-                "endpoint": 2,
+                "endpoint": 3,
                 "property": "value-65537"
             },
             "subtype": "numeric",
@@ -548,7 +548,7 @@
             "configuration": {
                 "minValue": 0,
                 "class": 50,
-                "endpoint": 3,
+                "endpoint": 4,
                 "property": "value-65537"
             },
             "subtype": "numeric",
@@ -568,7 +568,7 @@
             "configuration": {
                 "minValue": 0,
                 "class": 50,
-                "endpoint": 4,
+                "endpoint": 5,
                 "property": "value-65537"
             },
             "subtype": "numeric",
@@ -588,7 +588,7 @@
             "configuration": {
                 "minValue": 0,
                 "class": 50,
-                "endpoint": 5,
+                "endpoint": 6,
                 "property": "value-65537"
             },
             "subtype": "numeric",
@@ -600,64 +600,5 @@
             },
             "unite": "kWh"
         }
-    ],
-    "recommended": {
-        "params": [
-            {
-                "index": 1,
-                "value": 255
-            },
-            {
-                "index": 3,
-                "value": "Remember last state"
-            },
-            {
-                "index": 4,
-                "value": "Disable"
-            }
-        ],
-        "groups": [
-            {
-                "index": 1,
-                "value": "add"
-            },
-            {
-                "index": 3,
-                "value": "add"
-            }
-        ],
-        "polling": [
-            {
-                "instanceId": "1",
-                "index": 0,
-                "class": "50"
-            },
-            {
-                "instanceId": "2",
-                "index": 0,
-                "class": "50"
-            },
-            {
-                "instanceId": "3",
-                "index": 0,
-                "class": "50"
-            },
-            {
-                "instanceId": "4",
-                "index": 0,
-                "class": "50"
-            },
-            {
-                "instanceId": "5",
-                "index": 0,
-                "class": "50"
-            },
-            {
-                "instanceId": "6",
-                "index": 0,
-                "class": "50"
-            }
-        ],
-        "needswakeup": false
-    }
+    ]
 }
