@@ -55,7 +55,6 @@ include_file('3rdparty', 'jsonTree/jsonTree', 'js', 'zwavejs');
 								<p><b>{{Firmware : }}</b><span class="getNodeInfo-firmwareVersion label label-info" style="font-size : 1em;"></span></p>
 								<p><b>{{Nombres d'endpoints : }}</b><span class="getNodeInfo-endpointsCount label label-info" style="font-size : 1em;"></span></p>
 								<p><b>{{Nombres de groupes : }}</b><span class="getNodeInfo-numberGroups label label-info" style="font-size : 1em;"></span></p>
-								<p><b>{{Dernière activité : }}</b><span class="getNodeInfo-lastActive label label-info" style="font-size : 1em;"></span></p>
 								<p><b>{{Configuration : }}</b><span class="getNodeInfo-filename label label-info" style="font-size : 1em;"></span></p>
 								<p><b>{{Configuration Jeedom : }}</b><span class="getNodeInfo-confJeedom label label-info" style="font-size : 1em;"></span></p>
 								<p><b>{{Lien : }}</b><b><span class="getNodeInfo-dbLink label label-default" style="font-size : 1em;"></span></b></p>
@@ -75,6 +74,7 @@ include_file('3rdparty', 'jsonTree/jsonTree', 'js', 'zwavejs');
 							<p><b>{{Disponible : }}</b> <span class="getNodeInfo-available label label-info" style="font-size : 1em;"></span></p>
 							<p><b>{{En échec : }} </b><span class="getNodeInfo-failed label label-info" style="font-size : 1em;"></span></p>
 							<p><b>{{Voisins : }}</b> <span class="getNodeInfo-neighbors label label-info" style="font-size : 1em;"></span></p>
+							<p><b>{{Dernière activité : }}</b><span class="getNodeInfo-lastActive label label-info" style="font-size : 1em;"></span></p>
 							</div>
 						</div>
 						</div>
