@@ -152,7 +152,7 @@ $.ajax({
     },
     success: function (data) {
       if (data['result']['interview'] != 'complete'){
-		$('.incompleteInfo').show();  
+		$('.incompleteInfo').show();
 	  } else {
 		$('.incompleteInfo').hide();  
 	  }

@@ -322,7 +322,7 @@ class zwavejs extends eqLogic {
 							$data['name'] = $eqLogic->getHumanName();
 							$data['img'] = $eqLogic->getImage();
 						} else {
-							$data['img'] = 'plugins/zwavejs/plugin_info/zwavejs_icon.png';;
+							$data['img'] = 'plugins/zwavejs/plugin_info/zwavejs_icon.png';
 						}
 						log::add('zwavejs','debug',json_encode($node));
 						if ($node['id'] == config::byKey('controllerId','zwavejs',0)) {
@@ -875,8 +875,8 @@ class zwavejs extends eqLogic {
 					$span .= '<span class="label label-primary" style="font-size:1em;">';
 				}
 				$span .= $finalValue.'</span>';
-				$updates[$data['id']]=$span;
-				$nodeValues .= '<span class="'.$data['id'].'">'.$span.'</span>';
+				$updates[str_replace(' ','_',$data['id'])]=array('value'=>$span);
+				$nodeValues .= '<span class="'.str_replace(' ','_',$data['id']).'">'.$span.'</span>';
 				if ($data['writeable']){
 					$nodeValues .= ' <a class="btn btn-xs btn-primary editValue pull-right"';
 					$nodeValues .= ' data-type="'.$data['type'].'"';
@@ -893,7 +893,8 @@ class zwavejs extends eqLogic {
 					$nodeValues .= ' style="text-align: right;display:inline-block"><i class="fas fa-wrench"></i></a>';
 				}
 				$nodeValues .= '</td>';
-				$nodeValues .= '<td>'.date("d/m/Y H:i:s",$data['lastUpdate']/ 1000).'</td>';
+				$nodeValues .= '<td class="'.str_replace(' ','_',$data['id']).'_lastUpdate">'.date("d/m/Y H:i:s",$data['lastUpdate']/ 1000).'</td>';
+				$updates[str_replace(' ','_',$data['id'])]['lastUpdate']=date("d/m/Y H:i:s",$data['lastUpdate']/ 1000);
 				$nodeValues .= '<td><i class="fas fa-question-circle tooltips" title="'.$data['oriKey'].'"></i></td>';
 				$nodeValues .= '</tr>';
 			}
