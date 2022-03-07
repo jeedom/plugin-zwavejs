@@ -13,9 +13,8 @@
             "isHistorized": 1,
             "configuration": {
                 "class": 98,
-                "value": "",
-                "index": 0,
-                "instance": 1
+                "endpoint": 0,
+                "property": "currentMode"
             },
             "subtype": "binary",
             "display": {
@@ -33,9 +32,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 98,
-                "value": "type=setvalue&value=255",
-                "index": 0,
-                "instance": 1
+                "endpoint": 0,
+                "property": "targetMode",
+                "value": "255"
             },
             "subtype": "other",
             "display": {
@@ -49,9 +48,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 98,
-                "value": "type=setvalue&value=0",
-                "index": 0,
-                "instance": 1
+                "endpoint": 0,
+                "property": "targetMode",
+                "value": "0"
             },
             "subtype": "other",
             "display": {
@@ -65,9 +64,8 @@
             "isHistorized": 1,
             "configuration": {
                 "class": 98,
-                "value": "",
-                "index": 0,
-                "instance": 2
+                "endpoint": 1,
+                "property": "currentMode"
             },
             "subtype": "binary",
             "display": {

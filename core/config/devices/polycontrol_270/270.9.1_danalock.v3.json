@@ -15,9 +15,8 @@
             "isHistorized": 1,
             "configuration": {
                 "class": 98,
-                "value": "",
-                "index": 0,
-                "instance": 1
+                "endpoint": 0,
+                "property": "currentMode"
             },
             "subtype": "binary",
             "display": {
@@ -35,9 +34,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 98,
-                "value": "type=setvalue&value=255",
-                "index": 0,
-                "instance": 1
+                "endpoint": 0,
+                "property": "targetMode",
+                "value": "255"
             },
             "value": "Statut",
             "subtype": "other",
@@ -52,9 +51,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 98,
-                "value": "type=setvalue&value=0",
-                "index": 0,
-                "instance": 1
+                "endpoint": 0,
+                "property": "targetMode",
+                "value": "0"
             },
             "value": "Statut",
             "subtype": "other",
@@ -87,9 +86,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 99,
-                "value": "type=setRaw&value0=#message#&slot_id=1",
-                "index": 1,
-                "instance": 1
+                "endpoint": 0,
+                "property": "userCode-1",
+                "value": "#message#"
             },
             "subtype": "message",
             "display": {
@@ -103,9 +102,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 99,
-                "value": "type=setRaw&value0=#message#&slot_id=2",
-                "index": 2,
-                "instance": 1
+                "endpoint": 0,
+                "property": "userCode-2",
+                "value": "#message#"
             },
             "subtype": "message",
             "display": {
@@ -119,9 +118,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 99,
-                "value": "type=setRaw&value0=#message#&slot_id=3",
-                "index": 3,
-                "instance": 1
+                "endpoint": 0,
+                "property": "userCode-3",
+                "value": "#message#"
             },
             "subtype": "message",
             "display": {
@@ -135,9 +134,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 99,
-                "value": "type=setRaw&value0=#message#&slot_id=4",
-                "index": 4,
-                "instance": 1
+                "endpoint": 0,
+                "property": "userCode-4",
+                "value": "#message#"
             },
             "subtype": "message",
             "display": {
@@ -151,9 +150,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 99,
-                "value": "type=setRaw&value0=#message#&slot_id=5",
-                "index": 5,
-                "instance": 1
+                "endpoint": 0,
+                "property": "userCode-5",
+                "value": "#message#"
             },
             "subtype": "message",
             "display": {
@@ -167,9 +166,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 99,
-                "value": "type=setRaw&value0=#message#&slot_id=6",
-                "index": 6,
-                "instance": 1
+                "endpoint": 0,
+                "property": "userCode-6",
+                "value": "#message#"
             },
             "subtype": "message",
             "display": {
@@ -183,9 +182,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 99,
-                "value": "type=setRaw&value0=#message#&slot_id=7",
-                "index": 7,
-                "instance": 1
+                "endpoint": 0,
+                "property": "userCode-7",
+                "value": "#message#"
             },
             "subtype": "message",
             "display": {
@@ -199,201 +198,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 99,
-                "value": "type=setRaw&value0=#message#&slot_id=8",
-                "index": 8,
-                "instance": 1
-            },
-            "subtype": "message",
-            "display": {
-                "generic_type": "NONE"
-            }
-        },
-        {
-            "name": "set code 9",
-            "type": "action",
-            "isVisible": 0,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 99,
-                "value": "type=setRaw&value0=#message#&slot_id=9",
-                "index": 9,
-                "instance": 1
-            },
-            "subtype": "message",
-            "display": {
-                "generic_type": "NONE"
-            }
-        },
-        {
-            "name": "set code 10",
-            "type": "action",
-            "isVisible": 0,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 99,
-                "value": "type=setRaw&value0=#message#&slot_id=10",
-                "index": 10,
-                "instance": 1
-            },
-            "subtype": "message",
-            "display": {
-                "generic_type": "NONE"
-            }
-        },
-        {
-            "name": "set code 11",
-            "type": "action",
-            "isVisible": 0,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 99,
-                "value": "type=setRaw&value0=#message#&slot_id=11",
-                "index": 11,
-                "instance": 1
-            },
-            "subtype": "message",
-            "display": {
-                "generic_type": "NONE"
-            }
-        },
-        {
-            "name": "set code 12",
-            "type": "action",
-            "isVisible": 0,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 99,
-                "value": "type=setRaw&value0=#message#&slot_id=12",
-                "index": 12,
-                "instance": 1
-            },
-            "subtype": "message",
-            "display": {
-                "generic_type": "NONE"
-            }
-        },
-        {
-            "name": "set code 13",
-            "type": "action",
-            "isVisible": 0,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 99,
-                "value": "type=setRaw&value0=#message#&slot_id=13",
-                "index": 13,
-                "instance": 1
-            },
-            "subtype": "message",
-            "display": {
-                "generic_type": "NONE"
-            }
-        },
-        {
-            "name": "set code 14",
-            "type": "action",
-            "isVisible": 0,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 99,
-                "value": "type=setRaw&value0=#message#&slot_id=14",
-                "index": 14,
-                "instance": 1
-            },
-            "subtype": "message",
-            "display": {
-                "generic_type": "NONE"
-            }
-        },
-        {
-            "name": "set code 15",
-            "type": "action",
-            "isVisible": 0,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 99,
-                "value": "type=setRaw&value0=#message#&slot_id=15",
-                "index": 15,
-                "instance": 1
-            },
-            "subtype": "message",
-            "display": {
-                "generic_type": "NONE"
-            }
-        },
-        {
-            "name": "set code 16",
-            "type": "action",
-            "isVisible": 0,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 99,
-                "value": "type=setRaw&value0=#message#&slot_id=16",
-                "index": 16,
-                "instance": 1
-            },
-            "subtype": "message",
-            "display": {
-                "generic_type": "NONE"
-            }
-        },
-        {
-            "name": "set code 17",
-            "type": "action",
-            "isVisible": 0,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 99,
-                "value": "type=setRaw&value0=#message#&slot_id=17",
-                "index": 17,
-                "instance": 1
-            },
-            "subtype": "message",
-            "display": {
-                "generic_type": "NONE"
-            }
-        },
-        {
-            "name": "set code 18",
-            "type": "action",
-            "isVisible": 0,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 99,
-                "value": "type=setRaw&value0=#message#&slot_id=18",
-                "index": 18,
-                "instance": 1
-            },
-            "subtype": "message",
-            "display": {
-                "generic_type": "NONE"
-            }
-        },
-        {
-            "name": "set code 19",
-            "type": "action",
-            "isVisible": 0,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 99,
-                "value": "type=setRaw&value0=#message#&slot_id=19",
-                "index": 19,
-                "instance": 1
-            },
-            "subtype": "message",
-            "display": {
-                "generic_type": "NONE"
-            }
-        },
-        {
-            "name": "set code 20",
-            "type": "action",
-            "isVisible": 0,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 99,
-                "value": "type=setRaw&value0=#message#&slot_id=20",
-                "index": 20,
-                "instance": 1
+                "endpoint": 0,
+                "property": "userCode-8",
+                "value": "#message#"
             },
             "subtype": "message",
             "display": {

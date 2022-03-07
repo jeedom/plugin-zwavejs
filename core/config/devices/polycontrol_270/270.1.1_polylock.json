@@ -36,9 +36,8 @@
             "isHistorized": 1,
             "configuration": {
                 "class": 98,
-                "value": "",
-                "index": 0,
-                "instance": 1
+                "endpoint": 0,
+                "property": "currentMode"
             },
             "subtype": "binary",
             "display": {
@@ -56,9 +55,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 98,
-                "value": "type=setvalue&value=0",
-                "index": 0,
-                "instance": 1
+                "endpoint": 0,
+                "property": "targetMode",
+                "value": "0"
             },
             "value": "Statut",
             "subtype": "other",
@@ -73,9 +72,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 98,
-                "value": "type=setvalue&value=255",
-                "index": 0,
-                "instance": 1
+                "endpoint": 0,
+                "property": "targetMode",
+                "value": "255"
             },
             "value": "Statut",
             "subtype": "other",
