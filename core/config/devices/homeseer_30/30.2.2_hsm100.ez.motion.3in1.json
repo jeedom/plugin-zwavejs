@@ -1,0 +1,79 @@
+{
+    "name": "EZMotion+ 3in1",
+    "type": "Multicapteurs",
+    "comlink": "",
+    "remark": "",
+    "imglink": "homeseer.ezmotion3en1",
+    "configuration": {
+        "battery_type": "3x1.5V AAA"
+    },
+    "commands": [
+        {
+            "name": "Présence",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 48,
+                "endpoint": 0,
+                "property": "Any"
+            },
+            "subtype": "binary",
+            "display": {
+                "invertBinary": "1"
+            },
+            "template": {
+                "dashboard": "presence",
+                "mobile": "presence"
+            }
+        },
+        {
+            "name": "Température",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 49,
+                "endpoint": 0,
+                "property": "Air temperature"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "TEMPERATURE"
+            }
+        },
+        {
+            "name": "Luminosité",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 49,
+                "endpoint": 0,
+                "property": "Illuminance"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "BRIGHTNESS"
+            }
+        },
+        {
+            "name": "Batterie",
+            "type": "info",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 100,
+                "class": 128,
+                "endpoint": 0,
+                "property": "level"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "BATTERY"
+            },
+            "unite": "%"
+        }
+    ]
+}

@@ -1,0 +1,124 @@
+{
+    "name": "ZD2201 Multisensor 4in1",
+    "type": "Ouverture",
+    "comlink": "3150-zipato-detecteur-z-wave-plus-4-en-1-3858890732931",
+    "remark": "Vendu aussi sous la marque Zipato.",
+    "imglink": "vision.zd2201",
+    "configuration": {
+        "battery_type": "2x1.5V AAA"
+    },
+    "commands": [
+        {
+            "name": "Ouverture",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 113,
+                "value": "",
+                "index": 1,
+                "instance": 1
+            },
+            "subtype": "binary",
+            "display": {
+                "invertBinary": "1",
+                "generic_type": "OPENING"
+            },
+            "template": {
+                "dashboard": "door",
+                "mobile": "door"
+            }
+        },
+        {
+            "name": "Sabotage",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 113,
+                "value": "",
+                "index": 10,
+                "instance": 1
+            },
+            "subtype": "binary",
+            "display": {
+                "invertBinary": "1",
+                "generic_type": "SABOTAGE"
+            },
+            "template": {
+                "dashboard": "alert",
+                "mobile": "alert"
+            }
+        },
+        {
+            "name": "Température",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "class": 49,
+                "endpoint": 0,
+                "property": "Air temperature"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "TEMPERATURE"
+            },
+            "unite": "°C"
+        },
+        {
+            "name": "Luminosité",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 1000,
+                "class": 49,
+                "endpoint": 0,
+                "property": "Illuminance"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "BRIGHTNESS"
+            },
+            "unite": "Lux"
+        },
+        {
+            "name": "Humidité",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 100,
+                "class": 49,
+                "endpoint": 0,
+                "property": "Humidity"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "HUMIDITY"
+            },
+            "unite": "%"
+        },
+        {
+            "name": "Batterie",
+            "type": "info",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 100,
+                "class": 128,
+                "endpoint": 0,
+                "property": "level"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "BATTERY"
+            },
+            "unite": "%"
+        }
+    ]
+}

@@ -1,97 +1,134 @@
 <?php
+
+/* This file is part of Plugin zwavejs for jeedom.
+*
+* Plugin zwavejs for jeedom is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* Plugin zwavejs for jeedom is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with Plugin zwavejs for jeedom. If not, see <http://www.gnu.org/licenses/>.
+*/
+
 if (!isConnect('admin')) {
 	throw new Exception('{{401 - Accès non autorisé}}');
 }
-// Déclaration des variables obligatoires
 $plugin = plugin::byId('zwavejs');
 sendVarToJS('eqType', $plugin->getId());
 $eqLogics = eqLogic::byType($plugin->getId());
+$controllerStatus = config::byKey('controllerStatus', 'zwavejs','none');
+switch ($controllerStatus) {
+	case 'none':
+	echo '<div id="div_inclusionAlert"></div>';
+	break;
+	case 'inclusion':
+	echo '<div id="div_inclusionAlert"><div class="alert alert-warning" role="alert"> {{Une inclusion est en cours}}</div></div>';
+	break;
+	case 'exclusion':
+	echo '<div id="div_inclusionAlert"><div class="alert alert-warning" role="alert">{{Une exclusion est en cours}}</div></div>';
+	break;
+}
+$tags = array();
+if (is_array($eqLogics)) {
+	foreach ($eqLogics as $eqLogic) {
+		$tags[$eqLogic->getLogicalId()] = $eqLogic->getHumanName(true);
+	}
+}
+sendVarTojs('eqLogic_human_name', $tags);
 ?>
-
 <div class="row row-overflow">
-	<!-- Page d'accueil du plugin -->
 	<div class="col-xs-12 eqLogicThumbnailDisplay">
 		<legend><i class="fas fa-cog"></i> {{Gestion}}</legend>
-		<!-- Boutons de gestion du plugin -->
 		<div class="eqLogicThumbnailContainer">
-			<div class="cursor eqLogicAction logoPrimary" data-action="add">
-				<i class="fas fa-plus-circle"></i>
-				<br>
-				<span>{{Ajouter}}</span>
-			</div>
+			<?php
+				echo '<div class="cursor changeIncludeState card success">';
+				echo '<i class="fas fa-sign-in-alt fa-rotate-90"></i>';
+				echo '<br/>';
+				echo '<span>{{Inclusion/Exlusion}}</span>';
+				echo '</div>';
+			?>
 			<div class="cursor eqLogicAction logoSecondary" data-action="gotoPluginConf">
 				<i class="fas fa-wrench"></i>
-				<br>
+				<br/>
 				<span>{{Configuration}}</span>
 			</div>
+			<div class="cursor logoSecondary" id="bt_syncEqLogic">
+				<i class="fas fa-sync-alt"></i>
+				<br/>
+				<span>{{Synchroniser}}</span>
+			</div>
+			<div class="cursor logoSecondary" id="bt_zwaveNetwork">
+				<i class="fas fa-sitemap"></i>
+				<br/>
+				<span>{{Réseau Zwave}}</span>
+			</div>
+			<div class="cursor logoSecondary" id="bt_zwaveHealth">
+				<i class="fas fa-medkit"></i>
+				<br/>
+				<span>{{Santé}}</span>
+			</div>
 		</div>
-		<legend><i class="fas fa-table"></i> {{Mes templates}}</legend>
-		<?php
-		if (count($eqLogics) == 0) {
-			echo '<br/><div class="text-center" style="font-size:1.2em;font-weight:bold;">{{Aucun équipement Template n\'est paramétré, cliquer sur "Ajouter" pour commencer}}</div>';
-		} else {
-			// Champ de recherche
-			echo '<div class="input-group" style="margin:5px;">';
-			echo '<input class="form-control roundedLeft" placeholder="{{Rechercher}}" id="in_searchEqlogic"/>';
-			echo '<div class="input-group-btn">';
-			echo '<a id="bt_resetSearch" class="btn" style="width:30px"><i class="fas fa-times"></i></a>';
-			echo '<a class="btn roundedRight hidden" id="bt_pluginDisplayAsTable" data-coreSupport="1" data-state="0"><i class="fas fa-grip-lines"></i></a>';
-			echo '</div>';
-			echo '</div>';
-			// Liste des équipements du plugin
-			echo '<div class="eqLogicThumbnailContainer">';
+		<legend><i class="fas fa-broadcast-tower"></i> {{Mes équipements Z-Wave}}</legend>
+		<div class="input-group" style="margin:5px;">
+			<input class="form-control roundedLeft" placeholder="{{Rechercher}}" id="in_searchEqlogic"/>
+			<div class="input-group-btn">
+				<a id="bt_resetSearch" class="btn roundedRight" style="width:30px"><i class="fas fa-times"></i></a>
+			</div>
+		</div>
+		<div class="eqLogicThumbnailContainer">
+			<?php
 			foreach ($eqLogics as $eqLogic) {
 				$opacity = ($eqLogic->getIsEnable()) ? '' : 'disableCard';
-				echo '<div class="eqLogicDisplayCard cursor ' . $opacity . '" data-eqLogic_id="' . $eqLogic->getId() . '">';
-				echo '<img src="' . $plugin->getPathImgIcon() . '"/>';
-				echo '<br>';
+				echo '<div class="eqLogicDisplayCard cursor '.$opacity.'" data-logical-id="' . $eqLogic->getLogicalId() . '" data-eqLogic_id="' . $eqLogic->getId() . '" data-assistant="' . $eqLogic->getAssistantFilePath() . '" title="Node ID : '.$eqLogic->getLogicalId().'">';
+				if ($eqLogic->getImgFilePath() !== false) {
+					echo '<img class="lazy" src="plugins/zwavejs/core/config/devices/' . $eqLogic->getImgFilePath() . '" />';
+				} else {
+					echo '<img src="' . $plugin->getPathImgIcon() . '"/>';
+				}
+				echo '<br/>';
 				echo '<span class="name">' . $eqLogic->getHumanName(true, true) . '</span>';
 				echo '</div>';
 			}
-			echo '</div>';
-		}
-		?>
-	</div> <!-- /.eqLogicThumbnailDisplay -->
-
-	<!-- Page de présentation de l'équipement -->
+			?>
+		</div>
+	</div>
 	<div class="col-xs-12 eqLogic" style="display: none;">
-		<!-- barre de gestion de l'équipement -->
-		<div class="input-group pull-right" style="display:inline-flex;">
+		<div class="input-group pull-right" style="display:inline-flex">
 			<span class="input-group-btn">
-				<!-- Les balises <a></a> sont volontairement fermées à la ligne suivante pour éviter les espaces entre les boutons. Ne pas modifier -->
-				<a class="btn btn-sm btn-default eqLogicAction roundedLeft" data-action="configure"><i class="fas fa-cogs"></i><span class="hidden-xs"> {{Configuration avancée}}</span>
-				</a><a class="btn btn-sm btn-default eqLogicAction" data-action="copy"><i class="fas fa-copy"></i><span class="hidden-xs"> {{Dupliquer}}</span>
+				<a class="btn btn-default eqLogicAction btn-sm roundedLeft" data-action="configure"><i class="fas fa-cogs"></i> {{Configuration avancée}}
 				</a><a class="btn btn-sm btn-success eqLogicAction" data-action="save"><i class="fas fa-check-circle"></i> {{Sauvegarder}}
-				</a><a class="btn btn-sm btn-danger eqLogicAction roundedRight" data-action="remove"><i class="fas fa-minus-circle"></i> {{Supprimer}}
-				</a>
+				</a><a class="btn btn-danger btn-sm eqLogicAction roundedRight" data-action="remove"><i class="fas fa-minus-circle"></i> {{Supprimer}}</a>
 			</span>
 		</div>
-		<!-- Onglets -->
+
 		<ul class="nav nav-tabs" role="tablist">
-			<li role="presentation"><a href="#" class="eqLogicAction" aria-controls="home" role="tab" data-toggle="tab" data-action="returnToThumbnailDisplay"><i class="fas fa-arrow-circle-left"></i></a></li>
+			<li role="presentation"><a class="eqLogicAction cursor" aria-controls="home" role="tab" data-action="returnToThumbnailDisplay"><i class="fas fa-arrow-circle-left"></i></a></li>
 			<li role="presentation" class="active"><a href="#eqlogictab" aria-controls="home" role="tab" data-toggle="tab"><i class="fas fa-tachometer-alt"></i> {{Equipement}}</a></li>
-			<li role="presentation"><a href="#commandtab" aria-controls="home" role="tab" data-toggle="tab"><i class="fas fa-list"></i> {{Commandes}}</a></li>
+			<li role="presentation"><a href="#commandtab" aria-controls="profile" role="tab" data-toggle="tab"><i class="fas fa-list-alt"></i> {{Commandes}}</a></li>
 		</ul>
 		<div class="tab-content">
-			<!-- Onglet de configuration de l'équipement -->
 			<div role="tabpanel" class="tab-pane active" id="eqlogictab">
-				<!-- Partie gauche de l'onglet "Equipements" -->
-				<!-- Paramètres généraux de l'équipement -->
 				<form class="form-horizontal">
 					<fieldset>
 						<div class="col-lg-6">
-							<legend><i class="fas fa-wrench"></i> {{Paramètres généraux}}</legend>
+							<legend><i class="fas fa-wrench"></i> {{Général}}</legend>
 							<div class="form-group">
 								<label class="col-sm-3 control-label">{{Nom de l'équipement}}</label>
 								<div class="col-sm-7">
-									<input type="text" class="eqLogicAttr form-control" data-l1key="id" style="display : none;" />
-									<input type="text" class="eqLogicAttr form-control" data-l1key="name" placeholder="{{Nom de l'équipement}}" />
+									<input type="text" class="eqLogicAttr form-control" data-l1key="id" style="display : none;"/>
+									<input type="text" class="eqLogicAttr form-control" data-l1key="name" placeholder="{{Nom de l'équipement}}"/>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-3 control-label">{{Objet parent}}</label>
 								<div class="col-sm-7">
-									<select id="sel_object" class="eqLogicAttr form-control" data-l1key="object_id">
+									<select class="eqLogicAttr form-control" data-l1key="object_id">
 										<option value="">{{Aucun}}</option>
 										<?php
 										$options = '';
@@ -118,89 +155,70 @@ $eqLogics = eqLogic::byType($plugin->getId());
 							<div class="form-group">
 								<label class="col-sm-3 control-label">{{Options}}</label>
 								<div class="col-sm-7">
-									<label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="isEnable" checked />{{Activer}}</label>
-									<label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="isVisible" checked />{{Visible}}</label>
-								</div>
-							</div>
-
-							<legend><i class="fas fa-cogs"></i> {{Paramètres spécifiques}}</legend>
-							<div class="form-group">
-								<label class="col-sm-3 control-label">{{Nom du paramètre n°1}}
-									<sup><i class="fas fa-question-circle tooltips" title="{{Renseignez le paramètre n°1 de l'équipement}}"></i></sup>
-								</label>
-								<div class="col-sm-7">
-									<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="param1" placeholder="{{Paramètre n°1}}" />
+									<label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="isEnable" checked/>{{Activer}}</label>
+									<label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="isVisible" checked/>{{Visible}}</label>
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-sm-3 control-label"> {{Mot de passe}}
-									<sup><i class="fas fa-question-circle tooltips" title="{{Renseignez le mot de passe}}"></i></sup>
-								</label>
+								<label class="col-sm-3 control-label">{{Identifiant du nœud Zwave}}</label>
 								<div class="col-sm-7">
-									<input type="text" class="eqLogicAttr form-control inputPassword" data-l1key="configuration" data-l2key="password" />
-								</div>
-							</div>
-							<!-- Champ de saisie du cron d'auto-actualisation + assistant cron -->
-							<!-- La fonction cron de la classe du plugin doit contenir le code prévu pour que ce champ soit fonctionnel -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">{{Auto-actualisation}}
-									<sup><i class="fas fa-question-circle tooltips" title="{{Fréquence de rafraîchissement de l'équipement}}"></i></sup>
-								</label>
-								<div class="col-sm-7">
-									<div class="input-group">
-										<input type="text" class="eqLogicAttr form-control roundedLeft" data-l1key="configuration" data-l2key="autorefresh" placeholder="{{Cliquer sur ? pour afficher l'assistant cron}}" />
-										<span class="input-group-btn">
-											<a class="btn btn-default cursor jeeHelper roundedRight" data-helper="cron" title="Assistant cron">
-												<i class="fas fa-question-circle"></i>
-											</a>
-										</span>
-									</div>
+									<input type="text" class="eqLogicAttr form-control" data-l1key="logicalId"/>
 								</div>
 							</div>
 						</div>
 
-						<!-- Partie droite de l'onglet "Équipement" -->
-						<!-- Affiche l'icône du plugin par défaut mais vous pouvez y afficher les informations de votre choix -->
 						<div class="col-lg-6">
 							<legend><i class="fas fa-info"></i> {{Informations}}</legend>
 							<div class="form-group">
-								<div class="text-center">
-									<img name="icon_visu" src="<?= $plugin->getPathImgIcon(); ?>" style="max-width:160px;" />
+								<label class="col-sm-3 control-label">{{Modèle}}</label>
+								<div class="col-sm-7">
+									<span class="label label-info">
+										<span class="eqLogicAttr" data-l1key="configuration" data-l2key="product_name"></span>
+									</span>
+									<img src="core/img/no_image.gif" data-original=".jpg" id="img_device" class="img-responsive" style="max-height:120px;"/>
 								</div>
 							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label"></label>
+								<div class="col-sm-7">
+									<a class="nodeInformations btn btn-primary" title="{{Informations du noeud}}"><i class="fas fa-fingerprint"></i> {{Noeud}}</a>
+									<a class="nodeValues btn btn-primary" id="bt_configureDevice" title="{{Valeurs du noeud}}"><i class="fas fa-list"></i> {{Valeurs}}</a>
+									<a class="nodeGroups btn btn-primary" id="bt_configureDevice" title="{{Groupes du noeud}}"><i class="fas fa-layer-group"></i> {{Groupes}}</a>
+								</div>
+							</div>
+
 						</div>
 					</fieldset>
 				</form>
 				<hr>
-			</div><!-- /.tabpanel #eqlogictab-->
+				<div class="incompleteInfo" style="display:none"><div class="alert alert-warning" role="alert"> {{Le noeud n'a pas encore été initié. Il sera mis à jour automatiquement lorsque l'initialisation sera terminée. Cela prendra quelques secondes. En cas d'inclusion sécurisée ou de module sur piles cela peut être plus long. Pour un noeud sur pile si le message persiste vous pouvez essayer de le réveiller manuellement.}}</div></div>
+			</div>
 
-			<!-- Onglet des commandes de l'équipement -->
 			<div role="tabpanel" class="tab-pane" id="commandtab">
-				<a class="btn btn-default btn-sm pull-right cmdAction" data-action="add" style="margin-top:5px;"><i class="fas fa-plus-circle"></i> {{Ajouter une commande}}</a>
-				<br /><br />
-				<div class="table-responsive">
-					<table id="table_cmd" class="table table-bordered table-condensed">
-						<thead>
-							<tr>
-								<th>{{Id}}</th>
-								<th>{{Nom}}</th>
-								<th>{{Type}}</th>
-								<th>{{Paramètres}}</th>
-								<th>{{Options}}</th>
-								<th>{{Action}}</th>
-							</tr>
-						</thead>
-						<tbody>
-						</tbody>
-					</table>
-				</div>
-			</div><!-- /.tabpanel #commandtab-->
-
-		</div><!-- /.tab-content -->
-	</div><!-- /.eqLogic -->
-</div><!-- /.row row-overflow -->
-
-<!-- Inclusion du fichier javascript du plugin (dossier, nom_du_fichier, extension_du_fichier, id_du_plugin) -->
-<?php include_file('desktop', 'zwavejs', 'js', 'zwavejs'); ?>
-<!-- Inclusion du fichier javascript du core - NE PAS MODIFIER NI SUPPRIMER -->
-<?php include_file('core', 'plugin.template', 'js'); ?>
+				<a id="bt_autoDetectModule" class="btn btn-danger btn-sm pull-right" style="margin-top:5px;"><i class="fas fa-search"></i> {{Recharger configuration}}</a>
+				<a class="btn btn-success btn-sm cmdAction pull-right" data-action="add" style="margin-top:5px;"> <i class="fas fa-plus-circle"></i> {{Commandes}}</a>
+				<br/><br/>
+				<table id="table_cmd" class="table table-bordered table-condensed">
+					<thead>
+						<tr>
+							<th style="width: 300px;">{{Nom}}</th>
+							<th style="width: 130px;">{{Type}}</th>
+							<th style="width: 65px;">{{Classe}}</th>
+							
+							<th style="width: 65px;">{{Endpoint}}</th>
+							<th style="width: 250px;">{{Propriété}}</th>
+							<th>{{Commande}}</th>
+							<th style="width: 250px;">{{Paramètres}}</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<?php include_file('core', 'zwavejs', 'class.js', 'zwavejs');?>
+<?php include_file('desktop', 'zwavejs', 'js', 'zwavejs');?>
+<?php include_file('core', 'plugin.template', 'js');?>

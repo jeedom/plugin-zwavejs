@@ -1,0 +1,194 @@
+{
+    "name": "Thermostat Z-Temp2",
+    "ref": "4512666",
+    "manufacturer": "Heatit",
+    "type": "Thermostat",
+    "reset": "",
+    "pairing": "Appuyer rapidement 3 fois sur le bouton d'inclusion situé à l'arrière du thermostat",
+    "remark": "Maintenir appuyé le bouton d'inclusion pendant 20 secondes",
+    "documentation": "https://www.heatit.com/wp-content/uploads/2019/12/Manual_Heatit_Z-Temp2_FW-1.1_Ver2020-B_ENG.pdf",
+    "buylink": "https://www.domadoo.fr/fr/thermostats/5196-heatit-controls-thermostat-z-wave-sans-fil-z-temp2-7071236015307.html",
+    "imglink": "heatit.ztemp2",
+    "commands": [
+        {
+            "name": "Temperature",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "class": 49,
+                "endpoint": 0,
+                "property": "Air temperature"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "THERMOSTAT_TEMPERATURE"
+            },
+            "unite": "°C"
+        },
+        {
+            "name": "Humidity",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "class": 49,
+                "endpoint": 0,
+                "property": "Humidity"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "HUMIDITY"
+            },
+            "unite": "°C"
+        },
+        {
+            "name": "Status",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 66,
+                "value": "",
+                "index": 0,
+                "instance": 1
+            },
+            "subtype": "string",
+            "display": {
+                "generic_type": "THERMOSTAT_STATE"
+            },
+            "unite": ""
+        },
+        {
+            "name": "Status_Name",
+            "type": "info",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 66,
+                "value": "",
+                "index": 0,
+                "instance": 1
+            },
+            "subtype": "string",
+            "display": {
+                "generic_type": "THERMOSTAT_STATE_NAME"
+            },
+            "unite": ""
+        },
+        {
+            "name": "Mode",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 64,
+                "value": "",
+                "index": 0,
+                "instance": 1
+            },
+            "subtype": "string",
+            "display": {
+                "generic_type": "THERMOSTAT_MODE"
+            },
+            "unite": ""
+        },
+        {
+            "name": "Heat",
+            "type": "action",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 64,
+                "value": "type=setvalue&value=Heat",
+                "index": 0,
+                "instance": 1
+            },
+            "value": "Mode",
+            "subtype": "other",
+            "display": {
+                "generic_type": "THERMOSTAT_SET_MODE"
+            },
+            "unite": "°C"
+        },
+        {
+            "name": "Off",
+            "type": "action",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 64,
+                "value": "type=setvalue&value=Off",
+                "index": 0,
+                "instance": 1
+            },
+            "value": "Mode",
+            "subtype": "other",
+            "display": {
+                "generic_type": "THERMOSTAT_SET_MODE"
+            },
+            "unite": "°C"
+        },
+        {
+            "name": "Heat Setpoint",
+            "type": "action",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 67,
+                "value": "type=setvalue&value=#slider#",
+                "index": 1,
+                "instance": 1,
+                "minValue": 5,
+                "maxValue": 30
+            },
+            "template": {
+                "dashboard": "button",
+                "mobile": "button"
+            },
+            "value": "Heat Setpoint Info",
+            "subtype": "slider",
+            "display": {
+                "generic_type": "THERMOSTAT_SET_SETPOINT"
+            },
+            "unite": "°C"
+        },
+        {
+            "name": "Heat Setpoint Info",
+            "type": "info",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 67,
+                "value": "",
+                "index": 1,
+                "instance": 1,
+                "minValue": 5,
+                "maxValue": 30
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "THERMOSTAT_SETPOINT"
+            },
+            "unite": "°C"
+        },
+        {
+            "name": "Batterie",
+            "type": "info",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 100,
+                "class": 128,
+                "endpoint": 0,
+                "property": "level"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "NONE"
+            },
+            "unite": "%"
+        }
+    ]
+}

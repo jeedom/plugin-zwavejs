@@ -1,0 +1,154 @@
+{
+    "name": "Smart Switch 7 (ZW175)",
+    "type": "Prise",
+    "comlink": "",
+    "remark": "",
+    "imglink": "aeotec.zw175",
+    "commands": [
+        {
+            "name": "Etat",
+            "type": "info",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 37,
+                "endpoint": 0,
+                "property": "currentValue"
+            },
+            "subtype": "binary",
+            "display": {
+                "generic_type": "ENERGY_STATE"
+            },
+            "template": {
+                "dashboard": "prise",
+                "mobile": "prise"
+            },
+            "unite": ""
+        },
+        {
+            "name": "On",
+            "type": "action",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 37,
+                "endpoint": 0,
+                "property": "targetValue",
+                "value": "true"
+            },
+            "value": "Etat",
+            "subtype": "other",
+            "display": {
+                "generic_type": "ENERGY_ON"
+            },
+            "template": {
+                "dashboard": "prise",
+                "mobile": "prise"
+            }
+        },
+        {
+            "name": "Off",
+            "type": "action",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 37,
+                "endpoint": 0,
+                "property": "targetValue",
+                "value": "false"
+            },
+            "value": "Etat",
+            "subtype": "other",
+            "display": {
+                "generic_type": "ENERGY_OFF"
+            },
+            "template": {
+                "dashboard": "prise",
+                "mobile": "prise"
+            }
+        },
+        {
+            "name": "Puissance",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 2200,
+                "class": 50,
+                "endpoint": 0,
+                "property": "value-66049"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "POWER"
+            },
+            "unite": "W"
+        },
+        {
+            "name": "Consommation",
+            "type": "info",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "minValue": 0,
+                "class": 50,
+                "endpoint": 0,
+                "property": "value-65537"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "CONSUMPTION"
+            },
+            "template": {
+                "dashboard": "tile",
+                "mobile": "tile"
+            },
+            "unite": "kWh"
+        },
+        {
+            "name": "Tension",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "minValue": 260,
+                "maxValue": 200,
+                "class": 50,
+                "endpoint": 0,
+                "property": "value-66561"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "VOLTAGE"
+            },
+            "template": {
+                "dashboard": "tile",
+                "mobile": "tile"
+            },
+            "unite": "V"
+        },
+        {
+            "name": "Intensité",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 16,
+                "class": 50,
+                "endpoint": 0,
+                "property": "value-66817"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "DONT"
+            },
+            "template": {
+                "dashboard": "tile",
+                "mobile": "tile"
+            },
+            "unite": "A"
+        }
+    ]
+}

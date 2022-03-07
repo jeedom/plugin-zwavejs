@@ -1,0 +1,204 @@
+{
+    "name": "WDSM Smart Double Switch",
+    "type": "Micromodule",
+    "comlink": "",
+    "remark": "",
+    "commands": [
+        {
+            "name": "On 1",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 1,
+            "value": "Etat 1",
+            "display": {
+                "generic_type": "LIGHT_ON"
+            },
+            "configuration": {
+                "class": 37,
+                "endpoint": 1,
+                "property": "targetValue",
+                "value": "true"
+            },
+            "template": {
+                "dashboard": "light",
+                "mobile": "light"
+            }
+        },
+        {
+            "name": "Off 1",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 1,
+            "value": "Etat 1",
+            "display": {
+                "generic_type": "LIGHT_OFF"
+            },
+            "configuration": {
+                "class": 37,
+                "endpoint": 1,
+                "property": "targetValue",
+                "value": "false"
+            },
+            "template": {
+                "dashboard": "light",
+                "mobile": "light"
+            }
+        },
+        {
+            "name": "Etat 1",
+            "type": "info",
+            "subtype": "binary",
+            "isVisible": 0,
+            "display": {
+                "generic_type": "LIGHT_STATE"
+            },
+            "configuration": {
+                "class": 37,
+                "endpoint": 1,
+                "property": "currentValue"
+            }
+        },
+        {
+            "name": "Puissance 1",
+            "type": "info",
+            "subType": "numeric",
+            "isHistorized": "1",
+            "unite": "W",
+            "configuration": {
+                "maxValue": 2500,
+                "minValue": 0,
+                "class": 50,
+                "endpoint": 1,
+                "property": "value-66049"
+            },
+            "template": {
+                "dashboard": "default",
+                "mobile": "default"
+            },
+            "display": {
+                "invertBinary": "0",
+                "generic_type": "POWER"
+            },
+            "isVisible": "1"
+        },
+        {
+            "name": "Consommation 1",
+            "type": "info",
+            "subType": "numeric",
+            "isHistorized": "0",
+            "unite": "kWh",
+            "configuration": {
+                "class": 50,
+                "endpoint": 1,
+                "property": "value-65537"
+            },
+            "template": {
+                "dashboard": "tile",
+                "mobile": "tile"
+            },
+            "display": {
+                "invertBinary": "0",
+                "generic_type": "CONSUMPTION"
+            },
+            "isVisible": "1"
+        },
+        {
+            "name": "On 2 ",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 1,
+            "value": "Etat 2",
+            "display": {
+                "generic_type": "LIGHT_ON"
+            },
+            "configuration": {
+                "class": 37,
+                "endpoint": 2,
+                "property": "targetValue",
+                "value": "true"
+            },
+            "template": {
+                "dashboard": "light",
+                "mobile": "light"
+            }
+        },
+        {
+            "name": "Off 2 ",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 1,
+            "value": "Etat 2",
+            "display": {
+                "generic_type": "LIGHT_OFF"
+            },
+            "configuration": {
+                "class": 37,
+                "endpoint": 2,
+                "property": "targetValue",
+                "value": "false"
+            },
+            "template": {
+                "dashboard": "light",
+                "mobile": "light"
+            }
+        },
+        {
+            "name": "Etat 2",
+            "type": "info",
+            "subtype": "binary",
+            "isVisible": 0,
+            "display": {
+                "generic_type": "LIGHT_STATE"
+            },
+            "configuration": {
+                "class": 37,
+                "endpoint": 2,
+                "property": "currentValue"
+            }
+        },
+        {
+            "name": "Puissance 2",
+            "type": "info",
+            "subType": "numeric",
+            "isHistorized": "1",
+            "unite": "W",
+            "configuration": {
+                "maxValue": 2500,
+                "minValue": 0,
+                "class": 50,
+                "endpoint": 2,
+                "property": "value-66049"
+            },
+            "template": {
+                "dashboard": "default",
+                "mobile": "default"
+            },
+            "display": {
+                "invertBinary": "0",
+                "generic_type": "POWER"
+            },
+            "isVisible": "1"
+        },
+        {
+            "name": "Consommation 2",
+            "type": "info",
+            "subType": "numeric",
+            "isHistorized": "0",
+            "unite": "kWh",
+            "configuration": {
+                "class": 50,
+                "endpoint": 2,
+                "property": "value-65537"
+            },
+            "template": {
+                "dashboard": "tile",
+                "mobile": "tile"
+            },
+            "display": {
+                "invertBinary": "0",
+                "generic_type": "CONSUMPTION"
+            },
+            "isVisible": "1"
+        }
+    ]
+}

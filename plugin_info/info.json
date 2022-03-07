@@ -1,34 +1,36 @@
 {
-	"id" : "zwavejs",
-	"name" : "Zwavejs",
-	"description" : {
-		"fr_FR": "Plugin zwave basé sur zwavejs"
-	},
-	"licence" : "AGPL",
-	"author" : "Jeedom SAS",
-	"require" : "4.2",
-	"category" : "protocol",
-	"hasDependency" : true,
-	"hasOwnDeamon" : true,
-	"maxDependancyInstallTime" : 0,
-	"language": [
-		"fr_FR",
-		"en_US",
-		"es_ES",
-		"de_DE",
-		"ru_RU",
-		"id_ID",
-		"it_IT",
-		"ja_JP",
-		"pt_PT"
-	],
-	"compatibility": [
-		"smart",
-		"rpi",
-		"docker",
-		"diy",
-		"mobile",
-		"v4",
-		"atlas"
-	]
+    "id": "zwavejs",
+    "name": "Z-Wave JS",
+    "description": {
+        "fr_FR": "Plugin pour contrôler les équipements ZWave"
+    },
+    "licence": "AGPL",
+    "author": "Jeedom SAS",
+    "require": "4.2.11",
+    "category": "automation protocol",
+    "hasDependency": true,
+    "hasOwnDeamon": true,
+    "maxDependancyInstallTime": 45,
+    "changelog": "",
+    "documentation": "",
+    "language": [
+        "fr_FR",
+        "en_US",
+        "es_ES",
+        "de_DE",
+        "ru_RU",
+        "id_ID",
+        "it_IT",
+        "ja_JP",
+        "pt_PT",
+        "tr"
+    ],
+    "compatibility": [
+        "Jeedomboard",
+        "Smart",
+        "RPI\/RPI2",
+        "Docker",
+        "DIY",
+        "v4"
+    ]
 }

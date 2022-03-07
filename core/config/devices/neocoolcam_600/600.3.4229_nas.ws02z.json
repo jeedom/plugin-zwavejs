@@ -1,0 +1,50 @@
+{
+    "name": "Flood Sensor",
+    "type": "Fuite",
+    "comlink": "",
+    "remark": "",
+    "imglink": "",
+    "configuration": {
+        "battery_type": "1x3V CR123A"
+    },
+    "commands": [
+        {
+            "name": "Fuite",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "class": 48,
+                "endpoint": 0,
+                "property": "Any"
+            },
+            "subtype": "binary",
+            "display": {
+                "invertBinary": "1",
+                "generic_type": "FLOOD"
+            },
+            "template": {
+                "dashboard": "inondation",
+                "mobile": "inondation"
+            }
+        },
+        {
+            "name": "Batterie",
+            "type": "info",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 100,
+                "class": 128,
+                "endpoint": 0,
+                "property": "level"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "BATTERY"
+            },
+            "unite": "%"
+        }
+    ]
+}

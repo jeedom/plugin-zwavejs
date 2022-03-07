@@ -1,0 +1,47 @@
+{
+    "name": "Wireless remote control 10-channel",
+    "type": "Télécommande",
+    "comlink": "3075-z-waveme-telecommande-z-wave-10-canaux",
+    "remark": "Remplacé par la Z-WAVE.ME RC2",
+    "imglink": "duwi.rzwfb",
+    "commands": [
+        {
+            "name": "Scene",
+            "type": "info",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "repeatEventManagement": "always",
+                "class": 43,
+                "endpoint": 0,
+                "property": "Scene ID"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "DONT"
+            },
+            "template": {
+                "dashboard": "tile",
+                "mobile": "tile"
+            }
+        },
+        {
+            "name": "Batterie",
+            "type": "info",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 100,
+                "class": 128,
+                "endpoint": 0,
+                "property": "level"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "BATTERY"
+            },
+            "unite": "%"
+        }
+    ]
+}

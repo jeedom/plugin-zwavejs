@@ -1,0 +1,63 @@
+{
+    "name": "Power Reader",
+    "type": "Compteur",
+    "comlink": "1538-northq-compteur-optique-de-consommation-z-wave-adaptateur-ac-dc-5707162002242",
+    "remark": "Activer le rafraichissement manuel à 5 minutes sur la valeur Energy pour avoir les rapports",
+    "imglink": "northq.powerreader",
+    "configuration": {
+        "battery_type": "2x1.5V AA"
+    },
+    "commands": [
+        {
+            "name": "Consommation",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": "0",
+            "configuration": {
+                "class": 50,
+                "endpoint": 0,
+                "property": "value-65537"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "CONSUMPTION"
+            },
+            "unite": "kwH"
+        },
+        {
+            "name": "Batterie",
+            "type": "info",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 100,
+                "class": 128,
+                "endpoint": 0,
+                "property": "level"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "BATTERY"
+            },
+            "unite": "%"
+        },
+        {
+            "name": "Actualiser la date et heure",
+            "type": "action",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 139,
+                "value": "type=buttonaction&action=press",
+                "index": 3,
+                "instance": 1
+            },
+            "subtype": "other",
+            "display": {
+                "generic_type": "DONT"
+            },
+            "unite": ""
+        }
+    ]
+}

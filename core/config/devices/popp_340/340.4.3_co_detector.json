@@ -1,0 +1,54 @@
+{
+    "name": "POPE004407 CO Detector",
+    "type": "CO",
+    "comlink": "3852-popp-detecteur-de-monoxyde-de-carbone-z-wave-0019962004407",
+    "remark": "",
+    "imglink": "popp.004407",
+    "configuration": {
+        "battery_type": "Batterie Lithium 10 ans"
+    },
+    "commands": [
+        {
+            "name": "CO",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "class": 48,
+                "endpoint": 0,
+                "property": "Any"
+            },
+            "subtype": "binary",
+            "display": {
+                "invertBinary": "1",
+                "generic_type": "CO"
+            },
+            "template": {
+                "dashboard": "alert",
+                "mobile": "alert"
+            }
+        },
+        {
+            "name": "Battery",
+            "type": "info",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 100,
+                "class": 128,
+                "endpoint": 0,
+                "property": "level"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "BATTERY"
+            },
+            "template": {
+                "dashboard": "tile",
+                "mobile": "tile"
+            },
+            "unite": "%"
+        }
+    ]
+}

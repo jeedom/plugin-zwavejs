@@ -1,35 +1,150 @@
 <?php
 
-/* This file is part of Jeedom.
+/* This file is part of Plugin zwavejs for jeedom.
  *
- * Jeedom is free software: you can redistribute it and/or modify
+ * Plugin zwavejs for jeedom is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * Jeedom is distributed in the hope that it will be useful,
+ * Plugin zwavejs for jeedom is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
+ * along with Plugin zwavejs for jeedom. If not, see <http://www.gnu.org/licenses/>.
  */
 
 try {
-  require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
-  include_file('core', 'authentification', 'php');
+	require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
+	include_file('core', 'authentification', 'php');
 
-  if (!isConnect('admin')) {
-    throw new Exception(__('401 - Accès non autorisé', __FILE__));
-  }
+	if (!isConnect('admin')) {
+		throw new Exception('401 Unauthorized');
+	}
 
-  ajax::init();
+	if (init('action') == 'include') {
+		zwavejs::inclusion(init('method'),init('options'));
+		ajax::success();
+	}
+	
+	if (init('action') == 'getInfo') {
+		zwavejs::getInfo();
+		ajax::success();
+	}
+	
+	if (init('action') == 'getNodeInfo') {
+		zwavejs::getNodeInfo(init('node'));
+		ajax::success();
+	}
+	
+	if (init('action') == 'getNodeAssociations') {
+		zwavejs::getNodeAssociations(init('nodeId'));
+		ajax::success();
+	}
+	
+	if (init('action') == 'setNodeValue') {
+		zwavejs::setNodeValue(init('fullpath'),init('value'));
+		ajax::success();
+	}
+	
+	if (init('action') == 'refreshNodeCC') {
+		zwavejs::refreshNodeCC(init('nodeId'),init('cc'));
+		ajax::success();
+	}
+	
+	if (init('action') == 'getNodes') {
+		zwavejs::getNodes(init('mode'));
+		ajax::success();
+	}
+	
+	if (init('action') == 'controllerAction') {
+		zwavejs::controllerAction(init('type'));
+		ajax::success();
+	}
+	
+	if (init('action') == 'namingAction') {
+		zwavejs::namingAction(init('nodeId'));
+		ajax::success();
+	}
+	
+	if (init('action') == 'nodeAction') {
+		zwavejs::nodeAction(init('type'),init('nodeId'));
+		ajax::success();
+	}
+	
+	if (init('action') == 'removeAssociation') {
+		zwavejs::removeAssociation(init('nodeId'),init('groupId'),init('sourceEndpoint'),init('targetEndpoint'),init('assoNodeId'));
+		ajax::success();
+	}
+	
+	if (init('action') == 'removeAllAssociations') {
+		zwavejs::removeAllAssociations(init('nodeId'));
+		ajax::success();
+	}
+	
+	if (init('action') == 'addAssociation') {
+		zwavejs::addAssociation(init('nodeId'),init('group'),init('target'));
+		ajax::success();
+	}
+	
+	if (init('action') == 'generateRandomKey') {
+		ajax::success(zwavejs::generateRandomKey());
+	}
 
+	if (init('action') == 'autoDetectModule') {
+		$eqLogic = zwavejs::byId(init('id'));
+		if (!is_object($eqLogic)) {
+			throw new Exception(__('Zwave eqLogic non trouvé : ', __FILE__) . init('id'));
+		}
+		if (init('createcommand') == 1){
+			foreach ($eqLogic->getCmd() as $cmd) {
+				$cmd->remove();
+			}
+		}
+		$eqLogic->createCommand(true);
+		ajax::success();
+	}
 
+	if (init('action') == 'getConfiguration') {
+		if (init('translation') == 1 && config::byKey('language', 'core', 'fr_FR') != 'fr_FR') {
+			ajax::success();
+		}
+		$id = init('manufacturer_id') . '.' . init('product_type') . '.' . init('product_id');
+		$files = ls(dirname(__FILE__) . '/../config/devices', $id . '_*.json', false, array('files', 'quiet'));
+		foreach (ls(dirname(__FILE__) . '/../config/devices', '*', false, array('folders', 'quiet')) as $folder) {
+			foreach (ls(dirname(__FILE__) . '/../config/devices/' . $folder, $id . '_*.json', false, array('files', 'quiet')) as $file) {
+				$files[] = $folder . $file;
+			}
+		}
+		if (count($files) > 0) {
+			if (init('json') != '') {
+				$content = file_get_contents(dirname(__FILE__) . '/../config/devices/' . init('json'));
+				if (!is_json($content)) {
+					$content = file_get_contents(dirname(__FILE__) . '/../config/devices/' . $files[0]);
+				}
+			} else {
+				$content = file_get_contents(dirname(__FILE__) . '/../config/devices/' . $files[0]);
+			}
+			if (!is_json($content)) {
+				ajax::success();
+			}
+			ajax::success(str_replace('#language#',config::byKey('language'),json_decode($content, true)));
+		}
+		ajax::success();
+	}
+	
+	if (init('action') == 'getEqLogicInfos') {
+		$eqLogic = zwavejs::byLogicalId(init('logicalId'), 'zwavejs');
+		if (!is_object($eqLogic)) {
+			ajax::success();
+		}
+		ajax::success($eqLogic->getEqLogicInfos());
+	}
 
-  throw new Exception(__('Aucune méthode correspondante à : ', __FILE__) . init('action'));
-  /*     * *********Catch exeption*************** */
+	throw new Exception('Aucune methode correspondante');
+	/*     * *********Catch exeption*************** */
 } catch (Exception $e) {
-  ajax::error(displayException($e), $e->getCode());
+	ajax::error(displayException($e), $e->getCode());
 }

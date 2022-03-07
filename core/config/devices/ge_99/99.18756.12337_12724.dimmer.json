@@ -1,0 +1,86 @@
+{
+    "name": "12724 3 Way Dimmer",
+    "type": "Micromodule",
+    "comlink": "",
+    "remark": "",
+    "imglink": "ge.12724",
+    "commands": [
+        {
+            "name": "Intensité",
+            "type": "action",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 99,
+                "class": 38,
+                "endpoint": 0,
+                "property": "targetValue",
+                "value": "#slider#"
+            },
+            "value": "Etat",
+            "subtype": "slider",
+            "display": {
+                "generic_type": "LIGHT_SLIDER"
+            },
+            "template": {
+                "dashboard": "light",
+                "mobile": "light"
+            }
+        },
+        {
+            "name": "On",
+            "type": "action",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 99,
+                "class": 38,
+                "endpoint": 0,
+                "property": "targetValue",
+                "value": "255"
+            },
+            "subtype": "other",
+            "display": {
+                "generic_type": "LIGHT_ON"
+            }
+        },
+        {
+            "name": "Off",
+            "type": "action",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 99,
+                "class": 38,
+                "endpoint": 0,
+                "property": "targetValue",
+                "value": "0"
+            },
+            "subtype": "other",
+            "display": {
+                "generic_type": "LIGHT_OFF"
+            }
+        },
+        {
+            "name": "Etat",
+            "type": "info",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 100,
+                "class": 38,
+                "endpoint": 0,
+                "property": "currentValue"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "LIGHT_STATE"
+            },
+            "unite": "%"
+        }
+    ]
+}
