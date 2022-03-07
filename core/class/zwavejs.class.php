@@ -374,6 +374,14 @@ class zwavejs extends eqLogic {
 									}
 								}
 							}
+							$eqLogic = zwavejs::byLogicalId($node['id'], 'zwavejs');
+							$node['confJeedom'] = '-';
+							if (is_object($eqLogic)) {
+								$path = $eqLogic->getConfFilePath();
+								if (is_file(dirname(__FILE__) . '/../config/devices/' . $path)) {
+									$node['confJeedom'] = $path;
+								}
+							}
 							event::add('zwavejs::getNodeInfo',$node);
 						}
 					}

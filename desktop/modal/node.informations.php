@@ -57,6 +57,7 @@ include_file('3rdparty', 'jsonTree/jsonTree', 'js', 'zwavejs');
 								<p><b>{{Nombres de groupes : }}</b><span class="getNodeInfo-numberGroups label label-info" style="font-size : 1em;"></span></p>
 								<p><b>{{Dernière activité : }}</b><span class="getNodeInfo-lastActive label label-info" style="font-size : 1em;"></span></p>
 								<p><b>{{Configuration : }}</b><span class="getNodeInfo-filename label label-info" style="font-size : 1em;"></span></p>
+								<p><b>{{Configuration Jeedom : }}</b><span class="getNodeInfo-confJeedom label label-info" style="font-size : 1em;"></span></p>
 								<p><b>{{Lien : }}</b><b><span class="getNodeInfo-dbLink label label-default" style="font-size : 1em;"></span></b></p>
 							</div>
 						</div>
