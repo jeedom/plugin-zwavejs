@@ -340,7 +340,39 @@ class zwavejs extends eqLogic {
 					foreach ($value['result'] as $node){
 						if ($node['id']==$value['origin']['node']){
 							$node['neighbors'] = implode($node['neighbors'],' - ');
+							if (isset($node['deviceConfig']['filename']) && $node['deviceConfig']['filename'] != ''){
+								$explodeFile = explode('/',$node['deviceConfig']['filename']);
+								$fileExt = '(Jeedom)';
+								if (in_array('@zwave-js', $explodeFile)){
+									$fileExt = '(Zwave-Js)';
+								}
+								$node['filename'] = end($explodeFile) . ' '.$fileExt;
+							} else {
+								$node['filename'] = 'Aucun';
+							}
+							$node['numberGroups'] = count($node['groups']);
 							$node['nodeValues'] = zwavejs::constructValuePage($node['id'],$node['values']);
+							$node['classBasic'] = $node['deviceClass']['basic'];
+							$node['classGeneric'] = $node['deviceClass']['generic'];
+							$node['classSpecific'] = $node['deviceClass']['specific'];
+							$devClassFile = realpath(dirname(__FILE__) . '/../../resources/zwavejs2mqtt/node_modules/@zwave-js/config/config/deviceClasses.json');
+							if (file_exists($devClassFile)) {
+								$string = file_get_contents($devClassFile);
+								$pattern = '/(((?<!http:|https:)\/\/.*|(\/\*)([\S\s]*?)(\*\/)))/im';
+								$json = json_decode ( preg_replace ( $pattern, '', $string ),true );
+								$basic = '0x'.str_pad(dechex(intval($node['deviceClass']['basic'])),2,'0',STR_PAD_LEFT);
+								$generic = '0x'.str_pad(dechex(intval($node['deviceClass']['generic'])),2,'0',STR_PAD_LEFT);
+								$specific = '0x'.str_pad(dechex(intval($node['deviceClass']['specific'])),2,'0',STR_PAD_LEFT);
+								if (isset($json['basic'][$basic])){
+									$node['classBasic'] = $json['basic'][$basic];
+								}
+								if (isset($json['generic'][$generic])){
+									$node['classGeneric'] = $json['generic'][$generic]['label'];
+									if (isset($json['generic'][$generic]['specific'][$specific])){
+										$node['classSpecific'] = $json['generic'][$generic]['specific'][$specific]['label'];
+									}
+								}
+							}
 							event::add('zwavejs::getNodeInfo',$node);
 						}
 					}

@@ -40,54 +40,76 @@ include_file('3rdparty', 'jsonTree/jsonTree', 'js', 'zwavejs');
 			<div id="my-tab-content" class="tab-content">
 				<div class="tab-pane active" id="summary">
 					<br>
-					<div class="panel panel-primary template">
-						<div class="panel-heading">
-							<h4 class="panel-title"><i class="fas fa-info-circle"></i> {{Informations Noeud}}</h4>
-						</div>
-						<div class="panel-body">
-							<p>{{Node id : }} <b><span class="getNodeInfo-id label label-default" style="font-size : 1em;"></span></b></p>
-							<p>{{Modèle :}} <b><span class="getNodeInfo-productLabel label label-default" style="font-size : 1em;"></span></b></p>
-							<p>{{Fabricant : }}<b><span class="getNodeInfo-manufacturer label label-default" style="font-size : 1em;"></span></b></p>
-							<p>{{Description : }}<b><span class="getNodeInfo-productDescription label label-default" style="font-size : 1em;"></span></b></p>
-							<p>{{Identifiant : }}<b><span class="getNodeInfo-deviceId label label-default" style="font-size : 1em;"></span> <span class="getNodeInfo-hexId label label-default" style="font-size : 1em;"></span></b></p>
-							<p>{{Statut : }}<b><span class="getNodeInfo-status label label-default" style="font-size : 1em;"></span></b></p>
-							<p>{{Initié : }}<b><span class="getNodeInfo-inited label label-default" style="font-size : 1em;"></span></b></p>
-							<p>{{Stage : }}<b><span class="getNodeInfo-interviewStage label label-default" style="font-size : 1em;"></span></b></p>
-							<p>{{Voisins : }} <span class="getNodeInfo-neighbors label label-default" style="font-size : 1em;"></span></p>
-							<p>{{Prêt : }} <span class="getNodeInfo-ready label label-default" style="font-size : 1em;"></span></p>
-							<p>{{Disponible : }} <span class="getNodeInfo-available label label-default" style="font-size : 1em;"></span></p>
-							<p>{{En échec : }} <span class="getNodeInfo-failed label label-default" style="font-size : 1em;"></span></p>
-							<p>{{FLIRS : }} <span class="getNodeInfo-isFrequentListening label label-default" style="font-size : 1em;"></span></p>
-							<p>{{Contrôleur : }} <span class="getNodeInfo-isControllerNode label label-default" style="font-size : 1em;"></span></p>
-							<p>{{Routing : }} <span class="getNodeInfo-isRouting label label-default" style="font-size : 1em;"></span></p>
-							</div>
-						</div>
+					<div class="col-sm-12">
+					<div class="col-sm-6">
 						<div class="panel panel-primary template">
 							<div class="panel-heading">
-								<h4 class="panel-title"><i class="fas fa-info-circle"></i> {{Classe du module}}</h4>
+								<h4 class="panel-title"><i class="fas fa-info-circle"></i> {{Informations Noeud}}</h4>
 							</div>
 							<div class="panel-body">
-								{{Basique :}} <b><span class="zwaveNodeAttr label label-default" data-l1key="basicDeviceClassDescription"></span></b><br/>
-								{{Générique :}} <b><span class="zwaveNodeAttr label label-default" data-l1key="genericDeviceClassDescription"></span></b><br/>
-								{{Spécifique :}} <b><span class="zwaveNodeAttr label label-default" data-l1key="type" data-l2key="value"></span></b></p>
+								<p><b>{{Node id : }} </b><span class="getNodeInfo-id label label-info" style="font-size : 1em;"></span></p>
+								<p><b>{{Modèle :}} </b><span class="getNodeInfo-productLabel label label-info" style="font-size : 1em;"></span></p>
+								<p><b>{{Fabricant : }}</b><span class="getNodeInfo-manufacturer label label-info" style="font-size : 1em;"></span></p>
+								<p><b>{{Description : }}</b><span class="getNodeInfo-productDescription label label-info" style="font-size : 1em;"></span></p>
+								<p><b>{{Identifiant : }}</b><span class="getNodeInfo-deviceId label label-info" style="font-size : 1em;"></span> <span class="getNodeInfo-hexId label label-info" style="font-size : 1em;"></span></p>
+								<p><b>{{Firmware : }}</b><span class="getNodeInfo-firmwareVersion label label-info" style="font-size : 1em;"></span></p>
+								<p><b>{{Nombres d'endpoints : }}</b><span class="getNodeInfo-endpointsCount label label-info" style="font-size : 1em;"></span></p>
+								<p><b>{{Nombres de groupes : }}</b><span class="getNodeInfo-numberGroups label label-info" style="font-size : 1em;"></span></p>
+								<p><b>{{Dernière activité : }}</b><span class="getNodeInfo-lastActive label label-info" style="font-size : 1em;"></span></p>
+								<p><b>{{Configuration : }}</b><span class="getNodeInfo-filename label label-info" style="font-size : 1em;"></span></p>
+								<p><b>{{Lien : }}</b><b><span class="getNodeInfo-dbLink label label-default" style="font-size : 1em;"></span></b></p>
 							</div>
 						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="panel panel-primary template">
+						<div class="panel-heading">
+							<h4 class="panel-title"><i class="fas fa-info-circle"></i> {{Statut Noeud}}</h4>
+						</div>
+						<div class="panel-body">
+							<p><b>{{Statut : }}</b><span class="getNodeInfo-status label label-info" style="font-size : 1em;"></span></p>
+							<p><b>{{Initié : }}</b><span class="getNodeInfo-inited label label-info" style="font-size : 1em;"></span></p>
+							<p><b>{{Stage : }}</b><span class="getNodeInfo-interviewStage label label-info" style="font-size : 1em;"></span></p>
+							<p><b>{{Prêt : }} </b><span class="getNodeInfo-ready label label-info" style="font-size : 1em;"></span></p>
+							<p><b>{{Disponible : }}</b> <span class="getNodeInfo-available label label-info" style="font-size : 1em;"></span></p>
+							<p><b>{{En échec : }} </b><span class="getNodeInfo-failed label label-info" style="font-size : 1em;"></span></p>
+							<p><b>{{Voisins : }}</b> <span class="getNodeInfo-neighbors label label-info" style="font-size : 1em;"></span></p>
+							</div>
+						</div>
+						</div>
+					</div>
+					<div class="col-sm-12">
+					<div class="col-sm-6">
 						<div class="panel panel-primary template">
 							<div class="panel-heading">
 								<h4 class="panel-title"><i class="fas fa-info-circle"></i> {{Informations Protocole}}
 								</h4>
 							</div>
 							<div class="panel-body">
-								<p>{{Vitesse maximale de communication du module : }}<b><span class="getNodeInfo-maxDataRate"></span></b> {{bit/sec}}</p>
-								<b><span class="node-routing" data-l1key="location" data-l2key="value"></span></b>
-								<b><span class="node-isSecurity" data-l1key="location" data-l2key="value"></span></b>
-								<b><span class="node-listening" data-l1key="location" data-l2key="value"></span></b>
-								<b><span class="node-isFrequentListening" data-l1key="location" data-l2key="value"></span></b>
-								<b><span class="node-isBeaming" data-l1key="location" data-l2key="value"></span></b>
-								<br/>
-								<p><b><span class="node-security"></span></b></p>
+								<p><b>{{Vitesse maximale : }}</b><span class="getNodeInfo-maxDataRate label label-info"></span> {{bit/sec}}</p>
+								<p><b>{{Version Protocole : }} </b><span class="getNodeInfo-protocolVersion label label-info" style="font-size : 1em;"></span></p>
+								<p><b>{{FLIRS : }} </b><span class="getNodeInfo-isFrequentListening label label-info" style="font-size : 1em;"></span></p>
+								<p><b>{{Contrôleur : }} </b><span class="getNodeInfo-isControllerNode label label-info" style="font-size : 1em;"></span></p>
+								<p><b>{{Routing : }} </b><span class="getNodeInfo-isRouting label label-info" style="font-size : 1em;"></span></p>
+								<p><b>{{Beaming : }} </b><span class="getNodeInfo-supportsBeaming label label-info" style="font-size : 1em;"></span></p>
+								<p><b>{{Keep Awake : }} </b><span class="getNodeInfo-keepAwake label label-info" style="font-size : 1em;"></span></p>
+								<p><b>{{Listening : }} </b><span class="getNodeInfo-isListening label label-info" style="font-size : 1em;"></span></p>
 							</div>
 						</div>
+						</div>
+					<div class="col-sm-6">
+						<div class="panel panel-primary template">
+							<div class="panel-heading">
+								<h4 class="panel-title"><i class="fas fa-info-circle"></i> {{Classe du module}}</h4>
+							</div>
+							<div class="panel-body">
+								<p><b>{{Basique :}} </b><span class="getNodeInfo-classBasic label label-info"></span></p>
+								<p><b>{{Générique :}} </b><span class="getNodeInfo-classGeneric label label-info"></span></p>
+								<p><b>{{Spécifique :}} </b><span class="getNodeInfo-classSpecific label label-info"></span></p>
+							</div>
+						</div>
+						</div>
+					</div>
 					</div>
 					<div class="tab-pane" id="actions">
 						<table class="table table-striped">

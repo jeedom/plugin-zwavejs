@@ -72,7 +72,14 @@ $('body').off('zwavejs::getNodeInfo').on('zwavejs::getNodeInfo', function (_even
 					$('.getNodeStats-'+stat).empty().append(valueStat); 
 				}
 			} else {
-				$('.getNodeInfo-'+key).empty().append(data.toString());
+				if (key == 'dbLink'){
+					html = '<a href="'+data.toString()+'" target="_blank"><i class="fas fa-book"></i></a>'
+					$('.getNodeInfo-'+key).empty().append(html);
+				} else if (key == 'lastActive'){
+					$('.getNodeInfo-'+key).empty().append(jeedom.zwavejs.timestampConverter(data/1000));
+				} else {
+					$('.getNodeInfo-'+key).empty().append(data.toString());
+				}
 			}
 		}
 	}
