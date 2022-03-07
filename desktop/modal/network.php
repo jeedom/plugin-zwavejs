@@ -86,7 +86,7 @@ if (!isConnect('admin')) {
 						<div class="panel-body">
 							<p><b>{{Réseau démarré depuis : }} </b><span class="getInfo-uptime label label-info" style="font-size : 1em;"></span></p>
 							<p><b>{{Node id du contrôleur : }} </b><span class="getInfo-controllerId label label-info" style="font-size : 1em;"></span></p>
-							<p><b>{{Home id : }} </b><span class="getInfo-name label label-info" style="font-size : 1em;"></span> <span class="getInfo-homeid label label-default" style="font-size : 1em;"></span></p>
+							<p><b>{{Home id : }} </b><span class="getInfo-name label label-info" style="font-size : 1em;"></span> <span class="getInfo-homeid label label-info" style="font-size : 1em;"></span></p>
 							<p><b>{{Voisins : }} </b><span class="getNodes-controllerNeighbors label label-info" style="font-size : 1em;"></span></p>
 						</div>
 					</div>
