@@ -798,7 +798,7 @@ class zwavejs extends eqLogic {
 			$nodeValues .= '<div class="panel-heading">';
 			$nodeValues .= '<h3 class="panel-title cursor">';
 			$nodeValues .= '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionValues" href="#'.$datas[0]['commandClass'].'">';
-			$nodeValues .= '<i class="fas fa-circle-notch success" style="font-size:20px;"></i> <span style="font-size:18px;">'.$datas[0]['ccName'].'<sub>('.$cc.')</sub></span></a>';
+			$nodeValues .= '<i class="fas fa-circle-notch success" style="font-size:20px;"></i> <span style="font-size:18px;">'.$datas[0]['ccName'].'<sub> ('.$cc.')</sub></span></a>';
 			$nodeValues .= '<i  class="refreshNodeCC fas fa-sync pull-right cursor" data-cc="'.$datas[0]['commandClass'].'" data-nodeId="'.$_nodeId.'" title="'.__('Rafraîchir la CC', __FILE__).'"></i>';
 			$nodeValues .= '</h3>';
 			$nodeValues .= '</div>';
