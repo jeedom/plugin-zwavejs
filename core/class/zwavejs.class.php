@@ -766,9 +766,6 @@ class zwavejs extends eqLogic {
 				$eqLogic->setName($eqLogic->getLogicalId() . ' - ' . $_node['manufacturer'] . ' ' . $_node['productDescription'] . ' '. $_node['productLabel']);
 				$refresh = true;
 			}
-			$eqLogic->setConfiguration('manufacturer_id', $_node['manufacturerId']);
-			$eqLogic->setConfiguration('product_type', $_node['productType']);
-			$eqLogic->setConfiguration('product_id', $_node['productId']);
 		} else if ($new) {
 			$eqLogic->setName($eqLogic->getLogicalId() . ' - ' . 'Node inclus');
 		}
@@ -777,6 +774,10 @@ class zwavejs extends eqLogic {
 		} else {
 			$eqLogic->setConfiguration('interview', 'complete');
 		}
+		$eqLogic->setConfiguration('manufacturer_id', $_node['manufacturerId']);
+		$eqLogic->setConfiguration('product_type', $_node['productType']);
+		$eqLogic->setConfiguration('product_id', $_node['productId']);
+		$eqLogic->setConfiguration('product_name', $_node['productLabel'].' - '.$_node['productDescription']);
 		$eqLogic->save();
 		$eqLogic = zwavejs::byId($eqLogic->getId());
 		if (!$_ignoreEvent){
@@ -1085,7 +1086,6 @@ class zwavejs extends eqLogic {
 		if (isset($device['properties'])){
 			$device = zwavejs::handleProperties($device);
 		}
-		$this->setConfiguration('fileconf',$this->getConfFilePath());
 		$this->import($device,true);
 		sleep(1);
 		event::add('jeedom::alert', array(
