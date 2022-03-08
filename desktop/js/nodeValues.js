@@ -99,7 +99,6 @@ function node_load_values(){
 
 
 $('body').off('zwavejs::getNodeInfo').on('zwavejs::getNodeInfo', function (_event, _options) {
-	console.log(_options)
 	$('#div_nodeValuesZwaveJsAlert').hideAlert();
 	if (_options['id'] == nodeId){
 		if ($('.panel-group').is(":visible")) {
