@@ -11,7 +11,7 @@
         ]
     },
     "properties": {
-        "Air temperature": {},
+        "Temperature": {},
         "Humidity": {},
         "Tamper": {},
         "Battery": {}

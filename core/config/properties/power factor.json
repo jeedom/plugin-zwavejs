@@ -1,0 +1,18 @@
+{
+"standard": 
+	[
+		{
+			"name": "Power Factor",
+			"type": "info",
+			"isVisible": 0,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 50,
+				"endpoint": 0,
+				"property": "value-67073"
+			},
+			"subtype": "numeric",
+			"unite": ""
+		}
+	]
+}

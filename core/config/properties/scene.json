@@ -1,0 +1,21 @@
+{
+"standard": 
+	[
+		{
+			"name": "SceneId",
+			"type": "info",
+			"isVisible": 0,
+			"isHistorized": 0,
+			"configuration": {
+				"repeatEventManagement": "always",
+				"class": 43,
+				"endpoint": 0,
+				"property": "sceneId"
+			},
+			"subtype": "numeric",
+			"display": {
+				"generic_type": "DONT"
+			}
+		}
+	]
+}

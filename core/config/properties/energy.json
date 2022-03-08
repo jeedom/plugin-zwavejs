@@ -1,0 +1,40 @@
+{
+"standard": 
+	[
+		{
+			"name": "Consommation",
+			"type": "info",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 50,
+				"endpoint": 0,
+				"property": "value-65537"
+			},
+			"subtype": "numeric",
+			"display": {
+				"generic_type": "CONSUMPTION"
+			},
+			"template": {
+				"dashboard": "tile"
+			},
+			"unite": "kWh"
+		},
+		{
+			"name": "Reset consommmation",
+			"type": "action",
+			"isVisible": 0,
+			"configuration": {
+				"class": 50,
+				"endpoint": 0,
+				"property": "reset",
+				"value": "true"
+			},
+			"subtype": "other",
+			"display": {
+				"icon": "<i class=\"fas fa-sync\"></i>",
+				"generic_type": "DONT"
+			}
+		}
+	]
+}

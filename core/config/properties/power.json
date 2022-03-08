@@ -1,0 +1,44 @@
+{
+"standard": 
+	[
+		{
+			"name": "Puissance",
+			"type": "info",
+			"isVisible": 1,
+			"isHistorized": 1,
+			"configuration": {
+				"minValue": 0,
+				"maxValue": 2500,
+				"class": 50,
+				"endpoint": 0,
+				"property": "value-66049"
+			},
+			"subtype": "numeric",
+			"display": {
+				"generic_type": "POWER"
+			},
+			"unite": "W"
+		}
+	],
+"multilevel": 
+	[
+		{
+			"name": "Puissance",
+			"type": "info",
+			"isVisible": 1,
+			"isHistorized": 1,
+			"configuration": {
+				"minValue": 0,
+				"maxValue": 2500,
+				"class": 49,
+				"endpoint": 0,
+				"property": "Power"
+			},
+			"subtype": "numeric",
+			"display": {
+				"generic_type": "POWER"
+			},
+			"unite": "W"
+		}
+	]
+}

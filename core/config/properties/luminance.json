@@ -1,21 +1,22 @@
-{
-"standard": 
+{"standard": 
 	[
 		{
-			"name": "Température",
+			"name": "Luminosité",
 			"type": "info",
 			"isVisible": 1,
 			"isHistorized": 1,
 			"configuration": {
+				"minValue": 0,
+				"maxValue": 1000,
 				"class": 49,
 				"endpoint": 0,
-				"property": "Air temperature"
+				"property": "Illuminance"
 			},
 			"subtype": "numeric",
 			"display": {
-				"generic_type": "TEMPERATURE"
+				"generic_type": "BRIGHTNESS"
 			},
-			"unite": "°C"
+			"unite": "Lux"
 		}
 	]
 }

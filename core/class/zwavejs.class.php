@@ -770,7 +770,9 @@ class zwavejs extends eqLogic {
 			$eqLogic->setName($eqLogic->getLogicalId() . ' - ' . 'Node inclus');
 		}
 		if ($inited === false) {
-			$eqLogic->setConfiguration('interview', 'incomplete');
+			if ($eqLogic->getConfiguration('interview','incomplete') != 'complete') {
+				$eqLogic->setConfiguration('interview', 'incomplete');
+			}
 		} else {
 			$eqLogic->setConfiguration('interview', 'complete');
 		}

@@ -13,26 +13,8 @@
             "3"
         ]
     },
-    "commands": [
-        {
-            "name": "Scene",
-            "type": "info",
-            "isVisible": 0,
-            "isHistorized": 0,
-            "configuration": {
-                "repeatEventManagement": "always",
-                "class": 43,
-                "endpoint": 0,
-                "property": "Scene ID"
-            },
-            "subtype": "numeric",
-            "display": {
-                "generic_type": "DONT"
-            },
-            "template": {
-                "dashboard": "tile",
-                "mobile": "tile"
-            }
-        }
-    ]
+    "properties": {
+        "Scene": {},
+        "Battery": {}
+    }
 }

@@ -1,0 +1,24 @@
+{"binary-any": 
+	[
+		{
+			"name": "Présence",
+			"type": "info",
+			"isVisible": 1,
+			"isHistorized": 1,
+			"configuration": {
+				"class": 48,
+				"endpoint": 0,
+				"property": "Any"
+			},
+			"subtype": "binary",
+			"display": {
+				"invertBinary": "1",
+				"generic_type": "PRESENCE"
+			},
+			"template": {
+				"dashboard": "presence",
+				"mobile": "presence"
+			}
+		}
+	]
+}
