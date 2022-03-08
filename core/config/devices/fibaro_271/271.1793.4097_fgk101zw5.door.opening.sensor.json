@@ -51,8 +51,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 113,
-                "endpoint": 0,
-                "property": "Home Security-Cover Status" ,
+                "value": "",
+                "index": 10,
+                "instance": 1,
                 "calculValueOffset": "#value#==3"
             },
             "subtype": "binary",
@@ -70,7 +71,7 @@
                 "repeatEventManagement": "always",
                 "class": 43,
                 "endpoint": 0,
-                "property": "SceneId"
+                "property": "Scene ID"
             },
             "subtype": "numeric",
             "display": {

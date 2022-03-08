@@ -52,7 +52,7 @@
             "configuration": {
                 "class": 113,
                 "endpoint": 0,
-                "property": "Home Security-Cover Status" ,
+                "property": "Home Security-Cover status",
                 "calculValueOffset": "#value#==3"
             },
             "subtype": "binary",
@@ -70,7 +70,7 @@
                 "repeatEventManagement": "always",
                 "class": 43,
                 "endpoint": 0,
-                "property": "SceneId"
+                "property": "Scene ID"
             },
             "subtype": "numeric",
             "display": {
