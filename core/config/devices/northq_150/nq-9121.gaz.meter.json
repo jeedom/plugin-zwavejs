@@ -1,0 +1,85 @@
+{
+    "name": "NQ-9121 Gaz Meter",
+    "type": "Compteur",
+    "comlink": "1539-northq-compteur-optique-de-consommation-de-gaz-z-wave",
+    "remark": "Activer le rafraichissement manuel à 5 minutes sur la valeur Gaz pour avoir les rapports",
+    "imglink": "northq.nq9121",
+    "configuration": {
+        "battery_type": "2x1.5V AA"
+    },
+    "recommended": {
+        "params": [
+            {
+                "index": 10,
+                "value": 3
+            }
+        ],
+        "polling": [
+            {
+                "instanceId": "1",
+                "index": 0,
+                "class": "50"
+            }
+        ],
+        "wakeup": 900,
+        "needswakeup": true
+    },
+    "versions": {
+        "16": [
+            "1"
+        ]
+    },
+    "commands": [
+        {
+            "name": "Consommation",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": "0",
+            "configuration": {
+                "class": 50,
+                "endpoint": 0,
+                "property": "value-65537"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "CONSUMPTION"
+            },
+            "unite": "cubic meters"
+        },
+        {
+            "name": "Batterie",
+            "type": "info",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 100,
+                "class": 128,
+                "endpoint": 0,
+                "property": "level"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "BATTERY"
+            },
+            "unite": "%"
+        },
+        {
+            "name": "Actualiser la date et heure",
+            "type": "action",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 139,
+                "value": "type=buttonaction&action=press",
+                "index": 3,
+                "instance": 1
+            },
+            "subtype": "other",
+            "display": {
+                "generic_type": "DONT"
+            },
+            "unite": ""
+        }
+    ]
+}

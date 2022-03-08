@@ -1,0 +1,55 @@
+{
+    "name": "Motion Sensor (HS1MS-Z)",
+    "type": "Multicapteurs",
+    "comlink": "",
+    "remark": "",
+    "imglink": "heiman.hs1msz",
+    "configuration": {
+        "battery_type": "1x3V CR17335"
+    },
+    "versions": {
+        "32769": [
+            "4096"
+        ]
+    },
+    "commands": [
+        {
+            "name": "Présence",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "class": 48,
+                "endpoint": 0,
+                "property": "Any"
+            },
+            "subtype": "binary",
+            "display": {
+                "generic_type": "PRESENCE"
+            },
+            "template": {
+                "dashboard": "presence",
+                "mobile": "presence"
+            },
+            "unite": ""
+        },
+        {
+            "name": "Batterie",
+            "type": "info",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 100,
+                "class": 128,
+                "endpoint": 0,
+                "property": "level"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "BATTERY"
+            },
+            "unite": "%"
+        }
+    ]
+}

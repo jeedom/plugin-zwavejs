@@ -1,0 +1,116 @@
+{
+    "name": "USB Single charge",
+    "type": "Micromodule",
+    "comlink": "",
+    "remark": "",
+    "imglink": "widom.wds",
+    "versions": {
+        "18": [
+            "260"
+        ]
+    },
+    "commands": [
+        {
+            "name": "On",
+            "type": "action",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 37,
+                "endpoint": 0,
+                "property": "targetValue",
+                "value": "true"
+            },
+            "value": "Etat",
+            "subtype": "other",
+            "display": {
+                "generic_type": "LIGHT_ON"
+            },
+            "template": {
+                "dashboard": "light",
+                "mobile": "light"
+            }
+        },
+        {
+            "name": "Off",
+            "type": "action",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 37,
+                "endpoint": 0,
+                "property": "targetValue",
+                "value": "false"
+            },
+            "value": "Etat",
+            "subtype": "other",
+            "display": {
+                "generic_type": "LIGHT_OFF"
+            },
+            "template": {
+                "dashboard": "light",
+                "mobile": "light"
+            }
+        },
+        {
+            "name": "Etat",
+            "type": "info",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 37,
+                "endpoint": 0,
+                "property": "currentValue"
+            },
+            "subtype": "binary",
+            "display": {
+                "generic_type": "LIGHT_STATE"
+            }
+        },
+        {
+            "name": "Puissance",
+            "type": "info",
+            "isVisible": "1",
+            "isHistorized": "1",
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 2500,
+                "class": 50,
+                "endpoint": 0,
+                "property": "value-66049"
+            },
+            "subtype": "numeric",
+            "display": {
+                "invertBinary": "0",
+                "generic_type": "POWER"
+            },
+            "template": {
+                "dashboard": "default",
+                "mobile": "default"
+            },
+            "unite": "W"
+        },
+        {
+            "name": "Consommation",
+            "type": "info",
+            "isVisible": "1",
+            "isHistorized": "0",
+            "configuration": {
+                "minValue": 0,
+                "class": 50,
+                "endpoint": 0,
+                "property": "value-65537"
+            },
+            "subtype": "numeric",
+            "display": {
+                "invertBinary": "0",
+                "generic_type": "CONSUMPTION"
+            },
+            "template": {
+                "dashboard": "tile",
+                "mobile": "tile"
+            },
+            "unite": "kWh"
+        }
+    ]
+}

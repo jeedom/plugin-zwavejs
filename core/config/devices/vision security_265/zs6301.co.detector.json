@@ -1,0 +1,62 @@
+{
+    "name": "ZS 6301 Wireless CO Detector",
+    "type": "CO",
+    "comlink": "2159-vision-security-detecteur-de-monoxyde-de-carbone-z-wave",
+    "remark": "",
+    "imglink": "vision.zs6301",
+    "configuration": {
+        "battery_type": "3x1.5V AA"
+    },
+    "versions": {
+        "8207": [
+            "3842",
+            "3843"
+        ]
+    },
+    "commands": [
+        {
+            "name": "CO",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 113,
+                "value": "",
+                "index": 1,
+                "instance": 1,
+                "calculValueOffset": "#value#==255"
+            },
+            "subtype": "binary",
+            "display": {
+                "invertBinary": "1",
+                "generic_type": "CO2"
+            },
+            "template": {
+                "dashboard": "alert",
+                "mobile": "alert"
+            }
+        },
+        {
+            "name": "Battery",
+            "type": "info",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 100,
+                "class": 128,
+                "endpoint": 0,
+                "property": "level"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "BATTERY"
+            },
+            "template": {
+                "dashboard": "tile",
+                "mobile": "tile"
+            },
+            "unite": "%"
+        }
+    ]
+}

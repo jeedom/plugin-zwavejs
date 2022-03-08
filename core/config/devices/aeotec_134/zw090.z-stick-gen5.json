@@ -1,0 +1,49 @@
+{
+    "name": "Z-Stick Gen5 (ZW090)",
+    "type": "Contrôleur",
+    "comlink": "2917-aeon-labs-controleur-usb-z-wave-plus-z-stick-gen5-1220000012813",
+    "remark": "",
+    "imglink": "aeotec.zw090",
+    "versions": {
+        "257": [
+            "90"
+        ],
+        "1": [
+            "90"
+        ]
+    },
+    "commands": [
+        {
+            "name": "Switch All On",
+            "type": "action",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 240,
+                "value": "type=switchall&value=255",
+                "index": 0,
+                "instance": 1
+            },
+            "subtype": "other",
+            "display": {
+                "generic_type": "ENERGY_ON"
+            }
+        },
+        {
+            "name": "Switch All Off",
+            "type": "action",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 240,
+                "value": "type=switchall&value=0",
+                "index": 0,
+                "instance": 1
+            },
+            "subtype": "other",
+            "display": {
+                "generic_type": "ENERGY_OFF"
+            }
+        }
+    ]
+}

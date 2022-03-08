@@ -1,0 +1,70 @@
+{
+    "name": "ZG8101",
+    "type": "Ouverture",
+    "comlink": "2434-vision-security-detecteur-de-porte-de-garage-z-wave-zg8101-0696859123412.html",
+    "remark": "",
+    "imglink": "vision.zg8101",
+    "configuration": {
+        "battery_type": "1x3V CR123A"
+    },
+    "versions": {
+        "8202": [
+            "2562"
+        ]
+    },
+    "commands": [
+        {
+            "name": "Batterie",
+            "type": "info",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 128,
+                "endpoint": 0,
+                "property": "level"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "BATTERY"
+            }
+        },
+        {
+            "name": "Etat",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 48,
+                "endpoint": 0,
+                "property": "Any"
+            },
+            "subtype": "binary",
+            "display": {
+                "invertBinary": "1",
+                "generic_type": "OPENING"
+            }
+        },
+        {
+            "name": "Sabotage",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 113,
+                "value": "",
+                "index": 10,
+                "instance": 1,
+                "calculValueOffset": "#value#==3"
+            },
+            "subtype": "binary",
+            "display": {
+                "invertBinary": "1",
+                "generic_type": "SABOTAGE"
+            },
+            "template": {
+                "dashboard": "alert",
+                "mobile": "alert"
+            }
+        }
+    ]
+}

@@ -1,0 +1,62 @@
+{
+    "name": "ZW ZS 3500 Plugin Switch",
+    "type": "Prise",
+    "comlink": "752-duwi-module-prise-on-off-z-wave-pour-l-exterieur-4008297054382",
+    "remark": "Il faut activer le polling pour avoir une remonté d'état",
+    "imglink": "duwi.zwzs-3500",
+    "versions": {
+        "12289": [
+            "0"
+        ]
+    },
+    "commands": [
+        {
+            "name": "On",
+            "type": "action",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 37,
+                "endpoint": 0,
+                "property": "targetValue",
+                "value": "true"
+            },
+            "subtype": "other",
+            "display": {
+                "generic_type": "LIGHT_ON"
+            }
+        },
+        {
+            "name": "Off",
+            "type": "action",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 37,
+                "endpoint": 0,
+                "property": "targetValue",
+                "value": "false"
+            },
+            "subtype": "other",
+            "display": {
+                "generic_type": "LIGHT_OFF"
+            }
+        },
+        {
+            "name": "Etat",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 37,
+                "endpoint": 0,
+                "property": "currentValue"
+            },
+            "subtype": "binary",
+            "display": {
+                "generic_type": "LIGHT_STATE"
+            },
+            "unite": ""
+        }
+    ]
+}

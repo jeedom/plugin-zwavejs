@@ -116,28 +116,6 @@ function printEqLogic(_eqLogic) {
   } else {
     $('#img_device').attr("src", 'plugins/zwavejs/plugin_info/zwavejs_icon.png');
   }
-  $.ajax({
-    type: "POST",
-    url: "plugins/zwavejs/core/ajax/zwavejs.ajax.php",
-    data: {
-      action: "getConfiguration",
-      manufacturer_id: _eqLogic.configuration.manufacturer_id,
-      product_type: _eqLogic.configuration.product_type,
-      product_id: _eqLogic.configuration.product_id,
-      json: _eqLogic.configuration.fileconf,
-    },
-    dataType: 'json',
-    global: false,
-    error: function (request, status, error) {
-      handleAjaxError(request, status, error);
-    },
-    success: function (data) {
-      if (isset(data.result.name)) {
-        $('.eqLogicAttr[data-l1key=configuration][data-l2key=product_name]').value(data.result.name);
-      }
-    modifyWithoutSave = false;
-  }
-});
 $.ajax({
     type: "POST",
     url: "plugins/zwavejs/core/ajax/zwavejs.ajax.php",

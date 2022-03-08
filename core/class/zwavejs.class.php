@@ -1045,17 +1045,47 @@ class zwavejs extends eqLogic {
 		}
 	}
 	
+	public function handleProperties($_device) {
+		$device = $_device;
+		if (!isset($device['commands'])){
+			$device['commands'] = array();
+		}
+		foreach ($device['properties'] as $property => $details){
+			if (!is_file(dirname(__FILE__) . '/../config/properties/' . strtolower($property).'.json')) {
+				continue;
+			}
+			$propertyjson = is_json(file_get_contents(dirname(__FILE__) . '/../config/properties/' . strtolower($property).'.json'),false);
+			if (!is_array($propertyjson)) {
+				continue;
+			}
+			$type = 'standard';
+			if (isset($details["type"])){
+				$type = $details["type"];
+			}
+			if (isset($propertyjson[$type])){
+				foreach($propertyjson[$type] as $command){
+					$device['commands'][] = $command;
+				}
+			}
+		}
+		return $device;
+	}
+	
 	public function loadCmdFromConf($_update = false) {
 		if (!is_file(dirname(__FILE__) . '/../config/devices/' . $this->getConfFilePath())) {
 			return;
 		}
 		$device = is_json(file_get_contents(dirname(__FILE__) . '/../config/devices/' . $this->getConfFilePath()), array());
-		if (!is_array($device) || !isset($device['commands'])) {
+		if (!is_array($device) || (!isset($device['commands']) && !isset($device['properties']))) {
 			return true;
 		}
 		if (isset($device['name']) && !$_update) {
 			$this->setName('[' . $this->getLogicalId() . ']' . $device['name']);
 		}
+		if (isset($device['properties'])){
+			$device = zwavejs::handleProperties($device);
+		}
+		$this->setConfiguration('fileconf',$this->getConfFilePath());
 		$this->import($device,true);
 		sleep(1);
 		event::add('jeedom::alert', array(
@@ -1152,110 +1182,39 @@ class zwavejs extends eqLogic {
 	}
 	
 	public function getConfFilePath($_all = false) {
-		if ($_all) {
-			$id = $this->getConfiguration('manufacturer_id') . '.' . $this->getConfiguration('product_type') . '.' . $this->getConfiguration('product_id');
-			$return = ls(dirname(__FILE__) . '/../config/devices', $id . '_*.json', false, array('files', 'quiet'));
-			foreach (ls(dirname(__FILE__) . '/../config/devices', '*', false, array('folders', 'quiet')) as $folder) {
-				foreach (ls(dirname(__FILE__) . '/../config/devices/' . $folder, $id . '_*.json', false, array('files', 'quiet')) as $file) {
-					$return[] = $folder . $file;
+		foreach (ls(dirname(__FILE__) . '/../config/devices', '*_'.$this->getConfiguration('manufacturer_id'), false, array('folders', 'quiet')) as $folder) {
+			foreach (ls(dirname(__FILE__) . '/../config/devices/' . $folder, '*.json', false, array('files', 'quiet')) as $file) {
+				$conf = is_json(file_get_contents(dirname(__FILE__) . '/../config/devices/' . $folder .'/'.$file), array());
+				if (!is_array($conf)){
+					continue;
+				}
+				if (isset($conf['versions']) && isset($conf['versions'][$this->getConfiguration('product_type')])){
+					if (in_array($this->getConfiguration('product_id'),$conf['versions'][$this->getConfiguration('product_type')])){
+						$return = $folder . $file;
+						return $return;
+					}
 				}
 			}
-			return $return;
-		}
-		if (is_file(dirname(__FILE__) . '/../config/devices/' . $this->getConfiguration('fileconf'))) {
-			return $this->getConfiguration('fileconf');
-		}
-		$id = $this->getConfiguration('manufacturer_id') . '.' . $this->getConfiguration('product_type') . '.' . $this->getConfiguration('product_id');
-		$files = ls(dirname(__FILE__) . '/../config/devices', $id . '_*.json', false, array('files', 'quiet'));
-		foreach (ls(dirname(__FILE__) . '/../config/devices', '*', false, array('folders', 'quiet')) as $folder) {
-			foreach (ls(dirname(__FILE__) . '/../config/devices/' . $folder, $id . '_*.json', false, array('files', 'quiet')) as $file) {
-				$files[] = $folder . $file;
-			}
-		}
-		if (count($files) > 0) {
-			return $files[0];
 		}
 		return false;
-	}
-	
-	public function applyRecommended() {
-		if (!$this->getIsEnable()) {
-			return;
-		}
-		if (!is_file(dirname(__FILE__) . '/../config/devices/' . $this->getConfFilePath())) {
-			return;
-		}
-		$device = is_json(file_get_contents(dirname(__FILE__) . '/../config/devices/' . $this->getConfFilePath()), array());
-		if (!is_array($device) || !isset($device['recommended'])) {
-			return true;
-		}
-		if (isset($device['recommended']['params'])) {
-			foreach ($device['recommended']['params'] as $value) {
-				zwavejs::callzwavejs('/node?node_id=' . $this->getLogicalId() . '&instance_id=0&cc_id=112&index=' . $value['index'] . '&type=setconfig&value=' . urlencode($value['value']) . '&size=0');
-			}
-		}
-		if (isset($device['recommended']['groups'])) {
-			foreach ($device['recommended']['groups'] as $value) {
-				if ($value['value'] == 'add') {
-					zwavejs::callzwavejs('/node?node_id=' . $this->getLogicalId() . '&type=association&action=add&group=' . $value['index'] . '&target_id=1&instance_id=0');
-				} else if ($value['value'] == 'remove') {
-					zwavejs::callzwavejs('/node?node_id=' . $this->getLogicalId() . '&type=association&action=remove&group=' . $value['index'] . '&target_id=1&instance_id=0');
-				} else if ($value['value'] == 'add1') {
-					zwavejs::callzwavejs('/node?node_id=' . $this->getLogicalId() . '&type=association&action=add&group=' . $value['index'] . '&target_id=1&instance_id=1');
-				}
-				sleep(3);
-			}
-		}
-		if (isset($device['recommended']['wakeup'])) {
-			zwavejs::callzwavejs('/node?node_id=' . $this->getLogicalId() . '&instance_id=0&cc_id=132&index=0&type=setvalue&value=' . $device['recommended']['wakeup']);
-		}
-		if (isset($device['recommended']['polling'])) {
-			$pollinglist = $device['recommended']['polling'];
-			foreach ($pollinglist as $value) {
-				$instancepolling = $value['instanceId'];
-				$indexpolling = 0;
-				if (isset($value['index'])) {
-					$indexpolling = $value['index'];
-				}
-				zwavejs::callzwavejs('/node?node_id=' . $this->getLogicalId() . '&instance_id=' . $instancepolling . '&cc_id=' . $value['class'] . '&index=' . $indexpolling . '&type=setPolling&frequency=1');
-			}
-		}
-		if (isset($device['recommended']['needswakeup']) && $device['recommended']['needswakeup'] == true) {
-			return "wakeup";
-		}
-		return;
 	}
 	
 	public function getImgFilePath() {
-		$id = $this->getConfiguration('manufacturer_id') . '.' . $this->getConfiguration('product_type') . '.' . $this->getConfiguration('product_id');
-		foreach (ls(dirname(__FILE__) . '/../config/devices', '*_'.$this->getConfiguration('manufacturer_id'), false, array('folders', 'quiet')) as $folder) {
-			foreach (ls(dirname(__FILE__) . '/../config/devices/' . $folder, $id . '_*{jpg,png}', false, array('files', 'quiet')) as $file) {
-				return $folder . $file;
-			}
+		$path = str_replace('.json','',$this->getConfFilePath());
+		if (is_file(dirname(__FILE__) . '/../config/devices/' . $path.'.jpg')){
+			return  $path.'.jpg';
+		} else if (is_file(dirname(__FILE__) . '/../config/devices/' . $path.'.png')){
+			return  $path.'.png';
 		}
 		return false;
 	}
-	
+
 	public function getImage() {
-		$file = 'plugins/zwavejs/core/config/devices/' . self::getImgFilePath($this->getConfiguration('device'));
+		$file = 'plugins/zwavejs/core/config/devices/' . $this->getImgFilePath();
 		if (!is_file(__DIR__ . '/../../../../' . $file)) {
 			return 'plugins/zwavejs/plugin_info/zwavejs_icon.png';
 		}
 		return $file;
-	}
-	
-	public function getAssistantFilePath() {
-		$id = $this->getConfiguration('manufacturer_id') . '.' . $this->getConfiguration('product_type') . '.' . $this->getConfiguration('product_id');
-		$files = ls(dirname(__FILE__) . '/../config/devices', $id . '_*.php', false, array('files', 'quiet'));
-		foreach (ls(dirname(__FILE__) . '/../config/devices', '*', false, array('folders', 'quiet')) as $folder) {
-			foreach (ls(dirname(__FILE__) . '/../config/devices/' . $folder, $id . '_*.php', false, array('files', 'quiet')) as $file) {
-				$files[] = $folder . $file;
-			}
-		}
-		if (count($files) > 0) {
-			return $files[0];
-		}
-		return false;
 	}
 	
 	public function createCommand($_update = false, $_data = null) {

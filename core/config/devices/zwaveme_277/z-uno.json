@@ -1,0 +1,12 @@
+{
+    "name": "Z-Uno",
+    "type": "Carte de développeur",
+    "comlink": "",
+    "remark": "",
+    "imglink": "zwaveme.zuno",
+    "versions": {
+        "272": [
+            "1"
+        ]
+    }
+}

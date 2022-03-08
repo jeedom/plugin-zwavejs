@@ -1,0 +1,256 @@
+{
+    "name": "ZMNHOD1 Flush shutter DC",
+    "type": "Volets",
+    "comlink": "2951-qubino-z-wave-flush-shutter-dc-zmnhod1-3830062070089",
+    "remark": "",
+    "imglink": "qubino.zmnhod1",
+    "versions": {
+        "3": [
+            "83"
+        ]
+    },
+    "commands": [
+        {
+            "name": "Info Position",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 38,
+                "endpoint": 0,
+                "property": "currentValue"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "FLAP_STATE"
+            },
+            "template": {
+                "dashboard": "store",
+                "mobile": "store"
+            }
+        },
+        {
+            "name": "Position",
+            "type": "action",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 99,
+                "class": 38,
+                "endpoint": 0,
+                "property": "targetValue",
+                "value": "#slider#"
+            },
+            "value": "Level",
+            "subtype": "slider",
+            "display": {
+                "generic_type": "FLAP_SLIDER"
+            },
+            "template": {
+                "dashboard": "store",
+                "mobile": "store"
+            }
+        },
+        {
+            "name": "Puissance",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 48,
+                "class": 50,
+                "endpoint": 0,
+                "property": "value-66049"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "POWER"
+            },
+            "unite": "W"
+        },
+        {
+            "name": "Consommation",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "minValue": 0,
+                "class": 50,
+                "endpoint": 0,
+                "property": "value-65537"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "CONSUMPTION"
+            },
+            "unite": "kWh"
+        },
+        {
+            "name": "Monter",
+            "type": "action",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 38,
+                "value": "type=buttonaction&action=press",
+                "index": 1,
+                "instance": 1,
+                "minValue": 0,
+                "maxValue": 99
+            },
+            "subtype": "other",
+            "display": {
+                "icon": "<i class=\"fas fa-arrow-up\"></i>",
+                "generic_type": "FLAP_UP"
+            }
+        },
+        {
+            "name": "Descendre",
+            "type": "action",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 38,
+                "value": "type=buttonaction&action=press",
+                "index": 2,
+                "instance": 1,
+                "minValue": 0,
+                "maxValue": 99
+            },
+            "subtype": "other",
+            "display": {
+                "icon": "<i class=\"fas fa-arrow-down\"></i>",
+                "generic_type": "FLAP_DOWN"
+            }
+        },
+        {
+            "name": "Température",
+            "type": "info",
+            "isVisible": 0,
+            "isHistorized": 1,
+            "configuration": {
+                "class": 49,
+                "endpoint": 0,
+                "property": "Air temperature"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "TEMPERATURE"
+            },
+            "unite": "°C"
+        },
+        {
+            "name": "Stop",
+            "type": "action",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 99,
+                "class": 38,
+                "endpoint": 0,
+                "property": "Open",
+                "value": "false"
+            },
+            "subtype": "other",
+            "display": {
+                "icon": "<i class=\"fas fa-stop\"></i>",
+                "generic_type": "FLAP_STOP"
+            }
+        },
+        {
+            "name": "Stop BSO",
+            "type": "action",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 38,
+                "value": "type=buttonaction&action=release",
+                "index": 7,
+                "instance": 1,
+                "minValue": 0,
+                "maxValue": 99
+            },
+            "subtype": "other",
+            "display": {
+                "icon": "<i class=\"fas fa-stop\"></i>",
+                "generic_type": "FLAP_BSO_STOP"
+            }
+        },
+        {
+            "name": "Incliner",
+            "type": "action",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 38,
+                "value": "type=buttonaction&action=press",
+                "index": 7,
+                "instance": 1,
+                "minValue": 0,
+                "maxValue": 99
+            },
+            "subtype": "other",
+            "display": {
+                "icon": "<i class=\"fas fa-plus\"></i>",
+                "generic_type": "FLAP_BSO_UP"
+            }
+        },
+        {
+            "name": "Décliner",
+            "type": "action",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 38,
+                "value": "type=buttonaction&action=press",
+                "index": 8,
+                "instance": 1,
+                "minValue": 0,
+                "maxValue": 99
+            },
+            "subtype": "other",
+            "display": {
+                "icon": "<i class=\"fas fa-minus\"></i>",
+                "generic_type": "FLAP_BSO_DOWN"
+            }
+        },
+        {
+            "name": "Pas",
+            "type": "info",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 38,
+                "value": "",
+                "index": 6,
+                "instance": 1
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "GENERIC"
+            }
+        },
+        {
+            "name": "Rafraichir",
+            "type": "action",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 38,
+                "value": "type=refreshData",
+                "index": 0,
+                "instance": 1,
+                "minValue": 0,
+                "maxValue": 99
+            },
+            "subtype": "other",
+            "display": {
+                "icon": "<i class=\"fas fa-sync\"></i>",
+                "generic_type": "DONT"
+            }
+        }
+    ]
+}

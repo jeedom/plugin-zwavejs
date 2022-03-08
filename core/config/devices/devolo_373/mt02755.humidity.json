@@ -1,0 +1,19 @@
+{
+    "name": "Flood Sensor MT02756",
+    "type": "Multisensor",
+    "imglink": "devolo.mt02755",
+    "configuration": {
+        "battery_type": "1x3V CR123A"
+    },
+    "versions": {
+        "2": [
+            "32"
+        ]
+    },
+    "properties": {
+        "Air temperature": {},
+        "Humidity": {},
+        "Tamper": {},
+        "Battery": {}
+    }
+}

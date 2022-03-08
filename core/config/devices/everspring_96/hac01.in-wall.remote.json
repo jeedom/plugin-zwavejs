@@ -1,0 +1,35 @@
+{
+    "name": "HAC01",
+    "type": "Ouverture",
+    "comlink": "837-everspring-micromodule-emetteur-z-wave-hac01-3700946500110",
+    "remark": "",
+    "imglink": "everspring.hac01",
+    "versions": {
+        "16": [
+            "1"
+        ]
+    },
+    "commands": [
+        {
+            "name": "Etat",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "class": 32,
+                "value": "",
+                "index": 0,
+                "instance": 1
+            },
+            "subtype": "binary",
+            "display": {
+                "invertBinary": "1",
+                "generic_type": "OPENING"
+            },
+            "template": {
+                "dashboard": "door",
+                "mobile": "door"
+            }
+        }
+    ]
+}

@@ -1,0 +1,87 @@
+{
+    "name": "PSP05 B, C & D version",
+    "type": "Multicapteurs",
+    "comlink": "4108-philio-detecteur-de-mouvement-exterieur-z-wave-4713698573508",
+    "remark": "",
+    "imglink": "philio.psp05",
+    "configuration": {
+        "battery_type": "1x3V CR123A"
+    },
+    "recommended": {
+        "params": [
+            {
+                "index": 7,
+                "value": 22
+            }
+        ],
+        "wakeup": 14400,
+        "needswakeup": true
+    },
+    "versions": {
+        "2": [
+            "80"
+        ]
+    },
+    "commands": [
+        {
+            "name": "Présence",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "returnStateTime": 1,
+                "returnStateValue": 0,
+                "class": 48,
+                "endpoint": 0,
+                "property": "Any"
+            },
+            "subtype": "binary",
+            "display": {
+                "invertBinary": "1",
+                "generic_type": "PRESENCE"
+            },
+            "template": {
+                "dashboard": "presence",
+                "mobile": "presence"
+            }
+        },
+        {
+            "name": "Sabotage",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 48,
+                "value": "",
+                "index": 2,
+                "instance": 1,
+                "returnStateTime": 1,
+                "returnStateValue": 0
+            },
+            "subtype": "binary",
+            "display": {
+                "invertBinary": "1",
+                "generic_type": "SABOTAGE"
+            },
+            "template": {
+                "dashboard": "alert",
+                "mobile": "alert"
+            }
+        },
+        {
+            "name": "Batterie",
+            "type": "info",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 128,
+                "endpoint": 0,
+                "property": "level"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "BATTERY"
+            }
+        }
+    ]
+}

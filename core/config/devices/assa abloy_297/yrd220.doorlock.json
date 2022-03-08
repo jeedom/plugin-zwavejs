@@ -1,0 +1,86 @@
+{
+    "name": "Yale Touchscreen Deadbolt (YRD220)",
+    "type": "Serrure",
+    "comlink": "",
+    "remark": "Inclusion en mode sécurisé",
+    "imglink": "assa_abloy.YRD220",
+    "configuration": {
+        "battery_type": "4x1.5V AA"
+    },
+    "versions": {
+        "2": [
+            "0"
+        ]
+    },
+    "commands": [
+        {
+            "name": "Statut",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "class": 98,
+                "endpoint": 0,
+                "property": "currentMode"
+            },
+            "subtype": "binary",
+            "display": {
+                "generic_type": "LOCK_STATE"
+            },
+            "template": {
+                "dashboard": "lock",
+                "mobile": "lock"
+            }
+        },
+        {
+            "name": "Verrouillage",
+            "type": "action",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 98,
+                "endpoint": 0,
+                "property": "targetMode",
+                "value": "255"
+            },
+            "subtype": "other",
+            "display": {
+                "generic_type": "LOCK_CLOSE"
+            }
+        },
+        {
+            "name": "Déverrouillage",
+            "type": "action",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 98,
+                "endpoint": 0,
+                "property": "targetMode",
+                "value": "0"
+            },
+            "subtype": "other",
+            "display": {
+                "generic_type": "LOCK_OPEN"
+            }
+        },
+        {
+            "name": "Batterie",
+            "type": "info",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 100,
+                "class": 128,
+                "endpoint": 0,
+                "property": "level"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "BATTERY"
+            },
+            "unite": "%"
+        }
+    ]
+}

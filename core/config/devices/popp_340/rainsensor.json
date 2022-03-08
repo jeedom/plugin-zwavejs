@@ -1,0 +1,93 @@
+{
+    "name": "Pluviomètre",
+    "type": "Pluviomètre",
+    "comlink": "4094-popp-pluviometre-z-wave-z-rain-4251295700168",
+    "remark": "",
+    "imglink": "popp.rainsensor",
+    "configuration": {
+        "battery_type": "2x 1.5V AAA"
+    },
+    "versions": {
+        "4": [
+            "17"
+        ]
+    },
+    "commands": [
+        {
+            "name": "Pluie",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "class": 49,
+                "value": "",
+                "index": 12,
+                "instance": 1,
+                "calculValueOffset": "#value#>0"
+            },
+            "subtype": "binary",
+            "display": {
+                "invertBinary": "1",
+                "generic_type": "FLOOD"
+            },
+            "template": {
+                "dashboard": "inondation",
+                "mobile": "inondation"
+            },
+            "unite": ""
+        },
+        {
+            "name": "Précipitation",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "class": 49,
+                "value": "",
+                "index": 12,
+                "instance": 1,
+                "minValue": 0
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "DONT"
+            },
+            "unite": "mm/h"
+        },
+        {
+            "name": "Volume",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "minValue": 0,
+                "class": 50,
+                "endpoint": 0,
+                "property": "value-65537"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "DONT"
+            },
+            "unite": "m3"
+        },
+        {
+            "name": "Batterie",
+            "type": "info",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 100,
+                "class": 128,
+                "endpoint": 0,
+                "property": "level"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "BATTERY"
+            },
+            "unite": "%"
+        }
+    ]
+}

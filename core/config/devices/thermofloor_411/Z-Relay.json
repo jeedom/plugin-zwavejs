@@ -1,0 +1,159 @@
+{
+    "name": "Z-Relay",
+    "ref": "4512554",
+    "manufacturer": "Heatit",
+    "type": "Contacteur",
+    "reset": "Appuyer sur le bouton d'inclusion pendant au moins 10 secondes",
+    "pairing": "Appuyer une fois sur le bouton d'inclusion",
+    "remark": "",
+    "documentation": "https://www.heatit.com/wp-content/uploads/2019/12/Manual_Heatit_Z-Relay_ENG.pdf",
+    "buylink": "https://www.domadoo.fr/fr/chauffage-clim/5200-heatit-controls-module-relais-25a-z-wave-z-relay.html",
+    "versions": {
+        "3": [
+            "520"
+        ]
+    },
+    "commands": [
+        {
+            "name": "On",
+            "type": "action",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 37,
+                "endpoint": 0,
+                "property": "targetValue",
+                "value": "true"
+            },
+            "value": "Etat",
+            "subtype": "other",
+            "display": {
+                "generic_type": "LIGHT_ON"
+            },
+            "template": {
+                "dashboard": "light",
+                "mobile": "light"
+            }
+        },
+        {
+            "name": "Off",
+            "type": "action",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 37,
+                "endpoint": 0,
+                "property": "targetValue",
+                "value": "false"
+            },
+            "value": "Etat",
+            "subtype": "other",
+            "display": {
+                "generic_type": "LIGHT_OFF"
+            },
+            "template": {
+                "dashboard": "light",
+                "mobile": "light"
+            }
+        },
+        {
+            "name": "Etat",
+            "type": "info",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 37,
+                "endpoint": 1,
+                "property": "currentValue"
+            },
+            "subtype": "binary",
+            "display": {
+                "generic_type": "LIGHT_STATE"
+            }
+        },
+        {
+            "name": "Analog 1",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 49,
+                "endpoint": 0,
+                "property": "Air temperature"
+            },
+            "subtype": "numeric"
+        },
+        {
+            "name": "Analog 2",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 49,
+                "endpoint": 1,
+                "property": "Air temperature"
+            },
+            "subtype": "numeric"
+        },
+        {
+            "name": "Puissance",
+            "type": "info",
+            "isVisible": 0,
+            "isHistorized": 1,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 250,
+                "class": 50,
+                "endpoint": 0,
+                "property": "value-66049"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "POWER"
+            },
+            "unite": "W"
+        },
+        {
+            "name": "Consommation",
+            "type": "info",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "minValue": 0,
+                "class": 50,
+                "endpoint": 0,
+                "property": "value-65537"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "CONSUMPTION"
+            },
+            "template": {
+                "dashboard": "tile"
+            },
+            "unite": "kWh"
+        },
+        {
+            "name": "Fuite",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "class": 113,
+                "value": "",
+                "index": 8,
+                "instance": 1,
+                "calculValueOffset": "#value#==2"
+            },
+            "subtype": "binary",
+            "display": {
+                "invertBinary": "1",
+                "generic_type": "FLOOD"
+            },
+            "template": {
+                "dashboard": "inondation",
+                "mobile": "inondation"
+            }
+        }
+    ]
+}

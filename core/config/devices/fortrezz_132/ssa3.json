@@ -1,0 +1,89 @@
+{
+    "name": "SSA-03",
+    "type": "Sirène",
+    "comlink": "978-fortrezz-sirene-exterieure-ip54-z-wave-flash-ssa-03-0661799563277",
+    "remark": "",
+    "imglink": "fortrezz.ssa03",
+    "versions": {
+        "833": [
+            "517"
+        ],
+        "817": [
+            "267"
+        ]
+    },
+    "commands": [
+        {
+            "name": "Off",
+            "type": "action",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 99,
+                "class": 38,
+                "endpoint": 0,
+                "property": "targetValue",
+                "value": "0"
+            },
+            "subtype": "other",
+            "display": {
+                "generic_type": "DONT"
+            }
+        },
+        {
+            "name": "Flash",
+            "type": "action",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 38,
+                "value": "type=setvalue&value=33",
+                "index": 0,
+                "instance": 1,
+                "minValue": 0,
+                "maxValue": 99
+            },
+            "subtype": "other",
+            "display": {
+                "generic_type": "DONT"
+            }
+        },
+        {
+            "name": "Siren",
+            "type": "action",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 38,
+                "value": "type=setvalue&value=66",
+                "index": 0,
+                "instance": 1,
+                "minValue": 0,
+                "maxValue": 99
+            },
+            "subtype": "other",
+            "display": {
+                "generic_type": "DONT"
+            }
+        },
+        {
+            "name": "Flash & Siren",
+            "type": "action",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 99,
+                "class": 38,
+                "endpoint": 0,
+                "property": "targetValue",
+                "value": "99"
+            },
+            "subtype": "other",
+            "display": {
+                "generic_type": "DONT"
+            }
+        }
+    ]
+}

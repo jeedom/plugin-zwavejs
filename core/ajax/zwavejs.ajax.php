@@ -106,34 +106,6 @@ try {
 		$eqLogic->createCommand(true);
 		ajax::success();
 	}
-
-	if (init('action') == 'getConfiguration') {
-		if (init('translation') == 1 && config::byKey('language', 'core', 'fr_FR') != 'fr_FR') {
-			ajax::success();
-		}
-		$id = init('manufacturer_id') . '.' . init('product_type') . '.' . init('product_id');
-		$files = ls(dirname(__FILE__) . '/../config/devices', $id . '_*.json', false, array('files', 'quiet'));
-		foreach (ls(dirname(__FILE__) . '/../config/devices', '*', false, array('folders', 'quiet')) as $folder) {
-			foreach (ls(dirname(__FILE__) . '/../config/devices/' . $folder, $id . '_*.json', false, array('files', 'quiet')) as $file) {
-				$files[] = $folder . $file;
-			}
-		}
-		if (count($files) > 0) {
-			if (init('json') != '') {
-				$content = file_get_contents(dirname(__FILE__) . '/../config/devices/' . init('json'));
-				if (!is_json($content)) {
-					$content = file_get_contents(dirname(__FILE__) . '/../config/devices/' . $files[0]);
-				}
-			} else {
-				$content = file_get_contents(dirname(__FILE__) . '/../config/devices/' . $files[0]);
-			}
-			if (!is_json($content)) {
-				ajax::success();
-			}
-			ajax::success(str_replace('#language#',config::byKey('language'),json_decode($content, true)));
-		}
-		ajax::success();
-	}
 	
 	if (init('action') == 'getEqLogicInfos') {
 		$eqLogic = zwavejs::byLogicalId(init('logicalId'), 'zwavejs');

@@ -85,7 +85,7 @@ sendVarTojs('eqLogic_human_name', $tags);
 			<?php
 			foreach ($eqLogics as $eqLogic) {
 				$opacity = ($eqLogic->getIsEnable()) ? '' : 'disableCard';
-				echo '<div class="eqLogicDisplayCard cursor '.$opacity.'" data-logical-id="' . $eqLogic->getLogicalId() . '" data-eqLogic_id="' . $eqLogic->getId() . '" data-assistant="' . $eqLogic->getAssistantFilePath() . '" title="Node ID : '.$eqLogic->getLogicalId().'">';
+				echo '<div class="eqLogicDisplayCard cursor '.$opacity.'" data-logical-id="' . $eqLogic->getLogicalId() . '" data-eqLogic_id="' . $eqLogic->getId() . '" title="Node ID : '.$eqLogic->getLogicalId().'">';
 				if ($eqLogic->getImgFilePath() !== false) {
 					echo '<img class="lazy" src="plugins/zwavejs/core/config/devices/' . $eqLogic->getImgFilePath() . '" />';
 				} else {
@@ -182,8 +182,8 @@ sendVarTojs('eqLogic_human_name', $tags);
 								<label class="col-sm-3 control-label"></label>
 								<div class="col-sm-7">
 									<a class="nodeInformations btn btn-primary" title="{{Informations du noeud}}"><i class="fas fa-fingerprint"></i> {{Noeud}}</a>
-									<a class="nodeValues btn btn-primary" id="bt_configureDevice" title="{{Valeurs du noeud}}"><i class="fas fa-list"></i> {{Valeurs}}</a>
-									<a class="nodeGroups btn btn-primary" id="bt_configureDevice" title="{{Groupes du noeud}}"><i class="fas fa-layer-group"></i> {{Groupes}}</a>
+									<a class="nodeValues btn btn-primary" title="{{Valeurs du noeud}}"><i class="fas fa-list"></i> {{Valeurs}}</a>
+									<a class="nodeGroups btn btn-primary" title="{{Groupes du noeud}}"><i class="fas fa-layer-group"></i> {{Groupes}}</a>
 								</div>
 							</div>
 

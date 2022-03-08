@@ -1,0 +1,15 @@
+{
+    "name": "Range Extender (ZW117)",
+    "type": "Répéteur",
+    "comlink": "",
+    "remark": "Module sans fonctionnalité hors mis le fait de relayer les infos du réseau",
+    "imglink": "aeotec.zw117",
+    "versions": {
+        "4": [
+            "117"
+        ],
+        "260": [
+            "117"
+        ]
+    }
+}

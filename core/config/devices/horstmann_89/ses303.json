@@ -1,0 +1,134 @@
+{
+    "name": "SES 303 Temperature and Humidity Sensor",
+    "type": "Multicapteurs",
+    "documentation": "https://doc.jeedom.com/#language#/zwave/secure.ses303_-_Temperature_Humidite",
+    "comlink": "3227-secure-sonde-de-temperature-et-d-humidite-sur-piles-z-wave-5015914840098",
+    "remark": "Module vendu sous la marque Secure",
+    "imglink": "horstmann.ses303",
+    "configuration": {
+        "battery_type": "2x1.5V AA"
+    },
+    "versions": {
+        "13": [
+            "3"
+        ]
+    },
+    "commands": [
+        {
+            "name": "Température",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "class": 49,
+                "endpoint": 0,
+                "property": "Air temperature"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "TEMPERATURE"
+            },
+            "unite": "°C"
+        },
+        {
+            "name": "Humidité",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 100,
+                "class": 49,
+                "endpoint": 0,
+                "property": "Humidity"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "HUMIDITY"
+            },
+            "unite": "%"
+        },
+        {
+            "name": "Température 2",
+            "type": "info",
+            "isVisible": 0,
+            "isHistorized": 1,
+            "configuration": {
+                "class": 49,
+                "endpoint": 2,
+                "property": "Air temperature"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "TEMPERATURE"
+            },
+            "unite": "°C"
+        },
+        {
+            "name": "Température 3",
+            "type": "info",
+            "isVisible": 0,
+            "isHistorized": 1,
+            "configuration": {
+                "class": 49,
+                "endpoint": 3,
+                "property": "Air temperature"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "TEMPERATURE"
+            },
+            "unite": "°C"
+        },
+        {
+            "name": "Température 4",
+            "type": "info",
+            "isVisible": 0,
+            "isHistorized": 1,
+            "configuration": {
+                "class": 49,
+                "endpoint": 4,
+                "property": "Air temperature"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "TEMPERATURE"
+            },
+            "unite": "°C"
+        },
+        {
+            "name": "Température 5",
+            "type": "info",
+            "isVisible": 0,
+            "isHistorized": 1,
+            "configuration": {
+                "class": 49,
+                "endpoint": 5,
+                "property": "Air temperature"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "TEMPERATURE"
+            },
+            "unite": "°C"
+        },
+        {
+            "name": "Batterie",
+            "type": "info",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 100,
+                "class": 128,
+                "endpoint": 0,
+                "property": "level"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "BATTERY"
+            },
+            "unite": "%"
+        }
+    ]
+}

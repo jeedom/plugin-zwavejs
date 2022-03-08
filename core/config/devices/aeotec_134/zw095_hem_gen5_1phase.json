@@ -1,0 +1,117 @@
+{
+    "name": "Home Energy Meter Gen5 (ZW095)",
+    "type": "Consommation",
+    "comlink": "",
+    "remark": "",
+    "imglink": "aeotec.zw095",
+    "recommended": {
+        "params": [
+            {
+                "index": 101,
+                "value": 524554
+            },
+            {
+                "index": 111,
+                "value": 120
+            },
+            {
+                "index": 102,
+                "value": 2049
+            },
+            {
+                "index": 112,
+                "value": 900
+            },
+            {
+                "index": 103,
+                "value": 65540
+            },
+            {
+                "index": 113,
+                "value": 3600
+            }
+        ],
+        "needswakeup": false
+    },
+    "versions": {
+        "2": [
+            "95"
+        ],
+        "258": [
+            "95"
+        ]
+    },
+    "commands": [
+        {
+            "name": "Consommation",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "minValue": 0,
+                "class": 50,
+                "endpoint": 0,
+                "property": "value-65537"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "CONSUMPTION"
+            },
+            "unite": "KWh"
+        },
+        {
+            "name": "Puissance",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 48000,
+                "class": 50,
+                "endpoint": 0,
+                "property": "value-66049"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "POWER"
+            },
+            "unite": "W"
+        },
+        {
+            "name": "Tension",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "minValue": 180,
+                "maxValue": 260,
+                "class": 50,
+                "endpoint": 0,
+                "property": "value-66561"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "VOLTAGE"
+            },
+            "unite": "V"
+        },
+        {
+            "name": "Intensité",
+            "type": "info",
+            "isVisible": 0,
+            "isHistorized": 1,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 200,
+                "class": 50,
+                "endpoint": 0,
+                "property": "value-66817"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "DONT"
+            },
+            "unite": "A"
+        }
+    ]
+}

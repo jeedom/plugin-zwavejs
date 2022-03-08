@@ -1,0 +1,177 @@
+{
+    "name": "Micro Motor Controller (ZME06436)",
+    "type": "Volets",
+    "comlink": "",
+    "remark": "",
+    "imglink": "zwaveme.zme06436",
+    "versions": {
+        "4096": [
+            "3"
+        ]
+    },
+    "commands": [
+        {
+            "name": "Monter",
+            "type": "action",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 38,
+                "endpoint": 0,
+                "property": "targetValue",
+                "value": "99"
+            },
+            "subtype": "other",
+            "display": {
+                "generic_type": "FLAP_UP"
+            }
+        },
+        {
+            "name": "Descendre",
+            "type": "action",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 38,
+                "endpoint": 0,
+                "property": "targetValue",
+                "value": "0"
+            },
+            "subtype": "other",
+            "display": {
+                "generic_type": "FLAP_DOWN"
+            }
+        },
+        {
+            "name": "Etat",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 38,
+                "endpoint": 0,
+                "property": "currentValue"
+            },
+            "subtype": "binary",
+            "display": {
+                "invertBinary": "1",
+                "generic_type": "FLAP_STATE"
+            },
+            "template": {
+                "dashboard": "store",
+                "mobile": "store"
+            },
+            "unite": ""
+        },
+        {
+            "name": "Positionnement",
+            "type": "action",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 99,
+                "class": 38,
+                "endpoint": 0,
+                "property": "targetValue",
+                "value": "#slider#"
+            },
+            "value": "Etat",
+            "subtype": "slider",
+            "display": {
+                "generic_type": "FLAP_SLIDER"
+            },
+            "template": {
+                "dashboard": "tooltip",
+                "mobile": "tooltip"
+            }
+        },
+        {
+            "name": "Stop",
+            "type": "action",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 38,
+                "value": "type=buttonaction&action=release",
+                "index": 7,
+                "instance": 1
+            },
+            "subtype": "other",
+            "display": {
+                "icon": "<i class=\"fas fa-stop\"></i>",
+                "generic_type": "DONT"
+            }
+        },
+        {
+            "name": "Incliner",
+            "type": "action",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 38,
+                "value": "type=buttonaction&action=press",
+                "index": 7,
+                "instance": 1
+            },
+            "subtype": "other",
+            "display": {
+                "icon": "<i class=\"fas fa-plus\"></i>",
+                "generic_type": "DONT"
+            }
+        },
+        {
+            "name": "Décliner",
+            "type": "action",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 38,
+                "value": "type=buttonaction&action=press",
+                "index": 8,
+                "instance": 1
+            },
+            "subtype": "other",
+            "display": {
+                "icon": "<i class=\"fas fa-minus\"></i>",
+                "generic_type": "DONT"
+            }
+        },
+        {
+            "name": "Pas",
+            "type": "info",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 38,
+                "value": "",
+                "index": 6,
+                "instance": 1
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "DONT"
+            }
+        },
+        {
+            "name": "Scene",
+            "type": "info",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "repeatEventManagement": "always",
+                "class": 43,
+                "endpoint": 0,
+                "property": "Scene ID"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "DONT"
+            },
+            "template": {
+                "dashboard": "tile",
+                "mobile": "tile"
+            }
+        }
+    ]
+}

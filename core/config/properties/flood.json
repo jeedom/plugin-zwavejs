@@ -1,0 +1,25 @@
+{"standard": 
+	[
+		{
+			"name": "Fuite",
+			"type": "info",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 113,
+				"endpoint": 0,
+				"property": "Water Alarm-Sensor status",
+				"calculValueOffset": "#value#==2"
+			},
+			"subtype": "binary",
+			"display": {
+				"invertBinary": "1",
+				"generic_type": "SABOTAGE"
+			},
+			"template": {
+				"dashboard": "flood",
+				"mobile": "flood"
+			}
+		}
+	]
+}

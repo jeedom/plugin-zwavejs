@@ -1,0 +1,327 @@
+{
+    "name": "Home Energy Meter 2nd Edition (DSB28)",
+    "type": "Consommation",
+    "comlink": "281-aeon-labs-compteur-de-consommation-electrique-z-wave-3c-60a-version-g2-1220000011670",
+    "remark": "",
+    "imglink": "aeotec.dsb28",
+    "recommended": {
+        "params": [
+            {
+                "index": 101,
+                "value": 1794
+            },
+            {
+                "index": 102,
+                "value": 14337
+            },
+            {
+                "index": 103,
+                "value": 458756
+            },
+            {
+                "index": 111,
+                "value": 120
+            },
+            {
+                "index": 112,
+                "value": 1800
+            },
+            {
+                "index": 113,
+                "value": 14400
+            }
+        ],
+        "needswakeup": false
+    },
+    "versions": {
+        "2": [
+            "28"
+        ]
+    },
+    "commands": [
+        {
+            "name": "Consommation totale",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "minValue": 0,
+                "class": 50,
+                "endpoint": 0,
+                "property": "value-65537"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "CONSUMPTION"
+            },
+            "unite": "KWh"
+        },
+        {
+            "name": "Consommation phase 1",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "minValue": 0,
+                "class": 50,
+                "endpoint": 1,
+                "property": "value-65537"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "CONSUMPTION"
+            },
+            "unite": "KWh"
+        },
+        {
+            "name": "Consommation phase 2",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "minValue": 0,
+                "class": 50,
+                "endpoint": 2,
+                "property": "value-65537"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "CONSUMPTION"
+            },
+            "unite": "KWh"
+        },
+        {
+            "name": "Consommation phase 3",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "minValue": 0,
+                "class": 50,
+                "endpoint": 3,
+                "property": "value-65537"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "CONSUMPTION"
+            },
+            "unite": "KWh"
+        },
+        {
+            "name": "Puissance totale",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 12000,
+                "class": 50,
+                "endpoint": 0,
+                "property": "value-66049"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "POWER"
+            },
+            "unite": "W"
+        },
+        {
+            "name": "Puissance phase 1",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 12000,
+                "class": 50,
+                "endpoint": 1,
+                "property": "value-66049"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "POWER"
+            },
+            "unite": "W"
+        },
+        {
+            "name": "Puissance phase 2",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 12000,
+                "class": 50,
+                "endpoint": 2,
+                "property": "value-66049"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "POWER"
+            },
+            "unite": "W"
+        },
+        {
+            "name": "Puissance phase 3",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 12000,
+                "class": 50,
+                "endpoint": 3,
+                "property": "value-66049"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "POWER"
+            },
+            "unite": "W"
+        },
+        {
+            "name": "Tension totale",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "minValue": 220,
+                "maxValue": 240,
+                "class": 50,
+                "endpoint": 0,
+                "property": "value-66561"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "VOLTAGE"
+            },
+            "unite": "V"
+        },
+        {
+            "name": "Tension phase 1",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "minValue": 220,
+                "maxValue": 240,
+                "class": 50,
+                "endpoint": 1,
+                "property": "value-66561"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "VOLTAGE"
+            },
+            "unite": "V"
+        },
+        {
+            "name": "Tension phase 2",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "minValue": 220,
+                "maxValue": 240,
+                "class": 50,
+                "endpoint": 2,
+                "property": "value-66561"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "VOLTAGE"
+            },
+            "unite": "V"
+        },
+        {
+            "name": "Tension phase 3",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "minValue": 220,
+                "maxValue": 240,
+                "class": 50,
+                "endpoint": 3,
+                "property": "value-66561"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "VOLTAGE"
+            },
+            "unite": "V"
+        },
+        {
+            "name": "Intensité totale",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 200,
+                "class": 50,
+                "endpoint": 0,
+                "property": "value-66817"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "DONT"
+            },
+            "unite": "A"
+        },
+        {
+            "name": "Intensité phase 1",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 60,
+                "class": 50,
+                "endpoint": 1,
+                "property": "value-66817"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "DONT"
+            },
+            "unite": "A"
+        },
+        {
+            "name": "Intensité phase 2",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 60,
+                "class": 50,
+                "endpoint": 2,
+                "property": "value-66817"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "DONT"
+            },
+            "unite": "A"
+        },
+        {
+            "name": "Intensité phase 3",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 60,
+                "class": 50,
+                "endpoint": 3,
+                "property": "value-66817"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "DONT"
+            },
+            "unite": "A"
+        }
+    ]
+}

@@ -1,0 +1,51 @@
+{
+    "name": "HSP02 Motion Detector",
+    "type": "Multicapteurs",
+    "comlink": "842-everspring-detecteur-de-mouvement-z-wave-hsp02-3700946500165",
+    "remark": "",
+    "imglink": "everspring.hsp02",
+    "configuration": {
+        "battery_type": "1x3V CR2"
+    },
+    "versions": {
+        "1": [
+            "1"
+        ]
+    },
+    "commands": [
+        {
+            "name": "Présence",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "class": 48,
+                "endpoint": 0,
+                "property": "Any"
+            },
+            "subtype": "binary",
+            "display": {
+                "generic_type": "PRESENCE"
+            },
+            "unite": ""
+        },
+        {
+            "name": "Batterie",
+            "type": "info",
+            "isVisible": 0,
+            "isHistorized": 1,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 100,
+                "class": 128,
+                "endpoint": 0,
+                "property": "level"
+            },
+            "subtype": "numeric",
+            "display": {
+                "generic_type": "BATTERY"
+            },
+            "unite": "%"
+        }
+    ]
+}
