@@ -831,6 +831,7 @@ class zwavejs extends eqLogic {
 					$nodeValues .= '<td style="width:30%">'.$data['label'].'</td>';
 				}
 				$nodeValues .= '<td style="width:30%">';
+				$tooltip = '';
 				if ($data['readable']){
 					if (!isset($data['value'])){
 						$finalValue = 'N/A';
@@ -859,6 +860,11 @@ class zwavejs extends eqLogic {
 					if ($data['unit']){
 						$finalValue .= ' ' . $data['unit'];
 					}
+					if (isset($data['states'])){
+						foreach ($data['states'] as $state){
+							$tooltip .= $state['value'] . ' ' . $state['text'].'&#013;';
+						}
+					}
 				} else {
 					if (isset($data['value'])){
 						$finalValue = $data['value'];
@@ -872,9 +878,12 @@ class zwavejs extends eqLogic {
 				} else if ($finalValue && $finalValue == __('OFF', __FILE__)) {
 					$span .= '<span class="label label-danger" style="font-size:1em;">';
 				} else {
-					$span .= '<span class="label label-primary" style="font-size:1em;">';
+					$span .= '<span class="label label-primary" style="font-size:1em;" title="'.$tooltip.'">';
 				}
 				$span .= $finalValue.'</span>';
+				if ($tooltip != ''){
+					$span .= ' <sup><i class="fas fa-question-circle tooltips" title="'.$tooltip.'"></i><sup>';
+				}
 				$updates[str_replace(' ','_',$data['id'])]=array('value'=>$span);
 				$nodeValues .= '<span class="'.str_replace(' ','_',$data['id']).'">'.$span.'</span>';
 				if ($data['writeable']){
