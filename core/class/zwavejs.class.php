@@ -780,6 +780,7 @@ class zwavejs extends eqLogic {
 		$eqLogic->setConfiguration('product_type', $_node['productType']);
 		$eqLogic->setConfiguration('product_id', $_node['productId']);
 		$eqLogic->setConfiguration('product_name', $_node['productLabel'].' - '.$_node['productDescription']);
+		$eqLogic->setConfiguration('firmwareVersion', $_node['firmwareVersion']);
 		$eqLogic->save();
 		$eqLogic = zwavejs::byId($eqLogic->getId());
 		if (!$_ignoreEvent){
@@ -1052,6 +1053,21 @@ class zwavejs extends eqLogic {
 		$device = $_device;
 		if (!isset($device['commands'])){
 			$device['commands'] = array();
+		}
+		if (isset($device['firmProperties']) && $device['firmProperties'] == 1){
+			$found = false;
+			foreach ($device['properties'] as $firm=>$property){
+				if ($firm != 'default'){
+					if (evaluate($this->getConfiguration('firmwareVersion').$firm)===true){
+						$device['properties']=$property;
+						$found = true;
+						break;
+					}
+				}
+			}
+			if (!$found){
+				$device['properties'] = $device['properties']['default'];
+			}
 		}
 		foreach ($device['properties'] as $property => $details){
 			if (!is_file(dirname(__FILE__) . '/../config/properties/' . strtolower($property).'.json')) {

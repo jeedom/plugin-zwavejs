@@ -175,6 +175,19 @@ sendVarTojs('eqLogic_human_name', $tags);
 									<span class="label label-info">
 										<span class="eqLogicAttr" data-l1key="configuration" data-l2key="product_name"></span>
 									</span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">{{Firmware}}</label>
+								<div class="col-sm-7">
+									<span class="label label-info">
+										<span class="eqLogicAttr" data-l1key="configuration" data-l2key="firmwareVersion"></span>
+									</span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">{{Visuel}}</label>
+								<div class="col-sm-7">
 									<img src="core/img/no_image.gif" data-original=".jpg" id="img_device" class="img-responsive" style="max-height:120px;"/>
 								</div>
 							</div>
@@ -186,7 +199,6 @@ sendVarTojs('eqLogic_human_name', $tags);
 									<a class="nodeGroups btn btn-primary" title="{{Groupes du noeud}}"><i class="fas fa-layer-group"></i> {{Groupes}}</a>
 								</div>
 							</div>
-
 						</div>
 					</fieldset>
 				</form>
@@ -195,8 +207,12 @@ sendVarTojs('eqLogic_human_name', $tags);
 			</div>
 
 			<div role="tabpanel" class="tab-pane" id="commandtab">
-				<a id="bt_autoDetectModule" class="btn btn-danger btn-sm pull-right" style="margin-top:5px;"><i class="fas fa-search"></i> {{Recharger configuration}}</a>
-				<a class="btn btn-success btn-sm cmdAction pull-right" data-action="add" style="margin-top:5px;"> <i class="fas fa-plus-circle"></i> {{Commandes}}</a>
+				<div class="input-group pull-right" style="display:inline-flex">
+					<span class="input-group-btn">
+						<a class="btn btn-success btn-sm cmdAction roundedLeft" data-action="add" style="margin-top:5px;"> <i class="fas fa-plus-circle"></i> {{Commandes}}</a>
+						<a id="bt_autoDetectModule" class="btn btn-danger btn-sm roundedRight" style="margin-top:5px;"><i class="fas fa-search"></i> {{Recharger commandes}}</a>
+					</span>
+				</div>
 				<br/><br/>
 				<table id="table_cmd" class="table table-bordered table-condensed">
 					<thead>
