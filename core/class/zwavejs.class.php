@@ -1085,6 +1085,7 @@ class zwavejs extends eqLogic {
 			if (isset($details['multi'])){
 				$listCommand=$details['multi'];
 			}
+			$replace_array = array("#endpoint#"=>0);
 			foreach ($listCommand as $numberCommand){
 				if (isset($propertyjson[$type])){
 					foreach($propertyjson[$type] as $command){
@@ -1093,8 +1094,11 @@ class zwavejs extends eqLogic {
 								if ($valueReplace == 'multiKey'){
 									$valueReplace = $numberCommand;
 								}
-								$command = json_decode(str_replace($keyReplace,$valueReplace,json_encode($command)),true);
+								$replace_array[$keyReplace]= $valueReplace;
 							}
+						}
+						foreach ($replace_array as $source => $target){
+							$command = json_decode(str_replace($source,$target,json_encode($command)),true);
 						}
 						$device['commands'][] = $command;
 					}

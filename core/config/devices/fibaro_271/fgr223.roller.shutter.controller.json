@@ -9,7 +9,7 @@
         ]
     },
     "properties": {
-        "Shutter": {},
+        "Shutter": {"replace"=>{"#endpoint#"=>1},
         "Scene": {},
         "Power": {},
         "Energy": {}

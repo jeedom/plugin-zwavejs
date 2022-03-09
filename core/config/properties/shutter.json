@@ -10,7 +10,7 @@
 				"minValue": 0,
 				"maxValue": 99,
 				"class": 38,
-				"endpoint": 0,
+				"endpoint": "#endpoint#",
 				"property": "targetValue",
 				"value": "#slider#"
 			},
@@ -31,7 +31,7 @@
 			"isHistorized": 0,
 			"configuration": {
 				"class": 38,
-				"endpoint": 0,
+				"endpoint": "#endpoint#",
 				"property": "Open",
 				"value": "true"
 			},
@@ -48,7 +48,7 @@
 			"isHistorized": 0,
 			"configuration": {
 				"class": 38,
-				"endpoint": 0,
+				"endpoint": "#endpoint#",
 				"property": "Open",
 				"value": "false"
 			},
@@ -65,7 +65,7 @@
 			"isHistorized": 0,
 			"configuration": {
 				"class": 38,
-				"endpoint": 0,
+				"endpoint": "#endpoint#",
 				"property": "Close",
 				"value": "true"
 			},
@@ -82,7 +82,7 @@
 			"isHistorized": 0,
 			"configuration": {
 				"class": 38,
-				"endpoint": 0,
+				"endpoint": "#endpoint#",
 				"property": "currentValue"
 			},
 			"subtype": "numeric",
@@ -103,7 +103,7 @@
 				"minValue": 0,
 				"maxValue": 99,
 				"class": 38,
-				"endpoint": 0,
+				"endpoint": "#endpoint#",
 				"property": "targetValue",
 				"value": "#slider#"
 			},
@@ -124,7 +124,7 @@
 			"isHistorized": 0,
 			"configuration": {
 				"class": 38,
-				"endpoint": 0,
+				"endpoint": "#endpoint#",
 				"property": "Close",
 				"value": "true"
 			},
@@ -141,7 +141,7 @@
 			"isHistorized": 0,
 			"configuration": {
 				"class": 38,
-				"endpoint": 0,
+				"endpoint": "#endpoint#",
 				"property": "Open",
 				"value": "false"
 			},
@@ -158,7 +158,7 @@
 			"isHistorized": 0,
 			"configuration": {
 				"class": 38,
-				"endpoint": 0,
+				"endpoint": "#endpoint#",
 				"property": "Open",
 				"value": "true"
 			},
@@ -175,7 +175,7 @@
 			"isHistorized": 0,
 			"configuration": {
 				"class": 38,
-				"endpoint": 0,
+				"endpoint": "#endpoint#",
 				"property": "currentValue"
 			},
 			"subtype": "numeric",
