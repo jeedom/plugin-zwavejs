@@ -51,7 +51,7 @@ include_file('3rdparty', 'jsonTree/jsonTree', 'js', 'zwavejs');
 								<p><b>{{Modèle :}} </b><span class="getNodeInfo-productLabel label label-info" style="font-size : 1em;"></span></p>
 								<p><b>{{Fabricant : }}</b><span class="getNodeInfo-manufacturer label label-info" style="font-size : 1em;"></span></p>
 								<p><b>{{Description : }}</b><span class="getNodeInfo-productDescription label label-info" style="font-size : 1em;"></span></p>
-								<p><b>{{Identifiant : }}</b><span class="getNodeInfo-deviceId label label-info" style="font-size : 1em;"></span> <span class="getNodeInfo-hexId label label-info" style="font-size : 1em;"></span></p>
+								<p><b>{{Identifiant : }}</b><span class="getNodeInfo-deviceIdNew label label-info" style="font-size : 1em;"></span> <span class="getNodeInfo-hexId label label-info" style="font-size : 1em;"></span></p>
 								<p><b>{{Firmware : }}</b><span class="getNodeInfo-firmwareVersion label label-info" style="font-size : 1em;"></span></p>
 								<p><b>{{Nombres d'endpoints : }}</b><span class="getNodeInfo-endpointsCount label label-info" style="font-size : 1em;"></span></p>
 								<p><b>{{Nombres de groupes : }}</b><span class="getNodeInfo-numberGroups label label-info" style="font-size : 1em;"></span></p>

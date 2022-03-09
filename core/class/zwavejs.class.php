@@ -292,7 +292,6 @@ class zwavejs extends eqLogic {
 		log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.'Traitement d\'un retour api');
 		log::add('zwavejs','debug', '[' . __FUNCTION__ . '] '.json_encode($_api));
 		foreach ($_api as $key => $value){
-			log::add('zwavejs','debug', $key);
 			if ($key == 'getInfo'){
 				event::add('zwavejs::getInfo',array($value['result']));
 				if (isset($value['result']['controllerId'])){
@@ -356,6 +355,7 @@ class zwavejs extends eqLogic {
 							$node['classBasic'] = $node['deviceClass']['basic'];
 							$node['classGeneric'] = $node['deviceClass']['generic'];
 							$node['classSpecific'] = $node['deviceClass']['specific'];
+							$node['deviceIdNew'] = $node['manufacturerId']. '-'.$node['productType'].'-'.$node['productId'];
 							$devClassFile = realpath(dirname(__FILE__) . '/../../resources/zwavejs2mqtt/node_modules/@zwave-js/config/config/deviceClasses.json');
 							if (file_exists($devClassFile)) {
 								$string = file_get_contents($devClassFile);
@@ -802,7 +802,7 @@ class zwavejs extends eqLogic {
 			$value['oriKey'] = $key;
 			$value['ccName'] = $value['commandClassName']. ' v'.$value['commandClassVersion'];
 			$nodeValuesDict[intval($value['commandClass'])][]=$value;
-		}
+		}	
 		ksort($nodeValuesDict);
 		$updates = array();
 		foreach($nodeValuesDict as $cc=>$datas){
