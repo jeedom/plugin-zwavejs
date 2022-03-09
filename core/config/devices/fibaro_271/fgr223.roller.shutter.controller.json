@@ -9,7 +9,7 @@
         ]
     },
     "properties": {
-        "Shutter": {"replace":{"#endpoint#":1}},
+        "Shutter": {"type":"downup","replace":{"#endpoint#":1}},
         "Scene": {},
         "Power": {},
         "Energy": {}
