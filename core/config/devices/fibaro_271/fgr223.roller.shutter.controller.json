@@ -10,6 +10,7 @@
     },
     "properties": {
         "Shutter": {"type":"downup","replace":{"#endpoint#":1}},
+        "Bso": {"replace":{"#endpoint#":2}},
         "Scene": {},
         "Power": {},
         "Energy": {}
