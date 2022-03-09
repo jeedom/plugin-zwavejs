@@ -1074,7 +1074,7 @@ class zwavejs extends eqLogic {
 					foreach($propertyjson[$type] as $command){
 						if (isset($details['replace'])) {
 							foreach ($details['replace'] as $keyReplace =>$valueReplace){
-								if ($valueReplace == 'multikey'){
+								if ($valueReplace == 'multiKey'){
 									$valueReplace = $numberCommand;
 								}
 								$command = json_decode(str_replace($keyReplace,$valueReplace,json_encode($command)),true);
