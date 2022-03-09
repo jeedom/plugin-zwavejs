@@ -1065,9 +1065,23 @@ class zwavejs extends eqLogic {
 			if (isset($details["type"])){
 				$type = $details["type"];
 			}
-			if (isset($propertyjson[$type])){
-				foreach($propertyjson[$type] as $command){
-					$device['commands'][] = $command;
+			$listCommand = array(1);
+			if (isset($details['multi'])){
+				$listCommand=$details['multi'];
+			}
+			foreach ($listCommand as $numberCommand){
+				if (isset($propertyjson[$type])){
+					foreach($propertyjson[$type] as $command){
+						if (isset($details['replace'])) {
+							foreach ($details['replace'] as $keyReplace =>$valueReplace){
+								if ($valueReplace == 'multikey'){
+									$valueReplace = $numberCommand;
+								}
+								$command = json_decode(str_replace($keyReplace,$valueReplace,json_encode($command)),true);
+							}
+						}
+						$device['commands'][] = $command;
+					}
 				}
 			}
 		}
