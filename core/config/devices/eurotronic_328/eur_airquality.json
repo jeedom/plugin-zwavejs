@@ -1,0 +1,22 @@
+{
+    "name": "Capteur de qualité d'air",
+    "type": "Thermostat",
+    "comlink": "",
+    "remark": "",
+    "imglink": "eur_airquality",
+    "configuration": {
+        "battery_type": "1x1.5V AA"
+    },
+    "versions": {
+        "5": [
+            "1"
+        ]
+    },
+    "properties": {
+        "Temperature": {},
+        "Humidity": {},
+        "Dew": {},
+        "Co2": {},
+        "Voc": {}
+    }
+}
