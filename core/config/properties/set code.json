@@ -2,7 +2,7 @@
 "standard": 
 	[
 		{
-			"name": "set code #code#",
+			"name": "Set code #code#",
 			"type": "action",
 			"isVisible": 0,
 			"isHistorized": 0,
