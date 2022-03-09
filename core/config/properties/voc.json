@@ -1,0 +1,17 @@
+{"standard": 
+	[
+		{
+			"name": "VOC",
+			"type": "info",
+			"isVisible": 1,
+			"isHistorized": 1,
+			"configuration": {
+				"class": 49,
+				"endpoint": 0,
+				"property": "Volatile Organic Compound level"
+			},
+			"subtype": "numeric",
+			"unite": "ppm"
+		}
+	]
+}

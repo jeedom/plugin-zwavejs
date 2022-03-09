@@ -1,0 +1,17 @@
+{"standard": 
+	[
+		{
+			"name": "Co2",
+			"type": "info",
+			"isVisible": 1,
+			"isHistorized": 1,
+			"configuration": {
+				"class": 49,
+				"endpoint": 0,
+				"property": "Carbon dioxide (CO₂) level"
+			},
+			"subtype": "numeric",
+			"unite": "ppm"
+		}
+	]
+}

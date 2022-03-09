@@ -1,0 +1,17 @@
+{"standard": 
+	[
+		{
+			"name": "Rosée",
+			"type": "info",
+			"isVisible": 1,
+			"isHistorized": 1,
+			"configuration": {
+				"class": 49,
+				"endpoint": 0,
+				"property": "Dew Point"
+			},
+			"subtype": "numeric",
+			"unite": "°C"
+		}
+	]
+}
