@@ -134,6 +134,22 @@ $.ajax({
 	  } else {
 		$('.incompleteInfo').hide();  
 	  }
+	  if (data['result']['modes'] != 'aucun'){
+		$('.confModes').show();
+		$('.eqLogicAttr[data-l1key=configuration][data-l2key=confMode]').empty();
+		option = '';
+		for (var i in data['result']['modes']) {
+			if (i == data['result']['actualMode']){
+				option += '<option value="' + i + '" selected>' + data['result']['modes'][i] + '</option>';
+			} else {
+				option += '<option value="' + i + '">' + data['result']['modes'][i] + '</option>';
+			}
+		}
+		$('.eqLogicAttr[data-l1key=configuration][data-l2key=confMode]').append(option);
+	  } else {
+		$('.eqLogicAttr[data-l1key=configuration][data-l2key=confMode]').empty();
+		$('.confModes').hide();
+	  }
     modifyWithoutSave = false;
   }
 });

@@ -1077,6 +1077,9 @@ class zwavejs extends eqLogic {
 			if (!is_array($propertyjson)) {
 				continue;
 			}
+			if (isset($details['mode']) && $details['mode'] != $this->getConfiguration('confMode','')){
+				continue;
+			}
 			$type = 'standard';
 			if (isset($details["type"])){
 				$type = $details["type"];
@@ -1119,6 +1122,11 @@ class zwavejs extends eqLogic {
 		if (isset($device['name']) && !$_update) {
 			$this->setName('[' . $this->getLogicalId() . ']' . $device['name']);
 		}
+		if (isset($device['modes'])){
+			if ($this->getConfiguration('confMode','') == ''){
+				$this->setConfiguration('confMode',array_key_first($device['modes']));
+			}
+		}
 		if (isset($device['properties'])){
 			$device = zwavejs::handleProperties($device);
 		}
@@ -1146,6 +1154,19 @@ class zwavejs extends eqLogic {
 	public function getEqLogicInfos() {
 		$result = array();
 		$result['interview']= $this->getConfiguration('interview',false);
+		if (!is_file(dirname(__FILE__) . '/../config/devices/' . $this->getConfFilePath())) {
+			return;
+		}
+		$device = is_json(file_get_contents(dirname(__FILE__) . '/../config/devices/' . $this->getConfFilePath()), array());
+		if (!is_array($device) || (!isset($device['commands']) && !isset($device['properties']))) {
+			return;
+		}
+		if (isset($device['modes'])){
+			$result['modes'] = $device['modes'];
+			$result['actualMode'] = $this->getConfiguration('confMode','');
+		} else {
+			$result['modes'] = 'aucun';
+		}
 		return $result;
 	}
 	
