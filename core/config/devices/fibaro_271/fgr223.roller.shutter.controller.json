@@ -3,12 +3,12 @@
     "type": "Volets",
     "remark": "Nouveau nom du module FGR-222",
     "imglink": "fibaro.fgr222",
-    "modes": {"noBso":"Sans BSO","withBso":"Avec BSO"},
     "versions": {
         "771": [
             "4096"
         ]
     },
+    "modes": {"noBso":"Sans BSO","withBso":"Avec BSO"},
     "properties": {
         "Shutter": {"type":"downup","replace":{"#endpoint#":1}},
         "Bso": {"mode":"withBso","replace":{"#endpoint#":2}},

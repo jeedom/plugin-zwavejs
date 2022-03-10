@@ -9,6 +9,7 @@
             "81"
         ]
     },
+    "modes": {"multilevel":"Variateur","switch":"Switch"},
     "commands": [
         {
             "name": "Intensité",

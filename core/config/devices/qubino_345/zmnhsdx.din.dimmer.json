@@ -4,12 +4,12 @@
     "comlink": "3256-qubino-module-rail-din-variateur-z-wave-zmnhsd1-3830062070386",
     "remark": "",
     "imglink": "qubino.zmnhsdx",
-    "modes": {"multilevel":"Variateur","switch":"Switch"},
     "versions": {
         "1": [
             "82"
         ]
     },
+    "modes": {"multilevel":"Variateur","switch":"Switch"},
     "properties": {
         "Multilevel": {"mode":"multilevel"},
         "Switch": {"mode":"switch"},

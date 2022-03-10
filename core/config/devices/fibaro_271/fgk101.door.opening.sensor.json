@@ -5,7 +5,6 @@
     "comlink": "922-fibaro-detecteur-d-ouverture-z-wave-avec-entree-contact-sec-blanc-5902020528111",
     "remark": "",
     "imglink": "fibaro.fgk101-DS18B20",
-    "modes": {"noTemp":"Sans capteur de température","withTemp":"Avec capteur de température"},
     "configuration": {
         "battery_type": "1x3.6V ER14250"
     },
@@ -15,6 +14,7 @@
             "4096"
         ]
     },
+    "modes": {"noTemp":"Sans capteur de température","withTemp":"Avec capteur de température"},
     "properties": {
         "Opening": {"type":"binary-any"},
         "Temperature": {"mode":"withTemp"},
