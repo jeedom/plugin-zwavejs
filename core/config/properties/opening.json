@@ -18,8 +18,8 @@
 				"generic_type": "OPENING"
 			},
 			"template": {
-				"dashboard": "door",
-				"mobile": "door"
+				"dashboard": "timeDoor",
+				"mobile": "timeDoor"
 			}
 		}
 	],
@@ -41,8 +41,8 @@
 				"generic_type": "OPENING"
 			},
 			"template": {
-				"dashboard": "door",
-				"mobile": "door"
+				"dashboard": "timeDoor",
+				"mobile": "timeDoor"
 			}
 		}
 	]
