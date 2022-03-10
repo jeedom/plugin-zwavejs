@@ -185,7 +185,7 @@ sendVarTojs('eqLogic_human_name', $tags);
 									</span>
 								</div>
 							</div>
-							<div class="form-group confModes">
+							<div class="form-group confModes" style="display:none">
 								<label class="col-sm-3 control-label">{{Mode}} <sup><i class="fas fa-question-circle tooltips" title="Permet de recréer les commandes en fonction du mode de fonctionnement du module désiré. Sauver le mode puis sur la page de commande rechargez vos commandes"></i><sup></label> 
 								<div class="col-sm-7">
 									<select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="confMode"></select>
