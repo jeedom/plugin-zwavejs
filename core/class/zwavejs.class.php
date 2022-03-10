@@ -789,7 +789,7 @@ class zwavejs extends eqLogic {
 			}
 		}
 		if ($inited && $refresh){
-			$eqLogic->createCommand(false);
+			$eqLogic->createCommand();
 			$_node['values']['0-0-nodeStatus'] = array('value'=>$_node['status']);
 			$eqLogic->handleCommandUpdate($_node['values'],true);
 		}
@@ -1111,16 +1111,13 @@ class zwavejs extends eqLogic {
 		return $device;
 	}
 	
-	public function loadCmdFromConf($_update = false) {
+	public function loadCmdFromConf($_update = 0) {
 		if (!is_file(dirname(__FILE__) . '/../config/devices/' . $this->getConfFilePath())) {
 			return;
 		}
 		$device = is_json(file_get_contents(dirname(__FILE__) . '/../config/devices/' . $this->getConfFilePath()), array());
 		if (!is_array($device) || (!isset($device['commands']) && !isset($device['properties']))) {
 			return true;
-		}
-		if (isset($device['name']) && !$_update) {
-			$this->setName('[' . $this->getLogicalId() . ']' . $device['name']);
 		}
 		if (isset($device['modes'])){
 			if ($this->getConfiguration('confMode','') == ''){
@@ -1130,7 +1127,24 @@ class zwavejs extends eqLogic {
 		if (isset($device['properties'])){
 			$device = zwavejs::handleProperties($device);
 		}
-		$this->import($device,true);
+		$commands = array();
+		foreach ($device['commands'] as $command){
+			$command['logicalId'] = $command['configuration']['class']. '-' . $command['configuration']['endpoint'] . '-' . $command['configuration']['property'];
+			if (isset($command['configuration']['value'])){
+				$command['logicalId'] .= '-'.$command['configuration']['value'];
+			}
+			$commands[]=$command;
+		}
+		$device['commands'] = $commands;
+		$device['commands'][] = array('logicalId'=>'0-0-pingNode');
+		$device['commands'][] = array('logicalId'=>'0-0-healNode');
+		$device['commands'][] = array('logicalId'=>'0-0-nodeStatus');
+		$device['commands'][] = array('logicalId'=>'0-0-isFailedNode');
+		if ($_update == 2){
+			$this->import($device,false);
+		} else {
+			$this->import($device,true);
+		}
 		sleep(1);
 		event::add('jeedom::alert', array(
 			'level' => 'warning',
@@ -1274,7 +1288,7 @@ class zwavejs extends eqLogic {
 		return $file;
 	}
 	
-	public function createCommand($_update = false, $_data = null) {
+	public function createCommand($_update = 0) {
 		$return = array();
 		if (!is_numeric($this->getLogicalId())) {
 			return;
@@ -1299,7 +1313,11 @@ class zwavejsCmd extends cmd {
 		if ($this->getConfiguration('property') === '') {
 			$this->setConfiguration('property', '0');
 		}
-		$this->setLogicalId($this->getConfiguration('class') . '-' . $this->getConfiguration('endpoint') . '-' . $this->getConfiguration('property'));
+		$logical = $this->getConfiguration('class') . '-' . $this->getConfiguration('endpoint') . '-' . $this->getConfiguration('property');
+		if ($this->getConfiguration('value','')){
+			$logical .= '-'.$this->getConfiguration('value','');
+		}
+		$this->setLogicalId($logical);
 	}
 	
 	public function execute($_options = array()) {

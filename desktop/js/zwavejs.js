@@ -206,9 +206,10 @@ $('#bt_autoDetectModule').off('click').on('click', function () {
   '<div> <div class="radio"> <label > ' +
   '<input type="radio" name="command" id="command-0" value="0" checked="checked"> {{Sans recréer les commandes mais en créeant les manquantes}} </label> ' +
   '</div><div class="radio"> <label > ' +
-  '<input type="radio" name="command" id="command-1" value="1"> {{En recréant les commandes}}</label> ' +
-  '</div> ' +
-  '</div><br>' +
+  '<input type="radio" name="command" id="command-1" value="1"> {{En recréant toutes les commandes}}</label> ' +
+  '</div><div class="radio"> <label > ' +
+  '<input type="radio" name="command" id="command-2" value="2"> {{En supprimant les commandes qui ne sont pas dans la configuration}} </label> ' +
+  '</div></div><br>' +
   '<label class="lbl lbl-warning" for="name">{{Attention, "en recréant les commandes" va supprimer les commandes existantes.}}</label> ';
   dialog_message += '</form>';
   bootbox.dialog({
@@ -258,7 +259,7 @@ $('#bt_autoDetectModule').off('click').on('click', function () {
               data: {
                 action: "autoDetectModule",
                 id: $('.eqLogicAttr[data-l1key=id]').value(),
-                createcommand: 0,
+                createcommand: $("input[name='command']:checked").val(),
               },
               dataType: 'json',
               global: false,
