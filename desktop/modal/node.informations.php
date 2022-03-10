@@ -131,7 +131,7 @@ include_file('3rdparty', 'jsonTree/jsonTree', 'js', 'zwavejs');
 								<td>{{Enverra le noms et objet de l'équipements au réseau Zwave.}}</td>
 							</tr>
 							<tr>
-								<td><a data-action="refreshInfo" class="btn btn-warning nodeAction"><i class="fas fa-retweet"></i> {{Rafraîchir le nœud}}</a></td>
+								<td><a data-action="refreshInfo" class="btn btn-warning nodeAction"><i class="fas fa-retweet"></i> {{Réinterview du nœud}}</a></td>
 								<td>{{Déclencher un reinterview du nœud.}} <br>{{Les données du nœud sont obtenues du réseau Z-Wave de la même façon que s'il venait d'être ajouté.}}</td>
 							</tr>
 							<tr>

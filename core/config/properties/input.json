@@ -1,0 +1,20 @@
+{"standard": 
+	[
+		{
+			"name": "Input",
+			"type": "info",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 48,
+				"endpoint": "#endpoint#",
+				"property": "Any"
+			},
+			"subtype": "binary",
+			"display": {
+				"invertBinary": "1",
+				"generic_type": "GENERIC"
+			}
+		}
+	]
+}

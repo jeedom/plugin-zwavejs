@@ -1,0 +1,144 @@
+{
+"standard": 
+	[
+		{
+			"name": "Etat",
+			"type": "info",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 38,
+				"endpoint": "#endpoint#",
+				"property": "currentValue"
+			},
+			"subtype": "numeric",
+			"display": {
+				"generic_type": "HEATING_STATE"
+			},
+			"template": {
+				"dashboard": "timeHeatPiloteWireQubino",
+				"mobile": "timeHeatPiloteWireQubino"
+			}
+		},
+		{
+			"name": "Arret",
+			"type": "action",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"minValue": 0,
+				"maxValue": 99,
+				"class": 38,
+				"endpoint": "#endpoint#",
+				"property": "targetValue",
+				"value": "0"
+			},
+			"value": "Etat",
+			"subtype": "other",
+			"display": {
+				"icon": "<i class=\"fas fa-power-off\"></i>",
+				"generic_type": "HEATING_OFF"
+			}
+		},
+		{
+			"name": "Confort",
+			"type": "action",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"minValue": 0,
+				"maxValue": 99,
+				"class": 38,
+				"endpoint": "#endpoint#",
+				"property": "targetValue",
+				"value": "255"
+			},
+			"value": "Etat",
+			"subtype": "other",
+			"display": {
+				"icon": "<i class=\"icon jeedom-thermo-chaud\"></i>",
+				"generic_type": "HEATING_ON"
+			}
+		},
+		{
+			"name": "Eco",
+			"type": "action",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"minValue": 0,
+				"maxValue": 99,
+				"class": 38,
+				"endpoint": "#endpoint#",
+				"property": "targetValue",
+				"value": "30"
+			},
+			"value": "Etat",
+			"subtype": "other",
+			"display": {
+				"icon": "<i class=\"icon divers-triangular42\"></i>",
+				"generic_type": "HEATING_OTHER"
+			}
+		},
+		{
+			"name": "Hors Gel",
+			"type": "action",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"minValue": 0,
+				"maxValue": 99,
+				"class": 38,
+				"endpoint": "#endpoint#",
+				"property": "targetValue",
+				"value": "20"
+			},
+			"value": "Etat",
+			"subtype": "other",
+			"display": {
+				"icon": "<i class=\"icon nature-snowflake\"></i>",
+				"generic_type": "HEATING_OTHER"
+			}
+		},
+		{
+			"name": "Confort -1",
+			"type": "action",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"minValue": 0,
+				"maxValue": 99,
+				"class": 38,
+				"endpoint": "#endpoint#",
+				"property": "targetValue",
+				"value": "50"
+			},
+			"value": "Etat",
+			"subtype": "other",
+			"display": {
+				"icon": "<i class=\"icon jeedom-thermo-moyen\"></i>",
+				"generic_type": "HEATING_OTHER"
+			}
+		},
+		{
+			"name": "Confort -2",
+			"type": "action",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"minValue": 0,
+				"maxValue": 99,
+				"class": 38,
+				"endpoint": "#endpoint#",
+				"property": "targetValue",
+				"value": "40"
+			},
+			"value": "Etat",
+			"subtype": "other",
+			"display": {
+				"icon": "<i class=\"icon jeedom-thermo-froid\"></i>",
+				"generic_type": "HEATING_OTHER"
+			}
+		}
+	]
+}

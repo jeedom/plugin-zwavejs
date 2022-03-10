@@ -1126,6 +1126,12 @@ class zwavejs extends eqLogic {
 								$command['value'].='-'.$numberCommand;
 							}
 						}
+						if (isset($details['isVisible'])){
+							$command['isVisible'] =$details['isVisible'];
+						}
+						if (isset($details['isHistorized'])){
+							$command['isHistorized'] =$details['isHistorized'];
+						}
 						$device['commands'][] = $command;
 					}
 				}
