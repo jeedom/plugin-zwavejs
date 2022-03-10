@@ -134,7 +134,13 @@ $.ajax({
 	  } else {
 		$('.incompleteInfo').hide();  
 	  }
-	  if (data['result']['modes'] != 'aucun'){
+	  if (data['result']['confType']){
+		console.log('test1')
+		$('.eqLogicAttr[data-l1key=configuration][data-l2key=product_name]').prop('title',data['result']['confType']);
+	  } else {
+		  $('.eqLogicAttr[data-l1key=configuration][data-l2key=product_name]').prop('title','Aucune Commandes/Propriétés Jeedom');
+	  }
+	  if (data['result']['modes'] && data['result']['modes'] != 'aucun'){
 		$('.confModes').show();
 		$('.eqLogicAttr[data-l1key=configuration][data-l2key=confMode]').empty();
 		option = '';

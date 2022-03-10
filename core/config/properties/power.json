@@ -10,7 +10,7 @@
 				"minValue": 0,
 				"maxValue": 2500,
 				"class": 50,
-				"endpoint": 0,
+				"endpoint": "#endpoint#",
 				"property": "value-66049"
 			},
 			"subtype": "numeric",
@@ -31,7 +31,7 @@
 				"minValue": 0,
 				"maxValue": 2500,
 				"class": 49,
-				"endpoint": 0,
+				"endpoint": "#endpoint#",
 				"property": "Power"
 			},
 			"subtype": "numeric",

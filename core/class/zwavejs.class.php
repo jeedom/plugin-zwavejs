@@ -398,6 +398,15 @@ class zwavejs extends eqLogic {
 					}
 					$data = zwavejs::constructHealthPage($healthData);
 					event::add('zwavejs::getHealthPage',$data);
+				} else if ($value['origin']['type'] == 'syncValues'){
+					foreach ($value['result'] as $node){
+						if ($node['id']==$value['origin']['node']){
+							$eqLogic = zwavejs::byLogicalId($node['id'], 'zwavejs');
+							if (is_object($eqLogic)) {
+								$eqLogic->handleCommandUpdate($node['values'],true);
+							}
+						}
+					}
 				}
 			}
 			else if ($key == 'refreshNeighbors'){
@@ -657,7 +666,11 @@ class zwavejs extends eqLogic {
 	public static function nodeAction($_type,$_nodeId) {
 		log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.'Lancement d\'une action node avec comme type ' . $_type . ' - ' .$_nodeId );
 		$args=array('args'=>array(intval($_nodeId)),'type'=>'nodeAction');
-		self::publishMqttApi($_type,$args);
+		if ($_type == 'syncValues'){
+			self::publishMqttApi('getNodes',array('type'=>'syncValues','node'=>$_nodeId));
+		} else {
+			self::publishMqttApi($_type,$args);
+		}
 	}
 	
 	public static function setNodeValue($_fullpath,$_value) {
@@ -1088,6 +1101,10 @@ class zwavejs extends eqLogic {
 			if (isset($details['multi'])){
 				$listCommand=$details['multi'];
 			}
+			$multiName = false;
+			if (count($listCommand)>1){
+				$multiName = true;
+			}
 			$replace_array = array("#endpoint#"=>0);
 			foreach ($listCommand as $numberCommand){
 				if (isset($propertyjson[$type])){
@@ -1102,6 +1119,12 @@ class zwavejs extends eqLogic {
 						}
 						foreach ($replace_array as $source => $target){
 							$command = json_decode(str_replace($source,$target,json_encode($command)),true);
+						}
+						if ($multiName){
+							$command['name'].='-'.$numberCommand;
+							if (isset($command['value'])){
+								$command['value'].='-'.$numberCommand;
+							}
 						}
 						$device['commands'][] = $command;
 					}
@@ -1169,17 +1192,48 @@ class zwavejs extends eqLogic {
 		$result = array();
 		$result['interview']= $this->getConfiguration('interview',false);
 		if (!is_file(dirname(__FILE__) . '/../config/devices/' . $this->getConfFilePath())) {
-			return;
+			return $result;
 		}
 		$device = is_json(file_get_contents(dirname(__FILE__) . '/../config/devices/' . $this->getConfFilePath()), array());
 		if (!is_array($device) || (!isset($device['commands']) && !isset($device['properties']))) {
-			return;
+			return $result;
 		}
 		if (isset($device['modes'])){
 			$result['modes'] = $device['modes'];
 			$result['actualMode'] = $this->getConfiguration('confMode','');
 		} else {
 			$result['modes'] = 'aucun';
+		}
+		$result['confType'] = 'Configuration Jeedom <br>';
+		if (isset($device['properties']) && count($device['properties']>0)){
+			if (isset($device['firmProperties']) && $device['firmProperties'] == 1){
+				$found = false;
+				foreach ($device['properties'] as $firm=>$property){
+					if ($firm != 'default'){
+						if (evaluate($this->getConfiguration('firmwareVersion').$firm)===true){
+							$device['properties']=$property;
+							$found = true;
+							break;
+						}
+					}
+				}
+				if (!$found){
+					$device['properties'] = $device['properties']['default'];
+				}
+			}
+			$result['confType'] .= 'Properties : <br>';
+			foreach ($device['properties'] as $property=>$value){
+				if (isset($value['mode']) && $value['mode'] != $this->getConfiguration('confMode','')){
+					continue;
+				}
+				$result['confType'] .= '  -'.$property . ' : ' .json_encode($value) .'<br>';
+			}
+		}
+		if (isset($device['commands']) && count($device['commands']>0)){
+			$result['confType'] .= 'Commands : <br>';
+			foreach ($device['commands'] as $command){
+				$result['confType'] .= '  -'.$command['name'] .'<br>';
+			}
 		}
 		return $result;
 	}

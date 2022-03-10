@@ -199,10 +199,12 @@ sendVarTojs('eqLogic_human_name', $tags);
 							</div>
 							<div class="form-group">
 								<label class="col-sm-3 control-label"></label>
-								<div class="col-sm-7">
-									<a class="nodeInformations btn btn-primary" title="{{Informations du noeud}}"><i class="fas fa-fingerprint"></i> {{Noeud}}</a>
-									<a class="nodeValues btn btn-primary" title="{{Valeurs du noeud}}"><i class="fas fa-list"></i> {{Valeurs}}</a>
-									<a class="nodeGroups btn btn-primary" title="{{Groupes du noeud}}"><i class="fas fa-layer-group"></i> {{Groupes}}</a>
+								<div class="input-group" style="display:inline-flex">
+									<span class="input-group-btn">
+										<a class="nodeInformations btn btn-primary roundedLeft" title="{{Informations du noeud}}"><i class="fas fa-fingerprint"></i> {{Noeud}}</a>
+										<a class="nodeValues btn btn-primary" title="{{Valeurs du noeud}}"><i class="fas fa-list"></i> {{Valeurs}}</a>
+										<a class="nodeGroups btn btn-primary roundedRight" title="{{Groupes du noeud}}"><i class="fas fa-layer-group"></i> {{Groupes}}</a>
+									</span>
 								</div>
 							</div>
 						</div>

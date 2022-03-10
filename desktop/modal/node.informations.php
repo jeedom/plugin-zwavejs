@@ -124,7 +124,7 @@ include_file('3rdparty', 'jsonTree/jsonTree', 'js', 'zwavejs');
 							</tr>
 							<tr>
 								<td><a data-action="refreshValues" class="btn btn-success nodeAction"><i class="fas fa-sync-alt"></i> {{Rafraîchir les valeurs du nœud}}</a></td>
-								<td>{{Demande l'actualisation de l'ensemble des valeurs du nœud.}}</td>
+								<td>{{Demande l'actualisation de l'ensemble des valeurs du nœud. Action sur le réseau}}</td>
 							</tr>
 							<tr>
 								<td><a class="btn btn-success namingAction"><i class="fas fa-bookmark"></i> {{Envoyer le nom d'équipement}}</a></td>
@@ -132,7 +132,11 @@ include_file('3rdparty', 'jsonTree/jsonTree', 'js', 'zwavejs');
 							</tr>
 							<tr>
 								<td><a data-action="refreshInfo" class="btn btn-warning nodeAction"><i class="fas fa-retweet"></i> {{Rafraîchir le nœud}}</a></td>
-								<td>{{Déclencher l'obtention des informations du nœud.}} <br>{{Les données du nœud sont obtenues du réseau Z-Wave de la même façon que s'il venait d'être ajouté.}}</td>
+								<td>{{Déclencher un reinterview du nœud.}} <br>{{Les données du nœud sont obtenues du réseau Z-Wave de la même façon que s'il venait d'être ajouté.}}</td>
+							</tr>
+							<tr>
+								<td><a data-action="syncValues" class="btn btn-warning nodeAction"><i class="fas fa-compress-alt"></i> {{Synchroniser les valeurs}}</a></td>
+								<td>{{N'intervient pas sur le réseau mais resyncrhonise les valeurs jeedom avec le contrôleur.}} <br></td>
 							</tr>
 							<tr>
 								<td><a data-action="isFailedNode" class="btn btn-primary nodeAction"><i class="fas fa-heartbeat"></i> {{Nœud en échec ?}}</a></td>

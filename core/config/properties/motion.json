@@ -1,4 +1,28 @@
-{"binary-any": 
+{"standard": 
+	[
+		{
+			"name": "Présence",
+			"type": "info",
+			"isVisible": 1,
+			"isHistorized": 1,
+			"configuration": {
+				"class": 113,
+				"endpoint": 0,
+				"property": "Home Security-Motion sensor status",
+				"calculValueOffset": "#value#==8"
+			},
+			"subtype": "binary",
+			"display": {
+				"invertBinary": "1",
+				"generic_type": "PRESENCE"
+			},
+			"template": {
+				"dashboard": "timePresence",
+				"mobile": "timePresence"
+			}
+		}
+	],
+"binary-any": 
 	[
 		{
 			"name": "Présence",
@@ -16,8 +40,8 @@
 				"generic_type": "PRESENCE"
 			},
 			"template": {
-				"dashboard": "presence",
-				"mobile": "presence"
+				"dashboard": "timePresence",
+				"mobile": "timePresence"
 			}
 		}
 	]

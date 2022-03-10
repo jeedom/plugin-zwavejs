@@ -8,7 +8,7 @@
 			"isHistorized": 0,
 			"configuration": {
 				"class": 50,
-				"endpoint": 0,
+				"endpoint": "#endpoint#",
 				"property": "value-65537"
 			},
 			"subtype": "numeric",
@@ -26,7 +26,7 @@
 			"isVisible": 0,
 			"configuration": {
 				"class": 50,
-				"endpoint": 0,
+				"endpoint": "#endpoint#",
 				"property": "reset",
 				"value": "true"
 			},

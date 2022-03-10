@@ -80,8 +80,8 @@
 				"generic_type": "ENERGY_STATE"
 			},
 			"template": {
-				"dashboard": "prise",
-				"mobile": "prise"
+				"dashboard": "timePrise",
+				"mobile": "timePrise"
 			}
 		},
 		{
@@ -101,8 +101,8 @@
 				"generic_type": "ENERGY_ON"
 			},
 			"template": {
-				"dashboard": "prise",
-				"mobile": "prise"
+				"dashboard": "timePrise",
+				"mobile": "timePrise"
 			}
 		},
 		{
@@ -122,8 +122,8 @@
 				"generic_type": "ENERGY_OFF"
 			},
 			"template": {
-				"dashboard": "prise",
-				"mobile": "prise"
+				"dashboard": "timePrise",
+				"mobile": "timePrise"
 			}
 		}
 	]
