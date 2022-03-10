@@ -21,7 +21,7 @@
 			},
 			"template": {
 				"dashboard": "timeShutter",
-				"mobile": "store"
+				"mobile": "timeShutter"
 			}
 		},
 		{
@@ -114,7 +114,7 @@
 			},
 			"template": {
 				"dashboard": "timeShutter",
-				"mobile": "store"
+				"mobile": "timeShutter"
 			}
 		},
 		{
@@ -207,7 +207,7 @@
 			},
 			"template": {
 				"dashboard": "timeShutter",
-				"mobile": "store"
+				"mobile": "timeShutter"
 			}
 		},
 		{
