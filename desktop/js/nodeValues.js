@@ -99,12 +99,13 @@ function node_load_values(){
 
 
 $('body').off('zwavejs::getNodeInfo').on('zwavejs::getNodeInfo', function (_event, _options) {
+	console.log(_options)
 	$('#div_nodeValuesZwaveJsAlert').hideAlert();
 	if (_options['id'] == nodeId){
 		if ($('.panel-group').is(":visible")) {
 			for (value in _options['nodeValues']['updates']){
-				$('.'+value).empty().append(_options['nodeValues']['updates'][value]['value']);
-				$('.'+value+'_lastUpdate').empty().append(_options['nodeValues']['updates'][value]['lastUpdate']);
+				$('.'+ $.escapeSelector(value)).empty().append(_options['nodeValues']['updates'][value]['value']);
+				$('.'+ $.escapeSelector(value+'_lastUpdate')).empty().append(_options['nodeValues']['updates'][value]['lastUpdate']);
 			}
 		} else {
 			$('.getNodeInfo-nodeValues').empty().append(_options['nodeValues']['init']);

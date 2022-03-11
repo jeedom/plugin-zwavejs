@@ -89,6 +89,14 @@ try {
 		ajax::success();
 	}
 	
+	if (init('action') == 'applyRecommended') {
+		$eqLogic = zwavejs::byLogicalId(init('nodeId'),'zwavejs');
+		if (!is_object($eqLogic)) {
+			ajax::success();
+		}
+		ajax::success($eqLogic->applyRecommended());
+	}
+	
 	if (init('action') == 'generateRandomKey') {
 		ajax::success(zwavejs::generateRandomKey());
 	}

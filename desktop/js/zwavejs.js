@@ -25,6 +25,65 @@ $('#bt_syncEqLogic').off('click').on('click', function () {
   })
 });
 
+$('.confRecommended').on('click', function () {
+    bootbox.dialog({
+      title: "{{Configuration recommandée}}",
+      message: '<form class="form-horizontal"> ' +
+      '<label class="control-label" > {{Voulez-vous appliquer le jeu de configuration recommandée par l\'équipe Jeedom ?}} </label> ' +
+      '<br><br>' +
+      '<ul>' +
+      '<li class="active">{{Paramètres.}}</li>' +
+      '<li class="active">{{Associations.}}</li>' +
+      '<li class="active">{{Intervalle de réveil.}}</li>' +
+      '</ul>' +
+      '</form>',
+      buttons: {
+        main: {
+          label: "{{Annuler}}",
+          className: "btn-danger",
+          callback: function () {
+          }
+        },
+        success: {
+          label: "{{Appliquer}}",
+          className: "btn-success",
+          callback: function () {
+            $.ajax({
+              type: "POST",
+              url: "plugins/zwavejs/core/ajax/zwavejs.ajax.php",
+              data: {
+                action: "applyRecommended",
+                nodeId: $('.eqLogicAttr[data-l1key=logicalId]').value(),
+              },
+              dataType: 'json',
+              error: function (request, status, error) {
+                handleAjaxError(request, status, error);
+              },
+              success: function (data) {
+                if (data.state != 'ok') {
+                  $('#div_alert').showAlert({message: data.result, level: 'danger'});
+                  return;
+                }
+                if (data.result == "wakeup") {
+                  $('#div_alert').showAlert({
+                    message: '{{Configuration appliquée. Cependant ce module nécessite un réveil pour que celle-ci soit effective.}}',
+                    level: 'success'
+                  });
+                } else {
+                  $('#div_alert').showAlert({
+                    message: '{{Configuration appliquée et effective.}}',
+                    level: 'success'
+                  });
+                }
+              }
+            });
+          }
+        }
+      }
+    }
+  );
+});
+
 $('.changeIncludeState').off('click').on('click', function () {
   var dialog_title = '{{Inclusion/Exclusion}}';
   var dialog_message = '<form class="form-horizontal onsubmit="return false;"> ';
@@ -135,10 +194,14 @@ $.ajax({
 		$('.incompleteInfo').hide();  
 	  }
 	  if (data['result']['confType']){
-		console.log('test1')
 		$('.eqLogicAttr[data-l1key=configuration][data-l2key=product_name]').prop('title',data['result']['confType']);
 	  } else {
 		  $('.eqLogicAttr[data-l1key=configuration][data-l2key=product_name]').prop('title','Aucune Commandes/Propriétés Jeedom');
+	  }
+	  if (data['result']['recommended']){
+		$('.confRecommended').show();
+	  } else {
+		$('.confRecommended').hide();
 	  }
 	  if (data['result']['modes'] && data['result']['modes'] != 'aucun'){
 		$('.confModes').show();

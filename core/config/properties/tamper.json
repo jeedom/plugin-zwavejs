@@ -4,7 +4,7 @@
 		{
 			"name": "Sabotage",
 			"type": "info",
-			"isVisible": 0,
+			"isVisible": 1,
 			"isHistorized": 0,
 			"configuration": {
 				"class": 113,
@@ -16,6 +16,10 @@
 			"display": {
 				"invertBinary": "1",
 				"generic_type": "SABOTAGE"
+			},
+			"template": {
+				"dashboard": "timeAlert",
+				"mobile": "timeAlert"
 			}
 		}
 	],
@@ -24,7 +28,7 @@
 		{
 			"name": "Sabotage",
 			"type": "info",
-			"isVisible": 0,
+			"isVisible": 1,
 			"isHistorized": 0,
 			"configuration": {
 				"class": 156,
@@ -35,6 +39,33 @@
 			"display": {
 				"invertBinary": "1",
 				"generic_type": "SABOTAGE"
+			},
+			"template": {
+				"dashboard": "timeAlert",
+				"mobile": "timeAlert"
+			}
+		}
+	],
+"binary-tamper": 
+	[
+		{
+			"name": "Sabotage",
+			"type": "info",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 48,
+				"endpoint": "#endpoint#",
+				"property": "Tamper"
+			},
+			"subtype": "binary",
+			"display": {
+				"invertBinary": "1",
+				"generic_type": "SABOTAGE"
+			},
+			"template": {
+				"dashboard": "timeAlert",
+				"mobile": "timeAlert"
 			}
 		}
 	]

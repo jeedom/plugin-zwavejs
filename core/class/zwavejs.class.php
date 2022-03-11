@@ -772,6 +772,9 @@ class zwavejs extends eqLogic {
 			$eqLogic->setIsVisible(1);
 			$new =true;
 			$refresh = true;
+			if (config::byKey('auto_applyRecommended', 'zwavejs') == 1) {
+				$eqLogic->applyRecommended();
+			}
 		}
 		$wascomplete = $eqLogic->getConfiguration('interview','incomplete');
 		if (($wascomplete == 'incomplete' && $inited) || ($inited && $new)){
@@ -1132,6 +1135,15 @@ class zwavejs extends eqLogic {
 						if (isset($details['isHistorized'])){
 							$command['isHistorized'] =$details['isHistorized'];
 						}
+						if (isset($details['returnStateTime'])){
+							$command['configuration']['returnStateTime'] =$details['returnStateTime'];
+						}
+						if (isset($details['returnStateValue'])){
+							$command['configuration']['returnStateValue'] =$details['returnStateValue'];
+						}
+						if (isset($details['calculValueOffset'])){
+							$command['configuration']['calculValueOffset'] =$details['calculValueOffset'];
+						}
 						$device['commands'][] = $command;
 					}
 				}
@@ -1194,6 +1206,33 @@ class zwavejs extends eqLogic {
 		}
 	}
 	
+	public function applyRecommended() {
+		if (!$this->getIsEnable()) {
+			return;
+		}
+		if (!is_file(dirname(__FILE__) . '/../config/devices/' . $this->getConfFilePath())) {
+			return;
+		}
+		$device = is_json(file_get_contents(dirname(__FILE__) . '/../config/devices/' . $this->getConfFilePath()), array());
+		if (!is_array($device) || !isset($device['recommended'])) {
+			return true;
+		}
+		if (isset($device['recommended']['params'])) {
+			log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.'Param recommandé');
+			foreach ($device['recommended']['params'] as $value) {
+				$fullpath=$this->getLogicalId().'-'.$value['path'];
+				zwavejs::setNodeValue($fullpath,$value['value']);
+			}
+		}
+		if (isset($device['recommended']['groups'])) {
+			log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.'Groupe recommandé');
+		}
+		if (isset($device['recommended']['needswakeup']) && $device['recommended']['needswakeup'] == true) {
+			return "wakeup";
+		}
+		return;
+	}
+	
 	public function getEqLogicInfos() {
 		$result = array();
 		$result['interview']= $this->getConfiguration('interview',false);
@@ -1240,6 +1279,9 @@ class zwavejs extends eqLogic {
 			foreach ($device['commands'] as $command){
 				$result['confType'] .= '  -'.$command['name'] .'<br>';
 			}
+		}
+		if (isset($device['recommended'])){
+			$result['recommended'] = $device['recommended'];
 		}
 		return $result;
 	}

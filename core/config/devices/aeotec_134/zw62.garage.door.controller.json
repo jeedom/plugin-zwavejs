@@ -13,89 +13,18 @@
             "62"
         ]
     },
+    "recommended": {
+       "params": [
+			{
+				"path": "112-0-80",
+				"value": "2"
+			}
+		]
+    },
+    "properties": {
+        "Barrier": {}
+    },
     "commands": [
-        {
-            "name": "Ouvrir/Stop",
-            "type": "action",
-            "isVisible": 1,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 102,
-                "endpoint": 0,
-                "property": "targetState",
-                "value": "255"
-            },
-            "value": "Position",
-            "subtype": "other",
-            "display": {
-                "generic_type": "GB_OPEN"
-            },
-            "template": {
-                "dashboard": "garageBarrierOperator",
-                "mobile": "garageBarrierOperator"
-            }
-        },
-        {
-            "name": "Fermer",
-            "type": "action",
-            "isVisible": 1,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 102,
-                "endpoint": 0,
-                "property": "targetState",
-                "value": "0"
-            },
-            "value": "Position",
-            "subtype": "other",
-            "display": {
-                "generic_type": "GB_CLOSE"
-            },
-            "template": {
-                "dashboard": "garageBarrierOperator",
-                "mobile": "garageBarrierOperator"
-            }
-        },
-        {
-            "name": "Position",
-            "type": "info",
-            "isVisible": 0,
-            "isHistorized": 1,
-            "configuration": {
-                "class": 102,
-                "endpoint": 0,
-                "property": "currentState"
-            },
-            "subtype": "numeric",
-            "display": {
-                "generic_type": "GARAGE_STATE"
-            },
-            "template": {
-                "dashboard": "door",
-                "mobile": "door"
-            }
-        },
-        {
-            "name": "Volume",
-            "type": "info",
-            "isVisible": 1,
-            "isHistorized": 1,
-            "configuration": {
-                "class": 112,
-                "value": "",
-                "index": 44,
-                "instance": 1
-            },
-            "subtype": "numeric",
-            "display": {
-                "generic_type": "DONT"
-            },
-            "template": {
-                "dashboard": "tile",
-                "mobile": "tile"
-            },
-            "unite": ""
-        },
         {
             "name": "Température",
             "type": "info",
@@ -120,9 +49,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 112,
-                "value": "type=refreshData",
-                "index": 45,
-                "instance": 1
+                "endpoint": 0,
+                "property": "45",
+                "value": "get"
             },
             "subtype": "other",
             "display": {
@@ -135,7 +64,7 @@
             "isVisible": 1,
             "isHistorized": 1,
             "configuration": {
-                "calculValueOffset": "#value#=='Sensor is removed'",
+                "calculValueOffset": "#value#==15",
                 "class": 112,
                 "endpoint": 0,
                 "property": "41"

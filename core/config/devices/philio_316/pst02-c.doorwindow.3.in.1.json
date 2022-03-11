@@ -13,73 +13,24 @@
             "14"
         ]
     },
-    "commands": [
-        {
-            "name": "Ouverture",
-            "type": "info",
-            "isVisible": 1,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 48,
-                "endpoint": 0,
-                "property": "Any"
-            },
-            "subtype": "binary",
-            "display": {
-                "invertBinary": "1",
-                "generic_type": "OPENING"
-            },
-            "template": {
-                "dashboard": "door",
-                "mobile": "door"
-            }
-        },
-        {
-            "name": "Température",
-            "type": "info",
-            "isVisible": 1,
-            "isHistorized": 1,
-            "configuration": {
-                "class": 49,
-                "endpoint": 0,
-                "property": "Air temperature"
-            },
-            "subtype": "numeric",
-            "display": {
-                "generic_type": "TEMPERATURE"
-            }
-        },
-        {
-            "name": "Luminosité",
-            "type": "info",
-            "isVisible": 1,
-            "isHistorized": 1,
-            "configuration": {
-                "minValue": 0,
-                "maxValue": 100,
-                "class": 49,
-                "endpoint": 0,
-                "property": "Illuminance"
-            },
-            "subtype": "numeric",
-            "display": {
-                "generic_type": "BRIGHTNESS"
-            }
-        },
-        {
-            "name": "Batterie",
-            "type": "info",
-            "isVisible": 0,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 128,
-                "endpoint": 0,
-                "property": "level"
-            },
-            "subtype": "numeric",
-            "display": {
-                "generic_type": "BATTERY"
-            }
-        }
-    ]
+    "recommended": {
+       "params": [
+      {
+        "path": "112-0-7-16",
+        "value": "1"
+      },
+      {
+        "path": "132-0-wakeUpInterval",
+        "value": "86400"
+      }
+    ],
+    "needswakeup": true
+    },
+    "properties": {
+        "Opening": {"type":"binary-door"},
+        "Temperature": {},
+        "Luminance": {},
+        "Tamper": {"type":"binary-tamper","returnStateTime": 1,"returnStateValue": 0},
+        "Battery": {}
+    }
 }

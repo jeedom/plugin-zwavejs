@@ -175,7 +175,9 @@ sendVarTojs('eqLogic_human_name', $tags);
 									<span class="label label-info">
 										<span class="eqLogicAttr" data-l1key="configuration" data-l2key="product_name"></span>
 									</span>
+									<a class="confRecommended btn btn-xs btn-warning" title="{{Configuration recommandée}}" style="display:none"><i class="fas fa-flag"></i></a>
 								</div>
+								
 							</div>
 							<div class="form-group">
 								<label class="col-sm-3 control-label">{{Firmware}}</label>

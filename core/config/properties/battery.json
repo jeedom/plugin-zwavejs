@@ -9,7 +9,7 @@
 				"minValue": 0,
 				"maxValue": 100,
 				"class": 128,
-				"endpoint": 0,
+				"endpoint": "#endpoint#",
 				"property": "level"
 			},
 			"subtype": "numeric",
@@ -17,6 +17,18 @@
 				"generic_type": "BATTERY"
 			},
 			"unite": "%"
+		},
+		{
+			"name": "Batterie-Alerte",
+			"type": "info",
+			"isVisible": 0,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 128,
+				"endpoint": "#endpoint#",
+				"property": "isLow"
+			},
+			"subtype": "binary"
 		}
 	]
 }

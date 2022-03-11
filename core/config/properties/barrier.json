@@ -1,0 +1,54 @@
+{
+"standard": 
+	[
+		{
+			"name": "Barrier Ouvrir/Stop",
+			"type": "action",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 102,
+				"endpoint": "#endpoint#",
+				"property": "targetState",
+				"value": "255"
+			},
+			"value": "Barrier Position",
+			"subtype": "other",
+			"display": {
+				"generic_type": "GB_OPEN"
+			}
+		},
+		{
+			"name": "Barrier Fermer",
+			"type": "action",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 102,
+				"endpoint": "#endpoint#",
+				"property": "targetState",
+				"value": "0"
+			},
+			"value": "Barrier Position",
+			"subtype": "other",
+			"display": {
+				"generic_type": "GB_CLOSE"
+			}
+		},
+		{
+			"name": "Barrier Position",
+			"type": "info",
+			"isVisible": 1,
+			"isHistorized": 1,
+			"configuration": {
+				"class": 102,
+				"endpoint": "#endpoint#",
+				"property": "currentState"
+			},
+			"subtype": "numeric",
+			"display": {
+				"generic_type": "GARAGE_STATE"
+			}
+		}
+	]
+}
