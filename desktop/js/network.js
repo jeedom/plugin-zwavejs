@@ -97,6 +97,7 @@ function network_load_data(){
       graph.addNode(z, {
           'eqname': nodes[z].eqName,
           'name': nodes[z].name,
+          'status': nodes[z].status,
           'neighbours': nodes[z].neighbors,
           'interview': nodes[z].interviewStage,
           'img': nodes[z].img
@@ -106,6 +107,7 @@ function network_load_data(){
           'eqname': '<span class="label label-primary">' + nodes[z].productDescription + '</span> ',
           'name': nodes[z].productDescription,
           'neighbours': nodes[z].neighbors,
+          'status': nodes[z].status,
           'interview': nodes[z].interviewStage,
           'img': nodes[z].img,
         });
@@ -143,16 +145,20 @@ function network_load_data(){
     if (typeof node.data == 'undefined') {
       graph.removeNode(node.id);
     }
-    nodecolor = '#7BCC7B';
+    nodecolor = '#979797';
     var nodesize = 10;
     const nodeshape = 'rect';
     if (node.id == controllerId) {
       nodecolor = '#a65ba6';
       nodesize = 16;
-    } else if (node.data.neighbours.length < 1 && node.id != controllerId) {
+    } else if (node.data.neighbours.length < 1 || node.data.status == 'Dead' ) {
       nodecolor = '#d20606';
-    } else {
+    } else if (node.data.neighbours.includes(controllerId) && node.data.status != 'Dead') {
+      nodecolor = '#7BCC7B';
+    } else if (node.data.status != 'Dead') {
       nodecolor = '#E5E500';
+    } else {
+      nodecolor = '#979797';
     } 
     var ui = Viva.Graph.svg('g'),
      svgText = Viva.Graph.svg('text').text(node.data.name),
@@ -352,6 +358,7 @@ function getFarNeighbours(nodeId, exludeNodeIds, hops) {
 
 $('body').off('zwavejs::getNeighbors').on('zwavejs::getNeighbors', function (_event, _options) {
 	$('.getNodes-controllerNeighbors').empty().append(_options['controllerNeighbors']);
+	network_load_nodes();
 });
 
 $('body').off('zwavejs::getInfo').on('zwavejs::getInfo', function (_event, _options) {

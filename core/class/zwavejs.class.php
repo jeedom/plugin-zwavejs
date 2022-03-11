@@ -555,7 +555,12 @@ class zwavejs extends eqLogic {
 							log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.'Value is an array endpoint is defined as 0');
 							foreach ($value as $element){
 								foreach($element as $property=>$data) {
-									if (isset($data['value'])){
+									if ($property == 'scene') {
+										if (isset($data['value'])){
+											$eqLogic->updateCmd($class.'-0-'.$property, $data['value']);
+										}
+									}
+									else if (isset($data['value'])){
 										log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.$class.'-0-'.$property .':' .json_encode($data));
 										$eqLogic->updateCmd($class.'-0-'.$property, $data['value']);
 									} else {
@@ -1098,13 +1103,13 @@ class zwavejs extends eqLogic {
 	public function handleCommandUpdate($_change,$_init = false) {
 		if ($_init){
 			log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.'Init de valeur pour le node ' . $this->getHumanName());
-			log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.json_encode($_change));
+			log::add('zwavejs','debug','[' . __FUNCTION__ . '] '. $this->getHumanName() . ' ' .json_encode($_change));
 			foreach ($_change as $key=>$value){
 				$this->updateCmd($key, $value['value']);
 			}
 		} else {
 			log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.'Changement de valeur pour le node ' . $this->getHumanName());
-			log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.json_encode($_change));
+			log::add('zwavejs','debug','[' . __FUNCTION__ . '] '. $this->getHumanName() . ' ' .json_encode($_change));
 			$endpoint = 0;
 			if (isset($_change['endpoint'])){
 				$endpoint = $_change['endpoint'];
@@ -1185,7 +1190,11 @@ class zwavejs extends eqLogic {
 						if (isset($details['replace'])) {
 							foreach ($details['replace'] as $keyReplace =>$valueReplace){
 								if ($valueReplace == 'multiKey'){
-									$valueReplace = $numberCommand;
+									if ($keyReplace == '#centralscene#'){
+										$valueReplace = str_pad($numberCommand,3,'0',STR_PAD_LEFT);
+									} else {
+										$valueReplace = $numberCommand;
+									}
 								}
 								$replace_array[$keyReplace]= $valueReplace;
 							}

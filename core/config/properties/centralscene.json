@@ -1,0 +1,21 @@
+{
+"standard": 
+	[
+		{
+			"name": "CentralScene",
+			"type": "info",
+			"isVisible": 0,
+			"isHistorized": 0,
+			"configuration": {
+				"repeatEventManagement": "always",
+				"class": 91,
+				"endpoint": "#endpoint#",
+				"property": "scene-#centralscene#"
+			},
+			"subtype": "numeric",
+			"display": {
+				"generic_type": "DONT"
+			}
+		}
+	]
+}

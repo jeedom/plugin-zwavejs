@@ -121,20 +121,16 @@ if (!isConnect('admin')) {
 								<td>{{Communication directe}}</td>
 							</tr>
 							<tr>
-								<td class="node-remote-control-color"><i class="fas fa-square fa-2x"></i></td>
-								<td>{{Virtuellement associé au contrôleur primaire}}</td>
-							</tr>
-							<tr>
 								<td class="node-more-of-one-up-color"><i class="fas fa-square fa-2x"></i></td>
 								<td>{{Toutes les routes ont plus d'un saut}}</td>
 							</tr>
 							<tr>
-								<td class="node-interview-not-completed-color"><i class="fas fa-square fa-2x"></i></td>
-								<td>{{Interview non completé}}</td>
-							</tr>
-							<tr>
 								<td class="node-no-neighbourhood-color"><i class="fas fa-square fa-2x"></i></td>
 								<td>{{Présumé mort ou Pas de voisin}}</td>
+							</tr>
+							<tr>
+								<td class="node-interview-not-completed-color"><i class="fas fa-square fa-2x"></i></td>
+								<td>{{Interview non completé}}</td>
 							</tr>
 						</tbody>
 					</table>
