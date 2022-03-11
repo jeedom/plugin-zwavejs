@@ -838,12 +838,10 @@ class zwavejs extends eqLogic {
 			foreach($datas as $data){
 				$nodeValues .= '<tr>';
 				$nodeValues .= '<td>'.$data['endpoint'].'</td>';
-				if (intval($cc) == 112){
-					if (isset($data['propertyKey'])){
-						$nodeValues .= '<td>'.$data['property'].'-'.$data['propertyKey'].'</td>';
-					} else {
-						$nodeValues .= '<td>'.$data['property'].'</td>';
-					}
+				if (isset($data['propertyKey'])){
+					$nodeValues .= '<td>'.$data['property'].'-'.$data['propertyKey'].'</td>';
+				} else {
+					$nodeValues .= '<td>'.$data['property'].'</td>';
 				}
 				if (isset($data['description'])){
 					$nodeValues .= '<td style="width:30%">'.$data['label'].' <sup><i class="fas fa-question-circle tooltips" title="'.$data['description'].'"></i><sup></td>';
@@ -881,9 +879,19 @@ class zwavejs extends eqLogic {
 						$finalValue .= ' ' . $data['unit'];
 					}
 					if (isset($data['states'])){
+						$tooltip .= 'Valeurs possibles : &#013;';
 						foreach ($data['states'] as $state){
-							$tooltip .= $state['value'] . ' ' . $state['text'].'&#013;';
+							$tooltip .= $state['value'] . ' -> ' . $state['text'].'&#013;';
 						}
+					}
+					if (isset($data['min'])){
+						$tooltip .= 'min : ' . $data['min'].'&#013;';
+					}
+					if (isset($data['max'])){
+						$tooltip .= 'max : ' . $data['max'].'&#013;';
+					}
+					if (isset($data['default'])){
+						$tooltip .= 'défaut : ' . $data['default'].'&#013;';
 					}
 				} else {
 					if (isset($data['value'])){
@@ -924,7 +932,21 @@ class zwavejs extends eqLogic {
 				$nodeValues .= '</td>';
 				$nodeValues .= '<td class="'.str_replace(' ','_',$data['id']).'_lastUpdate">'.date("d/m/Y H:i:s",$data['lastUpdate']/ 1000).'</td>';
 				$updates[str_replace(' ','_',$data['id'])]['lastUpdate']=date("d/m/Y H:i:s",$data['lastUpdate']/ 1000);
-				$nodeValues .= '<td><i class="fas fa-question-circle tooltips" title="'.$data['oriKey'].'"></i></td>';
+				if ($data['readable'] && (in_array($data['type'],array('number','boolean')))){
+					$nodeValues .= '<td>';
+					$nodeValues .= ' <a class="btn btn-xs btn-warning createCommandInfo pull-right"';
+					$nodeValues .= ' data-type="'.$data['type'].'"';
+					$nodeValues .= ' data-label="'.$data['label'].'"';
+					$nodeValues .= ' data-path="'.$data['id'].'"';
+					$nodeValues .= ' data-unit="'.$data['unit'].'"';
+					$nodeValues .= ' data-max="'.$data['max'].'"';
+					$nodeValues .= ' data-min="'.$data['min'].'"';
+					$nodeValues .= ' data-value="'.$data['value'].'"';
+					$nodeValues .= ' style="text-align: right;display:inline-block" title="Créer la commande Info dans Jeedom"><i class="fas fa-marker"></i></a>';
+					$nodeValues .= '</td>';
+				} else {
+					$nodeValues .= '<td></td>';
+				}
 				$nodeValues .= '</tr>';
 			}
 			$nodeValues .='</tbody>';
@@ -1021,6 +1043,54 @@ class zwavejs extends eqLogic {
 			$healthPage .= '</tr>';
 		}
 		return $healthPage;
+	}
+
+	public static function autoCreateCommandInfo($_path,$_type,$_label,$_unit,$_max,$_min,$_currentValue){
+		log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.'Création d\'une commande info '. $_path);
+		$elements = explode('-',str_replace('_',' ',$_path), 4);
+		$eqLogic = zwavejs::byLogicalId($elements[0],'zwavejs');
+		log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.print_r($elements,true));
+		if (is_object($eqLogic)) {
+			$class = $elements[1];
+			$endpoint = $elements[2];
+			$property = $elements[3];
+			$logical = $class.'-'.$endpoint.'-'.$property;
+			$command = $eqLogic->getCmd(null, $logical);
+			if (!is_object($command)) {
+				$command = new zwavejscmd();
+				$command->setLogicalId($logical);
+				$label = $_label.'-'.rand(0,99999);
+				$command->setName($label);
+				$command->setIsVisible(0);
+				$command->setEqLogic_id($eqLogic->getId());
+				$command->setConfiguration('class',$class);
+				$command->setConfiguration('endpoint',$endpoint);
+				$command->setConfiguration('property',$property);
+				$command->setType('info');
+				if ($_type == 'boolean') {
+					$command->setSubType('binary');
+				}
+				else if ($_type == 'number') {
+					$command->setSubType('numeric');
+					if ($_unit){
+						$command->setUnite($_unit);
+					}
+					if ($_max){
+						$command->setConfiguration('maxValue',$_max);
+					}
+					if ($_min){
+						$command->setConfiguration('minValue',$_min);
+					}
+				}
+				else {
+					$command->setSubType('string');
+				}
+				$command->save();
+				$eqLogic->checkAndUpdateCmd($logical,$_currentValue);
+			}
+			
+		}
+		
 	}
 	
 	/*     * *********************Methode d'instance************************* */

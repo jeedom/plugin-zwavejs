@@ -78,6 +78,41 @@ $("body").off("click", ".editValue").on("click", ".editValue", function (e) {
   }
 });
 
+$("body").off("click", ".createCommandInfo").on("click", ".createCommandInfo", function (e) {
+	var obj = $(this);
+  bootbox.confirm('{{Etes-vous sûr de vouloir créer cette commande info : }}' +obj.data('label')+ ' ('+obj.data('path')+'{{) ? Si elle existe déjà elle ne sera pas créée.}}', function (result) {
+	if (result) {
+		$.ajax({
+		type: "POST",
+		url: "plugins/zwavejs/core/ajax/zwavejs.ajax.php",
+		data: {
+			action: "createCommandInfo",
+			type: obj.data('type'),
+			label: obj.data('label'),
+			path: obj.data('path'),
+			unit: obj.data('unit'),
+			max: obj.data('max'),
+			min: obj.data('min'),
+			value: obj.data('value')
+		},
+		dataType: 'json',
+		global: false,
+		error: function (request, status, error) {
+			handleAjaxError(request, status, error);
+		},
+		success: function (data) {
+			if (data.state != 'ok') {
+			$('#div_alert').showAlert({message: data.result, level: 'danger'});
+			return;
+			}
+			$('#div_alert').showAlert({message: '{{Opération réalisée avec succès}}', level: 'success'});
+			$('.eqLogicDisplayCard[data-eqLogic_id=' + $('.eqLogicAttr[data-l1key=id]').value() + ']').click();
+		}
+		});
+	}
+	});
+});
+
 function node_load_values(){
   jeedom.zwavejs.node.info({
     info : 'getNodeInfo',
