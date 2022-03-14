@@ -679,7 +679,7 @@ class zwavejs extends eqLogic {
 	}
 	
 	public static function setNodeValue($_fullpath,$_value) {
-		log::add('zwavejs','error','[' . __FUNCTION__ . '] '. $_fullpath . ' '.$_value );
+		log::add('zwavejs','debug','[' . __FUNCTION__ . '] '. $_fullpath . ' '.$_value );
 		$detailsPath = explode('-',$_fullpath, 2);
 		zwavejs::publishMqttValue($detailsPath[0],str_replace('-','/',$detailsPath[1]),$_value);
 	}
