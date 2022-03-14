@@ -575,7 +575,7 @@ class zwavejs extends eqLogic {
 							log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.'Value is not an array there are some endpoints');
 							foreach ($value as $endpoint=>$element){
 								foreach($element as $property=>$data) {
-									if (isset($value['data'])){
+									if (isset($data['value'])){
 										log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.$class.'-'.$endpoint.'-'.$property .':' .json_encode($data));
 										$eqLogic->updateCmd($class.'-'.$endpoint.'-'.$property, $data['value']);
 									} else {
