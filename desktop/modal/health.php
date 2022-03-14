@@ -33,7 +33,7 @@ sendVarToJs('battery_danger',config::byKey('battery::danger'));
 			<th>{{Beaming}}</th>
 			<th>{{Flirs}}</th>
 			<th>{{Zwave+}}</th>
-			<th>{{Direct}}</th>
+			<th>{{Routing}}</th>
 			<th>{{Initié}}</th>
 			<th>{{Statut}}</th>
 			<th>{{Interview}}</th>

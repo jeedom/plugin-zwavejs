@@ -1,0 +1,37 @@
+{
+"standard": 
+	[
+		{
+			"name": "Etat couleur",
+			"type": "info",
+			"isVisible": 0,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 51,
+				"endpoint": "#endpoint#",
+				"property": "hexColor"
+			},
+			"subtype": "string",
+			"display": {
+				"generic_type": "LIGHT_COLOR"
+			}
+		},
+		{
+			"name": "Couleur",
+			"type": "action",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 51,
+				"endpoint": "#endpoint#",
+				"property": "hexColor",
+				"value": "#color#"
+			},
+			"value": "Etat couleur",
+			"subtype": "color",
+			"display": {
+				"generic_type": "LIGHT_SET_COLOR"
+			}
+		}
+	]
+}

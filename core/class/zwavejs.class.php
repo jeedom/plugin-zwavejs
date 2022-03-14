@@ -679,7 +679,7 @@ class zwavejs extends eqLogic {
 	}
 	
 	public static function setNodeValue($_fullpath,$_value) {
-		log::add('zwavejs','debug','[' . __FUNCTION__ . '] '. $_fullpath . ' '.$_value );
+		log::add('zwavejs','error','[' . __FUNCTION__ . '] '. $_fullpath . ' '.$_value );
 		$detailsPath = explode('-',$_fullpath, 2);
 		zwavejs::publishMqttValue($detailsPath[0],str_replace('-','/',$detailsPath[1]),$_value);
 	}
@@ -970,12 +970,13 @@ class zwavejs extends eqLogic {
 		foreach ($_values as $node=>$values){
 			$healthPage .= '<tr><td>'.$values['id'].'</td>';
 			$eqLogic = zwavejs::byLogicalId($values['id'], 'zwavejs');
+			$productDetails = '<sup><i class="fas fa-question-circle tooltips" title="'.$values['manufacturer'].' '.$values['productDescription']. ' Firmware : '.$values['firmwareVersion'].'"></i><sup>';
 			if (is_object($eqLogic)){
-				$healthPage .= '<td>'.$eqLogic->getHumanName(true).'</td>';
+				$healthPage .= '<td>'.$eqLogic->getHumanName(true).' ' .$productDetails.'</td>';
 			} else {
-				$healthPage .= '<td>'.$values['productLabel'].' - '.$values['productDescription'].'</td>';
+				$healthPage .= '<td>'.$values['productLabel'].' - '.$values['productDescription'].' ' .$productDetails.'</td>';
 			}
-			$healthPage .= '<td><span class="label label-primary" style="font-size : 1em;">'.$values['endpointsCount'].'</span></td>';
+			$healthPage .= '<td><span class="label label-info" style="font-size : 1em;">'.$values['endpointsCount'].'</span></td>';
 			if ($values['isSecure']) {
 				if($values['security']){
 					$secure = '<span title="Secure" style="font-size : 1.5em;"><i class="fas fa-check-circle icon_green" aria-hidden="true"></i></span> <sup><i class="fas fa-question-circle tooltips" title="'.$values['security'].'"></i><sup>';
@@ -1009,9 +1010,9 @@ class zwavejs extends eqLogic {
 			$healthPage .= '<td>'.$zwavePlusVersion.'</td>';
 			
 			if ($values['isRouting']) {
-				$isRouting = '<span title="Direct" style="font-size : 1.5em;"><i class="fas fa-check icon_green" aria-hidden="true"></i></span>';
+				$isRouting = '<span title="Routing" style="font-size : 1.5em;"><i class="fas fa-check icon_green" aria-hidden="true"></i></span>';
 			} else {
-				$isRouting = '<span title="Non direct" style="font-size : 1.5em;"><i class="fas fa-minus-circle icon_orange" aria-hidden="true"></i></span>';
+				$isRouting = '<span title="No Routing style="font-size : 1.5em;"><i class="fas fa-minus-circle icon_orange" aria-hidden="true"></i></span>';
 			}
 			$healthPage .= '<td>'.$isRouting.'</td>';
 			
@@ -1506,7 +1507,8 @@ class zwavejsCmd extends cmd {
 			return;
 		}
 		$value = $this->getConfiguration('value');
-		$node = $this->getEqLogic()->getLogicalId();
+		$eqLogic = $this->getEqLogic();
+		$node = $eqLogic->getLogicalId();
 		$cc = $this->getConfiguration('class');
 		$endpoint = $this->getConfiguration('endpoint');
 		$property = $this->getConfiguration('property');
@@ -1514,6 +1516,12 @@ class zwavejsCmd extends cmd {
 		if ($value == 'get'){
 			$args=array('args'=>array(array('nodeId'=>intval($node),'commandClass'=>intval($cc)),'get',array($property)));
 			zwavejs::publishMqttApi('sendCommand',$args);
+			return;
+		}
+		if (substr($value,0,3) == 'set'){
+			$fullPath = $node.'-'.$cc.'-'.$endpoint.'-'.$property;
+			$val = explode('-',$value,2)[1];
+			$eqLogic->setNodeValue($fullPath,$val);
 			return;
 		}
 		if ($cc == 0 && $endpoint== 0){
