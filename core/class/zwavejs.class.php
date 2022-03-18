@@ -972,9 +972,9 @@ class zwavejs extends eqLogic {
 			$eqLogic = zwavejs::byLogicalId($values['id'], 'zwavejs');
 			$productDetails = '<sup><i class="fas fa-question-circle tooltips" title="'.$values['manufacturer'].' '.$values['productDescription']. ' Firmware : '.$values['firmwareVersion'].'"></i><sup>';
 			if (is_object($eqLogic)){
-				$healthPage .= '<td>'.$eqLogic->getHumanName(true).' ' .$productDetails.'</td>';
+				$healthPage .= '<td><img src="plugins/zwavejs/core/config/devices/'.$eqLogic->getImgFilePath().'" height="40"/> <a href="index.php?v=d&p=zwavejs&m=zwavejs&logical_id=' . $eqLogic->getLogicalId() . '">' . $eqLogic->getHumanName(true).  '</a>'.' ' .$productDetails.'</td>';
 			} else {
-				$healthPage .= '<td>'.$values['productLabel'].' - '.$values['productDescription'].' ' .$productDetails.'</td>';
+				$healthPage .= '<td><img src="plugins/zwavejs/plugin_info/zwavejs_icon.png" height="40"/> '.$values['productLabel'].' - '.$values['productDescription'].' ' .$productDetails.'</td>';
 			}
 			$healthPage .= '<td><span class="label label-info" style="font-size : 1em;">'.$values['endpointsCount'].'</span></td>';
 			if ($values['isSecure']) {
@@ -1471,7 +1471,6 @@ class zwavejs extends eqLogic {
 	}
 	
 	public function createCommand($_update = 0) {
-		$return = array();
 		if (!is_numeric($this->getLogicalId())) {
 			return;
 		}

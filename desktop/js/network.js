@@ -29,8 +29,6 @@ function network_load_dataTable(){
     var routingTableHeader = '';
     const queryStageNeighbors = 13;
     $.each(devicesRouting, function (nodeId, node) {
-      console.log(nodeId);
-      console.log(node);
       if (nodeId == 255) {
         return;
       }
@@ -39,14 +37,10 @@ function network_load_dataTable(){
       }
       var routesCount = getRoutesCount(nodeId);
       
-      if (node.deviceClass.basic != 2) {
-        var link = 'index.php?v=d&p=openzwave&m=openzwave&logical_id=' + nodeId;
-      } else {
-        var link = '#';
-      }
+      var link = 'index.php?v=d&p=zwavejs&m=zwavejs&logical_id=' + nodeId;
       routingTableHeader += '<th title="' + node.productDescription + '">' + nodeId + '</th>';
       if (isset(node.eqName)) {
-        var name = '<span class="nodeConfiguration cursor" data-node-id="' + nodeId + '">' + nodeId + ' ' + node.eqName + '</span>';
+        var name = '<span class="nodeConfiguration cursor" data-node-id="' + nodeId + '"><img src="'+ node.img + '" height="40"/> <a href="'+link+'">' + node.eqName +  '</a></span>';
       } else {
         var name = '<span class="nodeConfiguration cursor" data-node-id="' + nodeId + '"><span class="label label-primary">' + node.productLabel + '</span> ' + node.productDescription + '</span>';
       }
