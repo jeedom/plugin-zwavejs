@@ -1126,7 +1126,8 @@ class zwavejs extends eqLogic {
 	
 	public function updateCmd($_cmdId,$_value) {
 		log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.$_cmdId .' ' .$_value);
-		$cmdId = explode('-',str_replace('_',' ',$_cmdId), 3);
+		$_cmdId = str_replace('_',' ',$_cmdId);
+		$cmdId = explode('-',$_cmdId, 3);
 		$class = $cmdId[0];
 		$endpoint = $cmdId[1];
 		$property = $cmdId[2];
