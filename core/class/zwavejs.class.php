@@ -381,6 +381,38 @@ class zwavejs extends eqLogic {
 								if (is_file(dirname(__FILE__) . '/../config/devices/' . $path)) {
 									$node['confJeedom'] = $path;
 								}
+								$device = is_json(file_get_contents(dirname(__FILE__) . '/../config/devices/' . $eqLogic->getConfFilePath()), array());
+								$node['confType'] = 'Configuration Jeedom <br>';
+								if (isset($device['properties']) && count($device['properties']>0)){
+									if (isset($device['firmProperties']) && $device['firmProperties'] == 1){
+										$found = false;
+										foreach ($device['properties'] as $firm=>$property){
+											if ($firm != 'default'){
+												if (evaluate($this->getConfiguration('firmwareVersion').$firm)===true){
+													$device['properties']=$property;
+													$found = true;
+													break;
+												}
+											}
+										}
+										if (!$found){
+											$device['properties'] = $device['properties']['default'];
+										}
+									}
+									$node['confType'] .= ' Properties : <br>';
+									foreach ($device['properties'] as $property=>$value){
+										if (isset($value['mode']) && $value['mode'] != $this->getConfiguration('confMode','')){
+											continue;
+										}
+										$node['confType'] .= '  - '.$property . ' : ' .json_encode($value) .'<br>';
+									}
+								}
+								if (isset($device['commands']) && count($device['commands']>0)){
+									$node['confType'] .= 'Commands : <br>';
+									foreach ($device['commands'] as $command){
+										$node['confType'] .= '  - '.$command['name'] .'<br>';
+									}
+								}
 							}
 							event::add('zwavejs::getNodeInfo',$node);
 						}
@@ -388,7 +420,7 @@ class zwavejs extends eqLogic {
 				} else if ($value['origin']['type'] == 'group'){
 					$data =array();
 					foreach ($value['result'] as $node){
-						$data[$node['id']]=array('groups'=>$node['groups'],'label'=>$node['productLabel'],'endpoints'=>$node[endpointIndizes]);
+						$data[$node['id']]=array('groups'=>$node['groups'],'label'=>$node['productLabel'],'endpoints'=>$node[endpointIndizes],'status'=>$node['status']);
 					}
 					event::add('zwavejs::getNodeGroup',$data);
 				} else if ($value['origin']['type'] == 'health'){

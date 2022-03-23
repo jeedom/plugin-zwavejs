@@ -13,7 +13,9 @@
         ]
     },
     "properties": {
-        "Motion": {"type":"binary-any"},
+        "Motion": {
+            "type": "binary-any"
+        },
         "Temperature": {},
         "Humidity": {},
         "Luminance": {},

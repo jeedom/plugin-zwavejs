@@ -14,12 +14,12 @@
         ]
     },
     "recommended": {
-       "params": [
-			{
-				"path": "112-0-80",
-				"value": "2"
-			}
-		]
+        "params": [
+            {
+                "path": "112-0-80",
+                "value": "2"
+            }
+        ]
     },
     "properties": {
         "Barrier": {}

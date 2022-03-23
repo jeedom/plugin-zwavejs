@@ -134,10 +134,12 @@ function node_load_values(){
 
 
 $('body').off('zwavejs::getNodeInfo').on('zwavejs::getNodeInfo', function (_event, _options) {
-	console.log(_options)
 	$('#div_nodeValuesZwaveJsAlert').hideAlert();
 	if (_options['id'] == nodeId){
-		if ($('.panel-group').is(":visible")) {
+		if (_options['status']=='Dead'){
+			$('.getNodeInfo-nodeValues').empty().append('<div class="alert alert-warning" role="alert">Le noeud est en statut Dead, il n\'y a donc pas de valeurs dynamiques à afficher ...</div>');
+		}
+		else if ($('.panel-group').is(":visible")) {
 			for (value in _options['nodeValues']['updates']){
 				$('.'+ $.escapeSelector(value)).empty().append(_options['nodeValues']['updates'][value]['value']);
 				$('.'+ $.escapeSelector(value+'_lastUpdate')).empty().append(_options['nodeValues']['updates'][value]['lastUpdate']);

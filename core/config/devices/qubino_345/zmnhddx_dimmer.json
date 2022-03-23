@@ -9,10 +9,17 @@
             "81"
         ]
     },
-    "modes": {"multilevel":"Variateur","switch":"Switch"},
+    "modes": {
+        "multilevel": "Variateur",
+        "switch": "Switch"
+    },
     "properties": {
-        "Multilevel": {"mode":"multilevel"},
-        "Switch": {"mode":"switch"},
+        "Multilevel": {
+            "mode": "multilevel"
+        },
+        "Switch": {
+            "mode": "switch"
+        },
         "Temperature": {},
         "Power": {},
         "Energy": {}

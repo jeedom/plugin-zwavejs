@@ -14,10 +14,15 @@
             "12289"
         ]
     },
-    "modes": {"noTemp":"Sans capteur de température","withTemp":"Avec capteur de température"},
+    "modes": {
+        "noTemp": "Sans capteur de température",
+        "withTemp": "Avec capteur de température"
+    },
     "properties": {
         "Opening": {},
-        "Temperature": {"mode":"withTemp"},
+        "Temperature": {
+            "mode": "withTemp"
+        },
         "Tamper": {},
         "Scene": {},
         "Battery": {}

@@ -101,7 +101,10 @@ $('body').off('zwavejs::getNodeGroup').on('zwavejs::getNodeGroup', function (_ev
 
 $('body').off('zwavejs::getNodeAssociations').on('zwavejs::getNodeAssociations', function (_event, _options) {
 	$('#div_nodeGroupsZwaveJsAlert').hideAlert();
-	if (_options['id'] == nodeId){
+	if (_options['id'] == nodeId){console.log(nodes)
+		if (nodes[nodeId]['status']=='Dead'){
+			$('#div_StatusGroupAlert').empty().append('<div class="alert alert-warning" role="alert">Le noeud est en statut Dead, il n\'y a donc pas de groupes à afficher ...</div>');
+		}
 		var body ='';
 		var bodylist ='';
 		for (group in nodes[nodeId]['groups']){

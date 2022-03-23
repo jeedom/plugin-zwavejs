@@ -13,7 +13,9 @@
         ]
     },
     "properties": {
-        "Opening": {"type":"binary-any"},
+        "Opening": {
+            "type": "binary-any"
+        },
         "Battery": {}
     }
 }

@@ -13,8 +13,12 @@
         ]
     },
     "properties": {
-        "Flood": {"type":"binary-any"},
-        "Tamper": {"type":"alarm"},
+        "Flood": {
+            "type": "binary-any"
+        },
+        "Tamper": {
+            "type": "alarm"
+        },
         "Battery": {}
     }
 }

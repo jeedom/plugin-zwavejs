@@ -11,7 +11,19 @@
     },
     "properties": {
         "PilotWire": {},
-        "Temperature": {"isVisible":0},
-        "Input": {"multi":[1,2,3],"replace":{"#endpoint#":"multiKey"},"isVisible":0}
+        "Temperature": {
+            "isVisible": 0
+        },
+        "Input": {
+            "multi": [
+                1,
+                2,
+                3
+            ],
+            "replace": {
+                "#endpoint#": "multiKey"
+            },
+            "isVisible": 0
+        }
     }
 }

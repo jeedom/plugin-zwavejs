@@ -44,10 +44,13 @@ dictTransform = {'37-0':'37.currentValue',
                  '112-41':'112.41',
                  '112-45':'112.44',
                  '112-45':'112.45',
+                 '135-0':'135.value',
+                 '135-0-type=setvalue&value=0':'135.value.0',
+                 '135-0-type=setvalue&value=1':'135.value.255',
                  '128-0':'128.level',
                  '156-0':'156.state-0',
                 }
-notFound = []
+notFound = {}
 for root, dirs, files in os.walk(confDir):
     for name in files:
         if name.endswith((".json")):
@@ -80,7 +83,9 @@ for root, dirs, files in os.walk(confDir):
                                     CONF['commands'][i]['configuration']=command['configuration']
                                 else:
                                     if configurationCheck not in notFound:
-                                        notFound.append(configurationCheck)
+                                        notFound[configurationCheck]=[root.replace('/var/www/html/plugins/zwavejs/core/config/devices/','')+' '+name]
+                                    else:
+                                        notFound[configurationCheck].append(root.replace('/var/www/html/plugins/zwavejs/core/config/devices/','')+' '+name)
                         i+=1
             with open(os.path.join(root,name), "w", encoding='utf8') as outfile:
                 outfile.write(json.dumps(CONF, indent = 4,ensure_ascii=False))

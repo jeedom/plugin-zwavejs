@@ -14,11 +14,20 @@
             "4096"
         ]
     },
-    "modes": {"noTemp":"Sans capteur de température","withTemp":"Avec capteur de température"},
+    "modes": {
+        "noTemp": "Sans capteur de température",
+        "withTemp": "Avec capteur de température"
+    },
     "properties": {
-        "Opening": {"type":"binary-any"},
-        "Temperature": {"mode":"withTemp"},
-        "Tamper": {"type":"alarm"},
+        "Opening": {
+            "type": "binary-any"
+        },
+        "Temperature": {
+            "mode": "withTemp"
+        },
+        "Tamper": {
+            "type": "alarm"
+        },
         "Battery": {}
     }
 }

@@ -107,6 +107,8 @@ include_file('3rdparty', 'jsonTree/jsonTree', 'js', 'zwavejs');
 								<p><b>{{Basique :}} </b><span class="getNodeInfo-classBasic label label-info"></span></p>
 								<p><b>{{Générique :}} </b><span class="getNodeInfo-classGeneric label label-info"></span></p>
 								<p><b>{{Spécifique :}} </b><span class="getNodeInfo-classSpecific label label-info"></span></p>
+								<p style="text-align:center"><b></b><span class="getNodeInfo-confType label label-info"></span></p>
+								
 							</div>
 						</div>
 						</div>

@@ -93,12 +93,11 @@
             "isVisible": 0,
             "isHistorized": 0,
             "configuration": {
-                "class": 135,
-                "value": "",
-                "index": 0,
-                "instance": 1,
                 "minValue": 1,
-                "maxValue": 10
+                "maxValue": 10,
+                "class": 135,
+                "endpoint": 0,
+                "property": "value"
             },
             "subtype": "numeric",
             "display": {

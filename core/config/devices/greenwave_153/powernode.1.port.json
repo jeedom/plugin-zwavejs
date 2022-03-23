@@ -11,7 +11,9 @@
         ]
     },
     "properties": {
-        "Switch": {"type":"prise"},
+        "Switch": {
+            "type": "prise"
+        },
         "Power": {},
         "Energy": {}
     }

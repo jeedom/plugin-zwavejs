@@ -11,17 +11,20 @@
             "4097"
         ]
     },
-    "properties": {"default" : {
-						"Shutter": {},
-						"Scene": {},
-						"Power": {},
-						"Energy": {}
-						},
-					"<=22.22":{
-						"Shutter": {"type":"inverted"},
-						"Scene": {},
-						"Power": {},
-						"Energy": {}
-						}
-					}
+    "properties": {
+        "default": {
+            "Shutter": {},
+            "Scene": {},
+            "Power": {},
+            "Energy": {}
+        },
+        "<=22.22": {
+            "Shutter": {
+                "type": "inverted"
+            },
+            "Scene": {},
+            "Power": {},
+            "Energy": {}
+        }
+    }
 }

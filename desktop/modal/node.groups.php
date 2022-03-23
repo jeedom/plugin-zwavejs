@@ -27,6 +27,7 @@ sendVarToJs('nodeId', init('id'));
 <div id="div_nodeAddGroupsZwaveJsAlert" style="display: none;"></div>
 
 <div class="modalNodeGroups">
+<div id="div_StatusGroupAlert"></div>
 <div class="col-sm-6">
 <div class="panel panel-primary template">
 	<div class="panel-heading">

@@ -17,9 +17,8 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 135,
-                "value": "",
-                "index": 0,
-                "instance": 1
+                "endpoint": 0,
+                "property": "value"
             },
             "subtype": "binary",
             "display": {
@@ -38,9 +37,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 135,
-                "value": "type=setvalue&value=1",
-                "index": 0,
-                "instance": 1
+                "endpoint": 0,
+                "property": "value",
+                "value": "255"
             },
             "value": "Etat Indicateur",
             "subtype": "other",
@@ -59,9 +58,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 135,
-                "value": "type=setvalue&value=0",
-                "index": 0,
-                "instance": 1
+                "endpoint": 0,
+                "property": "value",
+                "value": "0"
             },
             "value": "Etat Indicateur",
             "subtype": "other",

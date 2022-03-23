@@ -14,23 +14,29 @@
         ]
     },
     "recommended": {
-       "params": [
-      {
-        "path": "112-0-7-16",
-        "value": "1"
-      },
-      {
-        "path": "132-0-wakeUpInterval",
-        "value": "86400"
-      }
-    ],
-    "needswakeup": true
+        "params": [
+            {
+                "path": "112-0-7-16",
+                "value": "1"
+            },
+            {
+                "path": "132-0-wakeUpInterval",
+                "value": "86400"
+            }
+        ],
+        "needswakeup": true
     },
     "properties": {
-        "Opening": {"type":"binary-door"},
+        "Opening": {
+            "type": "binary-door"
+        },
         "Temperature": {},
         "Luminance": {},
-        "Tamper": {"type":"binary-tamper","returnStateTime": 1,"returnStateValue": 0},
+        "Tamper": {
+            "type": "binary-tamper",
+            "returnStateTime": 1,
+            "returnStateValue": 0
+        },
         "Battery": {}
     }
 }

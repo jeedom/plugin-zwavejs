@@ -10,6 +10,14 @@
         ]
     },
     "properties": {
-        "Switch": {"multi":[1,2],"replace":{"#endpoint#":"multiKey"}}
+        "Switch": {
+            "multi": [
+                1,
+                2
+            ],
+            "replace": {
+                "#endpoint#": "multiKey"
+            }
+        }
     }
 }

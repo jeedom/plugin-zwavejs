@@ -14,7 +14,19 @@
         ]
     },
     "properties": {
-        "CentralScene": {"multi":[1,2,3,4,5,6],"replace":{"#centralscene#":"multiKey"}},
+        "CentralScene": {
+            "multi": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "replace": {
+                "#centralscene#": "multiKey"
+            }
+        },
         "Battery": {}
     }
 }

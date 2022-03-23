@@ -5,7 +5,7 @@
     "comlink": "2535-fibaro-detecteur-de-mouvement-multifonctions-z-wave-fgms-001-5902020528258",
     "remark": "Par défaut possède une configuration très économique. Lire la documentation pour le configurer correctement",
     "imglink": "fibaro.fgms001",
-    "configuration":{
+    "configuration": {
         "battery_type": "1x3V CR123A"
     },
     "versions": {
@@ -19,10 +19,14 @@
         ]
     },
     "properties": {
-        "Motion": {"type":"binary-any"},
+        "Motion": {
+            "type": "binary-any"
+        },
         "Temperature": {},
         "Luminance": {},
-        "Tamper": {"type":"alarm"},
+        "Tamper": {
+            "type": "alarm"
+        },
         "Battery": {}
     }
 }

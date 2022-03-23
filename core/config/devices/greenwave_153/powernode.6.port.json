@@ -11,8 +11,45 @@
         ]
     },
     "properties": {
-        "Switch": {"type":"prise","multi":[1,2,3,4,5,6],"replace":{"#endpoint#":"multiKey"}},
-        "Power": {"multi":[1,2,3,4,5,6],"replace":{"#endpoint#":"multiKey"}},
-        "Energy": {"multi":[1,2,3,4,5,6],"replace":{"#endpoint#":"multiKey"}}
+        "Switch": {
+            "type": "prise",
+            "multi": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "replace": {
+                "#endpoint#": "multiKey"
+            }
+        },
+        "Power": {
+            "multi": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "replace": {
+                "#endpoint#": "multiKey"
+            }
+        },
+        "Energy": {
+            "multi": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "replace": {
+                "#endpoint#": "multiKey"
+            }
+        }
     }
 }

@@ -8,10 +8,23 @@
             "4096"
         ]
     },
-    "modes": {"noBso":"Sans BSO","withBso":"Avec BSO"},
+    "modes": {
+        "noBso": "Sans BSO",
+        "withBso": "Avec BSO"
+    },
     "properties": {
-        "Shutter": {"type":"downup","replace":{"#endpoint#":1}},
-        "Bso": {"mode":"withBso","replace":{"#endpoint#":2}},
+        "Shutter": {
+            "type": "downup",
+            "replace": {
+                "#endpoint#": 1
+            }
+        },
+        "Bso": {
+            "mode": "withBso",
+            "replace": {
+                "#endpoint#": 2
+            }
+        },
         "Scene": {},
         "Power": {},
         "Energy": {}

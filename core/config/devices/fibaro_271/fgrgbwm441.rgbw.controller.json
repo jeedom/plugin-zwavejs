@@ -13,9 +13,23 @@
         ]
     },
     "properties": {
-        "Multilevel": {"multi":[0,1,2,3,4,5] , "replace":{"#endpoint#":"multiKey"}},
+        "Multilevel": {
+            "multi": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5
+            ],
+            "replace": {
+                "#endpoint#": "multiKey"
+            }
+        },
         "Color": {},
-        "Power": {"type":"multilevel"},
+        "Power": {
+            "type": "multilevel"
+        },
         "Energy": {}
     },
     "commands": [
