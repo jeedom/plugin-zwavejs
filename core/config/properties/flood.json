@@ -7,7 +7,7 @@
 			"isHistorized": 0,
 			"configuration": {
 				"class": 113,
-				"endpoint": 0,
+				"endpoint": "#endpoint#",
 				"property": "Water Alarm-Sensor status",
 				"calculValueOffset": "#value#==2"
 			},
@@ -15,6 +15,29 @@
 			"display": {
 				"invertBinary": "1",
 				"generic_type": "FUITE"
+			},
+			"template": {
+				"dashboard": "flood",
+				"mobile": "flood"
+			}
+		}
+	],
+"alarm": 
+	[
+		{
+			"name": "Fuite",
+			"type": "info",
+			"isVisible": 1,
+			"isHistorized": 1,
+			"configuration": {
+				"class": 156,
+				"endpoint": "#endpoint#",
+				"property": "state-5"
+			},
+			"subtype": "binary",
+			"display": {
+				"invertBinary": "1",
+				"generic_type": "FLOOD"
 			},
 			"template": {
 				"dashboard": "flood",
@@ -31,7 +54,7 @@
 			"isHistorized": 0,
 			"configuration": {
 				"class": 48,
-				"endpoint": 0,
+				"endpoint": "#endpoint#",
 				"property": "Any"
 			},
 			"subtype": "binary",

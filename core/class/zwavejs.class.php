@@ -388,7 +388,7 @@ class zwavejs extends eqLogic {
 										$found = false;
 										foreach ($device['properties'] as $firm=>$property){
 											if ($firm != 'default'){
-												if (evaluate($this->getConfiguration('firmwareVersion').$firm)===true){
+												if (evaluate($eqLogic->getConfiguration('firmwareVersion').$firm)===true){
 													$device['properties']=$property;
 													$found = true;
 													break;
@@ -401,7 +401,7 @@ class zwavejs extends eqLogic {
 									}
 									$node['confType'] .= ' Properties : <br>';
 									foreach ($device['properties'] as $property=>$value){
-										if (isset($value['mode']) && $value['mode'] != $this->getConfiguration('confMode','')){
+										if (isset($value['mode']) && $value['mode'] != $eqLogic->getConfiguration('confMode','')){
 											continue;
 										}
 										$node['confType'] .= '  - '.$property . ' : ' .json_encode($value) .'<br>';

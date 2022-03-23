@@ -356,9 +356,8 @@
             "isHistorized": "0",
             "configuration": {
                 "class": 49,
-                "value": "",
-                "index": 24,
-                "instance": 1
+                "endpoint": 0,
+                "property": "Soil temperature"
             },
             "subtype": "numeric",
             "unite": "°C"

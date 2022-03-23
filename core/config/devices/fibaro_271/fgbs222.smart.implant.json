@@ -323,9 +323,8 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 49,
-                "value": "",
-                "index": 15,
-                "instance": 1
+                "endpoint": 0,
+                "property": "Voltage"
             },
             "subtype": "numeric",
             "display": {
@@ -344,9 +343,8 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 49,
-                "value": "",
-                "index": 15,
-                "instance": 2
+                "endpoint": 1,
+                "property": "Voltage"
             },
             "subtype": "numeric",
             "display": {

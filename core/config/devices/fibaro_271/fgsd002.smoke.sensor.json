@@ -21,9 +21,8 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 156,
-                "value": "",
-                "index": 1,
-                "instance": 1
+                "endpoint": 0,
+                "property": "state-1"
             },
             "subtype": "binary",
             "display": {
@@ -37,12 +36,11 @@
             "isVisible": 0,
             "isHistorized": 0,
             "configuration": {
-                "class": 156,
-                "value": "",
-                "index": 4,
-                "instance": 1,
                 "returnStateTime": 1,
-                "returnStateValue": 0
+                "returnStateValue": 0,
+                "class": 156,
+                "endpoint": 0,
+                "property": "state-4"
             },
             "subtype": "binary",
             "display": {

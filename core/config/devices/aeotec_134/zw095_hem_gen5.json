@@ -25,7 +25,7 @@
             }
         },
         "Power|production": {
-            "type":"production",
+            "type": "production",
             "multi": [
                 0,
                 1,
@@ -59,7 +59,7 @@
             }
         },
         "Voltage|production": {
-            "type":"production",
+            "type": "production",
             "multi": [
                 0,
                 1,
@@ -82,7 +82,7 @@
             }
         },
         "Current|production": {
-            "type":"production",
+            "type": "production",
             "multi": [
                 0,
                 1,

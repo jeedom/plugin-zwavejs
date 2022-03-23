@@ -124,12 +124,11 @@
             "isVisible": 1,
             "isHistorized": 1,
             "configuration": {
-                "class": 49,
-                "value": "",
-                "index": 7,
-                "instance": 2,
                 "minValue": 0,
-                "maxValue": 360
+                "maxValue": 360,
+                "class": 49,
+                "endpoint": 1,
+                "property": "Direction"
             },
             "subtype": "numeric",
             "display": {
@@ -165,12 +164,11 @@
             "isVisible": 1,
             "isHistorized": 1,
             "configuration": {
-                "class": 49,
-                "value": "",
-                "index": 12,
-                "instance": 7,
                 "minValue": 0,
-                "maxValue": 300
+                "maxValue": 300,
+                "class": 49,
+                "endpoint": 6,
+                "property": "Rain rate"
             },
             "subtype": "numeric",
             "display": {

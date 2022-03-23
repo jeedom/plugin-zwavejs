@@ -19,11 +19,10 @@
             "isVisible": 1,
             "isHistorized": 1,
             "configuration": {
+                "calculValueOffset": "#value#>0",
                 "class": 49,
-                "value": "",
-                "index": 12,
-                "instance": 1,
-                "calculValueOffset": "#value#>0"
+                "endpoint": 0,
+                "property": "Rain rate"
             },
             "subtype": "binary",
             "display": {
@@ -42,11 +41,10 @@
             "isVisible": 1,
             "isHistorized": 1,
             "configuration": {
+                "minValue": 0,
                 "class": 49,
-                "value": "",
-                "index": 12,
-                "instance": 1,
-                "minValue": 0
+                "endpoint": 0,
+                "property": "Rain rate"
             },
             "subtype": "numeric",
             "display": {

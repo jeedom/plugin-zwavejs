@@ -37,12 +37,11 @@
             "isVisible": 1,
             "isHistorized": 1,
             "configuration": {
-                "class": 49,
-                "value": "",
-                "index": 17,
-                "instance": 1,
                 "minValue": 0,
-                "maxValue": 2000
+                "maxValue": 2000,
+                "class": 49,
+                "endpoint": 0,
+                "property": "Carbon dioxide (CO₂) level"
             },
             "subtype": "numeric",
             "display": {

@@ -88,9 +88,8 @@
             "isHistorized": 1,
             "configuration": {
                 "class": 49,
-                "value": "",
-                "index": 9,
-                "instance": 1
+                "endpoint": 0,
+                "property": "Atmospheric pressure"
             },
             "subtype": "numeric",
             "display": {
@@ -105,9 +104,8 @@
             "isHistorized": 1,
             "configuration": {
                 "class": 49,
-                "value": "",
-                "index": 11,
-                "instance": 1
+                "endpoint": 0,
+                "property": "Dew point"
             },
             "subtype": "numeric",
             "display": {

@@ -20,9 +20,8 @@
             "isHistorized": 1,
             "configuration": {
                 "class": 156,
-                "value": "",
-                "index": 5,
-                "instance": 1
+                "endpoint": 0,
+                "property": "state-5"
             },
             "subtype": "binary",
             "display": {

@@ -50,12 +50,11 @@
             "isVisible": 1,
             "isHistorized": 1,
             "configuration": {
-                "class": 49,
-                "value": "",
-                "index": 31,
-                "instance": 1,
                 "minValue": 0,
-                "maxValue": 100
+                "maxValue": 100,
+                "class": 49,
+                "endpoint": 0,
+                "property": "Moisture"
             },
             "subtype": "numeric",
             "display": {

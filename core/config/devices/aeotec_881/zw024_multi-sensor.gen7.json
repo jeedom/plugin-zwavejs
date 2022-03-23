@@ -125,12 +125,11 @@
             "isVisible": 1,
             "isHistorized": 1,
             "configuration": {
-                "class": 49,
-                "value": "",
-                "index": 27,
-                "instance": 1,
                 "minValue": 0,
-                "maxValue": 100
+                "maxValue": 100,
+                "class": 49,
+                "endpoint": 0,
+                "property": "Ultraviolet"
             },
             "subtype": "numeric",
             "unite": ""

@@ -112,9 +112,8 @@
             "isHistorized": 1,
             "configuration": {
                 "class": 49,
-                "value": "",
-                "index": 27,
-                "instance": 1
+                "endpoint": 0,
+                "property": "Ultraviolet"
             },
             "subtype": "numeric",
             "display": {

@@ -280,12 +280,11 @@
             "isVisible": 1,
             "isHistorized": 1,
             "configuration": {
-                "class": 49,
-                "value": "",
-                "index": 25,
-                "instance": 1,
                 "minValue": 0,
-                "maxValue": 12
+                "maxValue": 12,
+                "class": 49,
+                "endpoint": 0,
+                "property": "Seismic Intensity"
             },
             "subtype": "numeric",
             "display": {

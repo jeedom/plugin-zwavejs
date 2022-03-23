@@ -34,9 +34,8 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 156,
-                "value": "",
-                "index": 1,
-                "instance": 1
+                "endpoint": 0,
+                "property": "state-1"
             },
             "subtype": "binary",
             "display": {
@@ -55,9 +54,8 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 156,
-                "value": "",
-                "index": 4,
-                "instance": 1
+                "endpoint": 0,
+                "property": "state-4"
             },
             "subtype": "binary",
             "display": {
