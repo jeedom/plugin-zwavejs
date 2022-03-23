@@ -70,9 +70,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 112,
-                "value": "type=setconfig&value=Fireplace sequence&size=0",
-                "index": 157,
-                "instance": 1
+                "endpoint": 0,
+                "property": "157",
+                "value": "set-6"
             },
             "subtype": "other",
             "display": {
@@ -87,9 +87,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 112,
-                "value": "type=setconfig&value=Storm sequence&size=0",
-                "index": 157,
-                "instance": 1
+                "endpoint": 0,
+                "property": "157",
+                "value": "set-7"
             },
             "subtype": "other",
             "display": {
@@ -104,9 +104,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 112,
-                "value": "type=setconfig&value=Rainbow sequence&size=0",
-                "index": 157,
-                "instance": 1
+                "endpoint": 0,
+                "property": "157",
+                "value": "set-9"
             },
             "subtype": "other",
             "display": {
@@ -121,9 +121,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 112,
-                "value": "type=setconfig&value=Aurora sequence&size=0",
-                "index": 157,
-                "instance": 1
+                "endpoint": 0,
+                "property": "157",
+                "value": "set-8"
             },
             "subtype": "other",
             "display": {
@@ -138,9 +138,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 112,
-                "value": "type=setconfig&value=Police (red-white-blue) sequence&size=0",
-                "index": 157,
-                "instance": 1
+                "endpoint": 0,
+                "property": "157",
+                "value": "set-10"
             },
             "subtype": "other",
             "display": {
@@ -155,9 +155,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 112,
-                "value": "type=setconfig&value=Sequence inactive&size=0",
-                "index": 157,
-                "instance": 1
+                "endpoint": 0,
+                "property": "157",
+                "value": "set-5"
             },
             "subtype": "other",
             "display": {

@@ -8,8 +8,24 @@
 			"isHistorized": 0,
 			"configuration": {
 				"class": 50,
-				"endpoint": 0,
+				"endpoint": "#endpoint#",
 				"property": "value-66817"
+			},
+			"subtype": "numeric",
+			"unite": "A"
+		}
+	],
+"production": 
+	[
+		{
+			"name": "Courant-Produit",
+			"type": "info",
+			"isVisible": 0,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 50,
+				"endpoint": "#endpoint#",
+				"property": "value-66818"
 			},
 			"subtype": "numeric",
 			"unite": "A"

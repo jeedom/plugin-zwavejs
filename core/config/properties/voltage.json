@@ -10,8 +10,26 @@
 				"minValue": 0,
 				"maxValue": 250,
 				"class": 50,
-				"endpoint": 0,
+				"endpoint": "#endpoint#",
 				"property": "value-66561"
+			},
+			"subtype": "numeric",
+			"unite": "V"
+		}
+	],
+"production": 
+	[
+		{
+			"name": "Voltage-Production",
+			"type": "info",
+			"isVisible": 0,
+			"isHistorized": 0,
+			"configuration": {
+				"minValue": 0,
+				"maxValue": 250,
+				"class": 50,
+				"endpoint": "#endpoint#",
+				"property": "value-66562"
 			},
 			"subtype": "numeric",
 			"unite": "V"

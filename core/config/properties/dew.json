@@ -7,7 +7,7 @@
 			"isHistorized": 1,
 			"configuration": {
 				"class": 49,
-				"endpoint": 0,
+				"endpoint": "#endpoint#",
 				"property": "Dew Point"
 			},
 			"subtype": "numeric",

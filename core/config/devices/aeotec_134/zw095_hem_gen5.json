@@ -9,77 +9,86 @@
             "95"
         ]
     },
-    "commands": [
-        {
-            "name": "Consommation",
-            "type": "info",
-            "subtype": "numeric",
-            "isVisible": 1,
-            "isHistorized": 1,
-            "unite": "KWh",
-            "display": {
-                "generic_type": "CONSUMPTION"
-            },
-            "configuration": {
-                "minValue": 0,
-                "class": 50,
-                "endpoint": 0,
-                "property": "value-65537"
+    "properties": {
+        "Power": {
+            "multi": [
+                0,
+                1,
+                2,
+                3,
+            ],
+            "replace": {
+                "#endpoint#": "multiKey"
             }
         },
-        {
-            "name": "Puissance",
-            "type": "info",
-            "subtype": "numeric",
-            "isVisible": 1,
-            "isHistorized": 1,
-            "unite": "W",
-            "display": {
-                "generic_type": "POWER"
-            },
-            "configuration": {
-                "maxValue": 12000,
-                "minValue": 0,
-                "class": 50,
-                "endpoint": 0,
-                "property": "value-66049"
+        "Power|production": {
+            "type":"production",
+            "multi": [
+                0,
+                1,
+                2,
+                3,
+            ],
+            "replace": {
+                "#endpoint#": "multiKey"
             }
         },
-        {
-            "name": "Tension",
-            "type": "info",
-            "subtype": "numeric",
-            "isVisible": 1,
-            "isHistorized": 1,
-            "unite": "V",
-            "display": {
-                "generic_type": "VOLTAGE"
-            },
-            "configuration": {
-                "maxValue": 240,
-                "minValue": 220,
-                "class": 50,
-                "endpoint": 0,
-                "property": "value-66561"
+        "Energy": {
+            "multi": [
+                0,
+                1,
+                2,
+                3,
+            ],
+            "replace": {
+                "#endpoint#": "multiKey"
             }
         },
-        {
-            "name": "Intensité",
-            "type": "info",
-            "subtype": "numeric",
-            "isVisible": 1,
-            "isHistorized": 1,
-            "unite": "A",
-            "display": {
-                "generic_type": "DONT"
-            },
-            "configuration": {
-                "maxValue": 200,
-                "minValue": 0,
-                "class": 50,
-                "endpoint": 0,
-                "property": "value-66817"
+        "Voltage": {
+            "multi": [
+                0,
+                1,
+                2,
+                3,
+            ],
+            "replace": {
+                "#endpoint#": "multiKey"
+            }
+        },
+        "Voltage|production": {
+            "type":"production",
+            "multi": [
+                0,
+                1,
+                2,
+                3,
+            ],
+            "replace": {
+                "#endpoint#": "multiKey"
+            }
+        },
+        "Current": {
+            "multi": [
+                0,
+                1,
+                2,
+                3,
+            ],
+            "replace": {
+                "#endpoint#": "multiKey"
+            }
+        },
+        "Current|production": {
+            "type":"production",
+            "multi": [
+                0,
+                1,
+                2,
+                3,
+            ],
+            "replace": {
+                "#endpoint#": "multiKey"
             }
         }
-    ]
+    }
 }

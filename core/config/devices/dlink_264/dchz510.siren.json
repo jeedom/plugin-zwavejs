@@ -86,9 +86,8 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 112,
-                "value": "",
-                "index": 31,
-                "instance": 1
+                "endpoint": 0,
+                "property": "31"
             },
             "subtype": "numeric",
             "display": {
@@ -102,9 +101,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 112,
-                "value": "type=setvalue&value=1",
-                "index": 31,
-                "instance": 1
+                "endpoint": 0,
+                "property": "31",
+                "value": "set-1"
             },
             "subtype": "other",
             "display": {
@@ -118,9 +117,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 112,
-                "value": "type=setvalue&value=6",
-                "index": 31,
-                "instance": 1
+                "endpoint": 0,
+                "property": "31",
+                "value": "set-6"
             },
             "subtype": "other",
             "display": {
@@ -134,9 +133,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 112,
-                "value": "type=setvalue&value=12",
-                "index": 31,
-                "instance": 1
+                "endpoint": 0,
+                "property": "31",
+                "value": "set-12"
             },
             "subtype": "other",
             "display": {
@@ -150,9 +149,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 112,
-                "value": "type=setvalue&value=60",
-                "index": 31,
-                "instance": 1
+                "endpoint": 0,
+                "property": "31",
+                "value": "set-60"
             },
             "subtype": "other",
             "display": {

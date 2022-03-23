@@ -134,9 +134,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 112,
-                "value": "type=setconfig&value=1&size=1",
-                "index": 5,
-                "instance": 1
+                "endpoint": 0,
+                "property": "5",
+                "value": "set-1"
             },
             "subtype": "other",
             "display": {
@@ -150,9 +150,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 112,
-                "value": "type=setconfig&value=0&size=1",
-                "index": 5,
-                "instance": 1
+                "endpoint": 0,
+                "property": "5",
+                "value": "set-0"
             },
             "subtype": "other",
             "display": {
@@ -166,9 +166,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 112,
-                "value": "type=setconfig&value=2&size=1",
-                "index": 5,
-                "instance": 1
+                "endpoint": 0,
+                "property": "5",
+                "value": "set-2"
             },
             "subtype": "other",
             "display": {
@@ -182,9 +182,8 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 112,
-                "value": "",
-                "index": 5,
-                "instance": 1
+                "endpoint": 0,
+                "property": "5"
             },
             "subtype": "string",
             "display": {

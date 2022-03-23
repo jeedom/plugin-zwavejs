@@ -1195,6 +1195,7 @@ class zwavejs extends eqLogic {
 			}
 		}
 		foreach ($device['properties'] as $property => $details){
+			$property=explode('|',$property)[0];
 			if (!is_file(dirname(__FILE__) . '/../config/properties/' . strtolower($property).'.json')) {
 				continue;
 			}

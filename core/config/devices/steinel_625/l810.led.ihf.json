@@ -136,9 +136,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 112,
-                "value": "type=setconfig&value=1&size=1",
-                "index": 9,
-                "instance": 1
+                "endpoint": 0,
+                "property": "9",
+                "value": "set-1"
             },
             "subtype": "other",
             "display": {
@@ -152,9 +152,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 112,
-                "value": "type=setconfig&value=3&size=1",
-                "index": 9,
-                "instance": 1
+                "endpoint": 0,
+                "property": "9",
+                "value": "set-3"
             },
             "subtype": "other",
             "display": {
