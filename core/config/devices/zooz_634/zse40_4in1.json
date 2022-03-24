@@ -16,6 +16,14 @@
             "8449"
         ]
     },
+    "recommended": {
+        "params": [
+            {
+                "path": "112-0-1",
+                "value": "0"
+            }
+        ]
+    },
     "properties": {
         "Motion": {},
         "Temperature": {},

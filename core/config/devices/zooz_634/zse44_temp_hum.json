@@ -16,6 +16,14 @@
             "57348"
         ]
     },
+    "recommended": {
+        "params": [
+            {
+                "path": "112-0-13",
+                "value": "0"
+            }
+        ]
+    },
     "properties": {
         "Temperature": {},
         "Humidity": {},
