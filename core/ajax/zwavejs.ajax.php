@@ -35,7 +35,7 @@ try {
 	}
 	
 	if (init('action') == 'getNodeInfo') {
-		zwavejs::getNodeInfo(init('node'));
+		zwavejs::getNodeInfo(init('node'),init('info'));
 		ajax::success();
 	}
 	

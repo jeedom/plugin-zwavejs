@@ -22,7 +22,7 @@
     "properties": {
         "Flood": {"type":"alarm"},
         "Temperature": {"mode": "withTemp"},
-        "Tamper": {"type":"alarm"},
+        "Tamper": {"type":"alarm","returnStateTime":1,"returnStateValue":0},
         "Battery": {}
     }
 }

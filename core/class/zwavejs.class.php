@@ -351,7 +351,6 @@ class zwavejs extends eqLogic {
 								$node['filename'] = 'Aucun';
 							}
 							$node['numberGroups'] = count($node['groups']);
-							$node['nodeValues'] = zwavejs::constructValuePage($node['id'],$node['values']);
 							$node['classBasic'] = $node['deviceClass']['basic'];
 							$node['classGeneric'] = $node['deviceClass']['generic'];
 							$node['classSpecific'] = $node['deviceClass']['specific'];
@@ -415,6 +414,14 @@ class zwavejs extends eqLogic {
 								}
 							}
 							event::add('zwavejs::getNodeInfo',$node);
+						}
+					}
+				} else if ($value['origin']['type'] == 'getNodeValues'){
+					foreach ($value['result'] as $node){
+						if ($node['id']==$value['origin']['node']){
+							$values['id']=$node['id'];
+							$values['nodeValues'] = zwavejs::constructValuePage($node['id'],$node['values']);
+							event::add('zwavejs::getNodeValues',$values);
 						}
 					}
 				} else if ($value['origin']['type'] == 'group'){
@@ -644,9 +651,14 @@ class zwavejs extends eqLogic {
 		self::publishMqttApi('getInfo',array('type'=>'getInfo'));
 	}
 	
-	public static function getNodeInfo($_nodeId) {
+	public static function getNodeInfo($_nodeId,$_type='getNodeInfo') {
 		log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.'Demande d\'info d\'un Node '. $_nodeId );
-		self::publishMqttApi('getNodes',array('type'=>'getNodeInfo','node'=>$_nodeId));
+		self::publishMqttApi('getNodes',array('type'=>$_type,'node'=>$_nodeId));
+	}
+	
+	public static function getNodeValues($_nodeId) {
+		log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.'Demande d\'info d\'un Node '. $_nodeId );
+		self::publishMqttApi('getNodes',array('type'=>'getNodeValues','node'=>$_nodeId));
 	}
 	
 	public static function getNodeAssociations($_nodeId) {

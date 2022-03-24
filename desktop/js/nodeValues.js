@@ -115,7 +115,7 @@ $("body").off("click", ".createCommandInfo").on("click", ".createCommandInfo", f
 
 function node_load_values(){
   jeedom.zwavejs.node.info({
-    info : 'getNodeInfo',
+    info : 'getNodeValues',
     node : nodeId,
     global:false,
     error: function (error) {
@@ -133,7 +133,8 @@ function node_load_values(){
 }
 
 
-$('body').off('zwavejs::getNodeInfo').on('zwavejs::getNodeInfo', function (_event, _options) {
+$('body').off('zwavejs::getNodeValues').on('zwavejs::getNodeValues', function (_event, _options) {
+	console.log(_options)
 	$('#div_nodeValuesZwaveJsAlert').hideAlert();
 	if (_options['id'] == nodeId){
 		if (_options['status']=='Dead'){

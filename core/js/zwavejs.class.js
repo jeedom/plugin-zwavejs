@@ -147,7 +147,8 @@ jeedom.zwavejs.node = function() {
  	var paramsAJAX = jeedom.private.getParamsAJAX(params);
  	paramsAJAX.url = 'plugins/zwavejs/core/ajax/zwavejs.ajax.php';
  	paramsAJAX.data = {
- 		action: 'getNodeInfo',
+		action : 'getNodeInfo',
+ 		info: _params.info,
 		node : _params.node
  	};
  	$.ajax(paramsAJAX);
