@@ -1271,6 +1271,15 @@ class zwavejs extends eqLogic {
 						if (isset($details['calculValueOffset'])){
 							$command['configuration']['calculValueOffset'] =$details['calculValueOffset'];
 						}
+						if (isset($details['dashboard'])){
+							$command['template']['dashboard'] =$details['dashboard'];
+						}
+						if (isset($details['mobile'])){
+							$command['template']['mobile'] =$details['mobile'];
+						}
+						if (isset($details['generic_type'])){
+							$command['display']['generic_type'] =$details['generic_type'];
+						}
 						$device['commands'][] = $command;
 					}
 				}
@@ -1561,6 +1570,17 @@ class zwavejsCmd extends cmd {
 		$path = $cc.'/'.$endpoint.'/'.$property;
 		if ($value == 'get'){
 			$args=array('args'=>array(array('nodeId'=>intval($node),'commandClass'=>intval($cc)),'get',array($property)));
+			zwavejs::publishMqttApi('sendCommand',$args);
+			return;
+		}
+		if ($property == 'sendReport'){
+			$elements=explode('-',$value);
+			$report = array();
+			foreach ($elements as $element) {
+				$elementArray = explode(':',$element);
+				$report[$elementArray[0]]=intval($elementArray[1]);
+			}
+			$args=array('args'=>array(array('nodeId'=>intval($node),'commandClass'=>intval($cc)),'sendReport',array($report)));
 			zwavejs::publishMqttApi('sendCommand',$args);
 			return;
 		}

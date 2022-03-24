@@ -81,9 +81,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 113,
-                "value": "type=setvalue&value=1",
-                "index": 3,
-                "instance": 1
+                "endpoint": 0,
+                "property": "sendReport",
+                "value": "notificationType:7-notificationEvent:1"
             },
             "subtype": "other",
             "display": {
@@ -97,9 +97,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 113,
-                "value": "type=setvalue&value=2",
-                "index": 3,
-                "instance": 1
+                "endpoint": 0,
+                "property": "sendReport",
+                "value": "notificationType:10-notificationEvent:2"
             },
             "subtype": "other",
             "display": {
@@ -113,9 +113,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 113,
-                "value": "type=setvalue&value=3",
-                "index": 3,
-                "instance": 1
+                "endpoint": 0,
+                "property": "sendReport",
+                "value": "notificationType:10-notificationEvent:3"
             },
             "subtype": "other",
             "display": {
@@ -129,9 +129,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 113,
-                "value": "type=setvalue&value=4",
-                "index": 3,
-                "instance": 1
+                "endpoint": 0,
+                "property": "sendReport",
+                "value": "notificationType:10-notificationEvent:1"
             },
             "subtype": "other",
             "display": {
@@ -145,9 +145,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 113,
-                "value": "type=setvalue&value=5",
-                "index": 3,
-                "instance": 1
+                "endpoint": 0,
+                "property": "sendReport",
+                "value": "notificationType:6-notificationEvent:22"
             },
             "subtype": "other",
             "display": {
@@ -161,9 +161,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 113,
-                "value": "type=setvalue&value=6",
-                "index": 3,
-                "instance": 1
+                "endpoint": 0,
+                "property": "sendReport",
+                "value": "notificationType:6-notificationEvent:3"
             },
             "subtype": "other",
             "display": {
@@ -177,9 +177,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 113,
-                "value": "type=setvalue&value=0",
-                "index": 3,
-                "instance": 1
+                "endpoint": 0,
+                "property": "sendReport",
+                "value": "notificationType:10-notificationEvent:254"
             },
             "subtype": "other",
             "display": {

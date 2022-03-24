@@ -20,9 +20,17 @@
         "withTemp": "Avec capteur de température"
     },
     "properties": {
-        "Flood": {"type":"alarm"},
-        "Temperature": {"mode": "withTemp"},
-        "Tamper": {"type":"alarm","returnStateTime":1,"returnStateValue":0},
+        "Flood": {
+            "type": "alarm"
+        },
+        "Temperature": {
+            "mode": "withTemp"
+        },
+        "Tamper": {
+            "type": "alarm",
+            "returnStateTime": 1,
+            "returnStateValue": 0
+        },
         "Battery": {}
     }
 }

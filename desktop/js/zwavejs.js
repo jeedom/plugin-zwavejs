@@ -87,24 +87,24 @@ $('.confRecommended').on('click', function () {
 $('.changeIncludeState').off('click').on('click', function () {
   var dialog_title = '{{Inclusion/Exclusion}}';
   var dialog_message = '<form class="form-horizontal onsubmit="return false;"> ';
-  dialog_title = '{{Inclusion/Exclusion}}';
+  dialog_title = '<i class="fas fa-sign-in-alt fa-rotate-90"></i> {{Inclusion/Exclusion}}';
   dialog_message += '<label class="control-label" > {{Sélectionnez le mode}} </label> ' +
   '<div> <div class="radio"> <label > ' +
-  '<input type="radio" name="inclusion" method="include" id="0" options="2" checked="checked"> {{Inclusion par défaut}} </label> ' +
+  '<input type="radio" name="inclusion" method="include" id="0" options="2" checked="checked"> <i class="fas fa-plus" style="color:green"></i> {{Inclusion par défaut}} </label> ' +
   '</div><div class="radio"> <label > ' +
-  '<input type="radio" name="inclusion" method="include" id="1" options="3"> {{Inclusion sécurisée forcée S0}}</label> ' +
+  '<input type="radio" name="inclusion" method="include" id="1" options="3"> <i class="fas fa-lock" style="color:orange"></i> {{Inclusion sécurisée forcée S0}}</label> ' +
   '</div> ' +
   '</div><div class="radio"> <label > ' +
-  '<input type="radio" name="inclusion" method="include" id="2" options="1"> {{Inclusion sécurisée forcée S2}}</label> ' +
+  '<input type="radio" name="inclusion" method="include" id="2" options="1"> <i class="fas fa-qrcode" style="color:blue"></i> {{Inclusion sécurisée forcée S2}}</label> ' +
   '</div>' +
   '</div><div class="radio"> <label > ' +
-  '<input type="radio" name="inclusion" method="exclude" id="3" options="0"> {{Exclusion}}</label> ' +
+  '<input type="radio" name="inclusion" method="exclude" id="3" options="0"> <i class="fas fa-minus" style="color:red"></i>  {{Exclusion}}</label> ' +
   '</div>' +
   '</div><div class="radio"> <label > ' +
-  '<input type="radio" name="inclusion" method="stop" id="4" options="Inclusion"> {{Arrêter Inclusion}}</label> ' +
+  '<input type="radio" name="inclusion" method="stop" id="4" options="Inclusion"> <i class="fas fa-stop" style="color:green"></i> {{Arrêter Inclusion}}</label> ' +
   '</div>' +
   '</div><div class="radio"> <label > ' +
-  '<input type="radio" name="inclusion" method="stop" id="5" options="Exclusion"> {{Arrêter Exclusion}}</label> ' +
+  '<input type="radio" name="inclusion" method="stop" id="5" options="Exclusion"> <i class="fas fa-stop" style="color:red"></i>  {{Arrêter Exclusion}}</label> ' +
   '</div>';
   dialog_message += '</form>';
   bootbox.dialog({
@@ -233,9 +233,9 @@ $('body').off('zwavejs::inclusion').on('zwavejs::inclusion', function (_event, _
       level: 'warning'
    });
    if (_options.type == 'inclusion'){
-		$('#div_inclusionAlert').empty().append('<div class="alert alert-warning" role="alert"> {{Une inclusion est en cours ...}}</div>');
+		$('#div_inclusionAlert').empty().append('<div class="alert alert-warning" role="alert"> {{Le mode inclusion est actif ...}}</div>');
    } else if (_options.type == 'exclusion'){
-		$('#div_inclusionAlert').empty().append('<div class="alert alert-warning" role="alert"> {{Une exclusion est en cours ...}}</div>');
+		$('#div_inclusionAlert').empty().append('<div class="alert alert-warning" role="alert"> {{Le mode exclusion est actif ...}}</div>');
    } else {
 		$('#div_inclusionAlert').empty();
    }

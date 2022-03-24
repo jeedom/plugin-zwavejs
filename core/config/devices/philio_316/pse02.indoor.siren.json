@@ -4,86 +4,42 @@
     "comlink": "2960-zipato-sirene-d-interieur-z-wave-3858890733310",
     "remark": "",
     "imglink": "philio.pse02",
-    "recommended": {
-        "params": [
-            {
-                "index": 7,
-                "value": "Using Notification Report with other sounds"
-            }
-        ],
-        "needswakeup": false
-    },
     "versions": {
         "4": [
             "10"
         ]
     },
+    "recommended": {
+        "params": [
+            {
+                "path": "112-0-7",
+                "value": "8"
+            }
+        ]
+    },
+    "properties": {
+        "Switch": {
+            "type":"sensorState",
+            "dashboard": "alert",
+            "mobile": "alert",
+            "generic_type": "DONT"
+        },
+        "Tamper": {
+            "returnStateTime": 1,
+            "returnStateValue": 0
+        }
+    },
     "commands": [
-        {
-            "name": "Etat",
-            "type": "info",
-            "isVisible": 1,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 37,
-                "endpoint": 0,
-                "property": "currentValue"
-            },
-            "subtype": "binary",
-            "display": {
-                "invertBinary": 1,
-                "generic_type": "DONT"
-            },
-            "template": {
-                "dashboard": "alert",
-                "mobile": "alert"
-            },
-            "unite": ""
-        },
-        {
-            "name": "On",
-            "type": "action",
-            "isVisible": 1,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 37,
-                "endpoint": 0,
-                "property": "targetValue",
-                "value": "true"
-            },
-            "value": "Etat",
-            "subtype": "other",
-            "display": {
-                "generic_type": "DONT"
-            }
-        },
-        {
-            "name": "Off",
-            "type": "action",
-            "isVisible": 1,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 37,
-                "endpoint": 0,
-                "property": "targetValue",
-                "value": "false"
-            },
-            "value": "Etat",
-            "subtype": "other",
-            "display": {
-                "generic_type": "DONT"
-            }
-        },
         {
             "name": "Emergency",
             "type": "action",
-            "isVisible": 0,
+            "isVisible": 1,
             "isHistorized": 0,
             "configuration": {
                 "class": 113,
-                "value": "type=setvalue&value=1",
-                "index": 3,
-                "instance": 1
+                "endpoint": 0,
+                "property": "sendReport",
+                "value": "notificationType:7-notificationEvent:1"
             },
             "subtype": "other",
             "display": {
@@ -93,13 +49,13 @@
         {
             "name": "Fire",
             "type": "action",
-            "isVisible": 0,
+            "isVisible": 1,
             "isHistorized": 0,
             "configuration": {
                 "class": 113,
-                "value": "type=setvalue&value=2",
-                "index": 3,
-                "instance": 1
+                "endpoint": 0,
+                "property": "sendReport",
+                "value": "notificationType:10-notificationEvent:2"
             },
             "subtype": "other",
             "display": {
@@ -109,13 +65,13 @@
         {
             "name": "Ambulance",
             "type": "action",
-            "isVisible": 0,
+            "isVisible": 1,
             "isHistorized": 0,
             "configuration": {
                 "class": 113,
-                "value": "type=setvalue&value=3",
-                "index": 3,
-                "instance": 1
+                "endpoint": 0,
+                "property": "sendReport",
+                "value": "notificationType:10-notificationEvent:3"
             },
             "subtype": "other",
             "display": {
@@ -125,13 +81,13 @@
         {
             "name": "Police",
             "type": "action",
-            "isVisible": 0,
+            "isVisible": 1,
             "isHistorized": 0,
             "configuration": {
                 "class": 113,
-                "value": "type=setvalue&value=4",
-                "index": 3,
-                "instance": 1
+                "endpoint": 0,
+                "property": "sendReport",
+                "value": "notificationType:10-notificationEvent:1"
             },
             "subtype": "other",
             "display": {
@@ -141,13 +97,13 @@
         {
             "name": "Door chime",
             "type": "action",
-            "isVisible": 0,
+            "isVisible": 1,
             "isHistorized": 0,
             "configuration": {
                 "class": 113,
-                "value": "type=setvalue&value=5",
-                "index": 3,
-                "instance": 1
+                "endpoint": 0,
+                "property": "sendReport",
+                "value": "notificationType:6-notificationEvent:22"
             },
             "subtype": "other",
             "display": {
@@ -157,75 +113,17 @@
         {
             "name": "Beep Beep",
             "type": "action",
-            "isVisible": 0,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 113,
-                "value": "type=setvalue&value=6",
-                "index": 3,
-                "instance": 1
-            },
-            "subtype": "other",
-            "display": {
-                "generic_type": "LIGHT_ON"
-            }
-        },
-        {
-            "name": "Stop",
-            "type": "action",
-            "isVisible": 0,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 113,
-                "value": "type=setvalue&value=0",
-                "index": 3,
-                "instance": 1
-            },
-            "subtype": "other",
-            "display": {
-                "generic_type": "LIGHT_ON"
-            }
-        },
-        {
-            "name": "Sound",
-            "type": "info",
             "isVisible": 1,
             "isHistorized": 0,
             "configuration": {
                 "class": 113,
-                "value": "",
-                "index": 3,
-                "instance": 1
+                "endpoint": 0,
+                "property": "sendReport",
+                "value": "notificationType:10-notificationEvent:4"
             },
-            "subtype": "numeric",
+            "subtype": "other",
             "display": {
-                "generic_type": "DONT"
-            },
-            "template": {
-                "dashboard": "tile",
-                "mobile": "tile"
-            }
-        },
-        {
-            "name": "Sabotage",
-            "type": "info",
-            "isVisible": 1,
-            "isHistorized": 1,
-            "configuration": {
-                "class": 113,
-                "value": "",
-                "index": 10,
-                "instance": 1,
-                "calculValueOffset": "#value#==3"
-            },
-            "subtype": "binary",
-            "display": {
-                "invertBinary": "1",
-                "generic_type": "SABOTAGE"
-            },
-            "template": {
-                "dashboard": "alert",
-                "mobile": "alert"
+                "generic_type": "LIGHT_ON"
             }
         }
     ]

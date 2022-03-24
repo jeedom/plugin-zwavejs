@@ -126,5 +126,69 @@
 				"mobile": "timePrise"
 			}
 		}
+	],
+"sensorState": 
+	[
+		{
+			"name": "Etat",
+			"type": "info",
+			"isVisible": 0,
+			"isHistorized": 1,
+			"configuration": {
+				"class": 48,
+				"endpoint": "#endpoint#",
+				"property": "General Purpose"
+			},
+			"subtype": "binary",
+			"display": {
+				"generic_type": "LIGHT_STATE"
+			},
+			"template": {
+				"dashboard": "timeLight",
+				"mobile": "timeLight"
+			}
+		},
+		{
+			"name": "On",
+			"type": "action",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 37,
+				"endpoint": "#endpoint#",
+				"property": "targetValue",
+				"value": "true"
+			},
+			"value": "Etat",
+			"subtype": "other",
+			"display": {
+				"generic_type": "LIGHT_ON"
+			},
+			"template": {
+				"dashboard": "timeLight",
+				"mobile": "timeLight"
+			}
+		},
+		{
+			"name": "Off",
+			"type": "action",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 37,
+				"endpoint": "#endpoint#",
+				"property": "targetValue",
+				"value": "false"
+			},
+			"value": "Etat",
+			"subtype": "other",
+			"display": {
+				"generic_type": "LIGHT_OFF"
+			},
+			"template": {
+				"dashboard": "timeLight",
+				"mobile": "timeLight"
+			}
+		}
 	]
 }
