@@ -1,0 +1,24 @@
+{
+    "name": "XS Tilt Shock Sensor",
+    "ref": "ZSE43",
+    "manufacturer": "Zooz",
+    "type": "Choc,Inclinaison", 
+    "reset": "Appuyer 2 fois, puis maintenir appuyé la 3ème fois le bouton à l'intérieur pendant 10 secondes. Quand la LED clignote, appuyer immédiatement 2 fois sur le bouton pour finaliser le reset. La LED clignotera 3 fois pour confirmer la réussite du reset.",
+    "pairing": "Appuyer 3 fois rapidement sur le bouton à l'intérieur",
+    "remark": "",
+    "documentation": "https://cdn.shopify.com/s/files/1/0218/7704/files/zooz-700-series-tilt-shock-xs-sensor-zse43-manual.pdf?v=1640009785",
+    "buylink": "",
+    "configuration": {
+        "battery_type": "1x3V CR2032"
+    },
+    "versions": {
+        "28672": [
+            "57347"
+        ]
+    },
+    "properties": {
+        "Opening": {},
+        "Tamper": {},
+        "Battery": {}
+    }
+}
