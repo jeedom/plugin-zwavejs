@@ -420,6 +420,7 @@ class zwavejs extends eqLogic {
 					foreach ($value['result'] as $node){
 						if ($node['id']==$value['origin']['node']){
 							$values['id']=$node['id'];
+							$values['status']=$node['status'];
 							$values['nodeValues'] = zwavejs::constructValuePage($node['id'],$node['values']);
 							event::add('zwavejs::getNodeValues',$values);
 						}

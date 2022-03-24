@@ -134,7 +134,6 @@ function node_load_values(){
 
 
 $('body').off('zwavejs::getNodeValues').on('zwavejs::getNodeValues', function (_event, _options) {
-	console.log(_options)
 	$('#div_nodeValuesZwaveJsAlert').hideAlert();
 	if (_options['id'] == nodeId){
 		if (_options['status']=='Dead'){
