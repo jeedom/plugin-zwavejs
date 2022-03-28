@@ -418,16 +418,18 @@ class zwavejs extends eqLogic {
 										$node['confType'] .= '  - '.$command['name'] .'<br>';
 									}
 								}
-								$node['lastWakeup'] ='N/A';
-								if ($eqLogic->getConfiguration('lastWakeUp','') != ''){
-									$lastWakeUp = time() - $eqLogic->getConfiguration('lastWakeUp','');
-									$node['lastWakeup'] = self::secondsToTime($lastWakeUp);
-									try {
-										$configWakeup = $node['values']['132-0-wakeUpInterval']['value'];
-										$node['configWakeup'] = self::secondsToTime($configWakeup);
+								try{
+									$node['lastWakeup'] ='N/A';
+									$node['nextWakeup'] = 'N/A';
+									$node['configWakeup'] = 'N/A';
+									$configWakeup = $node['values']['132-0-wakeUpInterval']['value'];
+									$node['configWakeup'] = self::secondsToTime($configWakeup);
+									if ($eqLogic->getConfiguration('lastWakeUp','') != ''){
+										$lastWakeUp = time() - $eqLogic->getConfiguration('lastWakeUp','');
+										$node['lastWakeup'] = self::secondsToTime($lastWakeUp);
 										$node['nextWakeup'] = self::secondsToTime($configWakeup - $lastWakeUp);
-									} catch(Exception $e){
-									}
+									} 
+								}catch(Exception $e){
 								}
 							}
 							event::add('zwavejs::getNodeInfo',$node);
