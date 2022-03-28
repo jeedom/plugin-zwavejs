@@ -92,6 +92,7 @@ function network_load_data(){
           'eqname': nodes[z].eqName,
           'name': nodes[z].name,
           'status': nodes[z].status,
+          'basic': nodes[z].deviceClass.basic,
           'neighbours': nodes[z].neighbors,
           'interview': nodes[z].interviewStage,
           'img': nodes[z].img
@@ -102,6 +103,7 @@ function network_load_data(){
           'name': nodes[z].productDescription,
           'neighbours': nodes[z].neighbors,
           'status': nodes[z].status,
+          'basic': nodes[z].deviceClass.basic,
           'interview': nodes[z].interviewStage,
           'img': nodes[z].img,
         });
@@ -145,7 +147,9 @@ function network_load_data(){
     if (node.id == controllerId) {
       nodecolor = '#a65ba6';
       nodesize = 16;
-    } else if (node.data.neighbours.length < 1 || node.data.status == 'Dead' ) {
+    } else if (node.data.basic == 1){
+		nodecolor = '#FFFFFF';
+	} else if (node.data.neighbours.length < 1 || node.data.status == 'Dead' ) {
       nodecolor = '#d20606';
     } else if (node.data.neighbours.includes(controllerId) && node.data.status != 'Dead') {
       nodecolor = '#7BCC7B';

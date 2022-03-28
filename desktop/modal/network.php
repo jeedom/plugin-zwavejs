@@ -57,6 +57,9 @@ if (!isConnect('admin')) {
 .node-na-color {
 	color: white;
 }
+.node-controller {
+	color: white;
+}
 .greeniconcolor {
 	color: green;
 }
@@ -127,6 +130,10 @@ if (!isConnect('admin')) {
 							<tr>
 								<td class="node-no-neighbourhood-color"><i class="fas fa-square fa-2x"></i></td>
 								<td>{{Présumé mort ou Pas de voisin}}</td>
+							</tr>
+							<tr>
+								<td class="node-controller"><i class="fas fa-square fa-2x"></i></td>
+								<td>{{Contrôleur mobile}}</td>
 							</tr>
 							<tr>
 								<td class="node-interview-not-completed-color"><i class="fas fa-square fa-2x"></i></td>
