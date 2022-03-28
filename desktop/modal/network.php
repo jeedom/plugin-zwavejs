@@ -69,6 +69,10 @@ if (!isConnect('admin')) {
 .rediconcolor {
 	color: red;
 }
+
+#graph_network svg g text {
+    fill: var(--txt-color) !important;
+  }
 </style>
 <div id="div_networkzwavejsAlert" style="display: none;"></div>
 <div class="network" id="div_templateNetwork">

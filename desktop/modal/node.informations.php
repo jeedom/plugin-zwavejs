@@ -67,7 +67,7 @@ include_file('3rdparty', 'jsonTree/jsonTree', 'js', 'zwavejs');
 							<h4 class="panel-title"><i class="fas fa-heartbeat"></i> {{Statut Noeud}}</h4>
 						</div>
 						<div class="panel-body">
-							<p><b>{{Statut : }}</b><span class="getNodeInfo-status label label-info" style="font-size : 1em;"></span></p>
+							<p><b>{{Statut : }}</b><span class="getNodeInfo-status" style="font-size : 1em;"></span></p>
 							<p><b>{{Initié : }}</b><span class="getNodeInfo-inited label label-info" style="font-size : 1em;"></span></p>
 							<p><b>{{Stage : }}</b><span class="getNodeInfo-interviewStage label label-info" style="font-size : 1em;"></span></p>
 							<p><b>{{Prêt : }} </b><span class="getNodeInfo-ready label label-info" style="font-size : 1em;"></span></p>

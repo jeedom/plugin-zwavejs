@@ -427,7 +427,11 @@ class zwavejs extends eqLogic {
 									if ($eqLogic->getConfiguration('lastWakeUp','') != ''){
 										$lastWakeUp = time() - $eqLogic->getConfiguration('lastWakeUp','');
 										$node['lastWakeup'] = self::secondsToTime($lastWakeUp);
-										$node['nextWakeup'] = self::secondsToTime($configWakeup - $lastWakeUp);
+										if ($lastWakeUp > $configWakeup) {
+											$node['nextWakeup'] = '- '. self::secondsToTime($lastWakeUp - $configWakeup);
+										} else {
+											$node['nextWakeup'] = self::secondsToTime($configWakeup - $lastWakeUp);
+										}
 									} 
 								}catch(Exception $e){
 								}
@@ -1084,7 +1088,7 @@ class zwavejs extends eqLogic {
 			if ($values['isRouting']) {
 				$isRouting = '<span title="Routing" style="font-size : 1.5em;"><i class="fas fa-check icon_green" aria-hidden="true"></i></span>';
 			} else {
-				$isRouting = '<span title="No Routing style="font-size : 1.5em;"><i class="fas fa-minus-circle icon_orange" aria-hidden="true"></i></span>';
+				$isRouting = '<span title="No Routing" style="font-size : 1.5em;"><i class="fas fa-minus-circle icon_orange" aria-hidden="true"></i></span>';
 			}
 			$healthPage .= '<td>'.$isRouting.'</td>';
 			
@@ -1105,7 +1109,7 @@ class zwavejs extends eqLogic {
 			} else if (($values['status'] == 'Awake')){
 				$status = '<span title="Awake" style="font-size : 1.5em;"><i class="fas fa-grin icon_green" aria-hidden="true"></i></span>';
 			} else if (($values['status'] == 'Asleep')){
-				$status = '<span title="Sleeping" style="font-size : 1.5em;"><i class="icon_orange" aria-hidden="true">z<sup>z<sup>z</sup></sup></i></span><br>';
+				$status = '<span title="Sleeping" style="font-size : 1.5em;"><i class="icon_orange" aria-hidden="true">z<sup>z<sup>z</sup></sup></i></span>';
 			} else {
 				$status = '<span title="Other" style="font-size : 1.5em;"><i class="icon_orange" aria-hidden="true">'.$values['status'].'</i></span>';
 			}
@@ -1122,7 +1126,12 @@ class zwavejs extends eqLogic {
 			$healthPage .= '<td>'.date("d/m/Y H:i:s",$values['lastActive']/ 1000);
 			if (($values['status'] == 'Asleep') && $wakedup !='N/A'){
 				$healthPage .='<br><i class="fas fa-grin icon_blue" title="Dernier réveil" aria-hidden="true"></i> <span title="Dernier réveil" style="font-size : 0.7em;">'.self::secondsToTime($wakedup).'</span>';
-				$healthPage .='<br><i class="fas fa-arrow-right icon_blue" title="Prochain réveil estimé" aria-hidden="true"></i> <span title="Prochain réveil estimé" style="font-size : 0.7em;">'.self::secondsToTime($values['values']['132-0-wakeUpInterval']['value']-$wakedup).'</span>';
+				if ($wakedup > $values['values']['132-0-wakeUpInterval']['value']) {
+					$next = '- ' . self::secondsToTime($wakedup - $values['values']['132-0-wakeUpInterval']['value']);
+				} else {
+					$next = self::secondsToTime($values['values']['132-0-wakeUpInterval']['value'] - $wakedup);
+				}
+				$healthPage .='<br><i class="fas fa-arrow-right icon_blue" title="Prochain réveil estimé" aria-hidden="true"></i> <span title="Prochain réveil estimé" style="font-size : 0.7em;">'.$next.'</span>';
 				$healthPage .='<br><i class="fas fa-wrench icon_blue" title="WakeUp Interval" aria-hidden="true"></i> <span title="WakeUp Interval" style="font-size : 0.7em;">'.self::secondsToTime($values['values']['132-0-wakeUpInterval']['value']).'</span>';
 			}
 			$healthPage .='</td>';

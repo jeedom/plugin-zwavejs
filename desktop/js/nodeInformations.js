@@ -71,22 +71,31 @@ $('body').off('zwavejs::getNodeInfo').on('zwavejs::getNodeInfo', function (_even
 					valueStat = data[stat]
 					$('.getNodeStats-'+stat).empty().append(valueStat); 
 				}
-			} else {
-				if (key == 'dbLink'){
-					html = '<a href="'+data.toString()+'" target="_blank"><i class="fas fa-book"></i></a>'
-					$('.getNodeInfo-'+key).empty().append(html);
-				} else if (key == 'lastActive'){
+			} else if (key == 'dbLink'){
+				html = '<a href="'+data.toString()+'" target="_blank"><i class="fas fa-book"></i></a>'
+				$('.getNodeInfo-'+key).empty().append(html);
+			} else if (key == 'lastActive'){
 					$('.getNodeInfo-'+key).empty().append(jeedom.zwavejs.timestampConverter(data/1000));
+			} else if (key == 'status') {
+				if (data == 'Asleep' || data == 'Awake'){
+					$('.wakeupInfo').show();
 				} else {
-					if (key == 'status') {
-						if (data == 'Asleep' || data == 'Awake'){
-							$('.wakeupInfo').show();
-						} else {
-							$('.wakeupInfo').hide();
-						}
-					}
-					$('.getNodeInfo-'+key).empty().append(data.toString());
+					$('.wakeupInfo').hide();
 				}
+				if (data == 'Asleep'){
+					newdata = '<span title="Sleeping" style="font-size : 1.5em;"><i class="icon_orange" aria-hidden="true">z<sup>z<sup>z</sup></sup></i></span>';
+				} else if (data == 'Dead') {
+					newdata =  '<span title="Dead" style="font-size : 1.5em;"><i class="fas fa-skull-crossbones icon_red" aria-hidden="true"></i></span>';
+				} else if (data == 'Alive') {
+					newdata =  '<span title="Alive" style="font-size : 1.5em;"><i class="fas fa-check icon_green" aria-hidden="true"></i></span>';
+				} else if (data == 'Awake') {
+					newdata =  '<span title="Awake" style="font-size : 1.5em;"><i class="fas fa-grin icon_green" aria-hidden="true"></i></span>';
+				} else {
+					newdata = '<span title="Other" style="font-size : 1.5em;"><i class="icon_orange" aria-hidden="true">'+data+'</i></span>';
+				}
+				$('.getNodeInfo-'+key).empty().append(newdata);
+			} else {
+				$('.getNodeInfo-'+key).empty().append(data.toString());
 			}
 		}
 	}
