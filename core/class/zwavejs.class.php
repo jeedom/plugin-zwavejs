@@ -29,6 +29,12 @@ class zwavejs extends eqLogic {
 	/*     * ********************************************************************** */
 	/*     * ***********************zwavejs MANAGEMENT*************************** */
 	
+	function secondsToTime($seconds) {
+		$dtF = new \DateTime('@0');
+		$dtT = new \DateTime("@$seconds");
+		return $dtF->diff($dtT)->format('%a j %h h %i min %s s');
+	}
+	
 	public static function configureSettings($_path) {
 		$file = $_path .'/settings.json';
 		$settings = array();
@@ -412,6 +418,17 @@ class zwavejs extends eqLogic {
 										$node['confType'] .= '  - '.$command['name'] .'<br>';
 									}
 								}
+								$node['lastWakeup'] ='N/A';
+								if ($eqLogic->getConfiguration('lastWakeUp','') != ''){
+									$lastWakeUp = time() - $eqLogic->getConfiguration('lastWakeUp','');
+									$node['lastWakeup'] = self::secondsToTime($lastWakeUp);
+									try {
+										$configWakeup = $node['values']['132-0-wakeUpInterval']['value'];
+										$node['configWakeup'] = self::secondsToTime($configWakeup);
+										$node['nextWakeup'] = self::secondsToTime($configWakeup - $lastWakeUp);
+									} catch(Exception $e){
+									}
+								}
 							}
 							event::add('zwavejs::getNodeInfo',$node);
 						}
@@ -630,6 +647,10 @@ class zwavejs extends eqLogic {
 					} else {
 						if ($class == 'status'){
 							$eqLogic->updateCmd('0-0-nodeStatus', $value['status']);
+							if ($value['status'] == 'Awake'){
+								$eqLogic->setConfiguration('lastWakeUp', time());
+								$eqLogic->save();
+							}
 						}
 					}
 				}
@@ -1071,7 +1092,10 @@ class zwavejs extends eqLogic {
 				$inited = '<span title="Non initié" style="font-size : 1.5em;"><i class="fas fa-minus-circle icon_red" aria-hidden="true"></i></span>';
 			}
 			$healthPage .= '<td>'.$inited.'</td>';
-
+			$wakedup ='N/A';
+			if ($eqLogic->getConfiguration('lastWakeUp','') != ''){
+				$wakedup = time() - $eqLogic->getConfiguration('lastWakeUp','');
+			}
 			if ($values['status'] == 'Alive') {
 				$status = '<span title="Alive" style="font-size : 1.5em;"><i class="fas fa-check icon_green" aria-hidden="true"></i></span>';
 			} else if (($values['status'] == 'Dead')){
@@ -1079,7 +1103,7 @@ class zwavejs extends eqLogic {
 			} else if (($values['status'] == 'Awake')){
 				$status = '<span title="Awake" style="font-size : 1.5em;"><i class="fas fa-grin icon_green" aria-hidden="true"></i></span>';
 			} else if (($values['status'] == 'Asleep')){
-				$status = '<span title="Sleeping" style="font-size : 1.5em;"><i class="icon_orange" aria-hidden="true">z<sup>z<sup>z</sup></sup></i></span>';
+				$status = '<span title="Sleeping" style="font-size : 1.5em;"><i class="icon_orange" aria-hidden="true">z<sup>z<sup>z</sup></sup></i></span><br>';
 			} else {
 				$status = '<span title="Other" style="font-size : 1.5em;"><i class="icon_orange" aria-hidden="true">'.$values['status'].'</i></span>';
 			}
@@ -1093,7 +1117,13 @@ class zwavejs extends eqLogic {
 			}
 			$healthPage .= '<td><span class="label '.$labelInterview .'" style="font-size : 1em;">'.$values['interviewStage'].'</span></td>';
 			
-			$healthPage .= '<td>'.date("d/m/Y H:i:s",$values['lastActive']/ 1000).'</td>';
+			$healthPage .= '<td>'.date("d/m/Y H:i:s",$values['lastActive']/ 1000);
+			if (($values['status'] == 'Asleep') && $wakedup !='N/A'){
+				$healthPage .='<br><i class="fas fa-grin icon_blue" title="Dernier réveil" aria-hidden="true"></i> <span title="Dernier réveil" style="font-size : 0.7em;">'.self::secondsToTime($wakedup).'</span>';
+				$healthPage .='<br><i class="fas fa-arrow-right icon_blue" title="Prochain réveil estimé" aria-hidden="true"></i> <span title="Prochain réveil estimé" style="font-size : 0.7em;">'.self::secondsToTime($values['values']['132-0-wakeUpInterval']['value']-$wakedup).'</span>';
+				$healthPage .='<br><i class="fas fa-wrench icon_blue" title="WakeUp Interval" aria-hidden="true"></i> <span title="WakeUp Interval" style="font-size : 0.7em;">'.self::secondsToTime($values['values']['132-0-wakeUpInterval']['value']).'</span>';
+			}
+			$healthPage .='</td>';
 			$healthPage .= '<td><a class="btn btn-info btn-xs pingDevice" data-id="' . $values['id'] . '"><i class="fas fa-eye"></i> Ping</a></td>';
 			$healthPage .= '</tr>';
 		}

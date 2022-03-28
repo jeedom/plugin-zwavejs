@@ -78,6 +78,13 @@ $('body').off('zwavejs::getNodeInfo').on('zwavejs::getNodeInfo', function (_even
 				} else if (key == 'lastActive'){
 					$('.getNodeInfo-'+key).empty().append(jeedom.zwavejs.timestampConverter(data/1000));
 				} else {
+					if (key == 'status') {
+						if (data == 'Asleep' || data == 'Awake'){
+							$('.wakeupInfo').show();
+						} else {
+							$('.wakeupInfo').hide();
+						}
+					}
 					$('.getNodeInfo-'+key).empty().append(data.toString());
 				}
 			}
