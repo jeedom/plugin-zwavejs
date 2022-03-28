@@ -58,7 +58,7 @@ if (!isConnect('admin')) {
 	color: white;
 }
 .node-controller {
-	color: white;
+	color: #A7C7E7;
 }
 .greeniconcolor {
 	color: green;

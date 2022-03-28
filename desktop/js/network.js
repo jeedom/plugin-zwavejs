@@ -148,7 +148,7 @@ function network_load_data(){
       nodecolor = '#a65ba6';
       nodesize = 16;
     } else if (node.data.basic == 1){
-		nodecolor = '#FFFFFF';
+		nodecolor = '#A7C7E7';
 	} else if (node.data.neighbours.length < 1 || node.data.status == 'Dead' ) {
       nodecolor = '#d20606';
     } else if (node.data.neighbours.includes(controllerId) && node.data.status != 'Dead') {
