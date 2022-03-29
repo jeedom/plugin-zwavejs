@@ -1,0 +1,14 @@
+{
+    "name": "RaZberry Controller 7 Pro",
+    "type": "Contrôleur",
+    "comlink": "",
+    "remark": "",
+    "versions": {
+        "1025": [
+            "257"
+        ]
+    },
+    "properties": {
+        "Controller": {}
+    }
+}
