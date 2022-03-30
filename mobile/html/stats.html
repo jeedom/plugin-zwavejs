@@ -1,0 +1,69 @@
+<div class="statsPage">
+<table data-role="table" id="statistics_network" data-mode="columntoggle" class="ui-responsive table-stroke tableStat">
+		<tr>
+			<td><b>{{Messages transmis TX :}}</b></td>
+			<td><span class="getStats-messagesTX"></span></td>
+		</tr>
+		<tr>
+			<td><b>{{Messages reçus RX :}}</b></td>
+			<td><span class="getStats-messagesRX"></span></td>
+		</tr>
+		<tr>
+			<td><b>{{Messages RX abandonnés :}}</b></td>
+			<td><span class="getStats-messagesDroppedRX"></span></td>
+		</tr>
+		<tr>
+			<td><b>{{Messages TX abandonnés :}}</b></td>
+			<td><span class="getStats-messagesDroppedTX"></span></td>
+		</tr>
+		<tr>
+			<td><b>{{NAK reçus :}}</b></td>
+			<td><span class="getStats-NAK"></span></td>
+		</tr>
+		<tr>
+			<td><b>{{CAN reçus :}}</b></td>
+			<td><span class="getStats-CAN"></span></td>
+		</tr>
+		<tr>
+			<td><b>{{ACK en délai dépassé :}}</b></td>
+			<td><span class="getStats-timeoutACK"></span></td>
+		</tr>
+		<tr>
+			<td><b>{{Réponses en délai dépassé :}}</b></td>
+			<td><span class="getStats-timeoutResponse"></span></td>
+		</tr>
+		<tr>
+			<td><b>{{Callback en délai dépassé :}}</b></td>
+			<td><span class="getStats-timeoutCallback"></span></td>
+		</tr>
+		<tr>
+	</table>
+</div>
+
+<script src="core/php/getJS.php?file=plugins/zwavejs/core/js/zwavejs.class.js"></script>
+<script>
+function network_load_nodes(){
+  jeedom.zwavejs.network.getNodes({
+    info : 'getNodes',
+    mode : 'stats',
+    global:false,
+    error: function (error) {
+      $('#div_networkzwavejsAlert').showAlert({message: error.message, level: 'danger'});
+    }
+  })
+}
+
+$('body').off('zwavejs::getNodeStats').on('zwavejs::getNodeStats', function (_event, _options) {
+	for (key in _options){
+		value = _options[key];
+		if (key == 'stats') {
+			for (stat in value) {
+				valueStat = value[stat]
+				$('.getStats-'+stat).empty().append(valueStat);
+			}
+		}
+	}
+});
+$('#div_alert').showAlert({message: '{{Chargement des infos en cours ...}}', level: 'warning'});
+network_load_nodes();
+</script>

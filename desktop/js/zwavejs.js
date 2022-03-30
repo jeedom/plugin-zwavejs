@@ -227,7 +227,7 @@ $.ajax({
 
 /**********************Envent js requests *****************************/
 $('body').off('zwavejs::inclusion').on('zwavejs::inclusion', function (_event, _options) {
-  $.hideAlert();
+  $('#div_inclusionAlert').hideAlert();
   $('#div_inclusionAlert').showAlert({
       message: _options.message,
       level: 'warning'
@@ -242,7 +242,7 @@ $('body').off('zwavejs::inclusion').on('zwavejs::inclusion', function (_event, _
 });
 
 $('body').off('zwavejs::sync').on('zwavejs::sync', function (_event, _options) {
-  $.hideAlert();
+  $('#div_inclusionAlert').hideAlert();
   $('#div_inclusionAlert').showAlert({
       message: _options.message,
       level: 'warning'

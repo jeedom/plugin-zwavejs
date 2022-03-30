@@ -461,6 +461,13 @@ class zwavejs extends eqLogic {
 					}
 					$data = zwavejs::constructHealthPage($healthData);
 					event::add('zwavejs::getHealthPage',$data);
+				} else if ($value['origin']['type'] == 'healthMobile'){
+					$healthData = array();
+					foreach ($value['result'] as $node=>$values){
+						$healthData[$values['id']]=$values;
+					}
+					$data = zwavejs::constructHealthPage($healthData,true);
+					event::add('zwavejs::getHealthPageMobile',$data);
 				} else if ($value['origin']['type'] == 'syncValues'){
 					foreach ($value['result'] as $node){
 						if ($node['id']==$value['origin']['node']){
@@ -1036,107 +1043,154 @@ class zwavejs extends eqLogic {
 		return array('init'=>$nodeValues,'updates'=>$updates);
 	}
 	
-	public static function constructHealthPage($_values) {
+	public static function constructHealthPage($_values, $_mobile = False) {
 		$healthPage = '';
 		ksort($_values);
 		foreach ($_values as $node=>$values){
-			$healthPage .= '<tr><td>'.$values['id'].'</td>';
-			$eqLogic = zwavejs::byLogicalId($values['id'], 'zwavejs');
-			$productDetails = '<sup><i class="fas fa-question-circle tooltips" title="'.$values['manufacturer'].' '.$values['productDescription']. ' Firmware : '.$values['firmwareVersion'].'"></i><sup>';
-			if (is_object($eqLogic)){
-				$image = 'plugins/zwavejs/core/config/devices/'.$eqLogic->getImgFilePath();
-				if (!is_file(dirname(__FILE__) . '/../config/devices/'.$eqLogic->getImgFilePath())){
-					$image = 'plugins/zwavejs/plugin_info/zwavejs_icon.png';
+			if (!$_mobile){
+				$healthPage .= '<tr><td>'.$values['id'].'</td>';
+				$eqLogic = zwavejs::byLogicalId($values['id'], 'zwavejs');
+				$productDetails = '<sup><i class="fas fa-question-circle tooltips" title="'.$values['manufacturer'].' '.$values['productDescription']. ' Firmware : '.$values['firmwareVersion'].'"></i><sup>';
+				if (is_object($eqLogic)){
+					$image = 'plugins/zwavejs/core/config/devices/'.$eqLogic->getImgFilePath();
+					if (!is_file(dirname(__FILE__) . '/../config/devices/'.$eqLogic->getImgFilePath())){
+						$image = 'plugins/zwavejs/plugin_info/zwavejs_icon.png';
+					}
+					$healthPage .= '<td><img src="'.$image.'" height="40"/> <a href="index.php?v=d&p=zwavejs&m=zwavejs&logical_id=' . $eqLogic->getLogicalId() . '">' . $eqLogic->getHumanName(true).  '</a>'.' ' .$productDetails.'</td>';
+				} else {
+					$healthPage .= '<td><img src="plugins/zwavejs/plugin_info/zwavejs_icon.png" height="40"/> '.$values['productLabel'].' - '.$values['productDescription'].' ' .$productDetails.'</td>';
 				}
-				$healthPage .= '<td><img src="'.$image.'" height="40"/> <a href="index.php?v=d&p=zwavejs&m=zwavejs&logical_id=' . $eqLogic->getLogicalId() . '">' . $eqLogic->getHumanName(true).  '</a>'.' ' .$productDetails.'</td>';
-			} else {
-				$healthPage .= '<td><img src="plugins/zwavejs/plugin_info/zwavejs_icon.png" height="40"/> '.$values['productLabel'].' - '.$values['productDescription'].' ' .$productDetails.'</td>';
-			}
-			$healthPage .= '<td><span class="label label-info" style="font-size : 1em;">'.$values['endpointsCount'].'</span></td>';
-			if ($values['isSecure']) {
-				if($values['security']){
-					$secure = '<span title="Secure" style="font-size : 1.5em;"><i class="fas fa-check-circle icon_green" aria-hidden="true"></i></span> <sup><i class="fas fa-question-circle tooltips" title="'.$values['security'].'"></i><sup>';
+				$healthPage .= '<td><span class="label label-info" style="font-size : 1em;">'.$values['endpointsCount'].'</span></td>';
+				if ($values['isSecure']) {
+					if($values['security']){
+						$secure = '<span title="Secure" style="font-size : 1.5em;"><i class="fas fa-check-circle icon_green" aria-hidden="true"></i></span> <sup><i class="fas fa-question-circle tooltips" title="'.$values['security'].'"></i><sup>';
+					} else {
+						$secure = '<span title="Non Secure" style="font-size : 1.5em;"><i class="fas fa-minus-circle icon_orange" aria-hidden="true"></i></span>';
+					}
 				} else {
 					$secure = '<span title="Non Secure" style="font-size : 1.5em;"><i class="fas fa-minus-circle icon_orange" aria-hidden="true"></i></span>';
 				}
-			} else {
-				$secure = '<span title="Non Secure" style="font-size : 1.5em;"><i class="fas fa-minus-circle icon_orange" aria-hidden="true"></i></span>';
-			}
-			$healthPage .= '<td>'.$secure.'</td>';
-			
-			if ($values['supportsBeaming']) {
-				$beaming = '<span title="Beaming" style="font-size : 1.5em;"><i class="fas fa-check-circle icon_green" aria-hidden="true"></i></span>';
-			} else {
-				$beaming = '<span title="Non Beaming" style="font-size : 1.5em;"><i class="fas fa-minus-circle icon_orange" aria-hidden="true"></i></span>';
-			}
-			$healthPage .= '<td>'.$beaming.'</td>';
-			
-			if ($values['isFrequentListening']) {
-				$flirs = '<span title="Flirs" style="font-size : 1.5em;"><i class="fas fa-check-circle icon_green" aria-hidden="true"></i></span>';
-			} else {
-				$flirs = '<span title="Non Flirs" style="font-size : 1.5em;"><i class="fas fa-minus-circle icon_orange" aria-hidden="true"></i></span>';
-			}
-			$healthPage .= '<td>'.$flirs.'</td>';
-			
-			if ($values['zwavePlusVersion']) {
-				$zwavePlusVersion = '<span title="Secure" style="font-size : 1.5em;"><i class="fas fa-check-circle icon_green" aria-hidden="true"></i></span> <sup><i class="fas fa-question-circle tooltips" title="v'.$values['zwavePlusVersion'].'"></i><sup>';
-			} else {
-				$zwavePlusVersion = '<span title="Non ZwavePlus" style="font-size : 1.5em;"><i class="fas fa-minus-circle icon_orange" aria-hidden="true"></i></span>';
-			}
-			$healthPage .= '<td>'.$zwavePlusVersion.'</td>';
-			
-			if ($values['isRouting']) {
-				$isRouting = '<span title="Routing" style="font-size : 1.5em;"><i class="fas fa-check icon_green" aria-hidden="true"></i></span>';
-			} else {
-				$isRouting = '<span title="No Routing" style="font-size : 1.5em;"><i class="fas fa-minus-circle icon_orange" aria-hidden="true"></i></span>';
-			}
-			$healthPage .= '<td>'.$isRouting.'</td>';
-			
-			if ($values['inited']) {
-				$inited = '<span title="Initié" style="font-size : 1.5em;"><i class="fas fa-check-circle icon_green" aria-hidden="true"></i></span>';
-			} else {
-				$inited = '<span title="Non initié" style="font-size : 1.5em;"><i class="fas fa-minus-circle icon_red" aria-hidden="true"></i></span>';
-			}
-			$healthPage .= '<td>'.$inited.'</td>';
-			$wakedup ='N/A';
-			if ($eqLogic->getConfiguration('lastWakeUp','') != ''){
-				$wakedup = time() - $eqLogic->getConfiguration('lastWakeUp','');
-			}
-			if ($values['status'] == 'Alive') {
-				$status = '<span title="Alive" style="font-size : 1.5em;"><i class="fas fa-check icon_green" aria-hidden="true"></i></span>';
-			} else if (($values['status'] == 'Dead')){
-				$status = '<span title="Dead" style="font-size : 1.5em;"><i class="fas fa-skull-crossbones icon_red" aria-hidden="true"></i></span>';
-			} else if (($values['status'] == 'Awake')){
-				$status = '<span title="Awake" style="font-size : 1.5em;"><i class="fas fa-grin icon_green" aria-hidden="true"></i></span>';
-			} else if (($values['status'] == 'Asleep')){
-				$status = '<span title="Sleeping" style="font-size : 1.5em;"><i class="icon_orange" aria-hidden="true">z<sup>z<sup>z</sup></sup></i></span>';
-			} else {
-				$status = '<span title="Other" style="font-size : 1.5em;"><i class="icon_orange" aria-hidden="true">'.$values['status'].'</i></span>';
-			}
-			$healthPage .= '<td>'.$status.'</td>';
-			
-			$labelInterview ='label-warning';
-			if ($values['interviewStage'] == 'Complete'){
-				$labelInterview ='label-success';
-			} else if ($values['interviewStage'] == 'ProtocolInfo'){
-				$labelInterview ='label-danger';
-			}
-			$healthPage .= '<td><span class="label '.$labelInterview .'" style="font-size : 1em;">'.$values['interviewStage'].'</span></td>';
-			
-			$healthPage .= '<td>'.date("d/m/Y H:i:s",$values['lastActive']/ 1000);
-			if (($values['status'] == 'Asleep') && $wakedup !='N/A'){
-				$healthPage .='<br><i class="fas fa-grin icon_blue" title="Dernier réveil" aria-hidden="true"></i> <span title="Dernier réveil" style="font-size : 0.7em;">'.self::secondsToTime($wakedup).'</span>';
-				if ($wakedup > $values['values']['132-0-wakeUpInterval']['value']) {
-					$next = '- ' . self::secondsToTime($wakedup - $values['values']['132-0-wakeUpInterval']['value']);
+				$healthPage .= '<td>'.$secure.'</td>';
+				
+				if ($values['supportsBeaming']) {
+					$beaming = '<span title="Beaming" style="font-size : 1.5em;"><i class="fas fa-check-circle icon_green" aria-hidden="true"></i></span>';
 				} else {
-					$next = self::secondsToTime($values['values']['132-0-wakeUpInterval']['value'] - $wakedup);
+					$beaming = '<span title="Non Beaming" style="font-size : 1.5em;"><i class="fas fa-minus-circle icon_orange" aria-hidden="true"></i></span>';
 				}
-				$healthPage .='<br><i class="fas fa-arrow-right icon_blue" title="Prochain réveil estimé" aria-hidden="true"></i> <span title="Prochain réveil estimé" style="font-size : 0.7em;">'.$next.'</span>';
-				$healthPage .='<br><i class="fas fa-wrench icon_blue" title="WakeUp Interval" aria-hidden="true"></i> <span title="WakeUp Interval" style="font-size : 0.7em;">'.self::secondsToTime($values['values']['132-0-wakeUpInterval']['value']).'</span>';
+				$healthPage .= '<td>'.$beaming.'</td>';
+				
+				if ($values['isFrequentListening']) {
+					$flirs = '<span title="Flirs" style="font-size : 1.5em;"><i class="fas fa-check-circle icon_green" aria-hidden="true"></i></span>';
+				} else {
+					$flirs = '<span title="Non Flirs" style="font-size : 1.5em;"><i class="fas fa-minus-circle icon_orange" aria-hidden="true"></i></span>';
+				}
+				$healthPage .= '<td>'.$flirs.'</td>';
+				
+				if ($values['zwavePlusVersion']) {
+					$zwavePlusVersion = '<span title="Secure" style="font-size : 1.5em;"><i class="fas fa-check-circle icon_green" aria-hidden="true"></i></span> <sup><i class="fas fa-question-circle tooltips" title="v'.$values['zwavePlusVersion'].'"></i><sup>';
+				} else {
+					$zwavePlusVersion = '<span title="Non ZwavePlus" style="font-size : 1.5em;"><i class="fas fa-minus-circle icon_orange" aria-hidden="true"></i></span>';
+				}
+				$healthPage .= '<td>'.$zwavePlusVersion.'</td>';
+				
+				if ($values['isRouting']) {
+					$isRouting = '<span title="Routing" style="font-size : 1.5em;"><i class="fas fa-check icon_green" aria-hidden="true"></i></span>';
+				} else {
+					$isRouting = '<span title="No Routing" style="font-size : 1.5em;"><i class="fas fa-minus-circle icon_orange" aria-hidden="true"></i></span>';
+				}
+				$healthPage .= '<td>'.$isRouting.'</td>';
+				
+				if ($values['inited']) {
+					$inited = '<span title="Initié" style="font-size : 1.5em;"><i class="fas fa-check-circle icon_green" aria-hidden="true"></i></span>';
+				} else {
+					$inited = '<span title="Non initié" style="font-size : 1.5em;"><i class="fas fa-minus-circle icon_red" aria-hidden="true"></i></span>';
+				}
+				$healthPage .= '<td>'.$inited.'</td>';
+				$wakedup ='N/A';
+				if ($eqLogic->getConfiguration('lastWakeUp','') != ''){
+					$wakedup = time() - $eqLogic->getConfiguration('lastWakeUp','');
+				}
+				if ($values['status'] == 'Alive') {
+					$status = '<span title="Alive" style="font-size : 1.5em;"><i class="fas fa-check icon_green" aria-hidden="true"></i></span>';
+				} else if (($values['status'] == 'Dead')){
+					$status = '<span title="Dead" style="font-size : 1.5em;"><i class="fas fa-skull-crossbones icon_red" aria-hidden="true"></i></span>';
+				} else if (($values['status'] == 'Awake')){
+					$status = '<span title="Awake" style="font-size : 1.5em;"><i class="fas fa-grin icon_green" aria-hidden="true"></i></span>';
+				} else if (($values['status'] == 'Asleep')){
+					$status = '<span title="Sleeping" style="font-size : 1.5em;"><i class="icon_orange" aria-hidden="true">z<sup>z<sup>z</sup></sup></i></span>';
+				} else {
+					$status = '<span title="Other" style="font-size : 1.5em;"><i class="icon_orange" aria-hidden="true">'.$values['status'].'</i></span>';
+				}
+				$healthPage .= '<td>'.$status.'</td>';
+				
+				$labelInterview ='label-warning';
+				if ($values['interviewStage'] == 'Complete'){
+					$labelInterview ='label-success';
+				} else if ($values['interviewStage'] == 'ProtocolInfo'){
+					$labelInterview ='label-danger';
+				}
+				$healthPage .= '<td><span class="label '.$labelInterview .'" style="font-size : 1em;">'.$values['interviewStage'].'</span></td>';
+				
+				$healthPage .= '<td>'.date("d/m/Y H:i:s",$values['lastActive']/ 1000);
+				if (($values['status'] == 'Asleep') && $wakedup !='N/A'){
+					$healthPage .='<br><i class="fas fa-grin icon_blue" title="Dernier réveil" aria-hidden="true"></i> <span title="Dernier réveil" style="font-size : 0.7em;">'.self::secondsToTime($wakedup).'</span>';
+					if ($wakedup > $values['values']['132-0-wakeUpInterval']['value']) {
+						$next = '- ' . self::secondsToTime($wakedup - $values['values']['132-0-wakeUpInterval']['value']);
+					} else {
+						$next = self::secondsToTime($values['values']['132-0-wakeUpInterval']['value'] - $wakedup);
+					}
+					$healthPage .='<br><i class="fas fa-arrow-right icon_blue" title="Prochain réveil estimé" aria-hidden="true"></i> <span title="Prochain réveil estimé" style="font-size : 0.7em;">'.$next.'</span>';
+					$healthPage .='<br><i class="fas fa-wrench icon_blue" title="WakeUp Interval" aria-hidden="true"></i> <span title="WakeUp Interval" style="font-size : 0.7em;">'.self::secondsToTime($values['values']['132-0-wakeUpInterval']['value']).'</span>';
+				}
+				$healthPage .='</td>';
+				$healthPage .= '<td><a class="btn btn-info btn-xs pingDevice" data-id="' . $values['id'] . '"><i class="fas fa-eye"></i> Ping</a></td>';
+				$healthPage .= '</tr>';
+			} else {
+				$healthPage .= '<tr><td>'.$values['id'].'</td>';
+				$eqLogic = zwavejs::byLogicalId($values['id'], 'zwavejs');
+				if (is_object($eqLogic)){
+					$image = 'plugins/zwavejs/core/config/devices/'.$eqLogic->getImgFilePath();
+					if (!is_file(dirname(__FILE__) . '/../config/devices/'.$eqLogic->getImgFilePath())){
+						$image = 'plugins/zwavejs/plugin_info/zwavejs_icon.png';
+					}
+					$healthPage .= '<td><img src="'.$image.'" height="40"/>' . $eqLogic->getHumanName(true) .'</td>';
+				} else {
+					$healthPage .= '<td><img src="plugins/zwavejs/plugin_info/zwavejs_icon.png" height="40"/> '.$values['productLabel'].' - '.$values['productDescription'].'</td>';
+				}
+				$wakedup ='N/A';
+				if ($eqLogic->getConfiguration('lastWakeUp','') != ''){
+					$wakedup = time() - $eqLogic->getConfiguration('lastWakeUp','');
+				}
+				if ($values['status'] == 'Alive') {
+					$status = '<span title="Alive" style="font-size : 1.5em;"><i class="fas fa-check icon_green" aria-hidden="true"></i></span>';
+				} else if (($values['status'] == 'Dead')){
+					$status = '<span title="Dead" style="font-size : 1.5em;"><i class="fas fa-skull-crossbones icon_red" aria-hidden="true"></i></span>';
+				} else if (($values['status'] == 'Awake')){
+					$status = '<span title="Awake" style="font-size : 1.5em;"><i class="fas fa-grin icon_green" aria-hidden="true"></i></span>';
+				} else if (($values['status'] == 'Asleep')){
+					$status = '<span title="Sleeping" style="font-size : 1.5em;"><i class="icon_orange" aria-hidden="true">z<sup>z<sup>z</sup></sup></i></span>';
+				} else {
+					$status = '<span title="Other" style="font-size : 1.5em;"><i class="icon_orange" aria-hidden="true">'.$values['status'].'</i></span>';
+				}
+				$healthPage .= '<td>'.$status.'</td>';
+				$wakedup ='N/A';
+				if ($eqLogic->getConfiguration('lastWakeUp','') != ''){
+					$wakedup = time() - $eqLogic->getConfiguration('lastWakeUp','');
+				}
+				$healthPage .= '<td>'.date("d/m/Y H:i:s",$values['lastActive']/ 1000);
+				if (($values['status'] == 'Asleep') && $wakedup !='N/A'){
+					$healthPage .='<br><i class="fas fa-grin icon_blue" title="Dernier réveil" aria-hidden="true"></i> <span title="Dernier réveil" style="font-size : 0.7em;">'.self::secondsToTime($wakedup).'</span>';
+					if ($wakedup > $values['values']['132-0-wakeUpInterval']['value']) {
+						$next = '- ' . self::secondsToTime($wakedup - $values['values']['132-0-wakeUpInterval']['value']);
+					} else {
+						$next = self::secondsToTime($values['values']['132-0-wakeUpInterval']['value'] - $wakedup);
+					}
+					$healthPage .='<br><i class="fas fa-arrow-right icon_blue" title="Prochain réveil estimé" aria-hidden="true"></i> <span title="Prochain réveil estimé" style="font-size : 0.7em;">'.$next.'</span>';
+					$healthPage .='<br><i class="fas fa-wrench icon_blue" title="WakeUp Interval" aria-hidden="true"></i> <span title="WakeUp Interval" style="font-size : 0.7em;">'.self::secondsToTime($values['values']['132-0-wakeUpInterval']['value']).'</span>';
+				}
+				$healthPage .='</td>';
+				$healthPage .= '</tr>';
 			}
-			$healthPage .='</td>';
-			$healthPage .= '<td><a class="btn btn-info btn-xs pingDevice" data-id="' . $values['id'] . '"><i class="fas fa-eye"></i> Ping</a></td>';
-			$healthPage .= '</tr>';
 		}
 		return $healthPage;
 	}
