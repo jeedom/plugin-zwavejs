@@ -10,7 +10,7 @@
         ]
     },
     "properties": {
-        "Multilevel": {},
+        "Multilevel": {"type":"onlevel"},
         "Power":{},
         "Energy":{}
     }
