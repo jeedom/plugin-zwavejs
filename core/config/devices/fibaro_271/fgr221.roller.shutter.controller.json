@@ -13,9 +13,7 @@
         ]
     },
     "properties": {
-        "default": {
-            "Shutter": {},
-            "Scene": {}
-        }
+       "Shutter": {},
+        "Scene": {}
     }
 }
