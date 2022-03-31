@@ -1110,10 +1110,6 @@ class zwavejs extends eqLogic {
 					$inited = '<span title="Non initié" style="font-size : 1.5em;"><i class="fas fa-minus-circle icon_red" aria-hidden="true"></i></span>';
 				}
 				$healthPage .= '<td>'.$inited.'</td>';
-				$wakedup ='N/A';
-				if ($eqLogic->getConfiguration('lastWakeUp','') != ''){
-					$wakedup = time() - $eqLogic->getConfiguration('lastWakeUp','');
-				}
 				if ($values['status'] == 'Alive') {
 					$status = '<span title="Alive" style="font-size : 1.5em;"><i class="fas fa-check icon_green" aria-hidden="true"></i></span>';
 				} else if (($values['status'] == 'Dead')){
@@ -1136,6 +1132,10 @@ class zwavejs extends eqLogic {
 				$healthPage .= '<td><span class="label '.$labelInterview .'" style="font-size : 1em;">'.$values['interviewStage'].'</span></td>';
 				
 				$healthPage .= '<td>'.date("d/m/Y H:i:s",$values['lastActive']/ 1000);
+				$wakedup ='N/A';
+				if (is_object($eqLogic) && $eqLogic->getConfiguration('lastWakeUp','') != ''){
+					$wakedup = time() - $eqLogic->getConfiguration('lastWakeUp','');
+				}
 				if (($values['status'] == 'Asleep') && $wakedup !='N/A'){
 					$healthPage .='<br><i class="fas fa-grin icon_blue" title="Dernier réveil" aria-hidden="true"></i> <span title="Dernier réveil" style="font-size : 0.7em;">'.self::secondsToTime($wakedup).'</span>';
 					if (isset($values['values']['132-0-wakeUpInterval']['value'])){
@@ -1163,10 +1163,6 @@ class zwavejs extends eqLogic {
 				} else {
 					$healthPage .= '<td><img src="plugins/zwavejs/plugin_info/zwavejs_icon.png" height="40"/> '.$values['productLabel'].' - '.$values['productDescription'].'</td>';
 				}
-				$wakedup ='N/A';
-				if ($eqLogic->getConfiguration('lastWakeUp','') != ''){
-					$wakedup = time() - $eqLogic->getConfiguration('lastWakeUp','');
-				}
 				if ($values['status'] == 'Alive') {
 					$status = '<span title="Alive" style="font-size : 1.5em;"><i class="fas fa-check icon_green" aria-hidden="true"></i></span>';
 				} else if (($values['status'] == 'Dead')){
@@ -1180,7 +1176,7 @@ class zwavejs extends eqLogic {
 				}
 				$healthPage .= '<td>'.$status.'</td>';
 				$wakedup ='N/A';
-				if ($eqLogic->getConfiguration('lastWakeUp','') != ''){
+				if (is_object($eqLogic) && $eqLogic->getConfiguration('lastWakeUp','') != ''){
 					$wakedup = time() - $eqLogic->getConfiguration('lastWakeUp','');
 				}
 				$healthPage .= '<td>'.date("d/m/Y H:i:s",$values['lastActive']/ 1000);
