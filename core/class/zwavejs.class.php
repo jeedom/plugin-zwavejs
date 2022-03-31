@@ -135,9 +135,9 @@ class zwavejs extends eqLogic {
 			}
 		}
 		if (class_exists('openzwave')) {
-			if (openzwave::deamon_info()['state'] =='ok'){
+			if (openzwave::deamon_info()['state'] =='ok' && config::byKey('port', 'zwavejs') == config::byKey('port', 'openzwave')){
 				$return['launchable'] = 'nok';
-				$return['launchable_message'] = __('Le démon openzwave tourne. Il doit être coupé', __FILE__);
+				$return['launchable_message'] = __('Le démon openzwave est démarré sur le même contrôleur. Il doit être coupé', __FILE__);
 			}
 		}
 	return $return;
