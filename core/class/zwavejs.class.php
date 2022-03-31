@@ -30,9 +30,13 @@ class zwavejs extends eqLogic {
 	/*     * ***********************zwavejs MANAGEMENT*************************** */
 	
 	function secondsToTime($seconds) {
-		$dtF = new \DateTime('@0');
-		$dtT = new \DateTime("@$seconds");
-		return $dtF->diff($dtT)->format('%a j %h h %i min %s s');
+		try {
+			$dtF = new \DateTime('@0');
+			$dtT = new \DateTime("@$seconds");
+			return $dtF->diff($dtT)->format('%a j %h h %i min %s s');
+		} catch (Exception $e) {
+			return 'N/A'; 
+		}
 	}
 	
 	public static function configureSettings($_path) {
@@ -1134,13 +1138,15 @@ class zwavejs extends eqLogic {
 				$healthPage .= '<td>'.date("d/m/Y H:i:s",$values['lastActive']/ 1000);
 				if (($values['status'] == 'Asleep') && $wakedup !='N/A'){
 					$healthPage .='<br><i class="fas fa-grin icon_blue" title="Dernier réveil" aria-hidden="true"></i> <span title="Dernier réveil" style="font-size : 0.7em;">'.self::secondsToTime($wakedup).'</span>';
-					if ($wakedup > $values['values']['132-0-wakeUpInterval']['value']) {
-						$next = '- ' . self::secondsToTime($wakedup - $values['values']['132-0-wakeUpInterval']['value']);
-					} else {
-						$next = self::secondsToTime($values['values']['132-0-wakeUpInterval']['value'] - $wakedup);
+					if (isset($values['values']['132-0-wakeUpInterval']['value'])){
+						if ($wakedup > $values['values']['132-0-wakeUpInterval']['value']) {
+							$next = '- ' . self::secondsToTime($wakedup - $values['values']['132-0-wakeUpInterval']['value']);
+						} else {
+							$next = self::secondsToTime($values['values']['132-0-wakeUpInterval']['value'] - $wakedup);
+						}
+						$healthPage .='<br><i class="fas fa-arrow-right icon_blue" title="Prochain réveil estimé" aria-hidden="true"></i> <span title="Prochain réveil estimé" style="font-size : 0.7em;">'.$next.'</span>';
+						$healthPage .='<br><i class="fas fa-wrench icon_blue" title="WakeUp Interval" aria-hidden="true"></i> <span title="WakeUp Interval" style="font-size : 0.7em;">'.self::secondsToTime($values['values']['132-0-wakeUpInterval']['value']).'</span>';
 					}
-					$healthPage .='<br><i class="fas fa-arrow-right icon_blue" title="Prochain réveil estimé" aria-hidden="true"></i> <span title="Prochain réveil estimé" style="font-size : 0.7em;">'.$next.'</span>';
-					$healthPage .='<br><i class="fas fa-wrench icon_blue" title="WakeUp Interval" aria-hidden="true"></i> <span title="WakeUp Interval" style="font-size : 0.7em;">'.self::secondsToTime($values['values']['132-0-wakeUpInterval']['value']).'</span>';
 				}
 				$healthPage .='</td>';
 				$healthPage .= '<td><a class="btn btn-info btn-xs pingDevice" data-id="' . $values['id'] . '"><i class="fas fa-eye"></i> Ping</a></td>';
@@ -1378,6 +1384,12 @@ class zwavejs extends eqLogic {
 						}
 						if (isset($details['generic_type'])){
 							$command['display']['generic_type'] =$details['generic_type'];
+						}
+						if (isset($details['maxValue'])){
+							$command['configuration']['maxValue'] =$details['maxValue'];
+						}
+						if (isset($details['minValue'])){
+							$command['configuration']['minValue'] =$details['maxValue'];
 						}
 						$device['commands'][] = $command;
 					}

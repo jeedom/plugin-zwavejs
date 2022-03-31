@@ -1,0 +1,20 @@
+{"standard": 
+	[
+		{
+			"name": "Ultraviolet",
+			"type": "info",
+			"isVisible": 1,
+			"isHistorized": 1,
+			"configuration": {
+				"class": 49,
+				"endpoint": #endpoint#,
+				"property": "Ultraviolet"
+			},
+			"subtype": "numeric",
+            "display": {
+                "generic_type": "UV"
+            },
+			"unite": ""
+		}
+	]
+}
