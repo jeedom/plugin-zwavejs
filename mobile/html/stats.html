@@ -1,3 +1,4 @@
+<div class="mobileStatsValues">
 <div class="statsPage">
 <table data-role="table" id="statistics_network" data-mode="columntoggle" class="ui-responsive table-stroke tableStat">
 		<tr>
@@ -39,6 +40,7 @@
 		<tr>
 	</table>
 </div>
+</div>
 
 <script src="core/php/getJS.php?file=plugins/zwavejs/core/js/zwavejs.class.js"></script>
 <script>
@@ -52,10 +54,20 @@ function network_load_nodes(){
     }
   })
 }
-
-$('body').off('zwavejs::getNodeStats').on('zwavejs::getNodeStats', function (_event, _options) {
-	for (key in _options){
-		value = _options[key];
+function network_read_stats(){
+  jeedom.zwavejs.file.get({
+    node : '',
+    type : 'nodeStats',
+    global:false,
+    error: function (error) {
+    $('#div_nodeInformationsZwaveJsAlert').showAlert({message: error.message, level: 'danger'});
+		if ($('.mobileStatsValues').is(":visible")) {
+		setTimeout(function(){ network_read_stats(); }, 2000);
+	  }
+    },
+    success: function (nodeStats) {
+		for (key in nodeStats){
+		value = nodeStats[key];
 		if (key == 'stats') {
 			for (stat in value) {
 				valueStat = value[stat]
@@ -63,7 +75,14 @@ $('body').off('zwavejs::getNodeStats').on('zwavejs::getNodeStats', function (_ev
 			}
 		}
 	}
-});
+		if ($('.mobileStatsValues').is(":visible")) {
+		setTimeout(function(){ network_read_stats(); }, 2000);
+	  }
+	}
+  })
+}
+
 $('#div_alert').showAlert({message: '{{Chargement des infos en cours ...}}', level: 'warning'});
 network_load_nodes();
+network_read_stats();
 </script>

@@ -174,6 +174,28 @@ jeedom.zwavejs.node = function() {
  	$.ajax(paramsAJAX);
  }
  
+ jeedom.zwavejs.node.setPolling = function (_params) {
+ 	var paramsRequired = ['nodeId','cc','value','endpoint'];
+ 	var paramsSpecifics = {};
+ 	try {
+ 		jeedom.private.checkParamsRequired(_params || {}, paramsRequired);
+ 	} catch (e) {
+ 		(_params.error || paramsSpecifics.error || jeedom.private.default_params.error)(e);
+ 		return;
+ 	}
+ 	var params = $.extend({}, jeedom.private.default_params, paramsSpecifics, _params || {});
+ 	var paramsAJAX = jeedom.private.getParamsAJAX(params);
+ 	paramsAJAX.url = 'plugins/zwavejs/core/ajax/zwavejs.ajax.php';
+ 	paramsAJAX.data = {
+ 		action: 'setPolling',
+		nodeId : _params.nodeId,
+		cc : _params.cc,
+		endpoint : _params.endpoint,
+		value : _params.value,
+ 	};
+ 	$.ajax(paramsAJAX);
+ }
+ 
   jeedom.zwavejs.node.refreshNodeCC = function (_params) {
  	var paramsRequired = ['nodeId','cc'];
  	var paramsSpecifics = {};
@@ -296,7 +318,29 @@ jeedom.zwavejs.node = function() {
  }
  
 
- /*************************Backup************************************************/
+ /*************************File************************************************/
+ jeedom.zwavejs.file = function() {
+ };
+ 
+  jeedom.zwavejs.file.get = function (_params) {
+ 	var paramsRequired = ['node','type'];
+ 	var paramsSpecifics = {};
+ 	try {
+ 		jeedom.private.checkParamsRequired(_params || {}, paramsRequired);
+ 	} catch (e) {
+ 		(_params.error || paramsSpecifics.error || jeedom.private.default_params.error)(e);
+ 		return;
+ 	}
+ 	var params = $.extend({}, jeedom.private.default_params, paramsSpecifics, _params || {});
+ 	var paramsAJAX = jeedom.private.getParamsAJAX(params);
+ 	paramsAJAX.url = 'plugins/zwavejs/core/ajax/zwavejs.ajax.php';
+ 	paramsAJAX.data = {
+		action : 'getFile',
+		type : _params.type,
+		node : _params.node
+ 	};
+ 	$.ajax(paramsAJAX);
+ }
 
 
  /*************************network************************************************/

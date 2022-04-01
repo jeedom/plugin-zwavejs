@@ -78,6 +78,34 @@ $("body").off("click", ".editValue").on("click", ".editValue", function (e) {
   }
 });
 
+$("body").off("click", ".configPolling").on("click", ".configPolling", function (e) {
+  var valueApplyOption={
+    nodeId : $(this).data('nodeId'),
+    cc : $(this).data('cc'),
+    endpoint : $(this).data('endpoint'),
+  };
+  var title = '{{Configurer le Polling de }} '+ $(this).data('label')+ ' ? <br><b> {{Attention ne jamais utiliser de polling sauf cas nécessaire et obligatoire, un polling allourdi le réseau.}}</b>';
+    var options = [];
+	options.push({value : '',text : 'Aucun'})
+	options.push({value : '1',text : '1 minute'})
+	options.push({value : '5',text : '5 minutes'})
+	options.push({value : '15',text : '15 minutes'})
+	options.push({value : '30',text : '30 minutes'})
+	options.push({value : '60',text : '60 minutes'})
+    bootbox.prompt({
+      title: title,
+      inputType: 'select',
+      inputOptions : options,
+      callback: function (result) {
+        if(result === null){
+          return;
+        }
+        valueApplyOption.value = result;
+        jeedom.zwavejs.node.setPolling(valueApplyOption);
+      }
+    }); 
+});
+
 $("body").off("click", ".createCommandInfo").on("click", ".createCommandInfo", function (e) {
 	var obj = $(this);
   bootbox.confirm('{{Etes-vous sûr de vouloir créer cette commande info : }}' +obj.data('label')+ ' ('+obj.data('path')+'{{) ? Si elle existe déjà elle ne sera pas créée.}}', function (result) {
@@ -132,22 +160,38 @@ function node_load_values(){
   })
 }
 
-
-$('body').off('zwavejs::getNodeValues').on('zwavejs::getNodeValues', function (_event, _options) {
-	$('#div_nodeValuesZwaveJsAlert').hideAlert();
-	if (_options['id'] == nodeId){
-		if (_options['status']=='Dead'){
-			$('.getNodeInfo-nodeValues').empty().append('<div class="alert alert-warning" role="alert">Le noeud est en statut Dead, il n\'y a donc pas de valeurs dynamiques à afficher ...</div>');
-		}
-		else if ($('.panel-group').is(":visible")) {
-			for (value in _options['nodeValues']['updates']){
-				$('.'+ $.escapeSelector(value)).empty().append(_options['nodeValues']['updates'][value]['value']);
-				$('.'+ $.escapeSelector(value+'_lastUpdate')).empty().append(_options['nodeValues']['updates'][value]['lastUpdate']);
+function node_read_values(){
+  jeedom.zwavejs.file.get({
+    node : nodeId,
+    type : 'nodeValues',
+    global:false,
+    error: function (error) {
+      $('#div_nodeInformationsZwaveJsAlert').showAlert({message: error.message, level: 'danger'});
+	if ($('.modalNodeValues').is(":visible")) {
+		setTimeout(function(){ node_read_values(); }, 2000);
+	  }
+    },
+    success: function (nodeValues) {
+		if (nodeValues['id'] == nodeId){
+			if (nodeValues['status']=='Dead'){
+				$('.getNodeInfo-nodeValues').empty().append('<div class="alert alert-warning" role="alert">Le noeud est en statut Dead, il n\'y a donc pas de valeurs dynamiques à afficher ...</div>');
 			}
-		} else {
-			$('.getNodeInfo-nodeValues').empty().append(_options['nodeValues']['init']);
+			else if ($('.panel-group').is(":visible")) {
+				for (value in nodeValues['nodeValues']['updates']){
+					$('.'+ $.escapeSelector(value)).empty().append(nodeValues['nodeValues']['updates'][value]['value']);
+					$('.'+ $.escapeSelector(value+'_lastUpdate')).empty().append(nodeValues['nodeValues']['updates'][value]['lastUpdate']);
+				}
+			} else {
+				$('.getNodeInfo-nodeValues').empty().append(nodeValues['nodeValues']['init']);
+			}
+		}
+		if ($('.modalNodeValues').is(":visible")) {
+			setTimeout(function(){ node_read_values(); }, 2000);
 		}
 	}
-});
+  })
+}
+
 $('#div_nodeValuesZwaveJsAlert').showAlert({message: '{{Chargement des infos en cours ...}}', level: 'warning'});
 node_load_values();
+node_read_values();

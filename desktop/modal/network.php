@@ -74,6 +74,7 @@ if (!isConnect('admin')) {
     fill: var(--txt-color) !important;
   }
 </style>
+<div class="modalnetWork">
 <div id="div_networkzwavejsAlert" style="display: none;"></div>
 <div class="network" id="div_templateNetwork">
 	<div class="container-fluid">
@@ -251,6 +252,7 @@ if (!isConnect('admin')) {
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 
 <?php include_file('desktop', 'network', 'js', 'zwavejs');?>

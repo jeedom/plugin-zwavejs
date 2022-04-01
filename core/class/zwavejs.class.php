@@ -98,6 +98,40 @@ class zwavejs extends eqLogic {
 		file_put_contents($file, json_encode($settings, JSON_FORCE_OBJECT));
 	}
 	
+	public static function addFileEvent($_file,$_data) {
+		$status_path = dirname(__FILE__) . '/../../data/status';
+		if (!is_dir($status_path)) {
+			mkdir($status_path, 0777, true);
+		}
+		$file = $status_path .'/'.$_file.'.json';
+		file_put_contents($file, json_encode($_data, JSON_FORCE_OBJECT));
+	}
+	
+	public static function getFile($_type,$_nodeId) {
+		$status_path = dirname(__FILE__) . '/../../data/status';
+		if ($_type == 'nodeInfo'){
+			$file = $status_path .'/getNodeInfo'.$_nodeId.'.json';
+		} else if ($_type == 'nodeValues'){
+			$file = $status_path .'/getNodeValues'.$_nodeId.'.json';
+		} else if ($_type == 'health'){
+			$file = $status_path .'/getHealthPage.json';
+		} else if ($_type == 'nodeStats'){
+			$file = $status_path .'/getNodeStats.json';
+		} else if ($_type == 'info'){
+			$file = $status_path .'/getInfo.json';
+		} else if ($_type == 'neighbors'){
+			$file = $status_path .'/getNeighbors.json';
+		} else if ($_type == 'NodeAssociations'){
+			$file = $status_path .'/getNodeAssociations.json';
+		} else if ($_type == 'group'){
+			$file = $status_path .'/getNodeGroup.json';
+		} else if ($_type == 'mobileHealth'){
+			$file = $status_path .'/getHealthPageMobile.json';
+		}
+		$data = json_decode(file_get_contents($file), true);
+		return $data;
+	}
+	
 	public static function dependancy_info() {
 		$return = array();
 		$return['progress_file'] = jeedom::getTmpFolder(__CLASS__) . '/dependance';
@@ -303,7 +337,7 @@ class zwavejs extends eqLogic {
 		log::add('zwavejs','debug', '[' . __FUNCTION__ . '] '.json_encode($_api));
 		foreach ($_api as $key => $value){
 			if ($key == 'getInfo'){
-				event::add('zwavejs::getInfo',array($value['result']));
+				self::addFileEvent('getInfo',$value['result']);
 				if (isset($value['result']['controllerId'])){
 					config::save('controllerId',$value['result']['controllerId'],'zwavejs');
 				}
@@ -311,12 +345,6 @@ class zwavejs extends eqLogic {
 			else if ($key == 'getNodes'){
 				if ($value['origin']['type'] == 'sync') {
 					zwavejs::syncNodes($value['result']);
-				} else if ($value['origin']['type'] == 'tree') {
-					$tree = array();
-					foreach ($value['result'] as $node){
-						$tree[$node['id']]=$node;
-					}
-					event::add('zwavejs::getNodeTree',$tree);
 				} else if ($value['origin']['type'] == 'stats'){
 					$stats = array();
 					$stats['totalNodes'] = count($value['result']);
@@ -345,7 +373,7 @@ class zwavejs extends eqLogic {
 					}
 					$stats['sleepingNodes'] = $sleepingNodes;
 					$stats['networkTree'] = $networkTree;
-					event::add('zwavejs::getNodeStats',$stats);
+					self::addFileEvent('getNodeStats',$stats);
 				} else if ($value['origin']['type'] == 'getNodeInfo'){
 					foreach ($value['result'] as $node){
 						if ($node['id']==$value['origin']['node']){
@@ -440,7 +468,7 @@ class zwavejs extends eqLogic {
 								}catch(Exception $e){
 								}
 							}
-							event::add('zwavejs::getNodeInfo',$node);
+							self::addFileEvent('getNodeInfo'.$node['id'],$node);
 						}
 					}
 				} else if ($value['origin']['type'] == 'getNodeValues'){
@@ -449,7 +477,7 @@ class zwavejs extends eqLogic {
 							$values['id']=$node['id'];
 							$values['status']=$node['status'];
 							$values['nodeValues'] = zwavejs::constructValuePage($node['id'],$node['values']);
-							event::add('zwavejs::getNodeValues',$values);
+							self::addFileEvent('getNodeValues'.$node['id'],$values);
 						}
 					}
 				} else if ($value['origin']['type'] == 'group'){
@@ -457,21 +485,21 @@ class zwavejs extends eqLogic {
 					foreach ($value['result'] as $node){
 						$data[$node['id']]=array('groups'=>$node['groups'],'label'=>$node['productLabel'],'endpoints'=>$node[endpointIndizes],'status'=>$node['status']);
 					}
-					event::add('zwavejs::getNodeGroup',$data);
+					self::addFileEvent('getNodeGroup',$data);
 				} else if ($value['origin']['type'] == 'health'){
 					$healthData = array();
 					foreach ($value['result'] as $node=>$values){
 						$healthData[$values['id']]=$values;
 					}
 					$data = zwavejs::constructHealthPage($healthData);
-					event::add('zwavejs::getHealthPage',$data);
+					self::addFileEvent('getHealthPage',$data);
 				} else if ($value['origin']['type'] == 'healthMobile'){
 					$healthData = array();
 					foreach ($value['result'] as $node=>$values){
 						$healthData[$values['id']]=$values;
 					}
 					$data = zwavejs::constructHealthPage($healthData,true);
-					event::add('zwavejs::getHealthPageMobile',$data);
+					self::addFileEvent('getHealthPageMobile',$data);
 				} else if ($value['origin']['type'] == 'syncValues'){
 					foreach ($value['result'] as $node){
 						if ($node['id']==$value['origin']['node']){
@@ -490,11 +518,11 @@ class zwavejs extends eqLogic {
 						$value['result']['controllerNeighbors'] = implode($neighbors,' - ');
 					}
 				}
-				event::add('zwavejs::getNeighbors',$value['result']);
+				self::addFileEvent('getNeighbors',$value['result']);
 			}
 			else if ($key == 'getAssociations'){
 				if ($value['origin']['type'] == 'getNodeAssociations'){
-					event::add('zwavejs::getNodeAssociations',array('id'=>$value['origin']['node'],'data'=>$value['result']));
+					self::addFileEvent('getNodeAssociations',array('id'=>$value['origin']['node'],'data'=>$value['result']));
 				}
 			}
 		}
@@ -767,6 +795,10 @@ class zwavejs extends eqLogic {
 		zwavejs::publishMqttValue($detailsPath[0],str_replace('-','/',$detailsPath[1]),$_value);
 	}
 	
+	public static function setPolling($_nodeId,$_cc,$_endpoint,$_value) {
+		log::add('zwavejs','error','[' . __FUNCTION__ . '] '. $_nodeId . ' '. $_cc . ' ' . ' ' . $_endpoint . ' ' . $_value );
+	}
+	
 	public static function removeAssociation($_nodeId,$_groupId,$_sourceEndpoint,$_targetEndpoint,$_assoNodeId) {
 		log::add('zwavejs','debug','[' . __FUNCTION__ . '] '. $_nodeId . ' '.$_groupId . ' '.$_sourceEndpoint . ' '.$_targetEndpoint . ' '.$_assoNodeId);
 		$args=array();
@@ -1020,8 +1052,9 @@ class zwavejs extends eqLogic {
 				$nodeValues .= '</td>';
 				$nodeValues .= '<td class="'.str_replace(' ','_',$data['id']).'_lastUpdate">'.date("d/m/Y H:i:s",$data['lastUpdate']/ 1000).'</td>';
 				$updates[str_replace(' ','_',$data['id'])]['lastUpdate']=date("d/m/Y H:i:s",$data['lastUpdate']/ 1000);
+				$nodeValues .= '<td>';
+				$nodeValues .= '<a class="btn btn-xs btn-danger configPolling pull-right cursor" data-currentValue="" data-endpoint="'.$data['endpoint'] .'" data-cc="'.$datas[0]['commandClass'].'" data-nodeId="'.$_nodeId.'" data-label="'.$data['label'].'<sub> ('.$cc.'-'.$data['endpoint'].')</sub>" title="'.__('Configurer le Polling', __FILE__).'"><i class="fas fa-wrench"></i></a>';
 				if ($data['readable'] && (in_array($data['type'],array('number','boolean')))){
-					$nodeValues .= '<td>';
 					$nodeValues .= ' <a class="btn btn-xs btn-warning createCommandInfo pull-right"';
 					$nodeValues .= ' data-type="'.$data['type'].'"';
 					$nodeValues .= ' data-label="'.$data['label'].'"';
@@ -1031,11 +1064,8 @@ class zwavejs extends eqLogic {
 					$nodeValues .= ' data-min="'.$data['min'].'"';
 					$nodeValues .= ' data-value="'.$data['value'].'"';
 					$nodeValues .= ' style="text-align: right;display:inline-block" title="Créer la commande Info dans Jeedom"><i class="fas fa-marker"></i></a>';
-					$nodeValues .= '</td>';
-				} else {
-					$nodeValues .= '<td></td>';
 				}
-				$nodeValues .= '</tr>';
+				$nodeValues .= '</td>';
 			}
 			$nodeValues .='</tbody>';
 			$nodeValues .='</table>';

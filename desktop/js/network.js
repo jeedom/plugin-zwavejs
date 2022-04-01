@@ -288,7 +288,15 @@ function network_load_info(){
     global:false,
     error: function (error) {
       $('#div_networkzwavejsAlert').showAlert({message: error.message, level: 'danger'});
-    }
+	  if ($('.modalnetWork').is(":visible")) {
+		setTimeout(function(){ network_load_info(); }, 2000);
+	  }
+    },
+      success: function () {
+        if ($('.modalnetWork').is(":visible")) {
+		setTimeout(function(){ network_load_info(); }, 2000);
+	  }
+      }
   })
 }
 
@@ -311,7 +319,15 @@ function network_load_nodes(){
     global:false,
     error: function (error) {
       $('#div_networkzwavejsAlert').showAlert({message: error.message, level: 'danger'});
-    }
+	  if ($('.modalnetWork').is(":visible")) {
+		setTimeout(function(){ network_load_nodes(); }, 2000);
+	  }
+    },
+      success: function () {
+        if ($('.modalnetWork').is(":visible")) {
+		setTimeout(function(){ network_load_nodes(); }, 2000);
+	  }
+      }
   })
 }
 
@@ -354,24 +370,20 @@ function getFarNeighbours(nodeId, exludeNodeIds, hops) {
   return nodesList;
 }
 
-$('body').off('zwavejs::getNeighbors').on('zwavejs::getNeighbors', function (_event, _options) {
-	$('.getNodes-controllerNeighbors').empty().append(_options['controllerNeighbors']);
-	network_load_nodes();
-});
-
-$('body').off('zwavejs::getInfo').on('zwavejs::getInfo', function (_event, _options) {
-	for (key in _options){
-		value = _options[key];
-		if (key == 'uptime') {
-			value = jeedom.zwavejs.durationConvert(_options[key]);
-		}
-		$('.getInfo-'+key).empty().append(value);
-	}
-});
-
-$('body').off('zwavejs::getNodeStats').on('zwavejs::getNodeStats', function (_event, _options) {
-	for (key in _options){
-		value = _options[key];
+function network_read_stats(){
+  jeedom.zwavejs.file.get({
+    node : '',
+    type : 'nodeStats',
+    global:false,
+    error: function (error) {
+    $('#div_nodeInformationsZwaveJsAlert').showAlert({message: error.message, level: 'danger'});
+		if ($('.modalnetWork').is(":visible")) {
+		setTimeout(function(){ network_read_stats(); }, 2000);
+	  }
+    },
+    success: function (nodeStats) {
+		for (key in nodeStats){
+			value = nodeStats[key];
 		if (key == 'stats') {
 			for (stat in value) {
 				valueStat = value[stat]
@@ -381,13 +393,48 @@ $('body').off('zwavejs::getNodeStats').on('zwavejs::getNodeStats', function (_ev
 			networkTree = value
 		} else {
 			if (key == 'controllerNeighbors') {
-				if (_options[key] == ''){
+				if (nodeStats[key] == ''){
 					network_refresh_neighbors();
 				}
 			}
 			$('.getNodes-'+key).empty().append(value);
+			}
 		}
+		if ($('.modalnetWork').is(":visible")) {
+		setTimeout(function(){ network_read_stats(); }, 2000);
+	  }
 	}
-});
+  })
+}
+
+function network_read_info(){
+  jeedom.zwavejs.file.get({
+    node : '',
+    type : 'info',
+    global:false,
+    error: function (error) {
+    $('#div_nodeInformationsZwaveJsAlert').showAlert({message: error.message, level: 'danger'});
+	if ($('.modalnetWork').is(":visible")) {
+		setTimeout(function(){ network_read_info(); }, 2000);
+	  }
+    },
+    success: function (info) {
+		for (key in info){
+			value = info[key];
+		if (key == 'uptime') {
+			value = jeedom.zwavejs.durationConvert(info[key]);
+		}
+			$('.getInfo-'+key).empty().append(value);
+		}
+		if ($('.modalnetWork').is(":visible")) {
+		setTimeout(function(){ network_read_info(); }, 2000);
+	  }
+	}
+  })
+}
+
+
 network_load_info();
 network_load_nodes();
+network_read_stats();
+network_read_info();

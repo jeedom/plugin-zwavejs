@@ -94,14 +94,40 @@ function network_load_AllNodes(){
   })
 }
 
-$('body').off('zwavejs::getNodeGroup').on('zwavejs::getNodeGroup', function (_event, _options) {
-	nodes = _options;
-	node_load_groups();
-});
+function node_read_group(){
+  jeedom.zwavejs.file.get({
+    node : '',
+    type : 'group',
+    global:false,
+    error: function (error) {
+      $('#div_nodeInformationsZwaveJsAlert').showAlert({message: error.message, level: 'danger'});
+	if ($('.modalNodeGroups').is(":visible")) {
+		setTimeout(function(){ node_read_group(); }, 2000);
+	  }
+    },
+    success: function (groups) {
+		nodes = groups;
+		if ($('.modalNodeGroups').is(":visible")) {
+		setTimeout(function(){ node_read_group(); }, 2000);
+	  }
+	  node_read_associations();
+	}
+  })
+}
 
-$('body').off('zwavejs::getNodeAssociations').on('zwavejs::getNodeAssociations', function (_event, _options) {
-	$('#div_nodeGroupsZwaveJsAlert').hideAlert();
-	if (_options['id'] == nodeId){console.log(nodes)
+function node_read_associations(){
+  jeedom.zwavejs.file.get({
+    node : nodeId,
+    type : 'NodeAssociations',
+    global:false,
+    error: function (error) {
+      $('#div_nodeInformationsZwaveJsAlert').showAlert({message: error.message, level: 'danger'});
+	if ($('.modalNodeGroups').is(":visible")) {
+		setTimeout(function(){ node_read_associations(); }, 2000);
+	  }
+    },
+    success: function (NodeAssociations) {
+		if (NodeAssociations['id'] == nodeId){
 		if (nodes[nodeId]['status']=='Dead'){
 			$('#div_StatusGroupAlert').empty().append('<div class="alert alert-warning" role="alert">Le noeud est en statut Dead, il n\'y a donc pas de groupes à afficher ...</div>');
 		}
@@ -111,8 +137,8 @@ $('body').off('zwavejs::getNodeAssociations').on('zwavejs::getNodeAssociations',
 			groupInfo = nodes[nodeId]['groups'][group]
 			bodylist +='<tr><td>'+groupInfo['value']+' - '+groupInfo['text']+'</td><td>'+groupInfo['endpoint']+'</td><td>'+groupInfo['isLifeline']+'</td><td>'+groupInfo['maxNodes']+'</td></tr>';
 		}
-		for (item in _options['data']){
-			asso = _options['data'][item]
+		for (item in NodeAssociations['data']){
+			asso = NodeAssociations['data'][item]
 			groupId = asso['groupId']
 			if (nodeId in nodes) {
 				nodeGroups = nodes[nodeId]['groups']
@@ -165,7 +191,14 @@ $('body').off('zwavejs::getNodeAssociations').on('zwavejs::getNodeAssociations',
 			$('.selectTargetNode').empty().append(selectTargetNode);
 		}
 	}
-});
+	if ($('.modalNodeGroups').is(":visible")) {
+		setTimeout(function(){ node_read_associations(); }, 2000);
+	  }
+	}
+  })
+}
 
 $('#div_nodeGroupsZwaveJsAlert').showAlert({message: '{{Chargement des infos en cours ...}}', level: 'warning'});
 network_load_AllNodes();
+node_load_groups();
+node_read_group();

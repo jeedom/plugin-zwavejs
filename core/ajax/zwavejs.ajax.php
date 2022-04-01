@@ -49,6 +49,15 @@ try {
 		ajax::success();
 	}
 	
+	if (init('action') == 'getFile') {
+		ajax::success(zwavejs::getFile(init('type'),init('node')));
+	}
+	
+	if (init('action') == 'setPolling') {
+		zwavejs::setPolling(init('nodeId'),init('cc'),init('endpoint'),init('value'));
+		ajax::success();
+	}
+	
 	if (init('action') == 'refreshNodeCC') {
 		zwavejs::refreshNodeCC(init('nodeId'),init('cc'));
 		ajax::success();

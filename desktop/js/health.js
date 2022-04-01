@@ -27,6 +27,26 @@ $('#table_healthNetwork').off().delegate('.pingDevice', 'click', function () {
   });
 });
 
+function get_health_file(){
+  jeedom.zwavejs.file.get({
+    node : '',
+    type : 'health',
+    global:false,
+    error: function (error) {
+      $('#div_networkHealthAlert').showAlert({message: error.message, level: 'danger'});
+		if ($('.modalHealthValues').is(":visible")) {
+			setTimeout(function(){ get_health_file(); }, 2000);
+		}
+		},
+    success: function (health) {
+		$('.tableHealth tbody').empty().append(health);
+		if ($('.modalHealthValues').is(":visible")) {
+			setTimeout(function(){ get_health_file(); }, 2000);
+		}
+	}
+  })
+}
+
 function get_health_info(){
   jeedom.zwavejs.network.getNodes({
     info : 'getHealth',
@@ -46,10 +66,6 @@ function get_health_info(){
   });
 }
 
-$('body').off('zwavejs::getHealthPage').on('zwavejs::getHealthPage', function (_event, _options) {
-	$('#div_networkHealthAlert').hideAlert();
-	$('.tableHealth tbody').empty().append(_options);
-});
-
 $('#div_networkHealthAlert').showAlert({message: '{{Chargement des infos en cours ...}}', level: 'warning'});
 get_health_info();
+get_health_file();

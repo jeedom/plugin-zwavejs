@@ -59,13 +59,22 @@ function network_load_nodes(){
   })
 }
 
-
-$('body').off('zwavejs::getNodeInfo').on('zwavejs::getNodeInfo', function (_event, _options) {
-	$('#div_nodeInformationsZwaveJsAlert').hideAlert();
-	if (_options['id'] == nodeId){
-		$('#div_nodeDataTree').empty().html(JSONTree.create(_options));
-		for (key in _options){
-			data = _options[key];
+function read_nodes(){
+  jeedom.zwavejs.file.get({
+    node : nodeId,
+    type : 'nodeInfo',
+    global:false,
+    error: function (error) {
+      $('#div_nodeInformationsZwaveJsAlert').showAlert({message: error.message, level: 'danger'});
+	if ($('.modalNodeInformations').is(":visible")) {
+		setTimeout(function(){ read_nodes(); }, 2000);
+	  }
+    },
+    success: function (nodeData) {
+		if (nodeData['id'] == nodeId){
+		$('#div_nodeDataTree').empty().html(JSONTree.create(nodeData));
+		for (key in nodeData){
+			data = nodeData[key];
 			if (key == 'statistics') {
 				for (stat in data) {
 					valueStat = data[stat]
@@ -99,6 +108,13 @@ $('body').off('zwavejs::getNodeInfo').on('zwavejs::getNodeInfo', function (_even
 			}
 		}
 	}
-});
+		if ($('.modalNodeInformations').is(":visible")) {
+			setTimeout(function(){ read_nodes(); }, 2000);
+		}
+	}
+  })
+}
+
 $('#div_nodeInformationsZwaveJsAlert').showAlert({message: '{{Chargement des infos en cours ...}}', level: 'warning'});
 network_load_nodes();
+read_nodes();
