@@ -534,15 +534,6 @@ class zwavejs extends eqLogic {
 					}
 				}
 			}
-			else if ($key == 'refreshNeighbors'){
-				log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.json_encode($value));
-				foreach ($value['result'] as $node => $neighbors){
-					if ($node == config::byKey('controllerId','zwavejs',0)) {
-						$value['result']['controllerNeighbors'] = implode($neighbors,' - ');
-					}
-				}
-				self::addFileEvent('getNeighbors',$value['result']);
-			}
 			else if ($key == 'getAssociations'){
 				if ($value['origin']['type'] == 'getNodeAssociations'){
 					self::addFileEvent('getNodeAssociations',array('id'=>$value['origin']['node'],'data'=>$value['result']));

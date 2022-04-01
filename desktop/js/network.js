@@ -13,7 +13,7 @@
 * You should have received a copy of the GNU General Public License
 * along with Plugin zwavejs for jeedom. If not, see <http://www.gnu.org/licenses/>.
 */
-
+var neighborsdone = false;
 $("#tab_graph").off("click").on("click", function () {
   network_load_data();
 });
@@ -307,6 +307,7 @@ function network_refresh_neighbors(){
         $('#div_networkzwavejsAlert').showAlert({message: error.message, level: 'danger'});
       },
       success: function () {
+		neighborsdone = true;
         $('#div_networkzwavejsAlert').showAlert({message: '{{Demande des voisins en cours ...}}', level: 'warning'});
       }
     });
@@ -393,7 +394,7 @@ function network_read_stats(){
 			networkTree = value
 		} else {
 			if (key == 'controllerNeighbors') {
-				if (nodeStats[key] == ''){
+				if (nodeStats[key] == '' && neighborsdone== false){
 					network_refresh_neighbors();
 				}
 			}
