@@ -54,7 +54,7 @@ try {
 	}
 	
 	if (init('action') == 'setPolling') {
-		zwavejs::setPolling(init('nodeId'),init('cc'),init('endpoint'),init('value'));
+		zwavejs::setPolling(init('nodeId'),init('cc'),init('endpoint'),init('property'),init('value'));
 		ajax::success();
 	}
 	

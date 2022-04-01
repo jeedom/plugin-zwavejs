@@ -29,13 +29,29 @@ class zwavejs extends eqLogic {
 	/*     * ********************************************************************** */
 	/*     * ***********************zwavejs MANAGEMENT*************************** */
 	
-	function secondsToTime($seconds) {
+	public static function secondsToTime($seconds) {
 		try {
 			$dtF = new \DateTime('@0');
 			$dtT = new \DateTime("@$seconds");
 			return $dtF->diff($dtT)->format('%a j %h h %i min %s s');
 		} catch (Exception $e) {
 			return 'N/A'; 
+		}
+	}
+	
+	public static function cron() {
+		$eqLogics = eqLogic::byType('zwavejs');
+		foreach ($eqLogics as $eqLogic){
+			$polling = $eqLogic->getConfiguration('polling',array());
+			foreach ($polling as $class=>$time){
+				log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.'Polling Found for ' . $eqLogic->getHumanName() . ' ' . $time . ' '.$class);
+				if ($time != 'Aucun') {
+					$c = new Cron\CronExpression(checkAndFixCron('*/'.$time.' * * * *'), new Cron\FieldFactory);
+					if ($c->isDue()) {
+						$eqLogic->pollValue($class);
+					}
+				}
+			}
 		}
 	}
 	
@@ -795,8 +811,14 @@ class zwavejs extends eqLogic {
 		zwavejs::publishMqttValue($detailsPath[0],str_replace('-','/',$detailsPath[1]),$_value);
 	}
 	
-	public static function setPolling($_nodeId,$_cc,$_endpoint,$_value) {
-		log::add('zwavejs','error','[' . __FUNCTION__ . '] '. $_nodeId . ' '. $_cc . ' ' . ' ' . $_endpoint . ' ' . $_value );
+	public static function setPolling($_nodeId,$_cc,$_endpoint,$_property,$_value) {
+		$eqLogic = zwavejs::byLogicalId($_nodeId, 'zwavejs');
+		if (is_object($eqLogic)) {
+			$pollConfig = $eqLogic->getConfiguration('polling',array());
+			$pollConfig[$_endpoint.'-'.$_cc.'-'.$_property] = $_value;
+			$eqLogic->setConfiguration('polling',$pollConfig);
+			$eqLogic->save();
+		}
 	}
 	
 	public static function removeAssociation($_nodeId,$_groupId,$_sourceEndpoint,$_targetEndpoint,$_assoNodeId) {
@@ -934,6 +956,7 @@ class zwavejs extends eqLogic {
 	
 	public static function constructValuePage($_nodeId, $_values) {
 		$nodeValuesDict = array();
+		$eqLogic = zwavejs::byLogicalId($_nodeId, 'zwavejs');
 		$nodeValues = '<div class="panel-group" id="accordionValues">';
 		foreach($_values as $key=>$value){
 			$value['oriKey'] = $key;
@@ -960,8 +983,10 @@ class zwavejs extends eqLogic {
 				$nodeValues .= '<td>'.$data['endpoint'].'</td>';
 				if (isset($data['propertyKey'])){
 					$nodeValues .= '<td>'.$data['property'].'-'.$data['propertyKey'].'</td>';
+					$prop = $data['property'].'-'.$data['propertyKey'];
 				} else {
 					$nodeValues .= '<td>'.$data['property'].'</td>';
+					$prop = $data['property'];
 				}
 				if (isset($data['description'])){
 					$nodeValues .= '<td style="width:30%">'.$data['label'].' <sup><i class="fas fa-question-circle tooltips" title="'.$data['description'].'"></i><sup></td>';
@@ -1053,7 +1078,14 @@ class zwavejs extends eqLogic {
 				$nodeValues .= '<td class="'.str_replace(' ','_',$data['id']).'_lastUpdate">'.date("d/m/Y H:i:s",$data['lastUpdate']/ 1000).'</td>';
 				$updates[str_replace(' ','_',$data['id'])]['lastUpdate']=date("d/m/Y H:i:s",$data['lastUpdate']/ 1000);
 				$nodeValues .= '<td>';
-				$nodeValues .= '<a class="btn btn-xs btn-danger configPolling pull-right cursor" data-currentValue="" data-endpoint="'.$data['endpoint'] .'" data-cc="'.$datas[0]['commandClass'].'" data-nodeId="'.$_nodeId.'" data-label="'.$data['label'].'<sub> ('.$cc.'-'.$data['endpoint'].')</sub>" title="'.__('Configurer le Polling', __FILE__).'"><i class="fas fa-wrench"></i></a>';
+				$currentPolling = 'Aucun';
+				if (is_object($eqLogic)){
+					$polling = $eqLogic->getConfiguration('polling',array());
+					if (isset($polling[$data['endpoint'].'-'.$cc.'-'.$prop])){
+						$currentPolling = $polling[$data['endpoint'].'-'.$cc.'-'.$prop];
+					}
+				}
+				$nodeValues .= '<a class="btn btn-xs btn-danger configPolling pull-right cursor" data-valueid="'.$data['id'] .'" data-property="'.$prop .'" data-currentpolling="'.$currentPolling .'" data-endpoint="'.$data['endpoint'] .'" data-cc="'.$datas[0]['commandClass'].'" data-nodeid="'.$_nodeId.'" data-label="'.$data['label'].'<sub> ('.$cc.'-'.$data['endpoint'].')</sub>" title="'.__('Configurer le Polling', __FILE__).'"><i class="fas fa-wrench"></i></a>';
 				if ($data['readable'] && (in_array($data['type'],array('number','boolean')))){
 					$nodeValues .= ' <a class="btn btn-xs btn-warning createCommandInfo pull-right"';
 					$nodeValues .= ' data-type="'.$data['type'].'"';
@@ -1671,6 +1703,14 @@ class zwavejs extends eqLogic {
 			$this->loadCmdFromConf($_update);
 			return;
 		}
+	}
+	
+	public function pollValue($_class) {
+		log::add('zwavejs','debug','[' . __FUNCTION__ . '] '. $_class);
+		$command = explode('-',$_class,3);
+		$args=array('args'=>array(array('nodeId'=>intval($this->getLogicalId()),'commandClass'=>intval($command[1]),'endpoint'=>intval($command[0]),'property'=>$command[2])));
+		log::add('zwavejs','debug',json_encode($args));
+		zwavejs::publishMqttApi('pollValue',$args);
 	}
 	
 }

@@ -175,7 +175,7 @@ jeedom.zwavejs.node = function() {
  }
  
  jeedom.zwavejs.node.setPolling = function (_params) {
- 	var paramsRequired = ['nodeId','cc','value','endpoint'];
+ 	var paramsRequired = ['nodeId','cc','value','endpoint','property'];
  	var paramsSpecifics = {};
  	try {
  		jeedom.private.checkParamsRequired(_params || {}, paramsRequired);
@@ -191,6 +191,7 @@ jeedom.zwavejs.node = function() {
 		nodeId : _params.nodeId,
 		cc : _params.cc,
 		endpoint : _params.endpoint,
+		property : _params.property,
 		value : _params.value,
  	};
  	$.ajax(paramsAJAX);

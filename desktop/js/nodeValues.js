@@ -29,7 +29,6 @@ $("body").off("click", ".refreshNodeCC").on("click", ".refreshNodeCC", function 
 
 $("body").off("click", ".editValue").on("click", ".editValue", function (e) {
   var title = '{{Changer la valeur de}} '+ $(this).data('label')+ ' ? ';
-  title += '{{La valeur actuelle est : }} ';
   var valueApplyOption={
     fullpath : $(this).data('path'),
   };
@@ -79,14 +78,16 @@ $("body").off("click", ".editValue").on("click", ".editValue", function (e) {
 });
 
 $("body").off("click", ".configPolling").on("click", ".configPolling", function (e) {
-  var valueApplyOption={
-    nodeId : $(this).data('nodeId'),
+ var valueApplyOption={
+    nodeId : $(this).data('nodeid'),
     cc : $(this).data('cc'),
     endpoint : $(this).data('endpoint'),
+    property : $(this).data('property'),
   };
   var title = '{{Configurer le Polling de }} '+ $(this).data('label')+ ' ? <br><b> {{Attention ne jamais utiliser de polling sauf cas nécessaire et obligatoire, un polling allourdi le réseau.}}</b>';
+	title += '<br>{{Le polling actuel est : }} ' + $(this).data('currentpolling');
     var options = [];
-	options.push({value : '',text : 'Aucun'})
+	options.push({value : 'Aucun',text : 'Aucun'})
 	options.push({value : '1',text : '1 minute'})
 	options.push({value : '5',text : '5 minutes'})
 	options.push({value : '15',text : '15 minutes'})
