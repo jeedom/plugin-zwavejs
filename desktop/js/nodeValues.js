@@ -181,6 +181,7 @@ function node_read_values(){
 				for (value in nodeValues['nodeValues']['updates']){
 					$('.'+ $.escapeSelector(value)).empty().append(nodeValues['nodeValues']['updates'][value]['value']);
 					$('.'+ $.escapeSelector(value+'_lastUpdate')).empty().append(nodeValues['nodeValues']['updates'][value]['lastUpdate']);
+					$('.'+ $.escapeSelector(value+'_Poll')).empty().append(nodeValues['nodeValues']['updates'][value]['poll']);
 				}
 			} else {
 				$('.getNodeInfo-nodeValues').empty().append(nodeValues['nodeValues']['init']);

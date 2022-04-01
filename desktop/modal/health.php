@@ -30,10 +30,10 @@ sendVarToJs('battery_danger',config::byKey('battery::danger'));
 			<th>{{Equipement}}</th>
 			<th>{{Endpoints}}</th>
 			<th>{{Sécurité}}</th>
-			<th>{{Beaming}}</th>
 			<th>{{Flirs}}</th>
 			<th>{{Zwave+}}</th>
 			<th>{{Routing}}</th>
+			<th>{{Polling}}</th>
 			<th>{{Initié}}</th>
 			<th>{{Statut}}</th>
 			<th>{{Interview}}</th>

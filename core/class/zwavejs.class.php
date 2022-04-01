@@ -214,6 +214,13 @@ class zwavejs extends eqLogic {
 		if (!is_dir($data_path)) {
 			mkdir($data_path, 0777, true);
 		}
+		$status_path = realpath(dirname(__FILE__) . '/../../data/status');
+		$files = glob($status_path.'/*.json'); 
+		foreach($files as $file){ 
+			if(is_file($file)) {
+				unlink($file);
+			}
+		}
 		$data_path = realpath(dirname(__FILE__) . '/../../data/store');
 		self::configureSettings($data_path);
 		chdir($zwavejs_path);
@@ -492,7 +499,7 @@ class zwavejs extends eqLogic {
 						if ($node['id']==$value['origin']['node']){
 							$values['id']=$node['id'];
 							$values['status']=$node['status'];
-							$values['nodeValues'] = zwavejs::constructValuePage($node['id'],$node['values']);
+							$values['nodeValues'] = zwavejs::constructValuePage($node['id'],$node['values'],$node['status']);
 							self::addFileEvent('getNodeValues'.$node['id'],$values);
 						}
 					}
@@ -954,7 +961,7 @@ class zwavejs extends eqLogic {
 		return $eqLogic;
 	}
 	
-	public static function constructValuePage($_nodeId, $_values) {
+	public static function constructValuePage($_nodeId, $_values,$_nodeStatus) {
 		$nodeValuesDict = array();
 		$eqLogic = zwavejs::byLogicalId($_nodeId, 'zwavejs');
 		$nodeValues = '<div class="panel-group" id="accordionValues">';
@@ -1085,9 +1092,19 @@ class zwavejs extends eqLogic {
 						$currentPolling = $polling[$data['endpoint'].'-'.$cc.'-'.$prop];
 					}
 				}
-				$nodeValues .= '<a class="btn btn-xs btn-danger configPolling pull-right cursor" data-valueid="'.$data['id'] .'" data-property="'.$prop .'" data-currentpolling="'.$currentPolling .'" data-endpoint="'.$data['endpoint'] .'" data-cc="'.$datas[0]['commandClass'].'" data-nodeid="'.$_nodeId.'" data-label="'.$data['label'].'<sub> ('.$cc.'-'.$data['endpoint'].')</sub>" title="'.__('Configurer le Polling', __FILE__).'"><i class="fas fa-wrench"></i></a>';
+				$sub='';
+				if ($currentPolling == 'Aucun'){
+					$color = 'btn-warning';
+				} else {
+					$color = 'btn-danger';
+					$sub='<sub>'.$currentPolling.'</sub>';
+				}
+				if ($data['readable'] && $_nodeStatus == 'Alive'){
+				$nodeValues .= '<span class="'.str_replace(' ','_',$data['id']).'_Poll"><a class="btn btn-xs '.$color.' configPolling pull-right cursor" data-valueid="'.$data['id'] .'" data-property="'.$prop .'" data-currentpolling="'.$currentPolling .'" data-endpoint="'.$data['endpoint'] .'" data-cc="'.$datas[0]['commandClass'].'" data-nodeid="'.$_nodeId.'" data-label="'.$data['label'].'<sub> ('.$cc.'-'.$data['endpoint'].')</sub>" title="'.__('Configurer le Polling', __FILE__).'"><i class="fas fa-wrench"></i>'.$sub.'</a></span>';
+				$updates[str_replace(' ','_',$data['id'])]['poll']='<a class="btn btn-xs '.$color.' configPolling pull-right cursor" data-valueid="'.$data['id'] .'" data-property="'.$prop .'" data-currentpolling="'.$currentPolling .'" data-endpoint="'.$data['endpoint'] .'" data-cc="'.$datas[0]['commandClass'].'" data-nodeid="'.$_nodeId.'" data-label="'.$data['label'].'<sub> ('.$cc.'-'.$data['endpoint'].')</sub>" title="'.__('Configurer le Polling', __FILE__).'"><i class="fas fa-wrench"></i>'.$sub.'</a>';
+				}
 				if ($data['readable'] && (in_array($data['type'],array('number','boolean')))){
-					$nodeValues .= ' <a class="btn btn-xs btn-warning createCommandInfo pull-right"';
+					$nodeValues .= ' <a class="btn btn-xs btn-info createCommandInfo pull-right"';
 					$nodeValues .= ' data-type="'.$data['type'].'"';
 					$nodeValues .= ' data-label="'.$data['label'].'"';
 					$nodeValues .= ' data-path="'.$data['id'].'"';
@@ -1138,13 +1155,6 @@ class zwavejs extends eqLogic {
 				}
 				$healthPage .= '<td>'.$secure.'</td>';
 				
-				if ($values['supportsBeaming']) {
-					$beaming = '<span title="Beaming" style="font-size : 1.5em;"><i class="fas fa-check-circle icon_green" aria-hidden="true"></i></span>';
-				} else {
-					$beaming = '<span title="Non Beaming" style="font-size : 1.5em;"><i class="fas fa-minus-circle icon_orange" aria-hidden="true"></i></span>';
-				}
-				$healthPage .= '<td>'.$beaming.'</td>';
-				
 				if ($values['isFrequentListening']) {
 					$flirs = '<span title="Flirs" style="font-size : 1.5em;"><i class="fas fa-check-circle icon_green" aria-hidden="true"></i></span>';
 				} else {
@@ -1165,6 +1175,21 @@ class zwavejs extends eqLogic {
 					$isRouting = '<span title="No Routing" style="font-size : 1.5em;"><i class="fas fa-minus-circle icon_orange" aria-hidden="true"></i></span>';
 				}
 				$healthPage .= '<td>'.$isRouting.'</td>';
+				$numberPoll = 0;
+				if (is_object($eqLogic)){
+					$currentPolling = $eqLogic->getConfiguration('polling',array());
+					foreach ($currentPolling as $key=>$value){
+						if ($value != 'Aucun'){
+							$numberPoll+=1;
+						}
+					}
+				}
+				if ($numberPoll == 0){
+					$polling = '<span title="Nombre de polling actif" style="font-size : 1.5em;"><i class="fas fa-check-circle icon_green" aria-hidden="true"></i></span>';
+				} else {
+					$polling = '<span title="Nombre de polling actif" class="label label-warning" style="font-size : 1em;">'.$numberPoll.'</span>';
+				}
+				$healthPage .= '<td>'.$polling.'</td>';
 				
 				if ($values['inited']) {
 					$inited = '<span title="Initié" style="font-size : 1.5em;"><i class="fas fa-check-circle icon_green" aria-hidden="true"></i></span>';
