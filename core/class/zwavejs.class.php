@@ -1429,7 +1429,13 @@ class zwavejs extends eqLogic {
 						foreach ($replace_array as $source => $target){
 							$command = json_decode(str_replace($source,$target,json_encode($command)),true);
 						}
-						if ($multiName){
+						if (isset($details['multiValue'])){
+							$command['configuration']['value']=$details['multiValue'][$numberCommand];
+						}
+						if (isset($details['multiProperty'])){
+							$command['configuration']['property'].=$details['multiProperty'][$numberCommand];
+						}
+						if ($multiName || !is_numeric($numberCommand)){
 							$command['name'].='-'.$numberCommand;
 							if (isset($command['value'])){
 								$command['value'].='-'.$numberCommand;

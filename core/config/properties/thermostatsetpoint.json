@@ -1,0 +1,37 @@
+{"standard": 
+	[
+		{
+			"name": "Consigne",
+			"type": "info",
+			"isVisible": 0,
+			"isHistorized": "0",
+			"configuration": {
+				"class": 67,
+				"endpoint": "#endpoint#",
+				"property": "setpoint-"
+			},
+			"subtype": "numeric",
+			"display": {
+				"generic_type": "THERMOSTAT_SETPOINT"
+			},
+			"unite": "°C"
+		},
+		{
+			"name": "Action-Consigne",
+			"type": "action",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 67,
+				"endpoint": "#endpoint#",
+				"property": "setpoint-",
+				"value":"#slider#"
+			},
+			"value": "Consigne",
+			"subtype": "slider",
+			"display": {
+				"generic_type": "THERMOSTAT_SET_SETPOINT"
+			}
+		}
+	]
+}

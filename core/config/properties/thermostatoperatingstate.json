@@ -1,0 +1,19 @@
+{"standard": 
+	[
+		{
+			"name": "Consigne",
+			"type": "info",
+			"isVisible": 0,
+			"isHistorized": "0",
+			"configuration": {
+				"class": 66,
+				"endpoint": "#endpoint#",
+				"property": "state"
+			},
+			"subtype": "numeric",
+			"display": {
+				"generic_type": "THERMOSTAT_SETPOINT"
+			}
+		}
+	]
+}

@@ -1,0 +1,20 @@
+{"standard": 
+	[
+		{
+			"name": "Mode",
+			"type": "action",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 64,
+				"endpoint": "#endpoint#",
+				"property": "mode",
+				"value": "#actionValue#"
+			},
+			"subtype": "other",
+			"display": {
+				"generic_type": "THERMOSTAT_SET_MODE"
+			}
+		}
+	]
+}

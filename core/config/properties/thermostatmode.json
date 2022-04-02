@@ -1,0 +1,19 @@
+{"standard": 
+	[
+		{
+			"name": "Mode Thermostat",
+			"type": "info",
+			"isVisible": 1,
+			"isHistorized": "0",
+			"configuration": {
+				"class": 64,
+				"endpoint": "#endpoint#",
+				"property": "mode"
+			},
+			"subtype": "string",
+			"display": {
+				"generic_type": "THERMOSTAT_MODE"
+			}
+		}
+	]
+}
