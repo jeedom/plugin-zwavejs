@@ -10,7 +10,7 @@
 				"endpoint": "#endpoint#",
 				"property": "mode"
 			},
-			"subtype": "string",
+			"subtype": "numeric",
 			"display": {
 				"generic_type": "THERMOSTAT_MODE"
 			}
