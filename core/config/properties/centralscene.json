@@ -4,7 +4,7 @@
 		{
 			"name": "CentralScene",
 			"type": "info",
-			"isVisible": 1,
+			"isVisible": 0,
 			"isHistorized": 0,
 			"configuration": {
 				"repeatEventManagement": "always",
@@ -37,8 +37,8 @@
 				"generic_type": "DONT"
 			},
 			"template": {
-				"dashboard": "line",
-				"mobile": "line"
+				"dashboard": "tile",
+				"mobile": "tile"
 			}
 		}
 	]
