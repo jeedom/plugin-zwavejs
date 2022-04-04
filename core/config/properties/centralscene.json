@@ -20,6 +20,26 @@
 				"dashboard": "tile",
 				"mobile": "tile"
 			}
+		},
+		{
+			"name": "CentralSceneLabel",
+			"type": "info",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"repeatEventManagement": "always",
+				"class": 91,
+				"endpoint": "#endpoint#",
+				"property": "scene-#centralscene#-label"
+			},
+			"subtype": "string",
+			"display": {
+				"generic_type": "DONT"
+			},
+			"template": {
+				"dashboard": "line",
+				"mobile": "line"
+			}
 		}
 	]
 }

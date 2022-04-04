@@ -21,6 +21,23 @@
 
 
 class zwavejs extends eqLogic {
+	
+	private function getValueLabels($_key,$_value) {
+		$labelArray = array("91-scene"=>array("0"=>"Appui 1x",
+										"1"=>"Relâchement",
+										"2"=>"Appui long",
+										"3"=>"Appui 2x",
+										"4"=>"Appui 3x",
+										"5"=>"Appui 4x",
+										"6"=>"Appui 5x",
+										"90"=>"N/A")
+					);
+		$result = false;
+		if (isset($labelArray[$_key]) && isset($labelArray[$_key][$_value])){
+			$result = $labelArray[$_key][$_value];
+		}
+		return $result;
+	}
 	/*     * *************************Attributs****************************** */
 	
 	public static $_excludeOnSendPlugin = array('zwavejs.log');
@@ -246,6 +263,7 @@ class zwavejs extends eqLogic {
 			log::add('zwavejs', 'error', 'Impossible de lancer le démon zwavejs, vérifiez la log', 'unableStartDeamon');
 			return false;
 		}
+		config::save('lastStart',time(),'zwavejs');
 		message::removeAll('zwavejs', 'unableStartDeamon');
 		log::add('zwavejs', 'info', 'Démon zwavejs lancé');
 		return true;
@@ -295,6 +313,21 @@ class zwavejs extends eqLogic {
 			return false;
 		}
 		return true;
+	}
+	
+	public static function flatten_array($array, $prefix = ''){
+		$result = array();
+		foreach ($array as $key => $value){
+			if (is_array($value)){
+				$new_key = $prefix . (empty($prefix) ? '' : '-') . $key;
+				$result = array_merge($result, self::flatten_array($value, $new_key));
+			}
+			else {
+				$new_key = $prefix;
+				$result[$new_key][$key] = $value;
+			}
+		}
+		return $result;
 	}
 	
 	public static function handleMqttMessage($_message) {
@@ -661,56 +694,24 @@ class zwavejs extends eqLogic {
 		log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.'Traitement d\'un update de value d\'un node direct');
 		log::add('zwavejs','debug','[' . __FUNCTION__ . '] '. $_nodeId . ' ' . json_encode($_value_update));
 		$eqLogic = zwavejs::byLogicalId($_nodeId, 'zwavejs');
+		$flatten = self::flatten_array($_value_update);
+		log::add('zwavejs','debug',json_encode($flatten,true));
 		if (is_object($eqLogic)) {
 			if ($eqLogic->getIsEnable()) {
 				log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.'Le noeud avec l\'id : ' . $_nodeId . ' existe ' . $eqLogic->getHumanName());
-				foreach ($_value_update as $class=>$value){
-					log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.$class);
-					if (is_int($class)){
-						if (is_array($value[0])){
-							log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.'Value is an array endpoint is defined as 0');
-							foreach ($value as $element){
-								foreach($element as $property=>$data) {
-									if ($property == 'scene') {
-										if (isset($data['value'])){
-											$eqLogic->updateCmd($class.'-0-'.$property, $data['value']);
-										}
-									}
-									else if (isset($data['value'])){
-										log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.$class.'-0-'.$property .':' .json_encode($data));
-										$eqLogic->updateCmd($class.'-0-'.$property, $data['value']);
-									} else {
-										foreach($data as $propertyKey=>$final) {
-											log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.$class.'-0-'.$property . '-'.$propertyKey.':' .json_encode($final));
-											$eqLogic->updateCmd($class.'-0-'.$property.'-'.$propertyKey, $final['value']);
-										}
-									}
-								}
-							}
-						} else {
-							log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.'Value is not an array there are some endpoints');
-							foreach ($value as $endpoint=>$element){
-								foreach($element as $property=>$data) {
-									if (isset($data['value'])){
-										log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.$class.'-'.$endpoint.'-'.$property .':' .json_encode($data));
-										$eqLogic->updateCmd($class.'-'.$endpoint.'-'.$property, $data['value']);
-									} else {
-										foreach($data as $propertyKey=>$final) {
-											log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.$class.'-'.$endpoint.'-'.$property . '-'.$propertyKey.':' .json_encode($final));
-											$eqLogic->updateCmd($class.'-'.$endpoint.'-'.$property.'-'.$propertyKey, $final['value']);
-										}
-									}
-								}
-							}
+				foreach ($flatten as $key=>$data){
+					if ($key == 'status'){
+						$eqLogic->updateCmd('0-0-nodeStatus', $data['status']);
+						if ($data['status'] == 'Awake'){
+							$eqLogic->setConfiguration('lastWakeUp', time());
+							$eqLogic->save();
 						}
-					} else {
-						if ($class == 'status'){
-							$eqLogic->updateCmd('0-0-nodeStatus', $value['status']);
-							if ($value['status'] == 'Awake'){
-								$eqLogic->setConfiguration('lastWakeUp', time());
-								$eqLogic->save();
-							}
-						}
+					}
+					else if (isset($data['value'])){
+						$eqLogic->updateCmd($key, $data['value']);
+					}
+					else if (strpos($key,'scene-')){
+						$eqLogic->updateCmd($key, 90);
 					}
 				}
 			}
@@ -1343,7 +1344,7 @@ class zwavejs extends eqLogic {
 			if (isset($_change['propertyKey'])){
 				$cmdId.='-'.$_change['propertyKey'];
 			}
-			log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.'Changement pour ' . $cmdId);
+			log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.'Changement pour ' . $cmdId . ' ' .json_encode($_change));
 			$this->updateCmd($cmdId, $_change['newValue']);
 		}
 	}
@@ -1360,9 +1361,29 @@ class zwavejs extends eqLogic {
 			$value = '#'.$value;
 		}
 		log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.$this->getLogicalId().'  :  '.$class .' ' .$endpoint . ' '.$property.' '.$value);
+		$startTime = config::byKey('lastStart','zwavejs',0);
+		if ((time()-$startTime)<30){
+			$cmd = $this->getCmd(null, $_cmdId);
+			if (is_object($cmd)){
+				$returnStateTime = $cmd->getConfiguration('returnStateTime',0);
+				if ($returnStateTime != 0){
+					log::add('zwavejs','debug','[' . __FUNCTION__ . '] Démon démarré depuis moins de 30 secondes et commande avec retour d\'état jeedom on ignore (' .$this->getHumanName() . ' ' . $cmd->getName().')');
+					return;
+				}
+			}
+		}
 		$this->checkAndUpdateCmd($_cmdId, $value);
 		if ($class == '128' && $property == 'level'){
 			$this->batteryStatus($value);
+		}
+		$propertyCheck = $property;
+		if (strpos($property,'scene-') !==false){
+			$propertyCheck = 'scene';
+		}
+		$label = zwavejs::getValueLabels($class.'-'.$propertyCheck,$value);
+		if ($label){
+			log::add('zwavejs','debug',$label);
+			$this->checkAndUpdateCmd($_cmdId.'-label', $label);
 		}
 	}
 	

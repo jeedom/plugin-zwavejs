@@ -13,7 +13,9 @@
     "properties": {
         "Temperature": {},
         "Humidity": {},
-        "Tamper": {},
+        "Tamper": {
+            "returnStateTime": 1,
+            "returnStateValue": 0},
         "Battery": {}
     }
 }
