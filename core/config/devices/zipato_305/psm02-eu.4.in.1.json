@@ -9,11 +9,14 @@
     "recommended": {
         "params": [
             {
-                "index": 7,
-                "value": 22
+                "path": "112-0-7-16",
+                "value": "1"
+            },
+            {
+                "path": "132-0-wakeUpInterval",
+                "value": "86400"
             }
         ],
-        "wakeup": 7200,
         "needswakeup": true
     },
     "versions": {
@@ -21,122 +24,16 @@
             "12"
         ]
     },
-    "commands": [
-        {
-            "name": "Présence",
-            "type": "info",
-            "isVisible": 1,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 48,
-                "endpoint": 0,
-                "property": "Any"
-            },
-            "subtype": "binary",
-            "display": {
-                "invertBinary": "1",
-                "generic_type": "PRESENCE"
-            },
-            "template": {
-                "dashboard": "presence",
-                "mobile": "presence"
-            }
+    "properties": {
+        "Opening": {"type": "binary-door"},
+        "Motion": {"type": "binary-motion"},
+        "Temperature": {},
+        "Luminance": {},
+        "Tamper": {
+            "type": "binary-tamper",
+            "returnStateTime": 1,
+            "returnStateValue": 0
         },
-        {
-            "name": "Ouverture",
-            "type": "info",
-            "isVisible": 1,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 48,
-                "value": "",
-                "index": 1,
-                "instance": 1
-            },
-            "subtype": "binary",
-            "display": {
-                "invertBinary": "1",
-                "generic_type": "OPENING"
-            },
-            "template": {
-                "dashboard": "door",
-                "mobile": "door"
-            }
-        },
-        {
-            "name": "Température",
-            "type": "info",
-            "isVisible": 1,
-            "isHistorized": 1,
-            "configuration": {
-                "class": 49,
-                "endpoint": 0,
-                "property": "Air temperature"
-            },
-            "subtype": "numeric",
-            "display": {
-                "generic_type": "TEMPERATURE"
-            },
-            "unite": "°C"
-        },
-        {
-            "name": "Luminosité",
-            "type": "info",
-            "isVisible": 1,
-            "isHistorized": 1,
-            "configuration": {
-                "minValue": 0,
-                "maxValue": 100,
-                "class": 49,
-                "endpoint": 0,
-                "property": "Illuminance"
-            },
-            "subtype": "numeric",
-            "display": {
-                "generic_type": "BRIGHTNESS"
-            },
-            "unite": "%"
-        },
-        {
-            "name": "Sabotage",
-            "type": "info",
-            "isVisible": 1,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 48,
-                "value": "",
-                "index": 2,
-                "instance": 1,
-                "returnStateTime": 1,
-                "returnStateValue": 0
-            },
-            "subtype": "binary",
-            "display": {
-                "invertBinary": "1",
-                "generic_type": "SABOTAGE"
-            },
-            "template": {
-                "dashboard": "alert",
-                "mobile": "alert"
-            }
-        },
-        {
-            "name": "Batterie",
-            "type": "info",
-            "isVisible": 0,
-            "isHistorized": 0,
-            "configuration": {
-                "minValue": 0,
-                "maxValue": 100,
-                "class": 128,
-                "endpoint": 0,
-                "property": "level"
-            },
-            "subtype": "numeric",
-            "display": {
-                "generic_type": "BATTERY"
-            },
-            "unite": "%"
-        }
-    ]
+        "Battery": {}
+    }
 }
