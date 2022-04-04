@@ -73,6 +73,11 @@ sendVarTojs('eqLogic_human_name', $tags);
 				<br/>
 				<span>{{Santé}}</span>
 			</div>
+			<div class="cursor logoSecondary" id="bt_zwaveStats">
+				<i class="fas fa-chart-bar"></i>
+				<br/>
+				<span>{{Statistiques}}</span>
+			</div>
 		</div>
 		<legend><i class="fas fa-broadcast-tower"></i> {{Mes équipements Z-Wave}}</legend>
 		<div class="input-group" style="margin:5px;">

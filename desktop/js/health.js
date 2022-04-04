@@ -35,17 +35,19 @@ function get_health_file(){
     error: function (error) {
       $('#div_networkHealthAlert').showAlert({message: error.message, level: 'danger'});
 		if ($('.modalHealthValues').is(":visible")) {
-			setTimeout(function(){ get_health_file(); }, 2000);
+			getHealthFile = setTimeout(function(){ get_health_file(); }, 2000);
 		}
 		},
     success: function (health) {
 		$('.tableHealth tbody').empty().append(health);
 		if ($('.modalHealthValues').is(":visible")) {
-			setTimeout(function(){ get_health_file(); }, 2000);
+			getHealthFile = setTimeout(function(){ get_health_file(); }, 2000);
 		}
 	}
   })
 }
+
+
 
 function get_health_info(){
   jeedom.zwavejs.network.getNodes({
@@ -55,17 +57,22 @@ function get_health_info(){
     error: function (error) {
       $('#div_networkHealthAlert').showAlert({message: error.message, level: 'danger'});
 	  if ($('.modalHealthValues').is(":visible")) {
-		setTimeout(function(){ get_health_info(); }, 2000);
+		getHealthInfo = setTimeout(function(){ get_health_info(); }, 2000);
 	  }
     },
     success: function (data) {
       if ($('.modalHealthValues').is(":visible")) {
-		setTimeout(function(){ get_health_info(); }, 2000);
+		getHealthInfo = setTimeout(function(){ get_health_info(); }, 2000);
 	  }
     }
   });
 }
 
-$('#div_networkHealthAlert').showAlert({message: '{{Chargement des infos en cours ...}}', level: 'warning'});
+$('#md_modal').bind('dialogclose', function(event, ui) {
+  clearTimeout(getHealthFile);
+  clearTimeout(getHealthInfo);
+});
+
+$('#div_alert').showAlert({message: '{{Chargement des infos en cours ...}}', level: 'warning'});
 get_health_info();
 get_health_file();

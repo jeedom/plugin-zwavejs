@@ -137,23 +137,28 @@ $('.changeIncludeState').off('click').on('click', function () {
 });
 
 $('body').delegate('.nodeInformations', 'click', function () {
-  $('#md_modal2').dialog({title: "{{Informations du noeud}}"});
-  $('#md_modal2').load('index.php?v=d&plugin=zwavejs&modal=node.informations&id=' + $('.eqLogicAttr[data-l1key=logicalId]').value()).dialog('open');
+  $('#md_modal').dialog({title: "{{Informations du noeud}}"});
+  $('#md_modal').load('index.php?v=d&plugin=zwavejs&modal=node.informations&id=' + $('.eqLogicAttr[data-l1key=logicalId]').value()).dialog('open');
 });
 
 $('body').delegate('.nodeValues', 'click', function () {
-  $('#md_modal2').dialog({title: "{{Valeurs du noeud}}"});
-  $('#md_modal2').load('index.php?v=d&plugin=zwavejs&modal=node.values&id='+ $('.eqLogicAttr[data-l1key=logicalId]').value()).dialog('open');
+  $('#md_modal').dialog({title: "{{Valeurs du noeud}}"});
+  $('#md_modal').load('index.php?v=d&plugin=zwavejs&modal=node.values&id='+ $('.eqLogicAttr[data-l1key=logicalId]').value()).dialog('open');
 });
 
 $('body').delegate('.nodeGroups', 'click', function () {
-  $('#md_modal2').dialog({title: "{{Groupes du noeud}}"});
-  $('#md_modal2').load('index.php?v=d&plugin=zwavejs&modal=node.groups&id='+ $('.eqLogicAttr[data-l1key=logicalId]').value()).dialog('open');
+  $('#md_modal').dialog({title: "{{Groupes du noeud}}"});
+  $('#md_modal').load('index.php?v=d&plugin=zwavejs&modal=node.groups&id='+ $('.eqLogicAttr[data-l1key=logicalId]').value()).dialog('open');
 });
 
 $('#bt_zwaveNetwork').off('click').on('click', function () {
   $('#md_modal').dialog({title: "{{Réseaux zwave}}"});
   $('#md_modal').load('index.php?v=d&plugin=zwavejs&modal=network').dialog('open');
+});
+
+$('#bt_zwaveStats').off('click').on('click', function () {
+  $('#md_modal').dialog({title: "{{Statistiques zwave}}"});
+  $('#md_modal').load('index.php?v=d&plugin=zwavejs&modal=stats').dialog('open');
 });
 
 $('#bt_zwaveHealth').on('click', function () {

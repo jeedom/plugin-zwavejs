@@ -48,12 +48,12 @@ function network_load_nodes(){
     error: function (error) {
       $('#div_nodeInformationsZwaveJsAlert').showAlert({message: error.message, level: 'danger'});
 	if ($('.modalNodeInformations').is(":visible")) {
-		setTimeout(function(){ network_load_nodes(); }, 2000);
+		infoloadnodes = setTimeout(function(){ network_load_nodes(); }, 2000);
 	  }
     },
     success: function () {
 		if ($('.modalNodeInformations').is(":visible")) {
-			setTimeout(function(){ network_load_nodes(); }, 2000);
+			infoloadnodes = setTimeout(function(){ network_load_nodes(); }, 2000);
 		}
 	}
   })
@@ -67,7 +67,7 @@ function read_nodes(){
     error: function (error) {
       $('#div_nodeInformationsZwaveJsAlert').showAlert({message: error.message, level: 'danger'});
 	if ($('.modalNodeInformations').is(":visible")) {
-		setTimeout(function(){ read_nodes(); }, 2000);
+		readnodes = setTimeout(function(){ read_nodes(); }, 2000);
 	  }
     },
     success: function (nodeData) {
@@ -109,12 +109,18 @@ function read_nodes(){
 		}
 	}
 		if ($('.modalNodeInformations').is(":visible")) {
-			setTimeout(function(){ read_nodes(); }, 2000);
+			readnodes = setTimeout(function(){ read_nodes(); }, 2000);
 		}
 	}
   })
 }
 
-$('#div_nodeInformationsZwaveJsAlert').showAlert({message: '{{Chargement des infos en cours ...}}', level: 'warning'});
+
+$('#md_modal').bind('dialogclose', function(event, ui) {
+  clearTimeout(readnodes);
+  clearTimeout(infoloadnodes);
+});
+
+$('#div_alert').showAlert({message: '{{Chargement des infos en cours ...}}', level: 'warning'});
 network_load_nodes();
 read_nodes();

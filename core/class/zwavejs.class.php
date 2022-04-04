@@ -425,6 +425,8 @@ class zwavejs extends eqLogic {
 						if ($node['status'] == 'Asleep'){
 							$sleepingNodes += 1;
 						}
+						unset($data['deviceConfig']);
+						unset($data['values']);
 						$networkTree['data'][$data['id']]=$data;
 					}
 					$stats['sleepingNodes'] = $sleepingNodes;
@@ -1131,7 +1133,7 @@ class zwavejs extends eqLogic {
 					if (!is_file(dirname(__FILE__) . '/../config/devices/'.$eqLogic->getImgFilePath())){
 						$image = 'plugins/zwavejs/plugin_info/zwavejs_icon.png';
 					}
-					$healthPage .= '<td><img src="'.$image.'" height="40"/> <a href="index.php?v=d&p=zwavejs&m=zwavejs&logical_id=' . $eqLogic->getLogicalId() . '">' . $eqLogic->getHumanName(true).  '</a>'.' ' .$productDetails.'</td>';
+					$healthPage .= '<td><img src="'.$image.'" height="40"/> <a href="index.php?v=d&p=zwavejs&m=zwavejs&id=' . $eqLogic->getId() . '">' . $eqLogic->getHumanName(true).  '</a>'.' ' .$productDetails.'</td>';
 				} else {
 					$healthPage .= '<td><img src="plugins/zwavejs/plugin_info/zwavejs_icon.png" height="40"/> '.$values['productLabel'].' - '.$values['productDescription'].' ' .$productDetails.'</td>';
 				}

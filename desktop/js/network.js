@@ -289,12 +289,12 @@ function network_load_info(){
     error: function (error) {
       $('#div_networkzwavejsAlert').showAlert({message: error.message, level: 'danger'});
 	  if ($('.modalnetWork').is(":visible")) {
-		setTimeout(function(){ network_load_info(); }, 2000);
+		networkinfo = setTimeout(function(){ network_load_info(); }, 2000);
 	  }
     },
       success: function () {
         if ($('.modalnetWork').is(":visible")) {
-		setTimeout(function(){ network_load_info(); }, 2000);
+		networkinfo = setTimeout(function(){ network_load_info(); }, 2000);
 	  }
       }
   })
@@ -321,12 +321,12 @@ function network_load_nodes(){
     error: function (error) {
       $('#div_networkzwavejsAlert').showAlert({message: error.message, level: 'danger'});
 	  if ($('.modalnetWork').is(":visible")) {
-		setTimeout(function(){ network_load_nodes(); }, 2000);
+		networknodes = setTimeout(function(){ network_load_nodes(); }, 2000);
 	  }
     },
       success: function () {
         if ($('.modalnetWork').is(":visible")) {
-		setTimeout(function(){ network_load_nodes(); }, 2000);
+		networknodes = setTimeout(function(){ network_load_nodes(); }, 2000);
 	  }
       }
   })
@@ -377,9 +377,9 @@ function network_read_stats(){
     type : 'nodeStats',
     global:false,
     error: function (error) {
-    $('#div_nodeInformationsZwaveJsAlert').showAlert({message: error.message, level: 'danger'});
+    $('#div_networkzwavejsAlert').showAlert({message: error.message, level: 'danger'});
 		if ($('.modalnetWork').is(":visible")) {
-		setTimeout(function(){ network_read_stats(); }, 2000);
+		networkstats = setTimeout(function(){ network_read_stats(); }, 2000);
 	  }
     },
     success: function (nodeStats) {
@@ -402,7 +402,7 @@ function network_read_stats(){
 			}
 		}
 		if ($('.modalnetWork').is(":visible")) {
-		setTimeout(function(){ network_read_stats(); }, 2000);
+		networkstats = setTimeout(function(){ network_read_stats(); }, 2000);
 	  }
 	}
   })
@@ -414,9 +414,9 @@ function network_read_info(){
     type : 'info',
     global:false,
     error: function (error) {
-    $('#div_nodeInformationsZwaveJsAlert').showAlert({message: error.message, level: 'danger'});
+    $('#div_networkzwavejsAlert').showAlert({message: error.message, level: 'danger'});
 	if ($('.modalnetWork').is(":visible")) {
-		setTimeout(function(){ network_read_info(); }, 2000);
+		networkinfo =  setTimeout(function(){ network_read_info(); }, 2000);
 	  }
     },
     success: function (info) {
@@ -428,13 +428,20 @@ function network_read_info(){
 			$('.getInfo-'+key).empty().append(value);
 		}
 		if ($('.modalnetWork').is(":visible")) {
-		setTimeout(function(){ network_read_info(); }, 2000);
+		networkinfo = setTimeout(function(){ network_read_info(); }, 2000);
 	  }
 	}
   })
 }
 
+$('#md_modal').bind('dialogclose', function(event, ui) {
+  clearTimeout(networkinfo);
+  clearTimeout(networkstats);
+  clearTimeout(networknodes);
+  clearTimeout(networkinfo);
+});
 
+$('#div_alert').showAlert({message: '{{Chargement des infos en cours ...}}', level: 'warning'});
 network_load_info();
 network_load_nodes();
 network_read_stats();

@@ -72,12 +72,12 @@ function node_load_groups(){
     error: function (error) {
       $('#div_nodeGroupsZwaveJsAlert').showAlert({message: error.message, level: 'danger'});
 	  if ($('.modalNodeGroups').is(":visible")) {
-		setTimeout(function(){ node_load_groups(); }, 2000);
+		nodeloadgroups = setTimeout(function(){ node_load_groups(); }, 2000);
 	  }
     },
     success: function () {
 		if ($('.modalNodeGroups').is(":visible")) {
-			setTimeout(function(){ node_load_groups(); }, 2000);
+			nodeloadgroups = setTimeout(function(){ node_load_groups(); }, 2000);
 		}
 	}
   })
@@ -102,13 +102,13 @@ function node_read_group(){
     error: function (error) {
       $('#div_nodeInformationsZwaveJsAlert').showAlert({message: error.message, level: 'danger'});
 	if ($('.modalNodeGroups').is(":visible")) {
-		setTimeout(function(){ node_read_group(); }, 2000);
+		nodegroup = setTimeout(function(){ node_read_group(); }, 2000);
 	  }
     },
     success: function (groups) {
 		nodes = groups;
 		if ($('.modalNodeGroups').is(":visible")) {
-		setTimeout(function(){ node_read_group(); }, 2000);
+		nodegroup = setTimeout(function(){ node_read_group(); }, 2000);
 	  }
 	  node_read_associations();
 	}
@@ -123,7 +123,7 @@ function node_read_associations(){
     error: function (error) {
       $('#div_nodeInformationsZwaveJsAlert').showAlert({message: error.message, level: 'danger'});
 	if ($('.modalNodeGroups').is(":visible")) {
-		setTimeout(function(){ node_read_associations(); }, 2000);
+		nodeasso = setTimeout(function(){ node_read_associations(); }, 2000);
 	  }
     },
     success: function (NodeAssociations) {
@@ -192,13 +192,19 @@ function node_read_associations(){
 		}
 	}
 	if ($('.modalNodeGroups').is(":visible")) {
-		setTimeout(function(){ node_read_associations(); }, 2000);
+		nodeasso = setTimeout(function(){ node_read_associations(); }, 2000);
 	  }
 	}
   })
 }
 
-$('#div_nodeGroupsZwaveJsAlert').showAlert({message: '{{Chargement des infos en cours ...}}', level: 'warning'});
+$('#md_modal').bind('dialogclose', function(event, ui) {
+  clearTimeout(nodeasso);
+  clearTimeout(nodeloadgroups);
+  clearTimeout(nodegroup);
+});
+
+$('#div_alert').showAlert({message: '{{Chargement des infos en cours ...}}', level: 'warning'});
 network_load_AllNodes();
 node_load_groups();
 node_read_group();

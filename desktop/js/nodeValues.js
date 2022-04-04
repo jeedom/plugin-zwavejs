@@ -150,12 +150,12 @@ function node_load_values(){
     error: function (error) {
       $('#div_nodeValuesZwaveJsAlert').showAlert({message: error.message, level: 'danger'});
 	  if ($('.modalNodeValues').is(":visible")) {
-		setTimeout(function(){ node_load_values(); }, 2000);
+		loadvalues = setTimeout(function(){ node_load_values(); }, 2000);
 	  }
     },
     success: function () {
 		if ($('.modalNodeValues').is(":visible")) {
-			setTimeout(function(){ node_load_values(); }, 2000);
+			loadvalues = setTimeout(function(){ node_load_values(); }, 2000);
 		}
 	}
   })
@@ -169,7 +169,7 @@ function node_read_values(){
     error: function (error) {
       $('#div_nodeInformationsZwaveJsAlert').showAlert({message: error.message, level: 'danger'});
 	if ($('.modalNodeValues').is(":visible")) {
-		setTimeout(function(){ node_read_values(); }, 2000);
+		readvalues = setTimeout(function(){ node_read_values(); }, 2000);
 	  }
     },
     success: function (nodeValues) {
@@ -188,12 +188,17 @@ function node_read_values(){
 			}
 		}
 		if ($('.modalNodeValues').is(":visible")) {
-			setTimeout(function(){ node_read_values(); }, 2000);
+			readvalues = setTimeout(function(){ node_read_values(); }, 2000);
 		}
 	}
   })
 }
 
-$('#div_nodeValuesZwaveJsAlert').showAlert({message: '{{Chargement des infos en cours ...}}', level: 'warning'});
+$('#md_modal').bind('dialogclose', function(event, ui) {
+  clearTimeout(readvalues);
+  clearTimeout(loadvalues);
+});
+
+$('#div_alert').showAlert({message: '{{Chargement des infos en cours ...}}', level: 'warning'});
 node_load_values();
 node_read_values();
