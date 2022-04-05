@@ -19,7 +19,7 @@
     },
     "properties": {
         "Switch": {
-            "type":"sensorState",
+            "type": "sensorState",
             "dashboard": "alert",
             "mobile": "alert",
             "generic_type": "DONT"

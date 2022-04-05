@@ -11,7 +11,7 @@
     },
     "properties": {
         "Switch": {
-            "type":"nolink",
+            "type": "nolink",
             "dashboard": "timeAlert",
             "mobile": "timeAlert",
             "generic_type": "DONT"

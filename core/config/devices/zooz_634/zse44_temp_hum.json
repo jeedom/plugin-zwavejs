@@ -2,7 +2,7 @@
     "name": "XS Temperature Humidity Sensor",
     "ref": "ZSE44",
     "manufacturer": "Zooz",
-    "type": "Température,Humidité", 
+    "type": "Température,Humidité",
     "reset": "Appuyer 2 fois, puis maintenir appuyé la 3ème fois le bouton à l'intérieur pendant 10 secondes. Quand la LED clignote, appuyer immédiatement 2 fois sur le bouton pour finaliser le reset. La LED clignotera 3 fois pour confirmer la réussite du reset.",
     "pairing": "Appuyer 3 fois rapidement sur le bouton à l'intérieur",
     "remark": "",

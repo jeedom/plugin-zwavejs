@@ -2,12 +2,12 @@
     "name": "4-in-1 Sensor",
     "ref": "ZSE40",
     "manufacturer": "Zooz",
-    "type": "Mouvement,Luminosité,Température,Humidité", 
+    "type": "Mouvement,Luminosité,Température,Humidité",
     "reset": "Retirer le couvercle pour déclencher le contact anti-sabotage. Puis appuyer 10 fois rapidement sur le bouton à l'aide d'un trombone (en moins de 10 secondes)",
     "pairing": "Appuyer 1 fois sur le bouton à l'aide d'un trombone",
     "remark": "",
     "documentation": "https://cdn.shopify.com/s/files/1/0218/7704/files/zooz-zse40-700-manual-online.pdf?v=1633541564",
-    "buylink": "", 
+    "buylink": "",
     "configuration": {
         "battery_type": "1x3V CR123A"
     },

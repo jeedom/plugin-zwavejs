@@ -11,8 +11,8 @@
     },
     "properties": {
         "Multilevel": {},
-        "Power":{},
-        "Energy":{},
-        "Scene":{}
+        "Power": {},
+        "Energy": {},
+        "Scene": {}
     }
 }

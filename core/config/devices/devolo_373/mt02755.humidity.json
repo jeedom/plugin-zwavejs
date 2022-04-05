@@ -15,7 +15,8 @@
         "Humidity": {},
         "Tamper": {
             "returnStateTime": 1,
-            "returnStateValue": 0},
+            "returnStateValue": 0
+        },
         "Battery": {}
     }
 }

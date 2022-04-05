@@ -19,7 +19,7 @@
         "params": [
             {
                 "path": "112-0-4",
-				"comment": "PIR sensitivity",
+                "comment": "PIR sensitivity",
                 "value": "3"
             }
         ],
@@ -29,7 +29,9 @@
         "Motion": {},
         "Temperature": {},
         "Humidity": {},
-        "Luminance": {"maxValue":4000},
+        "Luminance": {
+            "maxValue": 4000
+        },
         "Ultraviolet": {},
         "Tamper": {
             "returnStateTime": 1,

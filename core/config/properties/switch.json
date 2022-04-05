@@ -190,5 +190,69 @@
 				"mobile": "timeLight"
 			}
 		}
+	],
+"sirenState": 
+	[
+		{
+			"name": "Etat",
+			"type": "info",
+			"isVisible": 0,
+			"isHistorized": 1,
+			"configuration": {
+				"class": 113,
+				"endpoint": "#endpoint#",
+				"property": "Siren-Siren status"
+			},
+			"subtype": "binary",
+			"display": {
+				"generic_type": "DONT"
+			},
+			"template": {
+				"dashboard": "alert",
+				"mobile": "alert"
+			}
+		},
+		{
+			"name": "On",
+			"type": "action",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 37,
+				"endpoint": "#endpoint#",
+				"property": "targetValue",
+				"value": "true"
+			},
+			"value": "Etat",
+			"subtype": "other",
+			"display": {
+				"generic_type": "DONT"
+			},
+			"template": {
+				"dashboard": "alert",
+				"mobile": "alert"
+			}
+		},
+		{
+			"name": "Off",
+			"type": "action",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 37,
+				"endpoint": "#endpoint#",
+				"property": "targetValue",
+				"value": "false"
+			},
+			"value": "Etat",
+			"subtype": "other",
+			"display": {
+				"generic_type": "DONT"
+			},
+			"template": {
+				"dashboard": "alert",
+				"mobile": "alert"
+			}
+		}
 	]
 }

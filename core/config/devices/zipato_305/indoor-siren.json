@@ -12,62 +12,10 @@
             "4227"
         ]
     },
+    "properties": {
+        "Switch": {"type": "sirenState"}
+    },
     "commands": [
-        {
-            "name": "Etat",
-            "type": "info",
-            "isVisible": 1,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 37,
-                "endpoint": 0,
-                "property": "currentValue"
-            },
-            "subtype": "binary",
-            "display": {
-                "invertBinary": 1,
-                "generic_type": "DONT"
-            },
-            "template": {
-                "dashboard": "alert",
-                "mobile": "alert"
-            },
-            "unite": ""
-        },
-        {
-            "name": "On",
-            "type": "action",
-            "isVisible": 1,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 37,
-                "endpoint": 0,
-                "property": "targetValue",
-                "value": "true"
-            },
-            "value": "Etat",
-            "subtype": "other",
-            "display": {
-                "generic_type": "DONT"
-            }
-        },
-        {
-            "name": "Off",
-            "type": "action",
-            "isVisible": 1,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 37,
-                "endpoint": 0,
-                "property": "targetValue",
-                "value": "false"
-            },
-            "value": "Etat",
-            "subtype": "other",
-            "display": {
-                "generic_type": "DONT"
-            }
-        },
         {
             "name": "Sirène",
             "type": "action",
@@ -77,7 +25,7 @@
                 "class": 135,
                 "endpoint": 0,
                 "property": "value",
-                "value": "255"
+                "value": "1"
             },
             "subtype": "other",
             "display": {
@@ -91,9 +39,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 135,
-                "value": "type=setvalue&value=2",
-                "index": 0,
-                "instance": 1
+                "endpoint": 0,
+                "property": "value",
+                "value": "2"
             },
             "subtype": "other",
             "display": {
@@ -107,9 +55,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 135,
-                "value": "type=setvalue&value=3",
-                "index": 0,
-                "instance": 1
+                "endpoint": 0,
+                "property": "value",
+                "value": "3"
             },
             "subtype": "other",
             "display": {
@@ -123,9 +71,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 135,
-                "value": "type=setvalue&value=4",
-                "index": 0,
-                "instance": 1
+                "endpoint": 0,
+                "property": "value",
+                "value": "4"
             },
             "subtype": "other",
             "display": {
@@ -139,9 +87,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 135,
-                "value": "type=setvalue&value=5",
-                "index": 0,
-                "instance": 1
+                "endpoint": 0,
+                "property": "value",
+                "value": "5"
             },
             "subtype": "other",
             "display": {
@@ -155,9 +103,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 135,
-                "value": "type=setvalue&value=6",
-                "index": 0,
-                "instance": 1
+                "endpoint": 0,
+                "property": "value",
+                "value": "6"
             },
             "subtype": "other",
             "display": {
@@ -171,9 +119,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 135,
-                "value": "type=setvalue&value=7",
-                "index": 0,
-                "instance": 1
+                "endpoint": 0,
+                "property": "value",
+                "value": "7"
             },
             "subtype": "other",
             "display": {
@@ -187,9 +135,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 135,
-                "value": "type=setvalue&value=8",
-                "index": 0,
-                "instance": 1
+                "endpoint": 0,
+                "property": "value",
+                "value": "8"
             },
             "subtype": "other",
             "display": {
@@ -203,9 +151,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 135,
-                "value": "type=setvalue&value=9",
-                "index": 0,
-                "instance": 1
+                "endpoint": 0,
+                "property": "value",
+                "value": "9"
             },
             "subtype": "other",
             "display": {
@@ -219,9 +167,9 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 135,
-                "value": "type=setvalue&value=10",
-                "index": 0,
-                "instance": 1
+                "endpoint": 0,
+                "property": "value",
+                "value": "10"
             },
             "subtype": "other",
             "display": {
