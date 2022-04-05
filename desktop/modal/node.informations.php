@@ -177,7 +177,7 @@ include_file('3rdparty', 'jsonTree/jsonTree', 'js', 'zwavejs');
 						</tr>
 						<tr>
 							<td><b>{{Rtt :}}</b></td>
-							<td><span class="getNodeStats-rtt">-</span>{{ms}}</td>
+							<td><span class="getNodeStats-rtt">0</span>{{ms}}</td>
 						</tr>
 						<tr>
 					</table>
