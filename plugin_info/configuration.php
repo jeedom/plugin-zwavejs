@@ -64,6 +64,7 @@ if (!isConnect('admin')) {
 			</div>
 		</div>
 		<legend><i class="fas fa-key"></i> {{Sécurité}}</legend>
+		<div class="alert alert-info col-sm-7 col-sm-offset-3">{{Les clés de sécurités sont à conserver précieusement. Si vous perdez vos clés les périphériques inclus en sécurisés devront être réappairés. Les clés peuvent être spécifiées, si les champs sont vides ou invalides le plugin en générera et vous pourrez les voir ensuite. Si votre contrôleur a été utilisé avec Openzwave et que vous aviez inclus des modules en sécurisés la clé S0 est : 0102030405060708090A0B0C0D0E0F10}}</div>
 		<div class="form-group">
 			<label class="col-sm-3 control-label">{{Clé de Sécurité S0}}</label>
 				<div class="input-group col-sm-7">
