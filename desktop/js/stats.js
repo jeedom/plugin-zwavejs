@@ -88,6 +88,6 @@ $('#md_modal').bind('dialogclose', function(event, ui) {
   clearTimeout(getNodes);
 });
 
-$('#div_alert').showAlert({message: '{{Chargement des infos en cours ...}}', level: 'warning'});
+$('#div_networkStatAlert').showAlert({message: '{{Chargement des infos en cours ...}}', level: 'warning'});
 network_load_nodes();
 network_read_stats();

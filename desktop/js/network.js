@@ -441,7 +441,7 @@ $('#md_modal').bind('dialogclose', function(event, ui) {
   clearTimeout(networkinfo);
 });
 
-$('#div_alert').showAlert({message: '{{Chargement des infos en cours ...}}', level: 'warning'});
+$('#div_networkzwavejsAlert').showAlert({message: '{{Chargement des infos en cours ...}}', level: 'warning'});
 network_load_info();
 network_load_nodes();
 network_read_stats();

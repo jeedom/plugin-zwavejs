@@ -199,6 +199,6 @@ $('#md_modal').bind('dialogclose', function(event, ui) {
   clearTimeout(loadvalues);
 });
 
-$('#div_alert').showAlert({message: '{{Chargement des infos en cours ...}}', level: 'warning'});
+$('#div_nodeValuesZwaveJsAlert').showAlert({message: '{{Chargement des infos en cours ...}}', level: 'warning'});
 node_load_values();
 node_read_values();

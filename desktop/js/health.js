@@ -73,6 +73,6 @@ $('#md_modal').bind('dialogclose', function(event, ui) {
   clearTimeout(getHealthInfo);
 });
 
-$('#div_alert').showAlert({message: '{{Chargement des infos en cours ...}}', level: 'warning'});
+$('#div_networkHealthAlert').showAlert({message: '{{Chargement des infos en cours ...}}', level: 'warning'});
 get_health_info();
 get_health_file();

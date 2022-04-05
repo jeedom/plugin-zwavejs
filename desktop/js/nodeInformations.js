@@ -121,6 +121,6 @@ $('#md_modal').bind('dialogclose', function(event, ui) {
   clearTimeout(infoloadnodes);
 });
 
-$('#div_alert').showAlert({message: '{{Chargement des infos en cours ...}}', level: 'warning'});
+$('#div_nodeInformationsZwaveJsAlert').showAlert({message: '{{Chargement des infos en cours ...}}', level: 'warning'});
 network_load_nodes();
 read_nodes();

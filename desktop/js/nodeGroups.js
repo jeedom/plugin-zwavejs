@@ -204,7 +204,7 @@ $('#md_modal').bind('dialogclose', function(event, ui) {
   clearTimeout(nodegroup);
 });
 
-$('#div_alert').showAlert({message: '{{Chargement des infos en cours ...}}', level: 'warning'});
+$('#div_nodeGroupsZwaveJsAlert').showAlert({message: '{{Chargement des infos en cours ...}}', level: 'warning'});
 network_load_AllNodes();
 node_load_groups();
 node_read_group();
