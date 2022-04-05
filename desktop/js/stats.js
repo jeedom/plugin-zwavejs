@@ -45,6 +45,7 @@ function network_read_stats(){
 	  }
     },
     success: function (nodeStats) {
+		if (typeof(nodeStats.networkTree)!= "undefined"){
 		for (key in nodeStats.networkTree.data){
 			value=nodeStats.networkTree.data[key]
 			if (typeof(value.statistics)!= "undefined"){
@@ -65,6 +66,7 @@ function network_read_stats(){
 					$('.timeout'+key).empty().append(stats.timeoutResponse);
 				}
 			}
+		}
 		}
 		$('#table_Stat').tablesorter({
 			theme: 'bootstrap',
