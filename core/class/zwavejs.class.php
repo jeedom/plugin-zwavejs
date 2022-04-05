@@ -335,7 +335,7 @@ class zwavejs extends eqLogic {
 		log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.'Message Mqtt reçu');
 		log::add('zwavejs','debug', json_encode($_message));
 		if (isset($_message[config::byKey('prefix', 'zwavejs','zwave')])){
-			$message = $_message['zwave'];
+			$message = $_message[config::byKey('prefix', 'zwavejs','zwave')];
 		} else {
 			log::add('zwavejs','debug','Le message reçu n\'est pas un message Zwave');
 			return;
