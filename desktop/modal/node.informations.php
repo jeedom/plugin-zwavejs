@@ -157,23 +157,27 @@ include_file('3rdparty', 'jsonTree/jsonTree', 'js', 'zwavejs');
 						<table class="table table-condensed table-striped">
 						<tr>
 							<td><b>{{Messages transmis TX :}}</b></td>
-							<td><span class="getNodeStats-commandsTX"></span></td>
+							<td><span class="getNodeStats-commandsTX">0</span></td>
 						</tr>
 						<tr>
 							<td><b>{{Messages reçus RX :}}</b></td>
-							<td><span class="getNodeStats-commandsRX"></span></td>
+							<td><span class="getNodeStats-commandsRX">0</span></td>
 						</tr>
 						<tr>
 							<td><b>{{Messages RX abandonnés :}}</b></td>
-							<td><span class="getNodeStats-commandsDroppedRX"></span></td>
+							<td><span class="getNodeStats-commandsDroppedRX">0</span></td>
 						</tr>
 						<tr>
 							<td><b>{{Messages TX abandonnés :}}</b></td>
-							<td><span class="getNodeStats-commandsDroppedTX"></span></td>
+							<td><span class="getNodeStats-commandsDroppedTX">0</span></td>
 						</tr>
 						<tr>
 							<td><b>{{Réponses en délai dépassé :}}</b></td>
-							<td><span class="getNodeStats-timeoutResponse"></span></td>
+							<td><span class="getNodeStats-timeoutResponse">0</span></td>
+						</tr>
+						<tr>
+							<td><b>{{Rtt :}}</b></td>
+							<td><span class="getNodeStats-rtt">-</span>{{ms}}</td>
 						</tr>
 						<tr>
 					</table>

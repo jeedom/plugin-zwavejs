@@ -65,6 +65,9 @@ function network_read_stats(){
 				if (typeof(stats.timeoutResponse) != "undefined"){
 					$('.timeout'+key).empty().append(stats.timeoutResponse);
 				}
+				if (typeof(stats.rtt) != "undefined"){
+					$('.rtt'+key).empty().append(stats.rtt+'ms');
+				}
 			}
 		}
 		}

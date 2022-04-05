@@ -29,6 +29,7 @@ if (!isConnect('admin')) {
 			<th>{{RX}}</th>
 			<th>{{TX}}</th>
 			<th>{{Timeout}}</th>
+			<th>{{RTT}}</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -48,6 +49,7 @@ if (!isConnect('admin')) {
 				echo '<td><span class="label label-info rx'.$nodeId.'" style="font-size : 1em;">0</span></td>';
 				echo '<td><span class="label label-info tx'.$nodeId.'" style="font-size : 1em;">0</span></td>';
 				echo '<td><span class="label label-info timeout'.$nodeId.' style="font-size : 1em;">0</span></td>';
+				echo '<td><span class="label label-info rtt'.$nodeId.' style="font-size : 1em;">-</span></td>';
 				echo '</tr>';
 			}
 		?>
