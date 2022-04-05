@@ -23,6 +23,12 @@ $plugin = plugin::byId('zwavejs');
 sendVarToJS('eqType', $plugin->getId());
 $eqLogics = eqLogic::byType($plugin->getId());
 $controllerStatus = config::byKey('controllerStatus', 'zwavejs','none');
+$driverStatus = config::byKey('driverStatus', 'zwavejs',0);
+if ($driverStatus == 1){
+	echo '<div id="div_driverStatus"></div>';
+} else {
+	echo '<div id="div_driverStatus"><div class="alert alert-danger" role="alert"> {{Le driver Zwave n\'est pas initialisé}}</div></div>';
+}
 switch ($controllerStatus) {
 	case 'none':
 	echo '<div id="div_inclusionAlert"></div>';

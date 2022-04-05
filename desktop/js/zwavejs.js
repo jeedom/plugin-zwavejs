@@ -246,6 +246,14 @@ $('body').off('zwavejs::inclusion').on('zwavejs::inclusion', function (_event, _
    }
 });
 
+$('body').off('zwavejs::driverStatus').on('zwavejs::driverStatus', function (_event, _options) {
+   if (_options.status == '1'){
+		$('#div_driverStatus').empty();
+   } else if (_options.status == '0'){
+		$('#div_driverStatus').empty().append('<div class="alert alert-danger" role="alert"> {{Le driver Zwave n\'est pas initialisé}}</div>');
+   }
+});
+
 $('body').off('zwavejs::sync').on('zwavejs::sync', function (_event, _options) {
   $.hideAlert();
   $('#div_inclusionAlert').showAlert({

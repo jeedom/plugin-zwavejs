@@ -220,6 +220,7 @@ class zwavejs extends eqLogic {
 	public static function deamon_start($_debug = false) {
 		log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.'Inscription au plugin mqtt2');
 		config::save('controllerStatus','none','zwavejs');
+		config::save('driverStatus',0,'zwavejs');
 		self::deamon_stop();
 		mqtt2::addPluginTopic('zwavejs',config::byKey('prefix', 'zwavejs','zwave'));
 		$deamon_info = self::deamon_info();
@@ -353,6 +354,7 @@ class zwavejs extends eqLogic {
 				log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.'Le message est une info driver');
 				if (isset($value['status'])){
 					config::save('driverStatus',$value['status'],'zwavejs');
+					event::add('zwavejs::driverStatus',array('status' => $value['status']));
 				}
 			} else {
 				log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.'Le message est de type inconnu');
