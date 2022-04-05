@@ -21,8 +21,8 @@ if (!isConnect('admin')) {
 sendVarToJs('battery_warning',config::byKey('battery::warning'));
 sendVarToJs('battery_danger',config::byKey('battery::danger'));
 ?>
-<div class="modalHealthValues">
 <div id="div_networkHealthAlert" style="display: none;"></div>
+<div class="modalHealthValues">
 <table class="table table-condensed tableHealth" id="table_healthNetwork">
 	<thead>
 		<tr>

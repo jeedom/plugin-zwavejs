@@ -74,8 +74,8 @@ if (!isConnect('admin')) {
     fill: var(--txt-color) !important;
   }
 </style>
-<div class="modalnetWork">
 <div id="div_networkzwavejsAlert" style="display: none;"></div>
+<div class="modalnetWork">
 <div class="network" id="div_templateNetwork">
 	<div class="container-fluid">
 		<div id="content">

@@ -19,8 +19,8 @@ if (!isConnect('admin')) {
 	throw new Exception('401 Unauthorized');
 }
 ?>
-<div class="modalStatsValues">
 <div id="div_networkStatAlert" style="display: none;"></div>
+<div class="modalStatsValues">
 <table class="table table-condensed table-bordered tablesorter tablesorter-bootstrap table-striped hasFilters tableStat" id="table_Stat">
 	<thead>
 		<tr>
