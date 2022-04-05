@@ -73,7 +73,7 @@ include_file('3rdparty', 'jsonTree/jsonTree', 'js', 'zwavejs');
 							<p><b>{{Prêt : }} </b><span class="getNodeInfo-ready label label-info" style="font-size : 1em;"></span></p>
 							<p><b>{{Disponible : }}</b> <span class="getNodeInfo-available label label-info" style="font-size : 1em;"></span></p>
 							<p><b>{{En échec : }} </b><span class="getNodeInfo-failed label label-info" style="font-size : 1em;"></span></p>
-							<p><b>{{Voisins : }}</b> <span class="getNodeInfo-neighbors label label-info" style="font-size : 1em;"></span></p>
+							<p><b>{{Voisins : }}</b> <span class="getNodeInfo-neighbors label label-info" style="font-size : 1em;white-space: pre-line;"></span></p>
 							<p><b>{{Dernière activité : }}</b><span class="getNodeInfo-lastActive label label-info" style="font-size : 1em;"></span></p>
 							<p class="wakeupInfo" style="display:none;"><b>{{Dernier Réveil : }}</b><span class="getNodeInfo-lastWakeup label label-info" style="font-size : 1em;"></span></p>
 							<p class="wakeupInfo" style="display:none;"><b>{{Prochain Réveil Estimé : }}</b><span class="getNodeInfo-nextWakeup label label-info" style="font-size : 1em;"></span></p>
@@ -110,7 +110,7 @@ include_file('3rdparty', 'jsonTree/jsonTree', 'js', 'zwavejs');
 								<p><b>{{Basique :}} </b><span class="getNodeInfo-classBasic label label-info"></span></p>
 								<p><b>{{Générique :}} </b><span class="getNodeInfo-classGeneric label label-info"></span></p>
 								<p><b>{{Spécifique :}} </b><span class="getNodeInfo-classSpecific label label-info"></span></p>
-								<p style="text-align:center"><b></b><span class="getNodeInfo-confType label label-info"></span></p>
+								<p style="text-align:center"><b></b><span class="getNodeInfo-confType label label-info" style="white-space: pre-line;"></span></p>
 								
 							</div>
 						</div>
