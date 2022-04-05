@@ -395,7 +395,7 @@ function addCmdToTable(_cmd) {
   tr += '<td>';
   tr += '<a class="cmdAction btn btn-default btn-sm" data-l1key="chooseIcon"><i class="fas fa-flag"></i> {{Icône}}</a>';
   tr += '<span class="cmdAttr" data-l1key="display" data-l2key="icon" style="margin-left:10px;"></span>';
-  tr += '<input class="cmdAttr form-control input-sm" data-l1key="name" style="margin-left:10px; margin-bottom:2px; width:185px; float:right">';
+  tr += '<input class="cmdAttr form-control input-sm" data-l1key="name" style="margin-left:10px; margin-bottom:2px; width:75%; float:right">';
   tr += '<select class="cmdAttr form-control input-sm" data-l1key="value" style="display : none;" title="{{La valeur de la commande vaut par défaut la commande}}">';
   tr += '<option value="">Aucune</option>';
   tr += '</select>';
@@ -422,6 +422,9 @@ function addCmdToTable(_cmd) {
   tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr checkbox-inline" data-l1key="isVisible" checked/>{{Afficher}}</label></span> ';
   tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr checkbox-inline" data-l1key="isHistorized" checked/>{{Historiser}}</label></span> ';
   tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr" data-l1key="display" data-l2key="invertBinary"/>{{Inverser}}</label></span> ';
+  if (init(_cmd.subType) == 'numeric' && init(_cmd.configuration.property) == 'Air temperature'){
+    tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr" data-l1key="configuration" data-l2key="convertFaren"/>{{Convertir °F-°C}}</label></span> ';
+  }
   tr += '</td>';
   tr += '<td style="width:125px">';
   if (is_numeric(_cmd.id)) {

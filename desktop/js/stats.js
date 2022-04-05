@@ -70,6 +70,7 @@ function network_read_stats(){
 			theme: 'bootstrap',
 			widgets: ['zebra', 'filter', 'uitheme', 'scroller']
 		});
+		$('#table_Stat').trigger('update');
 		if ($('.modalStatsValues').is(":visible")) {
 		getstats = setTimeout(function(){ network_read_stats(); }, 2000);
 	  }

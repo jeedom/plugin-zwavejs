@@ -1364,8 +1364,8 @@ class zwavejs extends eqLogic {
 		}
 		log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.$this->getLogicalId().'  :  '.$class .' ' .$endpoint . ' '.$property.' '.$value);
 		$startTime = config::byKey('lastStart','zwavejs',0);
+		$cmd = $this->getCmd(null, $_cmdId);
 		if ((time()-$startTime)<30){
-			$cmd = $this->getCmd(null, $_cmdId);
 			if (is_object($cmd)){
 				$returnStateTime = $cmd->getConfiguration('returnStateTime',0);
 				if ($returnStateTime != 0){
@@ -1374,7 +1374,12 @@ class zwavejs extends eqLogic {
 				}
 			}
 		}
-		$this->checkAndUpdateCmd($_cmdId, $value);
+		if (is_object($cmd)){
+			if ($cmd->getConfiguration('convertFaren',0)==1){
+				$value = round(($value-32)*5/9,2);
+			}
+			$this->checkAndUpdateCmd($_cmdId, $value);
+		}
 		if ($class == '128' && $property == 'level'){
 			$this->batteryStatus($value);
 		}
