@@ -1858,12 +1858,6 @@ class zwavejsCmd extends cmd {
 			zwavejs::publishMqttApi('sendCommand',$args);
 			return;
 		}
-		if (substr($value,0,3) == 'set'){
-			$fullPath = $node.'-'.$cc.'-'.$endpoint.'-'.$property;
-			$val = explode('-',$value,2)[1];
-			$eqLogic->setNodeValue($fullPath,$val);
-			return;
-		}
 		if ($cc == 0 && $endpoint== 0){
 			$args=array('args'=>array(intval($node)));
 			zwavejs::publishMqttApi($property,$args);
@@ -1885,6 +1879,12 @@ class zwavejsCmd extends cmd {
 			} else {
 				$value = strval(str_replace('#color#', $_options['color'], $value));
 			}
+		}
+		if (substr($value,0,3) == 'set'){
+			$fullPath = $node.'-'.$cc.'-'.$endpoint.'-'.$property;
+			$val = explode('-',$value,2)[1];
+			$eqLogic->setNodeValue($fullPath,$val);
+			return;
 		}
 		zwavejs::publishMqttValue($node,$path,$value);
 	}
