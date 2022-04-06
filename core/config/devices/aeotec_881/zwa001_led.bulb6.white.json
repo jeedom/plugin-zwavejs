@@ -9,6 +9,10 @@
             "1"
         ]
     },
+    "properties": {
+        "Multilevel":{};
+        "Color": {"mode":"color","cmdFilter":["warm","cold"]}
+    },
     "commands": [
         {
             "name": "On",

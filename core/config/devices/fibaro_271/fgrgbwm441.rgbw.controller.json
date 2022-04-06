@@ -12,8 +12,12 @@
             "16384"
         ]
     },
+    "modes": {
+        "color": "Couleur",
+        "multilevel": "Multilevel"
+    },
     "properties": {
-        "Multilevel": {
+        "Multilevel": {"mode": "multilevel",
             "multi": [
                 0,
                 1,
@@ -26,7 +30,7 @@
                 "#endpoint#": "multiKey"
             }
         },
-        "Color": {},
+        "Color": {"mode":"color","cmdFilter":["rgb","warm"]},
         "Power": {
             "type": "multilevel"
         },

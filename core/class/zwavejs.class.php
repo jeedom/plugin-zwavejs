@@ -56,6 +56,28 @@ class zwavejs extends eqLogic {
 		}
 	}
 	
+	public static function convertArrayToColor($_color) {
+		$color = '#';
+		$color .= isset($_color['red']) ? str_pad(dechex($_color['red']),2,'0',STR_PAD_LEFT) : '00';
+		$color .= isset($_color['green']) ? str_pad(dechex($_color['green']),2,'0',STR_PAD_LEFT) : '00';
+		$color .= isset($_color['blue']) ? str_pad(dechex($_color['blue']),2,'0',STR_PAD_LEFT) : '00';
+		$color .= isset($_color['warmWhite']) ? str_pad(dechex($_color['warmWhite']),2,'0',STR_PAD_LEFT) : '00';
+		$color .= isset($_color['coldWhite']) ? str_pad(dechex($_color['coldWhite']),2,'0',STR_PAD_LEFT) : '00';
+		return $color;
+	}
+	
+	public static function convertColorToArray($_color) {
+		$array = array();
+		$color = str_replace('#','',$_color);
+		$split_hex_color = str_split( $color, 2 ); 
+		$array['red']=hexdec($split_hex_color[0]);
+		$array['green']=hexdec($split_hex_color[1]);
+		$array['blue']=hexdec($split_hex_color[2]);
+		$array['warmWhite']=0;
+		$array['coldWhite']=0;
+		return $array;
+	}
+	
 	public static function cron() {
 		$eqLogics = eqLogic::byType('zwavejs');
 		foreach ($eqLogics as $eqLogic){
@@ -717,6 +739,9 @@ class zwavejs extends eqLogic {
 					else if (strpos($key,'scene-')){
 						$eqLogic->updateCmd($key, 90);
 					}
+					else if ($key == '51-0-currentColor-value'){
+						$eqLogic->updateCmd('51-0-currentColor', $data);
+					}
 				}
 			}
 		}
@@ -1021,7 +1046,11 @@ class zwavejs extends eqLogic {
 							$finalValue = $data['value'];
 						}
 					} else {
-						$finalValue = $data['value'];
+						if (is_array($data['value'])){
+							$finalValue = json_encode($data['value']);
+						} else {
+							$finalValue = $data['value'];
+						}
 					}
 					if ($data['unit']){
 						$finalValue .= ' ' . $data['unit'];
@@ -1364,6 +1393,9 @@ class zwavejs extends eqLogic {
 		if ($property == 'hexColor'){
 			$value = '#'.$value;
 		}
+		if ($property == 'currentColor'){
+			$value = self::convertArrayToColor($value);
+		}
 		log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.$this->getLogicalId().'  :  '.$class .' ' .$endpoint . ' '.$property.' '.$value);
 		$startTime = config::byKey('lastStart','zwavejs',0);
 		$cmd = $this->getCmd(null, $_cmdId);
@@ -1444,6 +1476,19 @@ class zwavejs extends eqLogic {
 			foreach ($listCommand as $numberCommand){
 				if (isset($propertyjson[$type])){
 					foreach($propertyjson[$type] as $command){
+						if (isset($command['configuration']['cmdFilter'])){
+							if (isset($details['cmdFilter'])) {
+								$present = false;
+								foreach ($details['cmdFilter'] as $filter){
+									if (in_array($filter,$command['configuration']['cmdFilter'])){
+										$present = true;
+									}
+								}
+								if (!$present){
+									continue;
+								}
+							}
+						}
 						if (isset($details['replace'])) {
 							foreach ($details['replace'] as $keyReplace =>$valueReplace){
 								if ($valueReplace == 'multiKey'){
@@ -1835,7 +1880,11 @@ class zwavejsCmd extends cmd {
 			$value = str_replace('#select#', $_options['select'], $value);
 			break;
 			case 'color':
-			$value = strval(str_replace('#color#', $_options['color'], $value));
+			if ($property == 'targetColor'){
+				$value = zwavejs::convertColorToArray($_options['color']);
+			} else {
+				$value = strval(str_replace('#color#', $_options['color'], $value));
+			}
 		}
 		zwavejs::publishMqttValue($node,$path,$value);
 	}
