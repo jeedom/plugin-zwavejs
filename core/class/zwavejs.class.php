@@ -1841,7 +1841,7 @@ class zwavejsCmd extends cmd {
 		$cc = $this->getConfiguration('class');
 		$endpoint = $this->getConfiguration('endpoint');
 		$property = $this->getConfiguration('property');
-		$path = $cc.'/'.$endpoint.'/'.$property;
+		$path = $cc.'/'.$endpoint.'/'.str_replace('-','/',$property);
 		if ($value == 'get'){
 			$args=array('args'=>array(array('nodeId'=>intval($node),'commandClass'=>intval($cc)),'get',array($property)));
 			zwavejs::publishMqttApi('sendCommand',$args);
