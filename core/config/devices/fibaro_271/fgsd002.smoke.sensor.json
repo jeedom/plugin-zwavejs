@@ -13,96 +13,11 @@
             "4098"
         ]
     },
-    "commands": [
-        {
-            "name": "Fumées",
-            "type": "info",
-            "isVisible": 1,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 156,
-                "endpoint": 0,
-                "property": "state-1"
-            },
-            "subtype": "binary",
-            "display": {
-                "invertBinary": "1",
-                "generic_type": "SMOKE"
-            }
-        },
-        {
-            "name": "Chaleur",
-            "type": "info",
-            "isVisible": 0,
-            "isHistorized": 0,
-            "configuration": {
-                "returnStateTime": 1,
-                "returnStateValue": 0,
-                "class": 156,
-                "endpoint": 0,
-                "property": "state-4"
-            },
-            "subtype": "binary",
-            "display": {
-                "invertBinary": "1",
-                "generic_type": "DONT"
-            }
-        },
-        {
-            "name": "Sabotage",
-            "type": "info",
-            "isVisible": 0,
-            "isHistorized": 0,
-            "configuration": {
-                "returnStateTime": 1,
-                "returnStateValue": 0,
-                "class": 156,
-                "endpoint": 0,
-                "property": "state-0"
-            },
-            "subtype": "binary",
-            "display": {
-                "invertBinary": "1",
-                "generic_type": "SABOTAGE"
-            },
-            "template": {
-                "dashboard": "alert",
-                "mobile": "alert"
-            }
-        },
-        {
-            "name": "Température",
-            "type": "info",
-            "isVisible": 1,
-            "isHistorized": 1,
-            "configuration": {
-                "class": 49,
-                "endpoint": 0,
-                "property": "Air temperature"
-            },
-            "subtype": "numeric",
-            "display": {
-                "generic_type": "TEMPERATURE"
-            },
-            "unite": "°C"
-        },
-        {
-            "name": "Batterie",
-            "type": "info",
-            "isVisible": 0,
-            "isHistorized": 0,
-            "configuration": {
-                "minValue": 0,
-                "maxValue": 100,
-                "class": 128,
-                "endpoint": 0,
-                "property": "level"
-            },
-            "subtype": "numeric",
-            "display": {
-                "generic_type": "BATTERY"
-            },
-            "unite": "%"
-        }
-    ]
+    "properties": {
+        "Temperature":{},
+        "Smoke":{},
+        "Heat":{},
+        "Tamper":{},
+        "Battery":{}
+    }
 }
