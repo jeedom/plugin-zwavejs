@@ -10,7 +10,104 @@
         ]
     },
     "properties": {
-        "Multilevel":{},
-        "Color": {"cmdFilter":["warm","cold"]}
-    }
+        "Multilevel":{}
+    },
+    "commands": [
+        {
+            "name": "Blanc Froid",
+            "type": "action",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 51,
+                "endpoint": 0,
+                "property": "targetColor",
+                "value": "{\"warmWhite\":0,\"coldWhite\":255}"
+            },
+            "subtype": "other",
+            "display": {
+                "icon": "<i class=\"fas fa-snowflake\"></i>",
+                "generic_type": "DONT"
+            }
+        },
+        {
+            "name": "Blanc Chaud",
+            "type": "action",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 51,
+                "endpoint": 0,
+                "property": "targetColor",
+                "value": "{\"warmWhite\":255,\"coldWhite\":0}"
+            },
+            "subtype": "other",
+            "display": {
+                "icon": "<i class=\"fas fa-sun\"></i>",
+                "generic_type": "DONT"
+            }
+        },
+        {
+            "name": "Température Froid Valeur",
+            "type": "info",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 112,
+                "endpoint": 0,
+                "property": 82,
+                "minValue": 5000,
+                "maxValue": 6500
+            },
+            "unite": "°",
+            "subtype": "numeric"
+        },
+        {
+            "name": "Température Froid",
+            "type": "action",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 112,
+                "endpoint": 0,
+                "property": 82,
+                "value": "set-#slider#",
+                "minValue": 5000,
+                "maxValue": 6500
+            },
+            "value": "Température Froid Valeur",
+            "subtype": "slider"
+        },
+        {
+            "name": "Température Chaud Valeur",
+            "type": "info",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 112,
+                "endpoint": 0,
+                "property": 81,
+                "minValue": 2700,
+                "maxValue": 4999
+            },
+            "unite": "°",
+            "subtype": "numeric"
+        },
+        {
+            "name": "Température Chaud",
+            "type": "action",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 112,
+                "endpoint": 0,
+                "property": 81,
+                "value": "set-#slider#",
+                "minValue": 2700,
+                "maxValue": 4999
+            },
+            "value": "Température Chaud Valeur",
+            "subtype": "slider"
+        }
+    ]
 }
