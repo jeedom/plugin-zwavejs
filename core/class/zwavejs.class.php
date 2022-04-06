@@ -942,9 +942,6 @@ class zwavejs extends eqLogic {
 			$eqLogic->setIsVisible(1);
 			$new =true;
 			$refresh = true;
-			if (config::byKey('auto_applyRecommended', 'zwavejs') == 1) {
-				$eqLogic->applyRecommended();
-			}
 		}
 		$wascomplete = $eqLogic->getConfiguration('interview','incomplete');
 		if (($wascomplete == 'incomplete' && $inited) || ($inited && $new)){
@@ -978,6 +975,9 @@ class zwavejs extends eqLogic {
 			$eqLogic->createCommand();
 			$_node['values']['0-0-nodeStatus'] = array('value'=>$_node['status']);
 			$eqLogic->handleCommandUpdate($_node['values'],true);
+			if (config::byKey('auto_applyRecommended', 'zwavejs') == 1) {
+				$eqLogic->applyRecommended();
+			}
 		}
 		return $eqLogic;
 	}
@@ -1624,6 +1624,10 @@ class zwavejs extends eqLogic {
 			foreach ($device['recommended']['params'] as $value) {
 				$fullpath=$this->getLogicalId().'-'.$value['path'];
 				zwavejs::setNodeValue($fullpath,$value['value']);
+				event::add('zwavejs::recommended',
+					array('message' => 'Application de la valeur ' . $value['value'] . ' au paramètre '.$value['path'])
+				);
+				sleep(1);
 			}
 		}
 		if (isset($device['recommended']['groups'])) {

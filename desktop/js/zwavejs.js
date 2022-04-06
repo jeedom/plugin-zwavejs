@@ -55,6 +55,7 @@ $('.confRecommended').on('click', function () {
                 action: "applyRecommended",
                 nodeId: $('.eqLogicAttr[data-l1key=logicalId]').value(),
               },
+              global:false,
               dataType: 'json',
               error: function (request, status, error) {
                 handleAjaxError(request, status, error);
@@ -244,6 +245,13 @@ $('body').off('zwavejs::inclusion').on('zwavejs::inclusion', function (_event, _
    } else {
 		$('#div_inclusionAlert').empty();
    }
+});
+
+$('body').off('zwavejs::recommended').on('zwavejs::recommended', function (_event, _options) {
+  $('#div_alert').showAlert({
+      message: _options.message,
+      level: 'warning'
+   });
 });
 
 $('body').off('zwavejs::driverStatus').on('zwavejs::driverStatus', function (_event, _options) {

@@ -7,32 +7,36 @@
     "recommended": {
         "params": [
             {
-                "index": 80,
-                "value": "Hail"
+                "path": "112-0-80",
+                "value": "3"
             },
             {
-                "index": 101,
-                "value": 4
+                "path": "112-0-81",
+                "value": "2"
             },
             {
-                "index": 102,
-                "value": 8
+                "path": "112-0-90",
+                "value": "1"
             },
             {
-                "index": 103,
-                "value": 2
+                "path": "112-0-101-1",
+                "value": "1"
             },
             {
-                "index": 111,
-                "value": 120
+                "path": "112-0-101-2",
+                "value": "1"
             },
             {
-                "index": 112,
-                "value": 1800
+                "path": "112-0-101-4",
+                "value": "1"
             },
             {
-                "index": 113,
-                "value": 14400
+                "path": "112-0-101-8",
+                "value": "1"
+            },
+            {
+                "path": "112-0-111",
+                "value": "120"
             }
         ],
         "needswakeup": false
@@ -45,194 +49,12 @@
             "99"
         ]
     },
-    "commands": [
-        {
-            "name": "On",
-            "type": "action",
-            "isVisible": 0,
-            "isHistorized": 0,
-            "configuration": {
-                "minValue": 0,
-                "maxValue": 99,
-                "class": 38,
-                "endpoint": 0,
-                "property": "targetValue",
-                "value": "255"
-            },
-            "value": "Etat",
-            "subtype": "other",
-            "display": {
-                "generic_type": "LIGHT_ON"
-            }
-        },
-        {
-            "name": "Off",
-            "type": "action",
-            "isVisible": 0,
-            "isHistorized": 0,
-            "configuration": {
-                "minValue": 0,
-                "maxValue": 99,
-                "class": 38,
-                "endpoint": 0,
-                "property": "targetValue",
-                "value": "0"
-            },
-            "value": "Etat",
-            "subtype": "other",
-            "display": {
-                "generic_type": "LIGHT_OFF"
-            }
-        },
-        {
-            "name": "Dim",
-            "type": "action",
-            "isVisible": 0,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 38,
-                "value": "type=buttonaction&action=press",
-                "index": 2,
-                "instance": 1,
-                "minValue": 0,
-                "maxValue": 99
-            },
-            "subtype": "other",
-            "display": {
-                "generic_type": "DONT"
-            }
-        },
-        {
-            "name": "Bright",
-            "type": "action",
-            "isVisible": 0,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 38,
-                "value": "type=buttonaction&action=press",
-                "index": 1,
-                "instance": 1,
-                "minValue": 0,
-                "maxValue": 99
-            },
-            "subtype": "other",
-            "display": {
-                "generic_type": "DONT"
-            }
-        },
-        {
-            "name": "Intensité",
-            "type": "action",
-            "isVisible": 1,
-            "isHistorized": 0,
-            "configuration": {
-                "minValue": 0,
-                "maxValue": 99,
-                "class": 38,
-                "endpoint": 0,
-                "property": "targetValue",
-                "value": "#slider#"
-            },
-            "value": "Etat",
-            "subtype": "slider",
-            "display": {
-                "generic_type": "LIGHT_SLIDER"
-            },
-            "template": {
-                "dashboard": "light",
-                "mobile": "light"
-            }
-        },
-        {
-            "name": "Etat",
-            "type": "info",
-            "isVisible": 0,
-            "isHistorized": 0,
-            "configuration": {
-                "minValue": 0,
-                "maxValue": 100,
-                "class": 38,
-                "endpoint": 0,
-                "property": "currentValue"
-            },
-            "subtype": "numeric",
-            "display": {
-                "generic_type": "LIGHT_STATE"
-            },
-            "unite": "%"
-        },
-        {
-            "name": "Puissance",
-            "type": "info",
-            "isVisible": 0,
-            "isHistorized": 1,
-            "configuration": {
-                "minValue": 0,
-                "maxValue": 575,
-                "class": 50,
-                "endpoint": 0,
-                "property": "value-66049"
-            },
-            "subtype": "numeric",
-            "display": {
-                "generic_type": "POWER"
-            },
-            "unite": "W"
-        },
-        {
-            "name": "Consommation",
-            "type": "info",
-            "isVisible": 0,
-            "isHistorized": 0,
-            "configuration": {
-                "minValue": 0,
-                "class": 50,
-                "endpoint": 0,
-                "property": "value-65537"
-            },
-            "subtype": "numeric",
-            "display": {
-                "generic_type": "CONSUMPTION"
-            },
-            "template": {
-                "dashboard": "tile",
-                "mobile": "tile"
-            },
-            "unite": "kWh"
-        },
-        {
-            "name": "Couleur",
-            "type": "action",
-            "isVisible": 0,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 51,
-                "value": "type=setvalue&value=#color#",
-                "index": 0,
-                "instance": 1
-            },
-            "value": "Etat couleur",
-            "subtype": "color",
-            "display": {
-                "generic_type": "LIGHT_SET_COLOR"
-            }
-        },
-        {
-            "name": "Etat couleur",
-            "type": "info",
-            "isVisible": 0,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 51,
-                "value": "",
-                "index": 0,
-                "instance": 1
-            },
-            "subtype": "string",
-            "display": {
-                "generic_type": "LIGHT_COLOR"
-            },
-            "unite": ""
-        }
-    ]
+    "properties": {
+        "Multilevel":{"replace":{"#endpoint#":1}},
+        "Power":{"replace":{"#endpoint#":1}},
+        "Energy":{"replace":{"#endpoint#":1}},
+        "Voltage":{"replace":{"#endpoint#":1}},
+        "Current":{"replace":{"#endpoint#":1}},
+        "Color":{"cmdFilter":["rgb"]}
+    }
 }
