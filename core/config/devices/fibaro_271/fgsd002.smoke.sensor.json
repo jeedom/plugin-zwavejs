@@ -18,6 +18,7 @@
         "Smoke":{},
         "Heat":{},
         "Tamper":{},
+        "Smoketest":{},
         "Battery":{}
     }
 }
