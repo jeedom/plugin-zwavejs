@@ -30,6 +30,14 @@
                 "#endpoint#": "multiKey"
             }
         },
+        "Multilevel|color": {"mode": "color",
+            "multi": [
+                0
+            ],
+            "replace": {
+                "#endpoint#": "multiKey"
+            }
+        },
         "Color": {"mode":"color","cmdFilter":["rgb","warm"]},
         "Power": {
             "type": "multilevel"
