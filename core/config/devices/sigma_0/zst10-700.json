@@ -1,0 +1,10 @@
+{
+    "name": "700 Series-based Controller",
+    "type": "Contrôleur",
+    "remark": "",
+    "versions": {
+        "4": [
+            "4"
+        ]
+    }
+}
