@@ -11,6 +11,6 @@
     },
     "properties": {
         "Multilevel":{},
-        "Color": {"mode":"color","cmdFilter":["warm","cold"]}
+        "Color": {"cmdFilter":["warm","cold"]}
     }
 }
