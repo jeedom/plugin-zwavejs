@@ -140,7 +140,7 @@ function network_load_data(){
 		var linkUI = graphics.getLinkUI(link.id);
 		if (linkUI) {
 			linkUI.attr('stroke', isOn ? '#FF0000' : '#B7B7B7');
-			linkUI.attr('marker-end', isOn ? 'url(#Triangle-red)' : 'url(#Triangle)');
+			linkUI.attr('marker-start', isOn ? 'url(#Triangle-red)' : 'url(#Triangle)');
 		}
 		if (parseInt(link.fromId) == nodeId && link.toId != controllerId){
 			highlightRelatedNodes(link.toId,isOn,nodeId);
@@ -211,7 +211,7 @@ function network_load_data(){
                     return Viva.Graph.svg('marker')
                                .attr('id', id)
                                .attr('viewBox', "0 0 10 10")
-                               .attr('refX', "130")
+                               .attr('refX', "-30")
                                .attr('refY', "5")
                                .attr('markerUnits', "strokeWidth")
                                .attr('markerWidth', "33")
@@ -234,7 +234,7 @@ function network_load_data(){
   if (typeof middle !== 'undefined') {
     middle.isPinned = true;
   }
-  var idealLength = 200;
+  var idealLength = 180;
   var layout = Viva.Graph.Layout.forceDirected(graph, {
     springLength: idealLength,
     stableThreshold: 0.9,
@@ -250,13 +250,8 @@ function network_load_data(){
     if (link.data.isdash == 1) {
       dashvalue = '5, 2';
     }
-    return Viva.Graph.svg('path').attr('stroke', '#B7B7B7').attr('stroke-dasharray', dashvalue).attr('stroke-width', '0.4px').attr('marker-end', 'url(#Triangle)');
+    return Viva.Graph.svg('path').attr('stroke', '#B7B7B7').attr('stroke-dasharray', dashvalue).attr('stroke-width', '0.4px').attr('marker-start', 'url(#Triangle)');
   }).placeLink(function(linkUI, fromPos, toPos) {
-                // Here we should take care about
-                //  "Links should start/stop at node's bounding box, not at the node center."
-
-                // For rectangular nodes Viva.Graph.geom() provides efficient way to find
-                // an intersection point between segment and rectangle
                 var toNodeSize = nodeSize,
                     fromNodeSize = nodeSize;
 
