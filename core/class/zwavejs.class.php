@@ -1414,7 +1414,7 @@ class zwavejs extends eqLogic {
 			}
 			$this->checkAndUpdateCmd($_cmdId, $value);
 		}
-		if ($class == '128' && $property == 'level'){
+		if ($class == '128' && $property == 'level' && $endpoint == '0'){
 			$this->batteryStatus($value);
 		}
 		$propertyCheck = $property;
@@ -1514,6 +1514,12 @@ class zwavejs extends eqLogic {
 							$command['name'].='-'.$numberCommand;
 							if (isset($command['value'])){
 								$command['value'].='-'.$numberCommand;
+							}
+						}
+						if (isset($details['split']) && $details['split']==1){
+							$command['name'].='-'.explode('|',$property)[1];
+							if (isset($command['value'])){
+								$command['value'].='-'.explode('|',$property)[1];
 							}
 						}
 						if (isset($details['isVisible'])){

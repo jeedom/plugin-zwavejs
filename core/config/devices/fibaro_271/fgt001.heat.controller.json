@@ -13,7 +13,7 @@
         ]
     },
     "properties": {
-        "Thermostatmode": {},
+        "Thermostatmode": {"replace":{"#endpoint#":1}},
         "Thermostatmodeaction": {
             "multi": [
                 "Off",
@@ -22,7 +22,8 @@
             "multiValue": {
                 "Off": 0,
                 "Auto": 1
-            }
+            },
+            "replace":{"#endpoint#":1}
         },
         "Thermostatsetpoint": {
             "multi": [
@@ -30,9 +31,11 @@
             ],
             "multiProperty": {
                 "Chaud": 1
-            }
+            },
+            "replace":{"#endpoint#":1}
         },
-        "Temperature": {},
+        "Temperature": {"replace":{"#endpoint#":2}},
         "Battery": {},
+        "Battery|capteur": {"replace":{"#endpoint#":2},"split":1}
     }
 }
