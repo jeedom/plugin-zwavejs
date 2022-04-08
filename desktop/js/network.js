@@ -170,7 +170,7 @@ function network_load_data(){
       nodecolor = '#979797';
     } 
     var ui = Viva.Graph.svg('g'),
-     svgText = Viva.Graph.svg('text').text(node.data.name),
+     svgText = Viva.Graph.svg('text').text(node.data.name).attr('display', 'none'),
               img = Viva.Graph.svg('image')
               .attr('width', 48)
               .attr('height', 48)
@@ -179,8 +179,8 @@ function network_load_data(){
             ui.append(img);
             circle = Viva.Graph.svg('circle')
               .attr('r', 7)
-              .attr('cx', -10)
-              .attr('cy', -4)
+              .attr('cx', 2)
+              .attr('cy', 2)
               .attr('stroke', '#fff')
               .attr('stroke-width', '1.5px')
               .attr('fill', nodecolor);
@@ -195,7 +195,7 @@ function network_load_data(){
       } else {
         linkname = node.data.eqname
       }
-      $('#graph-node-name').html(linkname + ' : ' + sentenceneighbours);
+      $('#graph-node-name').html('['+node.id+'] ' + linkname + ' : ' + sentenceneighbours);
       highlightRelatedNodes(node.id, true);
     }, function () {
       highlightRelatedNodes(node.id, false);
