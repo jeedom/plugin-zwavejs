@@ -113,7 +113,10 @@ function network_load_data(){
         graph.addLink(z, controllerId, {isdash: 1, lengthfactor: 0.6});
       }
     } else {
-		if (nodes[z].neighbors.includes(controllerId)){
+		if (nodes[z].id == controllerId){
+			continue;
+		}
+		else if (nodes[z].neighbors.includes(controllerId)){
 			if (typeof nodes[controllerId] != 'undefined') {
 				graph.addLink(z, controllerId, {isdash: 0, lengthfactor: 0});
 			}
@@ -129,12 +132,20 @@ function network_load_data(){
   }
   var graphics = Viva.Graph.View.svgGraphics(),
   nodeSize = 24,
-  highlightRelatedNodes = function (nodeId, isOn) {
+  highlightRelatedNodes = function (nodeId, isOn,sourceId='') {
     graph.forEachLinkedNode(nodeId, function (node, link) {
-      var linkUI = graphics.getLinkUI(link.id);
-      if (linkUI) {
-        linkUI.attr('stroke', isOn ? '#FF0000' : '#B7B7B7');
-      }
+      if ((sourceId != '' && sourceId == parseInt(link.fromId)) || (sourceId != '' && nodeId == link.toId)){
+			nothing = 1;
+	  } else {
+		var linkUI = graphics.getLinkUI(link.id);
+		if (linkUI) {
+			linkUI.attr('stroke', isOn ? '#FF0000' : '#B7B7B7');
+			linkUI.attr('marker-end', isOn ? 'url(#Triangle-red)' : 'url(#Triangle)');
+		}
+		if (parseInt(link.fromId) == nodeId && link.toId != controllerId){
+			highlightRelatedNodes(link.toId,isOn,nodeId);
+		}
+	  }
     });
   };
   graphics.node(function (node) {
@@ -193,9 +204,32 @@ function network_load_data(){
   }).placeNode(function (nodeUI, pos) {
     nodeUI.attr('transform',
     'translate(' +
-    (pos.x - nodeSize / 3) + ',' + (pos.y - nodeSize / 2.5) +
+    (pos.x - nodeSize) + ',' + (pos.y - nodeSize) +
     ')');
   });
+  var createMarker = function(id,color) {
+                    return Viva.Graph.svg('marker')
+                               .attr('id', id)
+                               .attr('viewBox', "0 0 10 10")
+                               .attr('refX', "130")
+                               .attr('refY', "5")
+                               .attr('markerUnits', "strokeWidth")
+                               .attr('markerWidth', "33")
+                               .attr('markerHeight', "21")
+                               .attr('fill', color)
+                               .attr('orient', "auto");
+                },
+
+  marker = createMarker('Triangle',"#b4b4b4");
+  markerRed=createMarker('Triangle-red',"#ff0000");
+  marker.append('path').attr('d', 'M 0 0 L 10 5 L 0 10 z');
+  markerRed.append('path').attr('d', 'M 0 0 L 10 5 L 0 10 z');
+  var defs = graphics.getSvgRoot().append('defs');
+  defs.append(marker);
+  defs.append(markerRed);
+
+  var geom = Viva.Graph.geom();
+
   var middle = graph.getNode(controllerId);
   if (typeof middle !== 'undefined') {
     middle.isPinned = true;
@@ -216,8 +250,41 @@ function network_load_data(){
     if (link.data.isdash == 1) {
       dashvalue = '5, 2';
     }
-    return Viva.Graph.svg('line').attr('stroke', '#B7B7B7').attr('stroke-dasharray', dashvalue).attr('stroke-width', '0.4px');
-  });
+    return Viva.Graph.svg('path').attr('stroke', '#B7B7B7').attr('stroke-dasharray', dashvalue).attr('stroke-width', '0.4px').attr('marker-end', 'url(#Triangle)');
+  }).placeLink(function(linkUI, fromPos, toPos) {
+                // Here we should take care about
+                //  "Links should start/stop at node's bounding box, not at the node center."
+
+                // For rectangular nodes Viva.Graph.geom() provides efficient way to find
+                // an intersection point between segment and rectangle
+                var toNodeSize = nodeSize,
+                    fromNodeSize = nodeSize;
+
+                var from = geom.intersectRect(
+                        // rectangle:
+                                fromPos.x - fromNodeSize / 2, // left
+                                fromPos.y - fromNodeSize / 2, // top
+                                fromPos.x + fromNodeSize / 2, // right
+                                fromPos.y + fromNodeSize / 2, // bottom
+                        // segment:
+                                fromPos.x, fromPos.y, toPos.x, toPos.y)
+                           || fromPos; // if no intersection found - return center of the node
+
+                var to = geom.intersectRect(
+                        // rectangle:
+                                toPos.x - toNodeSize / 2, // left
+                                toPos.y - toNodeSize / 2, // top
+                                toPos.x + toNodeSize / 2, // right
+                                toPos.y + toNodeSize / 2, // bottom
+                        // segment:
+                                toPos.x, toPos.y, fromPos.x, fromPos.y)
+                            || toPos; // if no intersection found - return center of the node
+
+                var data = 'M' + from.x + ',' + from.y +
+                           'L' + to.x + ',' + to.y;
+
+                linkUI.attr("d", data);
+            });
   $('#graph_network svg').remove();
   var renderer = Viva.Graph.View.renderer(graph, {
     layout: layout,
