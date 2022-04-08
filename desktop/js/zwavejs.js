@@ -258,7 +258,7 @@ $('body').off('zwavejs::driverStatus').on('zwavejs::driverStatus', function (_ev
    if (_options.status == '1'){
 		$('#div_driverStatus').empty();
    } else if (_options.status == '0'){
-		$('#div_driverStatus').empty().append('<div class="alert alert-danger" role="alert"> {{Le driver Zwave n\'est pas initialisé}}</div>');
+		$('#div_driverStatus').empty().append('<div class="alert alert-warning" role="alert"> {{Le driver Zwave n\'est pas initialisé, veuillez patienter. Si le message reste trop longtemps, veuillez vérifier la configuration du démon}}</div>');
    }
 });
 
