@@ -1449,7 +1449,8 @@ class zwavejs extends eqLogic {
 			}
 		}
 		foreach ($device['properties'] as $property => $details){
-			$property=explode('|',$property)[0];
+			$propertyArray=explode('|',$property);
+			$property=$propertyArray[0];
 			if (!is_file(dirname(__FILE__) . '/../config/properties/' . strtolower($property).'.json')) {
 				continue;
 			}
@@ -1517,9 +1518,9 @@ class zwavejs extends eqLogic {
 							}
 						}
 						if (isset($details['split']) && $details['split']==1){
-							$command['name'].='-'.explode('|',$property)[1];
+							$command['name'].='-'.$propertyArray[1];
 							if (isset($command['value'])){
-								$command['value'].='-'.explode('|',$property)[1];
+								$command['value'].='-'.$propertyArray[1];
 							}
 						}
 						if (isset($details['isVisible'])){
