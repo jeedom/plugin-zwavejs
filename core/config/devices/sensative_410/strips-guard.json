@@ -8,40 +8,16 @@
     "remark": "",
     "documentation": "",
     "buylink": "",
-    "recommended": {
-        "params": [
-            {
-                "index": 1,
-                "value": "Binary Sensor report"
-            }
-        ],
-        "needswakeup": true
-    },
     "versions": {
         "4": [
             "4"
         ]
     },
-    "commands": [
-        {
-            "name": "Etat",
-            "type": "info",
-            "isVisible": 1,
-            "isHistorized": 1,
-            "configuration": {
-                "class": 48,
-                "endpoint": 0,
-                "property": "Any"
-            },
-            "subtype": "binary",
-            "display": {
-                "invertBinary": "1",
-                "generic_type": "OPENING"
-            },
-            "template": {
-                "dashboard": "door",
-                "mobile": "door"
-            }
-        }
-    ]
+    "properties": {
+		"Opening":{},
+		"Notification|sensor":{"type":"sensor","name":"Sabotage"},
+		"Notification|magnetic":{"type":"magnetic","isVisible":0},
+		"Notification|software":{"type":"software","isVisible":0},
+		"Battery":{}
+	}
 }

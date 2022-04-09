@@ -1624,6 +1624,9 @@ class zwavejs extends eqLogic {
 						if (isset($details['minValue'])){
 							$command['configuration']['minValue'] =$details['maxValue'];
 						}
+						if (isset($details['name'])){
+							$command['name'] =$details['name'];
+						}
 						$device['commands'][] = $command;
 					}
 				}
