@@ -105,8 +105,13 @@ try {
 		}
 		ajax::success($eqLogic->applyRecommended());
 	}
+	
 	if (init('action') == 'createCommandInfo') {
 		ajax::success(zwavejs::autoCreateCommandInfo(init('path'),init('type'),init('label'),init('unit'),init('max'),init('min'),init('value')));
+	}
+	
+	if (init('action') == 'createCommandAction') {
+		ajax::success(zwavejs::autoCreateCommandAction(init('path'),init('type'),init('label'),init('unit'),init('max'),init('min'),init('value')));
 	}
 	
 	if (init('action') == 'generateRandomKey') {

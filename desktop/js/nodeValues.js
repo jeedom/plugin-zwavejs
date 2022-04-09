@@ -142,6 +142,41 @@ $("body").off("click", ".createCommandInfo").on("click", ".createCommandInfo", f
 	});
 });
 
+$("body").off("click", ".createCommandAction").on("click", ".createCommandAction", function (e) {
+	var obj = $(this);
+  bootbox.confirm('{{Etes-vous sûr de vouloir créer la ou les commande(s) : }}' +obj.data('label')+ ' ('+obj.data('path')+'{{) ? Les commandes existantes ne seront pas crées.}}', function (result) {
+	if (result) {
+		$.ajax({
+		type: "POST",
+		url: "plugins/zwavejs/core/ajax/zwavejs.ajax.php",
+		data: {
+			action: "createCommandAction",
+			type: obj.data('type'),
+			label: obj.data('label'),
+			path: obj.data('path'),
+			unit: obj.data('unit'),
+			max: obj.data('max'),
+			min: obj.data('min'),
+			value: obj.data('value')
+		},
+		dataType: 'json',
+		global: false,
+		error: function (request, status, error) {
+			handleAjaxError(request, status, error);
+		},
+		success: function (data) {
+			if (data.state != 'ok') {
+			$('#div_alert').showAlert({message: data.result, level: 'danger'});
+			return;
+			}
+			$('#div_alert').showAlert({message: '{{Opération réalisée avec succès}}', level: 'success'});
+			$('.eqLogicDisplayCard[data-eqLogic_id=' + $('.eqLogicAttr[data-l1key=id]').value() + ']').click();
+		}
+		});
+	}
+	});
+});
+
 function node_load_values(){
   jeedom.zwavejs.node.info({
     info : 'getNodeValues',

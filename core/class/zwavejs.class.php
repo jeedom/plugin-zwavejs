@@ -1137,7 +1137,18 @@ class zwavejs extends eqLogic {
 					$nodeValues .= ' data-max="'.$data['max'].'"';
 					$nodeValues .= ' data-min="'.$data['min'].'"';
 					$nodeValues .= ' data-value="'.$data['value'].'"';
-					$nodeValues .= ' style="text-align: right;display:inline-block" title="Créer la commande Info dans Jeedom"><i class="fas fa-marker"></i></a>';
+					$nodeValues .= ' style="text-align: right;display:inline-block" title="Créer la commande Info dans l\'équipement Jeedom"><i class="fas fa-marker"></i></a>';
+				}
+				if ($data['writeable'] && (in_array($data['type'],array('number','boolean')))){
+					$nodeValues .= ' <a class="btn btn-xs btn-info createCommandAction pull-right"';
+					$nodeValues .= ' data-type="'.$data['type'].'"';
+					$nodeValues .= ' data-label="'.$data['label'].'"';
+					$nodeValues .= ' data-path="'.$data['id'].'"';
+					$nodeValues .= ' data-unit="'.$data['unit'].'"';
+					$nodeValues .= ' data-max="'.$data['max'].'"';
+					$nodeValues .= ' data-min="'.$data['min'].'"';
+					$nodeValues .= ' data-value="'.$data['value'].'"';
+					$nodeValues .= ' style="text-align: right;display:inline-block" title="Créer la/les commande(s) Action dans l\'équipement Jeedom"><i class="fas fa-pen"></i></a>';
 				}
 				$nodeValues .= '</td>';
 			}
@@ -1354,7 +1365,67 @@ class zwavejs extends eqLogic {
 			}
 			
 		}
-		
+	}
+	
+	public static function autoCreateCommandAction($_path,$_type,$_label,$_unit,$_max,$_min,$_currentValue){
+		log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.'Création d\'une commande action '. $_path);
+		$elements = explode('-',str_replace('_',' ',$_path), 4);
+		$eqLogic = zwavejs::byLogicalId($elements[0],'zwavejs');
+		log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.print_r($elements,true));
+		if (is_object($eqLogic)){
+			$class = $elements[1];
+			$endpoint = $elements[2];
+			$property = $elements[3];
+			$logical = $class.'-'.$endpoint.'-'.$property;
+			if ($_type == 'boolean') {
+				$candidates =[array("name"=>"On","command"=>"true"),array("name"=>"Off","command"=>"false")];
+				foreach ($candidates as $candidate){
+					$command = $eqLogic->getCmd(null, $logical.'-'.$candidate['command']);
+					if (!is_object($command)) {
+						$command = new zwavejscmd();
+						$command->setLogicalId($logical.'-'.$candidate['command']);
+						$label = $candidate['name'].'-'.$_label.'-'.rand(0,99999);
+						$command->setName($label);
+						$command->setIsVisible(0);
+						$command->setEqLogic_id($eqLogic->getId());
+						$command->setConfiguration('class',$class);
+						$command->setConfiguration('endpoint',$endpoint);
+						$command->setConfiguration('property',$property);
+						$command->setConfiguration('value',$candidate['command']);
+						$command->setType('action');
+						$command->setSubType('other');
+						$command->save();
+					}
+				}
+			}
+			if ($_type == 'number') {
+				$command = $eqLogic->getCmd(null, $logical.'-#slider#');
+				if (!is_object($command)) {
+					$command = new zwavejscmd();
+					$command->setLogicalId($logical.'-#slider#');
+					$label = $_label.'-'.rand(0,99999);
+					$command->setName($label);
+					$command->setIsVisible(0);
+					$command->setEqLogic_id($eqLogic->getId());
+					$command->setConfiguration('class',$class);
+					$command->setConfiguration('endpoint',$endpoint);
+					$command->setConfiguration('property',$property);
+					$command->setConfiguration('value',"#slider#");
+					$command->setType('action');
+					$command->setSubType('slider');
+					if ($_unit){
+						$command->setUnite($_unit);
+					}
+					if ($_max){
+						$command->setConfiguration('maxValue',$_max);
+					}
+					if ($_min){
+						$command->setConfiguration('minValue',$_min);
+					}
+					$command->save();
+				}
+			}
+		}
 	}
 	
 	/*     * *********************Methode d'instance************************* */
