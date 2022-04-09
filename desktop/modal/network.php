@@ -23,7 +23,7 @@ if (!isConnect('admin')) {
 <style>
 #graph_network {
 	height: 80%;
-	width: 90%;
+	width: 100%;
 	position: absolute;
 }
 #graph_network > svg {
