@@ -117,31 +117,31 @@ if (!isConnect('admin')) {
 					</div>
 				</div>
 				<div id="graph_network" class="tab-pane">
-					<table class="table table-bordered table-condensed" style="width: 350px;position:fixed;margin-top : 25px;">
+					<table class="table table-bordered table-condensed" style="width: 250px;position:fixed;margin-top : 25px;">
 						<thead><tr><th colspan="2">{{Légende}}</th></tr></thead>
 						<tbody>
 							<tr>
-								<td class="node-primary-controller-color" style="width: 35px"><i class="fas fa-square fa-2x"></i></td>
+								<td class="node-primary-controller-color" style="width: 35px"><i class="fas fa-circle"></i></td>
 								<td>{{Contrôleur Primaire}}</td>
 							</tr>
 							<tr>
-								<td class="node-direct-link-color" style="width: 35px"><i class="fas fa-square fa-2x"></i></td>
+								<td class="node-direct-link-color" style="width: 35px"><i class="fas fa-circle"></i></td>
 								<td>{{Communication directe}}</td>
 							</tr>
 							<tr>
-								<td class="node-more-of-one-up-color"><i class="fas fa-square fa-2x"></i></td>
+								<td class="node-more-of-one-up-color"><i class="fas fa-circle"></i></td>
 								<td>{{Toutes les routes ont plus d'un saut}}</td>
 							</tr>
 							<tr>
-								<td class="node-no-neighbourhood-color"><i class="fas fa-square fa-2x"></i></td>
+								<td class="node-no-neighbourhood-color"><i class="fas fa-circle"></i></td>
 								<td>{{Présumé mort ou Pas de voisin}}</td>
 							</tr>
 							<tr>
-								<td class="node-controller"><i class="fas fa-square fa-2x"></i></td>
+								<td class="node-controller"><i class="fas fa-circle"></i></td>
 								<td>{{Contrôleur mobile}}</td>
 							</tr>
 							<tr>
-								<td class="node-interview-not-completed-color"><i class="fas fa-square fa-2x"></i></td>
+								<td class="node-interview-not-completed-color"><i class="fas fa-circle"></i></td>
 								<td>{{Interview non completé}}</td>
 							</tr>
 						</tbody>
