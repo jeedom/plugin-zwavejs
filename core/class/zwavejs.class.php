@@ -748,7 +748,7 @@ class zwavejs extends eqLogic {
 	}
 	
 	public static function publishMqttApi($_api_name,$_args=array()) {
-		log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.'Publication Mqtt Api ' . $_api_name . ' ' . json_encode($_args));
+		log::add('zwavejs','error','[' . __FUNCTION__ . '] '.'Publication Mqtt Api ' . $_api_name . ' ' . json_encode($_args));
 		mqtt2::publish(config::byKey('prefix', 'zwavejs','zwave').'/_CLIENTS/ZWAVE_GATEWAY-Jeedom/api/'.$_api_name.'/set',$_args);
 	}
 	
@@ -1928,7 +1928,11 @@ class zwavejsCmd extends cmd {
 		$property = $this->getConfiguration('property');
 		$path = $cc.'/'.$endpoint.'/'.str_replace('-','/',$property);
 		if ($value == 'get'){
-			$args=array('args'=>array(array('nodeId'=>intval($node),'commandClass'=>intval($cc)),'get',array($property)));
+			if (is_numeric($property)){
+				$args=array('args'=>array(array('nodeId'=>intval($node),'commandClass'=>intval($cc)),'get',array(intval($property))));
+			} else {
+				$args=array('args'=>array(array('nodeId'=>intval($node),'commandClass'=>intval($cc)),'get',array($property)));
+			}
 			zwavejs::publishMqttApi('sendCommand',$args);
 			return;
 		}
