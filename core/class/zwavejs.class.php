@@ -748,7 +748,7 @@ class zwavejs extends eqLogic {
 	}
 	
 	public static function publishMqttApi($_api_name,$_args=array()) {
-		log::add('zwavejs','error','[' . __FUNCTION__ . '] '.'Publication Mqtt Api ' . $_api_name . ' ' . json_encode($_args));
+		log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.'Publication Mqtt Api ' . $_api_name . ' ' . json_encode($_args));
 		mqtt2::publish(config::byKey('prefix', 'zwavejs','zwave').'/_CLIENTS/ZWAVE_GATEWAY-Jeedom/api/'.$_api_name.'/set',$_args);
 	}
 	
