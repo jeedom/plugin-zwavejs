@@ -140,6 +140,7 @@ class zwavejs extends eqLogic {
 											);
 		
 		$settings['gateway']['type'] = 0;
+		$settings['gateway']['authEnabled'] = true;
 		$settings['gateway']['payloadType'] = 0;
 		$settings['gateway']['nodeNames'] = false;
 		$settings['gateway']['hassDiscovery'] = false;
