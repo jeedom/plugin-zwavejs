@@ -10,10 +10,8 @@
         ]
     },
     "properties": {
-        "default": {
-            "Shutter": {"type":"downup"},
-            "Power": {},
-            "Energy": {}
-        }
+        "Shutter": {"type":"downup"},
+        "Power": {},
+        "Energy": {}
     }
 }
