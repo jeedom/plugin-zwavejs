@@ -26,11 +26,11 @@
         "tr"
     ],
     "compatibility": [
-        "Jeedomboard",
-        "Smart",
-        "RPI\/RPI2",
-        "Docker",
-        "DIY",
+        "jeedomboard",
+        "smart",
+        "rpi",
+        "docker",
+        "diy",
         "v4",
         "atlas"
     ]
