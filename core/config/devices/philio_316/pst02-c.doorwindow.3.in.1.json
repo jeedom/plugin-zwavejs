@@ -17,7 +17,7 @@
         "params": [
             {
                 "path": "112-0-7-16",
-                "value": "0"
+                "value": "1"
             },
             {
                 "path": "132-0-wakeUpInterval",
@@ -27,10 +27,13 @@
         "needswakeup": true
     },
     "properties": {
-        "Opening": {},
+        "Opening": {
+            "type": "binary-door"
+        },
         "Temperature": {},
         "Luminance": {"unite":"%"},
         "Tamper": {
+            "type": "binary-tamper",
             "returnStateTime": 1,
             "returnStateValue": 0
         },
