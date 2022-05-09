@@ -1455,6 +1455,9 @@ class zwavejs extends eqLogic {
 	}
 	
 	public function updateCmd($_cmdId,$_value) {
+		$dictReplace=array("Door-Window"=>"Door/Window",
+							"Air_temperature"=>"Air temperature"
+					);
 		log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.$_cmdId .' ' .$_value);
 		$_cmdId = str_replace('_',' ',$_cmdId);
 		$cmdId = explode('-',$_cmdId, 3);
@@ -1462,6 +1465,9 @@ class zwavejs extends eqLogic {
 		$endpoint = $cmdId[1];
 		$property = $cmdId[2];
 		$value = $_value;
+		if (isset($dictReplace[$property])){
+			$_cmdId = $class.'-'.$endpoint.'-'.$dictReplace[$property];
+		}
 		if ($property == 'hexColor'){
 			$value = '#'.$value;
 		}
