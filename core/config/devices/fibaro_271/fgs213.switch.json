@@ -4,123 +4,23 @@
     "comlink": "3727-fibaro-micromodule-commutateur-z-wave-fgs-213-5902020528722",
     "remark": "Les notification de scènes ne sont pas remontées, elles requièrent le support de la CC Central Scene",
     "imglink": "fibaro.fgs213",
-    "recommended": {
-        "groups": [
-            {
-                "index": 1,
-                "value": "add"
-            }
-        ],
-        "needswakeup": false
-    },
     "versions": {
         "1027": [
             "4096",
             "8192"
         ]
     },
-    "commands": [
-        {
-            "name": "On",
-            "type": "action",
-            "isVisible": 1,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 37,
-                "endpoint": 0,
-                "property": "targetValue",
-                "value": "true"
-            },
-            "value": "Etat",
-            "subtype": "other",
-            "display": {
-                "generic_type": "LIGHT_ON"
-            },
-            "template": {
-                "dashboard": "light",
-                "mobile": "light"
+    "properties": {
+        "Switch": {"replace": {"#endpoint#": 1}},
+        "Power": {"replace": {"#endpoint#": 1}},
+        "Energy": {"replace": {"#endpoint#": 1}},
+        "CentralScene": {
+            "multi": [
+                2
+            ],
+            "replace": {
+                "#centralscene#": "multiKey"
             }
-        },
-        {
-            "name": "Off",
-            "type": "action",
-            "isVisible": 1,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 37,
-                "endpoint": 0,
-                "property": "targetValue",
-                "value": "false"
-            },
-            "value": "Etat",
-            "subtype": "other",
-            "display": {
-                "generic_type": "LIGHT_OFF"
-            },
-            "template": {
-                "dashboard": "light",
-                "mobile": "light"
-            }
-        },
-        {
-            "name": "Etat",
-            "type": "info",
-            "isVisible": 0,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 37,
-                "endpoint": 0,
-                "property": "currentValue"
-            },
-            "subtype": "binary",
-            "display": {
-                "generic_type": "LIGHT_STATE"
-            }
-        },
-        {
-            "name": "Puissance",
-            "type": "info",
-            "isVisible": "1",
-            "isHistorized": "1",
-            "configuration": {
-                "minValue": 0,
-                "maxValue": 2500,
-                "class": 50,
-                "endpoint": 0,
-                "property": "value-66049"
-            },
-            "subtype": "numeric",
-            "display": {
-                "invertBinary": "0",
-                "generic_type": "POWER"
-            },
-            "template": {
-                "dashboard": "default",
-                "mobile": "default"
-            },
-            "unite": "W"
-        },
-        {
-            "name": "Consommation",
-            "type": "info",
-            "isVisible": "1",
-            "isHistorized": "0",
-            "configuration": {
-                "minValue": 0,
-                "class": 50,
-                "endpoint": 0,
-                "property": "value-65537"
-            },
-            "subtype": "numeric",
-            "display": {
-                "invertBinary": "0",
-                "generic_type": "CONSUMPTION"
-            },
-            "template": {
-                "dashboard": "tile",
-                "mobile": "tile"
-            },
-            "unite": "kWh"
         }
-    ]
+    }
 }
