@@ -16,7 +16,7 @@
         "Energy": {"replace": {"#endpoint#": 1}},
         "CentralScene": {
             "multi": [
-                2
+                1,2
             ],
             "replace": {
                 "#centralscene#": "multiKey"
