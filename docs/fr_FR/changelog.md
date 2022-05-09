@@ -1,3 +1,5 @@
+# Changelog Z-Wave JS
+
 # Changelog plugin Z-Wave JS
 
 >**IMPORTANT**

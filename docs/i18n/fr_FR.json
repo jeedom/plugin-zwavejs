@@ -1,0 +1,36 @@
+{
+    "changelog.md": {
+        "Changelog Z-Wave JS": "Changelog Z-Wave JS",
+        "Changelog plugin Z-Wave JS": "Changelog plugin Z-Wave JS",
+        "IMPORTANT": "IMPORTANT",
+        "S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte": "S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte",
+        "04\/05\/2022": "04\/05\/2022",
+        "Bêta 1ère phase": "Bêta 1ère phase"
+    },
+    "index.md": {
+        "Plugin Z-Wave JS": "Plugin Z-Wave JS",
+        "Configuration": "Configuration",
+        "Gestion des dépendances": "Gestion des dépendances",
+        "Configuration du plugin": "Configuration du plugin",
+        "Clés de sécurité": "Clés de sécurité",
+        "Configuration des modules": "Configuration des modules",
+        "Noeud": "Noeud",
+        "Valeurs": "Valeurs",
+        "Groupe": "Groupe",
+        "Outils": "Outils",
+        "Inclusion": "Inclusion",
+        "Exclusion": "Exclusion",
+        "Synchroniser": "Synchroniser",
+        "Réseau Z-Wave": "Réseau Z-Wave",
+        "Résumé": "Résumé",
+        "Actions": "Actions",
+        "Statistiques": "Statistiques",
+        "Graphique du réseau": "Graphique du réseau",
+        "Table de routage": "Table de routage",
+        "Santé": "Santé",
+        "Compatibilité": "Compatibilité",
+        "Dépannage et diagnostic": "Dépannage et diagnostic",
+        "Module non ou mal reconnu": "Module non ou mal reconnu",
+        "Remplacer un module défaillant": "Remplacer un module défaillant"
+    }
+}
