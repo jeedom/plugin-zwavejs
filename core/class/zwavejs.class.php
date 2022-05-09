@@ -1601,6 +1601,9 @@ class zwavejs extends eqLogic {
 						if (isset($details['isHistorized'])){
 							$command['isHistorized'] =$details['isHistorized'];
 						}
+						if (isset($details['unite'])){
+							$command['unite'] =$details['unite'];
+						}
 						if (isset($details['returnStateTime'])){
 							$command['configuration']['returnStateTime'] =$details['returnStateTime'];
 						}
