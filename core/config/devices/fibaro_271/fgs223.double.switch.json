@@ -10,12 +10,18 @@
         ]
     },
     "properties": {
-        "Switch": {"replace": {"#endpoint#": 1}},
-        "Switch|2": {"replace": {"#endpoint#": 2}},
-        "Power": {"replace": {"#endpoint#": 1}},
-        "Power|2": {"replace": {"#endpoint#": 2}},
-        "Energy": {"replace": {"#endpoint#": 1}},
-        "Energy|2": {"replace": {"#endpoint#": 2}},
+        "Switch": {"multi": [
+                1,
+                2
+            ],"replace": {"#endpoint#": "multiKey"}},
+        "Power": {"multi": [
+                1,
+                2
+            ],"replace": {"#endpoint#": "multiKey"}},
+        "Energy": {"multi": [
+                1,
+                2
+            ],"replace": {"#endpoint#": "multiKey"}},
         "CentralScene": {
             "multi": [
                 1,
