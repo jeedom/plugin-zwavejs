@@ -24,7 +24,7 @@
             "type": "alarm"
         },
         "Temperature": {
-            "mode": "withTemp"
+            "mode": "withTemp","replace": {"#endpoint#": 2}
         },
         "Tamper": {
             "type": "alarm",
