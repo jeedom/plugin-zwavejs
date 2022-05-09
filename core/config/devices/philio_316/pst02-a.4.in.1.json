@@ -30,6 +30,9 @@
         "Opening": {
             "type": "binary-door"
         },
+        "Motion": {
+            "type": "binary-motion"
+        },
         "Temperature": {},
         "Luminance": {"unite":"%"},
         "Tamper": {
