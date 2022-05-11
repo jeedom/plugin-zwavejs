@@ -4,27 +4,13 @@
     "comlink": "",
     "remark": "",
     "imglink": "aeotec.zw162",
-    "recommended": {
-        "groups": [
-            {
-                "index": 4,
-                "value": "add"
-            },
-            {
-                "index": 5,
-                "value": "add"
-            },
-            {
-                "index": 6,
-                "value": "add"
-            }
-        ],
-        "needswakeup": true
-    },
     "versions": {
         "3": [
             "162"
         ]
+    },
+    "properties": {
+        "Sound": {"replace":{"#endpoint#":3,"#listSound#":"0|Off;1|Ding Dong;2|Ding Dong Tubular Bell;3|Traditional Apartment Buzzer;4|Electric Apartment Buzzer;5|Westminster Chimes;6|Chimes;7|Cuckoo;8|Traditional Bell;9|Smoke Alarm (Low);10|Smoke Alarm (High);11|Fire Evacuation Buzzer;12|CO Alarm;13|Klaxon;14|Klaxon (Deep);15|Warning Tone;16|Tornado Siren;17|Alarm;18|Deep Alarm Tone;19|Alarm (Archangel tone);20|Alarm (Shrill);21|Digital Siren;22|Alert Series;23|Security;24|Clock Buzzer;25|Christmas Tree;26|Gong;27|Single Bell Ting;28|Tonal Pulse;29|Upwards Tone;30|Door Open","#stopSound#":"0"},"ignore":["Volume Etat","Volume"]}
     },
     "commands": [
         {
@@ -49,89 +35,6 @@
                 "dashboard": "alert",
                 "mobile": "alert"
             }
-        },
-        {
-            "name": "Sonnette Volume Etat",
-            "type": "info",
-            "isVisible": 0,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 121,
-                "index": 2,
-                "instance": 4
-            },
-            "subtype": "numeric"
-        },
-        {
-            "name": "Sonnette Volume",
-            "type": "action",
-            "isVisible": 1,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 121,
-                "value": "type=setvalue&value=#slider#",
-                "index": 2,
-                "instance": 4,
-                "minValue": 0,
-                "maxValue": 100
-            },
-            "value": "Sonnette Volume Etat",
-            "subtype": "slider"
-        },
-        {
-            "name": "Jouer son",
-            "type": "action",
-            "isVisible": 1,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 121,
-                "value": "type=setvalue&value=#select#",
-                "index": 1,
-                "instance": 1,
-                "listValue": "01 Ding Dong (5 sec)|Ding Dong;02 Ding Dong Tubular (9 sec)|Ding Dong Tubular Bell;03 Traditional Apartment Buzzer (10 sec)|Traditional Apartment Buzzer;04 Electric Apartment Buzzer (1 sec)|Electric Apartment Buzzer;05 Westminster Chimes (12 sec)|Westminster Chimes;06 Chimes (7 sec)|Chimes;07 Cuckoo (31 sec)|Cuckoo;08 Traditional Bell (6 sec)|Traditional Bell;09 Smoke Alarm 1 (11 sec)|Smoke Alarm (Low);10 Smoke Alarm 2 (5 sec)|Smoke Alarm (High);11 Fire Evacuation Buzzer (35 sec)|Fire Evacuation Buzzer;12 CO Sensor (4 sec)|CO Alarm;13 Klaxon (6 sec)|Klaxon;14 Deep Klaxon (40 sec)|Klaxon (Deep);15 Warning Tone (37 sec)|Warning Tone;16 Tornado Siren (45 sec)|Tornado Siren;17 Alarm (35 sec)|Alarm;18 Deep Alarm (62 sec)|Deep Alarm Tone;19 Alarm Archangel (15 sec)|Alarm (Archangel tone);20 Alarm Shrill (7 sec)|Alarm (Shrill);21 Digital Siren (8 sec)|Digital Siren;22 Alert Series (63 sec)|Alert Series;23 Ship Bell (3 sec)|Security;24 Clock Buzzer (9 sec)|Clock Buzzer;25 Christmas Tree (3 sec)|Christmas Tree;26 Gong (11 sec)|Gong;27 Single Bell Ting (0 sec)|Single Bell Ting;28 Tonal Pulse (11 sec)|Tonal Pulse;29 Upwards Tone (2 sec)|Upwards Tone;30 Door Open (27 sec)|Door Open"
-            },
-            "subtype": "select"
-        },
-        {
-            "name": "Arrêter son",
-            "type": "action",
-            "isVisible": 1,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 121,
-                "value": "type=setvalue&value=Inactive",
-                "index": 1,
-                "instance": 1
-            },
-            "subtype": "other"
-        },
-        {
-            "name": "Volume Etat",
-            "type": "info",
-            "isVisible": 0,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 121,
-                "index": 2,
-                "instance": 1
-            },
-            "subtype": "numeric"
-        },
-        {
-            "name": "Volume",
-            "type": "action",
-            "isVisible": 1,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 121,
-                "value": "type=setvalue&value=#slider#",
-                "index": 2,
-                "instance": 1,
-                "minValue": 0,
-                "maxValue": 100
-            },
-            "value": "Volume Etat",
-            "subtype": "slider"
         }
     ]
 }

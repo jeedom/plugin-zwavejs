@@ -1,0 +1,97 @@
+{
+"standard": 
+	[
+		{
+			"name": "Volume par Défaut Etat",
+			"type": "info",
+			"isVisible": 0,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 121,
+				"endpoint": "#endpoint#",
+				"property": "defaultVolume"
+			},
+			"subtype": "numeric"
+		},
+ 		{
+			"name": "Volume par Défaut",
+			"type": "action",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 121,
+				"endpoint": "#endpoint#",
+				"property": "defaultVolume",
+				"value": "#slider#"
+			},
+			"value": "Volume par Défaut Etat",
+			"subtype": "slider"
+		},
+		{
+			"name": "Volume Etat",
+			"type": "info",
+			"isVisible": 0,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 121,
+				"endpoint": "#endpoint#",
+				"property": "volume"
+			},
+			"subtype": "numeric"
+		},
+ 		{
+			"name": "Volume",
+			"type": "action",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 121,
+				"endpoint": "#endpoint#",
+				"property": "volume",
+				"value": "#slider#"
+			},
+			"value": "Volume Etat",
+			"subtype": "slider"
+		},
+		{
+			"name": "Son en cours",
+			"type": "info",
+			"isVisible": 0,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 121,
+				"endpoint": "#endpoint#",
+				"property": "toneId"
+			},
+			"subtype": "string"
+		},
+		{
+			"name": "Jouer son",
+			"type": "action",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 121,
+				"endpoint": "#endpoint#",
+				"property": "toneId",
+				"value": "#select#",
+				"listValue": "#listSound#"
+			},
+			"value": "Son en cours",
+			"subtype": "select"
+		},
+		{
+			"name": "Arrêter son",
+			"type": "action",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 121,
+				"endpoint": "#endpoint#",
+				"property": "toneId",
+				"value": "#stopSound#"
+			},
+			"subtype": "other"
+		}
+	]
+}

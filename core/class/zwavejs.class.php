@@ -324,7 +324,7 @@ class zwavejs extends eqLogic {
 	}
 	
 	public static function generateRandomKey(){
-		$randHexStr = strtoupper(implode(array_map(function(){return dechex(mt_rand(0,15));}, array_fill(0,32,null))));
+		$randHexStr = strtoupper(implode('',array_map(function(){return dechex(mt_rand(0,15));}, array_fill(0,32,null))));
 		log::add('zwavejs','debug','[' . __FUNCTION__ . '] '.$randHexStr);
 		return $randHexStr;
 	}
@@ -444,7 +444,7 @@ class zwavejs extends eqLogic {
 						}
 						log::add('zwavejs','debug',json_encode($node));
 						if ($node['id'] == config::byKey('controllerId','zwavejs',0)) {
-							$stats['controllerNeighbors'] = implode($node['neighbors'],' - ');
+							$stats['controllerNeighbors'] = implode(' - ', $node['neighbors']);
 							$stats['stats'] = $node['statistics'];
 						}
 						if ($node['status'] == 'Asleep'){
@@ -460,7 +460,7 @@ class zwavejs extends eqLogic {
 				} else if ($value['origin']['type'] == 'getNodeInfo'){
 					foreach ($value['result'] as $node){
 						if ($node['id']==$value['origin']['node']){
-							$node['neighbors'] = implode($node['neighbors'],' - ');
+							$node['neighbors'] = implode(' - ', $node['neighbors']);
 							if (isset($node['deviceConfig']['filename']) && $node['deviceConfig']['filename'] != ''){
 								$explodeFile = explode('/',$node['deviceConfig']['filename']);
 								$fileExt = '(Jeedom)';
@@ -503,7 +503,7 @@ class zwavejs extends eqLogic {
 								}
 								$device = is_json(file_get_contents(dirname(__FILE__) . '/../config/devices/' . $eqLogic->getConfFilePath()), array());
 								$node['confType'] = 'Configuration Jeedom <br>';
-								if (isset($device['properties']) && count($device['properties']>0)){
+								if (isset($device['properties']) && count($device['properties'])>0){
 									if (isset($device['firmProperties']) && $device['firmProperties'] == 1){
 										$found = false;
 										foreach ($device['properties'] as $firm=>$property){
@@ -527,7 +527,7 @@ class zwavejs extends eqLogic {
 										$node['confType'] .= '  - '.$property . ' : ' .json_encode($value) .'<br>';
 									}
 								}
-								if (isset($device['commands']) && count($device['commands']>0)){
+								if (isset($device['commands']) && count($device['commands'])>0){
 									$node['confType'] .= 'Commands : <br>';
 									foreach ($device['commands'] as $command){
 										$node['confType'] .= '  - '.$command['name'] .'<br>';
@@ -566,7 +566,7 @@ class zwavejs extends eqLogic {
 				} else if ($value['origin']['type'] == 'group'){
 					$data =array();
 					foreach ($value['result'] as $node){
-						$data[$node['id']]=array('groups'=>$node['groups'],'label'=>$node['productLabel'],'endpoints'=>$node[endpointIndizes],'status'=>$node['status']);
+						$data[$node['id']]=array('groups'=>$node['groups'],'label'=>$node['productLabel'],'endpoints'=>$node['endpointIndizes'],'status'=>$node['status']);
 					}
 					self::addFileEvent('getNodeGroup',$data);
 				} else if ($value['origin']['type'] == 'health'){
@@ -812,7 +812,7 @@ class zwavejs extends eqLogic {
 				$location = '';
 				$objet = $eqLogic->getObject();
 				if (is_object($objet)) {
-					$location = str_replace(array_keys($replace), $replace, $objet->getName());
+					$location = $objet->getName();
 				} else {
 					$location = 'aucun';
 				}
@@ -1033,7 +1033,7 @@ class zwavejs extends eqLogic {
 							$finalValue = __('ON', __FILE__);
 						}
 					} else if ($data['type'] == 'string[]'){
-						$finalValue = implode($data['value'], ' - ');
+						$finalValue = implode(' - ', $data['value']);
 					} else if ($data['type'] == 'number'){
 						if ($data['list']){
 							foreach ($data['states'] as $state){
@@ -1543,6 +1543,10 @@ class zwavejs extends eqLogic {
 			if (isset($details["type"])){
 				$type = $details["type"];
 			}
+			$ignore = array();
+			if (isset($details["ignore"])){
+				$ignore = $details["ignore"];
+			}
 			$listCommand = array(1);
 			if (isset($details['multi'])){
 				$listCommand=$details['multi'];
@@ -1555,6 +1559,10 @@ class zwavejs extends eqLogic {
 			foreach ($listCommand as $numberCommand){
 				if (isset($propertyjson[$type])){
 					foreach($propertyjson[$type] as $command){
+						if (in_array($command["name"],$ignore)){
+							log::add('zwavejs','debug','[' . __FUNCTION__ . '] '. $command["name"] . ' should be ignored ');
+							continue;
+						}
 						if (isset($command['configuration']['cmdFilter'])){
 							if (isset($details['cmdFilter'])) {
 								$present = false;
@@ -1747,7 +1755,7 @@ class zwavejs extends eqLogic {
 			$result['modes'] = 'aucun';
 		}
 		$result['confType'] = 'Configuration Jeedom <br>';
-		if (isset($device['properties']) && count($device['properties']>0)){
+		if (isset($device['properties']) && count($device['properties'])>0){
 			if (isset($device['firmProperties']) && $device['firmProperties'] == 1){
 				$found = false;
 				foreach ($device['properties'] as $firm=>$property){
@@ -1771,7 +1779,7 @@ class zwavejs extends eqLogic {
 				$result['confType'] .= '  -'.$property . ' : ' .json_encode($value) .'<br>';
 			}
 		}
-		if (isset($device['commands']) && count($device['commands']>0)){
+		if (isset($device['commands']) && count($device['commands'])>0){
 			$result['confType'] .= 'Commands : <br>';
 			foreach ($device['commands'] as $command){
 				$result['confType'] .= '  -'.$command['name'] .'<br>';
@@ -1893,6 +1901,7 @@ class zwavejs extends eqLogic {
 		}
 		if (is_file(dirname(__FILE__) . '/../config/devices/' . $this->getConfFilePath())) {
 			$this->loadCmdFromConf($_update);
+			self::nodeAction('syncValues',$this->getLogicalId());
 			return;
 		}
 	}
