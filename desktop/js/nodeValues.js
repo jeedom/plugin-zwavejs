@@ -32,24 +32,50 @@ $("body").off("click", ".editValue").on("click", ".editValue", function (e) {
   var valueApplyOption={
     fullpath : $(this).data('path'),
   };
+  var init = $(this)
   if ($(this).data('list') == 1) {
-    var options = [];
-    var states = $(this).data('states').split(";");
-    for (i in states) {
-		var details = states[i].split("-");
-		options.push({value : details[0],text : details[0]+'-'+details[1]})
-	}
+	var options = [];
+	options.push({value : 0,text : 'Mode liste'})
+	options.push({value : 1,text : 'Mode numérique'})
     bootbox.prompt({
-      title: title,
+      title: "{{Comment voulez vous modifier la valeur}}",
       inputType: 'select',
       inputOptions : options,
       callback: function (result) {
         if(result === null){
           return;
         }
-        valueApplyOption.value = result;
-        jeedom.zwavejs.node.set(valueApplyOption);
-      }
+		else if(result == 0){
+			var options = [];
+				var states = init.data('states').split(";");
+				for (i in states) {
+				var details = states[i].split("-");
+				options.push({value : details[0],text : details[0]+'-'+details[1]})
+			}
+			bootbox.prompt({
+			title: title,
+			inputType: 'select',
+			inputOptions : options,
+			callback: function (result) {
+				if(result === null){
+				return;
+				}
+				valueApplyOption.value = result;
+				jeedom.zwavejs.node.set(valueApplyOption);
+			}
+			});
+			valueApplyOption.value = result;
+			jeedom.zwavejs.node.set(valueApplyOption);
+		}
+		else if(result == 1){
+			var result = prompt(title);
+			if(result === null){
+				return;
+			}
+			valueApplyOption.value = result;
+			jeedom.zwavejs.node.set(valueApplyOption);
+		}
+	  }
     });
   } else if ($(this).data('type') == "boolean") {
     bootbox.prompt({
