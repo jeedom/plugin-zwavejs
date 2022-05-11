@@ -10,31 +10,8 @@
         ]
     },
     "properties": {
-        "Sound": {"replace":{"#endpoint#":3,"#listSound#":"0|Off;1|Ding Dong;2|Ding Dong Tubular Bell;3|Traditional Apartment Buzzer;4|Electric Apartment Buzzer;5|Westminster Chimes;6|Chimes;7|Cuckoo;8|Traditional Bell;9|Smoke Alarm (Low);10|Smoke Alarm (High);11|Fire Evacuation Buzzer;12|CO Alarm;13|Klaxon;14|Klaxon (Deep);15|Warning Tone;16|Tornado Siren;17|Alarm;18|Deep Alarm Tone;19|Alarm (Archangel tone);20|Alarm (Shrill);21|Digital Siren;22|Alert Series;23|Security;24|Clock Buzzer;25|Christmas Tree;26|Gong;27|Single Bell Ting;28|Tonal Pulse;29|Upwards Tone;30|Door Open","#stopSound#":"0"},"ignore":["Volume Etat","Volume"]}
-    },
-    "commands": [
-        {
-            "name": "Sonnette",
-            "type": "info",
-            "isVisible": 1,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 32,
-                "value": "",
-                "index": 0,
-                "instance": 1,
-                "returnStateTime": 5,
-                "returnStateValue": 0
-            },
-            "subtype": "binary",
-            "display": {
-                "invertBinary": "1",
-                "generic_type": "SABOTAGE"
-            },
-            "template": {
-                "dashboard": "alert",
-                "mobile": "alert"
-            }
-        }
-    ]
+		"Notification": {"type":"siren","replace":{"#endpoint#":3}},
+        "Sound": {"replace":{"#endpoint#":3,"#listSound#":"0|Off;1|Ding Dong;2|Ding Dong Tubular Bell;3|Traditional Apartment Buzzer;4|Electric Apartment Buzzer;5|Westminster Chimes;6|Chimes;7|Cuckoo;8|Traditional Bell;9|Smoke Alarm (Low);10|Smoke Alarm (High);11|Fire Evacuation Buzzer;12|CO Alarm;13|Klaxon;14|Klaxon (Deep);15|Warning Tone;16|Tornado Siren;17|Alarm;18|Deep Alarm Tone;19|Alarm (Archangel tone);20|Alarm (Shrill);21|Digital Siren;22|Alert Series;23|Security;24|Clock Buzzer;25|Christmas Tree;26|Gong;27|Single Bell Ting;28|Tonal Pulse;29|Upwards Tone;30|Door Open","#stopSound#":"0"},"ignore":["Volume Etat","Volume"]},
+		"Notification|battery-maintenance": {"type":"battery-maintenance","replace":{"#endpoint#":3}}
+    }
 }
