@@ -1,0 +1,22 @@
+{
+    "name": "Door Sensor",
+    "type": "Ouverture",
+    "comlink": "",
+    "remark": "",
+    "imglink": "shenzen_neo.nas-ds07z",
+    "configuration": {
+        "battery_type": "1x3V CR14250"
+    },
+    "versions": {
+        "16": [
+            "1794"
+        ]
+    },
+    "properties": {
+        "Opening": {},
+        "Temperature": {},
+        "Humidity": {},
+        "Tamper": {},
+        "Battery": {}
+    }
+}
