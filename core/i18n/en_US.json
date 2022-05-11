@@ -332,6 +332,7 @@
     "plugins\/zwavejs\/desktop\/js\/nodeValues.js": {
         "Action réalisée avec succès": "Action completed successfully",
         "Changer la valeur de": "Change the value of",
+        "Comment voulez vous modifier la valeur": "How do you want to change the value",
         "On": "We",
         "Off": "Off",
         "Configurer le Polling de ": "Configure Polling from",
