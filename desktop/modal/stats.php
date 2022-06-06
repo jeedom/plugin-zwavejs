@@ -21,40 +21,40 @@ if (!isConnect('admin')) {
 ?>
 <div id="div_networkStatAlert" style="display: none;"></div>
 <div class="modalStatsValues">
-<table class="table table-condensed table-bordered tablesorter tablesorter-bootstrap table-striped hasFilters tableStat" id="table_Stat">
-	<thead>
-		<tr>
-			<th>{{Id}}</th>
-			<th>{{Equipement}}</th>
-			<th>{{RX}}</th>
-			<th>{{TX}}</th>
-			<th>{{Timeout}}</th>
-			<th>{{RTT}}</th>
-		</tr>
-	</thead>
-	<tbody>
-		<?php
+	<table class="table table-condensed table-bordered tablesorter tablesorter-bootstrap table-striped hasFilters tableStat" id="table_Stat">
+		<thead>
+			<tr>
+				<th>{{Id}}</th>
+				<th>{{Equipement}}</th>
+				<th>{{RX}}</th>
+				<th>{{TX}}</th>
+				<th>{{Timeout}}</th>
+				<th>{{RTT}}</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php
 			$eqLogics = eqLogic::byType('zwavejs');
-			foreach ($eqLogics as $eqLogic){
-				$image = 'plugins/zwavejs/core/config/devices/'.$eqLogic->getImgFilePath();
-				if (!is_file(dirname(__FILE__) . '/../../core/config/devices/'.$eqLogic->getImgFilePath())){
+			foreach ($eqLogics as $eqLogic) {
+				$image = 'plugins/zwavejs/core/config/devices/' . $eqLogic->getImgFilePath();
+				if (!is_file(dirname(__FILE__) . '/../../core/config/devices/' . $eqLogic->getImgFilePath())) {
 					$image = 'plugins/zwavejs/plugin_info/zwavejs_icon.png';
 				}
-				$nameTd = '<td><img src="'.$image.'" height="40"/> <a href="index.php?v=d&p=zwavejs&m=zwavejs&id=' . $eqLogic->getId() . '">' . $eqLogic->getHumanName(true).  '</a></td>';
-				$healthPage .= '<td><span class="label label-info" style="font-size : 1em;">'.$values['endpointsCount'].'</span></td>';
-				$nodeId =$eqLogic->getLogicalId();
+				$nameTd = '<td><img src="' . $image . '" height="40"/> <a href="index.php?v=d&p=zwavejs&m=zwavejs&id=' . $eqLogic->getId() . '">' . $eqLogic->getHumanName(true) .  '</a></td>';
+				$healthPage .= '<td><span class="label label-info" style="font-size : 1em;">' . $values['endpointsCount'] . '</span></td>';
+				$nodeId = $eqLogic->getLogicalId();
 				echo '<tr>';
-				echo '<td>'.$nodeId.'</td>';
+				echo '<td><span class="label label-primary">' . $nodeId . '</span></td>';
 				echo $nameTd;
-				echo '<td><span class="label label-info rx'.$nodeId.'" style="font-size : 1em;">0</span></td>';
-				echo '<td><span class="label label-info tx'.$nodeId.'" style="font-size : 1em;">0</span></td>';
-				echo '<td><span class="label label-info timeout'.$nodeId.' style="font-size : 1em;">0</span></td>';
-				echo '<td><span class="label label-info rtt'.$nodeId.' style="font-size : 1em;">0</span></td>';
+				echo '<td><span class="label label-info rx' . $nodeId . '" style="font-size : 1em;">0</span></td>';
+				echo '<td><span class="label label-info tx' . $nodeId . '" style="font-size : 1em;">0</span></td>';
+				echo '<td><span class="label label-info timeout' . $nodeId . ' style="font-size : 1em;">0</span></td>';
+				echo '<td><span class="label label-info rtt' . $nodeId . ' style="font-size : 1em;">0</span></td>';
 				echo '</tr>';
 			}
-		?>
-	</tbody>
-</table>
+			?>
+		</tbody>
+	</table>
 </div>
-<?php include_file('core', 'zwavejs', 'class.js', 'zwavejs');?>
-<?php include_file('desktop', 'stats', 'js', 'zwavejs');?>
+<?php include_file('core', 'zwavejs', 'class.js', 'zwavejs');
+include_file('desktop', 'stats', 'js', 'zwavejs'); ?>

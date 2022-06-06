@@ -27,75 +27,75 @@ sendVarToJs('nodeId', init('id'));
 <div id="div_nodeAddGroupsZwaveJsAlert" style="display: none;"></div>
 
 <div class="modalNodeGroups">
-<div id="div_StatusGroupAlert"></div>
-<div class="col-sm-6">
-<div class="panel panel-primary template">
-	<div class="panel-heading">
-		<h4 class="panel-title"><i class="fas fa-layer-group"></i> {{Listes des groupes disponibles}}</h4>
-	</div>
-	<div class="panel-body listGroups">
-		<table class="table table-striped tableGroups">
-		<thead>
-			<tr>
-				<th>{{Groupe}}</th>
-				<th>{{Endpoint}}</th>
-				<th>{{Lifeline}}</th>
-				<th>{{Max}}</th>
-			</tr>
-		</thead>
-			<tbody>
-			</tbody>
-		</table>
-	</div>
-</div>
-</div>
-<div class="col-sm-6">
-<div class="panel panel-primary template">
-	<div class="panel-heading">
-		<h4 class="panel-title"><i class="fas fa-project-diagram"></i> {{Associations actives}}<a class="btn btn-sm btn-danger removeAllAssociations pull-right" style="margin-top:-1.2em"><i class="fas fa-trash"></i></a></h4>
-	</div>
-	<div class="panel-body associations">
-		<table class="table table-striped tableAssociations">
-		<thead>
-			<tr>
-				<th>{{Endpoint}}</th>
-				<th>{{Groupe}}</th>
-				<th>{{Node}}</th>
-				<th>{{Endpoint Cible}}</th>
-				<th>{{Actions}}</th>
-			</tr>
-		</thead>
-			<tbody>
-			</tbody>
-		</table>
-	</div>
-</div>
-<div class="panel panel-primary template">
-	<div class="panel-heading">
-		<h4 class="panel-title"><i class="fas fa-plus-circle"></i> {{Ajouter une association}}<a class="btn btn-sm btn-success addAssociation pull-right" style="margin-top:-1.2em"><i class="fas fa-plus-circle"></i></a></h4>
-	</div>
-	<div class="panel-body addAssociations">
-		<div class="form-group">
-			<label class="col-sm-3 control-label">{{Groupe}}</label>
-			<div class="col-sm-7">
-				<select class="selectGroup form-control">
-					<option value="">{{Aucun}}</option>
-				</select>
+	<div id="div_StatusGroupAlert"></div>
+	<div class="col-sm-6">
+		<div class="panel panel-primary template">
+			<div class="panel-heading">
+				<h4 class="panel-title"><i class="fas fa-layer-group"></i> {{Listes des groupes disponibles}}</h4>
 			</div>
-		</div>
-		<br>
-		<br>
-		<div class="form-group">
-			<label class="col-sm-3 control-label">{{Noeud Cible}}</label>
-			<div class="col-sm-7">
-				<select class="selectTargetNode form-control">
-					<option value="">{{Aucun}}</option>
-				</select>
+			<div class="panel-body listGroups">
+				<table class="table table-striped tableGroups">
+					<thead>
+						<tr>
+							<th>{{Groupe}}</th>
+							<th>{{Endpoint}}</th>
+							<th>{{Lifeline}}</th>
+							<th>{{Max}}</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>
-	<br>
+	<div class="col-sm-6">
+		<div class="panel panel-primary template">
+			<div class="panel-heading">
+				<h4 class="panel-title"><i class="fas fa-project-diagram"></i> {{Associations actives}}<a class="btn btn-sm btn-danger removeAllAssociations pull-right" style="margin-top:-1.2em"><i class="fas fa-trash"></i></a></h4>
+			</div>
+			<div class="panel-body associations">
+				<table class="table table-striped tableAssociations">
+					<thead>
+						<tr>
+							<th>{{Endpoint}}</th>
+							<th>{{Groupe}}</th>
+							<th>{{Nœud}}</th>
+							<th>{{Endpoint Cible}}</th>
+							<th>{{Actions}}</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="panel panel-primary template">
+			<div class="panel-heading">
+				<h4 class="panel-title"><i class="fas fa-plus-circle"></i> {{Ajouter une association}}<a class="btn btn-sm btn-success addAssociation pull-right" style="margin-top:-1.2em"><i class="fas fa-plus-circle"></i></a></h4>
+			</div>
+			<div class="panel-body addAssociations">
+				<div class="form-group">
+					<label class="col-sm-3 control-label">{{Groupe}}</label>
+					<div class="col-sm-7">
+						<select class="selectGroup form-control">
+							<option value="">{{Aucun}}</option>
+						</select>
+					</div>
+				</div>
+				<br>
+				<br>
+				<div class="form-group">
+					<label class="col-sm-3 control-label">{{Nœud Cible}}</label>
+					<div class="col-sm-7">
+						<select class="selectTargetNode form-control">
+							<option value="">{{Aucun}}</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<br>
+		</div>
+	</div>
 </div>
-</div>
-</div>
-<?php include_file('desktop', 'nodeGroups', 'js', 'zwavejs');?>
+<?php include_file('desktop', 'nodeGroups', 'js', 'zwavejs'); ?>

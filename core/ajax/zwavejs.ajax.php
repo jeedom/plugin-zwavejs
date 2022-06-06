@@ -25,95 +25,95 @@ try {
 	}
 
 	if (init('action') == 'include') {
-		zwavejs::inclusion(init('method'),init('options'));
+		zwavejs::inclusion(init('method'), init('options'));
 		ajax::success();
 	}
-	
+
 	if (init('action') == 'getInfo') {
 		zwavejs::getInfo();
 		ajax::success();
 	}
-	
+
 	if (init('action') == 'getNodeInfo') {
-		zwavejs::getNodeInfo(init('node'),init('info'));
+		zwavejs::getNodeInfo(init('node'), init('info'));
 		ajax::success();
 	}
-	
+
 	if (init('action') == 'getNodeAssociations') {
 		zwavejs::getNodeAssociations(init('nodeId'));
 		ajax::success();
 	}
-	
+
 	if (init('action') == 'setNodeValue') {
-		zwavejs::setNodeValue(init('fullpath'),init('value'));
+		zwavejs::setNodeValue(init('fullpath'), init('value'));
 		ajax::success();
 	}
-	
+
 	if (init('action') == 'getFile') {
-		ajax::success(zwavejs::getFile(init('type'),init('node')));
+		ajax::success(zwavejs::getFile(init('type'), init('node')));
 	}
-	
+
 	if (init('action') == 'setPolling') {
-		zwavejs::setPolling(init('nodeId'),init('cc'),init('endpoint'),init('property'),init('value'));
+		zwavejs::setPolling(init('nodeId'), init('cc'), init('endpoint'), init('property'), init('value'));
 		ajax::success();
 	}
-	
+
 	if (init('action') == 'refreshNodeCC') {
-		zwavejs::refreshNodeCC(init('nodeId'),init('cc'));
+		zwavejs::refreshNodeCC(init('nodeId'), init('cc'));
 		ajax::success();
 	}
-	
+
 	if (init('action') == 'getNodes') {
 		zwavejs::getNodes(init('mode'));
 		ajax::success();
 	}
-	
+
 	if (init('action') == 'controllerAction') {
 		zwavejs::controllerAction(init('type'));
 		ajax::success();
 	}
-	
+
 	if (init('action') == 'namingAction') {
 		zwavejs::namingAction(init('nodeId'));
 		ajax::success();
 	}
-	
+
 	if (init('action') == 'nodeAction') {
-		zwavejs::nodeAction(init('type'),init('nodeId'));
+		zwavejs::nodeAction(init('type'), init('nodeId'));
 		ajax::success();
 	}
-	
+
 	if (init('action') == 'removeAssociation') {
-		zwavejs::removeAssociation(init('nodeId'),init('groupId'),init('sourceEndpoint'),init('targetEndpoint'),init('assoNodeId'));
+		zwavejs::removeAssociation(init('nodeId'), init('groupId'), init('sourceEndpoint'), init('targetEndpoint'), init('assoNodeId'));
 		ajax::success();
 	}
-	
+
 	if (init('action') == 'removeAllAssociations') {
 		zwavejs::removeAllAssociations(init('nodeId'));
 		ajax::success();
 	}
-	
+
 	if (init('action') == 'addAssociation') {
-		zwavejs::addAssociation(init('nodeId'),init('group'),init('target'));
+		zwavejs::addAssociation(init('nodeId'), init('group'), init('target'));
 		ajax::success();
 	}
-	
+
 	if (init('action') == 'applyRecommended') {
-		$eqLogic = zwavejs::byLogicalId(init('nodeId'),'zwavejs');
+		$eqLogic = zwavejs::byLogicalId(init('nodeId'), 'zwavejs');
 		if (!is_object($eqLogic)) {
 			ajax::success();
 		}
 		ajax::success($eqLogic->applyRecommended());
 	}
-	
+
 	if (init('action') == 'createCommandInfo') {
-		ajax::success(zwavejs::autoCreateCommandInfo(init('path'),init('type'),init('label'),init('unit'),init('max'),init('min'),init('value')));
+		ajax::success(zwavejs::autoCreateCommandInfo(init('path'), init('type'), init('label'), init('unit'), init('max'), init('min'), init('value')));
 	}
-	
+
 	if (init('action') == 'createCommandAction') {
-		ajax::success(zwavejs::autoCreateCommandAction(init('path'),init('type'),init('label'),init('unit'),init('max'),init('min'),init('value')));
+		ajax::success(zwavejs::autoCreateCommandAction(init('path'), init('type'), init('label'), init('unit'), init('max'), init('min'), init('value')));
 	}
-	
+
 	if (init('action') == 'generateRandomKey') {
 		ajax::success(zwavejs::generateRandomKey());
 	}
@@ -121,9 +121,9 @@ try {
 	if (init('action') == 'autoDetectModule') {
 		$eqLogic = zwavejs::byId(init('id'));
 		if (!is_object($eqLogic)) {
-			throw new Exception(__('Zwave eqLogic non trouvé : ', __FILE__) . init('id'));
+			throw new Exception(__('Equipement Z-Wave non trouvé', __FILE__) . ' : ' . init('id'));
 		}
-		if (init('createcommand') == 1){
+		if (init('createcommand') == 1) {
 			foreach ($eqLogic->getCmd() as $cmd) {
 				$cmd->remove();
 			}
@@ -131,7 +131,7 @@ try {
 		$eqLogic->createCommand(init('createcommand'));
 		ajax::success();
 	}
-	
+
 	if (init('action') == 'getEqLogicInfos') {
 		$eqLogic = zwavejs::byLogicalId(init('logicalId'), 'zwavejs');
 		if (!is_object($eqLogic)) {
@@ -140,7 +140,7 @@ try {
 		ajax::success($eqLogic->getEqLogicInfos());
 	}
 
-	throw new Exception('Aucune methode correspondante');
+	throw new Exception(__('Aucune méthode correspondante', __FILE__));
 	/*     * *********Catch exeption*************** */
 } catch (Exception $e) {
 	ajax::error(displayException($e), $e->getCode());
