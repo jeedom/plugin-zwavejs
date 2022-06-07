@@ -152,17 +152,17 @@ $('.eqLogic').on('click', '.nodeGroups', function() {
 })
 
 $('#bt_zwaveNetwork').off('click').on('click', function() {
-  $('#md_modal').dialog({ title: "{{Réseaux zwave}}" })
+  $('#md_modal').dialog({ title: "{{Réseau Z-Wave}}" })
   $('#md_modal').load('index.php?v=d&plugin=zwavejs&modal=network').dialog('open')
 })
 
 $('#bt_zwaveStats').off('click').on('click', function() {
-  $('#md_modal').dialog({ title: "{{Statistiques zwave}}" })
+  $('#md_modal').dialog({ title: "{{Statistiques Z-Wave}}" })
   $('#md_modal').load('index.php?v=d&plugin=zwavejs&modal=stats').dialog('open')
 })
 
 $('#bt_zwaveHealth').on('click', function() {
-  $('#md_modal').dialog({ title: "{{Santé zwave}}" })
+  $('#md_modal').dialog({ title: "{{Santé Z-Wave}}" })
   $('#md_modal').load('index.php?v=d&plugin=zwavejs&modal=health').dialog('open')
 })
 
@@ -257,7 +257,7 @@ $('body').off('zwavejs::driverStatus').on('zwavejs::driverStatus', function(_eve
   if (_options.status == '1') {
     $('#div_driverStatus').empty()
   } else if (_options.status == '0') {
-    $('#div_driverStatus').empty().append('<div class="alert alert-warning" role="alert"> {{Le driver Zwave n\'est pas initialisé, veuillez patienter. Si le message reste trop longtemps, veuillez vérifier la configuration du démon.}}</div>')
+    $('#div_driverStatus').empty().append('<div class="alert alert-warning" role="alert"> {{Le driver Z-Wave n\'est pas initialisé, veuillez patienter. Si le message reste trop longtemps, veuillez vérifier la configuration du démon.}}</div>')
   }
 })
 

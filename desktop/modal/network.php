@@ -132,7 +132,7 @@ if (!isConnect('admin')) {
 							<div class="panel-body">
 								<p><b>{{Version application}} : </b><span class="getInfo-appVersion label label-info" style="font-size : 1em;"></span></p>
 								<p><b>{{Version serveur}} : </b><span class="getInfo-serverVersion label label-info" style="font-size : 1em;"></span></p>
-								<p><b>{{Version zwave}} : </b><span class="getInfo-zwaveVersion label label-info" style="font-size : 1em;"></span></p>
+								<p><b>{{Version Z-Wave}} : </b><span class="getInfo-zwaveVersion label label-info" style="font-size : 1em;"></span></p>
 							</div>
 						</div>
 					</div>
@@ -224,7 +224,7 @@ if (!isConnect('admin')) {
 							</tr>
 							<tr>
 								<td><a class="btn btn-success namingAction"><i class="fas fa-bookmark"></i> {{Envoyer les noms d'équipements}}</a></td>
-								<td>{{Envoie les noms et objets des équipements au réseau Zwave.}}</td>
+								<td>{{Envoie les noms et objets des équipements au réseau Z-Wave.}}</td>
 							</tr>
 							<tr>
 								<td><a data-action="softReset" class="btn btn-warning controller_action"><i class="fas fa-times"></i> {{Soft Reset}}</a></td>

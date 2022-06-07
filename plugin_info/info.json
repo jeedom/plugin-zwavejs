@@ -2,7 +2,7 @@
     "id": "zwavejs",
     "name": "Z-Wave JS",
     "description": {
-        "fr_FR": "Plugin pour contrôler les équipements ZWave",
+        "fr_FR": "Plugin pour contrôler les équipements Z-Wave",
         "en_US": "Plugin to control ZWave equipment",
         "es_ES": "Plugin para controlar equipos ZWave",
         "de_DE": "Plugin zur Steuerung von ZWave-Geräten",

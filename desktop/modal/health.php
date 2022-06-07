@@ -31,7 +31,7 @@ sendVarToJs('battery_danger', config::byKey('battery::danger'));
 				<th>{{Endpoints}}</th>
 				<th>{{Sécurité}}</th>
 				<th>{{Flirs}}</th>
-				<th>{{Zwave+}}</th>
+				<th>{{Z-Wave+}}</th>
 				<th>{{Routing}}</th>
 				<th>{{Polling}}</th>
 				<th>{{Initié}}</th>

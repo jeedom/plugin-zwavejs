@@ -29,7 +29,7 @@ if (!isConnect('admin')) {
 				<sup><i class="fas fa-question-circle tooltips" title="{{Cocher la case pour appliquer le jeu de configuration spécialement recommandé pour votre module par l'équipe Jeedom}}"></i></sup>
 			</label>
 			<div class="col-md-1">
-				<input type="checkbox" class="configKey" data-l1key="auto_applyRecommended" checked/>
+				<input type="checkbox" class="configKey" data-l1key="auto_applyRecommended" checked />
 			</div>
 			<label class="col-sm-3 control-label">{{Suppression automatique des périphériques exclus}}
 				<sup><i class="fas fa-question-circle tooltips" title="{{Cocher la case pour supprimer automatiquement les équipements Jeedom correspondant à des périphériques exclus du contrôleur}}"></i></sup>
@@ -39,10 +39,10 @@ if (!isConnect('admin')) {
 			</div>
 		</div>
 		<br>
-		<legend><i class="fas fa-wifi"></i> {{Zwave}}</legend>
+		<legend><i class="fas fa-wifi"></i> {{Z-Wave}}</legend>
 		<div class="form-group">
-			<label class="col-sm-3 control-label">{{Port du contrôleur Zwave}}
-				<sup><i class="fas fa-question-circle tooltips" title="{{Renseigner le port utilisé par le contrôleur Zwave.}}"></i></sup>
+			<label class="col-sm-3 control-label">{{Port du contrôleur Z-Wave}}
+				<sup><i class="fas fa-question-circle tooltips" title="{{Renseigner le port utilisé par le contrôleur Z-Wave}}"></i></sup>
 			</label>
 			<div class="col-sm-7">
 				<select class="configKey form-control" data-l1key="port">
@@ -57,73 +57,73 @@ if (!isConnect('admin')) {
 		</div>
 		<div class="form-group">
 			<label class="col-sm-3 control-label">{{Préfixe}}
-				<sup><i class="fas fa-question-circle tooltips" title="{{Préfixe à utiliser dans MQTT.}}"></i></sup>
+				<sup><i class="fas fa-question-circle tooltips" title="{{Préfixe à utiliser dans MQTT}}"></i></sup>
 			</label>
 			<div class="col-sm-7">
-					<input type="text" class="configKey form-control" data-l1key="prefix" placeholder="{{}}"/>
+				<input type="text" class="configKey form-control" data-l1key="prefix" placeholder="{{}}" />
 			</div>
 		</div>
 		<legend><i class="fas fa-key"></i> {{Sécurité}}</legend>
 		<div class="alert alert-info col-sm-7 col-sm-offset-3">{{Les clés de sécurités sont à conserver précieusement. Si vous perdez vos clés les périphériques inclus en sécurisés devront être réappairés. Les clés peuvent être spécifiées, si les champs sont vides ou invalides le plugin en générera et vous pourrez les voir ensuite. Si votre contrôleur a été utilisé avec Openzwave et que vous aviez inclus des modules en sécurisés la clé S0 est : 0102030405060708090A0B0C0D0E0F10}}</div>
 		<div class="form-group">
 			<label class="col-sm-3 control-label">{{Clé de Sécurité S0}}</label>
-				<div class="input-group col-sm-7">
-					<input class="configKey roundedLeft form-control" data-l1key="s0key" placeholder="{{Clé de sécurité S0}}" />
-					<span class="input-group-btn">
-						<a class="btn btn-default form-control randomKey roundedRight" data-key="s0key"><i class="fas fa-sync"></i></a>
-					</span>
-				</div>
+			<div class="input-group col-sm-7">
+				<input class="configKey roundedLeft form-control" data-l1key="s0key" placeholder="{{Clé de sécurité S0}}" />
+				<span class="input-group-btn">
+					<a class="btn btn-default form-control randomKey roundedRight" data-key="s0key"><i class="fas fa-sync"></i></a>
+				</span>
+			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-3 control-label">{{Clé de Sécurité S2 Authenticated}}</label>
-				<div class="input-group col-sm-7">
-					<input class="configKey roundedLeft form-control" data-l1key="s2key_auth" placeholder="{{Clé de sécurité S2 Authenticated}}" />
-					<span class="input-group-btn">
-						<a class="btn btn-default form-control randomKey roundedRight" data-key="s2key_auth"><i class="fas fa-sync"></i></a>
-					</span>
-				</div>
+			<div class="input-group col-sm-7">
+				<input class="configKey roundedLeft form-control" data-l1key="s2key_auth" placeholder="{{Clé de sécurité S2 Authenticated}}" />
+				<span class="input-group-btn">
+					<a class="btn btn-default form-control randomKey roundedRight" data-key="s2key_auth"><i class="fas fa-sync"></i></a>
+				</span>
+			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-3 control-label">{{Clé de Sécurité S2 Access Control}}</label>
-				<div class="input-group col-sm-7">
-					<input class="configKey roundedLeft form-control" data-l1key="s2key_access" placeholder="{{Clé de sécurité S2 Access Control}}" />
-					<span class="input-group-btn">
-						<a class="btn btn-default form-control randomKey roundedRight" data-key="s2key_access"><i class="fas fa-sync"></i></a>
-					</span>
-				</div>
+			<div class="input-group col-sm-7">
+				<input class="configKey roundedLeft form-control" data-l1key="s2key_access" placeholder="{{Clé de sécurité S2 Access Control}}" />
+				<span class="input-group-btn">
+					<a class="btn btn-default form-control randomKey roundedRight" data-key="s2key_access"><i class="fas fa-sync"></i></a>
+				</span>
+			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-3 control-label">{{Clé de Sécurité S2 Unauthenticated}}</label>
-				<div class="input-group col-sm-7">
-					<input class="configKey roundedLeft form-control" data-l1key="s2key_unauth" placeholder="{{Clé de sécurité S2 Unauthenticated}}" />
-					<span class="input-group-btn">
-						<a class="btn btn-default form-control randomKey roundedRight" data-key="s2key_unauth"><i class="fas fa-sync"></i></a>
-					</span>
-				</div>
+			<div class="input-group col-sm-7">
+				<input class="configKey roundedLeft form-control" data-l1key="s2key_unauth" placeholder="{{Clé de sécurité S2 Unauthenticated}}" />
+				<span class="input-group-btn">
+					<a class="btn btn-default form-control randomKey roundedRight" data-key="s2key_unauth"><i class="fas fa-sync"></i></a>
+				</span>
+			</div>
 		</div>
 	</fieldset>
 </form>
 
 <script>
-$('.randomKey').off('click').on('click', function () {
-var el = $(this)
-  bootbox.confirm('{{Êtes-vous sûr de vouloir réinitialiser la clé}}' + ' ' + el.attr('data-key') + ' ? La prise en compte sera effective après sauvegarde et relance du démon.', function(result) {
-    if (result) {
-      $.ajax({
-        type: "POST",
-        url: "plugins/zwavejs/core/ajax/zwavejs.ajax.php",
-        data: {
-          action: "generateRandomKey"
-        },
-        dataType: 'json',
-        error: function(request, status, error) {
-          handleAjaxError(request, status, error)
-        },
-        success: function(data) {
-          el.closest('.input-group').find('.configKey').value(data.result)
-        }
-      })
-    }
-  })
-})
+	$('.randomKey').off('click').on('click', function() {
+		var el = $(this)
+		bootbox.confirm('{{Êtes-vous sûr de vouloir réinitialiser la clé}}' + ' ' + el.attr('data-key') + ' ? {{La prise en compte sera effective après sauvegarde et relance du démon.}}', function(result) {
+			if (result) {
+				$.ajax({
+					type: "POST",
+					url: "plugins/zwavejs/core/ajax/zwavejs.ajax.php",
+					data: {
+						action: "generateRandomKey"
+					},
+					dataType: 'json',
+					error: function(request, status, error) {
+						handleAjaxError(request, status, error)
+					},
+					success: function(data) {
+						el.closest('.input-group').find('.configKey').value(data.result)
+					}
+				})
+			}
+		})
+	})
 </script>

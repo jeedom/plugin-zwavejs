@@ -133,15 +133,15 @@ include_file('3rdparty', 'jsonTree/jsonTree', 'js', 'zwavejs');
 						</tr>
 						<tr>
 							<td><a class="btn btn-success namingAction"><i class="fas fa-bookmark"></i> {{Envoyer le nom d'équipement}}</a></td>
-							<td>{{Envoie les noms et objet de l'équipement au réseau Zwave.}}</td>
+							<td>{{Envoie les noms et objet de l'équipement au réseau Z-Wave.}}</td>
 						</tr>
 						<tr>
 							<td><a data-action="refreshInfo" class="btn btn-warning nodeAction"><i class="fas fa-retweet"></i> {{Réinterview du nœud}}</a></td>
-							<td>{{Déclenche un réinterview du nœud.}} <br>{{Les données du nœud sont obtenues du réseau Z-Wave de la même façon que s'il venait d'être ajouté.}}</td>
+							<td>{{Déclenche un réinterview du nœud.}} <br>{{Les données du nœud sont obtenues du réseau Z-Wave comme s'il venait d'être ajouté.}}</td>
 						</tr>
 						<tr>
 							<td><a data-action="syncValues" class="btn btn-warning nodeAction"><i class="fas fa-compress-alt"></i> {{Synchroniser les valeurs}}</a></td>
-							<td>{{N'intervient pas sur le réseau mais resyncrhonise les valeurs jeedom avec le contrôleur.}} <br></td>
+							<td>{{N'intervient pas sur le réseau mais resynchronise les valeurs jeedom avec le contrôleur.}} <br></td>
 						</tr>
 						<tr>
 							<td><a data-action="isFailedNode" class="btn btn-primary nodeAction"><i class="fas fa-heartbeat"></i> {{Nœud en échec ?}}</a></td>
