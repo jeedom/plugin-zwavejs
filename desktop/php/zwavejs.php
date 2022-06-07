@@ -55,10 +55,10 @@ sendVarTojs('eqLogic_human_name', $tags);
 		<legend><i class="fas fa-cog"></i> {{Gestion}}</legend>
 		<div class="eqLogicThumbnailContainer">
 			<?php
-			echo '<div class="cursor changeIncludeState card success">';
-			echo '<i class="fas fa-sign-in-alt fa-rotate-90"></i>';
-			echo '<br/>';
-			echo '<span>{{Inclusion/Exlusion}}</span>';
+			echo '<div class="cursor changeIncludeState logoPrimary">';
+			echo '<i class="fas fa-exchange-alt"></i>';
+			echo '<br>';
+			echo '<span>{{Inclusions}}</span>';
 			echo '</div>';
 			?>
 			<div class="cursor eqLogicAction logoSecondary" data-action="gotoPluginConf">
