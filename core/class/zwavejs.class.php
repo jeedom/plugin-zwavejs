@@ -395,7 +395,7 @@ class zwavejs extends eqLogic {
 		$gateway = array_key_first($_clients);
 		$client = $_clients[$gateway];
 		foreach ($client as $key => $value) {
-			log::add(__CLASS__, 'debug', $key);
+			// log::add(__CLASS__, 'debug', $key);
 			if ($key == 'api') {
 				self::handleApi($value);
 			}
