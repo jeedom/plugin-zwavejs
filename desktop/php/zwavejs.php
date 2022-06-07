@@ -113,7 +113,9 @@ sendVarTojs('eqLogic_human_name', $tags);
 				echo '<span class="hidden hiddenAsCard displayTableRight">';
 				echo '<span class="label label-xs label-primary">' . $eqLogic->getLogicalId() . '</span>';
 				echo $eqLogic->getConfiguration('product_name');
-				echo ' <span class="label label-xs label-info">' . $eqLogic->getConfiguration('firmwareVersion') . '</span></span>';
+				echo ' <span class="label label-xs label-info">' . $eqLogic->getConfiguration('firmwareVersion') . '</span>';
+				echo ($eqLogic->getIsVisible() == 1) ? '<i class="fas fa-eye" title="{{Equipement visible}}"></i>' : '<i class="fas fa-eye-slash" title="{{Equipement non visible}}"></i>';
+				echo '</span>';
 				echo '</div>';
 			}
 			echo '</div>';
