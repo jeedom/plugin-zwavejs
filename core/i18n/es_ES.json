@@ -106,7 +106,7 @@
         "Id du contrôleur": "Identificación del controlador",
         "Home id": "Identificación de casa",
         "Voisins": "Vecinos",
-        "Réseau": "La red",
+        "Réseau": "Red",
         "Nombre de nœuds": "Número de nodos",
         "Nœuds endormis": "Nudos para dormir",
         "Etat actuel": "Estado actual",
@@ -286,10 +286,10 @@
     },
     "plugins\/zwavejs\/desktop\/js\/zwavejs.js": {
         "Configuration recommandée": "Configuración recomendada",
-        "Voulez-vous appliquer le jeu de configuration recommandée par l\\'équipe Jeedom": "¿Desea aplicar el conjunto de configuración recomendado por el equipo de Jeedom?",
-        "Paramètres.": "Configuraciones",
-        "Associations.": "Asociaciones.",
-        "Intervalle de réveil.": "Intervalo de despertar",
+        "Voulez-vous appliquer le jeu de configuration recommandé par l\\'équipe Jeedom": "¿Desea aplicar el conjunto de configuración recomendado por el equipo de Jeedom?",
+        "Paramètres": "Configuraciones",
+        "Associations": "Asociaciones",
+        "Intervalle de réveil": "Intervalo de despertar",
         "Annuler": "Anular",
         "Appliquer": "Aplicar",
         "Configuration appliquée. Cependant ce module nécessite un réveil pour que celle-ci soit effective.": "Configuración aplicada. Sin embargo, este módulo requiere un despertador para que sea efectivo",
@@ -364,7 +364,7 @@
         "Etes-vous certain ? Votre contrôleur sera remis comme sorti d'usine.": "¿Está seguro? Su controlador se restablecerá a los valores predeterminados de fábrica",
         "Action réalisée avec succès": "Acción completada con éxito",
         "Demande des voisins en cours": "Solicitud de vecinos en curso",
-        "Chargement des infos en cours": "Cargando información en progreso"
+        "Chargement des informations en cours": "Cargando información en progreso"
     },
     "plugins\/zwavejs\/desktop\/js\/health.js": {
         "Action réalisée avec succès": "Acción completada con éxito",
@@ -385,13 +385,16 @@
         "Action réalisée avec succès": "Acción completada con éxito",
         "Chargement des informations en cours": "Cargando información en progreso"
     },
+    "plugins\/zwavejs\/core\/php\/jeeZwaveProxy.php": {
+        "401 - Accès non autorisé": "401 - Acceso no autorizado"
+    },
     "plugins\/zwavejs\/core\/php\/jeeZwave.php": {
-        "Vous n\\'etes pas autorisé à effectuer cette action": "No está autorizado para realizar esta acción",
-        "Un périphérique Z-Wave qui ne fait pas parti du réseau est en cours d\\'exclusion": "Se excluye un dispositivo Z-Wave que no forma parte de la red",
-        "Un périphérique Z-Wave est en cours d\\'exclusion. Logical ID : ": "Se está excluyendo un dispositivo Z-Wave. Identificación lógica:",
-        "Nouveau module Z-Wave détecté. Début de l\\'intégration. Pause de ": "Nuevo módulo Z-Wave detectado. Inicio de la integración. romper con",
-        " pour synchronisation avec le module": "para sincronización con el módulo",
-        "Inclusion en cours...": "Inclusión en proceso",
+        "Vous n\\'êtes pas autorisé à effectuer cette action": "No está autorizado para realizar esta acción",
+        "Un périphérique Z-Wave qui ne fait pas parti du réseau est en cours d\\'exclusion.": "Se excluye un dispositivo Z-Wave que no forma parte de la red",
+        "Un périphérique Z-Wave est en cours d\\'exclusion.": "Se está excluyendo un dispositivo Z-Wave",
+        "Début de l\\'intégration du nouveau module Z-Wave détecté. Pause de": "Detectado inicio de la integración del nuevo módulo Z-Wave. romper con",
+        "pour synchronisation avec le module.": "para la sincronización con el módulo",
+        "Inclusion en cours": "Incluir en curso",
         "Le réseau Z-Wave est arrêté sur le serveur": "La red Z-Wave se detiene en el servidor",
         "Le réseau Z-Wave est en erreur sur le serveur": "La red Z-Wave tiene un error en el servidor",
         "Le réseau Z-Wave est remis à zéro sur le serveur": "La red Z-Wave se restablece en el servidor",

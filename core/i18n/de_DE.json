@@ -241,7 +241,7 @@
         "Configuration": "Aufbau",
         "Synchroniser": "Zu synchronisieren",
         "Réseau Z-Wave": "Z-Wave-Netzwerk",
-        "Santé": "Die Gesundheit",
+        "Santé": "Gesundheit",
         "Statistiques": "Statistiken",
         "Mes équipements Z-Wave": "Meine Z-Wave-Geräte",
         "Aucun équipement trouvé": "Keine Geräte gefunden",
@@ -286,10 +286,10 @@
     },
     "plugins\/zwavejs\/desktop\/js\/zwavejs.js": {
         "Configuration recommandée": "Empfohlene Einrichtung",
-        "Voulez-vous appliquer le jeu de configuration recommandée par l\\'équipe Jeedom": "Möchten Sie den vom Jeedom-Team empfohlenen Konfigurationssatz anwenden?",
-        "Paramètres.": "Einstellungen",
-        "Associations.": "Verbände.",
-        "Intervalle de réveil.": "Weckintervall",
+        "Voulez-vous appliquer le jeu de configuration recommandé par l\\'équipe Jeedom": "Möchten Sie den vom Jeedom-Team empfohlenen Konfigurationssatz anwenden?",
+        "Paramètres": "Einstellungen",
+        "Associations": "Verbände",
+        "Intervalle de réveil": "Weckintervall",
         "Annuler": "Absagen",
         "Appliquer": "Anwenden",
         "Configuration appliquée. Cependant ce module nécessite un réveil pour que celle-ci soit effective.": "Konfiguration angewendet. Dieses Modul benötigt jedoch einen Wecker, um wirksam zu sein",
@@ -364,7 +364,7 @@
         "Etes-vous certain ? Votre contrôleur sera remis comme sorti d'usine.": "Bist du dir sicher? Ihr Controller wird auf die Werkseinstellungen zurückgesetzt",
         "Action réalisée avec succès": "Aktion erfolgreich abgeschlossen",
         "Demande des voisins en cours": "Anfrage von Nachbarn in Bearbeitung",
-        "Chargement des infos en cours": "Informationen werden geladen"
+        "Chargement des informations en cours": "Informationen werden geladen"
     },
     "plugins\/zwavejs\/desktop\/js\/health.js": {
         "Action réalisée avec succès": "Aktion erfolgreich abgeschlossen",
@@ -385,13 +385,16 @@
         "Action réalisée avec succès": "Aktion erfolgreich abgeschlossen",
         "Chargement des informations en cours": "Informationen werden geladen"
     },
+    "plugins\/zwavejs\/core\/php\/jeeZwaveProxy.php": {
+        "401 - Accès non autorisé": "401 – Unbefugter Zugriff"
+    },
     "plugins\/zwavejs\/core\/php\/jeeZwave.php": {
-        "Vous n\\'etes pas autorisé à effectuer cette action": "Sie sind nicht berechtigt, diese Aktion auszuführen",
-        "Un périphérique Z-Wave qui ne fait pas parti du réseau est en cours d\\'exclusion": "Ein Z-Wave-Gerät, das nicht Teil des Netzwerks ist, wird ausgeschlossen",
-        "Un périphérique Z-Wave est en cours d\\'exclusion. Logical ID : ": "Ein Z-Wave-Gerät wird ausgeschlossen. Logische ID:",
-        "Nouveau module Z-Wave détecté. Début de l\\'intégration. Pause de ": "Neues Z-Wave-Modul erkannt. Beginn der Integration. Pause von",
-        " pour synchronisation avec le module": "zur Synchronisierung mit dem Modul",
-        "Inclusion en cours...": "Aufnahme läuft",
+        "Vous n\\'êtes pas autorisé à effectuer cette action": "Sie sind nicht berechtigt, diese Aktion auszuführen",
+        "Un périphérique Z-Wave qui ne fait pas parti du réseau est en cours d\\'exclusion.": "Ein Z-Wave-Gerät, das nicht Teil des Netzwerks ist, wird ausgeschlossen",
+        "Un périphérique Z-Wave est en cours d\\'exclusion.": "Ein Z-Wave-Gerät wird ausgeschlossen",
+        "Début de l\\'intégration du nouveau module Z-Wave détecté. Pause de": "Beginn der Integration des neuen Z-Wave-Moduls erkannt. Pause von",
+        "pour synchronisation avec le module.": "zur Synchronisierung mit dem Modul",
+        "Inclusion en cours": "Einschließen in Arbeit",
         "Le réseau Z-Wave est arrêté sur le serveur": "Das Z-Wave-Netzwerk wird auf dem Server gestoppt",
         "Le réseau Z-Wave est en erreur sur le serveur": "Das Z-Wave-Netzwerk ist auf dem Server fehlerhaft",
         "Le réseau Z-Wave est remis à zéro sur le serveur": "Das Z-Wave-Netzwerk wird auf dem Server zurückgesetzt",

@@ -286,10 +286,10 @@
     },
     "plugins\/zwavejs\/desktop\/js\/zwavejs.js": {
         "Configuration recommandée": "Configuração recomendada",
-        "Voulez-vous appliquer le jeu de configuration recommandée par l\\'équipe Jeedom": "Deseja aplicar o conjunto de configurações recomendado pela equipe Jeedom",
-        "Paramètres.": "Definições",
-        "Associations.": "Associações.",
-        "Intervalle de réveil.": "Intervalo de despertar",
+        "Voulez-vous appliquer le jeu de configuration recommandé par l\\'équipe Jeedom": "Deseja aplicar o conjunto de configurações recomendado pela equipe Jeedom",
+        "Paramètres": "Definições",
+        "Associations": "Associações",
+        "Intervalle de réveil": "Intervalo de despertar",
         "Annuler": "Cancelar",
         "Appliquer": "Aplicar",
         "Configuration appliquée. Cependant ce module nécessite un réveil pour que celle-ci soit effective.": "Configuração aplicada. No entanto, este módulo requer um despertador para ser eficaz",
@@ -364,7 +364,7 @@
         "Etes-vous certain ? Votre contrôleur sera remis comme sorti d'usine.": "Tem certeza? Seu controlador será redefinido para o padrão de fábrica",
         "Action réalisée avec succès": "Ação concluída com sucesso",
         "Demande des voisins en cours": "Solicitação de vizinhos em andamento",
-        "Chargement des infos en cours": "Carregando informações em andamento"
+        "Chargement des informations en cours": "Carregando informações em andamento"
     },
     "plugins\/zwavejs\/desktop\/js\/health.js": {
         "Action réalisée avec succès": "Ação concluída com sucesso",
@@ -385,13 +385,16 @@
         "Action réalisée avec succès": "Ação concluída com sucesso",
         "Chargement des informations en cours": "Carregando informações em andamento"
     },
+    "plugins\/zwavejs\/core\/php\/jeeZwaveProxy.php": {
+        "401 - Accès non autorisé": "401 - Acesso não autorizado"
+    },
     "plugins\/zwavejs\/core\/php\/jeeZwave.php": {
-        "Vous n\\'etes pas autorisé à effectuer cette action": "Você não está autorizado a realizar esta ação",
-        "Un périphérique Z-Wave qui ne fait pas parti du réseau est en cours d\\'exclusion": "Um dispositivo Z-Wave que não faz parte da rede está sendo excluído",
-        "Un périphérique Z-Wave est en cours d\\'exclusion. Logical ID : ": "Um dispositivo Z-Wave está sendo excluído. Identificação lógica:",
-        "Nouveau module Z-Wave détecté. Début de l\\'intégration. Pause de ": "Novo módulo Z-Wave detectado. Início da integração. intervalo de",
-        " pour synchronisation avec le module": "para sincronização com o módulo",
-        "Inclusion en cours...": "Inclusão em andamento",
+        "Vous n\\'êtes pas autorisé à effectuer cette action": "Você não está autorizado a realizar esta ação",
+        "Un périphérique Z-Wave qui ne fait pas parti du réseau est en cours d\\'exclusion.": "Um dispositivo Z-Wave que não faz parte da rede está sendo excluído",
+        "Un périphérique Z-Wave est en cours d\\'exclusion.": "Um dispositivo Z-Wave está sendo excluído",
+        "Début de l\\'intégration du nouveau module Z-Wave détecté. Pause de": "Início da integração do novo módulo Z-Wave detectado. intervalo de",
+        "pour synchronisation avec le module.": "para sincronização com o módulo",
+        "Inclusion en cours": "Incluir em andamento",
         "Le réseau Z-Wave est arrêté sur le serveur": "A rede Z-Wave está parada no servidor",
         "Le réseau Z-Wave est en erreur sur le serveur": "A rede Z-Wave está com erro no servidor",
         "Le réseau Z-Wave est remis à zéro sur le serveur": "A rede Z-Wave é redefinida no servidor",
