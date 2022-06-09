@@ -11,7 +11,7 @@
 * GNU General Public License for more details.
 *
 * You should have received a copy of the GNU General Public License
-* along with Plugin zwavejs for jeedom. If not, see <http://www.gnu.org/licenses/>.
+* along with Plugin zwavejs for jeedom. If not, see <http://www.gnu.org/licenses>.
 */
 
 var nodes = {}
@@ -29,12 +29,12 @@ $('.confRecommended').on('click', function() {
   bootbox.dialog({
     title: "{{Configuration recommandée}}",
     message: '<form class="form-horizontal"> ' +
-      '<label class="control-label" > {{Voulez-vous appliquer le jeu de configuration recommandée par l\'équipe Jeedom}} ?</label> ' +
+      '<label class="control-label"> {{Voulez-vous appliquer le jeu de configuration recommandé par l\'équipe Jeedom}} ?</label> ' +
       '<br><br>' +
       '<ul>' +
-      '<li class="active">{{Paramètres.}}</li>' +
-      '<li class="active">{{Associations.}}</li>' +
-      '<li class="active">{{Intervalle de réveil.}}</li>' +
+      '<li class="active">{{Paramètres}}</li>' +
+      '<li class="active">{{Associations}}</li>' +
+      '<li class="active">{{Intervalle de réveil}}</li>' +
       '</ul>' +
       '</form>',
     buttons: {
@@ -88,7 +88,7 @@ $('.confRecommended').on('click', function() {
 $('.changeIncludeState').off('click').on('click', function() {
   var dialog_title = '<i class="fas fa-sign-in-alt fa-rotate-90"></i> {{Inclusion/Exclusion}}'
   var dialog_message = '<form class="form-horizontal onsubmit="return false;"> '
-  dialog_message += '<label class="control-label" > {{Sélectionnez le mode}} </label> ' +
+  dialog_message += '<label class="control-label"> {{Sélectionnez le mode}} </label> ' +
     '<div> <div class="radio"><label> ' +
     '<input type="radio" name="inclusion" method="include" id="0" options="2" checked="checked"> <i class="fas fa-plus" style="color:green"></i> {{Inclusion par défaut}} </label> ' +
     '</div><div class="radio"><label> ' +
@@ -290,7 +290,7 @@ $('body').off('zwavejs::includeDevice').on('zwavejs::includeDevice', function(_e
 $('#bt_autoDetectModule').off('click').on('click', function() {
   var dialog_title = '{{Recharger la configuration}}'
   var dialog_message = '<form class="form-horizontal onsubmit="return false;"> '
-  dialog_message += '<label class="control-label" > {{Sélectionner le mode de rechargement de la configuration}}</label> ' +
+  dialog_message += '<label class="control-label"> {{Sélectionner le mode de rechargement de la configuration}}</label> ' +
     '<div> <div class="radio"><label> ' +
     '<input type="radio" name="command" id="command-0" value="0" checked="checked"> {{Sans recréer les commandes mais en créant les manquantes}} </label> ' +
     '</div><div class="radio"><label> ' +
@@ -422,26 +422,25 @@ function addCmdToTable(_cmd) {
   tr += '</select>'
   tr += '</td>'
   tr += '<td>'
-  tr += '<input class="cmdAttr form-control input-sm" data-l1key="id" style="display : none;">'
   tr += '<span class="type" type="' + init(_cmd.type) + '">' + jeedom.cmd.availableType() + '</span>'
   tr += '<span class="subType" subType="' + init(_cmd.subType) + '"></span>'
   tr += '</td>'
-  tr += '<td><input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="class" ></td>'
+  tr += '<td><input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="class"></td>'
   tr += '<td><input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="endpoint" value="0"></td>'
-  tr += '<td><input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="property" ></td>'
+  tr += '<td><input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="property"></td>'
   tr += '<td>'
   if (init(_cmd.type) == 'action') {
-    tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="value" placeholder="{{Commande}}" >'
+    tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="value" placeholder="{{Commande}}">'
   }
   tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="returnStateValue" placeholder="{{Valeur retour d\'état}}" style="margin-bottom:5px;">'
   tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="returnStateTime" placeholder="{{Durée avant retour d\'état (min)}}">'
   tr += '</td>'
   tr += '<td>'
-  tr += '<label class="checkbox-inline"><input type="checkbox" class="cmdAttr" data-l1key="isVisible" checked/>{{Afficher}}</label> '
-  tr += '<label class="checkbox-inline"><input type="checkbox" class="cmdAttr" data-l1key="isHistorized" checked/>{{Historiser}}</label> '
-  tr += '<label class="checkbox-inline"><input type="checkbox" class="cmdAttr" data-l1key="display" data-l2key="invertBinary"/>{{Inverser}}</label> '
+  tr += '<label class="checkbox-inline"><input type="checkbox" class="cmdAttr" data-l1key="isVisible" checked>{{Afficher}}</label> '
+  tr += '<label class="checkbox-inline"><input type="checkbox" class="cmdAttr" data-l1key="isHistorized" checked>{{Historiser}}</label> '
+  tr += '<label class="checkbox-inline"><input type="checkbox" class="cmdAttr" data-l1key="display" data-l2key="invertBinary">{{Inverser}}</label> '
   if (init(_cmd.subType) == 'numeric' && init(_cmd.configuration.property) == 'Air temperature') {
-    tr += '<label class="checkbox-inline"><input type="checkbox" class="cmdAttr" data-l1key="configuration" data-l2key="convertFaren"/>{{Convertir °F-°C}}</label> '
+    tr += '<label class="checkbox-inline"><input type="checkbox" class="cmdAttr" data-l1key="configuration" data-l2key="convertFaren">{{Convertir °F-°C}}</label> '
   }
   tr += '<div style="margin-top:7px;">'
   tr += '<input class="tooltips cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="minValue" placeholder="{{Min}}" title="{{Min}}" style="width:30%;max-width:80px;display:inline-block;margin-right:2px;">'
