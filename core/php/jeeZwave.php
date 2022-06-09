@@ -18,7 +18,7 @@
 require_once dirname(__FILE__) . "/../../../../core/php/core.inc.php";
 
 if (!jeedom::apiAccess(init('apikey'), 'zwavejs')) {
-	echo __('Vous n\'etes pas autorisé à effectuer cette action', __FILE__);
+	echo __('Vous n\'êtes pas autorisé à effectuer cette action', __FILE__);
 	die();
 }
 if (isset($_GET['test'])) {
@@ -48,22 +48,23 @@ if (isset($results['devices'])) {
 
 if (isset($results['controller'])) {
 	if (isset($results['controller']['state'])) {
-		event::add('zwave::controller.data.controllerState',
+		event::add(
+			'zwave::controller.data.controllerState',
 			array('state' => $results['controller']['state']['value'])
 		);
 	}
-	if (isset($results['controller']['excluded']) && $delta >15) {
+	if (isset($results['controller']['excluded']) && $delta > 15) {
 		if ($results['controller']['excluded']['value'] == 999) {
 			event::add('jeedom::alert', array(
-			'level' => 'warning',
-			'page' => 'zwavejs',
-			'message' => __('Un périphérique Z-Wave qui ne fait pas parti du réseau est en cours d\'exclusion', __FILE__),
-		));
+				'level' => 'warning',
+				'page' => 'zwavejs',
+				'message' => __('Un périphérique Z-Wave qui ne fait pas parti du réseau est en cours d\'exclusion.', __FILE__),
+			));
 		} else {
 			event::add('jeedom::alert', array(
 				'level' => 'warning',
 				'page' => 'zwavejs',
-				'message' => __('Un périphérique Z-Wave est en cours d\'exclusion. Logical ID : ', __FILE__) . $results['controller']['excluded']['value'],
+				'message' => __('Un périphérique Z-Wave est en cours d\'exclusion.', __FILE__) . ' Logical ID : ' . $results['controller']['excluded']['value'],
 			));
 		}
 		sleep(2);
@@ -71,19 +72,19 @@ if (isset($results['controller'])) {
 	}
 	if (isset($results['controller']['included'])) {
 		config::save('lastinclusion', time(), 'zwavejs');
-		if ($delta>15) {
+		if ($delta > 15) {
 			for ($i = 0; $i < 10; $i++) {
 				event::add('jeedom::alert', array(
 					'level' => 'warning',
 					'page' => 'zwavejs',
-					'message' => __('Nouveau module Z-Wave détecté. Début de l\'intégration. Pause de ', __FILE__) . (10 - $i) . __(' pour synchronisation avec le module', __FILE__),
+					'message' => __('Début de l\'intégration du nouveau module Z-Wave détecté. Pause de', __FILE__) . ' ' . (10 - $i) . ' ' . __('pour synchronisation avec le module.', __FILE__),
 				));
 				sleep(1);
 			}
 			event::add('jeedom::alert', array(
 				'level' => 'warning',
 				'page' => 'zwavejs',
-				'message' => __('Inclusion en cours...', __FILE__),
+				'message' => __('Inclusion en cours', __FILE__) . '...',
 			));
 		}
 		zwavejs::syncEqLogicWithzwavejs($results['controller']['included']['value']);
