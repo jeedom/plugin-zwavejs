@@ -8,6 +8,7 @@
     "configuration": {
         "battery_type": "1x3V CR123A"
     },
+    "firmProperties": 1,
     "versions": {
         "2048": [
             "4097",
@@ -19,14 +20,25 @@
         ]
     },
     "properties": {
-        "Motion": {
-            "type": "binary-any"
-        },
-        "Temperature": {},
-        "Luminance": {},
-        "Tamper": {
-            "type": "alarm"
-        },
-        "Battery": {}
+		"default": {
+			"Motion": {
+				"type": "binary-any"
+			},
+			"Temperature": {},
+			"Luminance": {},
+			"Tamper": {
+				"type": "alarm"
+			},
+			"Battery": {}
+		},
+		">=3.3": {
+            "Motion": {},
+			"Temperature": {},
+			"Luminance": {},
+			"Tamper": {
+				"type": "alarm"
+			},
+			"Battery": {}
+        }
     }
 }
