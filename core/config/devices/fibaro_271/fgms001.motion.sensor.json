@@ -35,9 +35,7 @@
             "Motion": {},
 			"Temperature": {},
 			"Luminance": {},
-			"Tamper": {
-				"type": "alarm"
-			},
+			"Tamper": {},
 			"Battery": {}
         }
     }
