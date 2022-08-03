@@ -276,7 +276,7 @@ class zwavejs extends eqLogic {
 		$cmd .= ' KEY_S2_AccessControl=' . config::byKey('s2key_access', __CLASS__);
 		$cmd .= ' yarn start';
 		log::add(__CLASS__, 'info', __('Démarrage du démon ZwaveJS', __FILE__) . ' : ' . $cmd);
-		exec($cmd . ' >> ' . log::getPathToLog('zwavejsd') . ' 2>&1 &');
+		exec(system::getCmdSudo() . $cmd . ' >> ' . log::getPathToLog('zwavejsd') . ' 2>&1 &');
 		$i = 0;
 		while ($i < 10) {
 			$deamon_info = self::deamon_info();
