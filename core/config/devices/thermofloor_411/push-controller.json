@@ -1,0 +1,29 @@
+{
+    "name": "Heat It Push Contrôleur",
+    "type": "Interrupteur",
+    "remark": "",
+    "configuration": {
+        "battery_type": "1x3V CR2450"
+    },
+    "versions": {
+        "4": [
+            "9219"
+        ]
+    },
+    "properties": {
+        "CentralScene": {
+            "multi": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "replace": {
+                "#centralscene#": "multiKey"
+            }
+        },
+        "Battery": {}
+    }
+}
