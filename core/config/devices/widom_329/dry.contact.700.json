@@ -1,0 +1,22 @@
+{
+    "name": "Dry Contact 700",
+    "type": "Micromodule",
+    "comlink": "",
+    "remark": "",
+    "versions": {
+        "4": [
+            "7"
+        ]
+    },
+    "properties": {
+        "Switch": {},
+        "CentralScene": {
+            "multi": [
+                1
+            ],
+            "replace": {
+                "#centralscene#": "multiKey"
+            }, "isVisible":0
+        }
+    }
+}

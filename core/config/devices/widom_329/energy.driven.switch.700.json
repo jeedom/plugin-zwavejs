@@ -1,0 +1,17 @@
+{
+    "name": "Energy Driven Switch 700",
+    "type": "Micromodule",
+    "remark": "",
+    "versions": {
+        "4": [
+            "9"
+        ]
+    },
+    "properties": {
+        "Power": {},
+        "Energy": {},
+        "Voltage": {},
+        "Current": {},
+        "Power Factor": {},
+    }
+}
