@@ -6,7 +6,7 @@ echo "Post installation de l'installation/mise à jour des dépendances zwavejs"
 BASEDIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 cd $BASEDIR
-cd zwavejs2mqtt
+cd zwave-js-ui
 sudo yarn install
 sudo yarn run build
 chown -R www-data:www-data *

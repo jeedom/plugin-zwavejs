@@ -198,7 +198,7 @@ class zwavejs extends eqLogic {
 		$return['state'] = 'ok';
 		if (config::byKey('lastDependancyInstallTime', __CLASS__) == '') {
 			$return['state'] = 'nok';
-		} else if (!file_exists(__DIR__ . '/../../resources/zwavejs2mqtt/node_modules')) {
+		} else if (!file_exists(__DIR__ . '/../../resources/zwave-js-ui/node_modules')) {
 			$return['state'] = 'nok';
 		}
 		return $return;
@@ -253,7 +253,7 @@ class zwavejs extends eqLogic {
 		if ($deamon_info['launchable'] != 'ok') {
 			throw new Exception(__('Veuillez vérifier la configuration', __FILE__));
 		}
-		$zwavejs_path = realpath(dirname(__FILE__) . '/../../resources/zwavejs2mqtt');
+		$zwavejs_path = realpath(dirname(__FILE__) . '/../../resources/zwave-js-ui');
 		$data_path = dirname(__FILE__) . '/../../data/store';
 		if (!is_dir($data_path)) {
 			mkdir($data_path, 0777, true);
