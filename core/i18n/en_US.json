@@ -77,7 +77,7 @@
         "Equipement": "Equipment",
         "Endpoints": "Endpoints",
         "Sécurité": "Security",
-        "Flirs": "Flirts",
+        "Flirs": "Flirs",
         "Z-Wave+": "Z-Wave+",
         "Routing": "Routing",
         "Polling": "Polling",
@@ -352,7 +352,7 @@
         "Si elle existe déjà elle ne sera pas créée.": "If it already exists it will not be created",
         "Opération réalisée avec succès": "Operation completed successfully",
         "Etes-vous sûr de vouloir créer la ou les commande(s)": "Are you sure you want to create the command(s)",
-        "Les commandes existantes ne seront pas crées.": "Existing orders will not be created",
+        "Les commandes existantes ne seront pas crées.": "Existing commands will not be created",
         "Le nœud est en statut \"présumé mort\", il n\\'y a donc pas de valeurs dynamiques à afficher": "The node is in \"presumed dead\" status, so there are no dynamic values to display",
         "Chargement des informations en cours": "Loading information in progress"
     },
