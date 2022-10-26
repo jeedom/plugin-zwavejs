@@ -1,0 +1,34 @@
+{
+    "name": "Thermostat Radiator Valve",
+    "doc": "",
+    "type": "Thermostat",
+    "versions": {
+        "1024": [
+            "1281"
+        ]
+    },
+    "properties": {
+        "Multilevel": {"type": "onlystate"},
+        "Thermostatmode": {},
+        "Thermostatmodeaction": {
+            "multi": [
+                "Off",
+                "Heat"
+            ],
+            "multiValue": {
+                "Off": 0,
+                "Heat": 1
+            }
+        },
+        "Thermostatsetpoint": {
+            "multi": [
+                "Chaud"
+            ],
+            "multiProperty": {
+                "Chaud": 1
+            }
+        },
+        "Temperature": {},
+        "Battery": {}
+    }
+}

@@ -1572,7 +1572,7 @@ class zwavejs extends eqLogic {
 						}
 						if (isset($details['replace'])) {
 							foreach ($details['replace'] as $keyReplace => $valueReplace) {
-								if ($valueReplace == 'multiKey') {
+								if ($valueReplace === 'multiKey') {
 									if ($keyReplace == '#centralscene#') {
 										$valueReplace = str_pad($numberCommand, 3, '0', STR_PAD_LEFT);
 									} else {
