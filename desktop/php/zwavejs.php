@@ -143,12 +143,6 @@ sendVarTojs('eqLogic_human_name', $tags);
 						<div class="col-lg-6">
 							<legend><i class="fas fa-wrench"></i> {{Général}}</legend>
 							<div class="form-group">
-								<label class="col-sm-4 control-label">{{Id du nœud Z-Wave}}</label>
-								<div class="col-sm-6">
-									<input type="text" class="eqLogicAttr form-control" data-l1key="logicalId">
-								</div>
-							</div>
-							<div class="form-group">
 								<label class="col-sm-4 control-label">{{Nom de l'équipement}}</label>
 								<div class="col-sm-6">
 									<input type="text" class="eqLogicAttr form-control" data-l1key="id" style="display : none;">
@@ -187,6 +181,12 @@ sendVarTojs('eqLogic_human_name', $tags);
 								<div class="col-sm-6">
 									<label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="isEnable" checked>{{Activer}}</label>
 									<label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="isVisible" checked>{{Visible}}</label>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4 control-label">{{Id du nœud Z-Wave}}</label>
+								<div class="col-sm-6">
+									<input type="text" class="eqLogicAttr form-control" data-l1key="logicalId">
 								</div>
 							</div>
 						</div>

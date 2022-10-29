@@ -274,6 +274,7 @@ class zwavejs extends eqLogic {
 		$cmd .= ' KEY_S2_Unauthenticated=' . config::byKey('s2key_unauth', __CLASS__);
 		$cmd .= ' KEY_S2_Authenticated=' . config::byKey('s2key_auth', __CLASS__);
 		$cmd .= ' KEY_S2_AccessControl=' . config::byKey('s2key_access', __CLASS__);
+		$cmd .= ' SESSION_SECRET=' . 'jeedomSession';
 		$cmd .= ' yarn start';
 		log::add(__CLASS__, 'info', __('Démarrage du démon ZwaveJS', __FILE__) . ' : ' . $cmd);
 		exec(system::getCmdSudo() . $cmd . ' >> ' . log::getPathToLog('zwavejsd') . ' 2>&1 &');
