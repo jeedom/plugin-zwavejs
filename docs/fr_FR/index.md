@@ -60,7 +60,7 @@ Il est également important d'aborder le cas de la présence du plugin OpenZwave
 
 Tout d'abord, il faut savoir qu'il n'existe strictement aucun risque au fait d'utiliser les plugins Z-Wave JS et OpenZwave en parallèle. Même en cas de difficulté avec le plugin Z-Wave JS, il suffira de stopper son démon et de redémarrer celui du plugin OpenZwave pour retrouver un réseau Z-Wave exactement identique et fonctionnel.
 
-Il faut donc arrêter la gestion automatique puis stopper le démon du plugin OpenZwave pour être en mesure de démarrer le démon du plugin Z-Wave JS. A nouveau, dans le cas contraire, un message vous avertira, empêchant par la même le démarrage du démon Z-Wave JS.
+Il faut donc arrêter la gestion automatique puis stopper le démon du plugin OpenZwave pour être en mesure de démarrer le démon du plugin Z-Wave JS. A nouveau, dans le cas contraire, un message vous avertira, empêchant le démarrage du démon Z-Wave JS.
 
 >**IMPORTANT**
 >
