@@ -46,7 +46,7 @@ Plusieurs cas de figures sont envisageables :
 
 - **Vous n'utilisez pas encore de broker MQTT** : Dans ce cas vous n'avez rien à faire. Les plugins **Z-Wave JS** et **MQTT Manager** vont échanger les informations et configurations nécessaires automatiquement *(un broker `Mosquitto` sera notamment installé localement sur la machine)*.
 
-- **Vous utilisez déjà le plugin Z-Wave JS** : Aucune intervention n'est nécessaire, le plugin Z-Wave JS va récupérer automatiquement les informations de connexion au broker MQTT.
+- **Vous utilisez déjà le plugin MQTT Manager** : Aucune intervention n'est nécessaire, le plugin Z-Wave JS va récupérer automatiquement les informations de connexion au broker MQTT.
 
 - **Vous utilisez déjà un broker MQTT via un autre plugin que MQTT Manager** : Dans cette situation, il faut sélectionner le mode **broker distant** et indiquer les informations de connexion *(adresse et authentification)* dans la configuration du plugin MQTT Manager.
 
