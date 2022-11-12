@@ -23,6 +23,10 @@ if (!isConnect('admin')) {
 ?>
 <form class="form-horizontal">
 	<fieldset>
+		<?php if (class_exists('jMQTT')) {
+			echo '<div class="alert alert-warning col-sm-7 col-sm-offset-3">{{Le plugin jmqtt est installé sur votre Jeedom. Vérifiez la configuration du broker dans le plugin jMQTT et reporté la si nécessaire dans le plugin mqtt manager.}}</div>';
+		}
+		?>
 		<legend><i class="fas fa-cog"></i> {{Gestion}}</legend>
 		<div class="form-group">
 			<label class="col-sm-3 control-label">{{Appliquer la configuration recommandée lors de l'inclusion}}
