@@ -47,6 +47,7 @@
     },
     "plugins\/zwavejs\/plugin_info\/configuration.php": {
         "401 - Accès non autorisé": "401 - Unauthorized Access",
+        "Le plugin jmqtt est installé sur votre Jeedom. Vérifiez la configuration du broker dans le plugin jMQTT et reporté la si nécessaire dans le plugin mqtt manager.": "The jmqtt plugin is installed on your Jeedom. Check the configuration of the broker in the jMQTT plugin and report it if necessary in the mqtt manager plugin",
         "Gestion": "Management",
         "Appliquer la configuration recommandée lors de l'inclusion": "Apply the recommended configuration when including",
         "Cocher la case pour appliquer le jeu de configuration spécialement recommandé pour votre module par l'équipe Jeedom": "Check the box to apply the configuration set specially recommended for your module by the Jeedom team",
