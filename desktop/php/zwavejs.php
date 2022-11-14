@@ -254,16 +254,16 @@ sendVarTojs('eqLogic_human_name', $tags);
 					<table id="table_cmd" class="table table-bordered table-condensed">
 						<thead>
 							<tr>
-								<th class="hidden-xs" style="min-width:50px;width:70px;"> ID</th>
-								<th style="min-width:150px;width:320px;">{{Nom}}</th>
-								<th style="width:130px;">{{Type}}</th>
+								<th class="hidden-xs" style="min-width:50px;"> ID</th>
+								<th style="min-width:150px;width:250px;">{{Nom}}</th>
+								<th>{{Type}}</th>
 								<th>{{Classe}}</th>
 								<th>{{Endpoint}}</th>
 								<th>{{Propriété}}</th>
-								<th style="min-width:130px;width:200px;">{{Paramètres}}</th>
+								<th style="min-width:130px;">{{Paramètres}}</th>
 								<th>{{Etat}}</th>
 								<th style="min-width:260px;width:400px;">{{Options}}</th>
-								<th style="min-width:80px;width:125px;"></th>
+								<th style="min-width:80px;">{{Actions}}</th>
 								<th></th>
 							</tr>
 						</thead>
