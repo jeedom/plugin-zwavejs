@@ -152,15 +152,15 @@ $("body").off("click", ".createCommandInfo").on("click", ".createCommandInfo", f
 				},
 				dataType: 'json',
 				global: false,
-				error: function(request, status, error) {
-					handleAjaxError(request, status, error)
+				error: function(error) {
+					$.fn.showAlert({ message: error.message, level: 'danger' })
 				},
 				success: function(data) {
 					if (data.state != 'ok') {
-						$('#div_alert').showAlert({ message: data.result, level: 'danger' })
+						$.fn.showAlert({ message: data.result, level: 'danger' })
 						return
 					}
-					$('#div_alert').showAlert({ message: '{{Opération réalisée avec succès}}', level: 'success' })
+					$.fn.showAlert({ message: '{{Opération réalisée avec succès}}', level: 'success' })
 					$('.eqLogicDisplayCard[data-eqLogic_id=' + $('.eqLogicAttr[data-l1key=id]').value() + ']').click()
 				}
 			})
@@ -187,15 +187,15 @@ $("body").off("click", ".createCommandAction").on("click", ".createCommandAction
 				},
 				dataType: 'json',
 				global: false,
-				error: function(request, status, error) {
-					handleAjaxError(request, status, error)
+				error: function(error) {
+					$.fn.showAlert({ message: error.message, level: 'danger' })
 				},
 				success: function(data) {
 					if (data.state != 'ok') {
-						$('#div_alert').showAlert({ message: data.result, level: 'danger' })
+						$.fn.showAlert({ message: data.result, level: 'danger' })
 						return
 					}
-					$('#div_alert').showAlert({ message: '{{Opération réalisée avec succès}}', level: 'success' })
+					$.fn.showAlert({ message: '{{Opération réalisée avec succès}}', level: 'success' })
 					$('.eqLogicDisplayCard[data-eqLogic_id=' + $('.eqLogicAttr[data-l1key=id]').value() + ']').click()
 				}
 			})

@@ -16,7 +16,7 @@
 */
 
 if (!isConnect('admin')) {
-	throw new Exception('401 Unauthorized');
+	throw new Exception('401 - {{Accès non autorisé}}');
 }
 sendVarToJs('battery_warning', config::byKey('battery::warning'));
 sendVarToJs('battery_danger', config::byKey('battery::danger'));

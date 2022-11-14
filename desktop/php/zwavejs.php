@@ -17,7 +17,7 @@
 */
 
 if (!isConnect('admin')) {
-	throw new Exception('{{401 - Accès non autorisé}}');
+	throw new Exception('401 - {{Accès non autorisé}}');
 }
 $plugin = plugin::byId('zwavejs');
 sendVarToJS('eqType', $plugin->getId());
@@ -261,6 +261,7 @@ sendVarTojs('eqLogic_human_name', $tags);
 								<th>{{Endpoint}}</th>
 								<th>{{Propriété}}</th>
 								<th style="min-width:130px;width:200px;">{{Paramètres}}</th>
+								<th>{{Etat}}</th>
 								<th style="min-width:260px;width:400px;">{{Options}}</th>
 								<th style="min-width:80px;width:125px;"></th>
 								<th></th>

@@ -16,7 +16,7 @@
 */
 
 if (!isConnect('admin')) {
-	throw new Exception('401 Unauthorized');
+	throw new Exception('401 - {{Accès non autorisé}}');
 }
 sendVarToJs('nodeId', init('id'));
 ?>
@@ -24,4 +24,4 @@ sendVarToJs('nodeId', init('id'));
 <div class="modalNodeValues">
 	<div class="getNodeInfo-nodeValues"></div>
 </div>
-<?php include_file('desktop', 'nodeValues', 'js', 'zwavejs');?>
+<?php include_file('desktop', 'nodeValues', 'js', 'zwavejs'); ?>

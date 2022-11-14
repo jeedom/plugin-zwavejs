@@ -57,21 +57,21 @@ $('.confRecommended').on('click', function() {
             },
             global: false,
             dataType: 'json',
-            error: function(request, status, error) {
-              handleAjaxError(request, status, error)
+            error: function(error) {
+              $.fn.showAlert({ message: error.message, level: 'danger' })
             },
             success: function(data) {
               if (data.state != 'ok') {
-                $('#div_alert').showAlert({ message: data.result, level: 'danger' })
+                $.fn.showAlert({ message: data.result, level: 'danger' })
                 return
               }
               if (data.result == "wakeup") {
-                $('#div_alert').showAlert({
+                $.fn.showAlert({
                   message: '{{Configuration appliquée. Cependant ce module nécessite un réveil pour que celle-ci soit effective.}}',
                   level: 'success'
                 })
               } else {
-                $('#div_alert').showAlert({
+                $.fn.showAlert({
                   message: '{{Configuration appliquée et effective.}}',
                   level: 'success'
                 })
@@ -124,10 +124,10 @@ $('.changeIncludeState').off('click').on('click', function() {
             method: $("input[name=inclusion]:checked").attr('method'),
             options: $("input[name=inclusion]:checked").attr('options'),
             error: function(error) {
-              $('#div_alert').showAlert({ message: error.message, level: 'danger' })
+              $.fn.showAlert({ message: error.message, level: 'danger' })
             },
             success: function(data) {
-              $('#div_alert').showAlert({ message: '{{Action réalisée avec succès}}', level: 'success' })
+              $.fn.showAlert({ message: '{{Action réalisée avec succès}}', level: 'success' })
             }
           })
         }
@@ -189,8 +189,8 @@ function printEqLogic(_eqLogic) {
     },
     dataType: 'json',
     global: false,
-    error: function(request, status, error) {
-      handleAjaxError(request, status, error)
+    error: function(error) {
+      $.fn.showAlert({ message: error.message, level: 'danger' })
     },
     success: function(data) {
       if (data['result']['interview'] != 'complete') {
@@ -247,7 +247,7 @@ $('body').off('zwavejs::inclusion').on('zwavejs::inclusion', function(_event, _o
 })
 
 $('body').off('zwavejs::recommended').on('zwavejs::recommended', function(_event, _options) {
-  $('#div_alert').showAlert({
+  $.fn.showAlert({
     message: _options.message,
     level: 'warning'
   })
@@ -326,15 +326,15 @@ $('#bt_autoDetectModule').off('click').on('click', function() {
                   },
                   dataType: 'json',
                   global: false,
-                  error: function(request, status, error) {
-                    handleAjaxError(request, status, error)
+                  error: function(error) {
+                    $.fn.showAlert({ message: error.message, level: 'danger' })
                   },
                   success: function(data) {
                     if (data.state != 'ok') {
-                      $('#div_alert').showAlert({ message: data.result, level: 'danger' })
+                      $.fn.showAlert({ message: data.result, level: 'danger' })
                       return
                     }
-                    $('#div_alert').showAlert({ message: '{{Opération réalisée avec succès}}', level: 'success' })
+                    $.fn.showAlert({ message: '{{Opération réalisée avec succès}}', level: 'success' })
                     $('.eqLogicDisplayCard[data-eqLogic_id=' + $('.eqLogicAttr[data-l1key=id]').value() + ']').click()
                   }
                 })
@@ -351,15 +351,15 @@ $('#bt_autoDetectModule').off('click').on('click', function() {
               },
               dataType: 'json',
               global: false,
-              error: function(request, status, error) {
-                handleAjaxError(request, status, error)
+              error: function(error) {
+                $.fn.showAlert({ message: error.message, level: 'danger' })
               },
               success: function(data) {
                 if (data.state != 'ok') {
-                  $('#div_alert').showAlert({ message: data.result, level: 'danger' })
+                  $.fn.showAlert({ message: data.result, level: 'danger' })
                   return
                 }
-                $('#div_alert').showAlert({ message: '{{Opération réalisée avec succès}}', level: 'success' })
+                $.fn.showAlert({ message: '{{Opération réalisée avec succès}}', level: 'success' })
                 $('.eqLogicDisplayCard[data-eqLogic_id=' + $('.eqLogicAttr[data-l1key=id]').value() + ']').click()
               }
             })
@@ -379,12 +379,12 @@ function syncEqLogicWithzwavejs() {
       action: "syncEqLogicWithzwavejs",
     },
     dataType: 'json',
-    error: function(request, status, error) {
-      handleAjaxError(request, status, error)
+    error: function(error) {
+      $.fn.showAlert({ message: error.message, level: 'danger' })
     },
     success: function(data) {
       if (data.state != 'ok') {
-        $('#div_alert').showAlert({ message: data.result, level: 'danger' })
+        $.fn.showAlert({ message: data.result, level: 'danger' })
         return
       }
       window.location.reload()
@@ -436,6 +436,9 @@ function addCmdToTable(_cmd) {
   tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="returnStateTime" placeholder="{{Durée avant retour d\'état (min)}}">'
   tr += '</td>'
   tr += '<td>'
+  tr += '<span class="cmdAttr" data-l1key="htmlstate"></span>'
+  tr += '</td>'
+  tr += '<td>'
   tr += '<label class="checkbox-inline"><input type="checkbox" class="cmdAttr" data-l1key="isVisible" checked>{{Afficher}}</label> '
   tr += '<label class="checkbox-inline"><input type="checkbox" class="cmdAttr" data-l1key="isHistorized" checked>{{Historiser}}</label> '
   tr += '<label class="checkbox-inline"><input type="checkbox" class="cmdAttr" data-l1key="display" data-l2key="invertBinary">{{Inverser}}</label> '
@@ -457,11 +460,11 @@ function addCmdToTable(_cmd) {
   tr += '</tr>'
   $('#table_cmd tbody').append(tr)
   var tr = $('#table_cmd tbody tr').last()
-  jeedom.eqLogic.builSelectCmd({
+  jeedom.eqLogic.buildSelectCmd({
     id: $('.eqLogicAttr[data-l1key=id]').value(),
     filter: { type: 'info' },
     error: function(error) {
-      $('#div_alert').showAlert({ message: error.message, level: 'danger' })
+      $.fn.showAlert({ message: error.message, level: 'danger' })
     },
     success: function(result) {
       tr.find('.cmdAttr[data-l1key=value]').append(result)

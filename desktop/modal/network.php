@@ -16,15 +16,16 @@
 */
 
 if (!isConnect('admin')) {
-	throw new Exception('401 Unauthorized');
+	throw new Exception('401 - {{Accès non autorisé}}');
 }
 ?>
 <script type="text/javascript" src="plugins/zwavejs/3rdparty/vivagraph/vivagraph.min.js"></script>
 <style>
 	#graph_network {
 		height: 80%;
-		width: 100%;
+		width: 97%;
 		position: absolute;
+		background-color: rgba(var(--panel-bg-color), var(--opacity)) !important;
 	}
 
 	#graph_network>svg {
@@ -173,7 +174,6 @@ if (!isConnect('admin')) {
 						<div id="graph-node-name"></div>
 					</div>
 					<div id="route_network" class="tab-pane">
-						<br />
 						<div id="div_routingTable"></div>
 						<table class="table table-bordered table-condensed" style="width: 500px;">
 							<thead>
@@ -209,6 +209,7 @@ if (!isConnect('admin')) {
 						</table>
 					</div>
 					<div class="tab-pane" id="actions_network">
+						<br>
 						<table class="table">
 							<tr>
 								<td><a data-action="refreshNeighbors" class="btn btn-success controller_action"><i class="fas fa-project-diagram"></i> {{Demander les voisins de tout le réseau}}</a></td>
@@ -237,6 +238,7 @@ if (!isConnect('admin')) {
 						</table>
 					</div>
 					<div class="tab-pane" id="statistics_network">
+						<br>
 						<table class="table table-condensed table-striped">
 							<tr>
 								<td><b>{{Messages transmis TX}} :</b></td>
