@@ -23,86 +23,92 @@ if (!isConnect('admin')) {
 ?>
 <form class="form-horizontal">
 	<fieldset>
-		<?php if (class_exists('jMQTT')) {
-			echo '<div class="alert alert-warning col-sm-7 col-sm-offset-3">{{Le plugin jmqtt est installé sur votre Jeedom. Vérifiez la configuration du broker dans le plugin jMQTT et reporté la si nécessaire dans le plugin mqtt manager.}}</div>';
-		}
-		?>
-		<legend><i class="fas fa-cog"></i> {{Gestion}}</legend>
-		<div class="form-group">
-			<label class="col-sm-3 control-label">{{Appliquer la configuration recommandée lors de l'inclusion}}
-				<sup><i class="fas fa-question-circle tooltips" title="{{Cocher la case pour appliquer le jeu de configuration spécialement recommandé pour votre module par l'équipe Jeedom}}"></i></sup>
-			</label>
-			<div class="col-md-1">
-				<input type="checkbox" class="configKey" data-l1key="auto_applyRecommended" checked />
+		<div class="col-lg-6">
+			<?php if (class_exists('jMQTT')) {
+				echo '<div class="alert alert-warning">{{Le plugin jMQTT est installé, veuillez vérifier la configuration du broker dans le plugin jMQTT et la reporter, si nécessaire, dans le plugin MQTT Manager.}}</div>';
+			}
+			?>
+			<div class="form-group">
+				<label class="col-md-4 control-label">{{Port du contrôleur Z-Wave}}
+					<sup><i class="fas fa-question-circle tooltips" title="{{Renseigner le port utilisé par le contrôleur Z-Wave}}"></i></sup>
+				</label>
+				<div class="col-md-7">
+					<select class="configKey form-control" data-l1key="port">
+						<option value="none">{{Aucun}}</option>
+						<?php
+						foreach (jeedom::getUsbMapping('', true) as $name => $value) {
+							echo '<option value="' . $name . '">' . $name . ' (' . $value . ')</option>';
+						}
+						?>
+					</select>
+				</div>
 			</div>
-			<label class="col-sm-3 control-label">{{Suppression automatique des périphériques exclus}}
-				<sup><i class="fas fa-question-circle tooltips" title="{{Cocher la case pour supprimer automatiquement les équipements Jeedom correspondant à des périphériques exclus du contrôleur}}"></i></sup>
-			</label>
-			<div class="col-md-1">
-				<input type="checkbox" class="configKey" data-l1key="autoRemoveExcludeDevice" />
+			<div class="form-group">
+				<label class="col-md-4 control-label">{{Appliquer la configuration recommandée}}
+					<sup><i class="fas fa-question-circle tooltips" title="{{Cocher la case pour appliquer le jeu de configuration spécialement recommandé par l'équipe Jeedom lors de l'inclusion d'un nouveau module}}"></i></sup>
+				</label>
+				<div class="col-md-1">
+					<input type="checkbox" class="configKey" data-l1key="auto_applyRecommended" checked>
+				</div>
+				<label class="col-md-4 control-label">{{Suppression des périphériques exclus}}
+					<sup><i class="fas fa-question-circle tooltips" title="{{Cocher la case pour supprimer automatiquement les équipements Jeedom correspondant à des périphériques exclus du contrôleur}}"></i></sup>
+				</label>
+				<div class="col-md-1">
+					<input type="checkbox" class="configKey" data-l1key="autoRemoveExcludeDevice">
+				</div>
 			</div>
+			<br>
+			<div class="form-group">
+				<label class="col-md-4 control-label">{{Préfixe MQTT}}
+					<sup><i class="fas fa-question-circle tooltips" title="{{Préfixe à utiliser dans MQTT}}"></i></sup>
+				</label>
+				<div class="col-md-7">
+					<input type="text" class="configKey form-control" data-l1key="prefix" placeholder="{{}}">
+				</div>
+			</div>
+			<br>
 		</div>
-		<br>
-		<legend><i class="fas fa-wifi"></i> {{Z-Wave}}</legend>
-		<div class="form-group">
-			<label class="col-sm-3 control-label">{{Port du contrôleur Z-Wave}}
-				<sup><i class="fas fa-question-circle tooltips" title="{{Renseigner le port utilisé par le contrôleur Z-Wave}}"></i></sup>
-			</label>
-			<div class="col-sm-7">
-				<select class="configKey form-control" data-l1key="port">
-					<option value="none">{{Aucun}}</option>
-					<?php
-					foreach (jeedom::getUsbMapping('', true) as $name => $value) {
-						echo '<option value="' . $name . '">' . $name . ' (' . $value . ')</option>';
-					}
-					?>
-				</select>
+
+		<div class="col-lg-6">
+			<div class="alert alert-info text-center">{{Les clés de sécurités sont à conserver précieusement. Si vous perdez vos clés les périphériques inclus en sécurisés devront être réappairés. Les clés peuvent être spécifiées, si les champs sont vides ou invalides le plugin en générera et vous pourrez les voir ensuite.}}
+				<br>{{Si votre contrôleur a été utilisé avec le plugin Openzwave et que vous aviez inclus des modules en sécurisés la clé S0 est}} :
+				<code>0102030405060708090A0B0C0D0E0F10</code>
 			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-3 control-label">{{Préfixe}}
-				<sup><i class="fas fa-question-circle tooltips" title="{{Préfixe à utiliser dans MQTT}}"></i></sup>
-			</label>
-			<div class="col-sm-7">
-				<input type="text" class="configKey form-control" data-l1key="prefix" placeholder="{{}}" />
+			<div class="form-group">
+				<label class="col-md-4 control-label">{{Clé de Sécurité S0}}</label>
+				<div class="input-group col-md-7">
+					<input class="configKey roundedLeft form-control" data-l1key="s0key" placeholder="{{Clé de sécurité S0}}">
+					<span class="input-group-btn">
+						<a class="btn btn-default form-control randomKey roundedRight" data-key="s0key"><i class="fas fa-sync-alt"></i></a>
+					</span>
+				</div>
 			</div>
-		</div>
-		<legend><i class="fas fa-key"></i> {{Sécurité}}</legend>
-		<div class="alert alert-info col-sm-7 col-sm-offset-3">{{Les clés de sécurités sont à conserver précieusement. Si vous perdez vos clés les périphériques inclus en sécurisés devront être réappairés. Les clés peuvent être spécifiées, si les champs sont vides ou invalides le plugin en générera et vous pourrez les voir ensuite. Si votre contrôleur a été utilisé avec Openzwave et que vous aviez inclus des modules en sécurisés la clé S0 est : 0102030405060708090A0B0C0D0E0F10}}</div>
-		<div class="form-group">
-			<label class="col-sm-3 control-label">{{Clé de Sécurité S0}}</label>
-			<div class="input-group col-sm-7">
-				<input class="configKey roundedLeft form-control" data-l1key="s0key" placeholder="{{Clé de sécurité S0}}" />
-				<span class="input-group-btn">
-					<a class="btn btn-default form-control randomKey roundedRight" data-key="s0key"><i class="fas fa-sync"></i></a>
-				</span>
+			<div class="form-group">
+				<label class="col-md-4 control-label">{{Clé de Sécurité S2 Authenticated}}</label>
+				<div class="input-group col-md-7">
+					<input class="configKey roundedLeft form-control" data-l1key="s2key_auth" placeholder="{{Clé de sécurité S2 Authenticated}}">
+					<span class="input-group-btn">
+						<a class="btn btn-default form-control randomKey roundedRight" data-key="s2key_auth"><i class="fas fa-sync-alt"></i></a>
+					</span>
+				</div>
 			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-3 control-label">{{Clé de Sécurité S2 Authenticated}}</label>
-			<div class="input-group col-sm-7">
-				<input class="configKey roundedLeft form-control" data-l1key="s2key_auth" placeholder="{{Clé de sécurité S2 Authenticated}}" />
-				<span class="input-group-btn">
-					<a class="btn btn-default form-control randomKey roundedRight" data-key="s2key_auth"><i class="fas fa-sync"></i></a>
-				</span>
+			<div class="form-group">
+				<label class="col-md-4 control-label">{{Clé de Sécurité S2 Access Control}}</label>
+				<div class="input-group col-md-7">
+					<input class="configKey roundedLeft form-control" data-l1key="s2key_access" placeholder="{{Clé de sécurité S2 Access Control}}">
+					<span class="input-group-btn">
+						<a class="btn btn-default form-control randomKey roundedRight" data-key="s2key_access"><i class="fas fa-sync-alt"></i></a>
+					</span>
+				</div>
 			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-3 control-label">{{Clé de Sécurité S2 Access Control}}</label>
-			<div class="input-group col-sm-7">
-				<input class="configKey roundedLeft form-control" data-l1key="s2key_access" placeholder="{{Clé de sécurité S2 Access Control}}" />
-				<span class="input-group-btn">
-					<a class="btn btn-default form-control randomKey roundedRight" data-key="s2key_access"><i class="fas fa-sync"></i></a>
-				</span>
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-3 control-label">{{Clé de Sécurité S2 Unauthenticated}}</label>
-			<div class="input-group col-sm-7">
-				<input class="configKey roundedLeft form-control" data-l1key="s2key_unauth" placeholder="{{Clé de sécurité S2 Unauthenticated}}" />
-				<span class="input-group-btn">
-					<a class="btn btn-default form-control randomKey roundedRight" data-key="s2key_unauth"><i class="fas fa-sync"></i></a>
-				</span>
+			<div class="form-group">
+				<label class="col-md-4 control-label">{{Clé de Sécurité S2 Unauthenticated}}</label>
+				<div class="input-group col-md-7">
+					<input class="configKey roundedLeft form-control" data-l1key="s2key_unauth" placeholder="{{Clé de sécurité S2 Unauthenticated}}">
+					<span class="input-group-btn">
+						<a class="btn btn-default form-control randomKey roundedRight" data-key="s2key_unauth"><i class="fas fa-sync-alt"></i></a>
+					</span>
+				</div>
 			</div>
 		</div>
 	</fieldset>

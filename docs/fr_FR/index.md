@@ -24,11 +24,11 @@ Concernant la configuration du plugin, le point primordial est la bonne sélecti
 
 Les autres paramétrages possibles sont :
 
-- **Appliquer le jeu de configuration recommandé lors de l’inclusion** : applique directement le jeu de configuration recommandé par l’équipe Jeedom lors de l'inclusion d'un nouveau module *(conseillé)*.
+- **Appliquer la configuration recommandée** : applique directement le jeu de configuration recommandé par l’équipe Jeedom lors de l'inclusion d'un nouveau module *(conseillé)*.
 
-- **Suppression automatique des périphériques exclus** : permet de supprimer automatiquement les périphériques exclus du réseau Z-Wave si cochée. Sinon, les équipements sont conservés dans Jeedom même s’ils ont été exclus du réseau. L’équipement devra être alors supprimé manuellement ou réutilisé en lui assignant un nouvel identifiant Z-Wave.
+- **Suppression des périphériques exclus** : permet de supprimer automatiquement les périphériques exclus du réseau Z-Wave si cochée. Sinon, les équipements sont conservés dans Jeedom même s’ils ont été exclus du réseau. L’équipement devra être alors supprimé manuellement ou réutilisé en lui assignant un nouvel identifiant Z-Wave.
 
-- **Préfixe** : permet de spécifier le préfixe à utiliser dans MQTT *(`zwave` par défaut)*.
+- **Préfixe MQTT** : permet de spécifier le préfixe à utiliser dans MQTT *(`zwave` par défaut)*.
 
 ### Clés de sécurité
 
@@ -138,7 +138,7 @@ Le bouton **Inclusions** présent sur la page regroupant tous les équipements Z
 
 Rappelons-le, en Z-Wave, tous les modules qui composent le réseau sont directement associés au contrôleur. Certains contrôleurs avec pile *(comme le Aeon-labs Z-Stick GEN5)* permettent même d'inclure des modules sans être branchés sur une box.
 
-Le bouton **Synchroniser** va alors permettre de créer automatiquement dans Jeedom les équipements recensés par le contrôleur. Dans la même idée, les équipements correspondants à des périphériques exclus du contrôleur seront automatiquement supprimés si l’option **Supprimer automatiquement les périphériques exclus** est activée dans la configuration générale du plugin.
+Le bouton **Synchroniser** va alors permettre de créer automatiquement dans Jeedom les équipements recensés par le contrôleur. Dans la même idée, les équipements correspondants à des périphériques exclus du contrôleur seront automatiquement supprimés si l’option **Suppression des périphériques exclus** est activée dans la configuration générale du plugin.
 
 ## Réseau Z-Wave
 
