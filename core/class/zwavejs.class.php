@@ -1875,10 +1875,11 @@ class zwavejs extends eqLogic {
 
 	public function getImgFilePath() {
 		$path = str_replace('.json', '', $this->getConfFilePath());
-		if (is_file(dirname(__FILE__) . '/../config/devices/' . $path . '.jpg')) {
-			return  $path . '.jpg';
-		} else if (is_file(dirname(__FILE__) . '/../config/devices/' . $path . '.png')) {
+		if (is_file(dirname(__FILE__) . '/../config/devices/' . $path . '.png')) {
 			return  $path . '.png';
+		}
+		 else if (is_file(dirname(__FILE__) . '/../config/devices/' . $path . '.jpg')) {
+			return  $path . '.jpg';
 		}
 		return false;
 	}
