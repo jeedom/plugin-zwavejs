@@ -1,10 +1,11 @@
 {
     "changelog.md": {
         "Changelog Z-Wave JS": "Registro de cambios Z-Wave JS",
-        "Changelog plugin Z-Wave JS": "Complemento de registro de cambios Z-Wave JS",
         "S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte": "Si no hay información sobre la actualización, significa que se trata solo de la actualización de la documentación, la traducción o el texto",
+        "15\/11\/2022": "15\/11\/2022",
+        "Passage en version stable": "Cambiar a versión estable",
         "04\/05\/2022": "05\/04\/2022",
-        "Bêta 1ère phase": "Beta 1ra fase",
+        "Beta 1ère phase": "Beta 1ra fase",
         " IMPORTANT.": " IMPORTANTE.",
         " IMPORTANT?": " IMPORTANTE?",
         "IMPORTANT ": "IMPORTANTE ",

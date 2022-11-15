@@ -102,7 +102,7 @@
     "plugins\/zwavejs\/desktop\/modal\/network.php": {
         "Accès non autorisé": "Unauthorized access",
         "Résumé": "Summary",
-        "Actions": "Shares",
+        "Actions": "Actions",
         "Statistiques": "Statistics",
         "Graphique du réseau": "Network graph",
         "Table de routage": "Routing table",
@@ -163,7 +163,7 @@
         "Associations actives": "Active Associations",
         "Nœud": "Node",
         "Endpoint Cible": "Target Endpoint",
-        "Actions": "Shares",
+        "Actions": "Actions",
         "Ajouter une association": "Add an association",
         "Aucun": "None",
         "Nœud Cible": "Target Node"
@@ -171,7 +171,7 @@
     "plugins\/zwavejs\/desktop\/modal\/node.informations.php": {
         "Accès non autorisé": "Unauthorized access",
         "Résumé": "Summary",
-        "Actions": "Shares",
+        "Actions": "Actions",
         "Statistiques": "Statistics",
         "Arbre": "Tree",
         "Informations Nœud": "Node Information",
