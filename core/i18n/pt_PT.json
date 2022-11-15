@@ -47,21 +47,19 @@
     },
     "plugins\/zwavejs\/plugin_info\/configuration.php": {
         "401 - Accès non autorisé": "401 - Acesso não autorizado",
-        "Le plugin jmqtt est installé sur votre Jeedom. Vérifiez la configuration du broker dans le plugin jMQTT et reporté la si nécessaire dans le plugin mqtt manager.": "O plugin jmqtt está instalado no seu Jeedom. Verifique a configuração do broker no plug-in jMQTT e relate-a, se necessário, no plug-in do gerenciador mqtt",
-        "Gestion": "Gerenciamento",
-        "Appliquer la configuration recommandée lors de l'inclusion": "Aplique a configuração recomendada ao incluir",
-        "Cocher la case pour appliquer le jeu de configuration spécialement recommandé pour votre module par l'équipe Jeedom": "Marque a caixa para aplicar o conjunto de configuração especialmente recomendado para o seu módulo pela equipe Jeedom",
-        "Suppression automatique des périphériques exclus": "Remoção automática de dispositivos excluídos",
-        "Cocher la case pour supprimer automatiquement les équipements Jeedom correspondant à des périphériques exclus du contrôleur": "Marque a caixa para excluir automaticamente o equipamento Jeedom correspondente aos dispositivos excluídos do controlador",
-        "Z-Wave": "Z-Wave",
+        "Le plugin jMQTT est installé, veuillez vérifier la configuration du broker dans le plugin jMQTT et la reporter, si nécessaire, dans le plugin MQTT Manager.": "O plugin jMQTT está instalado, verifique a configuração do broker no plugin jMQTT e informe, se necessário, no plugin MQTT Manager",
         "Port du contrôleur Z-Wave": "Porta do controlador Z-Wave",
         "Renseigner le port utilisé par le contrôleur Z-Wave": "Digite a porta usada pelo controlador Z-Wave",
         "Aucun": "Não",
-        "Préfixe": "Prefixo",
+        "Appliquer la configuration recommandée": "Aplique a configuração recomendada",
+        "Cocher la case pour appliquer le jeu de configuration spécialement recommandé par l'équipe Jeedom lors de l'inclusion d'un nouveau module": "Marque a caixa para aplicar o conjunto de configurações especialmente recomendado pela equipe Jeedom ao incluir um novo módulo",
+        "Suppression des périphériques exclus": "Excluindo dispositivos excluídos",
+        "Cocher la case pour supprimer automatiquement les équipements Jeedom correspondant à des périphériques exclus du contrôleur": "Marque a caixa para excluir automaticamente o equipamento Jeedom correspondente aos dispositivos excluídos do controlador",
+        "Préfixe MQTT": "Prefixo MQTT",
         "Préfixe à utiliser dans MQTT": "Prefixo a ser usado no MQTT",
         "": "",
-        "Sécurité": "Segurança",
-        "Les clés de sécurités sont à conserver précieusement. Si vous perdez vos clés les périphériques inclus en sécurisés devront être réappairés. Les clés peuvent être spécifiées, si les champs sont vides ou invalides le plugin en générera et vous pourrez les voir ensuite. Si votre contrôleur a été utilisé avec Openzwave et que vous aviez inclus des modules en sécurisés la clé S0 est : 0102030405060708090A0B0C0D0E0F10": "As chaves de segurança devem ser guardadas com cuidado. Se você perder suas chaves, os dispositivos incluídos no seguro devem ser pareados novamente. As chaves podem ser especificadas, se os campos estiverem vazios ou inválidos o plugin irá gerá-los e você poderá vê-los posteriormente. Se o seu controlador foi usado com Openzwave e você incluiu módulos seguros, a chave S0 é: 0102030405060708090A0B0C0D0E0F10",
+        "Les clés de sécurités sont à conserver précieusement. Si vous perdez vos clés les périphériques inclus en sécurisés devront être réappairés. Les clés peuvent être spécifiées, si les champs sont vides ou invalides le plugin en générera et vous pourrez les voir ensuite.": "As chaves de segurança devem ser guardadas com cuidado. Se você perder suas chaves, os dispositivos incluídos no seguro devem ser pareados novamente. As chaves podem ser especificadas, se os campos estiverem vazios ou inválidos o plugin irá gerá-los e você poderá vê-los posteriormente",
+        "Si votre contrôleur a été utilisé avec le plugin Openzwave et que vous aviez inclus des modules en sécurisés la clé S0 est": "Se o seu controlador foi usado com o plugin Openzwave e você incluiu módulos seguros, a chave S0 é",
         "Clé de Sécurité S0": "Chave de segurança S0",
         "Clé de sécurité S0": "Chave de segurança S0",
         "Clé de Sécurité S2 Authenticated": "Chave de segurança autenticada S2",
@@ -74,6 +72,7 @@
         "La prise en compte sera effective après sauvegarde et relance du démon.": "A consideração será efetiva após salvar e reiniciar o daemon"
     },
     "plugins\/zwavejs\/desktop\/modal\/health.php": {
+        "Accès non autorisé": "Acesso não autorizado",
         "Id": "EU IRIA",
         "Equipement": "Equipamento",
         "Endpoints": "Pontos de extremidade",
@@ -88,7 +87,11 @@
         "Dernière activité": "Ultima atividade",
         "Ping": "Ping"
     },
+    "plugins\/zwavejs\/desktop\/modal\/node.values.php": {
+        "Accès non autorisé": "Acesso não autorizado"
+    },
     "plugins\/zwavejs\/desktop\/modal\/stats.php": {
+        "Accès non autorisé": "Acesso não autorizado",
         "Id": "EU IRIA",
         "Equipement": "Equipamento",
         "RX": "Raio X",
@@ -97,6 +100,7 @@
         "RTT": "RTT"
     },
     "plugins\/zwavejs\/desktop\/modal\/network.php": {
+        "Accès non autorisé": "Acesso não autorizado",
         "Résumé": "Resumo",
         "Actions": "Ações",
         "Statistiques": "Estatisticas",
@@ -150,6 +154,7 @@
         "Callback en délai dépassé": "Retorno de chamada expirou"
     },
     "plugins\/zwavejs\/desktop\/modal\/node.groups.php": {
+        "Accès non autorisé": "Acesso não autorizado",
         "Listes des groupes disponibles": "Listas de grupos disponíveis",
         "Groupe": "Banda",
         "Endpoint": "Ponto final",
@@ -164,6 +169,7 @@
         "Nœud Cible": "Nó de destino"
     },
     "plugins\/zwavejs\/desktop\/modal\/node.informations.php": {
+        "Accès non autorisé": "Acesso não autorizado",
         "Résumé": "Resumo",
         "Actions": "Ações",
         "Statistiques": "Estatisticas",
@@ -232,7 +238,7 @@
         "ms": "EM"
     },
     "plugins\/zwavejs\/desktop\/php\/zwavejs.php": {
-        "401 - Accès non autorisé": "401 - Acesso não autorizado",
+        "Accès non autorisé": "Acesso não autorizado",
         "Le démon Z-Wave n\\'est pas démarré.": "O daemon Z-Wave não é iniciado",
         "Le driver Z-Wave n\\'est pas initialisé, veuillez patienter. Si le message reste trop longtemps, veuillez vérifier la configuration du démon": "O driver Z-Wave não foi inicializado, aguarde. Se a mensagem ficar muito tempo, verifique a configuração do daemon",
         "Une inclusion est en cours": "Uma inclusão está em andamento",
@@ -283,7 +289,9 @@
         "Classe": "Sala de aula",
         "Endpoint": "Ponto final",
         "Propriété": "Propriedade",
-        "Paramètres": "Definições"
+        "Paramètres": "Definições",
+        "Etat": "Estado",
+        "Actions": "Ações"
     },
     "plugins\/zwavejs\/desktop\/js\/zwavejs.js": {
         "Configuration recommandée": "Configuração recomendada",
