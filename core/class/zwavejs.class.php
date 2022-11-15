@@ -430,6 +430,12 @@ class zwavejs extends eqLogic {
 			} else if ($key == 'getNodes') {
 				if ($value['origin']['type'] == 'sync') {
 					self::syncNodes($value['result']);
+				} else if ($value['origin']['type'] == 'syncInc') {
+					foreach ($value['result'] as $node) {
+						if ($node['id'] == $value['origin']['node']) {
+							self::syncNodes($node,true);
+						}
+					}
 				} else if ($value['origin']['type'] == 'stats') {
 					$stats = array();
 					$stats['totalNodes'] = count($value['result']);
@@ -911,27 +917,46 @@ class zwavejs extends eqLogic {
 		self::publishMqttApi($api, $args);
 	}
 
-	public static function syncNodes($_data) {
+	public static function syncNodes($_data,$_syncInc=false) {
 		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . __('Synchronisation des nœuds', __FILE__) . ' ' . json_encode($_data));
-		event::add(
-			'zwavejs::sync',
-			array('message' => __('Découverte de', __FILE__) . ' ' . count($_data) . ' ' . __('nœud(s)', __FILE__), 'type' => 'running')
-		);
-		foreach ($_data as $node) {
-			self::createEqLogic($node, true);
+		if (!$_syncInc){
+			event::add(
+				'zwavejs::sync',
+				array('message' => __('Découverte de', __FILE__) . ' ' . count($_data) . ' ' . __('nœud(s)', __FILE__), 'type' => 'running')
+			);
 		}
-		event::add(
-			'zwavejs::sync',
-			array('message' => __('Fin de la synchronisation', __FILE__), 'type' => 'finished')
-		);
+		if (!$_syncInc){
+			foreach ($_data as $node) {
+				self::createEqLogic($node, true);
+			} 
+		} else {
+			self::createEqLogic($_data, false, true);
+		}
+		if (!$_syncInc){
+			event::add(
+				'zwavejs::sync',
+				array('message' => __('Fin de la synchronisation', __FILE__), 'type' => 'finished')
+			);
+		}
 	}
 
-	public static function createEqLogic($_node, $_ignoreEvent = false) {
+	public static function createEqLogic($_node, $_ignoreEvent = false,$_syncInc=false) {
 		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . __('Création d\'un équipement', __FILE__) . ' ' . json_encode($_node));
+		if (!isset($_node['id'])){
+			return;
+		}
 		$eqLogic = self::byLogicalId($_node['id'], __CLASS__);
-		$inited = $_node['inited'];
+		$inited = false;
+		if ($_node['interviewStage'] == 5){
+			$inited=true;
+		}
+		if (isset($_node['inited'])){
+			$inited=$_node['inited'];
+		}
 		$new = false;
 		$refresh = false;
+		
+		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . $_node['id'] . ' ' . $inited);
 		if (!is_object($eqLogic)) {
 			$eqLogic = new zwavejs();
 			$eqLogic->setEqType_name(__CLASS__);
@@ -942,13 +967,12 @@ class zwavejs extends eqLogic {
 			$refresh = true;
 		}
 		$wascomplete = $eqLogic->getConfiguration('interview', 'incomplete');
-		if (($wascomplete == 'incomplete' && $inited) || ($inited && $new)) {
-			if (($eqLogic->getName() == $eqLogic->getLogicalId() . ' - ' . 'Node inclus') || ($eqLogic->getName() == '')) {
-				$eqLogic->setName($eqLogic->getLogicalId() . ' - ' . $_node['manufacturer'] . ' ' . $_node['productDescription'] . ' ' . $_node['productLabel']);
-				$refresh = true;
-			}
-		} else if ($new) {
+		if ($new) {
 			$eqLogic->setName($eqLogic->getLogicalId() . ' - ' . 'Node inclus');
+		}
+		if (strpos($eqLogic->getName(), 'Node inclus') !== false && isset($_node['manufacturer'])) {
+			$eqLogic->setName($eqLogic->getLogicalId() . ' - ' . $_node['manufacturer'] . ' ' . $_node['productDescription'] . ' ' . $_node['productLabel']);
+			$refresh = true;
 		}
 		if ($inited === false) {
 			if ($eqLogic->getConfiguration('interview', 'incomplete') != 'complete') {
@@ -967,6 +991,9 @@ class zwavejs extends eqLogic {
 		if (!$_ignoreEvent) {
 			if ($refresh) {
 				event::add('zwavejs::includeDevice', $eqLogic->getId());
+			}
+			if ($inited && !$_syncInc){
+				self::getNodeInfo($_node['id'],'syncInc');
 			}
 		}
 		if ($inited && $refresh) {
