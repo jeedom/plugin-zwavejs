@@ -216,15 +216,15 @@ class zwavejs extends eqLogic {
 		$port = jeedom::getUsbMapping($port);
 		if (@!file_exists($port)) {
 			$return['launchable'] = 'nok';
-			$return['launchable_message'] = __('Le port n\'est pas configuré', __FILE__);
+			$return['launchable_message'] = __("Le port n'est pas configuré", __FILE__);
 		}
 		if (!class_exists('mqtt2')) {
 			$return['launchable'] = 'nok';
-			$return['launchable_message'] = __('Le plugin MQTT Manager n\'est pas installé', __FILE__);
+			$return['launchable_message'] = __("Le plugin MQTT Manager n'est pas installé", __FILE__);
 		} else {
 			if (mqtt2::deamon_info()['state'] != 'ok') {
 				$return['launchable'] = 'nok';
-				$return['launchable_message'] = __('Le démon MQTT Manager n\'est pas démarré', __FILE__);
+				$return['launchable_message'] = __("Le démon MQTT Manager n'est pas démarré", __FILE__);
 			}
 		}
 		if (class_exists('openzwave')) {
@@ -365,7 +365,7 @@ class zwavejs extends eqLogic {
 		if (isset($_message[config::byKey('prefix', __CLASS__, 'zwave')])) {
 			$message = $_message[config::byKey('prefix', __CLASS__, 'zwave')];
 		} else {
-			log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . __('Le message reçu n\'est pas un message Zwave', __FILE__));
+			log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . __("Le message reçu n'est pas un message Z-Wave", __FILE__));
 			return;
 		}
 		foreach ($message as $key => $value) {
@@ -391,7 +391,7 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function handleClients($_clients) {
-		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . 'Traitement d\'un Client Api');
+		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . "Traitement d'un Client Api");
 		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . json_encode($_clients));
 		$gateway = array_key_first($_clients);
 		$client = $_clients[$gateway];
@@ -404,7 +404,7 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function handleEvents($_events) {
-		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . 'Traitement d\'un Event');
+		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . "Traitement d'un Event");
 		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . json_encode($_events));
 		$gateway = array_key_first($_events);
 		$event = $_events[$gateway];
@@ -419,7 +419,7 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function handleApi($_api) {
-		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . 'Traitement d\'un retour api');
+		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . "Traitement d'un retour api");
 		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . json_encode($_api));
 		foreach ($_api as $key => $value) {
 			if ($key == 'getInfo') {
@@ -433,7 +433,7 @@ class zwavejs extends eqLogic {
 				} else if ($value['origin']['type'] == 'syncInc') {
 					foreach ($value['result'] as $node) {
 						if ($node['id'] == $value['origin']['node']) {
-							self::syncNodes($node,true);
+							self::syncNodes($node, true);
 						}
 					}
 				} else if ($value['origin']['type'] == 'stats') {
@@ -612,7 +612,7 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function handleNode($_node) {
-		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . 'Traitement d\'un node');
+		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . "Traitement d'un node");
 		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . json_encode($_node));
 		foreach ($_node as $key => $value) {
 			// log::add(__CLASS__, 'debug', $key);
@@ -627,7 +627,7 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function handleController($_controller) {
-		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . 'Traitement du controller');
+		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . 'Traitement du contrôleur');
 		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . json_encode($_controller));
 		foreach ($_controller as $key => $value) {
 			// log::add(__CLASS__, 'debug', $key);
@@ -703,7 +703,7 @@ class zwavejs extends eqLogic {
 					event::add('jeedom::alert', array(
 						'level' => 'warning',
 						'page' => __CLASS__,
-						'message' => __('Nouveau module Z-Wave détecté. L\'équipement sera créé lorsque l\'interview sera terminé.', __FILE__),
+						'message' => __("Nouveau module Z-Wave détecté. L'équipement sera créé lorsque l'interview sera terminé.", __FILE__),
 					));
 				}
 			}
@@ -711,7 +711,7 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function handleNodeValueUpdate($_value_update) {
-		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . 'Traitement d\'un update de value d\'un node');
+		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . "Traitement d'un update de value d'un node");
 		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . json_encode($_value_update));
 		$datas = $_value_update['data'];
 		$node = $datas[0];
@@ -719,21 +719,21 @@ class zwavejs extends eqLogic {
 		$eqLogic = self::byLogicalId($node['id'], __CLASS__);
 		if (is_object($eqLogic)) {
 			if ($eqLogic->getIsEnable()) {
-				// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . 'Le nœud avec l\'id : ' . $node['id'] . ' existe ' . $eqLogic->getHumanName());
+				// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . "Le nœud avec l'id : " . $node['id'] . ' existe ' . $eqLogic->getHumanName());
 			}
 			$eqLogic->handleCommandUpdate($change);
 		}
 	}
 
 	public static function handleNodeValueUpdateDirect($_nodeId, $_value_update) {
-		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . 'Traitement d\'un update de value d\'un node direct');
+		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . "Traitement d'un update de value d'un node direct");
 		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . $_nodeId . ' ' . json_encode($_value_update));
 		$eqLogic = self::byLogicalId($_nodeId, __CLASS__);
 		$flatten = self::flatten_array($_value_update);
 		// log::add(__CLASS__, 'debug', json_encode($flatten, true));
 		if (is_object($eqLogic)) {
 			if ($eqLogic->getIsEnable()) {
-				// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . 'Le nœud avec l\'id : ' . $_nodeId . ' existe ' . $eqLogic->getHumanName());
+				// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . "Le nœud avec l'id : " . $_nodeId . ' existe ' . $eqLogic->getHumanName());
 				foreach ($flatten as $key => $data) {
 					if ($key == 'status') {
 						$eqLogic->updateCmd('0-0-nodeStatus', $data['status']);
@@ -764,22 +764,22 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function getInfo() {
-		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . 'Demande d\'info ');
+		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . "Demande d'info");
 		self::publishMqttApi('getInfo', array('type' => 'getInfo'));
 	}
 
 	public static function getNodeInfo($_nodeId, $_type = 'getNodeInfo') {
-		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . 'Demande d\'info d\'un Node ' . $_nodeId);
+		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . "Demande d'info d'un Node " . $_nodeId);
 		self::publishMqttApi('getNodes', array('type' => $_type, 'node' => $_nodeId));
 	}
 
 	public static function getNodeValues($_nodeId) {
-		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . 'Demande d\'info d\'un Node ' . $_nodeId);
+		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . "Demande d'info d'un Node " . $_nodeId);
 		self::publishMqttApi('getNodes', array('type' => 'getNodeValues', 'node' => $_nodeId));
 	}
 
 	public static function getNodeAssociations($_nodeId) {
-		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . 'Demande des associations d\'un Node ' . $_nodeId);
+		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . "Demande des associations d'un Node " . $_nodeId);
 		$args = array("args" => array(intval($_nodeId)));
 		$args['type'] = 'getNodeAssociations';
 		$args['node'] = $_nodeId;
@@ -798,7 +798,7 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function controllerAction($_type) {
-		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . __('Exécution d\'une action sur le contrôleur de type', __FILE__) . ' : ' . $_type);
+		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . __("Exécution d'une action sur le contrôleur de type", __FILE__) . ' : ' . $_type);
 		self::publishMqttApi($_type, array('type' => 'controllerAction'));
 	}
 
@@ -830,7 +830,7 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function nodeAction($_type, $_nodeId) {
-		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . __('Exécution d\'une action sur le nœud', __FILE__) . ' ' . $_nodeId . ' ' . __('de type', __FILE__) . ' : ' . $_type);
+		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . __("Exécution d'une action sur le nœud", __FILE__) . ' ' . $_nodeId . ' ' . __('de type', __FILE__) . ' : ' . $_type);
 		$args = array('args' => array(intval($_nodeId)), 'type' => 'nodeAction');
 		if ($_type == 'syncValues') {
 			self::publishMqttApi('getNodes', array('type' => 'syncValues', 'node' => $_nodeId));
@@ -917,22 +917,22 @@ class zwavejs extends eqLogic {
 		self::publishMqttApi($api, $args);
 	}
 
-	public static function syncNodes($_data,$_syncInc=false) {
+	public static function syncNodes($_data, $_syncInc = false) {
 		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . __('Synchronisation des nœuds', __FILE__) . ' ' . json_encode($_data));
-		if (!$_syncInc){
+		if (!$_syncInc) {
 			event::add(
 				'zwavejs::sync',
 				array('message' => __('Découverte de', __FILE__) . ' ' . count($_data) . ' ' . __('nœud(s)', __FILE__), 'type' => 'running')
 			);
 		}
-		if (!$_syncInc){
+		if (!$_syncInc) {
 			foreach ($_data as $node) {
 				self::createEqLogic($node, true);
-			} 
+			}
 		} else {
 			self::createEqLogic($_data, false, true);
 		}
-		if (!$_syncInc){
+		if (!$_syncInc) {
 			event::add(
 				'zwavejs::sync',
 				array('message' => __('Fin de la synchronisation', __FILE__), 'type' => 'finished')
@@ -940,22 +940,22 @@ class zwavejs extends eqLogic {
 		}
 	}
 
-	public static function createEqLogic($_node, $_ignoreEvent = false,$_syncInc=false) {
-		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . __('Création d\'un équipement', __FILE__) . ' ' . json_encode($_node));
-		if (!isset($_node['id'])){
+	public static function createEqLogic($_node, $_ignoreEvent = false, $_syncInc = false) {
+		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . __("Création d'un équipement", __FILE__) . ' ' . json_encode($_node));
+		if (!isset($_node['id'])) {
 			return;
 		}
 		$eqLogic = self::byLogicalId($_node['id'], __CLASS__);
 		$inited = false;
-		if ($_node['interviewStage'] == 5){
-			$inited=true;
+		if ($_node['interviewStage'] == 5) {
+			$inited = true;
 		}
-		if (isset($_node['inited'])){
-			$inited=$_node['inited'];
+		if (isset($_node['inited'])) {
+			$inited = $_node['inited'];
 		}
 		$new = false;
 		$refresh = false;
-		
+
 		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . $_node['id'] . ' ' . $inited);
 		if (!is_object($eqLogic)) {
 			$eqLogic = new zwavejs();
@@ -992,8 +992,8 @@ class zwavejs extends eqLogic {
 			if ($refresh) {
 				event::add('zwavejs::includeDevice', $eqLogic->getId());
 			}
-			if ($inited && !$_syncInc){
-				self::getNodeInfo($_node['id'],'syncInc');
+			if ($inited && !$_syncInc) {
+				self::getNodeInfo($_node['id'], 'syncInc');
 			}
 		}
 		if ($inited && $refresh) {
@@ -1162,7 +1162,7 @@ class zwavejs extends eqLogic {
 					$nodeValues .= ' data-max="' . $data['max'] . '"';
 					$nodeValues .= ' data-min="' . $data['min'] . '"';
 					$nodeValues .= ' data-value="' . $data['value'] . '"';
-					$nodeValues .= ' style="text-align: right;display:inline-block" title="' . __('Créer la commande Info dans l\'équipement Jeedom', __FILE__) . '"><i class="fas fa-marker"></i></a>';
+					$nodeValues .= ' style="text-align: right;display:inline-block" title="' . __("Créer la commande Info correspondante dans l'équipement Jeedom", __FILE__) . '"><i class="fas fa-marker"></i></a>';
 				}
 				if ($data['writeable'] && (in_array($data['type'], array('number', 'boolean')))) {
 					$nodeValues .= ' <a class="btn btn-xs btn-info createCommandAction pull-right"';
@@ -1173,7 +1173,7 @@ class zwavejs extends eqLogic {
 					$nodeValues .= ' data-max="' . $data['max'] . '"';
 					$nodeValues .= ' data-min="' . $data['min'] . '"';
 					$nodeValues .= ' data-value="' . $data['value'] . '"';
-					$nodeValues .= ' style="text-align: right;display:inline-block" title="' . __('Créer la/les commande(s) Action dans l\'équipement Jeedom', __FILE__) . '"><i class="fas fa-pen"></i></a>';
+					$nodeValues .= ' style="text-align: right;display:inline-block" title="' . __("Créer la/les commande(s) Action correspondantes dans l'équipement Jeedom", __FILE__) . '"><i class="fas fa-pen"></i></a>';
 				}
 				$nodeValues .= '</td>';
 			}
@@ -1346,7 +1346,7 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function autoCreateCommandInfo($_path, $_type, $_label, $_unit, $_max, $_min, $_currentValue) {
-		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . _('Création d\'une commande info', __FILE__) . ' ' . $_path);
+		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . _("Création d'une commande info", __FILE__) . ' ' . $_path);
 		$elements = explode('-', str_replace('_', ' ', $_path), 4);
 		$eqLogic = self::byLogicalId($elements[0], __CLASS__);
 		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . print_r($elements, true));
@@ -1390,7 +1390,7 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function autoCreateCommandAction($_path, $_type, $_label, $_unit, $_max, $_min, $_currentValue) {
-		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . _('Création d\'une commande action', __FILE__) . ' ' . $_path);
+		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . _("Création d'une commande action", __FILE__) . ' ' . $_path);
 		$elements = explode('-', str_replace('_', ' ', $_path), 4);
 		$eqLogic = self::byLogicalId($elements[0], __CLASS__);
 		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . print_r($elements, true));
@@ -1503,7 +1503,7 @@ class zwavejs extends eqLogic {
 			if (is_object($cmd)) {
 				$returnStateTime = $cmd->getConfiguration('returnStateTime', 0);
 				if ($returnStateTime != 0) {
-					log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . __('Démon démarré depuis moins de 30 secondes et commande avec retour d\'état Jeedom, on ignore', __FILE__) . ' (' . $this->getHumanName() . ' ' . $cmd->getName() . ')');
+					log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . __("Démon démarré depuis moins de 30 secondes et commande avec retour d'état Jeedom, on ignore", __FILE__) . ' (' . $this->getHumanName() . ' ' . $cmd->getName() . ')');
 					return;
 				}
 			}
@@ -1904,8 +1904,7 @@ class zwavejs extends eqLogic {
 		$path = str_replace('.json', '', $this->getConfFilePath());
 		if (is_file(dirname(__FILE__) . '/../config/devices/' . $path . '.png')) {
 			return  $path . '.png';
-		}
-		 else if (is_file(dirname(__FILE__) . '/../config/devices/' . $path . '.jpg')) {
+		} else if (is_file(dirname(__FILE__) . '/../config/devices/' . $path . '.jpg')) {
 			return  $path . '.jpg';
 		}
 		return false;
