@@ -172,7 +172,7 @@ Ensuite, une fois certain que le plugin OpenZwave n'est plus indispensable, vous
 
 Si vous constatez qu'un module n'est pas ou est mal reconnu par le plugin Z-Wave JS **alors qu'il était bien pris en charge par le plugin OpenZwave**, il faut tout d'abord s'assurer que les données présentes dans la fenêtre **Valeurs** *(accessible depuis la page de l'équipement)* se mettent bien à jour lorsque le module est actionné physiquement.
 
-Ensuite, une fois certain que le module en lui-même est bien reconnu et que ses valeurs se mettent à jour, si certaines commandes restent non fonctionnelles il sera nécessaire d'[ouvrir une demande au support Jeedom](https://doc.jeedom.com/fr_FR/premiers-pas/#Support){:target="\_blank"} en fournissant impérativement les éléments suivants :
+Ensuite, une fois certain que le module en lui-même est bien reconnu et que ses valeurs se mettent à jour, si certaines commandes restent non fonctionnelles il sera nécessaire d'[ouvrir une demande au support Jeedom](https://doc.jeedom.com/fr_FR/premiers-pas/#Les%20demandes%20de%20support%20(ou%20tickets)){:target="\_blank"} en fournissant impérativement les éléments suivants :
 - Fabricant et référence exacte du module concerné,
 - Descriptif des commandes non fonctionnelles,
 - Capture d'écran des **Informations du nœud** dans la fenêtre du même nom,
