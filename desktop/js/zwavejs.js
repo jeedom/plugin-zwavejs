@@ -224,6 +224,14 @@ function printEqLogic(_eqLogic) {
         $('.eqLogicAttr[data-l1key=configuration][data-l2key=confMode]').empty()
         $('.confModes').hide()
       }
+      if (data['result']['command_counter']) {
+        $('.command_number').empty().append(data['result']['command_counter'])
+        if (data['result']['command_counter'] == '0') {
+            $('.nocommand').show()
+        } else {
+            $('.nocommand').hide()
+        }
+      }
       modifyWithoutSave = false
     }
   })

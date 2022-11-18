@@ -189,6 +189,15 @@ sendVarTojs('eqLogic_human_name', $tags);
 									<input type="text" class="eqLogicAttr form-control" data-l1key="logicalId">
 								</div>
 							</div>
+							<div class="form-group">
+								<label class="col-sm-4 control-label">{{Commandes}}
+								<sup><i class="fas fa-question-circle tooltips" title="{{Nombre de commandes actuelles en ignorant les 4 commandes techniques de chaque équipement du plugin}}"></i></sup></label>
+								<div class="col-sm-6">
+									<span class="label label-info">
+										<span class="command_number"></span>
+									</span>
+								</div>
+							</div>
 						</div>
 
 						<div class="col-lg-6">
@@ -239,6 +248,12 @@ sendVarTojs('eqLogic_human_name', $tags);
 				<hr>
 				<div class="incompleteInfo" style="display:none">
 					<div class="alert alert-warning" role="alert"> {{Le nœud n'a pas encore été initié. Il sera mis à jour automatiquement lorsque l'initialisation sera terminée. Cela prendra quelques secondes. En cas d'inclusion sécurisée ou de module sur piles cela peut être plus long. Pour un nœud sur pile si le message persiste vous pouvez essayer de le réveiller manuellement.}}</div>
+				</div>
+				<div class="nocommand" style="display:none">
+					<div class="alert alert-info" role="alert"> {{Le nœud n'a pas encore de}} <b>{{commande}}</b>. {{Cela peut arriver et peut avoir différentes causes :}}
+						<br><br>{{Soit le module c'est initié trop tôt et dans ce cas, il vous suffit de cliquer sur}}<b> {{"Synchroniser"}} </b>{{sur la page précédente et ensuite de cliquer sur}} <b>{{"Recharger commandes"}} </b>{{sur la page du tableau de commandes.}}
+						<br><br>{{Soit le module n'a pas de configuration. Vous pouvez le vérifier en cliquant sur le bouton}} <b>{{"Nœud"}}</b> {{ sur la page d'équipement. Si vous ne voyez pas de configuration à côté de}} <b>{{"Configuration Jeedom"}}. </b>{{ Alors suivez la procédure décrite dans la documentation pour soumettre la demande de configuration en apportant toutes les informations nécessaires.}}
+					</div>
 				</div>
 			</div>
 
