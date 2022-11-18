@@ -235,6 +235,10 @@ if (!isConnect('admin')) {
 								<td><a data-action="hardReset" class="btn btn-danger controller_action"><i class="fas fa-eraser"></i> {{Hard reset}}</a></td>
 								<td>{{Remise à zéro du contrôleur.}} <b>{{Remet à zéro le contrôleur et efface ses paramètres de configuration réseau.}}</b></td>
 							</tr>
+							<tr>
+								<td><a class="btn btn-danger controller_action" target="_blank" href="http://<?php echo network::getNetworkAccess('internal', 'ip') ?>:8091"><i class="fas fa-external-link-square-alt "></i> {{Interface ZwaveJs UI}}</a></td>
+								<td><b>{{Aucun support}}</b> {{ne sera fait en cas de changement d'un réglage du}}<b> {{menu configuration de ZwaveJS UI}}</b>. {{Vous pouvez changez le mot de passe utilisateur si vous le souhaitez. Vous pouvez utiliser les fonctionnalités.}}<b> {{Mais ne changez aucun réglage.}}</b> {{Les identifiants par défaut sont}} : <span class="label label-info">admin/zwave</span></td>
+							</tr>
 						</table>
 					</div>
 					<div class="tab-pane" id="statistics_network">

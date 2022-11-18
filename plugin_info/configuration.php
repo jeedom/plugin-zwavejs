@@ -40,6 +40,7 @@ if (!isConnect('admin')) {
 							echo '<option value="' . $name . '">' . $name . ' (' . $value . ')</option>';
 						}
 						?>
+						<option value="/dev/serial/by-id/usb-0658_0200-if00">{{Utile pour certains Raspberry (/dev/serial/by-id/usb-0658_0200-if00)}}</option>
 					</select>
 				</div>
 			</div>
