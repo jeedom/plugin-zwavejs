@@ -182,7 +182,7 @@ Pour aller plus loin, vous pouvez actionner physiquement le module et effectuer 
 
 >**IMPORTANT**
 >
->Nous insistons sur le fait que l'équipe ne traitera, dans un premier temps, que les demandes de configurations de module incluant tous les éléments ci-dessus et déjà fonctionnelles avec le plugin Openzwave.
+>Nous insistons sur le fait que l'équipe ne traitera, dans un premier temps, que les demandes de configurations de module incluant l'intégralité des éléments demandés ci-dessus et déjà fonctionnelles avec le plugin Openzwave.
 
 >**INFORMATION**
 >
