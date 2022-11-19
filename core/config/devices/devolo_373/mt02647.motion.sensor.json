@@ -39,7 +39,7 @@
             "configuration": {
                 "class": 48,
                 "endpoint": 0,
-                "property": "Any"
+                "property": "Motion"
             },
             "subtype": "binary",
             "display": {
