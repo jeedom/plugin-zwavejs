@@ -47,7 +47,7 @@
             "configuration": {
                 "class": 48,
                 "endpoint": 0,
-                "property": "Any"
+                "property": "Door/Window"
             },
             "subtype": "binary",
             "display": {
