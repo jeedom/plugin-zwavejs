@@ -10,7 +10,7 @@
 
 - Prise en compte de *refreshNodeCC* comme propriété d'une commande créée manuellement pour faire un refresh d'une CC
 
-**Configurations**
+**Modifications de Configurations**
 
 - Modification de la configuration *Fibaro FGR223* pour utiliser la puissance de la classe multilevel
 - Modification de la configuration *Fibaro FGR222* pour utiliser la puissance de la classe multilevel
