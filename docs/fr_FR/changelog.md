@@ -6,7 +6,7 @@
 
 # XXXXXX
 
-- Modification de la conf FGR223/FGR222 pour utiliser la puissance de la classe multilevel
+- Modification de la conf *FGR223/FGR222* pour utiliser la puissance de la classe multilevel
 -
 -
 -
