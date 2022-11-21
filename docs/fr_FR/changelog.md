@@ -4,6 +4,15 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
+# XXXXXX
+
+- Modification de la conf FGR223/FGR222 pour utiliser la puissance de la classe multilevel
+-
+-
+-
+-
+-
+
 # 18/11/2022
 
 - Ajout d'un accés à l'interface ZwaveJS UI *(dans le menu Réseau Z-Wave, onglet Actions)*. Ne pas s'en servir pour modifier des réglages!
