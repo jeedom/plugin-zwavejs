@@ -15,7 +15,7 @@
         "default": {
             "Shutter": {},
             "Scene": {},
-            "Power": {},
+            "Power": {"type": "multilevel"},
             "Energy": {}
         },
         "<=22.22": {
@@ -23,7 +23,7 @@
                 "type": "inverted"
             },
             "Scene": {},
-            "Power": {},
+            "Power": {"type": "multilevel"},
             "Energy": {}
         }
     }
