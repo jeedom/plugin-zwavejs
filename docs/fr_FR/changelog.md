@@ -9,7 +9,8 @@
 - Modification de la conf *Fibaro FGR223* pour utiliser la puissance de la classe multilevel
 - Modification de la conf *Fibaro FGR222* pour utiliser la puissance de la classe multilevel
 - Modification de la conf *Devolo mt02648* pour utiliser les propriétés et ajout des paramètres recommandés
-- Modification de la conf *Devolo mt02647* pour utiliser les propriétés et ajout des paramètres eecommandés
+- Modification de la conf *Devolo mt02647* pour utiliser les propriétés et ajout des paramètres recommandés
+- Modification de la conf *Popp Strike Lock* pour utiliser les propriétés
 -
 -
 -

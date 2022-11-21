@@ -8,50 +8,8 @@
             "1"
         ]
     },
-    "commands": [
-        {
-            "name": "On/Off",
-            "type": "action",
-            "isVisible": 1,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 98,
-                "value": "type=setvalue&value=Unsecure",
-                "index": 1,
-                "instance": 1
-            },
-            "subtype": "other"
-        },
-        {
-            "name": "On/Off (timeout)",
-            "type": "action",
-            "isVisible": 1,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 98,
-                "value": "type=setvalue&value=Unsecured+with+Timeout",
-                "index": 1,
-                "instance": 1
-            },
-            "subtype": "other"
-        },
-        {
-            "name": "Batterie",
-            "type": "info",
-            "isVisible": 0,
-            "isHistorized": 0,
-            "configuration": {
-                "minValue": 0,
-                "maxValue": 100,
-                "class": 128,
-                "endpoint": 0,
-                "property": "level"
-            },
-            "subtype": "numeric",
-            "display": {
-                "generic_type": "BATTERY"
-            },
-            "unite": "%"
-        }
-    ]
+    "properties": {
+        "Door Lock": {},
+        "Battery": {}
+    }
 }
