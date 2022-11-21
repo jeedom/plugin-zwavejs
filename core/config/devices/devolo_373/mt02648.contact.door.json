@@ -10,27 +10,30 @@
     "recommended": {
         "params": [
             {
-                "index": 4,
-                "value": 0
+                "path": "112-0-4",
+                "value": "0"
             },
             {
-                "index": 5,
-                "value": 8
+                "path": "112-0-5",
+                "value": "8"
             },
             {
-                "index": 6,
-                "value": 22
+                "path": "112-0-6",
+                "value": "22"
             },
             {
-                "index": 7,
-                "value": 20
+                "path": "112-0-7",
+                "value": "20"
             },
             {
-                "index": 11,
-                "value": 0
+                "path": "112-0-11",
+                "value": "0"
+            },
+            {
+                "path": "132-0-wakeUpInterval",
+                "value": "14400"
             }
         ],
-        "wakeup": 14400,
         "needswakeup": true
     },
     "versions": {
@@ -38,100 +41,13 @@
             "14"
         ]
     },
-    "commands": [
-        {
-            "name": "Ouverture",
-            "type": "info",
-            "isVisible": 1,
-            "isHistorized": 1,
-            "configuration": {
-                "class": 48,
-                "endpoint": 0,
-                "property": "Any"
-            },
-            "subtype": "binary",
-            "display": {
-                "invertBinary": "1",
-                "generic_type": "OPENING"
-            },
-            "template": {
-                "dashboard": "door",
-                "mobile": "door"
-            }
-        },
-        {
-            "name": "Température",
-            "type": "info",
-            "isVisible": 1,
-            "isHistorized": 1,
-            "configuration": {
-                "class": 49,
-                "endpoint": 0,
-                "property": "Air temperature"
-            },
-            "subtype": "numeric",
-            "display": {
-                "generic_type": "TEMPERATURE"
-            },
-            "unite": "°C"
-        },
-        {
-            "name": "Luminosité",
-            "type": "info",
-            "isVisible": 1,
-            "isHistorized": 1,
-            "configuration": {
-                "minValue": 0,
-                "maxValue": 100,
-                "class": 49,
-                "endpoint": 0,
-                "property": "Illuminance"
-            },
-            "subtype": "numeric",
-            "display": {
-                "generic_type": "BRIGHTNESS"
-            },
-            "unite": "%"
-        },
-        {
-            "name": "Sabotage",
-            "type": "info",
-            "isVisible": 1,
-            "isHistorized": 1,
-            "configuration": {
-                "class": 113,
-                "value": "",
-                "index": 10,
-                "instance": 1,
-                "calculValueOffset": "#value#==3"
-            },
-            "subtype": "binary",
-            "display": {
-                "invertBinary": "1",
-                "generic_type": "SABOTAGE"
-            },
-            "template": {
-                "dashboard": "alert",
-                "mobile": "alert"
-            }
-        },
-        {
-            "name": "Batterie",
-            "type": "info",
-            "isVisible": 0,
-            "isHistorized": 0,
-            "configuration": {
-                "minValue": 0,
-                "maxValue": 100,
-                "class": 128,
-                "endpoint": 0,
-                "property": "level"
-            },
-            "subtype": "numeric",
-            "display": {
-                "generic_type": "BATTERY"
-            },
-            "unite": "%"
-        }
-    ]
+    "properties": {
+        "Opening": {"type": "binary-door"},
+        "Temperature":{},
+        "Luminance":{},
+        "Battery": {},
+        "Tamper": {"type": "binary-tamper",
+            "returnStateTime": 1,
+            "returnStateValue": 0}
+    }
 }

@@ -13,7 +13,7 @@
     "properties": {
         "Shutter": {},
         "Scene": {},
-        "Power": {},
+        "Power": {"type": "multilevel"},
         "Energy": {}
     }
 }
