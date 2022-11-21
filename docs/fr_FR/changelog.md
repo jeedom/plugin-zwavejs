@@ -6,7 +6,11 @@
 
 # 21/11/2022
 
+**Améliorations**
+
 - Prise en compte de *refreshNodeCC* comme propriété d'une commande créé manuellement pour faire un refresh d'une CC
+
+**Configurations**
 
 - Modification de la conf *Fibaro FGR223* pour utiliser la puissance de la classe multilevel
 - Modification de la conf *Fibaro FGR222* pour utiliser la puissance de la classe multilevel
@@ -14,8 +18,6 @@
 - Modification de la conf *Devolo mt02647* pour utiliser les propriétés et ajout des paramètres recommandés
 - Modification de la conf *Popp Strike Lock* pour utiliser les propriétés
 - Modification de la conf *Aeotec ZWA011* pour utiliser les propriétés et ajout de son image
--
--
 
 *Si vous êtes concernés par une de ses configurations, rechargez les commandes de l'équipement en "recréant toutes les commandes".*
 
