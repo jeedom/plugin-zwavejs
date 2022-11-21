@@ -8,14 +8,14 @@
 
 **Améliorations**
 
-- Prise en compte de *refreshNodeCC* comme propriété d'une commande créé manuellement pour faire un refresh d'une CC
+- Prise en compte de *refreshNodeCC* comme propriété d'une commande créée manuellement pour faire un refresh d'une CC
 
 **Configurations**
 
 - Modification de la configuration *Fibaro FGR223* pour utiliser la puissance de la classe multilevel
 - Modification de la configuration *Fibaro FGR222* pour utiliser la puissance de la classe multilevel
-- Modification de la configuration *Devolo mt02648* pour utiliser les propriétés et ajout des paramètres recommandés
-- Modification de la configuration *Devolo mt02647* pour utiliser les propriétés et ajout des paramètres recommandés
+- Modification de la configuration *Devolo Mt02648* pour utiliser les propriétés et ajout des paramètres recommandés
+- Modification de la configuration *Devolo Mt02647* pour utiliser les propriétés et ajout des paramètres recommandés
 - Modification de la configuration *Popp Strike Lock* pour utiliser les propriétés
 - Modification de la configuration *Aeotec ZWA011* pour utiliser les propriétés et ajout de son image
 
