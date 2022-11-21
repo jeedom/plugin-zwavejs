@@ -4,7 +4,9 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
-# XXXXXX
+# 21/11/2022
+
+- Prise en compte de *refreshNodeCC* comme propriété d'une commande créé manuellement pour faire un refresh d'une CC
 
 - Modification de la conf *Fibaro FGR223* pour utiliser la puissance de la classe multilevel
 - Modification de la conf *Fibaro FGR222* pour utiliser la puissance de la classe multilevel

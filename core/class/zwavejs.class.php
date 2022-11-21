@@ -1992,6 +1992,10 @@ class zwavejsCmd extends cmd {
 			zwavejs::publishMqttApi('sendCommand', $args);
 			return;
 		}
+		if ($property == 'refreshNodeCC') {
+			zwavejs::refreshNodeCC(intval($node),intval($cc));
+			return;
+		}
 		if ($cc == 0 && $endpoint == 0) {
 			$args = array('args' => array(intval($node)));
 			zwavejs::publishMqttApi($property, $args);
