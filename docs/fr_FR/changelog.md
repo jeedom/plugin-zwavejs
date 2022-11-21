@@ -13,9 +13,11 @@
 - Modification de la conf *Devolo mt02648* pour utiliser les propriétés et ajout des paramètres recommandés
 - Modification de la conf *Devolo mt02647* pour utiliser les propriétés et ajout des paramètres recommandés
 - Modification de la conf *Popp Strike Lock* pour utiliser les propriétés
+- Modification de la conf *Aeotec ZWA011* pour utiliser les propriétés et ajout de son image
 -
 -
--
+
+*Si vous êtes concernés par une de ses configurations, rechargez les commandes de l'équipement en "recréant toutes les commandes".*
 
 # 18/11/2022
 
