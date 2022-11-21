@@ -21,6 +21,10 @@ if (!isConnect('admin')) {
 ?>
 <script type="text/javascript" src="plugins/zwavejs/3rdparty/vivagraph/vivagraph.min.js"></script>
 <style>
+	#route_network {
+		overflow-x: auto; 
+	}
+	
 	#graph_network {
 		height: 80%;
 		width: 97%;
