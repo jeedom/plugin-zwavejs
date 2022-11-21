@@ -6,6 +6,10 @@
 
 # 21/11/2022
 
+**Corrections**
+
+- Changement sur le *graphique réseaux* : seulement les premières routes directes passeront rouge au survol d'un node pour éviter sur certaines installations et certains navigateurs l'erreur *Max Stack Size Exceeded* lié aux récursions
+
 **Améliorations**
 
 - Prise en compte de *refreshNodeCC* comme propriété d'une commande créée manuellement pour faire un refresh d'une CC

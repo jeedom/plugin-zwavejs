@@ -141,9 +141,9 @@ function network_load_data() {
             linkUI.attr('stroke', isOn ? '#FF0000' : '#B7B7B7')
             linkUI.attr('marker-start', isOn ? 'url(#Triangle-red)' : 'url(#Triangle)')
           }
-          if (parseInt(link.fromId) == nodeId && link.toId != controllerId) {
-            highlightRelatedNodes(link.toId, isOn, nodeId)
-          }
+          //if (parseInt(link.fromId) == nodeId && link.toId != controllerId) {
+          //  highlightRelatedNodes(link.toId, isOn, nodeId)
+          //}
         }
       })
     }
