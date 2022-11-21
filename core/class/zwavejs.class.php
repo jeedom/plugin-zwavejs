@@ -1764,6 +1764,13 @@ class zwavejs extends eqLogic {
 	public function getEqLogicInfos() {
 		$result = array();
 		$result['interview'] = $this->getConfiguration('interview', false);
+		$command_counter = 0;
+		foreach ($this->getCmd() as $cmd){
+			if (!in_array($cmd->getLogicalId(),array('0-0-nodeStatus','0-0-pingNode','0-0-healNode','0-0-isFailedNode'))){
+				$command_counter += 1;
+			}
+		}
+		$result['command_counter'] = strval($command_counter);
 		if (!is_file(dirname(__FILE__) . '/../config/devices/' . $this->getConfFilePath())) {
 			return $result;
 		}
@@ -1811,13 +1818,6 @@ class zwavejs extends eqLogic {
 		if (isset($device['recommended'])) {
 			$result['recommended'] = $device['recommended'];
 		}
-		$command_counter = 0;
-		foreach ($this->getCmd() as $cmd){
-			if (!in_array($cmd->getLogicalId(),array('0-0-nodeStatus','0-0-pingNode','0-0-healNode','0-0-isFailedNode'))){
-				$command_counter += 1;
-			}
-		}
-		$result['command_counter'] = strval($command_counter);
 		return $result;
 	}
 

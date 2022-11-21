@@ -14,6 +14,7 @@
 
 - Prise en compte de *refreshNodeCC* comme propriété d'une commande créée manuellement pour faire un refresh d'une CC
 - Rajout d'un *scroll horizontal* sur la modal réseau / onglet *table de routage* (thx @Salvialf)
+- Déplacement du *compteur de commandes* sur la partie droite de la page équipement
 
 **Modifications de Configurations**
 
