@@ -56,7 +56,7 @@ function getWaiting() {
             tr += '<span class="label label-info" style="font-size : 1em;">' + waiting[i].date + '</span>';
             tr += '</td>';
             tr += '<td>';
-            tr += '<td><a class="btn btn-danger btn-xs removeHist" data-id="' + waiting[i].id + '" data-property="' + waiting[i].property + '"><i class="fas fa-eraser"></i> Supprimer</a><sup><i class="fas fa-question-circle tooltips" title="{{Cela supprimera l\'élément de la liste d\'attente Jeedom mais le paramètre sera toujours envoyé. Utile pour des paramètres qui ne retournent pas la même valeur que celle envoyée (calibration par exemple)}}"></i></sup></td>';
+            tr += '<td><a class="btn btn-danger btn-xs removeHist" data-id="' + waiting[i].id + '" data-property="' + waiting[i].property + '"><i class="fas fa-eraser"></i> Supprimer</a> <sup><i class="fas fa-question-circle tooltips" title="{{Cela supprimera l\'élément de la liste d\'attente Jeedom mais le paramètre sera toujours envoyé. Utile pour des paramètres qui ne retournent pas la même valeur que celle envoyée (calibration par exemple)}}"></i></sup></td>';
             tr += '</td>';
             tr += '</tr>';
           }
