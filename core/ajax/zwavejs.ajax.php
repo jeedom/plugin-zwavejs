@@ -139,6 +139,22 @@ try {
 		}
 		ajax::success($eqLogic->getEqLogicInfos());
 	}
+	
+	if (init('action') == 'getWaiting') {
+		ajax::success(zwavejs::getWaiting());
+	}
+	
+	if (init('action') == 'removeWaiting') {
+		$eqLogic = zwavejs::byLogicalId(init('logicalId'), 'zwavejs');
+		if (is_object($eqLogic)) {
+			$waiting = $eqLogic->getCache('waiting',array());
+			if (isset($waiting[init('property')])){
+				unset($waiting[init('property')]);
+				$eqLogic->setCache('waiting',$waiting);
+			}
+		}
+		ajax::success(zwavejs::getWaiting());
+	}
 
 	throw new Exception(__('Aucune méthode correspondante', __FILE__));
 	/*     * *********Catch exeption*************** */

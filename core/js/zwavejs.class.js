@@ -343,6 +343,47 @@ jeedom.zwavejs.file.get = function(_params) {
 	$.ajax(paramsAJAX)
 }
 
+/*************************Waiting************************************************/
+jeedom.zwavejs.waiting = function() {
+}
+
+jeedom.zwavejs.waiting.get = function(_params) {
+	var paramsRequired = []
+	var paramsSpecifics = {}
+	try {
+		jeedom.private.checkParamsRequired(_params || {}, paramsRequired)
+	} catch (e) {
+		(_params.error || paramsSpecifics.error || jeedom.private.default_params.error)(e)
+		return
+	}
+	var params = $.extend({}, jeedom.private.default_params, paramsSpecifics, _params || {})
+	var paramsAJAX = jeedom.private.getParamsAJAX(params)
+	paramsAJAX.url = 'plugins/zwavejs/core/ajax/zwavejs.ajax.php'
+	paramsAJAX.data = {
+		action: 'getWaiting'
+	}
+	$.ajax(paramsAJAX)
+}
+
+jeedom.zwavejs.waiting.remove = function(_params) {
+	var paramsRequired = ['logical','property']
+	var paramsSpecifics = {}
+	try {
+		jeedom.private.checkParamsRequired(_params || {}, paramsRequired)
+	} catch (e) {
+		(_params.error || paramsSpecifics.error || jeedom.private.default_params.error)(e)
+		return
+	}
+	var params = $.extend({}, jeedom.private.default_params, paramsSpecifics, _params || {})
+	var paramsAJAX = jeedom.private.getParamsAJAX(params)
+	paramsAJAX.url = 'plugins/zwavejs/core/ajax/zwavejs.ajax.php'
+	paramsAJAX.data = {
+		action: 'removeWaiting',
+		logicalId: _params.logical,
+		property: _params.property
+	}
+	$.ajax(paramsAJAX)
+}
 
 /*************************network************************************************/
 
