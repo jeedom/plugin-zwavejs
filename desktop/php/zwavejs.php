@@ -86,6 +86,11 @@ sendVarTojs('eqLogic_human_name', $tags);
 				<br>
 				<span>{{Statistiques}}</span>
 			</div>
+			<div class="cursor logoSecondary" id="bt_zwaveWaiting">
+				<i class="fa fa-user-clock"></i>
+				<br>
+				<span>{{En attente}}</span>
+			</div>
 		</div>
 		<legend><i class="fas fa-broadcast-tower"></i> {{Mes équipements Z-Wave}}</legend>
 		<?php

@@ -17,13 +17,24 @@
         "Le mode exclusion est actif": "Le mode exclusion est actif",
         "Un périphérique vient d\\'être inclu\/exclu.": "Un périphérique vient d\\'être inclu\/exclu."
     },
+    "plugins\/zwavejs\/mobile\/html\/waiting.html": {
+        "Aucun paramètre en attente": "Aucun paramètre en attente",
+        "Equipement": "Equipement",
+        "Paramètres": "Paramètres",
+        "Valeurs": "Valeurs",
+        "Date": "Date",
+        "": "",
+        "Action réalisée avec succès": "Action réalisée avec succès"
+    },
     "plugins\/zwavejs\/mobile\/html\/zwavejs.html": {
         "Inclusions": "Inclusions",
         "Réseau": "Réseau",
         "Santé Z-Wave": "Santé Z-Wave",
         "Santé": "Santé",
         "Statistiques Z-Wave": "Statistiques Z-Wave",
-        "Statistiques": "Statistiques"
+        "Statistiques": "Statistiques",
+        "Paramètres en attente": "Paramètres en attente",
+        "En attente": "En attente"
     },
     "plugins\/zwavejs\/mobile\/html\/stats.html": {
         "Messages transmis TX": "Messages transmis TX",
@@ -71,6 +82,16 @@
         "Clé de sécurité S2 Unauthenticated": "Clé de sécurité S2 Unauthenticated",
         "Êtes-vous sûr de vouloir réinitialiser la clé": "Êtes-vous sûr de vouloir réinitialiser la clé",
         "La prise en compte sera effective après sauvegarde et relance du démon.": "La prise en compte sera effective après sauvegarde et relance du démon."
+    },
+    "plugins\/zwavejs\/desktop\/modal\/waiting.php": {
+        "Accès non autorisé": "Accès non autorisé",
+        "Aucun paramètre en attente": "Aucun paramètre en attente",
+        "Id": "Id",
+        "Equipement": "Equipement",
+        "Paramètres": "Paramètres",
+        "Valeurs": "Valeurs",
+        "Date": "Date",
+        "": ""
     },
     "plugins\/zwavejs\/desktop\/modal\/health.php": {
         "Accès non autorisé": "Accès non autorisé",
@@ -258,6 +279,7 @@
         "Réseau Z-Wave": "Réseau Z-Wave",
         "Santé": "Santé",
         "Statistiques": "Statistiques",
+        "En attente": "En attente",
         "Mes équipements Z-Wave": "Mes équipements Z-Wave",
         "Aucun équipement trouvé": "Aucun équipement trouvé",
         "Rechercher": "Rechercher",
@@ -277,13 +299,13 @@
         "Activer": "Activer",
         "Visible": "Visible",
         "Id du nœud Z-Wave": "Id du nœud Z-Wave",
-        "Nombre de commandes actuelles en ignorant les 4 commandes techniques de chaque équipement du plugin": "Nombre de commandes actuelles en ignorant les 4 commandes techniques de chaque équipement du plugin",
         "Informations": "Informations",
         "Modèle": "Modèle",
         "Configuration recommandée": "Configuration recommandée",
         "Firmware": "Firmware",
         "Mode": "Mode",
         "Permet de recréer les commandes en fonction du mode de fonctionnement du module désiré. Sauver le mode puis sur la page de commande rechargez vos commandes": "Permet de recréer les commandes en fonction du mode de fonctionnement du module désiré. Sauver le mode puis sur la page de commande rechargez vos commandes",
+        "Nombre de commandes actuelles en ignorant les 4 commandes techniques de chaque équipement du plugin": "Nombre de commandes actuelles en ignorant les 4 commandes techniques de chaque équipement du plugin",
         "Visuel": "Visuel",
         "Informations du nœud": "Informations du nœud",
         "Nœud": "Nœud",
@@ -303,6 +325,7 @@
         " sur la page d'équipement. Si vous ne voyez pas de configuration à côté de": " sur la page d'équipement. Si vous ne voyez pas de configuration à côté de",
         "Configuration Jeedom": "Configuration Jeedom",
         " Alors suivez la procédure décrite dans la documentation pour soumettre la demande de configuration en apportant toutes les informations nécessaires.": " Alors suivez la procédure décrite dans la documentation pour soumettre la demande de configuration en apportant toutes les informations nécessaires.",
+        "Soit cela est normal, dans le cas d'un répéteur ou d'un controlleur par exemple": "Soit cela est normal, dans le cas d'un répéteur ou d'un controlleur par exemple",
         "Nom": "Nom",
         "Type": "Type",
         "Classe": "Classe",
@@ -338,6 +361,7 @@
         "Réseau Z-Wave": "Réseau Z-Wave",
         "Statistiques Z-Wave": "Statistiques Z-Wave",
         "Santé Z-Wave": "Santé Z-Wave",
+        "Paramètres en attente": "Paramètres en attente",
         "Aucune Commande\/Propriété Jeedom": "Aucune Commande\/Propriété Jeedom",
         "Le mode inclusion est actif": "Le mode inclusion est actif",
         "Le mode exclusion est actif": "Le mode exclusion est actif",
@@ -397,6 +421,10 @@
     "plugins\/zwavejs\/desktop\/js\/health.js": {
         "Action réalisée avec succès": "Action réalisée avec succès",
         "Chargement des informations en cours": "Chargement des informations en cours"
+    },
+    "plugins\/zwavejs\/desktop\/js\/waiting.js": {
+        "Action réalisée avec succès": "Action réalisée avec succès",
+        "Cela supprimera l\\'élément de la liste d\\'attente Jeedom mais le paramètre sera toujours envoyé. Utile pour des paramètres qui ne retournent pas la même valeur que celle envoyée (calibration par exemple)": "Cela supprimera l\\'élément de la liste d\\'attente Jeedom mais le paramètre sera toujours envoyé. Utile pour des paramètres qui ne retournent pas la même valeur que celle envoyée (calibration par exemple)"
     },
     "plugins\/zwavejs\/desktop\/js\/nodeGroups.js": {
         "Action réalisée avec succès": "Action réalisée avec succès",

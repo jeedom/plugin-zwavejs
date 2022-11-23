@@ -53,6 +53,22 @@
 			"display": {
 				"generic_type": "LOCK_OPEN"
 			}
+		},
+		{
+			"name": "Déverrouillage (avec timeout)",
+			"type": "action",
+			"isVisible": 0,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 98,
+				"endpoint": 0,
+				"property": "targetMode",
+				"value": "1"
+			},
+			"subtype": "other",
+			"display": {
+				"generic_type": "LOCK_OPEN"
+			}
 		}
 	]
 }

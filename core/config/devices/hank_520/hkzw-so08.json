@@ -1,0 +1,21 @@
+{
+    "name": "Smart Plug (HKZW-SO08)",
+    "type": "Prise",
+    "comlink": "",
+    "remark": "",
+    "versions": {
+        "256": [
+            "25"
+        ]
+    },
+    "properties": {
+        "Switch": {
+            "type": "prise"
+        },
+        "Power": {},
+        "Energy": {},
+        "Voltage": {},
+        "Current": {},
+        "Scene": {}
+    }
+}

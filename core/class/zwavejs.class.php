@@ -293,6 +293,7 @@ class zwavejs extends eqLogic {
 		}
 		config::save('lastStart', time(), __CLASS__);
 		message::removeAll(__CLASS__, 'unableStartDeamon');
+		self::cleanHistory();
 		// log::add(__CLASS__, 'info', 'Démon zwavejs lancé');
 		return true;
 	}
@@ -405,7 +406,7 @@ class zwavejs extends eqLogic {
 
 	public static function handleEvents($_events) {
 		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . "Traitement d'un Event");
-		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . json_encode($_events));
+		//log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . json_encode($_events));
 		$gateway = array_key_first($_events);
 		$event = $_events[$gateway];
 		foreach ($event as $key => $value) {
@@ -727,7 +728,7 @@ class zwavejs extends eqLogic {
 
 	public static function handleNodeValueUpdateDirect($_nodeId, $_value_update) {
 		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . "Traitement d'un update de value d'un node direct");
-		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . $_nodeId . ' ' . json_encode($_value_update));
+		//log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . $_nodeId . ' ' . json_encode($_value_update));
 		$eqLogic = self::byLogicalId($_nodeId, __CLASS__);
 		$flatten = self::flatten_array($_value_update);
 		// log::add(__CLASS__, 'debug', json_encode($flatten, true));
@@ -761,6 +762,13 @@ class zwavejs extends eqLogic {
 	public static function publishMqttValue($_node, $_path, $_args = array()) {
 		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . 'Publication Mqtt Value' . $_node . ' ' . $_path . ' ' . json_encode($_args));
 		mqtt2::publish(config::byKey('prefix', __CLASS__, 'zwave') . '/' . $_node . '/' . $_path . '/set', $_args);
+	}
+	
+	public static function cleanHistory() {
+		foreach (self::byType(__CLASS__) as $eqLogic) {
+			$eqLogic->setCache('waiting',array());
+		}
+		return ;
 	}
 
 	public static function getInfo() {
@@ -843,6 +851,7 @@ class zwavejs extends eqLogic {
 		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . $_fullpath . ' ' . $_value);
 		$detailsPath = explode('-', $_fullpath, 2);
 		self::publishMqttValue($detailsPath[0], str_replace('-', '/', $detailsPath[1]), $_value);
+		self::handleSetHistory($_fullpath,$_value);
 	}
 
 	public static function setPolling($_nodeId, $_cc, $_endpoint, $_property, $_value) {
@@ -852,6 +861,23 @@ class zwavejs extends eqLogic {
 			$pollConfig[$_endpoint . '-' . $_cc . '-' . $_property] = $_value;
 			$eqLogic->setConfiguration('polling', $pollConfig);
 			$eqLogic->save();
+		}
+	}
+
+	public static function handleSetHistory($_fullpath, $_value) {
+		$elements = explode('-', str_replace('_', ' ', $_fullpath), 4);
+		$eqLogic = self::byLogicalId($elements[0], __CLASS__);
+		if (is_object($eqLogic)) {
+			$class = $elements[1];
+			$endpoint = $elements[2];
+			$property = $elements[3];
+			$logical = $class . '-' . $endpoint . '-' . $property;
+			if (in_array($class,array('112','132'))){
+				$waiting = $eqLogic->getCache('waiting',array());
+				$waiting[$logical] = array('value'=>$_value,'date'=>date("d/m/Y H:i:s")); 
+				log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . $logical . ' ' . $_value);
+				$eqLogic->setCache('waiting',$waiting);
+			}
 		}
 	}
 
@@ -1010,6 +1036,7 @@ class zwavejs extends eqLogic {
 	public static function constructValuePage($_nodeId, $_values, $_nodeStatus) {
 		$nodeValuesDict = array();
 		$eqLogic = self::byLogicalId($_nodeId, __CLASS__);
+		$waiting = $eqLogic->getCache('waiting',array());
 		$nodeValues = '<div class="panel-group" id="accordionValues">';
 		foreach ($_values as $key => $value) {
 			$value['oriKey'] = $key;
@@ -1041,12 +1068,22 @@ class zwavejs extends eqLogic {
 					$nodeValues .= '<td>' . $data['property'] . '</td>';
 					$prop = $data['property'];
 				}
+				$globProperty=$cc.'-'.$data['endpoint'].'-'.$prop;
 				if (isset($data['description'])) {
 					$nodeValues .= '<td style="width:30%">' . $data['label'] . ' <sup><i class="fas fa-question-circle tooltips" title="' . $data['description'] . '"></i><sup></td>';
 				} else {
 					$nodeValues .= '<td style="width:30%">' . $data['label'] . '</td>';
 				}
 				$nodeValues .= '<td style="width:30%">';
+				$waitingValue = '';
+				if (isset($waiting[$globProperty])){
+					if ($waiting[$globProperty]['value'] == $data['value']){
+						unset($waiting[$globProperty]);
+						$eqLogic->setCache('waiting',$waiting);
+					} else {
+						$waitingValue = $waiting[$globProperty]['value'];
+					}
+				}
 				$tooltip = '';
 				if ($data['readable']) {
 					if (!isset($data['value'])) {
@@ -1112,7 +1149,10 @@ class zwavejs extends eqLogic {
 				}
 				$span .= $finalValue . '</span>';
 				if ($tooltip != '') {
-					$span .= ' <sup><i class="fas fa-question-circle tooltips" title="' . $tooltip . '"></i><sup>';
+					$span .= ' <sup><i class="fas fa-question-circle tooltips" title="' . $tooltip . '"></i></sup>';
+				}
+				if ($waitingValue != ''){
+					$span.=' <i class="fas fa-user-clock icon_orange" title="Paramètre demandé"><sup>'.$waitingValue.'</sup></i>';
 				}
 				$updates[str_replace(' ', '_', $data['id'])] = array('value' => $span);
 				$nodeValues .= '<span class="' . str_replace(' ', '_', $data['id']) . '">' . $span . '</span>';
@@ -1449,7 +1489,30 @@ class zwavejs extends eqLogic {
 			}
 		}
 	}
-
+	
+	public static function getWaiting() {
+		$globWaiting = array();
+		foreach (self::byType(__CLASS__) as $eqLogic) {
+			$waitings = $eqLogic->getCache('waiting',array());
+			if (is_object($eqLogic)) {
+				$image = 'plugins/zwavejs/core/config/devices/' . $eqLogic->getImgFilePath();
+				if (!is_file(dirname(__FILE__) . '/../config/devices/' . $eqLogic->getImgFilePath())) {
+					$image = 'plugins/zwavejs/plugin_info/zwavejs_icon.png';
+				}
+				foreach ($waitings as $property=>$data){
+					$globWaiting[] = array('id'=>$eqLogic->getLogicalId(),
+										'eqId'=>$eqLogic->getId(),
+										'image'=>$image,
+										'name'=>$eqLogic->getHumanName(true),
+										'property'=>$property,
+										'value'=>$data['value'],
+										'date'=>$data['date']
+									);
+				}
+			}
+		}
+		return $globWaiting;
+	}
 	/*     * *********************Methode d'instance************************* */
 
 	public function handleCommandUpdate($_change, $_init = false) {
@@ -1480,7 +1543,8 @@ class zwavejs extends eqLogic {
 			"Door-Window" => "Door/Window",
 			"Air_temperature" => "Air temperature"
 		);
-		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . $_cmdId . ' ' . $_value);
+		//log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . $_cmdId . ' ' . $_value);
+		$waiting = $this->getCache('waiting',array());
 		$_cmdId = str_replace('_', ' ', $_cmdId);
 		$cmdId = explode('-', $_cmdId, 3);
 		$class = $cmdId[0];
@@ -1525,6 +1589,12 @@ class zwavejs extends eqLogic {
 		if ($label) {
 			// log::add(__CLASS__, 'debug', $label);
 			$this->checkAndUpdateCmd($_cmdId . '-label', $label);
+		}
+		if (isset($waiting[$_cmdId])){
+			if ($waiting[$_cmdId]['value'] == $_value){
+				unset($waiting[$_cmdId]);
+				$this->setCache('waiting',$waiting);
+			}
 		}
 	}
 

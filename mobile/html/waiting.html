@@ -1,0 +1,81 @@
+<div id="div_waitingAlert" style="display: none;"></div>
+<div class="alert alert-warning noparam" style="display: none;">{{Aucun paramètre en attente}}</div>
+<div class="modalWaiting">
+	<table class="table table-condensed tableWaiting" id="table_waiting">
+		<thead>
+			<tr>
+				<th>{{Equipement}}</th>
+				<th>{{Paramètres}}</th>
+				<th>{{Valeurs}}</th>
+				<th>{{Date}}</th>
+				<th>{{}}</th>
+			</tr>
+		</thead>
+		<tbody>
+
+		</tbody>
+	</table>
+</div>
+
+<script src="core/php/getJS.php?file=plugins/zwavejs/core/js/zwavejs.class.js"></script>
+<script>
+	$('#table_waiting').off().on('click', '.removeHist', function() {
+  jeedom.zwavejs.waiting.remove({
+    logical: $(this).attr('data-id'),
+    property: $(this).attr('data-property'),
+    error: function(error) {
+      $('#div_waitingAlert').showAlert({ message: error.message, level: 'danger' })
+    },
+    success: function(data) {
+      $('#div_waitingAlert').showAlert({ message: '{{Action réalisée avec succès}}', level: 'success' })
+    }
+  })
+})
+
+function getWaiting() {
+  jeedom.zwavejs.waiting.get({
+    global: false,
+    error: function(error) {
+      $('#div_waitingAlert').showAlert({ message: error.message, level: 'danger' })
+      if ($('.modalWaiting').is(":visible")) {
+        setTimeout(function() { getWaiting() }, 2000)
+      }
+    },
+    success: function(waiting) {
+        if (waiting.length>0){
+          tr = '';
+          for (var i in waiting) {
+            tr += '<tr data-id="' + waiting[i].id + '">';
+            tr += '<td>';
+            tr += '<img src="' + waiting[i].image + '" height="40"/> '+waiting[i].name + '</a>';
+            tr += '</td>';
+            tr += '<td>';
+            tr += '<span>' + waiting[i].property + '</span>';
+            tr += '</td>';
+            tr += '<td>';
+            tr += '<span>' + waiting[i].value + '</span>';
+            tr += '</td>';
+            tr += '<td>';
+            tr += '<span>' + waiting[i].date + '</span>';
+            tr += '</td>';
+            tr += '<td>';
+            tr += '<td><span class="removeHist" data-id="' + waiting[i].id + '" data-property="' + waiting[i].property + '"><i class="fas fa-eraser"></i></span></td>';
+            tr += '</td>';
+            tr += '</tr>';
+          }
+            $('.noparam').hide();
+            $('.tableWaiting tbody').empty().append(tr)
+        } else {
+            $('.tableWaiting tbody').empty()
+            $('.noparam').show();
+        }
+        if ($('.modalWaiting').is(":visible")) {
+          setTimeout(function() { getWaiting() }, 2000)
+        }
+    }
+  })
+}
+
+
+getWaiting();
+</script>

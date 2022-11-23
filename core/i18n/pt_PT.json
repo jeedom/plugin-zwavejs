@@ -17,13 +17,24 @@
         "Le mode exclusion est actif": "O modo de exclusão está ativo",
         "Un périphérique vient d\\'être inclu\/exclu.": "Um dispositivo acaba de ser incluído\/excluído"
     },
+    "plugins\/zwavejs\/mobile\/html\/waiting.html": {
+        "Aucun paramètre en attente": "Nenhum parâmetro pendente",
+        "Equipement": "Equipamento",
+        "Paramètres": "Definições",
+        "Valeurs": "Valores",
+        "Date": "Encontro",
+        "": "",
+        "Action réalisée avec succès": "Ação concluída com sucesso"
+    },
     "plugins\/zwavejs\/mobile\/html\/zwavejs.html": {
         "Inclusions": "Inclusões",
         "Réseau": "Rede",
         "Santé Z-Wave": "Saúde da onda Z",
         "Santé": "Saúde",
         "Statistiques Z-Wave": "Estatísticas de onda Z",
-        "Statistiques": "Estatisticas"
+        "Statistiques": "Estatisticas",
+        "Paramètres en attente": "Parâmetros Pendentes",
+        "En attente": "Pendente"
     },
     "plugins\/zwavejs\/mobile\/html\/stats.html": {
         "Messages transmis TX": "Mensagens transmitidas TX",
@@ -71,6 +82,16 @@
         "Clé de sécurité S2 Unauthenticated": "Chave de segurança S2 não autenticada",
         "Êtes-vous sûr de vouloir réinitialiser la clé": "Tem certeza de que deseja redefinir a chave",
         "La prise en compte sera effective après sauvegarde et relance du démon.": "A consideração será efetiva após salvar e reiniciar o daemon"
+    },
+    "plugins\/zwavejs\/desktop\/modal\/waiting.php": {
+        "Accès non autorisé": "Acesso não autorizado",
+        "Aucun paramètre en attente": "Nenhum parâmetro pendente",
+        "Id": "EU IRIA",
+        "Equipement": "Equipamento",
+        "Paramètres": "Definições",
+        "Valeurs": "Valores",
+        "Date": "Encontro",
+        "": ""
     },
     "plugins\/zwavejs\/desktop\/modal\/health.php": {
         "Accès non autorisé": "Acesso não autorizado",
@@ -258,6 +279,7 @@
         "Réseau Z-Wave": "Rede Z-Wave",
         "Santé": "Saúde",
         "Statistiques": "Estatisticas",
+        "En attente": "Pendente",
         "Mes équipements Z-Wave": "Meus dispositivos Z-Wave",
         "Aucun équipement trouvé": "Nenhum equipamento encontrado",
         "Rechercher": "Pesquisar",
@@ -277,13 +299,13 @@
         "Activer": "Habilitar",
         "Visible": "Visível",
         "Id du nœud Z-Wave": "ID do nó Z-Wave",
-        "Nombre de commandes actuelles en ignorant les 4 commandes techniques de chaque équipement du plugin": "Número de comandos atuais ignorando os 4 comandos técnicos de cada equipamento do plugin",
         "Informations": "Em formação",
         "Modèle": "Modelo",
         "Configuration recommandée": "Configuração recomendada",
         "Firmware": "Firmware",
         "Mode": "Moda",
         "Permet de recréer les commandes en fonction du mode de fonctionnement du module désiré. Sauver le mode puis sur la page de commande rechargez vos commandes": "Permite recriar os comandos de acordo com o modo de operação do módulo desejado. Salve o modo e na página de pedidos recarregue seus pedidos",
+        "Nombre de commandes actuelles en ignorant les 4 commandes techniques de chaque équipement du plugin": "Número de comandos atuais ignorando os 4 comandos técnicos de cada equipamento do plugin",
         "Visuel": "Visual",
         "Informations du nœud": "Informações do nó",
         "Nœud": "Nó",
@@ -303,6 +325,7 @@
         " sur la page d'équipement. Si vous ne voyez pas de configuration à côté de": "na página do equipamento. Se você não vir uma configuração ao lado de",
         "Configuration Jeedom": "Jeedom Setup",
         " Alors suivez la procédure décrite dans la documentation pour soumettre la demande de configuration en apportant toutes les informations nécessaires.": "Em seguida, siga o procedimento descrito na documentação para enviar a solicitação de configuração fornecendo todas as informações necessárias",
+        "Soit cela est normal, dans le cas d'un répéteur ou d'un controlleur par exemple": "Ou isso é normal, no caso de um repetidor ou controlador, por exemplo",
         "Nom": "Nome",
         "Type": "Gentil",
         "Classe": "Sala de aula",
@@ -338,6 +361,7 @@
         "Réseau Z-Wave": "Rede Z-Wave",
         "Statistiques Z-Wave": "Estatísticas de onda Z",
         "Santé Z-Wave": "Saúde da onda Z",
+        "Paramètres en attente": "Parâmetros Pendentes",
         "Aucune Commande\/Propriété Jeedom": "Nenhum pedido\/propriedade Jeedom",
         "Le mode inclusion est actif": "O modo de inclusão está ativo",
         "Le mode exclusion est actif": "O modo de exclusão está ativo",
@@ -397,6 +421,10 @@
     "plugins\/zwavejs\/desktop\/js\/health.js": {
         "Action réalisée avec succès": "Ação concluída com sucesso",
         "Chargement des informations en cours": "Carregando informações em andamento"
+    },
+    "plugins\/zwavejs\/desktop\/js\/waiting.js": {
+        "Action réalisée avec succès": "Ação concluída com sucesso",
+        "Cela supprimera l\\'élément de la liste d\\'attente Jeedom mais le paramètre sera toujours envoyé. Utile pour des paramètres qui ne retournent pas la même valeur que celle envoyée (calibration par exemple)": "Isso removerá o item da lista de espera do Jeedom, mas a configuração ainda será enviada. Útil para parâmetros que não retornam o mesmo valor que o enviado (calibração por exemplo)"
     },
     "plugins\/zwavejs\/desktop\/js\/nodeGroups.js": {
         "Action réalisée avec succès": "Ação concluída com sucesso",

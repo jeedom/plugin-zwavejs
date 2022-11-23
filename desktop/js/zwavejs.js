@@ -166,6 +166,11 @@ $('#bt_zwaveHealth').on('click', function() {
   $('#md_modal').load('index.php?v=d&plugin=zwavejs&modal=health').dialog('open')
 })
 
+$('#bt_zwaveWaiting').on('click', function() {
+  $('#md_modal').dialog({ title: "{{Paramètres en attente}}" })
+  $('#md_modal').load('index.php?v=d&plugin=zwavejs&modal=waiting').dialog('open')
+})
+
 if (is_numeric(getUrlVars('logical_id'))) {
   if ($('.eqLogicDisplayCard[data-logical-id=' + getUrlVars('logical_id') + ']').length != 0) {
     setTimeout(function() {
