@@ -17,7 +17,7 @@
 **Modifications de Configurations**
 
 - Modification de la configuration *Popp Strike Lock* pour utiliser la propriété opening (pour le contact)
-- Modification de la configuration *Fibaro FGD212* pour ajouter la gestion des différences à partir du firmware 3.5 (endpoint 1 sur firmware <= 3.4 endpoint 0 sinon)
+- Modification de la configuration *Fibaro FGD212* pour ajouter la gestion des différences à partir du firmware 3.5 (endpoint 1 sur firmware <= 3.4 endpoint 0 sur target seulement sinon)
 - Modification de la propriété *Door Lock* pour ajouter le Déverrouillage (avec timeout) sur tous les dispositifs utilisant cette propriété
 
 **Ajouts de Configurations**

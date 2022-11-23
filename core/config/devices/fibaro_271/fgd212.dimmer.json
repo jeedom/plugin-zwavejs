@@ -15,9 +15,9 @@
     },
     "properties": {
         "default":{
-            "Multilevel": {"type": "onlevel"},
-            "Power": {"type": "multilevel"},
-            "Energy": {},
+            "Multilevel": {"type": "onlevel-endpointTarget","replace": {"#endpoint#": 1,"#endpoint-targetValue#": 0}},
+            "Power": {"type": "multilevel","replace": {"#endpoint#": 1}},
+            "Energy": {"replace": {"#endpoint#": 1}},
             "Scene": {}
         },
         "<=3.4":{
