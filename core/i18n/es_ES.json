@@ -17,13 +17,24 @@
         "Le mode exclusion est actif": "El modo de exclusión está activo",
         "Un périphérique vient d\\'être inclu\/exclu.": "Un dispositivo acaba de ser incluido\/excluido"
     },
+    "plugins\/zwavejs\/mobile\/html\/waiting.html": {
+        "Aucun paramètre en attente": "Sin parámetros pendientes",
+        "Equipement": "Equipo",
+        "Paramètres": "Configuraciones",
+        "Valeurs": "Valores",
+        "Date": "Fecha",
+        "": "",
+        "Action réalisée avec succès": "Acción completada con éxito"
+    },
     "plugins\/zwavejs\/mobile\/html\/zwavejs.html": {
         "Inclusions": "Inclusiones",
         "Réseau": "La red",
         "Santé Z-Wave": "Salud de onda Z",
         "Santé": "Salud",
         "Statistiques Z-Wave": "Estadísticas de onda Z",
-        "Statistiques": "Estadísticas"
+        "Statistiques": "Estadísticas",
+        "Paramètres en attente": "Parámetros pendientes",
+        "En attente": "A la espera"
     },
     "plugins\/zwavejs\/mobile\/html\/stats.html": {
         "Messages transmis TX": "Mensajes transmitidos TX",
@@ -71,6 +82,16 @@
         "Clé de sécurité S2 Unauthenticated": "Clave de seguridad S2 no autenticada",
         "Êtes-vous sûr de vouloir réinitialiser la clé": "¿Está seguro de que desea restablecer la clave?",
         "La prise en compte sera effective après sauvegarde et relance du démon.": "La toma en cuenta será efectiva después de guardar y reiniciar el daemon"
+    },
+    "plugins\/zwavejs\/desktop\/modal\/waiting.php": {
+        "Accès non autorisé": "Acceso no autorizado",
+        "Aucun paramètre en attente": "Sin parámetros pendientes",
+        "Id": "IDENTIFICACIÓN",
+        "Equipement": "Equipo",
+        "Paramètres": "Configuraciones",
+        "Valeurs": "Valores",
+        "Date": "Fecha",
+        "": ""
     },
     "plugins\/zwavejs\/desktop\/modal\/health.php": {
         "Accès non autorisé": "Acceso no autorizado",
@@ -258,6 +279,7 @@
         "Réseau Z-Wave": "Red Z-Wave",
         "Santé": "Salud",
         "Statistiques": "Estadísticas",
+        "En attente": "A la espera",
         "Mes équipements Z-Wave": "Mis dispositivos Z-Wave",
         "Aucun équipement trouvé": "No se encontró equipo",
         "Rechercher": "Buscar",
@@ -339,6 +361,7 @@
         "Réseau Z-Wave": "Red Z-Wave",
         "Statistiques Z-Wave": "Estadísticas de onda Z",
         "Santé Z-Wave": "Salud de onda Z",
+        "Paramètres en attente": "Parámetros pendientes",
         "Aucune Commande\/Propriété Jeedom": "Orden de no Jeedom\/Propiedad",
         "Le mode inclusion est actif": "El modo de inclusión está activo",
         "Le mode exclusion est actif": "El modo de exclusión está activo",
@@ -398,6 +421,10 @@
     "plugins\/zwavejs\/desktop\/js\/health.js": {
         "Action réalisée avec succès": "Acción completada con éxito",
         "Chargement des informations en cours": "Cargando información en progreso"
+    },
+    "plugins\/zwavejs\/desktop\/js\/waiting.js": {
+        "Action réalisée avec succès": "Acción completada con éxito",
+        "Cela supprimera l\\'élément de la liste d\\'attente Jeedom mais le paramètre sera toujours envoyé. Utile pour des paramètres qui ne retournent pas la même valeur que celle envoyée (calibration par exemple)": "Esto eliminará el elemento de la lista de espera de Jeedom, pero la configuración aún se enviará. Útil para parámetros que no devuelven el mismo valor que el enviado (calibración por ejemplo)"
     },
     "plugins\/zwavejs\/desktop\/js\/nodeGroups.js": {
         "Action réalisée avec succès": "Acción completada con éxito",
