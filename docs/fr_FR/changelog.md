@@ -13,6 +13,12 @@
 - Rajout d'une page webapp permettant de voir tous les *paramètres* en attente
 - Rajout d'un bouton supprimer sur la page *En attente*. Permet de supprimer une ligne en attente. Celui-ci ne supprime pas l'ordre qui a été envoyé au contrôleur mais seulement l'information en attente dans Jeedom (utile pour les paramètres de calibration par exemple qui ne prennent jamais la valeur envoyée ou tout autre paramètre où ca serait inutile)
 
+
+**Modifications de Configurations**
+
+- Modification de la configuration *Popp Strike Lock* pour utiliser la propriété opening (pour le contact)
+- Modification de la propriété *Door Lock* pour ajouter le Déverrouillage (avec timeout) sur tous les dispositifs utilisant cette propriété
+
 # 21/11/2022
 
 **Corrections**
