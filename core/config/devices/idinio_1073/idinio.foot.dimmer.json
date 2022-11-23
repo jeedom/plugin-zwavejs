@@ -1,0 +1,14 @@
+{
+    "name": "Idinio foot Dimmer",
+    "type": "dimmer",
+    "versions": {
+        "514": [
+            "2"
+        ]
+    },
+    "properties": {
+        "Multilevel": {},
+        "Power":{},
+        "Energy":{}
+    }
+}
