@@ -26,7 +26,7 @@
 - Ajout de la configuration *Idinio foot dimmer* (propriétés : Multilevel, Power, Energy)
 - Ajout des paramètres pour *Hank Smart Plug (HKZW-SO08)*
 
-*Si vous êtes concernés par une de ses configurations, rechargez les commandes de l'équipement en "recréant toutes les commandes" après la mise à jour.*
+*Si vous êtes concernés par une modification ou un ajout de configuration, rechargez les commandes de l'équipement en "recréant toutes les commandes" après la mise à jour.*
 
 # 21/11/2022
 
