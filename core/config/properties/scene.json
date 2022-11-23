@@ -9,7 +9,7 @@
 			"configuration": {
 				"repeatEventManagement": "always",
 				"class": 43,
-				"endpoint": 0,
+				"endpoint": "#endpoint#",
 				"property": "sceneId"
 			},
 			"subtype": "numeric",
