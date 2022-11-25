@@ -71,7 +71,7 @@
         "Préfixe à utiliser dans MQTT": "Préfixe à utiliser dans MQTT",
         "": "",
         "Version ZwaveJS UI": "Version ZwaveJs UI",
-        "Version de la librairie ZwaveJs UI": "Version de la librairie ZwaveJs UI",
+        "Version de la librairie ZwaveJS UI": "Version de la librairie ZwaveJs UI",
         "Votre version de ZwaveJS UI n'est pas celle recommandée par le plugin. Vous utilisez actuellement la version ": "Votre version de ZwaveJS UI n'est pas celle recommandée par le plugin. Vous utilisez actuellement la version",
         " Le plugin nécessite la version ": "Le plugin nécessite la version",
         "Veuillez relancer les dépendances pour mettre à jour la librairie. Relancez ensuite le démon pour voir la nouvelle version.": "Veuillez relancer les dépendances pour mettre à jour la librairie. Relancez ensuite le démon pour voir la nouvelle version",
