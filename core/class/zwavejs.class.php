@@ -410,7 +410,7 @@ class zwavejs extends eqLogic {
 				event::add('zwavejs::dependancy_end', array());
 				if (config::byKey('wantedVersion', __CLASS__) != config::byKey('zwavejsVersion', __CLASS__)){
 					sleep(2);
-					message::add('zwavejs',__('Votre version de ZwaveJS UI n\'est pas celle recommandée par le plugin. Vous utilisez actuellement la version ', __FILE__). config::byKey('zwavejsVersion', __CLASS__) .'. '.__('Le plugin nécessite la version ', __FILE__). config::byKey('wantedVersion', __CLASS__) .'. '.__('Veuillez relancer les dépendances pour mettre à jour la librairie.', __FILE__));
+					message::add('zwavejs',__("Votre version de ZwaveJS UI n'est pas celle recommandée par le plugin. Vous utilisez actuellement la version ", __FILE__). config::byKey('zwavejsVersion', __CLASS__) .'. '.__('Le plugin nécessite la version ', __FILE__). config::byKey('wantedVersion', __CLASS__) .'. '.__('Veuillez relancer les dépendances pour mettre à jour la librairie.', __FILE__));
 				}
 			}
 		}
