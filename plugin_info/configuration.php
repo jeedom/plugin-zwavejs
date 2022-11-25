@@ -73,6 +73,14 @@ if (!isConnect('admin')) {
 				</label>
 				<div class="col-md-7">
 				<?php
+				$file = dirname(__FILE__) . '/../resources/zwave-js-ui/package.json';
+				$package = array();
+				if (file_exists($file)) {
+					$package = json_decode(file_get_contents($file), true);
+				}
+				if (isset($package['version'])){
+					config::save('zwavejsVersion', $package['version'], 'zwavejs');
+				}
 				$localVersion = config::byKey('zwavejsVersion', 'zwavejs', 'N/A');
 				$wantedVersion = config::byKey('wantedVersion', 'zwavejs', '');
 				if ($localVersion != $wantedVersion) {
