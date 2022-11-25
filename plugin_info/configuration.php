@@ -68,7 +68,7 @@ if (!isConnect('admin')) {
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-md-4 control-label">{{Version ZwaveJs UI}}
+				<label class="col-md-4 control-label">{{Version ZwaveJS UI}}
 					<sup><i class="fas fa-question-circle tooltips" title="{{Version de la librairie ZwaveJs UI}}"></i></sup>
 				</label>
 				<div class="col-md-7">
