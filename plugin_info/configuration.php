@@ -67,6 +67,23 @@ if (!isConnect('admin')) {
 					<input type="text" class="configKey form-control" data-l1key="prefix" placeholder="{{}}">
 				</div>
 			</div>
+			<div class="form-group">
+				<label class="col-md-4 control-label">{{Version ZwaveJs UI}}
+					<sup><i class="fas fa-question-circle tooltips" title="{{Version de la librairie ZwaveJs UI}}"></i></sup>
+				</label>
+				<div class="col-md-7">
+				<?php
+				$localVersion = config::byKey('zwavejsVersion', 'zwavejs', '');
+				$wantedVersion = config::byKey('wantedVersion', 'zwavejs', '');
+				if ($localVersion != $wantedVersion) {
+					echo '<span class="label label-warning">' . $localVersion . '</span><br>';
+					echo '<div class="alert alert-danger text-center">{{Votre version de ZwaveJS UI n\'est pas celle recommandée par le plugin. Vous utilisez actuellement la version }}<code>'. $localVersion .'</code>. {{ Le plugin nécessite la version }}<code>'. $wantedVersion .'</code>. {{Veuillez relancer les dépendances pour mettre à jour la librairie. Relancez ensuite le démon pour voir la nouvelle version.}}</div>';
+				} else {
+					echo '<span class="label label-success">' . $localVersion . '</span><br>';
+				}
+				?>
+				</div>
+			</div>
 			<br>
 		</div>
 
@@ -137,4 +154,8 @@ if (!isConnect('admin')) {
 			}
 		})
 	})
+	
+$('body').off('zwavejs::dependancy_end').on('zwavejs::dependancy_end', function(_event, _options) {
+  window.location.reload()
+})
 </script>
