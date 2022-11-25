@@ -73,11 +73,11 @@ if (!isConnect('admin')) {
 				</label>
 				<div class="col-md-7">
 				<?php
-				$localVersion = config::byKey('zwavejsVersion', 'zwavejs', '');
+				$localVersion = config::byKey('zwavejsVersion', 'zwavejs', 'N/A');
 				$wantedVersion = config::byKey('wantedVersion', 'zwavejs', '');
 				if ($localVersion != $wantedVersion) {
 					echo '<span class="label label-warning">' . $localVersion . '</span><br>';
-					echo '<div class="alert alert-danger text-center">{{Votre version de ZwaveJS UI n\'est pas celle recommandée par le plugin. Vous utilisez actuellement la version }}<code>'. $localVersion .'</code>. {{ Le plugin nécessite la version }}<code>'. $wantedVersion .'</code>. {{Veuillez relancer les dépendances pour mettre à jour la librairie. Relancez ensuite le démon pour voir la nouvelle version.}}</div>';
+					echo "<div class='alert alert-danger text-center'>{{Votre version de ZwaveJS UI n'est pas celle recommandée par le plugin. Vous utilisez actuellement la version }}<code>". $localVersion .'</code>. {{ Le plugin nécessite la version }}<code>'. $wantedVersion .'</code>. {{Veuillez relancer les dépendances pour mettre à jour la librairie. Relancez ensuite le démon pour voir la nouvelle version.}}</div>';
 				} else {
 					echo '<span class="label label-success">' . $localVersion . '</span><br>';
 				}
