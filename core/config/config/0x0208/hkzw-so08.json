@@ -36,6 +36,7 @@
 		{
 			"#": "21" ,
 			"label": "State After Power Failure",
+			"description": "State After Power Failure",
 			"valueSize": 1,
 			"defaultValue": 0,
 			"allowManualEntry": false,

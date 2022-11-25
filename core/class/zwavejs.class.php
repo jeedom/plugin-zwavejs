@@ -21,6 +21,10 @@
 
 
 class zwavejs extends eqLogic {
+	
+	public static function dependancy_end() {
+		config::save('zwavejsVersion', config::byKey('wantedVersion', __CLASS__), __CLASS__);
+	}
 
 	private function getValueLabels($_key, $_value) {
 		$labelArray = array(
@@ -362,7 +366,7 @@ class zwavejs extends eqLogic {
 
 	public static function handleMqttMessage($_message) {
 		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . 'Message Mqtt reçu');
-		// log::add(__CLASS__, 'debug', json_encode($_message));
+		//log::add(__CLASS__, 'debug', json_encode($_message));
 		if (isset($_message[config::byKey('prefix', __CLASS__, 'zwave')])) {
 			$message = $_message[config::byKey('prefix', __CLASS__, 'zwave')];
 		} else {
@@ -401,6 +405,14 @@ class zwavejs extends eqLogic {
 			if ($key == 'api') {
 				self::handleApi($value);
 			}
+			else if ($key == 'version') {
+				config::save('zwavejsVersion', $value['value'], __CLASS__);
+				event::add('zwavejs::dependancy_end', array());
+				if (config::byKey('wantedVersion', __CLASS__) != config::byKey('zwavejsVersion', __CLASS__)){
+					sleep(2);
+					message::add('zwavejs',__("Votre version de ZwaveJS UI n'est pas celle recommandée par le plugin. Vous utilisez actuellement la version ", __FILE__). config::byKey('zwavejsVersion', __CLASS__) .'. '.__('Le plugin nécessite la version ', __FILE__). config::byKey('wantedVersion', __CLASS__) .'. '.__('Veuillez relancer les dépendances pour mettre à jour la librairie.', __FILE__));
+				}
+			}
 		}
 	}
 
@@ -431,12 +443,6 @@ class zwavejs extends eqLogic {
 			} else if ($key == 'getNodes') {
 				if ($value['origin']['type'] == 'sync') {
 					self::syncNodes($value['result']);
-				} else if ($value['origin']['type'] == 'syncInc') {
-					foreach ($value['result'] as $node) {
-						if ($node['id'] == $value['origin']['node']) {
-							self::syncNodes($node, true);
-						}
-					}
 				} else if ($value['origin']['type'] == 'stats') {
 					$stats = array();
 					$stats['totalNodes'] = count($value['result']);
@@ -943,46 +949,27 @@ class zwavejs extends eqLogic {
 		self::publishMqttApi($api, $args);
 	}
 
-	public static function syncNodes($_data, $_syncInc = false) {
+	public static function syncNodes($_data) {
 		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . __('Synchronisation des nœuds', __FILE__) . ' ' . json_encode($_data));
-		if (!$_syncInc) {
-			event::add(
-				'zwavejs::sync',
-				array('message' => __('Découverte de', __FILE__) . ' ' . count($_data) . ' ' . __('nœud(s)', __FILE__), 'type' => 'running')
-			);
+		event::add(
+			'zwavejs::sync',
+			array('message' => __('Découverte de', __FILE__) . ' ' . count($_data) . ' ' . __('nœud(s)', __FILE__), 'type' => 'running')
+		);
+		foreach ($_data as $node) {
+			self::createEqLogic($node, true);
 		}
-		if (!$_syncInc) {
-			foreach ($_data as $node) {
-				self::createEqLogic($node, true);
-			}
-		} else {
-			self::createEqLogic($_data, false, true);
-		}
-		if (!$_syncInc) {
-			event::add(
-				'zwavejs::sync',
-				array('message' => __('Fin de la synchronisation', __FILE__), 'type' => 'finished')
-			);
-		}
+		event::add(
+			'zwavejs::sync',
+			array('message' => __('Fin de la synchronisation', __FILE__), 'type' => 'finished')
+		);
 	}
 
-	public static function createEqLogic($_node, $_ignoreEvent = false, $_syncInc = false) {
-		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . __("Création d'un équipement", __FILE__) . ' ' . json_encode($_node));
-		if (!isset($_node['id'])) {
-			return;
-		}
+	public static function createEqLogic($_node, $_ignoreEvent = false) {
+		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . __('Création d\'un équipement', __FILE__) . ' ' . json_encode($_node));
 		$eqLogic = self::byLogicalId($_node['id'], __CLASS__);
-		$inited = false;
-		if ($_node['interviewStage'] == 5) {
-			$inited = true;
-		}
-		if (isset($_node['inited'])) {
-			$inited = $_node['inited'];
-		}
+		$inited = $_node['inited'];
 		$new = false;
 		$refresh = false;
-
-		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . $_node['id'] . ' ' . $inited);
 		if (!is_object($eqLogic)) {
 			$eqLogic = new zwavejs();
 			$eqLogic->setEqType_name(__CLASS__);
@@ -993,12 +980,13 @@ class zwavejs extends eqLogic {
 			$refresh = true;
 		}
 		$wascomplete = $eqLogic->getConfiguration('interview', 'incomplete');
-		if ($new) {
+		if (($wascomplete == 'incomplete' && $inited) || ($inited && $new)) {
+			if (($eqLogic->getName() == $eqLogic->getLogicalId() . ' - ' . 'Node inclus') || ($eqLogic->getName() == '')) {
+				$eqLogic->setName($eqLogic->getLogicalId() . ' - ' . $_node['manufacturer'] . ' ' . $_node['productDescription'] . ' ' . $_node['productLabel']);
+				$refresh = true;
+			}
+		} else if ($new) {
 			$eqLogic->setName($eqLogic->getLogicalId() . ' - ' . 'Node inclus');
-		}
-		if (strpos($eqLogic->getName(), 'Node inclus') !== false && isset($_node['manufacturer'])) {
-			$eqLogic->setName($eqLogic->getLogicalId() . ' - ' . $_node['manufacturer'] . ' ' . $_node['productDescription'] . ' ' . $_node['productLabel']);
-			$refresh = true;
 		}
 		if ($inited === false) {
 			if ($eqLogic->getConfiguration('interview', 'incomplete') != 'complete') {
@@ -1017,9 +1005,6 @@ class zwavejs extends eqLogic {
 		if (!$_ignoreEvent) {
 			if ($refresh) {
 				event::add('zwavejs::includeDevice', $eqLogic->getId());
-			}
-			if ($inited && !$_syncInc) {
-				self::getNodeInfo($_node['id'], 'syncInc');
 			}
 		}
 		if ($inited && $refresh) {
