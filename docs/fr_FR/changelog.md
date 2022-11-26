@@ -13,6 +13,7 @@
 **Améliorations**
 
 - Rajout d'une *relance* nécessaire du moteur *en cas d'exclusion échouée*
+- Affichage du message concernant le *0 commande* que dans le cas d'un *noeud initié*
 
 **Modifications de Configurations**
 

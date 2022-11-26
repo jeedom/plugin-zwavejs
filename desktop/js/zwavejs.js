@@ -231,7 +231,7 @@ function printEqLogic(_eqLogic) {
       }
       if (data['result']['command_counter']) {
         $('.command_number').empty().append(data['result']['command_counter'])
-        if (data['result']['command_counter'] == '0') {
+        if (data['result']['command_counter'] == '0' && data['result']['interview'] == 'complete') {
             $('.nocommand').show()
         } else {
             $('.nocommand').hide()
