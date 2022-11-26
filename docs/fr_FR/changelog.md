@@ -6,6 +6,10 @@
 
 # XX/11/2022
 
+**Améliorations**
+
+- Rajout d'une *relance* nécessaire du moteur *en cas d'exclusion échouée*
+
 **Modifications de Configurations**
 
 - Modification de la configuration *Aeotec TriSensor* pour utiliser les propriétés
