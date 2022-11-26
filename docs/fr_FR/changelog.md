@@ -18,6 +18,7 @@
 - Modification de la configuration *Everspring AN158* pour utiliser les propriétés
 - Modification de la configuration *Danfoss Room Sensor* pour utiliser les propriétés
 - Ajout d'une propriété *Luminance* en %
+- Modification de la propriété *Thermostat Setpoint* pour avoir les consignes avec le widget *button* par défaut
 
 *Si vous êtes concernés par une modification ou un ajout de configuration, rechargez les commandes de l'équipement en "recréant toutes les commandes" après la mise à jour.*
 
