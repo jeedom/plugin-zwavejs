@@ -10,6 +10,8 @@
 
 - Modification de la configuration *Aeotec TriSensor* pour utiliser les propriétés
 - Modification de la configuration *Hank HKZW-MS02* pour utiliser les propriétés
+- Modification de la configuration *Philio PSM02 * pour utiliser les propriétés
+- Ajout d'une propriété *Luminance* en %
 
 *Si vous êtes concernés par une modification ou un ajout de configuration, rechargez les commandes de l'équipement en "recréant toutes les commandes" après la mise à jour.*
 
