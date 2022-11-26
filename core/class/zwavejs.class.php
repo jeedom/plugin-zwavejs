@@ -680,6 +680,7 @@ class zwavejs extends eqLogic {
 					array('message' => __('Exclusion échouée', __FILE__), 'type' => 'empty')
 				);
 				config::save('controllerStatus', 'none', __CLASS__);
+				self::deamon_start();
 			} else if ($key == 'node_removed') {
 				log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . __('Nœud exclu', __FILE__));
 				$id = $value['data'][0]['id'];
