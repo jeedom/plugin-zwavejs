@@ -31,6 +31,10 @@
 			"subtype": "slider",
 			"display": {
 				"generic_type": "THERMOSTAT_SET_SETPOINT"
+			},
+			"template": {
+				"dashboard": "button",
+				"mobile": "button"
 			}
 		}
 	]
