@@ -6,6 +6,10 @@
 
 # XX/11/2022
 
+**Corrections**
+
+- Correction sur les *paramètres de configurations* afin *d'éviter d'envoyer en premier lieu 0* lors d'un choix type liste (sur un paramètre le proposant)
+
 **Améliorations**
 
 - Rajout d'une *relance* nécessaire du moteur *en cas d'exclusion échouée*
