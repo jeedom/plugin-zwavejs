@@ -64,8 +64,6 @@ $("body").off("click", ".editValue").on("click", ".editValue", function(e) {
 							jeedom.zwavejs.node.set(valueApplyOption)
 						}
 					})
-					valueApplyOption.value = result
-					jeedom.zwavejs.node.set(valueApplyOption)
 				}
 				else if (result == 1) {
 					var result = prompt(title)

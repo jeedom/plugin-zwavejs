@@ -16,6 +16,10 @@
     "recommended": {
         "params": [
             {
+                "path": "112-0-7-2",
+                "value": "1"
+            },
+            {
                 "path": "112-0-7-16",
                 "value": "1"
             },
