@@ -227,7 +227,7 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 112,
-                "endpoint": #endpoint#,
+                "endpoint": "#endpoint#",
                 "property": 72,
                 "value": "set-6"
             },
@@ -244,7 +244,7 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 112,
-                "endpoint": #endpoint#,
+                "endpoint": "#endpoint#",
                 "property": 72,
                 "value": "set-7"
             },
@@ -261,7 +261,7 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 112,
-                "endpoint": #endpoint#,
+                "endpoint": "#endpoint#",
                 "property": 72,
                 "value": "set-8"
             },
@@ -278,7 +278,7 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 112,
-                "endpoint": #endpoint#,
+                "endpoint": "#endpoint#",
                 "property": 72,
                 "value": "set-9"
             },
@@ -295,7 +295,7 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 112,
-                "endpoint": #endpoint#,
+                "endpoint": "#endpoint#",
                 "property": 72,
                 "value": "set-10"
             },
