@@ -27,8 +27,10 @@
 - Modification de la configuration *Fibaro Wall Plug UK* pour utiliser les propriétés
 - Modification de la configuration *Fibaro Walli Outlet F* pour utiliser les propriétés
 - Modification de la configuration *Fibaro Walli Dimmer* pour utiliser les propriétés
-- Ajout à la propriété *Luminance* un mode en %
+- Modification de la configuration *Fibaro RGBW441* pour utiliser la propriété *fibaro-effects*
+- Modification de la propriété *Luminance* avec ajout d'un mode en %
 - Modification de la propriété *Thermostat Setpoint* pour avoir les consignes avec le widget *button* par défaut
+- Modification de la propriété *Color* avec ajout d'un type *fibaro-effects* (pour ne plus décrire les commandes)
 
 *Si vous êtes concernés par une modification ou un ajout de configuration, rechargez les commandes de l'équipement en "recréant toutes les commandes" après la mise à jour.*
 

@@ -39,6 +39,7 @@
             }
         },
         "Color": {"mode":"color","cmdFilter":["rgb","warm"]},
+        "Color|effects": {"type":"fibaro-effects","mode":"color"},
         "Power": {
             "type": "multilevel"
         },
