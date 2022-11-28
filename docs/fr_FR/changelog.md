@@ -22,6 +22,7 @@
 - Modification de la configuration *Philio PSM02* pour utiliser les propriétés
 - Modification de la configuration *Everspring AN158* pour utiliser les propriétés
 - Modification de la configuration *Danfoss Room Sensor* pour utiliser les propriétés
+- Modification de la configuration *Vision ZS Shock and Vibration* pour utiliser les propriétés
 - Modification de la configuration *Fibaro Walli Controller* pour utiliser les propriétés
 - Modification de la configuration *Fibaro FGD211* pour utiliser les propriétés
 - Modification de la configuration *Fibaro Wall Plug UK* pour utiliser les propriétés
@@ -31,6 +32,7 @@
 - Modification de la propriété *Luminance* avec ajout d'un mode en %
 - Modification de la propriété *Thermostat Setpoint* pour avoir les consignes avec le widget *button* par défaut
 - Modification de la propriété *Color* avec ajout d'un type *fibaro-effects* (pour ne plus décrire les commandes)
+- Rajout d'un *paramètre recommandé* pour le *Philio PST02*
 
 *Si vous êtes concernés par une modification ou un ajout de configuration, rechargez les commandes de l'équipement en "recréant toutes les commandes" après la mise à jour.*
 
