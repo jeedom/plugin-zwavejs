@@ -22,6 +22,11 @@
 - Modification de la configuration *Philio PSM02* pour utiliser les propriétés
 - Modification de la configuration *Everspring AN158* pour utiliser les propriétés
 - Modification de la configuration *Danfoss Room Sensor* pour utiliser les propriétés
+- Modification de la configuration *Fibaro Walli Controller* pour utiliser les propriétés
+- Modification de la configuration *Fibaro FGD211* pour utiliser les propriétés
+- Modification de la configuration *Fibaro Wall Plug UK* pour utiliser les propriétés
+- Modification de la configuration *Fibaro Walli Outlet F* pour utiliser les propriétés
+- Modification de la configuration *Fibaro Walli Dimmer* pour utiliser les propriétés
 - Ajout à la propriété *Luminance* un mode en %
 - Modification de la propriété *Thermostat Setpoint* pour avoir les consignes avec le widget *button* par défaut
 
