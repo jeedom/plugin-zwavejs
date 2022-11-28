@@ -1250,7 +1250,7 @@ class zwavejs extends eqLogic {
 				$healthPage .= '<td>' . $flirs . '</td>';
 
 				if ($values['zwavePlusVersion']) {
-					$zwavePlusVersion = '<span title="Secure" style="font-size : 1.5em;"><i class="fas fa-check-circle icon_green" aria-hidden="true"></i></span> <sup><i class="fas fa-question-circle tooltips" title="v' . $values['zwavePlusVersion'] . '"></i><sup>';
+					$zwavePlusVersion = '<span title="ZwavePlus" style="font-size : 1.5em;"><i class="fas fa-check-circle icon_green" aria-hidden="true"></i></span> <sup><i class="fas fa-question-circle tooltips" title="v' . $values['zwavePlusVersion'] . '"></i><sup>';
 				} else {
 					$zwavePlusVersion = '<span title="Non ZwavePlus" style="font-size : 1.5em;"><i class="fas fa-minus-circle icon_orange" aria-hidden="true"></i></span>';
 				}
