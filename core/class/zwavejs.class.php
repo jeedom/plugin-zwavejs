@@ -1199,7 +1199,11 @@ class zwavejs extends eqLogic {
 					$nodeValues .= ' data-type="' . $data['type'] . '"';
 					$nodeValues .= ' data-label="' . $data['label'] . '"';
 					$nodeValues .= ' data-path="' . $data['id'] . '"';
-					$nodeValues .= ' data-unit="' . $data['unit'] . '"';
+					if (isset($data['unit'])){
+						$nodeValues .= ' data-unit="' . $data['unit'] . '"';
+					} else {
+						$nodeValues .= ' data-unit=""';
+					}
 					$nodeValues .= ' data-max="' . $data['max'] . '"';
 					$nodeValues .= ' data-min="' . $data['min'] . '"';
 					$nodeValues .= ' data-value="' . $data['value'] . '"';
