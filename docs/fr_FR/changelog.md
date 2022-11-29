@@ -22,6 +22,11 @@
 - Modification de la propriété *Thermostat Setpoint* pour avoir les consignes avec le widget *button* par défaut
 - Modification de l'image *Popp Outdoor Siren* détourage
 
+**Ajouts de Configurations**
+
+- Ajout de la configuration *Secure Hortsmann SRT321* (propriétés : ThermostatMode, ThermostatOperatingState, ThermostatModeAction, ThermostatSetpoint, Temperature, Battery)
+- Ajout de l'image pour *Secure Hortsmann SRT321*
+
 *Si vous êtes concernés par une modification ou un ajout de configuration, rechargez les commandes de l'équipement en "recréant toutes les commandes" après la mise à jour.*
 
 # 28/11/2022
