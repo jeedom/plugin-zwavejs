@@ -14,6 +14,7 @@
 
 - Modification de la configuration *Qubino ZMNHNDX Flush 1D* pour utiliser les propriétés
 - Modification de la configuration *Fibaro FGSS101 Smoke* pour utiliser les propriétés
+- Modification de la configuration *Smarthome Everspring AN-179* pour utiliser les propriétés
 - Modification de la propriété *Heat* avec gestion du cas classe *ALARM SENSOR*
 - Modification de la propriété *Smoke* avec gestion du cas classe *ALARM SENSOR*
 - Modification de la propriété *Thermostat Setpoint* pour avoir les consignes avec le widget *button* par défaut
