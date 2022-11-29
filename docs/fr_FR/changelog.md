@@ -20,6 +20,7 @@
 - Modification de la propriété *Heat* avec gestion du cas classe *ALARM SENSOR*
 - Modification de la propriété *Smoke* avec gestion du cas classe *ALARM SENSOR*
 - Modification de la propriété *Thermostat Setpoint* pour avoir les consignes avec le widget *button* par défaut
+- Modification de l'image *Popp Outdoor Siren* détourage
 
 *Si vous êtes concernés par une modification ou un ajout de configuration, rechargez les commandes de l'équipement en "recréant toutes les commandes" après la mise à jour.*
 
