@@ -6,6 +6,10 @@
 
 # xx/12/2022
 
+**Améliorations**
+
+- Gestion des *commandes sans unités* alors qu'elle devrait (dans le retour zwaveJS) pour ne pas polluer la log 
+
 **Modifications de Configurations**
 
 - Modification de la configuration *Qubino ZMNHNDX Flush 1D* pour utiliser les propriétés
