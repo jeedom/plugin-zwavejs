@@ -1,8 +1,8 @@
 {
-	"manufacturer": "eHandle ConnectSense",
+	"manufacturer": "Hoppe",
 	"manufacturerId": "0x0313",
-	"label": "PSE02",
-	"description": "Siren",
+	"label": "ConnectSense",
+	"description": "eHandle",
 	"devices": [
 		{
 			"productType": "0x0701",
