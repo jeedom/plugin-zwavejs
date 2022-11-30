@@ -1,0 +1,20 @@
+{
+    "name": "ePoignée ConnectSense",
+    "type": "Poignée",
+    "comlink": "",
+    "remark": "",
+    "configuration": {
+        "battery_type": "1x3.6V LS14500"
+    },
+    "versions": {
+        "1793": [
+            "2"
+        ]
+    },
+    "properties": {
+        "Opening": {},
+        "Notification": {"type":"sensor"},
+        "Tilt": {},
+        "Battery": {}
+    }
+}

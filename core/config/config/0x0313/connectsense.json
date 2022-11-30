@@ -1,0 +1,18 @@
+{
+	"manufacturer": "eHandle ConnectSense",
+	"manufacturerId": "0x0313",
+	"label": "PSE02",
+	"description": "Siren",
+	"devices": [
+		{
+			"productType": "0x0701",
+			"productId": "0x0002"
+		}
+	],
+	"firmwareVersion": {
+		"min": "0.0",
+		"max": "255.255"
+	},
+	"paramInformation": [
+	]
+}
