@@ -29,6 +29,7 @@
 - Ajout de l'image pour *Secure Hortsmann SRT321*
 - Ajout de la configuration *Serrure Hoppe ConnectSense* (propriétés : Opening, Notification Sensor, Tilt, Battery)
 - Ajout de l'image pour *Serrure Hoppe ConnectSense*
+- Ajout des paramètres pour *Serrure Hoppe ConnectSense*
 
 *Si vous êtes concernés par une modification ou un ajout de configuration, rechargez les commandes de l'équipement en "recréant toutes les commandes" après la mise à jour.*
 

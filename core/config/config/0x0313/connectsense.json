@@ -14,5 +14,43 @@
 		"max": "255.255"
 	},
 	"paramInformation": [
+		{
+			"#": "1",
+			"label": "BASIC command value sent to Association Groups on ON event",
+			"description": "Defines the BASIC command value sent in case of ON event",
+			"valueSize": 1,
+			"unit": "",
+			"minValue": 0,
+			"maxValue": 255,
+			"defaultValue": 255
+		},
+		{
+			"#": "2",
+			"label": "BASIC command value sent to Association Groups on OFF event",
+			"description": "Defines the BASIC command value sent in case of OFF event",
+			"valueSize": 1,
+			"unit": "",
+			"minValue": 0,
+			"maxValue": 255,
+			"defaultValue": 0
+		},
+		{
+			"#": "3",
+			"label": "Report Last State on Wakeup",
+			"description": "Activate/Deactivate handle/window reporting on wakeup",
+			"valueSize": 1,
+			"defaultValue": 255,
+			"allowManualEntry": false,
+			"options": [
+				{
+					"label": "OFF",
+					"value": 0
+				},
+				{
+					"label": "ON",
+					"value": 255
+				}
+			]
+		}
 	]
 }
