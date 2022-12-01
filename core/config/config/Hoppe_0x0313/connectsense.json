@@ -1,0 +1,56 @@
+{
+	"manufacturer": "Hoppe",
+	"manufacturerId": "0x0313",
+	"label": "ConnectSense",
+	"description": "eHandle",
+	"devices": [
+		{
+			"productType": "0x0701",
+			"productId": "0x0002"
+		}
+	],
+	"firmwareVersion": {
+		"min": "0.0",
+		"max": "255.255"
+	},
+	"paramInformation": [
+		{
+			"#": "1",
+			"label": "BASIC command value sent to Association Groups on ON event",
+			"description": "Defines the BASIC command value sent in case of ON event",
+			"valueSize": 1,
+			"unit": "",
+			"minValue": 0,
+			"maxValue": 255,
+			"defaultValue": 255
+		},
+		{
+			"#": "2",
+			"label": "BASIC command value sent to Association Groups on OFF event",
+			"description": "Defines the BASIC command value sent in case of OFF event",
+			"valueSize": 1,
+			"unit": "",
+			"minValue": 0,
+			"maxValue": 255,
+			"defaultValue": 0
+		},
+		{
+			"#": "3",
+			"label": "Report Last State on Wakeup",
+			"description": "Activate/Deactivate handle/window reporting on wakeup",
+			"valueSize": 1,
+			"defaultValue": 255,
+			"allowManualEntry": false,
+			"options": [
+				{
+					"label": "OFF",
+					"value": 0
+				},
+				{
+					"label": "ON",
+					"value": 255
+				}
+			]
+		}
+	]
+}

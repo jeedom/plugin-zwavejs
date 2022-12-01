@@ -22,6 +22,29 @@
 			}
 		}
 	],
+"motion": 
+	[
+		{
+			"name": "Présence",
+			"type": "info",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 113,
+				"endpoint": "#endpoint#",
+				"property": "Home Security-Motion sensor status",
+				"calculValueOffset": "#value#==8"
+			},
+			"subtype": "binary",
+			"display": {
+				"invertBinary": "1"
+			},
+			"template": {
+				"dashboard": "timeAlert",
+				"mobile": "timeAlert"
+			}
+		}
+	],
 "magnetic": 
 	[
 		{
@@ -148,6 +171,29 @@
 				"endpoint": "#endpoint#",
 				"property": "Power Management-Battery maintenance status",
 				"calculValueOffset": "#value#==10"
+			},
+			"subtype": "binary",
+			"display": {
+				"invertBinary": "1"
+			},
+			"template": {
+				"dashboard": "timeAlert",
+				"mobile": "timeAlert"
+			}
+		}
+	],
+"moisture-alarm": 
+	[
+		{
+			"name": "Alarme Humidité",
+			"type": "info",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 113,
+				"endpoint": "#endpoint#",
+				"property": "Weather Alarm-Moisture alarm status",
+				"calculValueOffset": "#value#==2"
 			},
 			"subtype": "binary",
 			"display": {

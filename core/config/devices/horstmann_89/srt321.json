@@ -1,0 +1,40 @@
+{
+    "name": "SRT 321 Electronic Room Thermostat and Temperature",
+    "type": "Thermostat",
+    "documentation": "https://doc.jeedom.com/#language#/zwave/secure.srt323_-_Thermostat",
+    "comlink": "",
+    "remark": "",
+    "imglink": "horstmann.srt321",
+    "configuration": {
+        "battery_type": "2x1.5V AAA"
+    },
+    "versions": {
+        "1": [
+            "5"
+        ]
+    },
+    "properties": {
+        "Thermostatmode": {},
+        "Thermostatoperatingstate": {},
+        "Thermostatmodeaction": {
+            "multi": [
+                "Off",
+                "Heat"
+            ],
+            "multiValue": {
+                "Off": 0,
+                "Heat": 1
+            }
+        },
+        "Thermostatsetpoint": {
+            "multi": [
+                "Chaud"
+            ],
+            "multiProperty": {
+                "Chaud": 1
+            }
+        },
+        "Temperature": {},
+        "Battery": {}
+    }
+}

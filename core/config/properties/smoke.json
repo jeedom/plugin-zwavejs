@@ -21,5 +21,28 @@
 				"mobile": "timeAlert"
 			}
 		}
+	],
+"alarm": 
+	[
+		{
+			"name": "Fumées",
+			"type": "info",
+			"isVisible": 1,
+			"isHistorized": 1,
+			"configuration": {
+				"class": 156,
+				"endpoint": 0,
+				"property": "state-1"
+			},
+			"subtype": "binary",
+			"display": {
+				"invertBinary": "1",
+				"generic_type": "SMOKE"
+			},
+			"template": {
+				"dashboard": "timeAlert",
+				"mobile": "timeAlert"
+			}
+		}
 	]
 }
