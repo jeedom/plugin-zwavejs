@@ -167,7 +167,6 @@ try {
 	}
 	
 	if (init('action') == 'deleteNVMbackup') {
-		log::add('error','zwavejs',init('backup'));
 		$file = init('backup');
 		if (file_exists($file)){
 			unlink($file);
