@@ -6,6 +6,10 @@
 
 # XX/12/2022
 
+**Modifications de Configurations**
+
+- Modification de la configuration *Cherubini Widom Smart Plug* pour utiliser les propriétés
+
 **Ajouts de Configurations**
 
 - Ajout de la configuration *Cherubini Widom Meta double switch* (propriétés : Switch, Central Scene)
