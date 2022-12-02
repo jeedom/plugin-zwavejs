@@ -1,0 +1,33 @@
+{
+    "name": "Meta Double Switch-L7",
+    "type": "Micromodule",
+    "remark": "",
+    "versions": {
+        "4": [
+            "14"
+        ]
+    },
+    "properties": {
+        "Switch": {"multi": [
+                1,
+                2
+            ],"replace": {"#endpoint#": "multiKey"}},
+        "Power": {"multi": [
+                1,
+                2
+            ],"replace": {"#endpoint#": "multiKey"}},
+        "Energy": {"multi": [
+                1,
+                2
+            ],"replace": {"#endpoint#": "multiKey"}},
+        "CentralScene": {
+            "multi": [
+                1,
+                2
+            ],
+            "replace": {
+                "#centralscene#": "multiKey"
+            },"isVisible":0
+        }
+    }
+}

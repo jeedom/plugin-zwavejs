@@ -1,0 +1,19 @@
+{
+	"manufacturer": "wiDom",
+	"manufacturerId": "0x0149",
+	"label": "A510090",
+	"description": "Meta double switch L7",
+	"devices": [
+		{
+			"productType": "0x0004",
+			"productId": "0x000e"
+		}
+	],
+	"firmwareVersion": {
+		"min": "0.0",
+		"max": "255.255"
+	},
+	"paramInformation": [
+		
+	]
+}

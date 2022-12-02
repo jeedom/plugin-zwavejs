@@ -4,6 +4,17 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
+# XX/12/2022
+
+**Ajouts de Configurations**
+
+- Ajout de la configuration *Cherubini Widom Meta double switch* (propriétés : Switch, Central Scene)
+- Ajout de l'image pour *Cherubini Widom Meta double switch*
+- Ajout de la configuration *Cherubini Widom Meta wired motor CONTR.7* (propriétés : Shutter)
+- Ajout de l'image pour *Cherubini Widom Meta wired motor CONTR.7*
+
+*Si vous êtes concernés par une modification ou un ajout de configuration, faites une synchronisation puis rechargez les commandes de l'équipement en "recréant toutes les commandes" après la mise à jour.*
+
 # 01/12/2022
 
 **Améliorations**
@@ -31,7 +42,7 @@
 - Ajout de l'image pour *Serrure Hoppe ConnectSense*
 - Ajout des paramètres pour *Serrure Hoppe ConnectSense*
 
-*Si vous êtes concernés par une modification ou un ajout de configuration, rechargez les commandes de l'équipement en "recréant toutes les commandes" après la mise à jour.*
+*Si vous êtes concernés par une modification ou un ajout de configuration, faites une synchronisation puis rechargez les commandes de l'équipement en "recréant toutes les commandes" après la mise à jour.*
 
 # 28/11/2022
 
@@ -63,7 +74,7 @@
 - Modification de la propriété *Color* avec ajout d'un type *fibaro-effects* (pour ne plus décrire les commandes)
 - Rajout d'un *paramètre recommandé* pour le *Philio PST02*
 
-*Si vous êtes concernés par une modification ou un ajout de configuration, rechargez les commandes de l'équipement en "recréant toutes les commandes" après la mise à jour.*
+*Si vous êtes concernés par une modification ou un ajout de configuration, faites une synchronisation puis rechargez les commandes de l'équipement en "recréant toutes les commandes" après la mise à jour.*
 
 # 25/11/2022
 
@@ -77,7 +88,7 @@
 
 - Modification des paramètres pour *Hank Smart Plug (HKZW-SO08)* (problème d'affichage)
 
-*Si vous êtes concernés par une modification ou un ajout de configuration, rechargez les commandes de l'équipement en "recréant toutes les commandes" après la mise à jour.*
+*Si vous êtes concernés par une modification ou un ajout de configuration, faites une synchronisation puis rechargez les commandes de l'équipement en "recréant toutes les commandes" après la mise à jour.*
 
 # 23/11/2022
 
@@ -101,7 +112,7 @@
 - Ajout de la configuration *Idinio foot dimmer* (propriétés : Multilevel, Power, Energy)
 - Ajout des paramètres pour *Hank Smart Plug (HKZW-SO08)*
 
-*Si vous êtes concernés par une modification ou un ajout de configuration, rechargez les commandes de l'équipement en "recréant toutes les commandes" après la mise à jour.*
+*Si vous êtes concernés par une modification ou un ajout de configuration, faites une synchronisation puis rechargez les commandes de l'équipement en "recréant toutes les commandes" après la mise à jour.*
 
 # 21/11/2022
 
@@ -125,7 +136,7 @@
 - Modification de la configuration *Popp Strike Lock* pour utiliser les propriétés
 - Modification de la configuration *Aeotec ZWA011* pour utiliser les propriétés et ajout de son image
 
-*Si vous êtes concernés par une de ses configurations, rechargez les commandes de l'équipement en "recréant toutes les commandes" après la mise à jour.*
+*Si vous êtes concernés par une modification ou un ajout de configuration, faites une synchronisation puis rechargez les commandes de l'équipement en "recréant toutes les commandes" après la mise à jour.*
 
 # 18/11/2022
 
