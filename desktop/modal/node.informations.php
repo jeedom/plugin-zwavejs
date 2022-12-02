@@ -53,6 +53,7 @@ include_file('3rdparty', 'jsonTree/jsonTree', 'js', 'zwavejs');
 									<p><b>{{Description}} : </b><span class="getNodeInfo-productDescription label label-info" style="font-size : 1em;"></span></p>
 									<p><b>{{Identifiant}} : </b><span class="getNodeInfo-deviceIdNew label label-info" style="font-size : 1em;"></span> <span class="getNodeInfo-hexId label label-info" style="font-size : 1em;"></span></p>
 									<p><b>{{Firmware}} : </b><span class="getNodeInfo-firmwareVersion label label-info" style="font-size : 1em;"></span></p>
+									<p class="sdkInfo" style="display:none;"><b>{{Sdk}} : </b><span class="getNodeInfo-sdkVersion label label-info" style="font-size : 1em;"></span></p>
 									<p><b>{{Nombre d'endpoints}} : </b><span class="getNodeInfo-endpointsCount label label-info" style="font-size : 1em;"></span></p>
 									<p><b>{{Nombre de groupes}} : </b><span class="getNodeInfo-numberGroups label label-info" style="font-size : 1em;"></span></p>
 									<p><b>{{Configuration}} : </b><span class="getNodeInfo-filename label label-info" style="font-size : 1em;"></span></p>
