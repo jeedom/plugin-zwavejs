@@ -22,9 +22,9 @@ if (!isConnect('admin')) {
 <script type="text/javascript" src="plugins/zwavejs/3rdparty/vivagraph/vivagraph.min.js"></script>
 <style>
 	#route_network {
-		overflow-x: auto; 
+		overflow-x: auto;
 	}
-	
+
 	#graph_network {
 		height: 80%;
 		width: 97%;
@@ -101,7 +101,7 @@ if (!isConnect('admin')) {
 				<ul id="tabs_network" class="nav nav-tabs" data-tabs="tabs">
 					<li class="active"><a href="#summary_network" data-toggle="tab"><i class="fas fa-tachometer-alt"></i> {{Résumé}}</a></li>
 					<li><a href="#actions_network" data-toggle="tab"><i class="fas fa-sliders-h"></i> {{Actions}}</a></li>
-					<li id="tab_backup"><a href="#backup_network" data-toggle="tab"><i class="fas fa-save"></i> {{Gestion backups}}</a></li>
+					<li id="tab_backup"><a href="#backup_network" data-toggle="tab"><i class="fas fa-save"></i> {{Sauvegardes NVM}}</a></li>
 					<li><a href="#statistics_network" data-toggle="tab"><i class="far fa-chart-bar"></i> {{Statistiques}}</a></li>
 					<li id="tab_graph"><a href="#graph_network" data-toggle="tab"><i class="far fa-image"></i> {{Graphique du réseau}}</a></li>
 					<li id="tab_route"><a href="#route_network" data-toggle="tab"><i class="fas fa-table"></i> {{Table de routage}}</a></li>
@@ -247,23 +247,23 @@ if (!isConnect('admin')) {
 						</table>
 					</div>
 					<div class="tab-pane" id="backup_network">
-						<div class="alert alert-info">{{Il est important de noter que les backups NVMs ne sont pas cross compatibles entre des contrôleurs avant et après le SDK zwave v6.61}}</div>
-
-						<a data-action="backupNVMRaw" class="btn btn-warning controller_action"><i class="fas fa-save"></i> {{Faire un backup NVM}}</a>
-
-						<span class="btn btn-default btn-file" style="width:100%;">
-							<i class="fas fa-cloud-upload-alt"></i> {{Uploader un backup NVM}}<input id="uploadNVM" type="file" name="file" data-url="plugins/zwavejs/core/ajax/zwavejs.ajax.php?action=uploadNVMbackup">
-						</span>
-						<span class="getInfo-cntStatus label label-info" style="font-size : 1em;"></span>
+						<br>
+						<div class="alert alert-warning">{{Les sauvegardes NVM ne sont pas intercompatibles d'un contrôleur en version de SDK Z-Wave inférieure à 6.61 à un contrôleur en version supérieure et inversement}}</div>
+						<span class="getInfo-cntStatus label label-sm label-info pull-right"></span>
+						<div class="input-group">
+							<a data-action="backupNVMRaw" class="btn btn-success controller_action roundedLeft"><i class="fas fa-save"></i> {{Réaliser une sauvegarde NVM}}</a>
+							<span class="btn btn-primary btn-file roundedRight">
+								<i class="fas fa-cloud-upload-alt"></i> {{Envoyer une sauvegarde NVM}}<input id="uploadNVM" type="file" name="file" data-url="plugins/zwavejs/core/ajax/zwavejs.ajax.php?action=uploadNVMbackup">
+							</span>
+						</div>
 						<table class="table table-striped tableBackups">
 							<thead>
 								<tr>
-									<th>{{Backup}}</th>
-									<th>{{}}</th>
+									<th>{{Sauvegardes disponibles}}</th>
+									<th></th>
 								</tr>
 							</thead>
-							<tbody>
-							</tbody>
+							<tbody></tbody>
 						</table>
 					</div>
 					<div class="tab-pane" id="statistics_network">
