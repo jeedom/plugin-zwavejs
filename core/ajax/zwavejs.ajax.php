@@ -23,6 +23,8 @@ try {
 	if (!isConnect('admin')) {
 		throw new Exception('401 Unauthorized');
 	}
+	
+	ajax::init(array('uploadNVMbackup'));
 
 	if (init('action') == 'include') {
 		zwavejs::inclusion(init('method'), init('options'));
@@ -154,6 +156,50 @@ try {
 			}
 		}
 		ajax::success(zwavejs::getWaiting());
+	}
+	
+	if (init('action') == 'listNVMbackup') {
+		$list = array();
+		foreach (ls(dirname(__FILE__) . '/../../data/store/backups/nvm', '*.bin', false, array('files', 'quiet')) as $file) {
+			$list[] = array('folder'=>dirname(__FILE__) . '/../../data/store/backups/nvm/'. $file,'name'=>$file);
+		}
+		ajax::success($list);
+	}
+	
+	if (init('action') == 'deleteNVMbackup') {
+		log::add('error','zwavejs',init('backup'));
+		$file = init('backup');
+		if (file_exists($file)){
+			unlink($file);
+		}
+		ajax::success();
+	}
+	
+	if (init('action') == 'uploadNVMbackup') {
+		$uploaddir = dirname(__FILE__). '/../../data/store/backups/nvm';
+		if (!file_exists($uploaddir)) {
+			mkdir($uploaddir);
+		}
+		if (!file_exists($uploaddir)) {
+			throw new Exception(__('Répertoire de téléversement non trouvé : ', __FILE__) . $uploaddir);
+		}
+		if (!isset($_FILES['file'])) {
+			throw new Exception(__('Aucun fichier trouvé. Vérifiez le paramètre PHP (post size limit)', __FILE__));
+		}
+		$extension = strtolower(strrchr($_FILES['file']['name'], '.'));
+		if (!in_array($extension, array('.bin'))) {
+			throw new Exception('Extension du fichier non valide (autorisé .bin) : ' . $extension);
+		}
+		if (filesize($_FILES['file']['tmp_name']) > 500000) {
+			throw new Exception(__('Le fichier est trop gros (maximum 500ko)', __FILE__));
+		}
+		if (!move_uploaded_file($_FILES['file']['tmp_name'], $uploaddir . '/' . $_FILES['file']['name'])) {
+			throw new Exception(__('Impossible de déplacer le fichier temporaire', __FILE__));
+		}
+		if (!file_exists($uploaddir . '/' . $_FILES['file']['name'])) {
+			throw new Exception(__('Impossible de téléverser le fichier (limite du serveur web ?)', __FILE__));
+		}
+		ajax::success();
 	}
 
 	throw new Exception(__('Aucune méthode correspondante', __FILE__));

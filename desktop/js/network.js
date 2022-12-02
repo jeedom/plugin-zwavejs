@@ -316,6 +316,25 @@ $('.controller_action').on('click', function() {
         })
       }
     })
+  } else if ($(this).data('action') == 'backupNVMRaw') {
+    $action = $(this).data('action')
+    bootbox.confirm("{{Etes-vous sûr ? Cette opération n'est pas très longue, mais le réseau sera inopérant pendant la procédure.}}", function(result) {
+      if (result) {
+        bootbox.confirm("{{Etes-vous certain de vouloir lancer le backup maintenant ?}}", function(result) {
+          if (result) {
+            jeedom.zwavejs.controller.action({
+              action: $action,
+              error: function(error) {
+                $('#div_networkzwavejsAlert').showAlert({ message: error.message, level: 'danger' })
+              },
+              success: function() {
+                $('#div_networkzwavejsAlert').showAlert({ message: '{{Action réalisée avec succès}}', level: 'success' })
+              }
+            })
+          }
+        })
+      }
+    })
   } else {
     jeedom.zwavejs.controller.action({
       action: $(this).data('action'),
@@ -495,11 +514,67 @@ function network_read_info() {
   })
 }
 
+
+$("body").off("click", ".downloadBackup").on("click", ".downloadBackup", function(e) {
+  window.open('core/php/downloadFile.php?pathfile=' + $(this).data('folder'), "_blank", null)
+})
+
+$("body").off("click", ".deleteBackup").on("click", ".deleteBackup", function(e) {
+   var backup = $(this).data('folder');
+   bootbox.confirm("{{Etes-vous sûr de vouloir supprimer ce backup ? }}", function(result) {
+      if (result) {
+         jeedom.zwavejs.nvmbackup.delete({
+           backup:backup,
+           error: function (error) {
+            $('#div_networkzwavejsAlert').showAlert({message: error.message, level: 'danger'});
+           },
+           success: function () {
+           }
+         });
+      }
+    })
+})
+
+$('#uploadNVM').fileupload({
+  dataType: 'json',
+  replaceFileInput: false,
+  done: function(e, data) {
+    if (data.result.state != 'ok') {
+      $('#div_networkzwavejsAlert').showAlert({message: data.result.result, level: 'danger'})
+      return;
+    }
+    $('#div_networkzwavejsAlert').showAlert({message: '{{Fichier(s) ajouté(s) avec succès}}', level: 'success'})
+  }
+})
+
+
+function updateListBackup() {
+   jeedom.zwavejs.nvmbackup.list({
+    error: function (error) {
+        $('#div_networkzwavejsAlert').showAlert({message: error.message, level: 'danger'});
+		if ($('.modalnetWork').is(":visible")) {
+			updateListBakcup = setTimeout(function() { updateListBackup() }, 2000)
+		}
+    },
+    success: function (backups) {
+      var table = '';
+      for (i in backups) {
+        table+= '<tr><td>' + backups[i]['name'] +'</td><td><a class="btn btn-xs btn-danger deleteBackup pull-right" style=text-align: right;display:inline-block" data-folder="'+backups[i]['folder']+'"><i class="fas fa-trash-alt"></i></a><a class="btn btn-xs btn-success downloadBackup pull-right" style=text-align: right;display:inline-block" data-folder="'+backups[i]['folder']+'"><i class="fas fa-download"></i></a></td></tr>'
+      }
+    $('.tableBackups tbody').empty().append(table)
+	 if ($('.modalnetWork').is(":visible")) {
+		updateListBakcup = setTimeout(function() { updateListBackup() }, 2000)
+	 }
+}
+});
+}
+
 $('#md_modal').bind('dialogclose', function(event, ui) {
   clearTimeout(networkinfo)
   clearTimeout(networkstats)
   clearTimeout(networknodes)
   clearTimeout(networkinfo)
+  clearTimeout(updateListBakcup)
 })
 
 $('#div_networkzwavejsAlert').showAlert({ message: '{{Chargement des informations en cours}}...', level: 'warning' })
@@ -507,3 +582,4 @@ network_load_info()
 network_load_nodes()
 network_read_stats()
 network_read_info()
+updateListBackup()

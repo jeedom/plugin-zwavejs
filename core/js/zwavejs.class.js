@@ -444,3 +444,47 @@ jeedom.zwavejs.network.refreshNeighbors = function(_params) {
 	}
 	$.ajax(paramsAJAX)
 }
+
+/*************************backup************************************************/
+
+jeedom.zwavejs.nvmbackup = function() {
+ };
+
+ jeedom.zwavejs.nvmbackup.list = function (_params) {
+ 	var paramsRequired = [];
+ 	var paramsSpecifics = {};
+ 	try {
+ 		jeedom.private.checkParamsRequired(_params || {}, paramsRequired);
+ 	} catch (e) {
+ 		(_params.error || paramsSpecifics.error || jeedom.private.default_params.error)(e);
+ 		return;
+ 	}
+ 	var params = $.extend({}, jeedom.private.default_params, paramsSpecifics, _params || {});
+ 	var paramsAJAX = jeedom.private.getParamsAJAX(params);
+	paramsAJAX.global= false;
+ 	paramsAJAX.url = 'plugins/zwavejs/core/ajax/zwavejs.ajax.php';
+ 	paramsAJAX.data = {
+ 		action: 'listNVMbackup'
+ 	};
+ 	$.ajax(paramsAJAX);
+ }
+ 
+  jeedom.zwavejs.nvmbackup.delete = function (_params) {
+ 	var paramsRequired = ['backup'];
+ 	var paramsSpecifics = {};
+ 	try {
+ 		jeedom.private.checkParamsRequired(_params || {}, paramsRequired);
+ 	} catch (e) {
+ 		(_params.error || paramsSpecifics.error || jeedom.private.default_params.error)(e);
+ 		return;
+ 	}
+ 	var params = $.extend({}, jeedom.private.default_params, paramsSpecifics, _params || {});
+ 	var paramsAJAX = jeedom.private.getParamsAJAX(params);
+	paramsAJAX.global= false;
+ 	paramsAJAX.url = 'plugins/zwavejs/core/ajax/zwavejs.ajax.php';
+ 	paramsAJAX.data = {
+		backup: _params.backup,
+ 		action: 'deleteNVMbackup'
+ 	};
+ 	$.ajax(paramsAJAX);
+ }
