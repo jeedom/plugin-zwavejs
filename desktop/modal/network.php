@@ -101,7 +101,7 @@ if (!isConnect('admin')) {
 				<ul id="tabs_network" class="nav nav-tabs" data-tabs="tabs">
 					<li class="active"><a href="#summary_network" data-toggle="tab"><i class="fas fa-tachometer-alt"></i> {{Résumé}}</a></li>
 					<li><a href="#actions_network" data-toggle="tab"><i class="fas fa-sliders-h"></i> {{Actions}}</a></li>
-					<li id="tab_backup"><a href="#backup_network" data-toggle="tab"><i class="fas fa-save"></i> {{Sauvegardes NVM}}</a></li>
+					<li id="tab_backup"><a href="#backup_network" data-toggle="tab"><i class="fas fa-save"></i> {{Gestion NVM}}</a></li>
 					<li><a href="#statistics_network" data-toggle="tab"><i class="far fa-chart-bar"></i> {{Statistiques}}</a></li>
 					<li id="tab_graph"><a href="#graph_network" data-toggle="tab"><i class="far fa-image"></i> {{Graphique du réseau}}</a></li>
 					<li id="tab_route"><a href="#route_network" data-toggle="tab"><i class="fas fa-table"></i> {{Table de routage}}</a></li>
