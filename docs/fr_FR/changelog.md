@@ -9,6 +9,8 @@
 **Modifications de Configurations**
 
 - Modification de la configuration *Cherubini Widom Smart Plug* pour utiliser les propriétés
+- Modification de la configuration *Qubino 3 Phase Meter* pour utiliser les propriétés
+- Modification de la propriété *Power Factor* pour l'option *production*
 
 **Ajouts de Configurations**
 
