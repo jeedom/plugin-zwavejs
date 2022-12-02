@@ -6,6 +6,11 @@
 
 # XX/12/2022
 
+**Améliorations**
+
+- Rajout d'un onglet *Gestion NVM* sur la page réseau. Sauvegarde, téléchargement et envoie pour le moment
+- Rajout dde la version du *SDK* sur la page d'informations d'un contrôleur.
+
 **Modifications de Configurations**
 
 - Modification de la configuration *Cherubini Widom Smart Plug* pour utiliser les propriétés
