@@ -262,6 +262,12 @@ class zwavejs extends eqLogic {
 		if (!is_dir($data_path)) {
 			mkdir($data_path, 0777, true);
 		}
+		$backup_path = dirname(__FILE__) . '/../../data/store/backups/nvm';
+		if (!is_dir($backup_path)) {
+			mkdir($backup_path, 0777, true);
+		}
+		$cmd = "chown -R www-data:www-data " . dirname(__FILE__) . '/../../data/store/backups';
+		exec(system::getCmdSudo() . $cmd . ' >> ' . log::getPathToLog('zwavejsd') . ' 2>&1 &');
 		$status_path = realpath(dirname(__FILE__) . '/../../data/status');
 		$files = glob($status_path . '/*.json');
 		foreach ($files as $file) {
