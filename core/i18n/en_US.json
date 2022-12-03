@@ -130,6 +130,7 @@
         "Accès non autorisé": "Unauthorized access",
         "Résumé": "Summary",
         "Actions": "Actions",
+        "Gestion NVM": "NVM management",
         "Statistiques": "Statistics",
         "Graphique du réseau": "Network graph",
         "Table de routage": "Routing table",
@@ -177,6 +178,10 @@
         "Vous pouvez changez le mot de passe utilisateur si vous le souhaitez. Vous pouvez utiliser les fonctionnalités.": "You can change the user password if you wish. You can use the features",
         "Mais ne changez aucun réglage.": "But don't change any settings",
         "Les identifiants par défaut sont": "The default credentials are",
+        "Les sauvegardes NVM ne sont pas intercompatibles d'un contrôleur en version de SDK Z-Wave inférieure à 6.61 à un contrôleur en version supérieure et inversement": "NVM backups are not intercompatible from a Z-Wave SDK version controller lower than 6.61 to a higher version controller and vice versa",
+        "Réaliser une sauvegarde NVM": "Make an NVM backup",
+        "Envoyer une sauvegarde NVM": "Send NVM backup",
+        "Sauvegardes disponibles": "Backups available",
         "Messages transmis TX": "Messages transmitted TX",
         "Messages reçus RX": "Received messages RX",
         "Messages RX abandonnés": "Abandoned RX Messages",
@@ -215,6 +220,7 @@
         "Description": "Description",
         "Identifiant": "ID",
         "Firmware": "Firmware",
+        "Sdk": "Sdk",
         "Nombre d'endpoints": "Number of endpoints",
         "Nombre de groupes": "Number of groups",
         "Configuration": "Setup",
@@ -420,7 +426,13 @@
         "Etes-vous sûr ? Cette opération est risquée": "Are you sure ? This operation is risky",
         "Etes-vous certain ? Votre contrôleur sera remis comme sorti d'usine.": "Are you sure? Your controller will be reset to factory default",
         "Action réalisée avec succès": "Action completed successfully",
+        "Etes-vous sûr ? Cette opération n'est pas très longue, mais le réseau sera inopérant durant la sauvegarde NVM.": "Are you sure ? This operation does not take very long, but the network will be down during the NVM backup",
+        "Etes-vous certain de vouloir réaliser une sauvegarde NVM maintenant ?": "Are you sure you want to perform an NVM backup now?",
         "Demande des voisins en cours": "Request from intermediate nodes in progress",
+        "Etes-vous sûr de vouloir supprimer cette sauvegarde NVM ? ": "Are you sure you want to delete this NVM backup?",
+        "Fichier(s) ajouté(s) avec succès": "File(s) added successfully",
+        "Supprimer la sauvegarde de Jeedom": "Delete Jeedom backup",
+        "Télécharger la sauvegarde": "Download backup",
         "Chargement des informations en cours": "Loading information in progress"
     },
     "plugins\/zwavejs\/desktop\/js\/health.js": {
@@ -471,6 +483,11 @@
     },
     "plugins\/zwavejs\/core\/ajax\/zwavejs.ajax.php": {
         "Equipement Z-Wave non trouvé": "Z-Wave device not found",
+        "Répertoire de téléversement non trouvé : ": "Upload directory not found:",
+        "Aucun fichier trouvé. Vérifiez le paramètre PHP (post size limit)": "No files found. Check the PHP setting (post size limit)",
+        "Le fichier est trop gros (maximum 500ko)": "The file is too big (maximum 500kB)",
+        "Impossible de déplacer le fichier temporaire": "Unable to move temporary file",
+        "Impossible de téléverser le fichier (limite du serveur web ?)": "Unable to upload file (webserver limit?)",
         "Aucune méthode correspondante": "No matching method"
     },
     "plugins\/zwavejs\/core\/class\/zwavejs.class.php": {

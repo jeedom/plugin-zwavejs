@@ -130,6 +130,7 @@
         "Accès non autorisé": "Acceso no autorizado",
         "Résumé": "Resumen",
         "Actions": "Comparte",
+        "Gestion NVM": "Gestión de MNV",
         "Statistiques": "Estadísticas",
         "Graphique du réseau": "Gráfico de red",
         "Table de routage": "Tabla de ruteo",
@@ -177,6 +178,10 @@
         "Vous pouvez changez le mot de passe utilisateur si vous le souhaitez. Vous pouvez utiliser les fonctionnalités.": "Puede cambiar la contraseña de usuario si lo desea. Puede utilizar las funciones",
         "Mais ne changez aucun réglage.": "Pero no cambies ninguna configuración",
         "Les identifiants par défaut sont": "Las credenciales predeterminadas son",
+        "Les sauvegardes NVM ne sont pas intercompatibles d'un contrôleur en version de SDK Z-Wave inférieure à 6.61 à un contrôleur en version supérieure et inversement": "Las copias de seguridad de NVM no son intercompatibles desde un controlador de versión Z-Wave SDK inferior a 6.61 a un controlador de versión superior y viceversa",
+        "Réaliser une sauvegarde NVM": "Hacer una copia de seguridad de NVM",
+        "Envoyer une sauvegarde NVM": "Enviar copia de seguridad de NVM",
+        "Sauvegardes disponibles": "Copias de seguridad disponibles",
         "Messages transmis TX": "Mensajes transmitidos TX",
         "Messages reçus RX": "Mensajes recibidos RX",
         "Messages RX abandonnés": "Mensajes RX abandonados",
@@ -215,6 +220,7 @@
         "Description": "Descripción",
         "Identifiant": "IDENTIFICACIÓN",
         "Firmware": "Firmware",
+        "Sdk": "SDK",
         "Nombre d'endpoints": "Número de puntos finales",
         "Nombre de groupes": "Número de grupos",
         "Configuration": "Configuración",
@@ -420,7 +426,13 @@
         "Etes-vous sûr ? Cette opération est risquée": "Está usted seguro ? Esta operación es arriesgada",
         "Etes-vous certain ? Votre contrôleur sera remis comme sorti d'usine.": "¿Está seguro? Su controlador se restablecerá a los valores predeterminados de fábrica",
         "Action réalisée avec succès": "Acción completada con éxito",
+        "Etes-vous sûr ? Cette opération n'est pas très longue, mais le réseau sera inopérant durant la sauvegarde NVM.": "Está usted seguro ? Esta operación no lleva mucho tiempo, pero la red estará inactiva durante la copia de seguridad de NVM",
+        "Etes-vous certain de vouloir réaliser une sauvegarde NVM maintenant ?": "¿Está seguro de que desea realizar una copia de seguridad de NVM ahora?",
         "Demande des voisins en cours": "Solicitud de vecinos en curso",
+        "Etes-vous sûr de vouloir supprimer cette sauvegarde NVM ? ": "¿Está seguro de que desea eliminar esta copia de seguridad de NVM?",
+        "Fichier(s) ajouté(s) avec succès": "Archivo(s) agregado(s) con éxito",
+        "Supprimer la sauvegarde de Jeedom": "Eliminar la copia de seguridad de Jeedom",
+        "Télécharger la sauvegarde": "Descargar copia de seguridad",
         "Chargement des informations en cours": "Cargando información en progreso"
     },
     "plugins\/zwavejs\/desktop\/js\/health.js": {
@@ -471,6 +483,11 @@
     },
     "plugins\/zwavejs\/core\/ajax\/zwavejs.ajax.php": {
         "Equipement Z-Wave non trouvé": "Dispositivo Z-Wave no encontrado",
+        "Répertoire de téléversement non trouvé : ": "Subir directorio no encontrado:",
+        "Aucun fichier trouvé. Vérifiez le paramètre PHP (post size limit)": "No se encontraron archivos. Verifique la configuración de PHP (límite de tamaño de publicación)",
+        "Le fichier est trop gros (maximum 500ko)": "El archivo es demasiado grande (máximo 500kB)",
+        "Impossible de déplacer le fichier temporaire": "No se puede mover el archivo temporal",
+        "Impossible de téléverser le fichier (limite du serveur web ?)": "No se puede cargar el archivo (¿límite del servidor web?)",
         "Aucune méthode correspondante": "Sin método de coincidencia"
     },
     "plugins\/zwavejs\/core\/class\/zwavejs.class.php": {

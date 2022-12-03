@@ -130,6 +130,7 @@
         "Accès non autorisé": "Accès non autorisé",
         "Résumé": "Résumé",
         "Actions": "Actions",
+        "Gestion NVM": "Gestion NVM",
         "Statistiques": "Statistiques",
         "Graphique du réseau": "Graphique du réseau",
         "Table de routage": "Table de routage",
@@ -177,6 +178,10 @@
         "Vous pouvez changez le mot de passe utilisateur si vous le souhaitez. Vous pouvez utiliser les fonctionnalités.": "Vous pouvez changez le mot de passe utilisateur si vous le souhaitez. Vous pouvez utiliser les fonctionnalités.",
         "Mais ne changez aucun réglage.": "Mais ne changez aucun réglage.",
         "Les identifiants par défaut sont": "Les identifiants par défaut sont",
+        "Les sauvegardes NVM ne sont pas intercompatibles d'un contrôleur en version de SDK Z-Wave inférieure à 6.61 à un contrôleur en version supérieure et inversement": "Les sauvegardes NVM ne sont pas intercompatibles d'un contrôleur en version de SDK Z-Wave inférieure à 6.61 à un contrôleur en version supérieure et inversement",
+        "Réaliser une sauvegarde NVM": "Réaliser une sauvegarde NVM",
+        "Envoyer une sauvegarde NVM": "Envoyer une sauvegarde NVM",
+        "Sauvegardes disponibles": "Sauvegardes disponibles",
         "Messages transmis TX": "Messages transmis TX",
         "Messages reçus RX": "Messages reçus RX",
         "Messages RX abandonnés": "Messages RX abandonnés",
@@ -215,6 +220,7 @@
         "Description": "Description",
         "Identifiant": "Identifiant",
         "Firmware": "Firmware",
+        "Sdk": "Sdk",
         "Nombre d'endpoints": "Nombre d'endpoints",
         "Nombre de groupes": "Nombre de groupes",
         "Configuration": "Configuration",
@@ -420,7 +426,13 @@
         "Etes-vous sûr ? Cette opération est risquée": "Etes-vous sûr ? Cette opération est risquée",
         "Etes-vous certain ? Votre contrôleur sera remis comme sorti d'usine.": "Etes-vous certain ? Votre contrôleur sera remis comme sorti d'usine.",
         "Action réalisée avec succès": "Action réalisée avec succès",
+        "Etes-vous sûr ? Cette opération n'est pas très longue, mais le réseau sera inopérant durant la sauvegarde NVM.": "Etes-vous sûr ? Cette opération n'est pas très longue, mais le réseau sera inopérant durant la sauvegarde NVM.",
+        "Etes-vous certain de vouloir réaliser une sauvegarde NVM maintenant ?": "Etes-vous certain de vouloir réaliser une sauvegarde NVM maintenant ?",
         "Demande des voisins en cours": "Demande des voisins en cours",
+        "Etes-vous sûr de vouloir supprimer cette sauvegarde NVM ? ": "Etes-vous sûr de vouloir supprimer cette sauvegarde NVM ? ",
+        "Fichier(s) ajouté(s) avec succès": "Fichier(s) ajouté(s) avec succès",
+        "Supprimer la sauvegarde de Jeedom": "Supprimer la sauvegarde de Jeedom",
+        "Télécharger la sauvegarde": "Télécharger la sauvegarde",
         "Chargement des informations en cours": "Chargement des informations en cours"
     },
     "plugins\/zwavejs\/desktop\/js\/health.js": {
@@ -471,6 +483,11 @@
     },
     "plugins\/zwavejs\/core\/ajax\/zwavejs.ajax.php": {
         "Equipement Z-Wave non trouvé": "Equipement Z-Wave non trouvé",
+        "Répertoire de téléversement non trouvé : ": "Répertoire de téléversement non trouvé : ",
+        "Aucun fichier trouvé. Vérifiez le paramètre PHP (post size limit)": "Aucun fichier trouvé. Vérifiez le paramètre PHP (post size limit)",
+        "Le fichier est trop gros (maximum 500ko)": "Le fichier est trop gros (maximum 500ko)",
+        "Impossible de déplacer le fichier temporaire": "Impossible de déplacer le fichier temporaire",
+        "Impossible de téléverser le fichier (limite du serveur web ?)": "Impossible de téléverser le fichier (limite du serveur web ?)",
         "Aucune méthode correspondante": "Aucune méthode correspondante"
     },
     "plugins\/zwavejs\/core\/class\/zwavejs.class.php": {
