@@ -163,7 +163,7 @@ include_file('3rdparty', 'jsonTree/jsonTree', 'js', 'zwavejs');
 						<span class="btn btn-primary btn-file roundedLeft">
 							<i class="fas fa-cloud-upload-alt"></i> {{Envoyer un firmware}}<input id="uploadOTA" type="file" name="file" data-url="plugins/zwavejs/core/ajax/zwavejs.ajax.php?action=uploadOTA&node=<?php echo init('id');?>">
 						</span>
-						<a data-action="abortFirmwareUpdate" class="btn btn-danger nodeAction roundedRight"><i class="fas fa-ban"></i> {{Annuler une mise à jours en cours}}</a>
+						<a data-action="abortFirmwareUpdate" class="btn btn-danger nodeAction roundedRight"><i class="fas fa-ban"></i> {{Annuler une mise à jour en cours}}</a>
 					</div>
 				</div>
 				<div class="tab-pane" id="statistics">
