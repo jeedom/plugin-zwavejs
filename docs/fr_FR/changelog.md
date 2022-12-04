@@ -8,7 +8,7 @@
 
 **Améliorations**
 
-- Rajout d'un onglet *Gestion NVM* sur la page réseau. Sauvegarde, téléchargement et envoie pour le moment
+- Rajout d'un onglet *Gestion NVM* sur la page réseau. Sauvegarde, téléchargement, envoie et restauration
 - Rajout dde la version du *SDK* sur la page d'informations d'un contrôleur.
 
 **Modifications de Configurations**

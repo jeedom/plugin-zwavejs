@@ -578,7 +578,7 @@ function updateListBackup() {
     success: function(backups) {
       var table = ''
       for (i in backups) {
-        table += '<tr><td>' + backups[i]['name'] + '</td><td><a class="btn btn-xs btn-danger deleteBackup pull-right" style=text-align: right;display:inline-block" title="{{Supprimer la sauvegarde de Jeedom}}" data-folder="' + backups[i]['folder'] + '"><i class="fas fa-trash-alt"></i></a><a class="btn btn-xs btn-warning restoreBackup pull-right" style=text-align: right;display:inline-block" title="{{Restaurer la sauvegarde}}" data-folder="' + backups[i]['folder'] + '"><i class="fas fa-trash-alt"></i></a><a class="btn btn-xs btn-success downloadBackup pull-right" style=text-align: right;display:inline-block" title="{{Télécharger la sauvegarde}}" data-folder="' + backups[i]['folder'] + '"><i class="fas fa-download"></i></a></td></tr>'
+        table += '<tr><td>' + backups[i]['name'] + '</td><td><a class="btn btn-xs btn-danger deleteBackup pull-right" style=text-align: right;display:inline-block" title="{{Supprimer la sauvegarde de Jeedom}}" data-folder="' + backups[i]['folder'] + '"><i class="fas fa-trash-alt"></i></a><a class="btn btn-xs btn-warning restoreBackup pull-right" style=text-align: right;display:inline-block" title="{{Restaurer la sauvegarde}}" data-folder="' + backups[i]['folder'] + '"><i class="fas fa-upload"></i></a><a class="btn btn-xs btn-success downloadBackup pull-right" style=text-align: right;display:inline-block" title="{{Télécharger la sauvegarde}}" data-folder="' + backups[i]['folder'] + '"><i class="fas fa-download"></i></a></td></tr>'
       }
       $('.tableBackups tbody').empty().append(table)
       if ($('.modalnetWork').is(":visible")) {
