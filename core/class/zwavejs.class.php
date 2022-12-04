@@ -445,6 +445,10 @@ class zwavejs extends eqLogic {
 				if (isset($value['success']) && $value['success']) {
 					event::add('zwavejs::firmware_update',array('node' => $value['args'][0], 'cancel'=>true));
 				}
+			} else if ($key == 'restoreNVM') {
+				if (isset($value['success']) && !$value['success']) {
+					event::add('zwavejs::restoreNVM',array('message' => $value['message']));
+				}
 			} else if ($key == 'getInfo') {
 				self::addFileEvent('getInfo', $value['result']);
 				if (isset($value['result']['controllerId'])) {

@@ -567,6 +567,10 @@ $('#uploadNVM').fileupload({
   }
 })
 
+$('body').off('zwavejs::restoreNVM').on('zwavejs::restoreNVM', function(_event, _options) {
+  $('#div_networkzwavejsAlert').showAlert({ message: _options.message, level: 'warning' })
+})
+
 function updateListBackup() {
   jeedom.zwavejs.nvmbackup.list({
     error: function(error) {
