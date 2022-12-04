@@ -441,7 +441,11 @@ class zwavejs extends eqLogic {
 		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . "Traitement d'un retour api");
 		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . json_encode($_api));
 		foreach ($_api as $key => $value) {
-			if ($key == 'getInfo') {
+			if ($key == 'abortFirmwareUpdate') {
+				if (isset($value['success']) && $value['success']) {
+					event::add('zwavejs::firmware_update',array('node' => $value['args'][0], 'cancel'=>true));
+				}
+			} else if ($key == 'getInfo') {
 				self::addFileEvent('getInfo', $value['result']);
 				if (isset($value['result']['controllerId'])) {
 					config::save('controllerId', $value['result']['controllerId'], __CLASS__);

@@ -133,7 +133,11 @@ $('#uploadOTA').fileupload({
 
 $('body').off('zwavejs::firmware_update').on('zwavejs::firmware_update', function(_event, _options) {
   if (_options.node == nodeId) {
-    $('.otaStatus').empty().append('Mise à jour en cours : '+ _options.progress +'% ('+_options.files+')')
+    if ("cancel" in _options){
+        $('.otaStatus').empty().append('{{Aucune mise à jour en cours}}')
+    } else {
+        $('.otaStatus').empty().append('{{Mise à jour en cours : }}'+ _options.progress +'% ('+_options.files+')')
+    }
   }
 })
 

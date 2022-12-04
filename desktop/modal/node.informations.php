@@ -160,9 +160,10 @@ include_file('3rdparty', 'jsonTree/jsonTree', 'js', 'zwavejs');
 					<div class="alert alert-warning">{{Une mise à jour de firmware est une opération risquée. Assurez-vous que le firmware est bien validé par le fabricant pour votre module et que la version de celui-ci permet la mise à jour.}}</div>
 					<span class="otaStatus label label-sm label-info pull-right">{{Aucune mise à jour en cours}}</span>
 					<div class="input-group">
-						<span class="btn btn-primary btn-file rounded">
+						<span class="btn btn-primary btn-file roundedLeft">
 							<i class="fas fa-cloud-upload-alt"></i> {{Envoyer un firmware}}<input id="uploadOTA" type="file" name="file" data-url="plugins/zwavejs/core/ajax/zwavejs.ajax.php?action=uploadOTA&node=<?php echo init('id');?>">
 						</span>
+						<a data-action="abortFirmwareUpdate" class="btn btn-danger nodeAction roundedRight"><i class="fas fa-ban"></i> {{Annuler une mise à jours en cours}}</a>
 					</div>
 				</div>
 				<div class="tab-pane" id="statistics">
