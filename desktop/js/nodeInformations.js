@@ -118,6 +118,25 @@ function read_nodes() {
 	})
 }
 
+$('#uploadOTA').fileupload({
+	dataType: 'json',
+	node: nodeId,
+	replaceFileInput: false,
+	done: function(e, data) {
+	if (data.result.state != 'ok') {
+		$('#div_nodeInformationsZwaveJsAlert').showAlert({ message: data.result.result, level: 'danger' })
+		return
+	}
+	$('#div_nodeInformationsZwaveJsAlert').showAlert({ message: '{{Fichier(s) ajouté(s) avec succès}}', level: 'success' })
+	}
+})
+
+$('body').off('zwavejs::firmware_update').on('zwavejs::firmware_update', function(_event, _options) {
+  if (_options.node == nodeId) {
+    $('.otaStatus').empty().append('Mise à jour en cours : '+ _options.progress +'% ('+_options.files+')')
+  }
+})
+
 
 $('#md_modal').bind('dialogclose', function(event, ui) {
 	clearTimeout(readnodes)

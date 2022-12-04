@@ -372,7 +372,7 @@ class zwavejs extends eqLogic {
 
 	public static function handleMqttMessage($_message) {
 		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . 'Message Mqtt reçu');
-		//log::add(__CLASS__, 'debug', json_encode($_message));
+		// log::add(__CLASS__, 'debug', json_encode($_message));
 		if (isset($_message[config::byKey('prefix', __CLASS__, 'zwave')])) {
 			$message = $_message[config::byKey('prefix', __CLASS__, 'zwave')];
 		} else {
@@ -635,6 +635,10 @@ class zwavejs extends eqLogic {
 				self::createEqLogic($value['data'][0]);
 			} else if ($key == 'node_interview_completed') {
 				self::createEqLogic($value['data'][0]);
+			} else if ($key == 'node_firmware_update_progress') {
+				$nodeData = $value['data'][0];
+				$updateData = $value['data'][1];
+				event::add('zwavejs::firmware_update',array('node' => $nodeData['id'], 'progress'=>$updateData['progress'],'files'=>$updateData['currentFile'].'/'.$updateData['totalFiles']));
 			}
 		}
 	}

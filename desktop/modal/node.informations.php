@@ -34,6 +34,7 @@ include_file('3rdparty', 'jsonTree/jsonTree', 'js', 'zwavejs');
 			<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
 				<li id="tab-summary" class="active"><a href="#summary" data-toggle="tab"><i class="fas fa-tachometer-alt"></i> {{Résumé}}</a></li>
 				<li id="tab-actions"><a href="#actions" data-toggle="tab"><i class="fas fa-sliders-h"></i> {{Actions}}</a></li>
+				<li id="tab-ota"><a href="#ota" data-toggle="tab"><i class="icon kiko-router "></i> {{Mise à jour}}</a></li>
 				<li id="tab-stats"><a href="#statistics" data-toggle="tab"><i class="fas fa-chart-bar"></i> {{Statistiques}}</a></li>
 				<li id="tab-stats"><a href="#tree" data-toggle="tab"><i class="fas fa-tree"></i> {{Arbre}}</a></li>
 			</ul>
@@ -153,6 +154,16 @@ include_file('3rdparty', 'jsonTree/jsonTree', 'js', 'zwavejs');
 							<td>{{Permet de supprimer un nœud du réseau.}}</td>
 						</tr>
 					</table>
+				</div>
+				<div class="tab-pane" id="ota">
+					<br>
+					<div class="alert alert-warning">{{Une mise à jour de firmware est une opération risquée. Assurez-vous que le firmware est bien validé par le fabricant pour votre module et que la version de celui-ci permet la mise à jour.}}</div>
+					<span class="otaStatus label label-sm label-info pull-right">{{Aucune mise à jour en cours}}</span>
+					<div class="input-group">
+						<span class="btn btn-primary btn-file rounded">
+							<i class="fas fa-cloud-upload-alt"></i> {{Envoyer un firmware}}<input id="uploadOTA" type="file" name="file" data-url="plugins/zwavejs/core/ajax/zwavejs.ajax.php?action=uploadOTA&node=<?php echo init('id');?>">
+						</span>
+					</div>
 				</div>
 				<div class="tab-pane" id="statistics">
 					<table class="table table-condensed table-striped">
