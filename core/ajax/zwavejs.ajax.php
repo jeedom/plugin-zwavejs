@@ -174,6 +174,21 @@ try {
 		ajax::success();
 	}
 	
+	if (init('action') == 'restoreNVMbackup') {
+		$file = init('backup');
+		if (file_exists($file)){
+			$content = file_get_contents($file);
+			$byteArr = str_split($content);
+			foreach ($byteArr as $key=>$val) { 
+				$byteArr[$key] = ord($val); 
+			}
+			zwavejs::publishMqttApi('restoreNVM', array("args"=>array(array("type"=>"Buffer","data"=>$byteArr))));
+		} else {
+			throw new Exception(__('Aucun fichier trouvé.', __FILE__));
+		}
+		ajax::success();
+	}
+	
 	if (init('action') == 'uploadNVMbackup') {
 		$uploaddir = dirname(__FILE__). '/../../data/store/backups/nvm';
 		if (!file_exists($uploaddir)) {

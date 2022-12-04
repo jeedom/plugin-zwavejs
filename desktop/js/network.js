@@ -514,6 +514,26 @@ function network_read_info() {
   })
 }
 
+$("body").off("click", ".restoreBackup").on("click", ".restoreBackup", function(e) {
+    var backup = $(this).data('folder')
+    bootbox.confirm("{{Etes-vous sûr de vouloir restaurer cette sauvegarde sur le contrôleur ? Cette action effacera votre contrôleur complètement.}}", function(result) {
+      if (result) {
+        bootbox.confirm("{{Etes-vous certain de vouloir réaliser une restauration NVM maintenant ?}}", function(result) {
+          if (result) {
+            jeedom.zwavejs.nvmbackup.restore({
+              backup: backup,
+              error: function(error) {
+                $('#div_networkzwavejsAlert').showAlert({ message: error.message, level: 'danger' })
+              },
+              success: function() {
+                $('#div_networkzwavejsAlert').showAlert({ message: '{{Action réalisée avec succès}}', level: 'success' })
+              }
+            })
+          }
+        })
+      }
+    })
+})
 
 $("body").off("click", ".downloadBackup").on("click", ".downloadBackup", function(e) {
   window.open('core/php/downloadFile.php?pathfile=' + $(this).data('folder'), "_blank", null)
@@ -547,7 +567,6 @@ $('#uploadNVM').fileupload({
   }
 })
 
-
 function updateListBackup() {
   jeedom.zwavejs.nvmbackup.list({
     error: function(error) {
@@ -559,7 +578,7 @@ function updateListBackup() {
     success: function(backups) {
       var table = ''
       for (i in backups) {
-	table += '<tr><td>' + backups[i]['name'] + '</td><td><a class="btn btn-xs btn-danger deleteBackup pull-right" style=text-align: right;display:inline-block" title="{{Supprimer la sauvegarde de Jeedom}}" data-folder="' + backups[i]['folder'] + '"><i class="fas fa-trash-alt"></i></a><a class="btn btn-xs btn-success downloadBackup pull-right" style=text-align: right;display:inline-block" title="{{Télécharger la sauvegarde}}" data-folder="' + backups[i]['folder'] + '"><i class="fas fa-download"></i></a></td></tr>'
+        table += '<tr><td>' + backups[i]['name'] + '</td><td><a class="btn btn-xs btn-danger deleteBackup pull-right" style=text-align: right;display:inline-block" title="{{Supprimer la sauvegarde de Jeedom}}" data-folder="' + backups[i]['folder'] + '"><i class="fas fa-trash-alt"></i></a><a class="btn btn-xs btn-warning restoreBackup pull-right" style=text-align: right;display:inline-block" title="{{Restaurer la sauvegarde}}" data-folder="' + backups[i]['folder'] + '"><i class="fas fa-trash-alt"></i></a><a class="btn btn-xs btn-success downloadBackup pull-right" style=text-align: right;display:inline-block" title="{{Télécharger la sauvegarde}}" data-folder="' + backups[i]['folder'] + '"><i class="fas fa-download"></i></a></td></tr>'
       }
       $('.tableBackups tbody').empty().append(table)
       if ($('.modalnetWork').is(":visible")) {
