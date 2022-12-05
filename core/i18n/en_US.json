@@ -211,6 +211,7 @@
         "Accès non autorisé": "Unauthorized access",
         "Résumé": "Summary",
         "Actions": "Actions",
+        "Mise à jour": "Update",
         "Statistiques": "Statistics",
         "Arbre": "Tree",
         "Informations Nœud": "Node Information",
@@ -269,6 +270,10 @@
         "Vérifie si le nœud est dans la liste des nœuds en erreur.": "Checks if the node is in the list of nodes in error",
         "Supprimer le nœud du réseau": "Remove node from network",
         "Permet de supprimer un nœud du réseau.": "Allows you to remove a node from the network",
+        "Une mise à jour de firmware est une opération risquée. Assurez-vous que le firmware est bien validé par le fabricant pour votre module et que la version de celui-ci permet la mise à jour.": "A firmware update is a risky operation. Make sure that the firmware is indeed validated by the manufacturer for your module and that the version of this one allows the update",
+        "Aucune mise à jour en cours": "No updates in progress",
+        "Envoyer un firmware": "Send firmware",
+        "Annuler une mise à jour en cours": "Cancel an update in progress",
         "Messages transmis TX": "Messages transmitted TX",
         "Messages reçus RX": "Received messages RX",
         "Messages RX abandonnés": "Abandoned RX Messages",
@@ -429,9 +434,12 @@
         "Etes-vous sûr ? Cette opération n'est pas très longue, mais le réseau sera inopérant durant la sauvegarde NVM.": "Are you sure ? This operation does not take very long, but the network will be down during the NVM backup",
         "Etes-vous certain de vouloir réaliser une sauvegarde NVM maintenant ?": "Are you sure you want to perform an NVM backup now?",
         "Demande des voisins en cours": "Request from intermediate nodes in progress",
+        "Etes-vous sûr de vouloir restaurer cette sauvegarde sur le contrôleur ? Cette action effacera votre contrôleur complètement.": "Are you sure you want to restore this backup to the controller? This action will erase your controller completely",
+        "Etes-vous certain de vouloir réaliser une restauration NVM maintenant ?": "Are you sure you want to perform an NVM restore now?",
         "Etes-vous sûr de vouloir supprimer cette sauvegarde NVM ? ": "Are you sure you want to delete this NVM backup?",
         "Fichier(s) ajouté(s) avec succès": "File(s) added successfully",
         "Supprimer la sauvegarde de Jeedom": "Delete Jeedom backup",
+        "Restaurer la sauvegarde": "Restore backup",
         "Télécharger la sauvegarde": "Download backup",
         "Chargement des informations en cours": "Loading information in progress"
     },
@@ -456,6 +464,9 @@
     },
     "plugins\/zwavejs\/desktop\/js\/nodeInformations.js": {
         "Action réalisée avec succès": "Action completed successfully",
+        "Fichier(s) ajouté(s) avec succès": "File(s) added successfully",
+        "Aucune mise à jour en cours": "No updates in progress",
+        "Mise à jour en cours : ": "Update in progress :",
         "Chargement des informations en cours": "Loading information in progress"
     },
     "plugins\/zwavejs\/core\/php\/jeeZwaveProxy.php": {
@@ -483,11 +494,13 @@
     },
     "plugins\/zwavejs\/core\/ajax\/zwavejs.ajax.php": {
         "Equipement Z-Wave non trouvé": "Z-Wave device not found",
+        "Aucun fichier trouvé.": "No files found",
         "Répertoire de téléversement non trouvé : ": "Upload directory not found:",
         "Aucun fichier trouvé. Vérifiez le paramètre PHP (post size limit)": "No files found. Check the PHP setting (post size limit)",
         "Le fichier est trop gros (maximum 500ko)": "The file is too big (maximum 500kB)",
         "Impossible de déplacer le fichier temporaire": "Unable to move temporary file",
         "Impossible de téléverser le fichier (limite du serveur web ?)": "Unable to upload file (webserver limit?)",
+        "Le fichier est trop gros (maximum 2mo)": "The file is too big (maximum 2mo)",
         "Aucune méthode correspondante": "No matching method"
     },
     "plugins\/zwavejs\/core\/class\/zwavejs.class.php": {

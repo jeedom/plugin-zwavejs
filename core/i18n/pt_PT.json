@@ -211,6 +211,7 @@
         "Accès non autorisé": "Acesso não autorizado",
         "Résumé": "Resumo",
         "Actions": "Ações",
+        "Mise à jour": "Atualizar",
         "Statistiques": "Estatisticas",
         "Arbre": "Árvore",
         "Informations Nœud": "Informações do nó",
@@ -269,6 +270,10 @@
         "Vérifie si le nœud est dans la liste des nœuds en erreur.": "Verifica se o nó está na lista de nós com erro",
         "Supprimer le nœud du réseau": "Remover nó da rede",
         "Permet de supprimer un nœud du réseau.": "Permite remover um nó da rede",
+        "Une mise à jour de firmware est une opération risquée. Assurez-vous que le firmware est bien validé par le fabricant pour votre module et que la version de celui-ci permet la mise à jour.": "Uma atualização de firmware é uma operação arriscada. Certifique-se que o firmware é realmente validado pelo fabricante para o seu módulo e que a versão deste permite a atualização",
+        "Aucune mise à jour en cours": "Nenhuma atualização em andamento",
+        "Envoyer un firmware": "Enviar firmware",
+        "Annuler une mise à jour en cours": "Cancelar uma atualização em andamento",
         "Messages transmis TX": "Mensagens transmitidas TX",
         "Messages reçus RX": "Mensagens recebidas RX",
         "Messages RX abandonnés": "Mensagens RX abandonadas",
@@ -429,9 +434,12 @@
         "Etes-vous sûr ? Cette opération n'est pas très longue, mais le réseau sera inopérant durant la sauvegarde NVM.": "Tem certeza ? Esta operação não demora muito, mas a rede ficará inativa durante o backup NVM",
         "Etes-vous certain de vouloir réaliser une sauvegarde NVM maintenant ?": "Tem certeza de que deseja executar um backup NVM agora?",
         "Demande des voisins en cours": "Solicitação de vizinhos em andamento",
+        "Etes-vous sûr de vouloir restaurer cette sauvegarde sur le contrôleur ? Cette action effacera votre contrôleur complètement.": "Tem certeza de que deseja restaurar este backup no controlador? Esta ação apagará seu controlador completamente",
+        "Etes-vous certain de vouloir réaliser une restauration NVM maintenant ?": "Tem certeza de que deseja executar uma restauração NVM agora?",
         "Etes-vous sûr de vouloir supprimer cette sauvegarde NVM ? ": "Tem certeza de que deseja excluir este backup NVM?",
         "Fichier(s) ajouté(s) avec succès": "Arquivo(s) adicionado(s) com sucesso",
         "Supprimer la sauvegarde de Jeedom": "Excluir backup do Jeedom",
+        "Restaurer la sauvegarde": "Restaurar backup",
         "Télécharger la sauvegarde": "Baixar cópia de segurança",
         "Chargement des informations en cours": "Carregando informações em andamento"
     },
@@ -456,6 +464,9 @@
     },
     "plugins\/zwavejs\/desktop\/js\/nodeInformations.js": {
         "Action réalisée avec succès": "Ação concluída com sucesso",
+        "Fichier(s) ajouté(s) avec succès": "Arquivo(s) adicionado(s) com sucesso",
+        "Aucune mise à jour en cours": "Nenhuma atualização em andamento",
+        "Mise à jour en cours : ": "Atualização em andamento :",
         "Chargement des informations en cours": "Carregando informações em andamento"
     },
     "plugins\/zwavejs\/core\/php\/jeeZwaveProxy.php": {
@@ -483,11 +494,13 @@
     },
     "plugins\/zwavejs\/core\/ajax\/zwavejs.ajax.php": {
         "Equipement Z-Wave non trouvé": "Dispositivo Z-Wave não encontrado",
+        "Aucun fichier trouvé.": "Nenhum arquivo encontrado",
         "Répertoire de téléversement non trouvé : ": "Diretório de upload não encontrado:",
         "Aucun fichier trouvé. Vérifiez le paramètre PHP (post size limit)": "Nenhum arquivo encontrado. Verifique a configuração do PHP (limite de tamanho do post)",
         "Le fichier est trop gros (maximum 500ko)": "O arquivo é muito grande (máximo 500kB)",
         "Impossible de déplacer le fichier temporaire": "Não foi possível mover o arquivo temporário",
         "Impossible de téléverser le fichier (limite du serveur web ?)": "Não é possível fazer upload do arquivo (limite do servidor web?)",
+        "Le fichier est trop gros (maximum 2mo)": "O arquivo é muito grande (máximo 2 meses)",
         "Aucune méthode correspondante": "Nenhum método de correspondência"
     },
     "plugins\/zwavejs\/core\/class\/zwavejs.class.php": {
