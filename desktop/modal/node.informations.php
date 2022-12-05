@@ -34,6 +34,7 @@ include_file('3rdparty', 'jsonTree/jsonTree', 'js', 'zwavejs');
 			<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
 				<li id="tab-summary" class="active"><a href="#summary" data-toggle="tab"><i class="fas fa-tachometer-alt"></i> {{Résumé}}</a></li>
 				<li id="tab-actions"><a href="#actions" data-toggle="tab"><i class="fas fa-sliders-h"></i> {{Actions}}</a></li>
+				<li id="tab-ota"><a href="#ota" data-toggle="tab"><i class="icon kiko-router "></i> {{Mise à jour}}</a></li>
 				<li id="tab-stats"><a href="#statistics" data-toggle="tab"><i class="fas fa-chart-bar"></i> {{Statistiques}}</a></li>
 				<li id="tab-stats"><a href="#tree" data-toggle="tab"><i class="fas fa-tree"></i> {{Arbre}}</a></li>
 			</ul>
@@ -53,6 +54,7 @@ include_file('3rdparty', 'jsonTree/jsonTree', 'js', 'zwavejs');
 									<p><b>{{Description}} : </b><span class="getNodeInfo-productDescription label label-info" style="font-size : 1em;"></span></p>
 									<p><b>{{Identifiant}} : </b><span class="getNodeInfo-deviceIdNew label label-info" style="font-size : 1em;"></span> <span class="getNodeInfo-hexId label label-info" style="font-size : 1em;"></span></p>
 									<p><b>{{Firmware}} : </b><span class="getNodeInfo-firmwareVersion label label-info" style="font-size : 1em;"></span></p>
+									<p class="sdkInfo" style="display:none;"><b>{{Sdk}} : </b><span class="getNodeInfo-sdkVersion label label-info" style="font-size : 1em;"></span></p>
 									<p><b>{{Nombre d'endpoints}} : </b><span class="getNodeInfo-endpointsCount label label-info" style="font-size : 1em;"></span></p>
 									<p><b>{{Nombre de groupes}} : </b><span class="getNodeInfo-numberGroups label label-info" style="font-size : 1em;"></span></p>
 									<p><b>{{Configuration}} : </b><span class="getNodeInfo-filename label label-info" style="font-size : 1em;"></span></p>
@@ -152,6 +154,17 @@ include_file('3rdparty', 'jsonTree/jsonTree', 'js', 'zwavejs');
 							<td>{{Permet de supprimer un nœud du réseau.}}</td>
 						</tr>
 					</table>
+				</div>
+				<div class="tab-pane" id="ota">
+					<br>
+					<div class="alert alert-warning">{{Une mise à jour de firmware est une opération risquée. Assurez-vous que le firmware est bien validé par le fabricant pour votre module et que la version de celui-ci permet la mise à jour.}}</div>
+					<span class="otaStatus label label-sm label-info pull-right">{{Aucune mise à jour en cours}}</span>
+					<div class="input-group">
+						<span class="btn btn-primary btn-file roundedLeft">
+							<i class="fas fa-cloud-upload-alt"></i> {{Envoyer un firmware}}<input id="uploadOTA" type="file" name="file" data-url="plugins/zwavejs/core/ajax/zwavejs.ajax.php?action=uploadOTA&node=<?php echo init('id');?>">
+						</span>
+						<a data-action="abortFirmwareUpdate" class="btn btn-danger nodeAction roundedRight"><i class="fas fa-ban"></i> {{Annuler une mise à jour en cours}}</a>
+					</div>
 				</div>
 				<div class="tab-pane" id="statistics">
 					<table class="table table-condensed table-striped">

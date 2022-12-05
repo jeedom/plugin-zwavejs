@@ -9,207 +9,60 @@
             "84"
         ]
     },
-    "commands": [
-        {
-            "name": "Puissance",
-            "type": "info",
-            "isVisible": 1,
-            "isHistorized": 1,
-            "configuration": {
-                "minValue": 0,
-                "class": 50,
-                "endpoint": 2,
-                "property": "value-66049"
-            },
-            "subtype": "numeric",
-            "display": {
-                "generic_type": "POWER"
-            },
-            "unite": "W"
-        },
-        {
-            "name": "Consommation kWh",
-            "type": "info",
-            "isVisible": 0,
-            "isHistorized": 1,
-            "configuration": {
-                "minValue": 0,
-                "class": 50,
-                "endpoint": 2,
-                "property": "value-65537"
-            },
-            "subtype": "numeric",
-            "display": {
-                "generic_type": "CONSUMPTION"
-            },
-            "unite": "kWh"
-        },
-        {
-            "name": "Tension",
-            "type": "info",
-            "isVisible": 1,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 50,
-                "endpoint": 2,
-                "property": "value-66561"
-            },
-            "subtype": "numeric",
-            "display": {
-                "generic_type": "VOLTAGE"
-            },
-            "unite": "V"
-        },
-        {
-            "name": "Intensité",
-            "type": "info",
-            "isVisible": 1,
-            "isHistorized": 0,
-            "configuration": {
-                "minValue": 0,
-                "class": 50,
-                "endpoint": 2,
-                "property": "value-66817"
-            },
-            "subtype": "numeric",
-            "display": {
-                "generic_type": "DONT"
-            },
-            "unite": "A"
-        },
-        {
-            "name": "Puissance-2",
-            "type": "info",
-            "isVisible": 1,
-            "isHistorized": 1,
-            "configuration": {
-                "minValue": 0,
-                "class": 50,
-                "endpoint": 3,
-                "property": "value-66049"
-            },
-            "subtype": "numeric",
-            "display": {
-                "generic_type": "POWER"
-            },
-            "unite": "W"
-        },
-        {
-            "name": "Consommation kWh-2",
-            "type": "info",
-            "isVisible": 0,
-            "isHistorized": 1,
-            "configuration": {
-                "minValue": 0,
-                "class": 50,
-                "endpoint": 3,
-                "property": "value-65537"
-            },
-            "subtype": "numeric",
-            "display": {
-                "generic_type": "CONSUMPTION"
-            },
-            "unite": "kWh"
-        },
-        {
-            "name": "Tension-2",
-            "type": "info",
-            "isVisible": 1,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 50,
-                "endpoint": 3,
-                "property": "value-66561"
-            },
-            "subtype": "numeric",
-            "display": {
-                "generic_type": "VOLTAGE"
-            },
-            "unite": "V"
-        },
-        {
-            "name": "Intensité-2",
-            "type": "info",
-            "isVisible": 1,
-            "isHistorized": 0,
-            "configuration": {
-                "minValue": 0,
-                "class": 50,
-                "endpoint": 3,
-                "property": "value-66817"
-            },
-            "subtype": "numeric",
-            "display": {
-                "generic_type": "DONT"
-            },
-            "unite": "A"
-        },
-        {
-            "name": "Puissance-3",
-            "type": "info",
-            "isVisible": 1,
-            "isHistorized": 1,
-            "configuration": {
-                "minValue": 0,
-                "class": 50,
-                "endpoint": 4,
-                "property": "value-66049"
-            },
-            "subtype": "numeric",
-            "display": {
-                "generic_type": "POWER"
-            },
-            "unite": "W"
-        },
-        {
-            "name": "Consommation kWh-3",
-            "type": "info",
-            "isVisible": 0,
-            "isHistorized": 1,
-            "configuration": {
-                "minValue": 0,
-                "class": 50,
-                "endpoint": 4,
-                "property": "value-65537"
-            },
-            "subtype": "numeric",
-            "display": {
-                "generic_type": "CONSUMPTION"
-            },
-            "unite": "kWh"
-        },
-        {
-            "name": "Tension-3",
-            "type": "info",
-            "isVisible": 1,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 50,
-                "endpoint": 4,
-                "property": "value-66561"
-            },
-            "subtype": "numeric",
-            "display": {
-                "generic_type": "VOLTAGE"
-            },
-            "unite": "V"
-        },
-        {
-            "name": "Intensité-3",
-            "type": "info",
-            "isVisible": 1,
-            "isHistorized": 0,
-            "configuration": {
-                "minValue": 0,
-                "class": 50,
-                "endpoint": 4,
-                "property": "value-66817"
-            },
-            "subtype": "numeric",
-            "display": {
-                "generic_type": "DONT"
-            },
-            "unite": "A"
-        }
-    ]
+    "properties": {
+        "Power": {"multi": [
+                1,
+                2,
+                3,
+                4
+            ],"replace": {"#endpoint#": "multiKey"}},
+        "Energy": {"multi": [
+                1,
+                2,
+                3,
+                4
+            ],"replace": {"#endpoint#": "multiKey"}},
+        "Current": {"multi": [
+                1,
+                2,
+                3,
+                4
+            ],"replace": {"#endpoint#": "multiKey"}},
+        "Voltage": {"multi": [
+                1,
+                2,
+                3,
+                4
+            ],"replace": {"#endpoint#": "multiKey"}},
+        "Power factor": {"multi": [
+                1,
+                2,
+                3,
+                4
+            ],"replace": {"#endpoint#": "multiKey"}},
+        "Power|prod": {"type":"production","multi": [
+                1,
+                2,
+                3,
+                4
+            ],"replace": {"#endpoint#": "multiKey"}},
+        "Current|prod": {"type":"production","multi": [
+                1,
+                2,
+                3,
+                4
+            ],"replace": {"#endpoint#": "multiKey"}},
+        "Voltage|prod": {"type":"production","multi": [
+                1,
+                2,
+                3,
+                4
+            ],"replace": {"#endpoint#": "multiKey"}},
+        "Power factor|prod": {"type":"production","multi": [
+                1,
+                2,
+                3,
+                4
+            ],"replace": {"#endpoint#": "multiKey"}}
+    }
 }

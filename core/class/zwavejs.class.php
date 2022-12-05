@@ -262,6 +262,12 @@ class zwavejs extends eqLogic {
 		if (!is_dir($data_path)) {
 			mkdir($data_path, 0777, true);
 		}
+		$backup_path = dirname(__FILE__) . '/../../data/store/backups/nvm';
+		if (!is_dir($backup_path)) {
+			mkdir($backup_path, 0777, true);
+		}
+		$cmd = "chown -R www-data:www-data " . dirname(__FILE__) . '/../../data/store/backups';
+		exec(system::getCmdSudo() . $cmd . ' >> ' . log::getPathToLog('zwavejsd') . ' 2>&1 &');
 		$status_path = realpath(dirname(__FILE__) . '/../../data/status');
 		$files = glob($status_path . '/*.json');
 		foreach ($files as $file) {
@@ -366,7 +372,7 @@ class zwavejs extends eqLogic {
 
 	public static function handleMqttMessage($_message) {
 		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . 'Message Mqtt reçu');
-		//log::add(__CLASS__, 'debug', json_encode($_message));
+		// log::add(__CLASS__, 'debug', json_encode($_message));
 		if (isset($_message[config::byKey('prefix', __CLASS__, 'zwave')])) {
 			$message = $_message[config::byKey('prefix', __CLASS__, 'zwave')];
 		} else {
@@ -435,7 +441,15 @@ class zwavejs extends eqLogic {
 		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . "Traitement d'un retour api");
 		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . json_encode($_api));
 		foreach ($_api as $key => $value) {
-			if ($key == 'getInfo') {
+			if ($key == 'abortFirmwareUpdate') {
+				if (isset($value['success']) && $value['success']) {
+					event::add('zwavejs::firmware_update',array('node' => $value['args'][0], 'cancel'=>true));
+				}
+			} else if ($key == 'restoreNVM') {
+				if (isset($value['success']) && !$value['success']) {
+					event::add('zwavejs::restoreNVM',array('message' => $value['message']));
+				}
+			} else if ($key == 'getInfo') {
 				self::addFileEvent('getInfo', $value['result']);
 				if (isset($value['result']['controllerId'])) {
 					config::save('controllerId', $value['result']['controllerId'], __CLASS__);
@@ -629,6 +643,10 @@ class zwavejs extends eqLogic {
 				self::createEqLogic($value['data'][0]);
 			} else if ($key == 'node_interview_completed') {
 				self::createEqLogic($value['data'][0]);
+			} else if ($key == 'node_firmware_update_progress') {
+				$nodeData = $value['data'][0];
+				$updateData = $value['data'][1];
+				event::add('zwavejs::firmware_update',array('node' => $nodeData['id'], 'progress'=>$updateData['progress'],'files'=>$updateData['currentFile'].'/'.$updateData['totalFiles']));
 			}
 		}
 	}

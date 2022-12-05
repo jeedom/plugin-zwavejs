@@ -22,9 +22,9 @@ if (!isConnect('admin')) {
 <script type="text/javascript" src="plugins/zwavejs/3rdparty/vivagraph/vivagraph.min.js"></script>
 <style>
 	#route_network {
-		overflow-x: auto; 
+		overflow-x: auto;
 	}
-	
+
 	#graph_network {
 		height: 80%;
 		width: 97%;
@@ -101,6 +101,7 @@ if (!isConnect('admin')) {
 				<ul id="tabs_network" class="nav nav-tabs" data-tabs="tabs">
 					<li class="active"><a href="#summary_network" data-toggle="tab"><i class="fas fa-tachometer-alt"></i> {{Résumé}}</a></li>
 					<li><a href="#actions_network" data-toggle="tab"><i class="fas fa-sliders-h"></i> {{Actions}}</a></li>
+					<li id="tab_backup"><a href="#backup_network" data-toggle="tab"><i class="fas fa-save"></i> {{Gestion NVM}}</a></li>
 					<li><a href="#statistics_network" data-toggle="tab"><i class="far fa-chart-bar"></i> {{Statistiques}}</a></li>
 					<li id="tab_graph"><a href="#graph_network" data-toggle="tab"><i class="far fa-image"></i> {{Graphique du réseau}}</a></li>
 					<li id="tab_route"><a href="#route_network" data-toggle="tab"><i class="fas fa-table"></i> {{Table de routage}}</a></li>
@@ -243,6 +244,26 @@ if (!isConnect('admin')) {
 								<td><a class="btn btn-danger controller_action" target="_blank" href="http://<?php echo network::getNetworkAccess('internal', 'ip') ?>:8091"><i class="fas fa-external-link-square-alt "></i> {{Interface ZwaveJs UI}}</a></td>
 								<td><b>{{Aucun support}}</b> {{ne sera fait en cas de changement d'un réglage du}}<b> {{menu configuration de ZwaveJS UI}}</b>. {{Vous pouvez changez le mot de passe utilisateur si vous le souhaitez. Vous pouvez utiliser les fonctionnalités.}}<b> {{Mais ne changez aucun réglage.}}</b> {{Les identifiants par défaut sont}} : <span class="label label-info">admin/zwave</span></td>
 							</tr>
+						</table>
+					</div>
+					<div class="tab-pane" id="backup_network">
+						<br>
+						<div class="alert alert-warning">{{Les sauvegardes NVM ne sont pas intercompatibles d'un contrôleur en version de SDK Z-Wave inférieure à 6.61 à un contrôleur en version supérieure et inversement}}</div>
+						<span class="getInfo-cntStatus label label-sm label-info pull-right"></span>
+						<div class="input-group">
+							<a data-action="backupNVMRaw" class="btn btn-success controller_action roundedLeft"><i class="fas fa-save"></i> {{Réaliser une sauvegarde NVM}}</a>
+							<span class="btn btn-primary btn-file roundedRight">
+								<i class="fas fa-cloud-upload-alt"></i> {{Envoyer une sauvegarde NVM}}<input id="uploadNVM" type="file" name="file" data-url="plugins/zwavejs/core/ajax/zwavejs.ajax.php?action=uploadNVMbackup">
+							</span>
+						</div>
+						<table class="table table-striped tableBackups">
+							<thead>
+								<tr>
+									<th>{{Sauvegardes disponibles}}</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody></tbody>
 						</table>
 					</div>
 					<div class="tab-pane" id="statistics_network">

@@ -104,6 +104,9 @@ function read_nodes() {
 						}
 						$('.getNodeInfo-' + key).empty().append(newdata)
 					} else {
+						if (key == 'sdkVersion'){
+							$('.sdkInfo').show()
+						}
 						$('.getNodeInfo-' + key).empty().append(data.toString())
 					}
 				}
@@ -114,6 +117,29 @@ function read_nodes() {
 		}
 	})
 }
+
+$('#uploadOTA').fileupload({
+	dataType: 'json',
+	node: nodeId,
+	replaceFileInput: false,
+	done: function(e, data) {
+	if (data.result.state != 'ok') {
+		$('#div_nodeInformationsZwaveJsAlert').showAlert({ message: data.result.result, level: 'danger' })
+		return
+	}
+	$('#div_nodeInformationsZwaveJsAlert').showAlert({ message: '{{Fichier(s) ajouté(s) avec succès}}', level: 'success' })
+	}
+})
+
+$('body').off('zwavejs::firmware_update').on('zwavejs::firmware_update', function(_event, _options) {
+  if (_options.node == nodeId) {
+    if ("cancel" in _options){
+        $('.otaStatus').empty().append('{{Aucune mise à jour en cours}}')
+    } else {
+        $('.otaStatus').empty().append('{{Mise à jour en cours : }}'+ _options.progress +'% ('+_options.files+')')
+    }
+  }
+})
 
 
 $('#md_modal').bind('dialogclose', function(event, ui) {

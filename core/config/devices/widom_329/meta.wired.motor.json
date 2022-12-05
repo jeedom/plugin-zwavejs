@@ -1,0 +1,12 @@
+{
+    "name": "Meta Wired Motor CONTR.7",
+    "type": "Volets",
+    "versions": {
+        "4": [
+            "13"
+        ]
+    },
+    "properties": {
+        "Shutter": {"type":"downup"}
+    }
+}

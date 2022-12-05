@@ -14,5 +14,26 @@
 			"subtype": "numeric",
 			"unite": ""
 		}
+	],
+"production": 
+	[
+		{
+			"name": "Power Factor-Production",
+			"type": "info",
+			"isVisible": 0,
+			"isHistorized": 0,
+			"configuration": {
+				"minValue": 0,
+				"maxValue": 2500,
+				"class": 50,
+				"endpoint": "#endpoint#",
+				"property": "value-67074"
+			},
+			"subtype": "numeric",
+			"display": {
+				"generic_type": "POWER"
+			},
+			"unite": "W"
+		}
 	]
 }

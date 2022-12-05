@@ -1,0 +1,42 @@
+{
+	"manufacturer": "wiDom",
+	"manufacturerId": "0x0149",
+	"label": "A510082",
+	"description": "Meta dry contact Switch 7",
+	"devices": [
+		{
+			"productType": "0x0004",
+			"productId": "0x0007"
+		}
+	],
+	"firmwareVersion": {
+		"min": "0.0",
+		"max": "255.255"
+	},
+	"associations": {
+		"1": {
+			"label": "Lifeline",
+			"maxNodes": 8,
+			"isLifeline": true
+		},
+		"2": {
+			"label": "Follow-me",
+			"maxNodes": 8
+		},
+		"3": {
+			"label": "Clicks on button 1 G1",
+			"maxNodes": 8
+		},
+		"4": {
+			"label": "Clicks on button 1 G2",
+			"maxNodes": 8
+		},
+		"5": {
+			"label": "Dimming Group",
+			"maxNodes": 8
+		}
+	},
+	"paramInformation": [
+		
+	]
+}
