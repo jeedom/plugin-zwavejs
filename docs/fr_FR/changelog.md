@@ -9,6 +9,7 @@
 **Modifications de Configurations**
 
 - Modification de la configuration *Aetoec Nanomote Quad* pour utiliser les propriétés
+- Modification de la configuration *Fibaro fgwreu111 Walli Shutter* passage à une propriété Shutter/level  et passage de power et energy sur le endpoint 1
 
 **Ajouts de Configurations**
 
