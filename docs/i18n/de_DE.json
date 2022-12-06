@@ -2,7 +2,7 @@
     "changelog.md": {
         "Changelog Z-Wave JS": "Änderungsprotokoll Z-Wave JS",
         "S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte": "Wenn es keine Informationen über die Aktualisierung gibt, bedeutet dies, dass es sich nur um die Aktualisierung von Dokumentation, Übersetzung oder Text handelt",
-        "\/12\/2022": "\/12\/2022",
+        "05\/12\/2022": "12.05.2022",
         "Améliorations": "Verbesserungen",
         "Gestion NVM": "NVM-Verwaltung",
         "Rajout d'un onglet": "Registerkarte hinzufügen",
@@ -10,7 +10,7 @@
         "Sauvegarde, téléchargement, envoie et restauration": "Sichern, Herunterladen, Senden und Wiederherstellen",
         "Mise à jour": "Aktualisieren",
         "sur la page d'un node": "auf einer Knotenseite",
-        "Rajout dde la version du": "Ergänzung der Version des",
+        "Rajout de la version du": "Ergänzung der Version von",
         "sur la page d'informations d'un contrôleur": "auf der Informationsseite eines Controllers",
         "Modifications de Configurations": "Konfigurationsänderungen",
         "Cherubini Widom Smart Plug": "Cherubini Widom Smart Plug",
