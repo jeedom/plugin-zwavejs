@@ -10,6 +10,11 @@
 
 - Modification de la configuration *Aetoec Nanomote Quad* pour utiliser les propriétés
 
+**Ajouts de Configurations**
+
+- Ajout de la configuration *Neo EU-1 switch* (propriétés : Switch)
+- Ajout de l'image pour *Neo EU-1 switch*
+
 *Si vous êtes concernés par une modification ou un ajout de configuration, faites une synchronisation puis rechargez les commandes de l'équipement en "recréant toutes les commandes" après la mise à jour.*
 
 # 05/12/2022

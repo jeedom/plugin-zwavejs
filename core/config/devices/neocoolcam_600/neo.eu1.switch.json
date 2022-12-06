@@ -1,0 +1,15 @@
+{
+    "name": "Neo Eu-1 Switch",
+    "type": "Interrupteur",
+    "comlink": "",
+    "remark": "",
+    "imglink": "",
+    "versions": {
+        "3": [
+            "4236"
+        ]
+    },
+    "properties": {
+        "Switch": {}
+    }
+}
