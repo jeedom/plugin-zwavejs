@@ -247,6 +247,10 @@ sendVarTojs('eqLogic_human_name', $tags);
 									</span>
 								</div>
 							</div>
+							<div class="assistant" style="display:none">
+								<div class="assistantText alert alert-info" role="alert">
+								</div>
+							</div>
 						</div>
 					</fieldset>
 				</form>
