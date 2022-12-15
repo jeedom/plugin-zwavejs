@@ -203,6 +203,13 @@ function printEqLogic(_eqLogic) {
       } else {
         $('.incompleteInfo').hide()
       }
+      if ('assistant' in data['result']) {
+        $('.assistant').show()
+        $('.assistantText').empty().append(data['result']['assistant'])
+      } else {
+        $('.assistantText').empty()
+        $('.assistant').hide()
+      }
       if (data['result']['confType']) {
         $('.eqLogicAttr[data-l1key=configuration][data-l2key=product_name]').prop('title', data['result']['confType'])
       } else {

@@ -875,7 +875,15 @@ class zwavejs extends eqLogic {
 	public static function setNodeValue($_fullpath, $_value) {
 		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . $_fullpath . ' ' . $_value);
 		$detailsPath = explode('-', $_fullpath, 2);
-		self::publishMqttValue($detailsPath[0], str_replace('-', '/', $detailsPath[1]), $_value);
+		$value = $_value;
+		if (strpos($_fullpath,'userCode') !== false){
+			if (strpos($_value,'0x') !== false){
+				$value = array("type"=>"Buffer", "data"=>array_map('hexdec', str_split(str_replace('0x','',$_value), 2)));
+			} else {
+				$value = '"'.$_value.'"';
+			}
+		}
+		self::publishMqttValue($detailsPath[0], str_replace('-', '/', $detailsPath[1]), $value);
 		self::handleSetHistory($_fullpath,$_value);
 	}
 
@@ -897,7 +905,7 @@ class zwavejs extends eqLogic {
 			$endpoint = $elements[2];
 			$property = $elements[3];
 			$logical = $class . '-' . $endpoint . '-' . $property;
-			if (in_array($class,array('112','132'))){
+			if (in_array($class,array('112','132','99'))){
 				$waiting = $eqLogic->getCache('waiting',array());
 				$waiting[$logical] = array('value'=>$_value,'date'=>date("d/m/Y H:i:s")); 
 				log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . $logical . ' ' . $_value);
@@ -1728,6 +1736,9 @@ class zwavejs extends eqLogic {
 						if (isset($details['returnStateValue'])) {
 							$command['configuration']['returnStateValue'] = $details['returnStateValue'];
 						}
+						if (isset($details['repeatEventManagement'])) {
+							$command['configuration']['repeatEventManagement'] = $details['repeatEventManagement'];
+						}
 						if (isset($details['calculValueOffset'])) {
 							$command['configuration']['calculValueOffset'] = $details['calculValueOffset'];
 						}
@@ -1748,6 +1759,11 @@ class zwavejs extends eqLogic {
 						}
 						if (isset($details['name'])) {
 							$command['name'] = $details['name'];
+						}
+						if (isset($details['filterVisible'])) {
+							if (in_array($command['name'],$details['filterVisible']['commands'])){
+								$command['isVisible'] = $details['filterVisible']['value'];
+							}
 						}
 						$device['commands'][] = $command;
 					}
@@ -1865,6 +1881,9 @@ class zwavejs extends eqLogic {
 			$result['actualMode'] = $this->getConfiguration('confMode', '');
 		} else {
 			$result['modes'] = 'aucun';
+		}
+		if (isset($device['assistant'])) {
+			$result['assistant'] = $device['assistant'];
 		}
 		$result['confType'] = 'Configuration Jeedom <br>';
 		if (isset($device['properties']) && count($device['properties']) > 0) {
@@ -2099,6 +2118,11 @@ class zwavejsCmd extends cmd {
 				} else {
 					$value = strval(str_replace('#color#', $_options['color'], $value));
 				}
+		}
+		if ($cc == 99) {
+			$fullPath = $node . '-' . $cc . '-' . $endpoint . '-' . $property;
+			$eqLogic->setNodeValue($fullPath, $value);
+			return;
 		}
 		if (substr($value, 0, 3) == 'set') {
 			$fullPath = $node . '-' . $cc . '-' . $endpoint . '-' . $property;

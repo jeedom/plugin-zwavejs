@@ -1,0 +1,84 @@
+{
+"standard": 
+	[
+		{
+			"name": "Définir code",
+			"type": "action",
+			"isVisible": 0,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 99,
+				"endpoint": "#endpoint#",
+				"property": "userCode-#code#",
+				"value": "#message#"
+			},
+			"subtype": "message",
+			"display": {
+				"generic_type": "NONE",
+				"title_disable":1
+			}
+		},
+		{
+			"name": "Statut Code",
+			"type": "info",
+			"isVisible": 0,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 99,
+				"endpoint": "#endpoint#",
+				"property": "userIdStatus-#code#"
+			},
+			"subtype": "numeric",
+			"display": {
+				"generic_type": "NONE"
+			}
+		},
+		{
+			"name": "Activer Code",
+			"type": "action",
+			"isVisible": 0,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 99,
+				"endpoint": "#endpoint#",
+				"property": "userIdStatus-#code#",
+				"value":1
+			},
+			"subtype": "other",
+			"display": {
+				"generic_type": "NONE"
+			}
+		},
+		{
+			"name": "Désactiver Code",
+			"type": "action",
+			"isVisible": 0,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 99,
+				"endpoint": "#endpoint#",
+				"property": "userIdStatus-#code#",
+				"value":2
+			},
+			"subtype": "other",
+			"display": {
+				"generic_type": "NONE"
+			}
+		},
+		{
+			"name": "Code",
+			"type": "info",
+			"isVisible": 0,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 99,
+				"endpoint": "#endpoint#",
+				"property": "userCode-#code#"
+			},
+			"subtype": "string",
+			"display": {
+				"generic_type": "NONE"
+			}
+		}
+	]
+}

@@ -13,7 +13,7 @@
     },
     "properties": {
         "Shutter": {
-            "type": "downup",
+            "type": "level",
             "replace": {
                 "#endpoint#": 1
             }
@@ -24,8 +24,15 @@
                 "#endpoint#": 2
             }
         },
-        "Scene": {},
-        "Power": {},
-        "Energy": {}
+        "CentralScene": {
+            "multi": [
+                1,2
+            ],
+            "replace": {
+                "#centralscene#": "multiKey"
+            }
+        },
+        "Power": {"replace": {"#endpoint#": 1}},
+        "Energy": {"replace": {"#endpoint#": 1}}
     }
 }

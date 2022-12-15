@@ -204,5 +204,27 @@
 				"mobile": "timeAlert"
 			}
 		}
+	],
+"alarmLevel": 
+	[
+		{
+			"name": "Alarm",
+			"type": "info",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 113,
+				"endpoint": "#endpoint#",
+				"property": "alarmLevel"
+			},
+			"subtype": "binary",
+			"display": {
+				"invertBinary": "1"
+			},
+			"template": {
+				"dashboard": "timeAlert",
+				"mobile": "timeAlert"
+			}
+		}
 	]
 }
