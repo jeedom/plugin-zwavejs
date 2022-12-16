@@ -8,7 +8,7 @@
 
 **Améliorations**
 
-- Passage de ZwaveJS UI à la version 8.6.0
+- Passage de ZwaveJS UI à la version 8.6.1
 
 **Ajouts de Configurations**
 
