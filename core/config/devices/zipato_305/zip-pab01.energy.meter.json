@@ -1,0 +1,51 @@
+{
+    "name": "ZIP-PAB01 Micro Module Energy Meter",
+    "type": "Multicapteurs",
+    "versions": {
+        "6": [
+            "26"
+        ]
+    },
+    "properties": {
+        "Power": {
+            "multi": [
+                1,
+                2,
+                3
+            ],
+            "replace": {
+                "#endpoint#": "multiKey"
+            }
+        },
+        "Energy": {
+            "multi": [
+                1,
+                2,
+                3
+            ],
+            "replace": {
+                "#endpoint#": "multiKey"
+            }
+        },
+        "Voltage": {
+            "multi": [
+                1,
+                2,
+                3
+            ],
+            "replace": {
+                "#endpoint#": "multiKey"
+            }
+        },
+        "Current": {
+            "multi": [
+                1,
+                2,
+                3
+            ],
+            "replace": {
+                "#endpoint#": "multiKey"
+            }
+        }
+    }
+}

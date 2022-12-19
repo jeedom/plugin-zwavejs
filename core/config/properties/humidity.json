@@ -9,7 +9,7 @@
 				"minValue": 0,
 				"maxValue": 100,
 				"class": 49,
-				"endpoint": 0,
+				"endpoint": "#endpoint#",
 				"property": "Humidity"
 			},
 			"subtype": "numeric",

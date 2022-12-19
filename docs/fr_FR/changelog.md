@@ -14,14 +14,26 @@
 
 **Modifications de Configurations**
 
+- Modification de la configuration *Qubino Weather Station* pour utiliser les propriétés
+- Modification de la configuration *Everspring ST814* pour utiliser les propriétés
+- Modification de la configuration *Hank HKZW-SO08* pour utiliser les propriétés
+- Modification de la configuration *Hank HKZW-SO01* pour utiliser les propriétés
+- Modification de la configuration *Hank HKZW-SCN01* pour utiliser les propriétés
+- Modification de la configuration *Philio PAT02-B* pour utiliser les propriétés
+- Modification de l'image *Philio PAT02-B* (détourage)
 - Modification de l'image *Abus SHWM1000*
 
 **Ajouts de Configurations**
 
+- Ajout de la configuration *Zipato Energy Meter* (propriétés : Power, Energy , Voltage, Current)
+- Ajout de l'image pour *Zipato Energy Meter*
 - Ajout de la configuration *Airzone Aidoo Zwave* (propriétés : Temperature, Thermostatmode, Thermostatmodeaction, Thermostatfanmode, Thermostatfanmodeaction, Thermostatsetpoint, Notification)
 - Ajout de l'image pour *Airzone Aidoo Zwave*
 - Ajout d'une propriété *Thermostatfanmode*
 - Ajout d'une propriété *Thermostatfanmodeaction*
+- Ajout d'une propriété *Direction*
+- Ajout d'une propriété *Velocity*
+- Ajout d'une propriété *Rain*
 
 *Si vous êtes concernés par une modification ou un ajout de configuration, faites une synchronisation puis rechargez les commandes de l'équipement en "recréant toutes les commandes" après la mise à jour.*
 
