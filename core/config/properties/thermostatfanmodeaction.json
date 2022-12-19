@@ -1,0 +1,17 @@
+{"standard": 
+	[
+		{
+			"name": "Mode Ventilation",
+			"type": "action",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 64,
+				"endpoint": "#endpoint#",
+				"property": "mode",
+				"value": "#actionValue#"
+			},
+			"subtype": "other"
+		}
+	]
+}

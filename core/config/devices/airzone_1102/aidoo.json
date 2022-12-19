@@ -1,0 +1,52 @@
+{
+    "name": "Aidoor",
+    "type": "Thermostat",
+    "comlink": "",
+    "remark": "",
+    "versions": {
+        "4": [
+            "1"
+        ]
+    },
+    "properties": {
+        "Temperature": {},
+        "Thermostatmode": {},
+        "Thermostatmodeaction": {
+            "multi": [
+                "Off","Chaud","Froid","Ventilateur","Dry","Auto"
+            ],
+            "multiValue": {
+                "Off": 0,
+                "Chaud": 1,
+                "Froid": 2,
+                "Ventilateur": 6,
+                "Dry": 8,
+                "Auto": 10
+            }
+        },
+        "Thermostatfanmode": {},
+        "Thermostatfanmodeaction": {
+            "multi": [
+                "Bas","Haut","Auto Medium","Medium"
+            ],
+            "multiValue": {
+                "Bas": 1,
+                "Haut": 3,
+                "Auto Medium": 4,
+                "Medium": 5
+            }
+        },
+        "Thermostatsetpoint": {
+            "multi": [
+                "Chaud","Froid","Dry","Auto"
+            ],
+            "multiProperty": {
+                "Chaud": 1,
+                "Froid": 2,
+                "Dry": 8,
+                "Auto": 10
+            }
+        },
+        "Notification":{"type":"hardware"}
+    }
+}

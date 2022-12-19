@@ -130,6 +130,63 @@ jeedom.zwavejs.controller.include = function(_params) {
 	$.ajax(paramsAJAX)
 }
 
+jeedom.zwavejs.controller.grantSecurity = function(_params) {
+	var paramsRequired = ['security', 'auth']
+	var paramsSpecifics = {}
+	try {
+		jeedom.private.checkParamsRequired(_params || {}, paramsRequired)
+	} catch (e) {
+		(_params.error || paramsSpecifics.error || jeedom.private.default_params.error)(e)
+		return
+	}
+	var params = $.extend({}, jeedom.private.default_params, paramsSpecifics, _params || {})
+	var paramsAJAX = jeedom.private.getParamsAJAX(params)
+	paramsAJAX.url = 'plugins/zwavejs/core/ajax/zwavejs.ajax.php'
+	paramsAJAX.data = {
+		action: 'grantSecurity',
+		security: _params.security,
+		auth: _params.auth,
+	}
+	$.ajax(paramsAJAX)
+}
+
+jeedom.zwavejs.controller.validateDSK = function(_params) {
+	var paramsRequired = ['dsk']
+	var paramsSpecifics = {}
+	try {
+		jeedom.private.checkParamsRequired(_params || {}, paramsRequired)
+	} catch (e) {
+		(_params.error || paramsSpecifics.error || jeedom.private.default_params.error)(e)
+		return
+	}
+	var params = $.extend({}, jeedom.private.default_params, paramsSpecifics, _params || {})
+	var paramsAJAX = jeedom.private.getParamsAJAX(params)
+	paramsAJAX.url = 'plugins/zwavejs/core/ajax/zwavejs.ajax.php'
+	paramsAJAX.data = {
+		action: 'validateDSK',
+		dsk: _params.dsk
+	}
+	$.ajax(paramsAJAX)
+}
+
+jeedom.zwavejs.controller.abortInclusion = function(_params) {
+	var paramsRequired = []
+	var paramsSpecifics = {}
+	try {
+		jeedom.private.checkParamsRequired(_params || {}, paramsRequired)
+	} catch (e) {
+		(_params.error || paramsSpecifics.error || jeedom.private.default_params.error)(e)
+		return
+	}
+	var params = $.extend({}, jeedom.private.default_params, paramsSpecifics, _params || {})
+	var paramsAJAX = jeedom.private.getParamsAJAX(params)
+	paramsAJAX.url = 'plugins/zwavejs/core/ajax/zwavejs.ajax.php'
+	paramsAJAX.data = {
+		action: 'abortInclusion'
+	}
+	$.ajax(paramsAJAX)
+}
+
 /*************************Node************************************************/
 jeedom.zwavejs.node = function() {
 }

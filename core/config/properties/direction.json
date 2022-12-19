@@ -1,21 +1,17 @@
-{
-"standard": 
+{"standard": 
 	[
 		{
-			"name": "Température",
+			"name": "Direction",
 			"type": "info",
 			"isVisible": 1,
 			"isHistorized": 1,
 			"configuration": {
 				"class": 49,
 				"endpoint": "#endpoint#",
-				"property": "Air temperature"
+				"property": "Direction"
 			},
 			"subtype": "numeric",
-			"display": {
-				"generic_type": "TEMPERATURE"
-			},
-			"unite": "°C"
+			"unite": "°"
 		}
 	]
 }

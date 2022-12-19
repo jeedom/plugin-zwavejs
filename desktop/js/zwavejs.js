@@ -90,12 +90,12 @@ $('.changeIncludeState').off('click').on('click', function() {
   var dialog_message = '<form class="form-horizontal onsubmit="return false;"> '
   dialog_message += '<label class="control-label"> {{Sélectionnez le mode}} </label> ' +
     '<div> <div class="radio"><label> ' +
-    '<input type="radio" name="inclusion" method="include" id="0" options="2" checked="checked"> <i class="fas fa-plus" style="color:green"></i> {{Inclusion par défaut}} </label> ' +
+    '<input type="radio" name="inclusion" method="include" id="0" options="0" checked="checked"> <i class="fas fa-plus" style="color:green"></i> {{Inclusion par défaut (utilisera le meilleur mode pour le module)}} </label> ' +
     '</div><div class="radio"><label> ' +
     '<input type="radio" name="inclusion" method="include" id="1" options="3"> <i class="fas fa-lock" style="color:orange"></i> {{Inclusion sécurisée forcée S0}}</label> ' +
     '</div> ' +
     '</div><div class="radio"> <label> ' +
-    '<input type="radio" name="inclusion" method="include" id="2" options="1"> <i class="fas fa-qrcode" style="color:blue"></i> {{Inclusion sécurisée forcée S2}}</label> ' +
+    '<input type="radio" name="inclusion" method="include" id="2" options="2"> <i class="fas fa-unlock" style="color:blue"></i> {{Inclusion non sécurisée}}</label> ' +
     '</div>' +
     '</div><div class="radio"><label> ' +
     '<input type="radio" name="inclusion" method="exclude" id="3" options="0"> <i class="fas fa-minus" style="color:red"></i>  {{Exclusion}}</label> ' +
@@ -264,6 +264,134 @@ $('body').off('zwavejs::inclusion').on('zwavejs::inclusion', function(_event, _o
   } else {
     $('#div_inclusionAlert').empty()
   }
+})
+
+$('body').off('zwavejs::grant_security_classes').on('zwavejs::grant_security_classes', function(_event, _options) {
+  var dialog_title = '<i class="fas fa-user-lock"></i> {{Inclusion S2 - Classes de Sécurité}}'
+  var dialog_message = '<form class="form-horizontal onsubmit="return false;"> '
+  var classes = _options['classes']
+  var auth = _options['auth']
+  dialog_message+= '<label class="control-label"> {{Classes de sécurité :}} </label><br>' 
+  if (classes.includes(1)){
+    dialog_message += '<label class="checkbox-inline" style="color:green"><input type="checkbox" class="classes" data-key="1" checked>{{S2 Authenticated}}</label></br>';
+  } else {
+    dialog_message += '<label class="checkbox-inline" style="color:red"><input type="checkbox" class="classes" data-key="1" disabled>{{S2 Authenticated}}</label></br>';
+  }
+  if (classes.includes(2)){
+    dialog_message += '<label class="checkbox-inline" style="color:green"><input type="checkbox" class="classes" data-key="2" checked>{{S2 Access Control}}</label></br>';
+  } else {
+    dialog_message += '<label class="checkbox-inline" style="color:red"><input type="checkbox" class="classes" data-key="2" disabled>{{S2 Access Control}}</label></br>';
+  }
+  if (classes.includes(0)){
+    dialog_message += '<label class="checkbox-inline" style="color:green"><input type="checkbox" class="classes" data-key="0" checked>{{S2 Unauthenticated}}</label></br>'
+  } else {
+    dialog_message += '<label class="checkbox-inline" style="color:red"><input type="checkbox" class="classes" data-key="0" disabled>{{S2 Unauthenticated}}</label></br>'
+  }
+  if (classes.includes(7)){
+    dialog_message += '<label class="checkbox-inline" style="color:green"><input type="checkbox" class="classes" data-key="7" checked>{{S0 Legacy}}</label></br>';
+  } else {
+    dialog_message += '<label class="checkbox-inline" style="color:red"><input type="checkbox" class="classes" data-key="7" disabled>{{S0 Legacy}}</label></br>';
+  }
+  if (auth){
+    dialog_message += '<label class="checkbox-inline" style="color:green"><input type="checkbox" class="clientauth" checked>{{Client Authentification}}</label></br>';
+  } else {
+    dialog_message += '<label class="checkbox-inline" style="color:red"><input type="checkbox" class="clientauth" disabled>{{Client Authentification}}</label></br>';
+  }
+  dialog_message+="</br><div class='alert alert-info'>{{Vous ne pouvez pas activer une classe de sécurité non supporté. Dans la majorité des cas, ne modifiez rien. Si vous annulez l'inclusion S2, le module s'incluera en non sécurisé.}}</div>"
+  dialog_message += '</form>'
+  bootbox.dialog({
+      title: dialog_title,
+      message: dialog_message,
+      closeButton: false,
+      buttons: {
+      "<i class='fas fa-times-circle'></i> {{Annuler Inclusion S2}}": {
+        className: "btn-danger",
+        callback: function() {
+            jeedom.zwavejs.controller.abortInclusion({
+              error: function(error) {
+                $.fn.showAlert({ message: error.message, level: 'danger' })
+              },
+              success: function(data) {
+                $.fn.showAlert({ message: '{{Action réalisée avec succès}}', level: 'success' })
+              }
+            })
+        }
+      },
+      success: {
+        label: "<i class='fas fa-step-forward'></i> {{Continuer}}",
+        className: "btn-success",
+        callback: function() {
+          var list = [];
+          var auth = false;
+          if ($('.clientauth').is(':checked')){
+            auth = true;
+          }
+          $('.classes').each(function () {
+            if (this.checked) {
+                list.push($(this).data('key'));
+            }
+          });
+          jeedom.zwavejs.controller.grantSecurity({
+           security: list,
+           auth: auth,
+           error: function(error) {
+             $.fn.showAlert({ message: error.message, level: 'danger' })
+           },
+           success: function(data) {
+             $.fn.showAlert({ message: '{{Action réalisée avec succès}}', level: 'success' })
+           }
+         })
+        }
+      },
+    }
+    })
+})
+
+$('body').off('zwavejs::validate_dsk').on('zwavejs::validate_dsk', function(_event, _options) {
+ var dialog_title = '<i class="fas fa-fingerprint"></i> {{Inclusion S2 - Validation DSK}}'
+  var dialog_message = '<form class="form-horizontal onsubmit="return false;"> '
+  var dsk = _options
+  dialog_message+= '<label class="control-label"> {{Clé de sécurité DSK :}} </label><br>'
+  dialog_message+= '<input class="col-sm-3 dskinput form-control" type="text">'
+  dialog_message+= '<label class="col-sm-9">'+dsk+'</label>';
+  dialog_message+="</br></br><div class='col-sm-12 alert alert-info'>{{Veuillez vérifier la clé de sécurité et compléter celle-ci. L'inclusion prendra quelques secondes à se terminer après cette étape. Une mauvaise clé est synonyme d'inclusion non sécurisée.}}</div>"
+  dialog_message += '</form>'
+  bootbox.dialog({
+      title: dialog_title,
+      message: dialog_message,
+      closeButton: false,
+      buttons: {
+      "<i class='fas fa-times-circle'></i> {{Annuler Inclusion S2}}": {
+        className: "btn-danger",
+        callback: function() {
+            jeedom.zwavejs.controller.abortInclusion({
+              error: function(error) {
+                $.fn.showAlert({ message: error.message, level: 'danger' })
+              },
+              success: function(data) {
+                $.fn.showAlert({ message: '{{Action réalisée avec succès}}', level: 'success' })
+              }
+            })
+        }
+      },
+      success: {
+        label: "<i class='fas fa-step-forward'></i> {{Continuer}}",
+        className: "btn-success",
+        callback: function() {
+           var dskinput = $('.dskinput').value();
+           jeedom.zwavejs.controller.validateDSK({
+           dsk: dskinput,
+           error: function(error) {
+             $.fn.showAlert({ message: error.message, level: 'danger' })
+           },
+           success: function(data) {
+             $.fn.showAlert({ message: '{{Action réalisée avec succès}}', level: 'success' })
+           }
+         })
+        }
+      },
+    }
+    })
 })
 
 $('body').off('zwavejs::recommended').on('zwavejs::recommended', function(_event, _options) {

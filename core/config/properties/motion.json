@@ -67,5 +67,28 @@
 				"mobile": "timePresence"
 			}
 		}
+	],
+"basic-motion": 
+	[
+		{
+			"name": "Présence",
+			"type": "info",
+			"isVisible": 1,
+			"isHistorized": 1,
+			"configuration": {
+				"class": 32,
+				"endpoint": "#endpoint#",
+				"property": "currentValue"
+			},
+			"subtype": "binary",
+			"display": {
+				"invertBinary": "1",
+				"generic_type": "PRESENCE"
+			},
+			"template": {
+				"dashboard": "timePresence",
+				"mobile": "timePresence"
+			}
+		}
 	]
 }
