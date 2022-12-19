@@ -198,7 +198,7 @@ function node_read_associations() {
 	})
 }
 
-$('#md_modal').bind('dialogclose', function(event, ui) {
+$('#md_modal2').bind('dialogclose', function(event, ui) {
 	clearTimeout(nodeasso)
 	clearTimeout(nodeloadgroups)
 	clearTimeout(nodegroup)
