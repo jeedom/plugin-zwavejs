@@ -708,8 +708,7 @@ class zwavejs extends eqLogic {
 				self::deamon_start();
 			} else if ($key == 'grant_security_classes') {
 				log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . __('Accorder la securité', __FILE__));
-				log::add(__CLASS__, 'debug', json_encode($value));
-				$securityClasses = implode('|',$value['data'][0]['securityClasses']);
+				$securityClasses = $value['data'][0]['securityClasses'];
 				$clientSideAuth = $value['data'][0]['clientSideAuth'];
 				event::add('zwavejs::grant_security_classes', array('classes'=>$securityClasses, 'auth'=>$clientSideAuth));
 			} else if ($key == 'validate_dsk') {
