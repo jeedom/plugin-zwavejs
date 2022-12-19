@@ -205,6 +205,29 @@
 			}
 		}
 	],
+"dust-in-device": 
+	[
+		{
+			"name": "Poussières",
+			"type": "info",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 113,
+				"endpoint": "#endpoint#",
+				"property": "Smoke Alarm-Dust in device status",
+				"calculValueOffset": "#value#==8"
+			},
+			"subtype": "binary",
+			"display": {
+				"invertBinary": "1"
+			},
+			"template": {
+				"dashboard": "timeAlert",
+				"mobile": "timeAlert"
+			}
+		}
+	],
 "alarmLevel": 
 	[
 		{

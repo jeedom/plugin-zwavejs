@@ -8,7 +8,7 @@
 
 **Corrections**
 
-- Correction sur certains *attributs manquants* sur certains noeuds pour éviter les erreurs (sans conséquences) dans le *http.error*
+- Correction sur certains *attributs manquants* sur la page santé sur certains noeuds pour éviter les erreurs (sans conséquences) dans le *http.error*
 
 **Améliorations**
 
@@ -18,6 +18,16 @@
 
 **Modifications de Configurations**
 
+- Modification de la configuration *Heiman CO sensor* pour utiliser les propriétés
+- Modification de la configuration *Heiman Smoke detector* pour utiliser les propriétés
+- Modification de la configuration *Domux CO sensor* pour utiliser les propriétés
+- Modification de la configuration *Vision Security ZS5101* pour utiliser les propriétés
+- Modification de la configuration *HomeSeer Ez Motion* pour utiliser les propriétés
+- Modification de la configuration *Shenzen Smoke Detector* pour utiliser les propriétés
+- Modification de la configuration *Vision Security ZD2102* pour utiliser les propriétés
+- Modification de l'image *Vision Security ZD2102* (détourage)
+- Modification de la configuration *Aeotec Range Extender 7* pour utiliser les propriétés
+- Modification de la configuration *Zipato ZD2102* pour utiliser les propriétés
 - Modification de la configuration *Qubino Weather Station* pour utiliser les propriétés
 - Modification de la configuration *Everspring ST814* pour utiliser les propriétés
 - Modification de la configuration *Hank HKZW-SO08* pour utiliser les propriétés
@@ -38,6 +48,9 @@
 - Ajout d'une propriété *Direction*
 - Ajout d'une propriété *Velocity*
 - Ajout d'une propriété *Rain*
+- Ajout d'une propriété *Co*
+- Ajout d'une sous-propriété *Basic-motion* dans la propriété *Motion*
+- Ajout d'une sous-propriété *Dust-in-device* dans la propriété *Notification*
 
 *Si vous êtes concernés par une modification ou un ajout de configuration, faites une synchronisation puis rechargez les commandes de l'équipement en "recréant toutes les commandes" après la mise à jour.*
 

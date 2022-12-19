@@ -12,66 +12,9 @@
             "262"
         ]
     },
-    "commands": [
-        {
-            "name": "Ouverture",
-            "type": "info",
-            "isVisible": 1,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 113,
-                "value": "",
-                "index": 1,
-                "instance": 1
-            },
-            "subtype": "binary",
-            "display": {
-                "invertBinary": "1",
-                "generic_type": "OPENING"
-            },
-            "template": {
-                "dashboard": "door",
-                "mobile": "door"
-            }
-        },
-        {
-            "name": "Sabotage",
-            "type": "info",
-            "isVisible": 1,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 113,
-                "value": "",
-                "index": 10,
-                "instance": 1
-            },
-            "subtype": "binary",
-            "display": {
-                "invertBinary": "1",
-                "generic_type": "SABOTAGE"
-            },
-            "template": {
-                "dashboard": "vibration",
-                "mobile": "vibration"
-            }
-        },
-        {
-            "name": "Batterie",
-            "type": "info",
-            "isVisible": 0,
-            "isHistorized": 0,
-            "configuration": {
-                "minValue": 0,
-                "maxValue": 100,
-                "class": 128,
-                "endpoint": 0,
-                "property": "level"
-            },
-            "subtype": "numeric",
-            "display": {
-                "generic_type": "BATTERY"
-            },
-            "unite": "%"
-        }
-    ]
+    "properties": {
+        "Opening": {},
+        "Tamper": {},
+        "Battery": {}
+    }
 }
