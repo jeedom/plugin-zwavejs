@@ -6,10 +6,14 @@
 
 # XX/12/2022
 
+**Corrections**
+
+- Correction sur certains *attributs manquants* sur certains noeuds pour éviter les erreurs (sans conséquences) dans le *http.error*
+
 **Améliorations**
 
 - Passage de *ZwaveJS UI* à la version *8.6.1*
-- Rajout de la *gestion S2* (zwaveJS UI ayant fait les modifications attendues)
+- Rajout de la *gestion S2* (ZwaveJS UI ayant fait les modifications attendues)
 - Rajout du *type de sécurité* sur la page *informations d'un noeud*
 
 **Modifications de Configurations**

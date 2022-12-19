@@ -1307,8 +1307,8 @@ class zwavejs extends eqLogic {
 					$healthPage .= '<td><img src="plugins/zwavejs/plugin_info/zwavejs_icon.png" height="40"/> ' . $values['productLabel'] . ' - ' . $values['productDescription'] . ' ' . $productDetails . '</td>';
 				}
 				$healthPage .= '<td><span class="label label-info" style="font-size : 1em;">' . $values['endpointsCount'] . '</span></td>';
-				if ($values['isSecure']) {
-					if ($values['security']) {
+				if (isset($values['isSecure']) && $values['isSecure']) {
+					if (isset($values['security']) && $values['security']) {
 						$secure = '<span title="Secure" style="font-size : 1.5em;"><i class="fas fa-check-circle icon_green" aria-hidden="true"></i></span> <sup><i class="fas fa-question-circle tooltips" title="' . $values['security'] . '"></i><sup>';
 					} else {
 						$secure = '<span title="Non Secure" style="font-size : 1.5em;"><i class="fas fa-minus-circle icon_orange" aria-hidden="true"></i></span>';
@@ -1325,7 +1325,7 @@ class zwavejs extends eqLogic {
 				}
 				$healthPage .= '<td>' . $flirs . '</td>';
 
-				if ($values['zwavePlusVersion']) {
+				if (isset($values['zwavePlusVersion']) && $values['zwavePlusVersion']) {
 					$zwavePlusVersion = '<span title="ZwavePlus" style="font-size : 1.5em;"><i class="fas fa-check-circle icon_green" aria-hidden="true"></i></span> <sup><i class="fas fa-question-circle tooltips" title="v' . $values['zwavePlusVersion'] . '"></i><sup>';
 				} else {
 					$zwavePlusVersion = '<span title="Non ZwavePlus" style="font-size : 1.5em;"><i class="fas fa-minus-circle icon_orange" aria-hidden="true"></i></span>';
