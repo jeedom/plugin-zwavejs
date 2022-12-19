@@ -95,7 +95,7 @@ $('.changeIncludeState').off('click').on('click', function() {
     '<input type="radio" name="inclusion" method="include" id="1" options="3"> <i class="fas fa-lock" style="color:orange"></i> {{Inclusion sécurisée forcée S0}}</label> ' +
     '</div> ' +
     '</div><div class="radio"> <label> ' +
-    '<input type="radio" name="inclusion" method="include" id="2" options="2"> <i class="fas fa-qrcode" style="color:blue"></i> {{Inclusion non sécurisée}}</label> ' +
+    '<input type="radio" name="inclusion" method="include" id="2" options="2"> <i class="fas fa-unlock" style="color:blue"></i> {{Inclusion non sécurisée}}</label> ' +
     '</div>' +
     '</div><div class="radio"><label> ' +
     '<input type="radio" name="inclusion" method="exclude" id="3" options="0"> <i class="fas fa-minus" style="color:red"></i>  {{Exclusion}}</label> ' +
