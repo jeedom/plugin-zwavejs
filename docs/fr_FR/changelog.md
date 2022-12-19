@@ -8,7 +8,13 @@
 
 **Améliorations**
 
-- Passage de ZwaveJS UI à la version 8.6.1
+- Passage de *ZwaveJS UI* à la version *8.6.1*
+- Rajout de la *gestion S2* (zwaveJS UI ayant fait les modifications attendues)
+- Rajout du *type de sécurité* sur la page *informations d'un noeud*
+
+**Modifications de Configurations**
+
+- Modification de l'image *Abus SHWM1000*
 
 **Ajouts de Configurations**
 

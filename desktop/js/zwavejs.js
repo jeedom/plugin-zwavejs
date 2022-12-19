@@ -90,12 +90,12 @@ $('.changeIncludeState').off('click').on('click', function() {
   var dialog_message = '<form class="form-horizontal onsubmit="return false;"> '
   dialog_message += '<label class="control-label"> {{Sélectionnez le mode}} </label> ' +
     '<div> <div class="radio"><label> ' +
-    '<input type="radio" name="inclusion" method="include" id="0" options="2" checked="checked"> <i class="fas fa-plus" style="color:green"></i> {{Inclusion par défaut}} </label> ' +
+    '<input type="radio" name="inclusion" method="include" id="0" options="0" checked="checked"> <i class="fas fa-plus" style="color:green"></i> {{Inclusion par défaut (utilisera le meilleur mode pour le module)}} </label> ' +
     '</div><div class="radio"><label> ' +
     '<input type="radio" name="inclusion" method="include" id="1" options="3"> <i class="fas fa-lock" style="color:orange"></i> {{Inclusion sécurisée forcée S0}}</label> ' +
     '</div> ' +
     '</div><div class="radio"> <label> ' +
-    '<input type="radio" name="inclusion" method="include" id="2" options="1"> <i class="fas fa-qrcode" style="color:blue"></i> {{Inclusion sécurisée forcée S2}}</label> ' +
+    '<input type="radio" name="inclusion" method="include" id="2" options="2"> <i class="fas fa-qrcode" style="color:blue"></i> {{Inclusion non sécurisée}}</label> ' +
     '</div>' +
     '</div><div class="radio"><label> ' +
     '<input type="radio" name="inclusion" method="exclude" id="3" options="0"> <i class="fas fa-minus" style="color:red"></i>  {{Exclusion}}</label> ' +
@@ -264,6 +264,16 @@ $('body').off('zwavejs::inclusion').on('zwavejs::inclusion', function(_event, _o
   } else {
     $('#div_inclusionAlert').empty()
   }
+})
+
+$('body').off('zwavejs::grant_security_classes').on('zwavejs::grant_security_classes', function(_event, _options) {
+  $('#md_modal').dialog({ title: "{{Inclusion S2 - Classes de Sécurité}}" })
+  $('#md_modal').load('index.php?v=d&plugin=zwavejs&modal=grantSecurity&classes='+_options['classes']+'&auth='+_options['auth']).dialog('open')
+})
+
+$('body').off('zwavejs::validate_dsk').on('zwavejs::validate_dsk', function(_event, _options) {
+  $('#md_modal').dialog({ title: "{{Inclusion S2 - Validation DSK}}" })
+  $('#md_modal').load('index.php?v=d&plugin=zwavejs&modal=validateDSK&DSK='+_options).dialog('open')
 })
 
 $('body').off('zwavejs::recommended').on('zwavejs::recommended', function(_event, _options) {

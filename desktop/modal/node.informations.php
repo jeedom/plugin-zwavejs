@@ -73,6 +73,7 @@ include_file('3rdparty', 'jsonTree/jsonTree', 'js', 'zwavejs');
 									<p><b>{{Initié}} : </b><span class="getNodeInfo-inited label label-info" style="font-size : 1em;"></span></p>
 									<p><b>{{Stage}} : </b><span class="getNodeInfo-interviewStage label label-info" style="font-size : 1em;"></span></p>
 									<p><b>{{Prêt}} : </b><span class="getNodeInfo-ready label label-info" style="font-size : 1em;"></span></p>
+									<p><b>{{Sécurité}} : </b><span class="getNodeInfo-security label label-info" style="font-size : 1em;"></span></p>
 									<p><b>{{Disponible}} : </b> <span class="getNodeInfo-available label label-info" style="font-size : 1em;"></span></p>
 									<p><b>{{En échec}} : </b><span class="getNodeInfo-failed label label-info" style="font-size : 1em;"></span></p>
 									<p><b>{{Voisins}} : </b> <span class="getNodeInfo-neighbors label label-info" style="font-size : 1em;white-space: pre-line;"></span></p>

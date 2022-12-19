@@ -677,6 +677,13 @@ class zwavejs extends eqLogic {
 					array('message' => __('Inclusion échouée', __FILE__), 'type' => 'empty')
 				);
 				config::save('controllerStatus', 'none', __CLASS__);
+			} else if ($key == 'inclusion_aborted') {
+				log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . __('Inclusion annulée', __FILE__));
+				event::add(
+					'zwavejs::inclusion',
+					array('message' => __('Inclusion annulée', __FILE__), 'type' => 'empty')
+				);
+				config::save('controllerStatus', 'none', __CLASS__);
 			} else if ($key == 'exclusion_started') {
 				log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . __('Exclusion démarrée', __FILE__));
 				event::add(
@@ -699,6 +706,15 @@ class zwavejs extends eqLogic {
 				);
 				config::save('controllerStatus', 'none', __CLASS__);
 				self::deamon_start();
+			} else if ($key == 'grant_security_classes') {
+				log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . __('Accorder la securité', __FILE__));
+				log::add(__CLASS__, 'debug', json_encode($value));
+				$securityClasses = implode('|',$value['data'][0]['securityClasses']);
+				$clientSideAuth = $value['data'][0]['clientSideAuth'];
+				event::add('zwavejs::grant_security_classes', array('classes'=>$securityClasses, 'auth'=>$clientSideAuth));
+			} else if ($key == 'validate_dsk') {
+				log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . __('Validation DSK', __FILE__));
+				event::add('zwavejs::validate_dsk', $value['data'][0]);
 			} else if ($key == 'node_removed') {
 				log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . __('Nœud exclu', __FILE__));
 				$id = $value['data'][0]['id'];
@@ -974,6 +990,32 @@ class zwavejs extends eqLogic {
 		}
 		$args['type'] = 'inclusion';
 		self::publishMqttApi($api, $args);
+	}
+	
+	public static function grantSecurity($_security, $_auth) {
+		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . __('Grant Security', __FILE__) . ' ' . $_security . ' ' . $_auth);
+		$auth = false;
+		$security = array();
+		if ($_auth != "false"){
+			$auth = true;
+		}
+		foreach ($_security as $class) {
+			$security[]= intval($class);
+		}
+		$args = array('args' => array(array('securityClasses' => $security, 'clientSideAuth' => $auth)));
+		self::publishMqttApi('grantSecurityClasses', $args);
+	}
+	
+	public static function validateDSK($_dsk) {
+		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . __('Validation DSK', __FILE__) . ' ' . $_dsk);
+		$args = array('args' => array($_dsk));
+		self::publishMqttApi('validateDSK', $args);
+	}
+	
+	public static function abortInclusion() {
+		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . __('Annulation Inclusion', __FILE__));
+		$args = array();
+		self::publishMqttApi('abortInclusion', $args);
 	}
 
 	public static function syncNodes($_data) {

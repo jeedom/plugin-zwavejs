@@ -249,6 +249,21 @@ try {
 		}
 		ajax::success();
 	}
+	
+	if (init('action') == 'grantSecurity') {
+		zwavejs::grantSecurity(init('security'), init('auth'));
+		ajax::success();
+	}
+	
+	if (init('action') == 'validateDSK') {
+		zwavejs::validateDSK(init('dsk'));
+		ajax::success();
+	}
+	
+	if (init('action') == 'abortInclusion') {
+		zwavejs::abortInclusion();
+		ajax::success();
+	}
 
 	throw new Exception(__('Aucune méthode correspondante', __FILE__));
 	/*     * *********Catch exeption*************** */
