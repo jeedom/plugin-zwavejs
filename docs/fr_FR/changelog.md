@@ -12,6 +12,10 @@
 
 **Modifications de Configurations**
 
+- Modification de la configuration *Aeotec Range Extender 6* pour utiliser les propriétés
+- Modification de la configuration *Zipato PD01z* pour utiliser les propriétés
+- Modification de la configuration *NeoCoolCam PD01zt* pour utiliser les propriétés
+- Modification de la configuration *NeoCoolCam PD01z* pour utiliser les propriétés
 - Modification de la configuration *Philio / Zipato Micromodule Energy Meter* pour utiliser les propriétés
 - Modification de la configuration *Fibaro FGS214* pour utiliser les propriétés
 - Modification de la configuration *Fibaro FGS213* passage à l'endpoint 0 (à confirmer)
@@ -33,6 +37,7 @@
 - Modification de l'image *Remotec ZXT-120* (détourage)
 - Modification de l'image *Fibaro FGS 224* (détourage)
 - Modification de l'image *Fibaro FGS 213* (détourage)
+- Modification de l'image *Fibaro Button* (détourage)
 
 **Ajouts de Configurations**
 
