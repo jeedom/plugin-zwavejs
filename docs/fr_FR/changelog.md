@@ -12,6 +12,8 @@
 
 **Modifications de Configurations**
 
+- Modification de la configuration *Philio / Zipato Micromodule Energy Meter* pour utiliser les propriétés
+- Modification de la configuration *Fibaro FGS214* pour utiliser les propriétés
 - Modification de la configuration *Fibaro FGS213* passage à l'endpoint 0 (à confirmer)
 - Retour arrière sur la configuration *Fibaro FGD212 firmware 3.5*
 - Modification de la configuration *Zipato Keypad* rajout de la propriété *NodeNotification*
