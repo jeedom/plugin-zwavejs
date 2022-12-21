@@ -36,6 +36,8 @@
 
 **Ajouts de Configurations**
 
+- Ajout de la configuration *Cherubini ORA ZRX* (propriétés : Shutter, Notification)
+- Ajout de l'image *Cherubini ORA ZRX*
 - Ajout de la configuration *Heiman HS2WD Siren* (propriétés : Switch, Battery)
 - Ajout de l'image *Heiman HS2WD Siren*
 - Ajout d'une sous-propriété *Power-status* dans la propriété *Notification*

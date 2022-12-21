@@ -1,0 +1,13 @@
+{
+    "name": "Ora ZRX Tubular Motor",
+    "type": "Store",
+    "versions": {
+        "4": [
+            "1"
+        ]
+    },
+    "properties": {
+        "Shutter": {},
+        "Notification": {"type":"hardware"},
+    }
+}
