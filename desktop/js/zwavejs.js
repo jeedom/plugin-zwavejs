@@ -137,38 +137,38 @@ $('.changeIncludeState').off('click').on('click', function() {
 })
 
 $('.eqLogic').on('click', '.nodeInformations', function() {
-  $('#md_modal').dialog({ title: "{{Informations du nœud}}" })
-  $('#md_modal').load('index.php?v=d&plugin=zwavejs&modal=node.informations&id=' + $('.eqLogicAttr[data-l1key=logicalId]').value()).dialog('open')
+  $('#md_modal2').dialog({ title: "{{Informations du nœud}}" })
+  $('#md_modal2').load('index.php?v=d&plugin=zwavejs&modal=node.informations&id=' + $('.eqLogicAttr[data-l1key=logicalId]').value()).dialog('open')
 })
 
 $('.eqLogic').on('click', '.nodeValues', function() {
-  $('#md_modal').dialog({ title: "{{Valeurs du nœud}}" })
-  $('#md_modal').load('index.php?v=d&plugin=zwavejs&modal=node.values&id=' + $('.eqLogicAttr[data-l1key=logicalId]').value()).dialog('open')
+  $('#md_modal2').dialog({ title: "{{Valeurs du nœud}}" })
+  $('#md_modal2').load('index.php?v=d&plugin=zwavejs&modal=node.values&id=' + $('.eqLogicAttr[data-l1key=logicalId]').value()).dialog('open')
 })
 
 $('.eqLogic').on('click', '.nodeGroups', function() {
-  $('#md_modal').dialog({ title: "{{Groupes du nœud}}" })
-  $('#md_modal').load('index.php?v=d&plugin=zwavejs&modal=node.groups&id=' + $('.eqLogicAttr[data-l1key=logicalId]').value()).dialog('open')
+  $('#md_modal2').dialog({ title: "{{Groupes du nœud}}" })
+  $('#md_modal2').load('index.php?v=d&plugin=zwavejs&modal=node.groups&id=' + $('.eqLogicAttr[data-l1key=logicalId]').value()).dialog('open')
 })
 
 $('#bt_zwaveNetwork').off('click').on('click', function() {
-  $('#md_modal').dialog({ title: "{{Réseau Z-Wave}}" })
-  $('#md_modal').load('index.php?v=d&plugin=zwavejs&modal=network').dialog('open')
+  $('#md_modal2').dialog({ title: "{{Réseau Z-Wave}}" })
+  $('#md_modal2').load('index.php?v=d&plugin=zwavejs&modal=network').dialog('open')
 })
 
 $('#bt_zwaveStats').off('click').on('click', function() {
-  $('#md_modal').dialog({ title: "{{Statistiques Z-Wave}}" })
-  $('#md_modal').load('index.php?v=d&plugin=zwavejs&modal=stats').dialog('open')
+  $('#md_modal3').dialog({ title: "{{Statistiques Z-Wave}}" })
+  $('#md_modal3').load('index.php?v=d&plugin=zwavejs&modal=stats').dialog('open')
 })
 
 $('#bt_zwaveHealth').on('click', function() {
-  $('#md_modal').dialog({ title: "{{Santé Z-Wave}}" })
-  $('#md_modal').load('index.php?v=d&plugin=zwavejs&modal=health').dialog('open')
+  $('#md_modal2').dialog({ title: "{{Santé Z-Wave}}" })
+  $('#md_modal2').load('index.php?v=d&plugin=zwavejs&modal=health').dialog('open')
 })
 
 $('#bt_zwaveWaiting').on('click', function() {
-  $('#md_modal').dialog({ title: "{{Paramètres en attente}}" })
-  $('#md_modal').load('index.php?v=d&plugin=zwavejs&modal=waiting').dialog('open')
+  $('#md_modal3').dialog({ title: "{{Paramètres en attente}}" })
+  $('#md_modal3').load('index.php?v=d&plugin=zwavejs&modal=waiting').dialog('open')
 })
 
 if (is_numeric(getUrlVars('logical_id'))) {

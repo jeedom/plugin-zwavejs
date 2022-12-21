@@ -142,7 +142,7 @@ $('body').off('zwavejs::firmware_update').on('zwavejs::firmware_update', functio
 })
 
 
-$('#md_modal').bind('dialogclose', function(event, ui) {
+$('#md_modal2').bind('dialogclose', function(event, ui) {
 	clearTimeout(readnodes)
 	clearTimeout(infoloadnodes)
 })

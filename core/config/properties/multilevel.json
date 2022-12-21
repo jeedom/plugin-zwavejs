@@ -233,10 +233,10 @@
 			"unite": "%"
 		}
 	],
-"onlevel-endpointTarget": 
+"onlevel-valve": 
 	[
 		{
-			"name": "Intensité",
+			"name": "Position Valve",
 			"type": "action",
 			"isVisible": 1,
 			"isHistorized": 0,
@@ -244,11 +244,11 @@
 				"minValue": 0,
 				"maxValue": 99,
 				"class": 38,
-				"endpoint": "#endpoint-targetValue#",
+				"endpoint": "#endpoint#",
 				"property": "targetValue",
 				"value": "#slider#"
 			},
-			"value": "Etat",
+			"value": "Position",
 			"subtype": "slider",
 			"display": {
 				"generic_type": "LIGHT_SLIDER"
@@ -259,41 +259,41 @@
 			}
 		},
 		{
-			"name": "On",
+			"name": "Ouverture",
 			"type": "action",
 			"isVisible": 0,
 			"isHistorized": 0,
 			"configuration": {
 				"class": 38,
-				"endpoint": "#endpoint-targetValue#",
+				"endpoint": "#endpoint#",
 				"property": "targetValue",
 				"value": 99
 			},
-			"value": "Etat",
+			"value": "Position",
 			"subtype": "other",
 			"display": {
 				"generic_type": "LIGHT_ON"
 			}
 		},
 		{
-			"name": "Off",
+			"name": "Fermeture",
 			"type": "action",
 			"isVisible": 0,
 			"isHistorized": 0,
 			"configuration": {
 				"class": 38,
-				"endpoint": "#endpoint-targetValue#",
+				"endpoint": "#endpoint#",
 				"property": "targetValue",
 				"value": 0
 			},
-			"value": "Etat",
+			"value": "Position",
 			"subtype": "other",
 			"display": {
 				"generic_type": "LIGHT_OFF"
 			}
 		},
 		{
-			"name": "Etat",
+			"name": "Position",
 			"type": "info",
 			"isVisible": 0,
 			"isHistorized": 1,

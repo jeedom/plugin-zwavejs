@@ -639,6 +639,8 @@ class zwavejs extends eqLogic {
 			// log::add(__CLASS__, 'debug', $key);
 			if ($key == 'node_value_updated') {
 				self::handleNodeValueUpdate($value);
+			} elseif ($key == 'node_notification') {
+				self::handleNodeNotification($value);
 			} else if ($key == 'node_interview_stage_completed') {
 				self::createEqLogic($value['data'][0]);
 			} else if ($key == 'node_interview_completed') {
@@ -751,6 +753,22 @@ class zwavejs extends eqLogic {
 		}
 	}
 
+	public static function handleNodeNotification($_value_update) {
+		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . "Traitement d'une Notification d'un node");
+		//log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . json_encode($_value_update));
+		$datas = $_value_update['data'];
+		$node = $datas[0];
+		$cc = $datas[1];
+		$change = $datas[2];
+		$eqLogic = self::byLogicalId($node['id'], __CLASS__);
+		if (is_object($eqLogic)) {
+			if ($eqLogic->getIsEnable()) {
+				// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . "Le nœud avec l'id : " . $node['id'] . ' existe ' . $eqLogic->getHumanName());
+			}
+			$eqLogic->handleNotificationUpdate($change,$cc);
+		}
+	}
+	
 	public static function handleNodeValueUpdate($_value_update) {
 		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . "Traitement d'un update de value d'un node");
 		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . json_encode($_value_update));
@@ -1596,6 +1614,20 @@ class zwavejs extends eqLogic {
 			}
 			// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . 'Changement pour ' . $cmdId . ' ' . json_encode($_change));
 			$this->updateCmd($cmdId, $_change['newValue']);
+		}
+	}
+	
+	public function handleNotificationUpdate($_change, $_cc) {
+		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . 'Notification pour le node ' . $this->getHumanName());
+		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . $this->getHumanName() . ' ' . json_encode($_change) . ' sur la CC ' . $_cc);
+		foreach ($_change as $key => $value){
+			if ($key == 'parameters') {
+				foreach ($value as $keyparam => $valueparam){
+					$this->updateCmd($_cc.'-'.'0-notification-'.$key.'-'.$keyparam, $valueparam);
+				}
+			} else {
+				$this->updateCmd($_cc.'-'.'0-notification-'.$key, $value);
+			}
 		}
 	}
 

@@ -15,6 +15,7 @@
     },
     "properties": {
         "Notification":{"type":"alarmLevel","repeatEventManagement":"always"},
+        "Nodenotification":{},
         "User Code": {
             "multi": [
                 0,

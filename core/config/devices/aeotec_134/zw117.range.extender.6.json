@@ -11,5 +11,9 @@
         "260": [
             "117"
         ]
+    },
+    "properties": {
+        "Multilevel":{},
+        "Color":{"cmdFilter":["rgb"]}
     }
 }

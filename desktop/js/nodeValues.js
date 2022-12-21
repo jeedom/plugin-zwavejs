@@ -253,7 +253,7 @@ function node_read_values() {
 	})
 }
 
-$('#md_modal').bind('dialogclose', function(event, ui) {
+$('#md_modal2').bind('dialogclose', function(event, ui) {
 	clearTimeout(readvalues)
 	clearTimeout(loadvalues)
 })

@@ -68,7 +68,7 @@ function get_health_info() {
   })
 }
 
-$('#md_modal').bind('dialogclose', function(event, ui) {
+$('#md_modal2').bind('dialogclose', function(event, ui) {
   clearTimeout(getHealthFile)
   clearTimeout(getHealthInfo)
 })

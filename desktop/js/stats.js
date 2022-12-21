@@ -83,7 +83,7 @@ function network_read_stats() {
 	})
 }
 
-$('#md_modal').bind('dialogclose', function(event, ui) {
+$('#md_modal3').bind('dialogclose', function(event, ui) {
 	clearTimeout(getstats)
 	clearTimeout(getNodes)
 })
