@@ -8,7 +8,11 @@
 
 **Modifications de Configurations**
 
+- Modification de la configuration *Remotec ZXT-120* pour utiliser les propriétés
+- Modification de la configuration *Everspring Ad147* pour utiliser les propriétés
 - Modification de la configuration *Heatit ThermoFloor Ztemp2* pour utiliser les propriétés
+- Modification de l'image *Horstmann Secure SRT321* (détourage)
+- Modification de l'image *Remotec ZXT-120* (détourage)
 
 **Ajouts de Configurations**
 
