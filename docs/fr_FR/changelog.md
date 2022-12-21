@@ -12,6 +12,7 @@
 
 **Modifications de Configurations**
 
+- Retour arrière sur la configuration *Fibaro FGD212 firmware 3.5*
 - Modification de la configuration *Zipato Keypad* rajout de la propriété *NodeNotification*
 - Modification de la configuration *Schlage Keypad* rajout de la propriété *NodeNotification*
 - Modification de la configuration *Eurotronic Valve Spirit* pour utiliser les propriétés
@@ -27,6 +28,7 @@
 - Modification de la configuration *Heatit ThermoFloor Ztemp2* pour utiliser les propriétés
 - Modification de l'image *Horstmann Secure SRT321* (détourage)
 - Modification de l'image *Remotec ZXT-120* (détourage)
+- Modification de l'image *Fibaro FGS 224* (détourage)
 
 **Ajouts de Configurations**
 
