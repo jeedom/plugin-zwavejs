@@ -12,6 +12,8 @@
 
 **Ajouts de Configurations**
 
+- Ajout de la configuration *Heiman HS2WD Siren* (propriétés : Switch, Battery)
+- Ajout de l'image *Heiman HS2WD Siren*
 - Ajout d'une sous-propriété *Power-status* dans la propriété *Notification*
 
 *Si vous êtes concernés par une modification ou un ajout de configuration, faites une synchronisation puis rechargez les commandes de l'équipement en "recréant toutes les commandes" après la mise à jour.*

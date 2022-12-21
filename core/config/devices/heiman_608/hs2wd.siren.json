@@ -1,0 +1,16 @@
+{
+    "name": "Hs2wd Siren",
+    "type": "Sirène",
+    "comlink": "",
+    "versions": {
+        "32777": [
+            "4096"
+        ]
+    },
+    "properties": {
+        "Switch": {
+            "type": "alert"
+        },
+        "Battery": {}
+    }
+}
