@@ -12,6 +12,7 @@
 
 **Modifications de Configurations**
 
+- Modification de la configuration *Fibaro FGS213* passage à l'endpoint 0 (à confirmer)
 - Retour arrière sur la configuration *Fibaro FGD212 firmware 3.5*
 - Modification de la configuration *Zipato Keypad* rajout de la propriété *NodeNotification*
 - Modification de la configuration *Schlage Keypad* rajout de la propriété *NodeNotification*
@@ -29,6 +30,7 @@
 - Modification de l'image *Horstmann Secure SRT321* (détourage)
 - Modification de l'image *Remotec ZXT-120* (détourage)
 - Modification de l'image *Fibaro FGS 224* (détourage)
+- Modification de l'image *Fibaro FGS 213* (détourage)
 
 **Ajouts de Configurations**
 

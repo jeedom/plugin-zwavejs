@@ -11,9 +11,9 @@
         ]
     },
     "properties": {
-        "Switch": {"replace": {"#endpoint#": 1}},
-        "Power": {"replace": {"#endpoint#": 1}},
-        "Energy": {"replace": {"#endpoint#": 1}},
+        "Switch": {},
+        "Power": {},
+        "Energy": {},
         "CentralScene": {
             "multi": [
                 1,2
