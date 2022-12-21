@@ -8,6 +8,15 @@
 
 **Modifications de Configurations**
 
+- Modification de la configuration *Aeotec ZWA021 Radiator Thermostat* pour utiliser les propriétés
+- Modification de la configuration *Eurotronic Valve Spirit* pour utiliser les propriétés
+- Regroupement de configurations *Danfoss Living Connect*
+- Modification de la configuration *Danfoss Devolo Living Connect* pour utiliser les propriétés
+- Modification de la configuration *Danfoss Living Connect* pour utiliser les propriétés
+- Modification de la configuration *Danfoss Pop Radiator Thermostat* pour utiliser les propriétés
+- Modification de la configuration *Philio PSP05* pour utiliser les propriétés
+- Modification de la configuration *Zipato ZP3102* pour utiliser les propriétés
+- Modification de la configuration *Vision ZP3102* pour utiliser les propriétés
 - Modification de la configuration *Remotec ZXT-120* pour utiliser les propriétés
 - Modification de la configuration *Everspring Ad147* pour utiliser les propriétés
 - Modification de la configuration *Heatit ThermoFloor Ztemp2* pour utiliser les propriétés

@@ -233,6 +233,84 @@
 			"unite": "%"
 		}
 	],
+"onlevel-valve": 
+	[
+		{
+			"name": "Position Valve",
+			"type": "action",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"minValue": 0,
+				"maxValue": 99,
+				"class": 38,
+				"endpoint": "#endpoint#",
+				"property": "targetValue",
+				"value": "#slider#"
+			},
+			"value": "Position",
+			"subtype": "slider",
+			"display": {
+				"generic_type": "LIGHT_SLIDER"
+			},
+			"template": {
+				"dashboard": "timeLight",
+				"mobile": "timeLight"
+			}
+		},
+		{
+			"name": "Ouverture",
+			"type": "action",
+			"isVisible": 0,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 38,
+				"endpoint": "#endpoint#",
+				"property": "targetValue",
+				"value": 99
+			},
+			"value": "Position",
+			"subtype": "other",
+			"display": {
+				"generic_type": "LIGHT_ON"
+			}
+		},
+		{
+			"name": "Fermeture",
+			"type": "action",
+			"isVisible": 0,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 38,
+				"endpoint": "#endpoint#",
+				"property": "targetValue",
+				"value": 0
+			},
+			"value": "Position",
+			"subtype": "other",
+			"display": {
+				"generic_type": "LIGHT_OFF"
+			}
+		},
+		{
+			"name": "Position",
+			"type": "info",
+			"isVisible": 0,
+			"isHistorized": 1,
+			"configuration": {
+				"minValue": 0,
+				"maxValue": 99,
+				"class": 38,
+				"endpoint": "#endpoint#",
+				"property": "currentValue"
+			},
+			"subtype": "numeric",
+			"display": {
+				"generic_type": "LIGHT_STATE"
+			},
+			"unite": "%"
+		}
+	],
 "onlevel-endpointTarget": 
 	[
 		{
