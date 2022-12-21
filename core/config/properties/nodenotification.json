@@ -1,0 +1,70 @@
+{
+"standard": 
+	[
+		{
+			"name": "Notification Type",
+			"type": "info",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"repeatEventManagement": "always",
+				"class": 113,
+				"endpoint": "#endpoint#",
+				"property": "notification-type"
+			},
+			"subtype": "numeric"
+		},
+		{
+			"name": "Notification Event",
+			"type": "info",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"repeatEventManagement": "always",
+				"class": 113,
+				"endpoint": "#endpoint#",
+				"property": "notification-event"
+			},
+			"subtype": "numeric"
+		},
+		{
+			"name": "Notification Label",
+			"type": "info",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"repeatEventManagement": "always",
+				"class": 113,
+				"endpoint": "#endpoint#",
+				"property": "notification-label"
+			},
+			"subtype": "string"
+		},
+		{
+			"name": "Notification Event Label",
+			"type": "info",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"repeatEventManagement": "always",
+				"class": 113,
+				"endpoint": "#endpoint#",
+				"property": "notification-eventLabel"
+			},
+			"subtype": "string"
+		},
+		{
+			"name": "User ID",
+			"type": "info",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"repeatEventManagement": "always",
+				"class": 113,
+				"endpoint": "#endpoint#",
+				"property": "notification-parameters-userId"
+			},
+			"subtype": "numeric"
+		}
+	]
+}

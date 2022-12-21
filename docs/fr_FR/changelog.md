@@ -6,9 +6,14 @@
 
 # XX/12/2022
 
+**Améliorations**
+
+- Rajout de la gestion des Nodes Notifications
+
 **Modifications de Configurations**
 
-- Modification de la configuration *Aeotec ZWA021 Radiator Thermostat* pour utiliser les propriétés
+- Modification de la configuration *Zipato Keypad* rajout de la propriété *NodeNotification*
+- Modification de la configuration *Schlage Keypad* rajout de la propriété *NodeNotification*
 - Modification de la configuration *Eurotronic Valve Spirit* pour utiliser les propriétés
 - Regroupement de configurations *Danfoss Living Connect*
 - Modification de la configuration *Danfoss Devolo Living Connect* pour utiliser les propriétés
@@ -28,6 +33,7 @@
 - Ajout de la configuration *Heiman HS2WD Siren* (propriétés : Switch, Battery)
 - Ajout de l'image *Heiman HS2WD Siren*
 - Ajout d'une sous-propriété *Power-status* dans la propriété *Notification*
+- Ajout d'une propriété *NodeNotification*
 
 *Si vous êtes concernés par une modification ou un ajout de configuration, faites une synchronisation puis rechargez les commandes de l'équipement en "recréant toutes les commandes" après la mise à jour.*
 
