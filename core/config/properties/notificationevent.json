@@ -1,0 +1,18 @@
+{
+"standard": 
+	[
+		{
+			"name": "Event",
+			"type": "action",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 113,
+				"endpoint": "#endpoint#",
+				"property": "sendReport",
+				"value": "notificationType:#type#-notificationEvent:#event#"
+			},
+			"subtype": "other"
+		}
+	]
+}

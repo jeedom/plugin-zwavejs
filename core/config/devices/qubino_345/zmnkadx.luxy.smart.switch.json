@@ -1,0 +1,22 @@
+{
+    "name": "ZMNKADX Luxy Smart Switch",
+    "type": "Interrupteur,Micromodule,Couleur",
+    "comlink": "",
+    "versions": {
+        "8": [
+            "82"
+        ]
+    },
+    "properties": {
+        "Switch":{"replace": {"#endpoint#": 2}},
+        "Multilevel|Lumière":{"split":1,"replace": {"#endpoint#": 1}},
+        "Power":{"replace": {"#endpoint#": 2}},
+        "Power|1":{"split":1,"replace": {"#endpoint#": 1}},
+        "Energy":{"replace": {"#endpoint#": 2}},
+        "Color":{"replace": {"#endpoint#": 1},"cmdFilter":["rgb"]},
+        "Notification":{"replace": {"#endpoint#": 1},"type":"siren","returnStateTime":1,"returnStateValue":0},
+        "Notification|overload":{"replace": {"#endpoint#": 2},"type":"over-load"},
+        "Notificationevent|Rouge":{"split":1,"replace": {"#type#": 14,"#event#":1}},
+        "Notificationevent|Jaune":{"split":1,"replace": {"#type#": 8,"#event#":1}}
+    }
+}

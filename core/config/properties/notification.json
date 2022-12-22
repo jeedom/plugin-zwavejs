@@ -205,6 +205,29 @@
 			}
 		}
 	],
+"over-load": 
+	[
+		{
+			"name": "Surcharge Puissance",
+			"type": "info",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 113,
+				"endpoint": "#endpoint#",
+				"property": "Power Management-Over-load status",
+				"calculValueOffset": "#value#==8"
+			},
+			"subtype": "binary",
+			"display": {
+				"invertBinary": "1"
+			},
+			"template": {
+				"dashboard": "timeAlert",
+				"mobile": "timeAlert"
+			}
+		}
+	],
 "power-status": 
 	[
 		{

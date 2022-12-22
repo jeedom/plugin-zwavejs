@@ -22,11 +22,15 @@
 
 **Ajouts de Configurations**
 
+- Ajout de la configuration *Qubino Luxy Smart Switch* (propriétés : Switch, Multilevel, Power, Energy, Color, Notification, NotificationEvent)
+- Ajout de l'image *Qubino Luxy Smart Switch*
 - Ajout de la configuration *Abus Security Center SHSG10000* (propriétés : Switch, Battery)
 - Ajout de l'image *Abus Security Center SHSG10000*
 - Ajout d'une sous-propriété *Global* dans la propriété *Rain*
 - Ajout d'une sous-propriété *Basic* dans la propriété *Rain*
+- Ajout d'une sous-propriété *Over-Load* dans la propriété *Notification*
 - Ajout d'une propriété *Waterconsumption*
+- Ajout d'une propriété *Notificationevent*
 
 *Si vous êtes concernés par une modification ou un ajout de configuration, faites une synchronisation puis rechargez les commandes de l'équipement en "recréant toutes les commandes" après la mise à jour.*
 
