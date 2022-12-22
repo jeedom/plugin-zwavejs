@@ -22,6 +22,8 @@
 
 **Ajouts de Configurations**
 
+- Ajout de la configuration *Abus Security Center SHSG10000* (propriétés : Switch, Battery)
+- Ajout de l'image *Abus Security Center SHSG10000*
 - Ajout d'une sous-propriété *Global* dans la propriété *Rain*
 - Ajout d'une sous-propriété *Basic* dans la propriété *Rain*
 - Ajout d'une propriété *Waterconsumption*

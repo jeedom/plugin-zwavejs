@@ -1,0 +1,16 @@
+{
+    "name": "Shsg10000 Security Center",
+    "type": "Sirène",
+    "comlink": "",
+    "remark": "",
+    "imglink": "",
+    "versions": {
+        "3": [
+            "0"
+        ]
+    },
+    "properties": {
+        "Switch": {"type":"alert"},
+        "Battery": {}
+    }
+}
