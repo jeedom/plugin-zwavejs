@@ -11,7 +11,6 @@
         "Switch":{"replace": {"#endpoint#": 2}},
         "Multilevel|Lumière":{"split":1,"replace": {"#endpoint#": 1}},
         "Power":{"replace": {"#endpoint#": 2}},
-        "Power|1":{"split":1,"replace": {"#endpoint#": 1}},
         "Energy":{"replace": {"#endpoint#": 2}},
         "Color":{"replace": {"#endpoint#": 1},"cmdFilter":["rgb"]},
         "Notification":{"replace": {"#endpoint#": 1},"type":"siren","returnStateTime":1,"returnStateValue":0},

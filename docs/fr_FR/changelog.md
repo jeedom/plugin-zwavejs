@@ -14,6 +14,7 @@
 
 **Modifications de Configurations**
 
+- Modification de la configuration *Qubino Luxy Smart Light* pour utiliser les propriétés
 - Modification de la configuration *Popp RainMeter* pour utiliser les propriétés
 - Modification de la configuration *Fibaro FGR-223* première configuration à utiliser le moteur de refresh (en effet ce module à un bug connu, il ne remonte pas les positions ou de manières erronées lorsqu'un mouvement est initié par le Z-Wave) pour récupérer les refresh (allez dans recharger commande en choissisant "sans recréer commandes") vous devriez voir les "refreshs" dans l'onglet options.
 - Modification de la configuration *Fibaro FGR-223* changement des endpoints power et energy
