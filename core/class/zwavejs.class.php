@@ -2114,8 +2114,31 @@ class zwavejs extends eqLogic {
 		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . $_class);
 		$command = explode('-', $_class, 3);
 		$args = array('args' => array(array('nodeId' => intval($this->getLogicalId()), 'commandClass' => intval($command[1]), 'endpoint' => intval($command[0]), 'property' => $command[2])));
-		log::add(__CLASS__, 'debug', $this->getHumanName() . '[' . __FUNCTION__ . '] ' . json_encode($args));
+		// log::add(__CLASS__, 'debug', $this->getHumanName() . '[' . __FUNCTION__ . '] ' . json_encode($args));
 		self::publishMqttApi('pollValue', $args);
+	}
+	
+	public function refreshIfNeeded($_path,$_value) {
+		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . $_path . ' ' . $_value);
+		$refreshes = $this->getConfiguration('refreshes', '');
+		if (is_array($refreshes) && count($refreshes) >0 ) {
+			foreach ($refreshes as $refresh) {
+				$source = $refresh['refresh::source'];
+				if (strpos(str_replace('/','-',$_path).'-'.$_value,$source) !== false){
+					log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] Found refresh');
+					$cmd = 'php ' . dirname(__FILE__) . '/../../core/php/refresher.php id=' . $this->getId();
+					$cmd .= ' target=' . $refresh['refresh::target'] . '';
+					$cmd .= ' sleep=' . $refresh['refresh::sleep'] . '';
+					$cmd .= ' number=' . $refresh['refresh::number'] . '';
+					$cmd .= ' >> ' . log::getPathToLog('zwavejs') . ' 2>&1 &';
+					log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . $cmd);
+					shell_exec($cmd);
+					return;
+				}
+			}
+		} else {
+			return;
+		}
 	}
 }
 
@@ -2204,5 +2227,6 @@ class zwavejsCmd extends cmd {
 			return;
 		}
 		zwavejs::publishMqttValue($node, $path, $value);
+		$eqLogic->refreshIfNeeded($path,$value);
 	}
 }

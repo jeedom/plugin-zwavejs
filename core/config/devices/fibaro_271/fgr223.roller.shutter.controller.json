@@ -8,6 +8,12 @@
             "4096"
         ]
     },
+    "configuration" :{
+        "refreshes":[{"refresh::source":"38-0-targetValue","refresh::target":"38-0-currentValue","refresh::sleep":"5","refresh::number":"9","refresh::comment":"Le module ne reporte pas son changement de position correctement lors d'une action Z-Wave"},
+                     {"refresh::source":"38-0-Up-true","refresh::target":"38-0-currentValue","refresh::sleep":"5","refresh::number":"9","refresh::comment":"Le module ne reporte pas son changement de position correctement lors d'une action Z-Wave"},
+                     {"refresh::source":"38-0-Down-true","refresh::target":"38-0-currentValue","refresh::sleep":"5","refresh::number":"9","refresh::comment":"Le module ne reporte pas son changement de position correctement lors d'une action Z-Wave"}
+        ]
+    },
     "modes": {
         "noBso": "Sans BSO",
         "withBso": "Avec BSO"
