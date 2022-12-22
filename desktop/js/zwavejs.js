@@ -25,6 +25,10 @@ $('#bt_syncEqLogic').off('click').on('click', function() {
   })
 })
 
+$('#bt_addRefresh').off('click').on('click', function() {
+  addRefresh({})
+})
+
 $('.confRecommended').on('click', function() {
   bootbox.dialog({
     title: "{{Configuration recommandée}}",
@@ -184,6 +188,14 @@ function printEqLogic(_eqLogic) {
     $('#img_device').attr("src", $('.eqLogicDisplayCard[data-eqLogic_id=' + _eqLogic.id + '] img').attr('src'))
   } else {
     $('#img_device').attr("src", 'plugins/zwavejs/plugin_info/zwavejs_icon.png')
+  }
+  $('#table_zwaveRefresh').find('tbody').empty()
+  if (isset(_eqLogic.configuration)) {
+    if (isset(_eqLogic.configuration.refreshes)) {
+      for (var i in _eqLogic.configuration.refreshes) {
+        addRefresh(_eqLogic.configuration.refreshes[i])
+      }
+    }
   }
   $.ajax({
     type: "POST",
@@ -620,4 +632,40 @@ function addCmdToTable(_cmd) {
       jeedom.cmd.changeType(tr, init(_cmd.subType))
     }
   })
+}
+
+function saveEqLogic(_eqLogic) {
+  if (!isset(_eqLogic.configuration)) {
+    _eqLogic.configuration = {}
+  }
+  _eqLogic.configuration.refreshes = $('#table_zwaveRefresh').find('tbody tr').getValues('.refreshAttr')
+  return _eqLogic
+}
+
+$('#table_zwaveRefresh').off('click','.bt_removeRefresh').on('click','.bt_removeRefresh', function() {
+  $(this).closest('tr').remove()
+})
+
+function addRefresh(_refresh) {
+  var tr = '<tr class="refresh">'
+  tr += '<td>'
+  tr += '<div class="input-group"><input type="text" class="form-control refreshAttr" data-l1key="refresh::source"></div>'
+  tr += '</td>'
+  tr += '<td>'
+  tr += '<div class="input-group"><input type="text" class="form-control refreshAttr" data-l1key="refresh::target"></div>'
+  tr += '</td>'
+  tr += '<td>'
+  tr += '<div class="input-group"><input type="number" class="form-control refreshAttr roundedLeft" data-l1key="refresh::sleep"><span class="input-group-addon roundedRight">s</span></div>'
+  tr += '</td>'
+  tr += '<td>'
+  tr += '<div class="input-group"><input type="number" class="form-control refreshAttr" data-l1key="refresh::number"></div>'
+  tr += '</td>'
+  tr += '<td>'
+  tr += '<div class="input-group">'
+  tr += '<textarea class="refreshAttr form-control roundedLeft" data-concat="1" data-l1key="refresh::comment" style="height:72px;"></textarea>'
+  tr += '<span class="input-group-addon roundedRight cursor bt_removeRefresh" title="{{Supprimer la règle}}"><a class="btn btn-default"><i class="fas fa-minus-circle"></i></a></span>'
+  tr += '</div></td>'
+  tr += '</tr>'
+  $('#table_zwaveRefresh').find('tbody').append(tr)
+  $('#table_zwaveRefresh').find('tbody tr').last().setValues(_refresh, '.refreshAttr')
 }

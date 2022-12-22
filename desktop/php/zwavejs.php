@@ -140,6 +140,7 @@ sendVarTojs('eqLogic_human_name', $tags);
 			<li role="presentation"><a class="eqLogicAction cursor" aria-controls="home" role="tab" data-action="returnToThumbnailDisplay"><i class="fas fa-arrow-circle-left"></i></a></li>
 			<li role="presentation" class="active"><a href="#eqlogictab" aria-controls="home" role="tab" data-toggle="tab"><i class="fas fa-tachometer-alt"></i> {{Equipement}}</a></li>
 			<li role="presentation"><a href="#commandtab" aria-controls="profile" role="tab" data-toggle="tab"><i class="fas fa-list-alt"></i> {{Commandes}}</a></li>
+			<li role="presentation"><a href="#optionstab" aria-controls="profile" role="tab" data-toggle="tab"><i class="fas fa-pencil-ruler"></i> {{Options}}</a></li>
 		</ul>
 		<div class="tab-content">
 			<div role="tabpanel" class="tab-pane active" id="eqlogictab">
@@ -296,6 +297,43 @@ sendVarTojs('eqLogic_human_name', $tags);
 						</tbody>
 					</table>
 				</div>
+			</div>
+			
+			<div role="tabpanel" class="tab-pane" id="optionstab">
+				<br>
+				<legend><i class="fas fa-sync"></i> {{Rafraîchissement}}</legend>
+				<form class="form-horizontal">
+					<fieldset>
+						<div class="alert alert-warning col-xs-10 col-xs-offset-1">
+							{{Cette section permet de définir des règles de rafraîchissement automatique après action. Il est primordial de ne rien mettre ici sans raison valable sous peine de pénaliser votre réseau Z-Wave. Cette possibilité est disponible pour gérer certains très rares modules qui ont des bugs.}}
+							<br>
+							{{Si c'est nécessaire, cette section sera sûrement prérempli par la configuration Jeedom. La durée totale (nombre x attente) ne peut pas excéder 60s}}
+							<br><br>
+							<a class="btn btn-default col-xs-6 col-xs-offset-3" id="bt_addRefresh"><i class="fas fa-plus"></i> {{Ajouter une Règle}}</a>
+						</div>
+						<table class="table table-bordered table-condensed" id="table_zwaveRefresh">
+							<thead>
+								<tr>
+									<th style="width:250px">{{Source}}
+										<sup><i class="fas fa-question-circle tooltips" title="{{Commande action déclenchant le cycle de rafraîchissement (au format cc-endpoint-property-value(optionnel))}}"></i></sup>
+									</th>
+									<th style="width:180px;">{{Cible}}
+										<sup><i class="fas fa-question-circle tooltips" title="{{Commande info devant être rafraîchie (au format cc-endpoint-property)}}"></i></sup>
+									</th>
+									<th style="width:100px;">{{Attente}}
+										<sup><i class="fas fa-question-circle tooltips" title="{{Temps d'attente entre chaque demande (en s)}}"></i></sup>
+									</th>
+									<th style="width:100px;">{{Nombre}}
+										<sup><i class="fas fa-question-circle tooltips" title="{{Nombre de demande}}"></i></sup>
+									</th>
+									<th style="min-width:50px;width:380px">{{Commentaire}}</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+					</fieldset>
+				</form>
 			</div>
 		</div>
 	</div>
