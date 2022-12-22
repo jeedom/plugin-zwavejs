@@ -4,7 +4,7 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
-# 21/12/2022
+# XX/12/2022
 
 **Améliorations**
 
@@ -14,10 +14,17 @@
 
 **Modifications de Configurations**
 
+- Modification de la configuration *Popp RainMeter* pour utiliser les propriétés
 - Modification de la configuration *Fibaro FGR-223* première configuration à utiliser le moteur de refresh (en effet ce module à un bug connu, il ne remonte pas les positions ou de manières erronées lorsqu'un mouvement est initié par le Z-Wave) pour récupérer les refresh (allez dans recharger commande en choissisant "sans recréer commandes") vous devriez voir les "refreshs" dans l'onglet options.
 - Modification de la configuration *Fibaro FGR-223* changement des endpoints power et energy
 - Modification de la configuration *Fibaro FGR-223* rajout de notification hardware et over-current
 - Modification de la configuration *Fibaro FGR-223* remplacement de la propriété scene par centralscene
+
+**Ajouts de Configurations**
+
+- Ajout d'une sous-propriété *Global* dans la propriété *Rain*
+- Ajout d'une sous-propriété *Basic* dans la propriété *Rain*
+- Ajout d'une propriété *Waterconsumption*
 
 *Si vous êtes concernés par une modification ou un ajout de configuration, faites une synchronisation puis rechargez les commandes de l'équipement en "recréant toutes les commandes" après la mise à jour.*
 

@@ -1,0 +1,34 @@
+{
+"standard": 
+	[
+		{
+			"name": "Volume eau",
+			"type": "info",
+			"isVisible": 1,
+			"isHistorized": 1,
+			"configuration": {
+				"class": 50,
+				"endpoint": "#endpoint#",
+				"property": "value-196609"
+			},
+			"subtype": "numeric",
+			"unite": "m3"
+		},
+		{
+			"name": "Reset consommmation",
+			"type": "action",
+			"isVisible": 0,
+			"configuration": {
+				"class": 50,
+				"endpoint": "#endpoint#",
+				"property": "reset",
+				"value": "true"
+			},
+			"subtype": "other",
+			"display": {
+				"icon": "<i class=\"fas fa-sync\"></i>",
+				"generic_type": "DONT"
+			}
+		}
+	]
+}
