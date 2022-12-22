@@ -31,8 +31,21 @@
                 "#endpoint#": 2
             }
         },
-        "Scene": {},
-        "Power": {"type": "multilevel"},
-        "Energy": {}
+        "CentralScene": {
+            "multi": [
+                1,2
+            ],
+            "replace": {
+                "#centralscene#": "multiKey"
+            }
+        },
+        "Power": {"replace": {
+                "#endpoint#": 1
+            }},
+        "Energy": {"replace": {
+                "#endpoint#": 1
+            }},
+        "Notification|hardware": {"type":"hardware","replace": {"#endpoint#": 1}},
+        "Notification|over-current": {"type":"over-current","replace": {"#endpoint#": 1}}
     }
 }
