@@ -8,6 +8,19 @@
 
 **Améliorations**
 
+- Rajout d'un moteur complet de *gestion de refresh*, utile pour certains modules qui ne reportent pas correctement certains changements après action. A ne pas utiliser sans raison valable. Les fichiers de configurations porteront les éléments si nécessaires
+- Rajout d'un onglet *options* sur la page d'un équipement. Pour afficher et configurer les Refresh et  d'éventuelles options futures
+
+**Modifications de Configurations**
+
+- Modification de la configuration *Fibaro FGR-223* première configuration à utiliser le moteur de refresh (en effet ce module à un bug connu, il ne remonte pas les positions ou de manières erronées lorsqu'un mouvement est initié par le Z-Wave) pour récupérer les refresh (allez dans recharger commande en choissisant "sans recréer commandes") vous devriez voir les "refreshs" dans l'onglet options.
+
+*Si vous êtes concernés par une modification ou un ajout de configuration, faites une synchronisation puis rechargez les commandes de l'équipement en "recréant toutes les commandes" après la mise à jour.*
+
+# 21/12/2022
+
+**Améliorations**
+
 - Rajout de la gestion des Nodes Notifications
 
 **Modifications de Configurations**
