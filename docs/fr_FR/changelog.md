@@ -10,6 +10,7 @@
 
 - Rajout d'un moteur complet de *gestion de refresh*, utile pour certains modules qui ne reportent pas correctement certains changements après action. A ne pas utiliser sans raison valable. Les fichiers de configurations porteront les éléments si nécessaires
 - Rajout d'un onglet *options* sur la page d'un équipement. Pour afficher et configurer les Refresh et  d'éventuelles options futures
+- Rajout du nombre de *refresh* sur la page *santé*
 
 **Modifications de Configurations**
 

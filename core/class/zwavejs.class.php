@@ -1365,11 +1365,25 @@ class zwavejs extends eqLogic {
 					}
 				}
 				if ($numberPoll == 0) {
-					$polling = '<span title="Nombre de polling actif" style="font-size : 1.5em;"><i class="fas fa-check-circle icon_green" aria-hidden="true"></i></span>';
+					$polling = '<span title="Nombre de polling actif 0" style="font-size : 1.5em;"><i class="fas fa-check-circle icon_green" aria-hidden="true"></i></span>';
 				} else {
 					$polling = '<span title="Nombre de polling actif" class="label label-warning" style="font-size : 1em;">' . $numberPoll . '</span>';
 				}
 				$healthPage .= '<td>' . $polling . '</td>';
+				
+				$numberRefresh = 0;
+				if (is_object($eqLogic)) {
+					$refreshes = $eqLogic->getConfiguration('refreshes', array());
+					foreach ($refreshes as $key => $value) {
+						$numberRefresh += 1;
+					}
+				}
+				if ($numberRefresh == 0) {
+					$refresh = '<span title="Nombre de refresh actif 0" style="font-size : 1.5em;"><i class="fas fa-check-circle icon_green" aria-hidden="true"></i></span>';
+				} else {
+					$refresh = '<span title="Nombre de refresh actif" class="label label-warning" style="font-size : 1em;">' . $numberRefresh . '</span>';
+				}
+				$healthPage .= '<td>' . $refresh . '</td>';
 
 				if ($values['inited']) {
 					$inited = '<span title="Initié" style="font-size : 1.5em;"><i class="fas fa-check-circle icon_green" aria-hidden="true"></i></span>';
