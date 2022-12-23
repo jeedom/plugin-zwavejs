@@ -8,6 +8,7 @@
 
 **Modifications de Configurations**
 
+- Modification de la configuration *Popp Smoke Sensor* pour utiliser les propriétés
 - Modification de la configuration *Duwii Edan 300* pour utiliser les propriétés
 - Modification de l'image *Duwii Dimmer* (détourage)
 - Modification de l'image *Duwii Switch* (détourage)
@@ -22,9 +23,9 @@
 
 **Améliorations**
 
-- Rajout d'un moteur complet de *gestion de refresh*, utile pour certains modules qui ne reportent pas correctement certains changements après action. A ne pas utiliser sans raison valable. Les fichiers de configurations porteront les éléments si nécessaires
-- Rajout d'un onglet *options* sur la page d'un équipement. Pour afficher et configurer les Refresh et  d'éventuelles options futures
-- Rajout du nombre de *refresh* sur la page *santé*
+- Rajout d'un moteur complet de *Gestion de refresh*, utile pour certains modules qui ne reportent pas correctement certains changements après action. A ne pas utiliser sans raison valable. Les fichiers de configurations porteront les éléments si nécessaires
+- Rajout d'un onglet *Options* sur la page d'un équipement. Pour afficher et configurer les Refresh et  d'éventuelles options futures
+- Rajout du nombre de *Refresh* sur la page *Santé*
 
 **Modifications de Configurations**
 
