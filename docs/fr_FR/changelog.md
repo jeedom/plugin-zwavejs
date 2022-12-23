@@ -8,13 +8,14 @@
 
 **Modifications de Configurations**
 
+- Modification de la configuration *Duwii Switch* pour utiliser les propriétés
 - Modification de la configuration *Everspring AN157* pour utiliser les propriétés
 - Modification de la configuration *Popp Smoke Sensor* pour utiliser les propriétés
 - Modification de la configuration *Duwii Edan 300* pour utiliser les propriétés
 - Modification de l'image *Duwii Dimmer* (détourage)
 - Modification de l'image *Duwii Switch* (détourage)
 - Modification de l'image *Duwii Edan 300* (détourage)
-- Modification de l'image *Duwii Blind COntrol* (détourage)
+- Modification de l'image *Duwii Blind Control* (détourage)
 - Modification de l'image *Duwii Remote* (détourage)
 - Modification de l'image *Duwii Zs3500* (détourage)
 
