@@ -8,6 +8,7 @@
 
 **Modifications de Configurations**
 
+- Modification de la configuration *Dlink Dchz110* pour utiliser les propriétés (remette le paramètre sur Notification Report comem par défaut)
 - Modification de la configuration *Domitech Smart Led Light* pour utiliser les propriétés
 - Modification de la configuration *Duwii Switch* pour utiliser les propriétés
 - Modification de la configuration *Everspring AN157* pour utiliser les propriétés
