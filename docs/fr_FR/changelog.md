@@ -12,7 +12,7 @@
 - Modification de la configuration *Fibaro FGD212* ajout des propriétés Notification
 - Modification de la configuration *Qubino ZMNHBA2 Flush 2 Relays* pour utiliser les propriétés
 - Modification de la configuration *Fibaro Walli Switch* ajout des propriétés Notification
-- Modification de la configuration *Dlink Dchz110* pour utiliser les propriétés (remette le paramètre sur Notification Report comme par défaut)
+- Modification de la configuration *Dlink Dchz110* pour utiliser les propriétés
 - Modification de la configuration *Domitech Smart Led Light* pour utiliser les propriétés
 - Modification de la configuration *Duwii Switch* pour utiliser les propriétés
 - Modification de la configuration *Everspring AN157* pour utiliser les propriétés
