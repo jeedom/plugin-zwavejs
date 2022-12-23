@@ -16,6 +16,11 @@
         "Multilevel": {"type": "onlevel","replace": {"#endpoint#": 1}},
         "Power": {"type": "multilevel","replace": {"#endpoint#": 1}},
         "Energy": {"replace": {"#endpoint#": 1}},
+        "Notification|hardware": {"type":"hardware","replace": {"#endpoint#": 1}},
+        "Notification|over-current": {"type":"over-current","replace": {"#endpoint#": 1}},
+        "Notification|over-load": {"type":"over-load","replace": {"#endpoint#": 1}},
+        "Notification|sensor": {"type":"sensor","replace": {"#endpoint#": 1}},
+        "Notification|load-error": {"type":"load-error","replace": {"#endpoint#": 1}}
         "Scene": {}
     }
 }

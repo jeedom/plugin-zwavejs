@@ -228,6 +228,29 @@
 			}
 		}
 	],
+"load-error": 
+	[
+		{
+			"name": "Erreur de charge",
+			"type": "info",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 113,
+				"endpoint": "#endpoint#",
+				"property": "Power Management-Load error status",
+				"calculValueOffset": "#value#==9"
+			},
+			"subtype": "binary",
+			"display": {
+				"invertBinary": "1"
+			},
+			"template": {
+				"dashboard": "timeAlert",
+				"mobile": "timeAlert"
+			}
+		}
+	],
 "power-status": 
 	[
 		{

@@ -8,9 +8,10 @@
 
 **Modifications de Configurations**
 
+- Modification de la configuration *Fibaro FGD212* ajout des propriétés Notification
 - Modification de la configuration *Qubino ZMNHBA2 Flush 2 Relays* pour utiliser les propriétés
 - Modification de la configuration *Fibaro Walli Switch* ajout des propriétés Notification
-- Modification de la configuration *Dlink Dchz110* pour utiliser les propriétés (remette le paramètre sur Notification Report comem par défaut)
+- Modification de la configuration *Dlink Dchz110* pour utiliser les propriétés (remette le paramètre sur Notification Report comme par défaut)
 - Modification de la configuration *Domitech Smart Led Light* pour utiliser les propriétés
 - Modification de la configuration *Duwii Switch* pour utiliser les propriétés
 - Modification de la configuration *Everspring AN157* pour utiliser les propriétés
@@ -23,6 +24,10 @@
 - Modification de l'image *Duwii Remote* (détourage)
 - Modification de l'image *Duwii Zs3500* (détourage)
 - Modification de l'image *MCO Zipato p210 dimmer* (détourage)
+
+**Ajouts de Configurations**
+
+- Ajout d'une sous-propriété *Load-error* dans la propriété *Notification*
 
 *Si vous êtes concernés par une modification ou un ajout de configuration, faites une synchronisation puis rechargez les commandes de l'équipement en "recréant toutes les commandes" après la mise à jour.*
 
