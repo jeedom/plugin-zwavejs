@@ -13,10 +13,25 @@
             "14"
         ]
     },
+    "recommended": {
+        "params": [
+            {
+                "path": "112-0-7-16",
+                "value": "1"
+            },
+            {
+                "path": "132-0-wakeUpInterval",
+                "value": "86400"
+            }
+        ],
+        "needswakeup": true
+    },
     "properties": {
-        "Opening": {},
+        "Opening": {
+            "type": "binary-door"
+        },
         "Temperature": {},
-        "Luminance": {"type":"standard-100"},
+        "Luminance": {"unite":"%"},
         "Tamper": {"type":"binary-tamper",
             "returnStateTime": 1,
             "returnStateValue": 0},

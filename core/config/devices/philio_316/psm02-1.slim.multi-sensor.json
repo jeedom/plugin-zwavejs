@@ -34,7 +34,7 @@
         "Motion": {"type":"binary-motion"},
         "Opening": {},
         "Temperature": {},
-        "Luminance": {"type":"standard-100"},
+        "Luminance": {"unite":"%"},
         "Tamper": {"type":"binary-tamper",
             "returnStateTime": 1,
             "returnStateValue": 0},
