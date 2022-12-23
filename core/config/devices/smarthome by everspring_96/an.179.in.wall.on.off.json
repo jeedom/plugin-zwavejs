@@ -10,8 +10,6 @@
         ]
     },
     "properties": {
-        "Switch": {
-            "type": "prise"
-        }
+        "Switch": {}
     }
 }
