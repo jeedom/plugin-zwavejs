@@ -8,6 +8,7 @@
 
 **Modifications de Configurations**
 
+- Modification de la configuration *Fibaro Fgrgbwm442* pour utiliser les propriétés
 - Modification de la configuration *Fibaro FGD212* ajout des propriétés Notification
 - Modification de la configuration *Qubino ZMNHBA2 Flush 2 Relays* pour utiliser les propriétés
 - Modification de la configuration *Fibaro Walli Switch* ajout des propriétés Notification
@@ -28,6 +29,7 @@
 **Ajouts de Configurations**
 
 - Ajout d'une sous-propriété *Load-error* dans la propriété *Notification*
+- Ajout d'une sous-propriété *Fibaro-effets2* dans la propriété *Color*
 
 *Si vous êtes concernés par une modification ou un ajout de configuration, faites une synchronisation puis rechargez les commandes de l'équipement en "recréant toutes les commandes" après la mise à jour.*
 

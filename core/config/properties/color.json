@@ -305,5 +305,110 @@
                 "generic_type": "DONT"
             }
         }
+	],
+"fibaro-effects2":
+	[
+		{
+            "name": "Cheminée",
+            "type": "action",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 112,
+                "endpoint": "#endpoint#",
+                "property": 157,
+                "value": "set-6"
+            },
+            "subtype": "other",
+            "display": {
+                "icon": "<i class=\"icon jeedom-feu\"></i>",
+                "generic_type": "DONT"
+            }
+        },
+        {
+            "name": "Orage",
+            "type": "action",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 112,
+                "endpoint": "#endpoint#",
+                "property": 157,
+                "value": "set-7"
+            },
+            "subtype": "other",
+            "display": {
+                "icon": "<i class=\"icon meteo-orage\"></i>",
+                "generic_type": "DONT"
+            }
+        },
+        {
+            "name": "Aurora",
+            "type": "action",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 112,
+                "endpoint": "#endpoint#",
+                "property": 157,
+                "value": "set-8"
+            },
+            "subtype": "other",
+            "display": {
+                "icon": "<i class=\"icon meteo-soleil\"></i>",
+                "generic_type": "DONT"
+            }
+        },
+        {
+            "name": "Arc-En-Ciel",
+            "type": "action",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 112,
+                "endpoint": "#endpoint#",
+                "property": 157,
+                "value": "set-9"
+            },
+            "subtype": "other",
+            "display": {
+                "icon": "<i class=\"icon divers-triangular42\"></i>",
+                "generic_type": "DONT"
+            }
+        },
+        {
+            "name": "Police",
+            "type": "action",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 112,
+                "endpoint": "#endpoint#",
+                "property": 157,
+                "value": "set-10"
+            },
+            "subtype": "other",
+            "display": {
+                "icon": "<i class=\"icon jeedom-alerte\"></i>",
+                "generic_type": "DONT"
+            }
+        },
+        {
+            "name": "Stop effet",
+            "type": "action",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 112,
+                "endpoint":" #endpoint#",
+                "property": 157,
+                "value": "set-5"
+            },
+            "subtype": "other",
+            "display": {
+                "icon": "<i class=\"fas fa-stop\"></i>",
+                "generic_type": "DONT"
+            }
+        }
 	]
 }
