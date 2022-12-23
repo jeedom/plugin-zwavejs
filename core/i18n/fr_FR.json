@@ -108,6 +108,7 @@
         "Z-Wave+": "Z-Wave+",
         "Routing": "Routing",
         "Polling": "Polling",
+        "Refresh": "Refresh",
         "Initié": "Initié",
         "Statut": "Statut",
         "Interview": "Interview",
@@ -307,12 +308,12 @@
         "Supprimer": "Supprimer",
         "Equipement": "Equipement",
         "Commandes": "Commandes",
+        "Options": "Options",
         "Général": "Général",
         "Nom de l'équipement": "Nom de l'équipement",
         "Objet parent": "Objet parent",
         "Aucun": "Aucun",
         "Catégorie": "Catégorie",
-        "Options": "Options",
         "Activer": "Activer",
         "Visible": "Visible",
         "Id du nœud Z-Wave": "Id du nœud Z-Wave",
@@ -350,7 +351,20 @@
         "Propriété": "Propriété",
         "Paramètres": "Paramètres",
         "Etat": "Etat",
-        "Actions": "Actions"
+        "Actions": "Actions",
+        "Rafraîchissement": "Rafraîchissement",
+        "Cette section permet de définir des règles de rafraîchissement automatique après action. Il est primordial de ne rien mettre ici sans raison valable sous peine de pénaliser votre réseau Z-Wave. Cette possibilité est disponible pour gérer certains très rares modules qui ont des bugs.": "Cette section permet de définir des règles de rafraîchissement automatique après action. Il est primordial de ne rien mettre ici sans raison valable sous peine de pénaliser votre réseau Z-Wave. Cette possibilité est disponible pour gérer certains très rares modules qui ont des bugs.",
+        "Si c'est nécessaire, cette section sera sûrement prérempli par la configuration Jeedom. La durée totale (nombre x attente) ne peut pas excéder 60s": "Si c'est nécessaire, cette section sera sûrement prérempli par la configuration Jeedom. La durée totale (nombre x attente) ne peut pas excéder 60s",
+        "Ajouter une Règle": "Ajouter une Règle",
+        "Source": "Source",
+        "Commande action déclenchant le cycle de rafraîchissement (au format cc-endpoint-property-value(optionnel))": "Commande action déclenchant le cycle de rafraîchissement (au format cc-endpoint-property-value(optionnel))",
+        "Cible": "Cible",
+        "Commande info devant être rafraîchie (au format cc-endpoint-property)": "Commande info devant être rafraîchie (au format cc-endpoint-property)",
+        "Attente": "Attente",
+        "Temps d'attente entre chaque demande (en s)": "Temps d'attente entre chaque demande (en s)",
+        "Nombre": "Nombre",
+        "Nombre de demande": "Nombre de demande",
+        "Commentaire": "Commentaire"
     },
     "plugins\/zwavejs\/desktop\/js\/zwavejs.js": {
         "Configuration recommandée": "Configuration recommandée",
@@ -419,7 +433,8 @@
         "Min": "Min",
         "Max": "Max",
         "Unité": "Unité",
-        "Tester": "Tester"
+        "Tester": "Tester",
+        "Supprimer la règle": "Supprimer la règle"
     },
     "plugins\/zwavejs\/desktop\/js\/nodeValues.js": {
         "Action réalisée avec succès": "Action réalisée avec succès",
@@ -485,6 +500,9 @@
     },
     "plugins\/zwavejs\/core\/php\/jeeZwaveProxy.php": {
         "401 - Accès non autorisé": "401 - Accès non autorisé"
+    },
+    "plugins\/zwavejs\/core\/php\/refresher.php": {
+        "Refresher l\\'id ne peut etre vide": "Refresher l\\'id ne peut etre vide"
     },
     "plugins\/zwavejs\/core\/php\/jeeZwave.php": {
         "Vous n\\'êtes pas autorisé à effectuer cette action": "Vous n\\'êtes pas autorisé à effectuer cette action",

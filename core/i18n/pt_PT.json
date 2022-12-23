@@ -108,6 +108,7 @@
         "Z-Wave+": "Z-Wave+",
         "Routing": "Roteamento",
         "Polling": "Sondagem",
+        "Refresh": "Atualizar",
         "Initié": "Iniciado",
         "Statut": "Status",
         "Interview": "Entrevista",
@@ -307,12 +308,12 @@
         "Supprimer": "Deletar",
         "Equipement": "Equipamento",
         "Commandes": "Pedidos",
+        "Options": "Opções",
         "Général": "Em geral",
         "Nom de l'équipement": "Nome do equipamento",
         "Objet parent": "Objeto pai",
         "Aucun": "Não",
         "Catégorie": "Categoria",
-        "Options": "Opções",
         "Activer": "Habilitar",
         "Visible": "Visível",
         "Id du nœud Z-Wave": "ID do nó Z-Wave",
@@ -350,7 +351,20 @@
         "Propriété": "Propriedade",
         "Paramètres": "Definições",
         "Etat": "Estado",
-        "Actions": "Ações"
+        "Actions": "Ações",
+        "Rafraîchissement": "Refresco",
+        "Cette section permet de définir des règles de rafraîchissement automatique après action. Il est primordial de ne rien mettre ici sans raison valable sous peine de pénaliser votre réseau Z-Wave. Cette possibilité est disponible pour gérer certains très rares modules qui ont des bugs.": "Esta seção permite definir regras de atualização automática após a ação. É fundamental não colocar nada aqui sem um motivo válido, caso contrário sua rede Z-Wave será penalizada. Esta possibilidade está disponível para gerenciar alguns módulos muito raros que possuem bugs",
+        "Si c'est nécessaire, cette section sera sûrement prérempli par la configuration Jeedom. La durée totale (nombre x attente) ne peut pas excéder 60s": "Se necessário, esta seção certamente será pré-preenchida pela configuração do Jeedom. A duração total (número x espera) não pode exceder 60s",
+        "Ajouter une Règle": "Adicionar uma regra",
+        "Source": "Fonte",
+        "Commande action déclenchant le cycle de rafraîchissement (au format cc-endpoint-property-value(optionnel))": "Comando de ação que aciona o ciclo de atualização (no formato cc-endpoint-property-value (opcional))",
+        "Cible": "Alvo",
+        "Commande info devant être rafraîchie (au format cc-endpoint-property)": "Comando info a ser atualizado (no formato cc-endpoint-property)",
+        "Attente": "Espera",
+        "Temps d'attente entre chaque demande (en s)": "Tempo de espera entre cada solicitação (em s)",
+        "Nombre": "Número",
+        "Nombre de demande": "Número de solicitações",
+        "Commentaire": "Comente"
     },
     "plugins\/zwavejs\/desktop\/js\/zwavejs.js": {
         "Configuration recommandée": "Configuração recomendada",
@@ -419,7 +433,8 @@
         "Min": "Mínimo",
         "Max": "Máx.",
         "Unité": "Unidade",
-        "Tester": "Teste"
+        "Tester": "Teste",
+        "Supprimer la règle": "Excluir regra"
     },
     "plugins\/zwavejs\/desktop\/js\/nodeValues.js": {
         "Action réalisée avec succès": "Ação concluída com sucesso",
@@ -485,6 +500,9 @@
     },
     "plugins\/zwavejs\/core\/php\/jeeZwaveProxy.php": {
         "401 - Accès non autorisé": "401 - Acesso não autorizado"
+    },
+    "plugins\/zwavejs\/core\/php\/refresher.php": {
+        "Refresher l\\'id ne peut etre vide": "O id de atualização não pode estar vazio"
     },
     "plugins\/zwavejs\/core\/php\/jeeZwave.php": {
         "Vous n\\'êtes pas autorisé à effectuer cette action": "Você não está autorizado a realizar esta ação",
