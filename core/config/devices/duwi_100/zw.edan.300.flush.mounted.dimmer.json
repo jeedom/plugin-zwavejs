@@ -10,13 +10,9 @@
         ]
     },
     "configuration" :{
-        "polling":{"0-38-currentValue":"1"},
-        "refreshes":[{"refresh::source":"38-0-targetValue","refresh::target":"38-0-currentValue","refresh::sleep":"2","refresh::number":"2","refresh::comment":"Le module ne reporte pas son changement lors d'une action Z-Wave"},
-                     {"refresh::source":"38-0-Up-true","refresh::target":"38-0-currentValue","refresh::sleep":"2","refresh::number":"2","refresh::comment":"Le module ne reporte pas son changement lors d'une action Z-Wave"},
-                     {"refresh::source":"38-0-Down-true","refresh::target":"38-0-currentValue","refresh::sleep":"2","refresh::number":"2","refresh::comment":"Le module ne reporte pas son changement lors d'une action Z-Wave"}
-        ]
+        "polling":{"0-38-currentValue":"1"}
     },
     "properties": {
-        "Multilevel": {}
+        "Multilevel": {"type":"onlevel"}
     }
 }
