@@ -22,6 +22,7 @@
 - Modification de l'image *Duwii Blind Control* (détourage)
 - Modification de l'image *Duwii Remote* (détourage)
 - Modification de l'image *Duwii Zs3500* (détourage)
+- Modification de l'image *MCO Zipato p210 dimmer* (détourage)
 
 *Si vous êtes concernés par une modification ou un ajout de configuration, faites une synchronisation puis rechargez les commandes de l'équipement en "recréant toutes les commandes" après la mise à jour.*
 
