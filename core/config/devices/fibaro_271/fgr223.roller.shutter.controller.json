@@ -9,9 +9,9 @@
         ]
     },
     "configuration" :{
-        "refreshes":[{"refresh::source":"38-0-targetValue","refresh::target":"38-0-currentValue","refresh::sleep":"5","refresh::number":"9","refresh::comment":"Le module ne reporte pas son changement de position correctement lors d'une action Z-Wave"},
-                     {"refresh::source":"38-0-Up-true","refresh::target":"38-0-currentValue","refresh::sleep":"5","refresh::number":"9","refresh::comment":"Le module ne reporte pas son changement de position correctement lors d'une action Z-Wave"},
-                     {"refresh::source":"38-0-Down-true","refresh::target":"38-0-currentValue","refresh::sleep":"5","refresh::number":"9","refresh::comment":"Le module ne reporte pas son changement de position correctement lors d'une action Z-Wave"}
+        "refreshes":[{"refresh::source":"38-1-targetValue","refresh::target":"38-1-currentValue","refresh::sleep":"5","refresh::number":"9","refresh::comment":"Le module ne reporte pas son changement de position correctement lors d'une action Z-Wave"},
+                     {"refresh::source":"38-1-Up-true","refresh::target":"38-1-currentValue","refresh::sleep":"5","refresh::number":"9","refresh::comment":"Le module ne reporte pas son changement de position correctement lors d'une action Z-Wave"},
+                     {"refresh::source":"38-1-Down-true","refresh::target":"38-1-currentValue","refresh::sleep":"5","refresh::number":"9","refresh::comment":"Le module ne reporte pas son changement de position correctement lors d'une action Z-Wave"}
         ]
     },
     "modes": {

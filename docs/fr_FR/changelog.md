@@ -8,6 +8,8 @@
 
 **Modifications de Configurations**
 
+- Modification de la configuration *Qubino ZMNHDA2 Dimmer* pour utiliser les propriétés
+- Modification de la configuration *Fibaro FGR-223* modification des endpoints des *refresh*
 - Modification de la configuration *Fibaro Fgrgbwm442* pour utiliser les propriétés
 - Modification de la configuration *Fibaro FGD212* ajout des propriétés Notification
 - Modification de la configuration *Qubino ZMNHBA2 Flush 2 Relays* pour utiliser les propriétés
