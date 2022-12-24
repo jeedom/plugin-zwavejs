@@ -18,7 +18,7 @@ En évolutions notables depuis la sortie stable il y un mois :
 - Rajout d'une gestion de paramètres en attente
 - Gestion fine de la version des dépendances
 
-Si vous lisez ce changelog vous pourrez constater un travail conséquent sur l'amélioration des confs (bien sûr il ya tellement de modules qu'il en reste).
+Si vous lisez ce changelog vous pourrez constater un travail conséquent sur l'amélioration des confs (bien sûr il y a tellement de modules qu'il en reste).
 
 Petites explications
 
@@ -41,12 +41,12 @@ Toute demande de support avec des pollings ou des refreshs de partout sans sens 
 Et un dernier mot pour ce que je vais qualifier par "les apprentis sorciers". Se qualifier d'expert en pensant avoir trouvé une commande dans l'onglet valeurs (qui je le rappelle a été developpé par moi meme)... C'est dangereux pour vous et pour tout ceux à qui vous le dites et vous suivent sur les réseaux.
 Idem ceux qui disent j'ai tout changé sur mes vieux modules ou la conf était pas bonne mais n'ont rien remontés. Ben la conf restera tel quel.... c'est dommage
 
-Tout ceux qui ont fait un ticket je pense pourront le confirmer, l'analyse est poussée et bénéficie à tout le monde.
+Tout ceux qui ont fait un ticket je pense pourront le confirmer, l'analyse est poussée et bénéficie à tout le monde. Bien sûr nous essayons aussi de notre côté de trouver tous les modules possibles. Mais chacun d'entre vous à un module qu'on aura pas, un module avec un firmware que d'autres n'auront pas.
 
 Aujourdhui 75% du chemin des confs est faite selon mon estimation, mais ne nous arrétons pas là continuons , rajoutons des confs, améliorons des confs, laissons les experts analyser, nous avons je pense un plugin à des milliers de kms de l'ancien, les confs vont le rattraper très rapidement et le dépasserons allégrement. 
-Vous voulez que le changelog continue à ressembler à celui du mois dernier, alors allons y.
+Vous voulez que le changelog continue à ressembler à celui du mois dernier (en un seul mois à peine), alors allons y.
 
-BONNES FETES A TOUS
+BONNES FETES A TOUS je vous laisse avec le changelog de ce 24 Décembre et je vous souhaite de très bonnes fêtes
 
 **Modifications de Configurations**
 
