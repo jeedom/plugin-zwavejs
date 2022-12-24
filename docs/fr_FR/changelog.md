@@ -8,6 +8,8 @@
 
 **Modifications de Configurations**
 
+- Modification de la configuration *Aeotec ZWA008 Door Sensor* pour utiliser les propriétés
+- Modification de la configuration *Qubino ZMNHLAX PWM Thermostat* pour utiliser les propriétés
 - Modification de la configuration *Qubino ZMNHDA2 Dimmer* pour utiliser les propriétés
 - Modification de la configuration *Fibaro FGR-223* modification des endpoints des *refresh*
 - Modification de la configuration *Fibaro Fgrgbwm442* pour utiliser les propriétés
@@ -21,6 +23,7 @@
 - Modification de la configuration *Popp Smoke Sensor* pour utiliser les propriétés
 - Modification de la configuration *Duwii Edan 300* pour utiliser les propriétés
 - Modification de l'image *Duwii Dimmer* (détourage)
+- Modification de l'image *Aeotec ZWA008 Door Sensor* (détourage)
 - Modification de l'image *Duwii Switch* (détourage)
 - Modification de l'image *Duwii Edan 300* (détourage)
 - Modification de l'image *Duwii Blind Control* (détourage)
