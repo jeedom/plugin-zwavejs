@@ -9,6 +9,7 @@
 **Modifications de Configurations**
 
 - Modification de la configuration *Aeotec ZWA24 7in1* pour utiliser les propriétés
+- Modification de la configuration *Everspring SM810* pour utiliser les propriétés
 - Modification de la configuration *Fibaro FGS213* passage à l'endpoint 1 (firmware >=3.3) et ajout de notification heat sensor et over-current
 - Modification de l'image *Aeotec ZWA24 7in1* (détourage)
 
