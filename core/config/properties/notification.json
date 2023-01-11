@@ -297,6 +297,29 @@
 			}
 		}
 	],
+"heat-sensor": 
+	[
+		{
+			"name": "Heat Sensor",
+			"type": "info",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 113,
+				"endpoint": "#endpoint#",
+				"property": "Heat Alarm-Heat sensor status",
+				"calculValueOffset": "#value#==2"
+			},
+			"subtype": "binary",
+			"display": {
+				"invertBinary": "1"
+			},
+			"template": {
+				"dashboard": "timeAlert",
+				"mobile": "timeAlert"
+			}
+		}
+	],
 "dust-in-device": 
 	[
 		{

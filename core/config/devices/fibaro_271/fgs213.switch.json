@@ -4,6 +4,7 @@
     "comlink": "3727-fibaro-micromodule-commutateur-z-wave-fgs-213-5902020528722",
     "remark": "Les notification de scènes ne sont pas remontées, elles requièrent le support de la CC Central Scene",
     "imglink": "fibaro.fgs213",
+    "firmProperties": 1,
     "versions": {
         "1027": [
             "4096",
@@ -11,16 +12,35 @@
         ]
     },
     "properties": {
-        "Switch": {},
-        "Power": {},
-        "Energy": {},
-        "CentralScene": {
-            "multi": [
-                1,2
-            ],
-            "replace": {
-                "#centralscene#": "multiKey"
-            }
-        }
+		"default": {
+			"Switch": {"replace": {"#endpoint#": 1}},
+			"Power": {"replace": {"#endpoint#": 1}},
+			"Energy": {"replace": {"#endpoint#": 1}},
+			"CentralScene": {
+				"multi": [
+					1,2
+				],
+				"replace": {
+					"#centralscene#": "multiKey"
+				}
+			},
+			"Notification|over-current": {"type":"over-current"},
+			"Notification|heat-sensor": {"type":"heat-sensor"}
+		},
+		"<3.3": {
+			"Switch": {},
+			"Power": {},
+			"Energy": {},
+			"CentralScene": {
+				"multi": [
+					1,2
+				],
+				"replace": {
+					"#centralscene#": "multiKey"
+				}
+			},
+			"Notification|over-current": {"type":"over-current"},
+			"Notification|heat-sensor": {"type":"heat-sensor"}
+		}
     }
 }

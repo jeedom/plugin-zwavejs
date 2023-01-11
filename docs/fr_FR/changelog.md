@@ -9,8 +9,12 @@
 **Modifications de Configurations**
 
 - Modification de la configuration *Aeotec ZWA24 7in1* pour utiliser les propriétés
+- Modification de la configuration *Fibaro FGS213* passage à l'endpoint 1 (firmware >=3.3) et ajout de notification heat sensor et over-current
 - Modification de l'image *Aeotec ZWA24 7in1* (détourage)
 
+**Ajouts de Configurations**
+
+- Ajout d'une sous-propriété *Heat-Sensor* dans la propriété *Notification*
 
 # 24/12/2022
 
