@@ -1,0 +1,14 @@
+{
+    "name": "GR-201N",
+    "type": "Micromodule",
+    "comlink": "",
+    "remark": "",
+    "versions": {
+        "3": [
+            "2"
+        ]
+    },
+    "properties": {
+        "Switch": {}
+    }
+}
