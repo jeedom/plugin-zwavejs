@@ -28,6 +28,8 @@
 
 - Ajout d'une sous-propriété *Heat-Sensor* dans la propriété *Notification*
 - Ajout de la configuration *U-Fairy GR-201N* (propriétés : Switch)
+- Ajout de la configuration *Danfoss Boiler Relay* (propriétés : Switch)
+- Ajout de la configuration *Benext Alarm Sound* (propriétés : Switch)
 
 
 # 24/12/2022

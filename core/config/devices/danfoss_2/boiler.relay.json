@@ -1,0 +1,16 @@
+{
+    "name": "Boiler Relay",
+    "type": "Relais",
+    "comlink": "",
+    "remark": "",
+    "versions": {
+         "32773": [
+            "8193"
+        ]
+    },
+    "properties": {
+        "Switch": {
+            "type": "prise"
+        }
+    }
+}

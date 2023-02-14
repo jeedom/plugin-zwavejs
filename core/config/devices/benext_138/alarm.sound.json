@@ -1,0 +1,13 @@
+{
+    "name": "Alarm Sound",
+    "type": "Sirène",
+    "remark": "",
+    "versions": {
+        "5": [
+            "257"
+        ]
+    },
+    "properties": {
+        "Switch": {"type":"alert"}
+    }
+}
