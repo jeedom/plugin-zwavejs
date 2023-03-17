@@ -107,7 +107,9 @@ function read_nodes() {
 						if (key == 'sdkVersion'){
 							$('.sdkInfo').show()
 						}
-						$('.getNodeInfo-' + key).empty().append(data.toString())
+						if(data){
+							$('.getNodeInfo-' + key).empty().append(data.toString())
+						}
 					}
 				}
 			}
