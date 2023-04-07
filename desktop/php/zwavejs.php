@@ -307,7 +307,7 @@ sendVarTojs('eqLogic_human_name', $tags);
 						<div class="alert alert-warning col-xs-10 col-xs-offset-1">
 							{{Cette section permet de définir des règles de rafraîchissement automatique après action. Il est primordial de ne rien mettre ici sans raison valable sous peine de pénaliser votre réseau Z-Wave. Cette possibilité est disponible pour gérer certains très rares modules qui ont des bugs.}}
 							<br>
-							{{Si c'est nécessaire, cette section sera sûrement prérempli par la configuration Jeedom. La durée totale (nombre x attente) ne peut pas excéder 60s}}
+							{{Si c'est nécessaire, cette section sera sûrement prérempli par la configuration Jeedom. La durée totale (nombre x attente) ne peut pas excéder 100s}}
 							<br><br>
 							<a class="btn btn-default col-xs-6 col-xs-offset-3" id="bt_addRefresh"><i class="fas fa-plus"></i> {{Ajouter une Règle}}</a>
 						</div>

@@ -46,7 +46,7 @@ if (count($command)== 3) {
 $number = init('number');
 $sleep = init('sleep');
 log::add('zwavejs', 'debug', 'Refresh '. $eqLogic->getHumanName() . ' ' . $target . ' ' .$number . ' times. Each ' . $sleep . 's');
-set_time_limit(60);
+set_time_limit(100);
 $starttime = strtotime('now');
 $realNumber = 0;
 while (true) {
@@ -68,7 +68,7 @@ while (true) {
 	if ($SIG) {
 		break;
 	}
-	if ((strtotime('now') - $starttime) > 60) {
+	if ((strtotime('now') - $starttime) > 100) {
 		break;
 	}
 }
