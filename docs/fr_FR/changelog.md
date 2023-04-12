@@ -9,7 +9,7 @@
 **Améliorations**
 
 - Les *refresh* peuvent maintenant aller jusqu'à 100 secondes au lieu de 60
-- Passage à la version *8.13.0* de ZwaveJsUI3.
+- Passage à la version *8.13.1* de ZwaveJsUI.
 - Modification de la fonction *pollValue* pour les propriétés à *value* (merci @superbricolo)
 
 **Modifications de Configurations**
