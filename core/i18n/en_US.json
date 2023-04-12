@@ -354,7 +354,7 @@
         "Actions": "Shares",
         "Rafraîchissement": "Refreshment",
         "Cette section permet de définir des règles de rafraîchissement automatique après action. Il est primordial de ne rien mettre ici sans raison valable sous peine de pénaliser votre réseau Z-Wave. Cette possibilité est disponible pour gérer certains très rares modules qui ont des bugs.": "This section allows you to define automatic refresh rules after action. It is essential not to put anything here without a valid reason, otherwise your Z-Wave network will be penalized. This possibility is available to manage some very rare modules that have bugs",
-        "Si c'est nécessaire, cette section sera sûrement prérempli par la configuration Jeedom. La durée totale (nombre x attente) ne peut pas excéder 60s": "If necessary, this section will surely be pre-filled by the Jeedom configuration. The total duration (number x wait) cannot exceed 60s",
+        "Si c'est nécessaire, cette section sera sûrement prérempli par la configuration Jeedom. La durée totale (nombre x attente) ne peut pas excéder 100s": "If necessary, this section will surely be pre-filled by the Jeedom configuration. The total duration (number x wait) cannot exceed 100s",
         "Ajouter une Règle": "Add a Rule",
         "Source": "Source",
         "Commande action déclenchant le cycle de rafraîchissement (au format cc-endpoint-property-value(optionnel))": "Action command triggering the refresh cycle (in cc-endpoint-property-value format (optional))",

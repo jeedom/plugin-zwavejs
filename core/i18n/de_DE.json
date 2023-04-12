@@ -354,7 +354,7 @@
         "Actions": "Anteile",
         "Rafraîchissement": "Erfrischung",
         "Cette section permet de définir des règles de rafraîchissement automatique après action. Il est primordial de ne rien mettre ici sans raison valable sous peine de pénaliser votre réseau Z-Wave. Cette possibilité est disponible pour gérer certains très rares modules qui ont des bugs.": "In diesem Abschnitt können Sie automatische Aktualisierungsregeln nach der Aktion definieren. Es ist wichtig, dass Sie hier nichts ohne triftigen Grund eingeben, da sonst Ihr Z-Wave-Netzwerk bestraft wird. Diese Möglichkeit steht zur Verfügung, um einige sehr seltene Module mit Fehlern zu verwalten",
-        "Si c'est nécessaire, cette section sera sûrement prérempli par la configuration Jeedom. La durée totale (nombre x attente) ne peut pas excéder 60s": "Bei Bedarf wird dieser Abschnitt sicherlich von der Jeedom-Konfiguration vorausgefüllt. Die Gesamtdauer (Anzahl x Wartezeit) darf 60 Sekunden nicht überschreiten",
+        "Si c'est nécessaire, cette section sera sûrement prérempli par la configuration Jeedom. La durée totale (nombre x attente) ne peut pas excéder 100s": "Bei Bedarf wird dieser Abschnitt sicherlich von der Jeedom-Konfiguration vorausgefüllt. Die Gesamtdauer (Anzahl x Wartezeit) darf 100 Sekunden nicht überschreiten",
         "Ajouter une Règle": "Regel hinzufügen",
         "Source": "Quelle",
         "Commande action déclenchant le cycle de rafraîchissement (au format cc-endpoint-property-value(optionnel))": "Aktionsbefehl, der den Aktualisierungszyklus auslöst (im Format cc-endpoint-property-value (optional))",

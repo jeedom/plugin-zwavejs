@@ -354,7 +354,7 @@
         "Actions": "Actions",
         "Rafraîchissement": "Rafraîchissement",
         "Cette section permet de définir des règles de rafraîchissement automatique après action. Il est primordial de ne rien mettre ici sans raison valable sous peine de pénaliser votre réseau Z-Wave. Cette possibilité est disponible pour gérer certains très rares modules qui ont des bugs.": "Cette section permet de définir des règles de rafraîchissement automatique après action. Il est primordial de ne rien mettre ici sans raison valable sous peine de pénaliser votre réseau Z-Wave. Cette possibilité est disponible pour gérer certains très rares modules qui ont des bugs.",
-        "Si c'est nécessaire, cette section sera sûrement prérempli par la configuration Jeedom. La durée totale (nombre x attente) ne peut pas excéder 60s": "Si c'est nécessaire, cette section sera sûrement prérempli par la configuration Jeedom. La durée totale (nombre x attente) ne peut pas excéder 60s",
+        "Si c'est nécessaire, cette section sera sûrement prérempli par la configuration Jeedom. La durée totale (nombre x attente) ne peut pas excéder 100s": "Si c'est nécessaire, cette section sera sûrement prérempli par la configuration Jeedom. La durée totale (nombre x attente) ne peut pas excéder 100s",
         "Ajouter une Règle": "Ajouter une Règle",
         "Source": "Source",
         "Commande action déclenchant le cycle de rafraîchissement (au format cc-endpoint-property-value(optionnel))": "Commande action déclenchant le cycle de rafraîchissement (au format cc-endpoint-property-value(optionnel))",
