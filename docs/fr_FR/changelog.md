@@ -9,32 +9,23 @@
 **Améliorations**
 
 - Les *refresh* peuvent maintenant aller jusqu'à 100 secondes au lieu de 60
-- Passage à la version *8.13.0* de ZwaveJsUI
+- Passage à la version *8.13.0* de ZwaveJsUI3.
+- Modification de la fonction *pollValue* pour les propriétés à *value* (merci @superbricolo)
 
 **Modifications de Configurations**
 
+- Modification de la configuration *Aeotec ZWA19 Water Sensor* pour utiliser les propriétés
 - Modification de la configuration *Aeotec ZWA24 7in1* pour utiliser les propriétés
 - Modification de la configuration *Everspring SM810* pour utiliser les propriétés
-- Modification de la configuration *Aeotec ZW122* pour utiliser les propriétés
-- Regroupement de configurations *Danfoss Living Connect*
-- Modification de la configuration *Fibaro FGR-223* changement des endpoints power et energy
-- Modification de la configuration *Fibaro FGR-223* rajout de notification hardware et over-current
-- Modification de la configuration *Fibaro FGS213* passage à l'endpoint 1 (firmware >=3.3) et ajout de notification heat sensor et over-current
-- Modification de l'image *Aeotec ZWA24 7in1* (détourage)
 - Modification d'une propriété *Velocity*
 - Modification de l'image *Dlink 510* (détourage)
 - Modification de l'image *Fibaro Fgs-213* (détourage)
-- Modification de l'image *Fibaro Fgs-221* (détourage)
-- Modification de l'image *Fibaro Fgs-223* (détourage)
-- Modification de l'image *Fibaro Wall Plug* (détourage)
-- Modification de l'image *Fibaro Wall Plug GEN5* (détourage)
-
 **Ajouts de Configurations**
 
+- Ajout de la configuration *Sigma PZ701U* (propriétés : Switch)
+- Ajout de la configuration *Neo RC03Z* (propriétés : Central Scene, Battery)
 - Ajout d'une sous-propriété *Heat-Sensor* dans la propriété *Notification*
 - Ajout de la configuration *U-Fairy GR-201N* (propriétés : Switch)
-- Ajout de la configuration *Danfoss Boiler Relay* (propriétés : Switch)
-- Ajout de la configuration *Benext Alarm Sound* (propriétés : Switch)
 
 # 14/02/2023
 

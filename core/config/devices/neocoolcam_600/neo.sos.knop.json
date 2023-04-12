@@ -1,0 +1,26 @@
+{
+    "name": "Neo SOS Remote Control",
+    "type": "Interrupteur",
+    "comlink": "",
+    "remark": "",
+    "imglink": "",
+    "versions": {
+        "3": [
+            "4234"
+        ]
+    },
+    "properties": {
+        "CentralScene": {
+            "multi": [
+                1,
+                2,
+                3,
+                4
+            ],
+            "replace": {
+                "#centralscene#": "multiKey"
+            }
+        },
+        "Battery": {}
+    }
+}

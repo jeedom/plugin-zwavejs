@@ -2126,9 +2126,15 @@ class zwavejs extends eqLogic {
 
 	public function pollValue($_class) {
 		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . $_class);
-		$command = explode('-', $_class, 3);
-		$args = array('args' => array(array('nodeId' => intval($this->getLogicalId()), 'commandClass' => intval($command[1]), 'endpoint' => intval($command[0]), 'property' => $command[2])));
-		// log::add(__CLASS__, 'debug', $this->getHumanName() . '[' . __FUNCTION__ . '] ' . json_encode($args));
+		if (stripos($_class,'-value-') === false) {
+			$command = explode('-', $_class, 3);
+			$args = array('args' => array(array('nodeId' => intval($this->getLogicalId()), 'commandClass' => intval($command[1]), 'endpoint' => intval($command[0]), 'property' => $command[2])));
+		}
+		else {
+			$command = explode('-', $_class, 4);
+			$args = array('args' => array(array('nodeId' => intval($this->getLogicalId()), 'commandClass' => intval($command[1]), 'endpoint' => intval($command[0]), 'property' => $command[2], 'propertyKey' => intval($command[3]))));			
+		}
+		log::add(__CLASS__, 'debug', $this->getHumanName() . '[' . __FUNCTION__ . '] ' . json_encode($args));
 		self::publishMqttApi('pollValue', $args);
 	}
 	

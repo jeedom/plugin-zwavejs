@@ -1,0 +1,17 @@
+{
+    "name": "Power Plug",
+    "type": "Prise",
+    "comlink": "",
+    "remark": "",
+    "imglink": "",
+    "versions": {
+        "3": [
+            "2"
+        ]
+    },
+    "properties": {
+        "Switch": {
+            "type": "prise"
+        }
+    }
+}
