@@ -9,6 +9,7 @@
 **Améliorations**
 
 - Les *refresh* peuvent maintenant aller jusqu'à 100 secondes au lieu de 60
+- Passage à la version *8.13.0* de ZwaveJsUI
 
 **Modifications de Configurations**
 
