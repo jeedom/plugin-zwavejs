@@ -1,0 +1,25 @@
+{
+    "name": "ZM Dimmer",
+    "manufacturer": "Heatit",
+    "type": "Variateur",
+    "remark": "",
+    "versions": {
+        "33": [
+            "8449"
+        ]
+    },
+    "properties": {
+        "Multilevel": {},
+        "Power": {},
+        "Energy": {},
+        "Notification|over-load": {"type":"over-load"},
+        "CentralScene": {
+            "multi": [
+                1,2
+            ],
+            "replace": {
+                "#centralscene#": "multiKey"
+            }
+        }
+    }
+}
