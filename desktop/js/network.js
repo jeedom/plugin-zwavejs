@@ -122,7 +122,7 @@ function network_load_data() {
       } else {
         for (neighbour in nodes[z].neighbors) {
           neighbourid = nodes[z].neighbors[neighbour]
-          if (typeof nodes[neighbourid] != 'undefined' && nodes[neighbourid].status == 'Alive') {
+          if (typeof nodes[neighbourid] != 'undefined' && nodes[neighbourid].status == 'Alive' && !nodes[neighbourid].isFrequentListening) {
             graph.addLink(z, neighbourid, { isdash: 0, lengthfactor: 0 })
           }
         }
