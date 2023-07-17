@@ -8,7 +8,9 @@
 
 **Ajouts de Configurations**
 
+- Ajout d'une propriété *ThermostatFanState*
 - Ajout de la configuration *MCOhome Mh8FC* (propriétés : ThermostatMode, ThermostatModeAction, ThermostatSetpoint, ThermostatFanMode, ThermostatFanModeAction, ThermostatOperatingState, ThermostatFanState, Temperature)
+- Ajout de la configuration *Heltun HE-FT01* (propriétés : ThermostatMode, ThermostatModeAction, ThermostatSetpoint, ThermostatFanMode, ThermostatFanModeAction, ThermostatOperatingState, ThermostatFanState, Temperature, Illuminance, Humidity, Power, Energy)
 
 # 26/06/2023
 
