@@ -1,0 +1,16 @@
+{"standard": 
+	[
+		{
+			"name": "Etat-fan",
+			"type": "info",
+			"isVisible": 0,
+			"isHistorized": "0",
+			"configuration": {
+				"class": 69,
+				"endpoint": "#endpoint#",
+				"property": "state"
+			},
+			"subtype": "numeric"
+		}
+	]
+}
