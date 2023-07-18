@@ -7,103 +7,21 @@
     "configuration": {
         "battery_type": "2x1.5V AAA"
     },
-    "recommended": {
-        "params": [
-            {
-                "index": 1,
-                "value": "Enable"
-            },
-            {
-                "index": 2,
-                "value": "Celsius"
-            },
-            {
-                "index": 3,
-                "value": 5
-            }
-        ],
-        "wakeup": 900,
-        "needswakeup": true
-    },
     "versions": {
         "1": [
             "3"
         ]
     },
-    "commands": [
-        {
-            "name": "Température",
-            "type": "info",
-            "isVisible": 1,
-            "isHistorized": 1,
-            "configuration": {
-                "class": 49,
-                "endpoint": 0,
-                "property": "Air temperature"
-            },
-            "subtype": "numeric",
-            "display": {
-                "generic_type": "THERMOSTAT_TEMPERATURE"
-            },
-            "unite": "°C"
+    "properties": {
+        "Thermostatsetpoint": {
+            "multi": [
+                "Chaud"
+            ],
+            "multiProperty": {
+                "Chaud": 1
+            }
         },
-        {
-            "name": "ConsigneEtat",
-            "type": "info",
-            "isVisible": 0,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 67,
-                "value": "",
-                "index": 1,
-                "instance": 1,
-                "minValue": 5,
-                "maxValue": 30
-            },
-            "subtype": "numeric",
-            "display": {
-                "generic_type": "THERMOSTAT_SETPOINT"
-            },
-            "unite": "°C"
-        },
-        {
-            "name": "Consigne",
-            "type": "action",
-            "isVisible": 1,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 67,
-                "value": "type=setvalue&value=#slider#",
-                "index": 1,
-                "instance": 1,
-                "minValue": 5,
-                "maxValue": 30
-            },
-            "value": "ConsigneEtat",
-            "subtype": "slider",
-            "display": {
-                "generic_type": "THERMOSTAT_SET_SETPOINT"
-            },
-            "unite": "°C"
-        },
-        {
-            "name": "Consigne pending",
-            "type": "info",
-            "isVisible": 0,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 67,
-                "value": "",
-                "index": 1,
-                "instance": 11,
-                "minValue": 4,
-                "maxValue": 30
-            },
-            "subtype": "numeric",
-            "display": {
-                "generic_type": "DONT"
-            },
-            "unite": "°C"
-        }
-    ]
+        "Temperature": {},
+        "Battery": {}
+    }
 }
