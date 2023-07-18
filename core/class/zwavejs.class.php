@@ -37,6 +37,13 @@ class zwavejs extends eqLogic {
 				"5" => __('Appui 4x', __FILE__),
 				"6" => __('Appui 5x', __FILE__),
 				"90" => 'N/A'
+			),
+			"102-currentState" => array(
+				"0" => __('Fermé', __FILE__),
+				"252" => __('Fermeture en cours', __FILE__),
+				"253" => __('Arrêté', __FILE__),
+				"254" => __('Ouverture en cours', __FILE__),
+				"255" => __('Ouvert', __FILE__)
 			)
 		);
 		$result = false;

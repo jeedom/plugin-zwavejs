@@ -49,6 +49,18 @@
 			"display": {
 				"generic_type": "GARAGE_STATE"
 			}
+		},
+		{
+			"name": "Barrier Position Label",
+			"type": "info",
+			"isVisible": 0,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 102,
+				"endpoint": "#endpoint#",
+				"property": "currentState-label"
+			},
+			"subtype": "string"
 		}
 	]
 }
