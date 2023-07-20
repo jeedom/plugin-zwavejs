@@ -161,8 +161,8 @@ $('#bt_zwaveNetwork').off('click').on('click', function() {
 })
 
 $('#bt_zwaveStats').off('click').on('click', function() {
-  $('#md_modal3').dialog({ title: "{{Statistiques Z-Wave}}" })
-  $('#md_modal3').load('index.php?v=d&plugin=zwavejs&modal=stats').dialog('open')
+  $('#md_modal2').dialog({ title: "{{Statistiques Z-Wave}}" })
+  $('#md_modal2').load('index.php?v=d&plugin=zwavejs&modal=stats').dialog('open')
 })
 
 $('#bt_zwaveHealth').on('click', function() {
