@@ -9,9 +9,11 @@
 **Ajouts de Configurations**
 
 - Ajout d'une propriété *ThermostatFanState*
+- Ajout d'une sous commande *Label State* à la propriété Barrier Operator (pour avoir une commande label avec texte en plus de la commande numérique)
 - Ajout de la configuration *MCOhome Mh8FC* (propriétés : ThermostatMode, ThermostatModeAction, ThermostatSetpoint, ThermostatFanMode, ThermostatFanModeAction, ThermostatOperatingState, ThermostatFanState, Temperature)
 - Ajout de la configuration *Heltun HE-FT01* (propriétés : ThermostatMode, ThermostatModeAction, ThermostatSetpoint, ThermostatFanMode, ThermostatFanModeAction, ThermostatOperatingState, ThermostatFanState, Temperature, Illuminance, Humidity, Power, Energy)
 - Ajout de la configuration *MCOhome MH3901* (propriétés : ThermostatMode, ThermostatModeAction, ThermostatSetpoint, ThermostatOperatingState, Temperature)
+- Ajout d'une sous commande *Label State* à la propriété Thermostat Operating State (pour avoir une commande label avec texte en plus de la commande numérique)
 
 **Modifications de Configurations**
 
