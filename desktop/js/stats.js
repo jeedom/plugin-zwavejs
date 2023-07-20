@@ -69,9 +69,17 @@ function network_read_stats() {
 							$('.rtt' + key).empty().append(stats.rtt + 'ms')
 						}
 						if (typeof (stats.lwr) != "undefined"){
-								valueStat = key
+								if (key in eqLogic_human_name){
+									valueStat = eqLogic_human_name[key]
+								} else {
+									valueStat = key
+								}
 								for (route in stats.lwr.repeaters){
-									valueStat += ' → ' + stats.lwr.repeaters[route] 
+									if (stats.lwr.repeaters[route] in eqLogic_human_name){
+										valueStat += ' → ' + eqLogic_human_name[stats.lwr.repeaters[route]]
+									} else {
+										valueStat += ' → ' + stats.lwr.repeaters[route]
+									}
 								}
 								valueStat += ' → Contrôleur'
 								if (stats.lwr.protocolDataRate == "1"){
@@ -100,7 +108,7 @@ function network_read_stats() {
 	})
 }
 
-$('#md_modal3').bind('dialogclose', function(event, ui) {
+$('#md_modal2').bind('dialogclose', function(event, ui) {
 	clearTimeout(getstats)
 	clearTimeout(getNodes)
 })

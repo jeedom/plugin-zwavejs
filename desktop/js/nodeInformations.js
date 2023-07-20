@@ -78,9 +78,17 @@ function read_nodes() {
 					if (key == 'statistics') {
 						for (stat in data) {
 							if (stat == 'lwr'){
-								valueStat = nodeId
+								if (nodeId in eqLogic_human_name){
+									valueStat = eqLogic_human_name[nodeId]
+								} else {
+									valueStat = nodeId
+								}
 								for (route in data[stat]["repeaters"]){
-									valueStat += ' → ' + data[stat]["repeaters"][route] 
+									if (data[stat]["repeaters"][route] in eqLogic_human_name){
+										valueStat += ' → ' + eqLogic_human_name[data[stat]["repeaters"][route]]
+									} else {
+										valueStat += ' → ' + data[stat]["repeaters"][route]
+									}
 								}
 								valueStat += ' → Contrôleur'
 								if (data[stat]['protocolDataRate'] == "1"){
