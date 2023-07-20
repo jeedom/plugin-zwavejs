@@ -77,7 +77,24 @@ function read_nodes() {
 					data = nodeData[key]
 					if (key == 'statistics') {
 						for (stat in data) {
-							valueStat = data[stat]
+							if (stat == 'lwr'){
+								valueStat = nodeId
+								for (route in data[stat]["repeaters"]){
+									valueStat += ' → ' + data[stat]["repeaters"][route] 
+								}
+								valueStat += ' → Contrôleur'
+								if (data[stat]['protocolDataRate'] == "1"){
+									$('.getNodeStats-' + stat+'-speed').empty().append('9.6 kbit/s')
+								} else if (data[stat]['protocolDataRate'] == "2"){
+									$('.getNodeStats-' + stat+'-speed').empty().append('40 kbit/s')
+								} else if (data[stat]['protocolDataRate'] == "3"){
+									$('.getNodeStats-' + stat+'-speed').empty().append('100 kbit/s')
+								} else if (data[stat]['protocolDataRate'] == "4"){
+									$('.getNodeStats-' + stat+'-speed').empty().append('Long Range 100 kbit/s')
+								}
+							} else {
+								valueStat = data[stat]
+							}
 							$('.getNodeStats-' + stat).empty().append(valueStat)
 						}
 					} else if (key == 'dbLink') {
