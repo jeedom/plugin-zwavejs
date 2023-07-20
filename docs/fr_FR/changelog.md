@@ -10,6 +10,10 @@
 
 - Passage à la version *8.21.0* de ZwaveJsUI.
 - Ajout de tous les *tty* dans la liste des ports (cela sera inutile avec le nouveau core qui permettra de choisir un port directement par l'id)
+- Ajout de la dernière route sur la page statistiques d'un noeud (dépend du SDK du contrôleur)
+- Ajout de la dernière vitesse-baud rate sur la page statistiques d'un noeud (dépend du SDK du contrôleur)
+- Ajout de la dernière vitesse-baud rate sur la page statistiques globale (dépend du SDK du contrôleur)
+- Ajout de la dernière route sur la page statistiques globale (dépend du SDK du contrôleur)
 
 
 **Ajouts de Configurations**
