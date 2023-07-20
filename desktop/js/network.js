@@ -411,6 +411,8 @@ function network_route_load_data() {
     } else if (typeof node.data.statistics.lwr != 'undefined' && typeof node.data.statistics.lwr.repeaters != 'undefined' && node.data.statistics.lwr.repeaters.length == 1) {
       nodecolor = '#E5E500'
     } else if (typeof node.data.statistics.lwr != 'undefined' && typeof node.data.statistics.lwr.repeaters != 'undefined' && node.data.statistics.lwr.repeaters.length == 2) {
+      nodecolor = 'orange'
+    } else if (typeof node.data.statistics.lwr != 'undefined' && typeof node.data.statistics.lwr.repeaters != 'undefined' && node.data.statistics.lwr.repeaters.length == 3) {
       nodecolor = 'red'
     } else {
       nodecolor = '#979797'
