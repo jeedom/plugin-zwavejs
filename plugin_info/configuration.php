@@ -39,6 +39,9 @@ if (!isConnect('admin')) {
 						foreach (jeedom::getUsbMapping('', true) as $name => $value) {
 							echo '<option value="' . $name . '">' . $name . ' (' . $value . ')</option>';
 						}
+						foreach (ls('/dev/', 'tty*') as $value) {
+							echo '<option value="/dev/' . $value . '">/dev/' . $value . '</option>';
+						}
 						?>
 						<option value="/dev/serial/by-id/usb-0658_0200-if00">{{Utile pour certains Raspberry (/dev/serial/by-id/usb-0658_0200-if00)}}</option>
 					</select>

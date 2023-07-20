@@ -6,6 +6,12 @@
 
 # XX/07/2023
 
+**Améliorations**
+
+- Passage à la version *8.21.0* de ZwaveJsUI.
+- Ajout de tous les *tty* dans la liste des ports (cela sera inutile avec le nouveau core qui permettra de choisir un port directement par l'id)
+
+
 **Ajouts de Configurations**
 
 - Ajout d'une propriété *ThermostatFanState*
