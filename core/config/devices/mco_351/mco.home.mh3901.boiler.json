@@ -1,0 +1,36 @@
+{
+    "name": "Thermostat MH3901-Z",
+    "type": "Thermostat",
+    "comlink": "",
+    "remark": "",
+    "versions": {
+        "14608": [
+            "20738"
+        ]
+    },
+    "properties": {
+        "Thermostatmode": {},
+        "Thermostatmodeaction": {
+            "multi": [
+                "Off",
+                "Heat",
+                "Energy Heat"
+            ],
+            "multiValue": {
+                "Off": 0,
+                "Heat": 1,
+                "Energy Heat": 11
+            }
+        },
+        "Thermostatsetpoint": {
+            "multi": [
+                "Chaud"
+            ],
+            "multiProperty": {
+                "Chaud": 1
+            }
+        },
+        "Thermostatoperatingstate": {},
+        "Temperature": {}
+    }
+}
