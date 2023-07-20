@@ -36,6 +36,18 @@ if (!isConnect('admin')) {
 		height: 100%;
 		width: 100%
 	}
+	
+	#graph_network_route {
+		height: 80%;
+		width: 97%;
+		position: absolute;
+		background-color: rgba(var(--panel-bg-color), var(--opacity)) !important;
+	}
+
+	#graph_network_route>svg {
+		height: 100%;
+		width: 100%
+	}
 
 	.node-item {
 		border: 1px solid;
@@ -72,6 +84,10 @@ if (!isConnect('admin')) {
 	.node-na-color {
 		color: white;
 	}
+	
+	.node-orange {
+		color: orange;
+	}
 
 	.node-controller {
 		color: #A7C7E7;
@@ -92,6 +108,10 @@ if (!isConnect('admin')) {
 	#graph_network svg g text {
 		fill: var(--txt-color) !important;
 	}
+	
+	#graph_network_route svg g text {
+		fill: var(--txt-color) !important;
+	}
 </style>
 <div id="div_networkzwavejsAlert" style="display: none;"></div>
 <div class="modalnetWork">
@@ -103,8 +123,9 @@ if (!isConnect('admin')) {
 					<li><a href="#actions_network" data-toggle="tab"><i class="fas fa-sliders-h"></i> {{Actions}}</a></li>
 					<li id="tab_backup"><a href="#backup_network" data-toggle="tab"><i class="fas fa-save"></i> {{Gestion NVM}}</a></li>
 					<li><a href="#statistics_network" data-toggle="tab"><i class="far fa-chart-bar"></i> {{Statistiques}}</a></li>
-					<li id="tab_graph"><a href="#graph_network" data-toggle="tab"><i class="far fa-image"></i> {{Graphique du réseau}}</a></li>
-					<li id="tab_route"><a href="#route_network" data-toggle="tab"><i class="fas fa-table"></i> {{Table de routage}}</a></li>
+					<li id="tab_graph"><a href="#graph_network" data-toggle="tab"><i class="far fa-image"></i> {{Graphique Voisins}}</a></li>
+					<li id="tab_graph_route"><a href="#graph_network_route" data-toggle="tab"><i class="fas fa-bezier-curve"></i> {{Route du réseau}}</a></li>
+					<li id="tab_route"><a href="#route_network" data-toggle="tab"><i class="fas fa-table"></i> {{Table de voisinage}}</a></li>
 				</ul>
 				<div id="network-tab-content" class="tab-content">
 					<div class="tab-pane active" id="summary_network">
@@ -177,6 +198,38 @@ if (!isConnect('admin')) {
 							</tbody>
 						</table>
 						<div id="graph-node-name"></div>
+					</div>
+					<div id="graph_network_route" class="tab-pane">
+						<table class="table table-bordered table-condensed" style="width: 250px;position:fixed;margin-top : 25px;">
+							<thead>
+								<tr>
+									<th colspan="2">{{Légende}}</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="node-primary-controller-color" style="width: 35px"><i class="fas fa-circle"></i></td>
+									<td>{{Contrôleur Primaire}}</td>
+								</tr>
+								<tr>
+									<td class="node-direct-link-color" style="width: 35px"><i class="fas fa-circle"></i></td>
+									<td>{{Communication directe}}</td>
+								</tr>
+								<tr>
+									<td class="node-more-of-one-up-color"><i class="fas fa-circle"></i></td>
+									<td>{{1 saut}}</td>
+								</tr>
+								<tr>
+									<td class="node-orange"><i class="fas fa-circle"></i></td>
+									<td>{{2 sauts}}</td>
+								</tr>
+								<tr>
+									<td class="node-no-neighbourhood-color"><i class="fas fa-circle"></i></td>
+									<td>{{3 sauts}}</td>
+								</tr>
+							</tbody>
+						</table>
+						<div id="graph-node-name-route"></div>
 					</div>
 					<div id="route_network" class="tab-pane">
 						<div id="div_routingTable"></div>

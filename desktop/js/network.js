@@ -22,6 +22,10 @@ $("#tab_route").off("click").on("click", function() {
   network_load_dataTable()
 })
 
+$("#tab_graph_route").off("click").on("click", function() {
+  network_route_load_data()
+})
+
 function network_load_dataTable() {
   devicesRouting = networkTree.data
   var skipPortableAndVirtual = true
@@ -286,6 +290,255 @@ function network_load_data() {
     prerender: 10,
     renderLinks: true,
     container: document.getElementById('graph_network')
+  })
+  renderer.run()
+  setTimeout(function() {
+    renderer.pause()
+    renderer.reset()
+  }, 200)
+
+
+}
+
+function network_route_load_data() {
+  $('#graph_network_route svg').remove()
+  var graph = Viva.Graph.graph()
+  var controllerId = parseInt(networkTree.controllerId)
+  nodes = networkTree.data
+  for (z in nodes) {
+    if (nodes[z].eqName != '') {
+      graph.addNode(z, {
+        'eqname': nodes[z].eqName,
+        'name': nodes[z].name,
+        'status': nodes[z].status,
+        'basic': nodes[z].deviceClass.basic,
+        'neighbours': nodes[z].neighbors,
+        'statistics': nodes[z].statistics,
+        'interview': nodes[z].interviewStage,
+        'img': nodes[z].img
+      })
+    } else {
+      graph.addNode(z, {
+        'eqname': '<span class="label label-primary">' + nodes[z].productDescription + '</span> ',
+        'name': nodes[z].productDescription,
+        'neighbours': nodes[z].neighbors,
+        'status': nodes[z].status,
+        'basic': nodes[z].deviceClass.basic,
+        'statistics': nodes[z].statistics,
+        'interview': nodes[z].interviewStage,
+        'img': nodes[z].img,
+      })
+    }
+	if (nodes[z].id == controllerId) {
+        continue
+    }
+    if (typeof nodes[z].statistics.lwr != 'undefined' && typeof nodes[z].statistics.lwr.repeaters != 'undefined' && nodes[z].statistics.lwr.repeaters.length < 1) {
+      if (typeof nodes[controllerId] != 'undefined') {
+        graph.addLink(z, controllerId, { isdash: 0, lengthfactor: 0.6 })
+      }
+    } else {
+        if (typeof nodes[z].statistics.lwr != 'undefined' && typeof nodes[z].statistics.lwr.repeaters != 'undefined' ){
+			total = nodes[z].statistics.lwr.repeaters.length
+			for (neighbour in nodes[z].statistics.lwr.repeaters) {
+				neighbourId = nodes[z].statistics.lwr.repeaters[neighbour]
+				if (typeof nodes[neighbourId] != 'undefined') {
+					graph.addLink(z, neighbourId, { isdash: 0, lengthfactor: 0 })
+				}
+				if (neighbour+1 == total){
+					graph.addLink(neighbourId, controllerId, { isdash: 0, lengthfactor: 0 })
+				}
+			}
+		}
+    }
+  }
+  var graphics = Viva.Graph.View.svgGraphics(),
+    nodeSize = 24,
+    highlightRelatedNodes = function(nodeId, isOn, sourceId = '') {
+      graph.forEachLinkedNode(nodeId, function(node, link) {
+		if (sourceId == '' && typeof nodes[nodeId].statistics.lwr != 'undefined' && typeof nodes[nodeId].statistics.lwr.repeaters != 'undefined' && nodes[nodeId].statistics.lwr.repeaters.includes(link.toId)) {
+		var linkUI = graphics.getLinkUI(link.id)
+          if (linkUI) {
+            linkUI.attr('stroke', isOn ? '#FF0000' : '#B7B7B7')
+            linkUI.attr('marker-start', isOn ? 'url(#Triangle-red)' : 'url(#Triangle)')
+          }
+		} else if (sourceId != '' && typeof nodes[sourceId].statistics.lwr != 'undefined' && typeof nodes[sourceId].statistics.lwr.repeaters != 'undefined' && nodes[sourceId].statistics.lwr.repeaters.includes(link.toId) && nodes[sourceId].statistics.lwr.repeaters.includes(link.fromId)) {
+			var linkUI = graphics.getLinkUI(link.id)
+          if (linkUI) {
+            linkUI.attr('stroke', isOn ? '#FF0000' : '#B7B7B7')
+            linkUI.attr('marker-start', isOn ? 'url(#Triangle-red)' : 'url(#Triangle)')
+          }
+		} 
+		else {
+			if (link.toId == controllerId){
+				if (sourceId == '' && typeof nodes[nodeId].statistics.lwr != 'undefined' && typeof nodes[nodeId].statistics.lwr.repeaters != 'undefined' && nodes[nodeId].statistics.lwr.repeaters.length==0){
+				var linkUI = graphics.getLinkUI(link.id)
+				if (linkUI) {
+					linkUI.attr('stroke', isOn ? '#FF0000' : '#B7B7B7')
+					linkUI.attr('marker-start', isOn ? 'url(#Triangle-red)' : 'url(#Triangle)')
+				}
+				} else if (sourceId != '' && typeof nodes[sourceId].statistics.lwr != 'undefined' && typeof nodes[sourceId].statistics.lwr.repeaters != 'undefined' && nodes[sourceId].statistics.lwr.repeaters.includes(link.fromId)) {
+					var linkUI = graphics.getLinkUI(link.id)
+				if (linkUI) {
+					linkUI.attr('stroke', isOn ? '#FF0000' : '#B7B7B7')
+					linkUI.attr('marker-start', isOn ? 'url(#Triangle-red)' : 'url(#Triangle)')
+				}
+				}
+			}
+		}
+		if (link.toId != controllerId && link.toId != nodeId ){
+			if (sourceId == '' && typeof nodes[nodeId].statistics.lwr != 'undefined' && typeof nodes[nodeId].statistics.lwr.repeaters != 'undefined' && nodes[nodeId].statistics.lwr.repeaters.includes(link.toId)) {
+				highlightRelatedNodes(link.toId, isOn, nodeId)
+			} else if (typeof nodes[sourceId].statistics.lwr != 'undefined' && typeof nodes[sourceId].statistics.lwr.repeaters != 'undefined' && nodes[sourceId].statistics.lwr.repeaters.includes(link.toId) && nodes[sourceId].statistics.lwr.repeaters.includes(link.fromId)) {
+				highlightRelatedNodes(link.toId, isOn, sourceId)
+			}
+		}
+      })
+    }
+  graphics.node(function(node) {
+    if (typeof node.data == 'undefined') {
+      graph.removeNode(node.id)
+    }
+    nodecolor = '#979797'
+    var nodesize = 10
+    const nodeshape = 'rect'
+    if (node.id == controllerId) {
+      nodecolor = '#a65ba6'
+      nodesize = 16
+    } else if (node.data.basic == 1) {
+      nodecolor = '#A7C7E7'
+    } else if (typeof node.data.statistics.lwr != 'undefined' && typeof node.data.statistics.lwr.repeaters != 'undefined' && node.data.statistics.lwr.repeaters.length < 1) {
+      nodecolor = '#7BCC7B'
+    } else if (typeof node.data.statistics.lwr != 'undefined' && typeof node.data.statistics.lwr.repeaters != 'undefined' && node.data.statistics.lwr.repeaters.length == 1) {
+      nodecolor = '#E5E500'
+    } else if (typeof node.data.statistics.lwr != 'undefined' && typeof node.data.statistics.lwr.repeaters != 'undefined' && node.data.statistics.lwr.repeaters.length == 2) {
+      nodecolor = 'red'
+    } else {
+      nodecolor = '#979797'
+    }
+    var ui = Viva.Graph.svg('g'),
+      svgText = Viva.Graph.svg('text').text(node.data.name).attr('display', 'none'),
+      img = Viva.Graph.svg('image')
+        .attr('width', 48)
+        .attr('height', 48)
+        .link(node.data.img)
+    ui.append(svgText)
+    ui.append(img)
+    circle = Viva.Graph.svg('circle')
+      .attr('r', 7)
+      .attr('cx', 2)
+      .attr('cy', 2)
+      .attr('stroke', '#fff')
+      .attr('stroke-width', '1.5px')
+      .attr('fill', nodecolor)
+    ui.append(circle)
+    $(ui).hover(function() {
+      var link = 'index.php?v=d&p=zwavejs&m=zwavejs&logical_id=' + node.id
+	  numneighbours = 0
+	  if (typeof node.data.statistics.lwr != 'undefined' && typeof node.data.statistics.lwr.repeaters != 'undefined'){
+		numneighbours = node.data.statistics.lwr.repeaters.length
+      }
+      interview = node.data.interview
+	  sentenceneighbours = numneighbours + ' {{saut(s)}}'
+	  if (numneighbours >0){
+		sentenceneighbours += ' [' + node.data.statistics.lwr.repeaters + ']'
+	  }
+      if (node.id != controllerId) {
+        linkname = '<a href="' + link + '">' + node.data.eqname + '</a>'
+      } else {
+        linkname = node.data.eqname
+      }
+      $('#graph-node-name-route').html('[' + node.id + '] ' + linkname + ' : ' + sentenceneighbours)
+      highlightRelatedNodes(node.id, true)
+    }, function() {
+      highlightRelatedNodes(node.id, false)
+    })
+    return ui
+  }).placeNode(function(nodeUI, pos) {
+    nodeUI.attr('transform',
+      'translate(' +
+      (pos.x - nodeSize) + ',' + (pos.y - nodeSize) +
+      ')')
+  })
+  var createMarker = function(id, color) {
+    return Viva.Graph.svg('marker')
+      .attr('id', id)
+      .attr('viewBox', "0 0 10 10")
+      .attr('refX', "-30")
+      .attr('refY', "5")
+      .attr('markerUnits', "strokeWidth")
+      .attr('markerWidth', "33")
+      .attr('markerHeight', "21")
+      .attr('fill', color)
+      .attr('orient', "auto")
+  },
+
+    marker = createMarker('Triangle', "#b4b4b4")
+  markerRed = createMarker('Triangle-red', "#ff0000")
+  marker.append('path').attr('d', 'M 0 0 L 10 5 L 0 10 z')
+  markerRed.append('path').attr('d', 'M 0 0 L 10 5 L 0 10 z')
+  var defs = graphics.getSvgRoot().append('defs')
+  defs.append(marker)
+  defs.append(markerRed)
+
+  var geom = Viva.Graph.geom()
+
+  var middle = graph.getNode(controllerId)
+  if (typeof middle !== 'undefined') {
+    middle.isPinned = true
+  }
+  var idealLength = 180
+  var layout = Viva.Graph.Layout.forceDirected(graph, {
+    springLength: idealLength,
+    stableThreshold: 0.9,
+    dragCoeff: 0.01,
+    springCoeff: 0.0004,
+    gravity: -20,
+    springTransform: function(link, spring) {
+      spring.length = idealLength * (1 - link.data.lengthfactor)
+    }
+  })
+  graphics.link(function(link) {
+    dashvalue = '5, 0'
+    if (link.data.isdash == 1) {
+      dashvalue = '5, 2'
+    }
+    return Viva.Graph.svg('path').attr('stroke', '#B7B7B7').attr('stroke-dasharray', dashvalue).attr('stroke-width', '0.4px').attr('marker-start', 'url(#Triangle)')
+  }).placeLink(function(linkUI, fromPos, toPos) {
+    var toNodeSize = nodeSize,
+      fromNodeSize = nodeSize
+
+    var from = geom.intersectRect(
+      // rectangle:
+      fromPos.x - fromNodeSize / 2, // left
+      fromPos.y - fromNodeSize / 2, // top
+      fromPos.x + fromNodeSize / 2, // right
+      fromPos.y + fromNodeSize / 2, // bottom
+      // segment:
+      fromPos.x, fromPos.y, toPos.x, toPos.y)
+      || fromPos // if no intersection found - return center of the node
+
+    var to = geom.intersectRect(
+      // rectangle:
+      toPos.x - toNodeSize / 2, // left
+      toPos.y - toNodeSize / 2, // top
+      toPos.x + toNodeSize / 2, // right
+      toPos.y + toNodeSize / 2, // bottom
+      // segment:
+      toPos.x, toPos.y, fromPos.x, fromPos.y)
+      || toPos // if no intersection found - return center of the node
+
+    var data = 'M' + from.x + ',' + from.y +
+      'L' + to.x + ',' + to.y
+
+    linkUI.attr("d", data)
+  })
+  $('#graph_network_route svg').remove()
+  var renderer = Viva.Graph.View.renderer(graph, {
+    layout: layout,
+    graphics: graphics,
+    prerender: 10,
+    renderLinks: true,
+    container: document.getElementById('graph_network_route')
   })
   renderer.run()
   setTimeout(function() {

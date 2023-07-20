@@ -135,6 +135,10 @@ include_file('3rdparty', 'jsonTree/jsonTree', 'js', 'zwavejs');
 							<td>{{Demande l'actualisation de l'ensemble des valeurs du nœud. Action sur le réseau}}</td>
 						</tr>
 						<tr>
+							<td><a data-action="discoverNodeNeighbors" class="btn btn-warning nodeAction"><i class="fas fa-bezier-curve"></i> {{Découverte des voisins du nœud}}</a></td>
+							<td>{{Demande au nœud de (re)découvrir ses voisins. Action sur le réseau}}</td>
+						</tr>
+						<tr>
 							<td><a class="btn btn-success namingAction"><i class="fas fa-bookmark"></i> {{Envoyer le nom d'équipement}}</a></td>
 							<td>{{Envoie les noms et objet de l'équipement au réseau Z-Wave.}}</td>
 						</tr>
@@ -192,6 +196,18 @@ include_file('3rdparty', 'jsonTree/jsonTree', 'js', 'zwavejs');
 						<tr>
 							<td><b>{{Rtt}} :</b></td>
 							<td><span class="getNodeStats-rtt">0</span> {{ms}}</td>
+						</tr>
+						<tr>
+							<td><b>{{Dernière route}} :</b></td>
+							<td><span class="getNodeStats-lwr">N/A</span></td>
+						</tr>
+						<tr>
+							<td><b>{{Dernière vitesse}} :</b></td>
+							<td><span class="getNodeStats-lwr-speed">N/A</span></td>
+						</tr>
+						<tr>
+							<td><b>{{Dernier rssi}} :</b></td>
+							<td><span class="getNodeStats-lwr-rssi">N/A</span></td>
 						</tr>
 						<tr>
 					</table>

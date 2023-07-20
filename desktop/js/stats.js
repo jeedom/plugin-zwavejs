@@ -82,16 +82,21 @@ function network_read_stats() {
 									}
 								}
 								valueStat += ' → Contrôleur'
-								if (stats.lwr.protocolDataRate == "1"){
-									$('.lwr-speed' + key).empty().append('9.6 kbit/s')
-								} else if (stats.lwr.protocolDataRate == "2"){
-									$('.lwr-speed' + key).empty().append('40 kbit/s')
-								} else if (stats.lwr.protocolDataRate == "3"){
-									$('.lwr-speed' + key).empty().append('100 kbit/s')
-								} else if (stats.lwr.protocolDataRate == "4"){
-									$('.lwr-speed' + key).empty().append('Long Range 100 kbit/s')
-								}
 								$('.lwr' + key).empty().append(valueStat)
+								if (typeof (stats.lwr.protocolDataRate) != "undefined"){
+									if (stats.lwr.protocolDataRate == "1"){
+										$('.lwr-speed' + key).empty().append('9.6 kbit/s')
+									} else if (stats.lwr.protocolDataRate == "2"){
+										$('.lwr-speed' + key).empty().append('40 kbit/s')
+									} else if (stats.lwr.protocolDataRate == "3"){
+										$('.lwr-speed' + key).empty().append('100 kbit/s')
+									} else if (stats.lwr.protocolDataRate == "4"){
+										$('.lwr-speed' + key).empty().append('Long Range 100 kbit/s')
+									}
+								}
+								if (typeof (stats.lwr.rssi) != "undefined"){
+									$('.lwr-rssi' + key).empty().append(stats.lwr.rssi +' dBm')
+								}
 						}
 					}
 				}

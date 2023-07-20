@@ -91,14 +91,19 @@ function read_nodes() {
 									}
 								}
 								valueStat += ' → Contrôleur'
-								if (data[stat]['protocolDataRate'] == "1"){
-									$('.getNodeStats-' + stat+'-speed').empty().append('9.6 kbit/s')
-								} else if (data[stat]['protocolDataRate'] == "2"){
-									$('.getNodeStats-' + stat+'-speed').empty().append('40 kbit/s')
-								} else if (data[stat]['protocolDataRate'] == "3"){
-									$('.getNodeStats-' + stat+'-speed').empty().append('100 kbit/s')
-								} else if (data[stat]['protocolDataRate'] == "4"){
-									$('.getNodeStats-' + stat+'-speed').empty().append('Long Range 100 kbit/s')
+								if (typeof (data[stat]['protocolDataRate']) != "undefined"){
+									if (data[stat]['protocolDataRate'] == "1"){
+										$('.getNodeStats-' + stat+'-speed').empty().append('9.6 kbit/s')
+									} else if (data[stat]['protocolDataRate'] == "2"){
+										$('.getNodeStats-' + stat+'-speed').empty().append('40 kbit/s')
+									} else if (data[stat]['protocolDataRate'] == "3"){
+										$('.getNodeStats-' + stat+'-speed').empty().append('100 kbit/s')
+									} else if (data[stat]['protocolDataRate'] == "4"){
+										$('.getNodeStats-' + stat+'-speed').empty().append('Long Range 100 kbit/s')
+									}
+								}
+								if (typeof (data[stat]['rssi']) != "undefined"){
+									$('.getNodeStats-' + stat+'-rssi').empty().append(data[stat]['rssi'] +' dBm')
 								}
 							} else {
 								valueStat = data[stat]
