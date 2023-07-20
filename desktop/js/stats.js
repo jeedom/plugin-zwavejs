@@ -68,6 +68,23 @@ function network_read_stats() {
 						if (typeof (stats.rtt) != "undefined") {
 							$('.rtt' + key).empty().append(stats.rtt + 'ms')
 						}
+						if (typeof (stats.lwr) != "undefined"){
+								valueStat = key
+								for (route in stats.lwr.repeaters){
+									valueStat += ' → ' + stats.lwr.repeaters[route] 
+								}
+								valueStat += ' → Contrôleur'
+								if (stats.lwr.protocolDataRate == "1"){
+									$('.lwr-speed' + key).empty().append('9.6 kbit/s')
+								} else if (stats.lwr.protocolDataRate == "2"){
+									$('.lwr-speed' + key).empty().append('40 kbit/s')
+								} else if (stats.lwr.protocolDataRate == "3"){
+									$('.lwr-speed' + key).empty().append('100 kbit/s')
+								} else if (stats.lwr.protocolDataRate == "4"){
+									$('.lwr-speed' + key).empty().append('Long Range 100 kbit/s')
+								}
+								$('.lwr' + key).empty().append(valueStat)
+						}
 					}
 				}
 			}

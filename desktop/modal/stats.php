@@ -30,6 +30,8 @@ if (!isConnect('admin')) {
 				<th>{{TX}}</th>
 				<th>{{Timeout}}</th>
 				<th>{{RTT}}</th>
+				<th>{{Route}}</th>
+				<th>{{Vitesse}}</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -50,6 +52,8 @@ if (!isConnect('admin')) {
 				echo '<td><span class="label label-info tx' . $nodeId . '" style="font-size : 1em;">0</span></td>';
 				echo '<td><span class="label label-info timeout' . $nodeId . ' style="font-size : 1em;">0</span></td>';
 				echo '<td><span class="label label-info rtt' . $nodeId . ' style="font-size : 1em;">0</span></td>';
+				echo '<td><span class="label label-info lwr' . $nodeId . ' style="font-size : 1em;">N/A</span></td>';
+				echo '<td><span class="label label-info lwr-speed' . $nodeId . ' style="font-size : 1em;">N/A</span></td>';
 				echo '</tr>';
 			}
 			?>
