@@ -121,6 +121,10 @@ class zwavejs extends eqLogic {
 			}
 		}
 	}
+	
+	public static function cronHourly() {
+		self::getNodes('health');
+	}
 
 	public static function configureSettings($_path) {
 		$file = $_path . '/settings.json';
@@ -1462,6 +1466,13 @@ class zwavejs extends eqLogic {
 							$next = '- ' . self::secondsToTime($wakedup - $values['values']['132-0-wakeUpInterval']['value']);
 						} else {
 							$next = self::secondsToTime($values['values']['132-0-wakeUpInterval']['value'] - $wakedup);
+						}
+						if ($wakedup > 3*$values['values']['132-0-wakeUpInterval']['value']) {
+							if (version_compare(jeedom::version(),'4.4.0','>=')){
+								message::add('zwavejs',"L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId(). ", ne c'est pas reveillé au moins 4 fois. Il a peut être un problème (batterie ou autres).", $action,'Wakeup-'.$eqLogic->getLogicalId(),true,'alertingReturnBack');
+							} else {
+								message::add('zwavejs',"L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId(). ", ne c'est pas reveillé au moins 4 fois. Il a peut être un problème (batterie ou autres).", $action,'Wakeup-'.$eqLogic->getLogicalId(),true);
+							}
 						}
 						$healthPage .= '<br><i class="fas fa-arrow-right icon_blue" title="' . __('Prochain réveil estimé', __FILE__) . '" aria-hidden="true"></i> <span title="' . __('Prochain réveil estimé', __FILE__) . '" style="font-size : 0.7em;">' . $next . '</span>';
 						$healthPage .= '<br><i class="fas fa-wrench icon_blue" title="' . __('Intervalle de réveil', __FILE__) . '" aria-hidden="true"></i> <span title="' . __('Intervalle de réveil', __FILE__) . '" style="font-size : 0.7em;">' . self::secondsToTime($values['values']['132-0-wakeUpInterval']['value']) . '</span>';
