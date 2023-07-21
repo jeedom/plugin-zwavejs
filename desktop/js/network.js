@@ -339,29 +339,44 @@ function network_route_load_data() {
     } else {
         if (typeof nodes[z].statistics.lwr != 'undefined' && typeof nodes[z].statistics.lwr.repeaters != 'undefined' ){
 			total = nodes[z].statistics.lwr.repeaters.length
+			count = 0
 			for (neighbour in nodes[z].statistics.lwr.repeaters) {
 				neighbourId = nodes[z].statistics.lwr.repeaters[neighbour]
 				if (typeof nodes[neighbourId] != 'undefined') {
-					graph.addLink(z, neighbourId, { isdash: 0, lengthfactor: 0 })
+					if (count == 0) {
+						graph.addLink(z, neighbourId, { isdash: 0, lengthfactor: 0 })
+					} else {
+						neighbourIdprev = nodes[z].statistics.lwr.repeaters[neighbour-1]
+						graph.addLink(neighbourIdprev, neighbourId, { isdash: 0, lengthfactor: 0 })
+					}
 				}
 				if (neighbour+1 == total){
-					graph.addLink(neighbourId, controllerId, { isdash: 0, lengthfactor: 0 })
+					countexist= 0
+					graph.forEachLinkedNode(neighbourId, function(node, link) {
+						if (link.toId == controllerId) {
+							countexist +=1
+						}
+					})
+					if (countexist == 0) {
+						graph.addLink(neighbourId, controllerId, { isdash: 0, lengthfactor: 0 })
+					}
 				}
+				count= count+1
 			}
 		}
     }
   }
   var graphics = Viva.Graph.View.svgGraphics(),
     nodeSize = 24,
-    highlightRelatedNodes = function(nodeId, isOn, sourceId = '') {
+    highlightRelatedNodes = function(nodeId, isOn, sourceId = '', count=0) {
       graph.forEachLinkedNode(nodeId, function(node, link) {
-		if (sourceId == '' && typeof nodes[nodeId].statistics.lwr != 'undefined' && typeof nodes[nodeId].statistics.lwr.repeaters != 'undefined' && nodes[nodeId].statistics.lwr.repeaters.includes(link.toId)) {
+		if (sourceId == '' && typeof nodes[nodeId].statistics.lwr != 'undefined' && typeof nodes[nodeId].statistics.lwr.repeaters != 'undefined' && nodes[nodeId].statistics.lwr.repeaters[count] == link.toId) {
 		var linkUI = graphics.getLinkUI(link.id)
           if (linkUI) {
             linkUI.attr('stroke', isOn ? '#FF0000' : '#B7B7B7')
             linkUI.attr('marker-start', isOn ? 'url(#Triangle-red)' : 'url(#Triangle)')
           }
-		} else if (sourceId != '' && typeof nodes[sourceId].statistics.lwr != 'undefined' && typeof nodes[sourceId].statistics.lwr.repeaters != 'undefined' && nodes[sourceId].statistics.lwr.repeaters.includes(link.toId) && nodes[sourceId].statistics.lwr.repeaters.includes(link.fromId)) {
+		} else if (sourceId != '' && typeof nodes[sourceId].statistics.lwr != 'undefined' && typeof nodes[sourceId].statistics.lwr.repeaters != 'undefined' && nodes[sourceId].statistics.lwr.repeaters[count] == link.toId && nodes[sourceId].statistics.lwr.repeaters.includes(link.fromId)) {
 			var linkUI = graphics.getLinkUI(link.id)
           if (linkUI) {
             linkUI.attr('stroke', isOn ? '#FF0000' : '#B7B7B7')
@@ -371,25 +386,25 @@ function network_route_load_data() {
 		else {
 			if (link.toId == controllerId){
 				if (sourceId == '' && typeof nodes[nodeId].statistics.lwr != 'undefined' && typeof nodes[nodeId].statistics.lwr.repeaters != 'undefined' && nodes[nodeId].statistics.lwr.repeaters.length==0){
-				var linkUI = graphics.getLinkUI(link.id)
-				if (linkUI) {
-					linkUI.attr('stroke', isOn ? '#FF0000' : '#B7B7B7')
-					linkUI.attr('marker-start', isOn ? 'url(#Triangle-red)' : 'url(#Triangle)')
-				}
-				} else if (sourceId != '' && typeof nodes[sourceId].statistics.lwr != 'undefined' && typeof nodes[sourceId].statistics.lwr.repeaters != 'undefined' && nodes[sourceId].statistics.lwr.repeaters.includes(link.fromId)) {
 					var linkUI = graphics.getLinkUI(link.id)
-				if (linkUI) {
-					linkUI.attr('stroke', isOn ? '#FF0000' : '#B7B7B7')
-					linkUI.attr('marker-start', isOn ? 'url(#Triangle-red)' : 'url(#Triangle)')
-				}
+					if (linkUI) {
+						linkUI.attr('stroke', isOn ? '#FF0000' : '#B7B7B7')
+						linkUI.attr('marker-start', isOn ? 'url(#Triangle-red)' : 'url(#Triangle)')
+					}
+				} else if (sourceId != '' && typeof nodes[sourceId].statistics.lwr != 'undefined' && typeof nodes[sourceId].statistics.lwr.repeaters != 'undefined' && nodes[sourceId].statistics.lwr.repeaters[count-1]==link.fromId) {
+					var linkUI = graphics.getLinkUI(link.id)
+					if (linkUI) {
+						linkUI.attr('stroke', isOn ? '#FF0000' : '#B7B7B7')
+						linkUI.attr('marker-start', isOn ? 'url(#Triangle-red)' : 'url(#Triangle)')
+					}
 				}
 			}
 		}
-		if (link.toId != controllerId && link.toId != nodeId ){
+		if ( link.toId!= controllerId && link.toId != nodeId ){
 			if (sourceId == '' && typeof nodes[nodeId].statistics.lwr != 'undefined' && typeof nodes[nodeId].statistics.lwr.repeaters != 'undefined' && nodes[nodeId].statistics.lwr.repeaters.includes(link.toId)) {
-				highlightRelatedNodes(link.toId, isOn, nodeId)
-			} else if (typeof nodes[sourceId].statistics.lwr != 'undefined' && typeof nodes[sourceId].statistics.lwr.repeaters != 'undefined' && nodes[sourceId].statistics.lwr.repeaters.includes(link.toId) && nodes[sourceId].statistics.lwr.repeaters.includes(link.fromId)) {
-				highlightRelatedNodes(link.toId, isOn, sourceId)
+				highlightRelatedNodes(link.toId, isOn, nodeId, count+1)
+			} else if (sourceId != '' && typeof nodes[sourceId].statistics.lwr != 'undefined' && typeof nodes[sourceId].statistics.lwr.repeaters != 'undefined'  && nodes[sourceId].statistics.lwr.repeaters.includes(link.fromId)) {
+				highlightRelatedNodes(link.toId, isOn, sourceId,count+1)
 			}
 		}
       })
