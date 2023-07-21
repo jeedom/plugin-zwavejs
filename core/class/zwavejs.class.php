@@ -824,6 +824,15 @@ class zwavejs extends eqLogic {
 						$eqLogic->updateCmd('0-0-nodeStatus', $data['status']);
 						if ($data['status'] == 'Awake') {
 							$eqLogic->setConfiguration('lastWakeUp', time());
+							if ($eqLogic->getConfiguration('missedWakeup', false)){
+								$action = '<a href="/' . $eqLogic->getLinkToConfiguration() . '">' . __('Equipement', __FILE__) . '</a>';
+								if (version_compare(jeedom::version(),'4.4.0','>=')){
+									message::add('zwavejs',"L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId(). ', vient de se réveiller après avoir raté au minimum 4 réveils.', $action,'Awake-'.$eqLogic->getLogicalId(),true,'alerting');
+								} else {
+									message::add('zwavejs',"L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId(). ', vient de se réveiller après avoir raté au minimum 4 réveils.', $action,'Awake-'.$eqLogic->getLogicalId(),true);
+								}
+							}
+							$eqLogic->setConfiguration('missedWakeup', false);
 							$eqLogic->save();
 						}
 						if ($data['status'] == 'Dead' && $currentValue == 'Alive') {
@@ -1468,11 +1477,14 @@ class zwavejs extends eqLogic {
 							$next = self::secondsToTime($values['values']['132-0-wakeUpInterval']['value'] - $wakedup);
 						}
 						if ($wakedup > 3*$values['values']['132-0-wakeUpInterval']['value']) {
+							$action = '<a href="/' . $eqLogic->getLinkToConfiguration() . '">' . __('Equipement', __FILE__) . '</a>';
 							if (version_compare(jeedom::version(),'4.4.0','>=')){
 								message::add('zwavejs',"L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId(). ", ne c'est pas reveillé au moins 4 fois. Il a peut être un problème (batterie ou autres).", $action,'Wakeup-'.$eqLogic->getLogicalId(),true,'alertingReturnBack');
 							} else {
 								message::add('zwavejs',"L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId(). ", ne c'est pas reveillé au moins 4 fois. Il a peut être un problème (batterie ou autres).", $action,'Wakeup-'.$eqLogic->getLogicalId(),true);
 							}
+							$eqLogic->setConfiguration('missedWakeup',true);
+							$eqLogic->save();
 						}
 						$healthPage .= '<br><i class="fas fa-arrow-right icon_blue" title="' . __('Prochain réveil estimé', __FILE__) . '" aria-hidden="true"></i> <span title="' . __('Prochain réveil estimé', __FILE__) . '" style="font-size : 0.7em;">' . $next . '</span>';
 						$healthPage .= '<br><i class="fas fa-wrench icon_blue" title="' . __('Intervalle de réveil', __FILE__) . '" aria-hidden="true"></i> <span title="' . __('Intervalle de réveil', __FILE__) . '" style="font-size : 0.7em;">' . self::secondsToTime($values['values']['132-0-wakeUpInterval']['value']) . '</span>';
