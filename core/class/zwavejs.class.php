@@ -816,10 +816,27 @@ class zwavejs extends eqLogic {
 				// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . "Le nœud avec l'id : " . $_nodeId . ' existe ' . $eqLogic->getHumanName());
 				foreach ($flatten as $key => $data) {
 					if ($key == 'status') {
+						$currentValue = $eqLogic->getCmd(null, '0-0-nodeStatus')->execCmd();
 						$eqLogic->updateCmd('0-0-nodeStatus', $data['status']);
 						if ($data['status'] == 'Awake') {
 							$eqLogic->setConfiguration('lastWakeUp', time());
 							$eqLogic->save();
+						}
+						if ($data['status'] == 'Dead' && $currentValue == 'Alive') {
+							$action = '<a href="/' . $eqLogic->getLinkToConfiguration() . '">' . __('Equipement', __FILE__) . '</a>';
+							try {
+								message::add('zwavejs',"L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId(). ', vient de passer au statut Dead.', $action,'Dead-'.$eqLogic->getLogicalId(),true,'alerting');
+							} catch (Exception $e) {
+								message::add('zwavejs',"L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId(). ', vient de passer au statut Dead.', $action,'Dead-'.$eqLogic->getLogicalId(),true);
+							}
+						}
+						if ($data['status'] == 'Alive' && $currentValue == 'Dead') {
+							$action = '<a href="/' . $eqLogic->getLinkToConfiguration() . '">' . __('Equipement', __FILE__) . '</a>';
+							try {
+								message::add('zwavejs',"L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId(). ', vient de passer au statut Alive.', $action,'Alive-'.$eqLogic->getLogicalId(),true,'alertingReturnBack');
+							} catch (Exception $e) {
+								message::add('zwavejs',"L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId(). ', vient de passer au statut Alive.', $action,'Alive-'.$eqLogic->getLogicalId(),true);
+							}
 						}
 					} else if (isset($data['value'])) {
 						$eqLogic->updateCmd($key, $data['value']);
