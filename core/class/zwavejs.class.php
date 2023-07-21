@@ -824,17 +824,17 @@ class zwavejs extends eqLogic {
 						}
 						if ($data['status'] == 'Dead' && $currentValue == 'Alive') {
 							$action = '<a href="/' . $eqLogic->getLinkToConfiguration() . '">' . __('Equipement', __FILE__) . '</a>';
-							try {
+							if (version_compare(jeedom::version(),'4.4.0','>')){
 								message::add('zwavejs',"L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId(). ', vient de passer au statut Dead.', $action,'Dead-'.$eqLogic->getLogicalId(),true,'alerting');
-							} catch (Exception $e) {
+							} else {
 								message::add('zwavejs',"L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId(). ', vient de passer au statut Dead.', $action,'Dead-'.$eqLogic->getLogicalId(),true);
 							}
 						}
 						if ($data['status'] == 'Alive' && $currentValue == 'Dead') {
 							$action = '<a href="/' . $eqLogic->getLinkToConfiguration() . '">' . __('Equipement', __FILE__) . '</a>';
-							try {
+							if (version_compare(jeedom::version(),'4.4.0','>')){
 								message::add('zwavejs',"L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId(). ', vient de passer au statut Alive.', $action,'Alive-'.$eqLogic->getLogicalId(),true,'alertingReturnBack');
-							} catch (Exception $e) {
+							} else {
 								message::add('zwavejs',"L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId(). ', vient de passer au statut Alive.', $action,'Alive-'.$eqLogic->getLogicalId(),true);
 							}
 						}
