@@ -603,6 +603,7 @@
         "Nœud Exclu": "Node excluded",
         "Nœud inclus": "Node included",
         "Nouveau module Z-Wave détecté. L'équipement sera créé lorsque l'interview sera terminé.": "New Z-Wave module detected. Equipment will be created when the interview is complete",
+        "Equipement": "Equipment",
         "Synchronisation en cours": "Synchronization in progress",
         "Exécution d'une action sur le contrôleur de type": "Executing an action on the type controller",
         "Envoie des noms et locations pour le nœud": "Send names and locations for the node",

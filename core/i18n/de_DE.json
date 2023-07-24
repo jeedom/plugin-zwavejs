@@ -603,6 +603,7 @@
         "Nœud Exclu": "Ausgeschlossener Knoten",
         "Nœud inclus": "Bogen enthalten",
         "Nouveau module Z-Wave détecté. L'équipement sera créé lorsque l'interview sera terminé.": "Neues Z-Wave-Modul erkannt. Die Ausrüstung wird erstellt, wenn das Interview abgeschlossen ist",
+        "Equipement": "Ausrüstung",
         "Synchronisation en cours": "Synchronisierung läuft",
         "Exécution d'une action sur le contrôleur de type": "Ausführen einer Aktion auf dem Typ Controller",
         "Envoie des noms et locations pour le nœud": "Senden Sie Namen und Standorte für den Knoten",
