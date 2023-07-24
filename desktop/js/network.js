@@ -332,12 +332,12 @@ function network_route_load_data() {
 	if (nodes[z].id == controllerId) {
         continue
     }
-    if (typeof nodes[z].statistics.lwr != 'undefined' && typeof nodes[z].statistics.lwr.repeaters != 'undefined' && nodes[z].statistics.lwr.repeaters.length < 1) {
+    if (typeof nodes[z].statistics != 'undefined' &&  typeof nodes[z].statistics.lwr != 'undefined' && typeof nodes[z].statistics.lwr.repeaters != 'undefined' && nodes[z].statistics.lwr.repeaters.length < 1) {
       if (typeof nodes[controllerId] != 'undefined') {
         graph.addLink(z, controllerId, { isdash: 0, lengthfactor: 0.6 })
       }
     } else {
-        if (typeof nodes[z].statistics.lwr != 'undefined' && typeof nodes[z].statistics.lwr.repeaters != 'undefined' ){
+        if (typeof nodes[z].statistics != 'undefined' &&  typeof nodes[z].statistics.lwr != 'undefined' && typeof nodes[z].statistics.lwr.repeaters != 'undefined' ){
 			total = nodes[z].statistics.lwr.repeaters.length
 			count = 0
 			for (neighbour in nodes[z].statistics.lwr.repeaters) {
@@ -370,13 +370,13 @@ function network_route_load_data() {
     nodeSize = 24,
     highlightRelatedNodes = function(nodeId, isOn, sourceId = '', count=0) {
       graph.forEachLinkedNode(nodeId, function(node, link) {
-		if (sourceId == '' && typeof nodes[nodeId].statistics.lwr != 'undefined' && typeof nodes[nodeId].statistics.lwr.repeaters != 'undefined' && nodes[nodeId].statistics.lwr.repeaters[count] == link.toId) {
+		if (sourceId == '' && typeof nodes[nodeId].statistics != 'undefined' && typeof nodes[nodeId].statistics.lwr != 'undefined' && typeof nodes[nodeId].statistics.lwr.repeaters != 'undefined' && nodes[nodeId].statistics.lwr.repeaters[count] == link.toId) {
 		var linkUI = graphics.getLinkUI(link.id)
           if (linkUI) {
             linkUI.attr('stroke', isOn ? '#FF0000' : '#B7B7B7')
             linkUI.attr('marker-start', isOn ? 'url(#Triangle-red)' : 'url(#Triangle)')
           }
-		} else if (sourceId != '' && typeof nodes[sourceId].statistics.lwr != 'undefined' && typeof nodes[sourceId].statistics.lwr.repeaters != 'undefined' && nodes[sourceId].statistics.lwr.repeaters[count] == link.toId && nodes[sourceId].statistics.lwr.repeaters.includes(link.fromId)) {
+		} else if (sourceId != '' && typeof nodes[sourceId].statistics != 'undefined' && typeof nodes[sourceId].statistics.lwr != 'undefined' && typeof nodes[sourceId].statistics.lwr.repeaters != 'undefined' && nodes[sourceId].statistics.lwr.repeaters[count] == link.toId && nodes[sourceId].statistics.lwr.repeaters.includes(link.fromId)) {
 			var linkUI = graphics.getLinkUI(link.id)
           if (linkUI) {
             linkUI.attr('stroke', isOn ? '#FF0000' : '#B7B7B7')
@@ -385,13 +385,13 @@ function network_route_load_data() {
 		} 
 		else {
 			if (link.toId == controllerId){
-				if (sourceId == '' && typeof nodes[nodeId].statistics.lwr != 'undefined' && typeof nodes[nodeId].statistics.lwr.repeaters != 'undefined' && nodes[nodeId].statistics.lwr.repeaters.length==0){
+				if (sourceId == '' && typeof nodes[nodeId].statistics != 'undefined' && typeof nodes[nodeId].statistics.lwr != 'undefined' && typeof nodes[nodeId].statistics.lwr.repeaters != 'undefined' && nodes[nodeId].statistics.lwr.repeaters.length==0){
 					var linkUI = graphics.getLinkUI(link.id)
 					if (linkUI) {
 						linkUI.attr('stroke', isOn ? '#FF0000' : '#B7B7B7')
 						linkUI.attr('marker-start', isOn ? 'url(#Triangle-red)' : 'url(#Triangle)')
 					}
-				} else if (sourceId != '' && typeof nodes[sourceId].statistics.lwr != 'undefined' && typeof nodes[sourceId].statistics.lwr.repeaters != 'undefined' && nodes[sourceId].statistics.lwr.repeaters[count-1]==link.fromId) {
+				} else if (sourceId != '' && typeof nodes[sourceId].statistics != 'undefined' && typeof nodes[sourceId].statistics.lwr != 'undefined' && typeof nodes[sourceId].statistics.lwr.repeaters != 'undefined' && nodes[sourceId].statistics.lwr.repeaters.length == count) {
 					var linkUI = graphics.getLinkUI(link.id)
 					if (linkUI) {
 						linkUI.attr('stroke', isOn ? '#FF0000' : '#B7B7B7')
@@ -401,9 +401,9 @@ function network_route_load_data() {
 			}
 		}
 		if ( link.toId!= controllerId && link.toId != nodeId ){
-			if (sourceId == '' && typeof nodes[nodeId].statistics.lwr != 'undefined' && typeof nodes[nodeId].statistics.lwr.repeaters != 'undefined' && nodes[nodeId].statistics.lwr.repeaters.includes(link.toId)) {
+			if (sourceId == '' && typeof nodes[nodeId].statistics != 'undefined' && typeof nodes[nodeId].statistics.lwr != 'undefined' && typeof nodes[nodeId].statistics.lwr.repeaters != 'undefined' && nodes[nodeId].statistics.lwr.repeaters.includes(link.toId)) {
 				highlightRelatedNodes(link.toId, isOn, nodeId, count+1)
-			} else if (sourceId != '' && typeof nodes[sourceId].statistics.lwr != 'undefined' && typeof nodes[sourceId].statistics.lwr.repeaters != 'undefined'  && nodes[sourceId].statistics.lwr.repeaters.includes(link.fromId)) {
+			} else if (sourceId != '' && typeof nodes[sourceId].statistics != 'undefined' && typeof nodes[sourceId].statistics.lwr != 'undefined' && typeof nodes[sourceId].statistics.lwr.repeaters != 'undefined'  && nodes[sourceId].statistics.lwr.repeaters.includes(link.fromId)) {
 				highlightRelatedNodes(link.toId, isOn, sourceId,count+1)
 			}
 		}
@@ -421,13 +421,13 @@ function network_route_load_data() {
       nodesize = 16
     } else if (node.data.basic == 1) {
       nodecolor = '#A7C7E7'
-    } else if (typeof node.data.statistics.lwr != 'undefined' && typeof node.data.statistics.lwr.repeaters != 'undefined' && node.data.statistics.lwr.repeaters.length < 1) {
+    } else if (typeof node.data.statistics != 'undefined' &&  typeof node.data.statistics.lwr != 'undefined' && typeof node.data.statistics.lwr.repeaters != 'undefined' && node.data.statistics.lwr.repeaters.length < 1) {
       nodecolor = '#7BCC7B'
-    } else if (typeof node.data.statistics.lwr != 'undefined' && typeof node.data.statistics.lwr.repeaters != 'undefined' && node.data.statistics.lwr.repeaters.length == 1) {
+    } else if (typeof node.data.statistics != 'undefined' &&  typeof node.data.statistics.lwr != 'undefined' && typeof node.data.statistics.lwr.repeaters != 'undefined' && node.data.statistics.lwr.repeaters.length == 1) {
       nodecolor = '#E5E500'
-    } else if (typeof node.data.statistics.lwr != 'undefined' && typeof node.data.statistics.lwr.repeaters != 'undefined' && node.data.statistics.lwr.repeaters.length == 2) {
+    } else if (typeof node.data.statistics != 'undefined' &&  typeof node.data.statistics.lwr != 'undefined' && typeof node.data.statistics.lwr.repeaters != 'undefined' && node.data.statistics.lwr.repeaters.length == 2) {
       nodecolor = 'orange'
-    } else if (typeof node.data.statistics.lwr != 'undefined' && typeof node.data.statistics.lwr.repeaters != 'undefined' && node.data.statistics.lwr.repeaters.length == 3) {
+    } else if (typeof node.data.statistics != 'undefined' &&  typeof node.data.statistics.lwr != 'undefined' && typeof node.data.statistics.lwr.repeaters != 'undefined' && node.data.statistics.lwr.repeaters.length == 3) {
       nodecolor = 'red'
     } else {
       nodecolor = '#979797'
