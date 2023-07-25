@@ -350,7 +350,7 @@ function network_route_load_data() {
 						graph.addLink(neighbourIdprev, neighbourId, { isdash: 0, lengthfactor: 0 })
 					}
 				}
-				if (neighbour+1 == total){
+				if (count+1 == total){
 					countexist= 0
 					graph.forEachLinkedNode(neighbourId, function(node, link) {
 						if (link.toId == controllerId) {
