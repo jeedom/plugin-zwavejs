@@ -451,7 +451,7 @@ function network_route_load_data() {
     $(ui).hover(function() {
       var link = 'index.php?v=d&p=zwavejs&m=zwavejs&logical_id=' + node.id
 	  numneighbours = 0
-	  if (typeof node.data.statistics.lwr != 'undefined' && typeof node.data.statistics.lwr.repeaters != 'undefined'){
+	  if (typeof node.data.statistics != 'undefined' && typeof node.data.statistics.lwr != 'undefined' && typeof node.data.statistics.lwr.repeaters != 'undefined'){
 		numneighbours = node.data.statistics.lwr.repeaters.length
       }
       interview = node.data.interview
