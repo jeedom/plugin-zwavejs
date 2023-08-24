@@ -1,0 +1,19 @@
+{
+    "name": "Wave 1 PM",
+    "type": "Micromodule",
+    "comlink": "",
+    "remark": "",
+    "versions": {
+        "2": [
+            "132"
+        ]
+    },
+    "properties": {
+        "Switch": {},
+        "Power": {},
+        "Energy": {},
+        "Notification|mains":{"type":"mains"},
+        "Notification|over-current":{"type":"over-current"},
+        "Notification|heat-sensort":{"type":"heat-sensor"}
+    }
+}
