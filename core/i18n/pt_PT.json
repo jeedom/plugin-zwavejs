@@ -105,7 +105,7 @@
         "Endpoints": "Pontos de extremidade",
         "Sécurité": "Segurança",
         "Flirs": "Flerte",
-        "Z-Wave+": "Z-Wave+",
+        "Z-Wave+": "Onda Z+",
         "Routing": "Roteamento",
         "Polling": "Sondagem",
         "Refresh": "Atualizar",
@@ -113,7 +113,7 @@
         "Statut": "Status",
         "Interview": "Entrevista",
         "Dernière activité": "Ultima atividade",
-        "Ping": "Ping"
+        "Ping": "Pingar"
     },
     "plugins\/zwavejs\/desktop\/modal\/node.values.php": {
         "Accès non autorisé": "Acesso não autorizado"
@@ -252,7 +252,7 @@
         "Vitesse maximale": "Velocidade máxima",
         "bit\/sec": "bits\/s",
         "Version Protocole": "Protocolo de versão",
-        "FLIRS": "FLIRS",
+        "FLIRS": "FLIR",
         "Contrôleur": "Controlador",
         "Routing": "Roteamento",
         "Beaming": "Radiante",
