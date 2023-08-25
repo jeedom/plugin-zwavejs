@@ -837,6 +837,18 @@ $('#uploadNVM').fileupload({
   }
 })
 
+$('#uploadOTW').fileupload({
+	dataType: 'json',
+	replaceFileInput: false,
+	done: function(e, data) {
+	if (data.result.state != 'ok') {
+		$('#div_networkzwavejsAlert').showAlert({ message: data.result.result, level: 'danger' })
+		return
+	}
+	$('#div_networkzwavejsAlert').showAlert({ message: '{{Fichier(s) ajouté(s) avec succès}}', level: 'success' })
+	}
+})
+
 $('body').off('zwavejs::restoreNVM').on('zwavejs::restoreNVM', function(_event, _options) {
   $('#div_networkzwavejsAlert').showAlert({ message: _options.message, level: 'warning' })
 })

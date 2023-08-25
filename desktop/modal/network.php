@@ -121,6 +121,7 @@ if (!isConnect('admin')) {
 				<ul id="tabs_network" class="nav nav-tabs" data-tabs="tabs">
 					<li class="active"><a href="#summary_network" data-toggle="tab"><i class="fas fa-tachometer-alt"></i> {{Résumé}}</a></li>
 					<li><a href="#actions_network" data-toggle="tab"><i class="fas fa-sliders-h"></i> {{Actions}}</a></li>
+					<li id="tab-otw"><a href="#otw" data-toggle="tab"><i class="icon kiko-router "></i> {{Mise à jour}}</a></li>
 					<li id="tab_backup"><a href="#backup_network" data-toggle="tab"><i class="fas fa-save"></i> {{Gestion NVM}}</a></li>
 					<li><a href="#statistics_network" data-toggle="tab"><i class="far fa-chart-bar"></i> {{Statistiques}}</a></li>
 					<li id="tab_graph"><a href="#graph_network" data-toggle="tab"><i class="far fa-image"></i> {{Graphique Voisins}}</a></li>
@@ -163,6 +164,16 @@ if (!isConnect('admin')) {
 							</div>
 						</div>
 					</div>
+					<div class="tab-pane" id="otw">
+					<br>
+					<div class="alert alert-warning">{{Une mise à jour de firmware/sdk est une opération risquée. Assurez-vous que le firmware est bien validé par le fabricant pour votre contrôleur et que la version de celui-ci permet la mise à jour.}}</div>
+					<span class="otaStatus label label-sm label-info pull-right">{{Aucune mise à jour en cours}}</span>
+					<div class="input-group">
+						<span class="btn btn-primary btn-file rounded">
+							<i class="fas fa-cloud-upload-alt"></i> {{Envoyer un firmware}}<input id="uploadOTW" type="file" name="file" data-url="plugins/zwavejs/core/ajax/zwavejs.ajax.php?action=uploadOTW">
+						</span>
+					</div>
+				</div>
 					<div id="graph_network" class="tab-pane">
 						<table class="table table-bordered table-condensed" style="width: 250px;position:fixed;margin-top : 25px;">
 							<thead>
