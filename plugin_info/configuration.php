@@ -48,6 +48,14 @@ if (!isConnect('admin')) {
 				</div>
 			</div>
 			<div class="form-group">
+				<label class="col-md-4 control-label">{{Préfixe MQTT}}
+					<sup><i class="fas fa-question-circle tooltips" title="{{Préfixe à utiliser dans MQTT}}"></i></sup>
+				</label>
+				<div class="col-md-7">
+					<input type="text" class="configKey form-control" data-l1key="prefix" placeholder="{{}}">
+				</div>
+			</div>
+			<div class="form-group">
 				<label class="col-md-4 control-label">{{Appliquer la configuration recommandée}}
 					<sup><i class="fas fa-question-circle tooltips" title="{{Cocher la case pour appliquer le jeu de configuration spécialement recommandé par l'équipe Jeedom lors de l'inclusion d'un nouveau module}}"></i></sup>
 				</label>
@@ -63,11 +71,17 @@ if (!isConnect('admin')) {
 			</div>
 			<br>
 			<div class="form-group">
-				<label class="col-md-4 control-label">{{Préfixe MQTT}}
-					<sup><i class="fas fa-question-circle tooltips" title="{{Préfixe à utiliser dans MQTT}}"></i></sup>
+				<label class="col-md-4 control-label">{{Alertes de noeuds morts}}
+					<sup><i class="fas fa-question-circle tooltips" title="{{Cocher la case pour être notifié dans le centre de message Jeedom des noeuds morts et du retour à l'état Alive}}"></i></sup>
 				</label>
-				<div class="col-md-7">
-					<input type="text" class="configKey form-control" data-l1key="prefix" placeholder="{{}}">
+				<div class="col-md-1">
+					<input type="checkbox" class="configKey" data-l1key="notifyDead" checked>
+				</div>
+				<label class="col-md-4 control-label">{{Alertes de réveils manqués}}
+					<sup><i class="fas fa-question-circle tooltips" title="{{Cocher la case pour être notifié dans le centre de message Jeedom des réveils manqués et du retour à la normal}}"></i></sup>
+				</label>
+				<div class="col-md-1">
+					<input type="checkbox" class="configKey" data-l1key="notifyMissWakeup" checked>
 				</div>
 			</div>
 			<div class="form-group">
