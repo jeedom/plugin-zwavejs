@@ -67,5 +67,28 @@
 				"mobile": "flood"
 			}
 		}
+	],
+"binary-water": 
+	[
+		{
+			"name": "Fuite",
+			"type": "info",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 48,
+				"endpoint": "#endpoint#",
+				"property": "Water"
+			},
+			"subtype": "binary",
+			"display": {
+				"invertBinary": "1",
+				"generic_type": "FUITE"
+			},
+			"template": {
+				"dashboard": "flood",
+				"mobile": "flood"
+			}
+		}
 	]
 }

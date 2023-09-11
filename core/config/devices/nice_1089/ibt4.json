@@ -1,0 +1,15 @@
+{
+    "name": "Ibt4Zwave",
+    "type": "Prise",
+    "comlink": "",
+    "remark": "",
+    "versions": {
+        "9216": [
+            "4096"
+        ]
+    },
+    "properties": {
+        "Multilevel": {
+            "type": "onlevel-barrier"
+        }
+}
