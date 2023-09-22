@@ -15,6 +15,19 @@
 * You should have received a copy of the GNU General Public License
 * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
 */
+declare (ticks = 1);
+
+global $SIG;
+$SIG = false;
+
+function sig_handler($signo) {
+	global $SIG;
+	$SIG = true;
+}
+
+pcntl_signal(SIGTERM, "sig_handler");
+pcntl_signal(SIGHUP, "sig_handler");
+
 require_once dirname(__FILE__) . "/../../../../core/php/core.inc.php";
 log::add('zwavejs', 'debug', 'Refresher');
 if (isset($argv)) {
@@ -50,12 +63,13 @@ set_time_limit(100);
 $starttime = strtotime('now');
 $realNumber = 0;
 while (true) {
+	usleep(round($sleep * 1000000));
 	try {
 		$eqLogic->pollValue($target);
 		log::add('zwavejs', 'debug', 'Refresh '. $eqLogic->getHumanName() . ' ' . $target . ' number : ' .$realNumber);
 		$realNumber +=1;
 	} catch (Exception $e) {
-		
+		$realNumber +=1;
 	}
 	if ($SIG) {
 		break;
@@ -63,8 +77,6 @@ while (true) {
 	if ($realNumber >= $number){
 		break;
 	}
-	$cycleDuration = getmicrotime() - $cycleStartTime;
-	usleep(round($sleep * 1000000));
 	if ($SIG) {
 		break;
 	}
