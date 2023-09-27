@@ -1724,8 +1724,8 @@ class zwavejs extends eqLogic {
 		$_cmdId = str_replace('_', ' ', $_cmdId);
 		$cmdId = explode('-', $_cmdId, 3);
 		$class = $cmdId[0];
-		$endpoint = $cmdId[1];
-		$property = $cmdId[2];
+		$endpoint = (count($cmdId) > 1) ? $cmdId[1] : null;
+		$property = (count($cmdId) > 2) ? $cmdId[2] : null;
 		$value = $_value;
 		if (isset($dictReplace[$property])) {
 			$_cmdId = $class . '-' . $endpoint . '-' . $dictReplace[$property];
