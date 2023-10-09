@@ -19,6 +19,7 @@
 **Ajouts de Configurations**
 
 - Ajout de la configuration *Aeotec ZW187 Recessed Door* (propriétés : Opening Simple, Battery, Notification Software, Notification Power-Status)
+- Ajout de la configuration *Thermofloor Heat It ZM Relay High Power* (propriétés : Switch, Power, Energy, Notification Heat Sensor, Notification Over Load, Centra Scene)
 - Ajout d'une sous propriété *notification-simple* pour la propriété *Opening*
 
 

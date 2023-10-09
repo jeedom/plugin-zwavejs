@@ -1,0 +1,31 @@
+{
+    "name": "Z-Relay High Power",
+    "ref": "4512554",
+    "manufacturer": "Heatit",
+    "type": "Contacteur",
+    "reset": "Appuyer sur le bouton d'inclusion pendant au moins 10 secondes",
+    "pairing": "Appuyer une fois sur le bouton d'inclusion",
+    "versions": {
+        "4": [
+            "13568"
+        ]
+    },
+    "properties": {
+        "Switch": {
+            "type": "prise"
+        },
+        "Power": {},
+        "Energy": {}, 
+        "CentralScene": {
+            "multi": [
+                1,
+                2
+            ],
+            "replace": {
+                "#centralscene#": "multiKey"
+            }
+        },
+        "Notification|heat-sensor": {"type":"heat-sensor"},
+        "Notification|over-load-status": {"type":"over-load"}
+    }
+}
