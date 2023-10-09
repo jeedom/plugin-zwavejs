@@ -1,0 +1,20 @@
+{
+    "name": "Recessed Door/Window Sensor (ZWA187)",
+    "type": "Ouverture",
+    "comlink": "",
+    "remark": "",
+    "configuration": {
+        "battery_type": "1x3V ER14250"
+    },
+    "versions": {
+        "2": [
+            "187"
+        ]
+    },
+    "properties": {
+        "Opening": {"type":"notification-simple"},
+        "Notification|software": {"type":"software"},
+        "Notification|power-status": {"type":"power-status"},
+        "Battery": {}
+    }
+}

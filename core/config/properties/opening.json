@@ -68,5 +68,29 @@
 				"mobile": "timeDoor"
 			}
 		}
+	],
+"notification-simple": 
+	[
+		{
+			"name": "Porte",
+			"type": "info",
+			"isVisible": 1,
+			"isHistorized": 1,
+			"configuration": {
+				"class": 113,
+				"endpoint": "#endpoint#",
+				"property": "Access Control-Door state (simple)",
+				"calculValueOffset": "#value#==22"
+			},
+			"subtype": "binary",
+			"display": {
+				"invertBinary": "1",
+				"generic_type": "OPENING"
+			},
+			"template": {
+				"dashboard": "timeDoor",
+				"mobile": "timeDoor"
+			}
+		}
 	]
 }
