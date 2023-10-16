@@ -1,0 +1,17 @@
+{
+    "name": "Wave 1",
+    "type": "Micromodule",
+    "documentation": "https://kb.shelly.cloud/knowledge-base/wave-1",
+    "comlink": "",
+    "remark": "",
+    "versions": {
+        "2": [
+            "53"
+        ]
+    },
+    "properties": {
+        "Switch": {},
+        "Notification|mains":{"type":"mains"},
+        "Notification|heat-sensort":{"type":"heat-sensor"}
+    }
+}

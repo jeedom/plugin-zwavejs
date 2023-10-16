@@ -1,16 +1,23 @@
 {
-    "name": "Wave 1 PM",
+    "name": "Wave 2 PM",
     "type": "Micromodule",
+    "documentation": "https://kb.shelly.cloud/knowledge-base/wave-2pm",
     "comlink": "",
     "remark": "",
     "versions": {
         "2": [
-            "132"
+            "51"
         ]
     },
     "properties": {
-        "Switch": {},
-        "Power": {},
+        "Switch": {"multi": [
+            1,
+            2
+        ],"replace": {"#endpoint#": "multiKey"}},
+        "Power": {"multi": [
+            1,
+            2
+        ],"replace": {"#endpoint#": "multiKey"}},
         "Energy": {},
         "Notification|mains":{"type":"mains"},
         "Notification|over-current":{"type":"over-current"},

@@ -1,0 +1,29 @@
+{
+    "name": "Wave shutter",
+    "type": "Volets",
+    "documentation": "https://kb.shelly.cloud/knowledge-base/wave-shutter",
+    "comlink": "",
+    "remark": "",
+    "versions": {
+        "3": [
+            "83"
+        ]
+    },
+    "properties": {
+            "default": {
+                "Shutter": {},
+                "Power": {"type": "multilevel"},
+                "Energy": {}
+            },
+            "<=22.22": {
+                "Shutter": {
+                    "type": "inverted"
+                },
+                "Power": {"type": "multilevel"},
+                "Energy": {}
+            },
+        "Notification|mains":{"type":"mains"},
+        "Notification|over-current":{"type":"over-current"},
+        "Notification|heat-sensort":{"type":"heat-sensor"}
+    }
+}

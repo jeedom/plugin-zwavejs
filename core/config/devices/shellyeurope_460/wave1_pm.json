@@ -1,0 +1,20 @@
+{
+    "name": "Wave 1 PM",
+    "type": "Micromodule",
+    "documentation": "https://kb.shelly.cloud/knowledge-base/wave-1pm",
+    "comlink": "",
+    "remark": "",
+    "versions": {
+        "2": [
+            "84"
+        ]
+    },
+    "properties": {
+        "Switch": {},
+        "Power": {},
+        "Energy": {},
+        "Notification|mains":{"type":"mains"},
+        "Notification|over-current":{"type":"over-current"},
+        "Notification|heat-sensort":{"type":"heat-sensor"}
+    }
+}
