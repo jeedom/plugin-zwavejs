@@ -13,8 +13,8 @@
         ]
     },
     "properties": {
-        "Opening": {},
-        "Tilt": {},
+        "Opening": {"type":"notification-simple"},
+        "Tilt": {"type":"notification-door"},
         "Tamper": {},
         "CentralScene": {
             "multi": [

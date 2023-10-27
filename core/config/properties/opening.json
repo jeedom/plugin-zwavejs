@@ -79,7 +79,7 @@
 			"configuration": {
 				"class": 113,
 				"endpoint": "#endpoint#",
-				"property": "Access Control-Door state (simple)",
+				"property": "Access Control-Door state simple",
 				"calculValueOffset": "#value#==22"
 			},
 			"subtype": "binary",

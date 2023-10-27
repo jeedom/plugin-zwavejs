@@ -16,5 +16,30 @@
 				"invertBinary": "1"
 			}
 		}
+	],
+"notification-door": 
+	[
+		{
+			"name": "Tilt",
+			"type": "info",
+			"isVisible": 1,
+			"isHistorized": 1,
+			"configuration": {
+				"class": 113,
+				"endpoint": "#endpoint#",
+				"property": "Access Control-Door state",
+				"calculValueOffset": "#value#==5633"
+			},
+			"subtype": "binary",
+			"display": {
+				"invertBinary": "1",
+				"generic_type": "OPENING"
+			},
+			"template": {
+				"dashboard": "timeDoor",
+				"mobile": "timeDoor"
+			}
+		}
 	]
+}
 }
