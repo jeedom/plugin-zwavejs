@@ -17,7 +17,7 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 37,
-                "endpoint": 1,
+                "endpoint": 0,
                 "property": "targetValue",
                 "value": "true"
             },
@@ -38,7 +38,7 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 37,
-                "endpoint": 1,
+                "endpoint": 0,
                 "property": "targetValue",
                 "value": "false"
             },
@@ -59,7 +59,7 @@
             "isHistorized": 0,
             "configuration": {
                 "class": 37,
-                "endpoint": 1,
+                "endpoint": 0,
                 "property": "currentValue"
             },
             "subtype": "binary",
