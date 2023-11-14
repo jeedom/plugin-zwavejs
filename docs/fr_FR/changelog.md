@@ -4,6 +4,10 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
+# 14/11/2023
+
+- Retour à la version 8.26.0 de zwavejs
+
 # 27/10/2023
 
 **Ajouts de Configurations**
