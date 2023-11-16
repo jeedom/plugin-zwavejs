@@ -1,0 +1,32 @@
+{
+    "name": "Double Relay",
+    "ref": "ZEN52",
+    "manufacturer": "Zooz",
+    "type": "Relais",
+    "remark": "",
+    "versions": {
+        "260": [
+            "514"
+        ]
+    },
+    "properties": { 
+        "Switch": {
+            "multi": [
+                1,
+                2
+            ],
+            "replace": {
+                "#endpoint#": "multiKey"
+            }
+        },
+		"CentralScene": {
+            "multi": [
+                1,
+                2
+            ],
+            "replace": {
+                "#centralscene#": "multiKey"
+            }
+        }
+    }
+}
