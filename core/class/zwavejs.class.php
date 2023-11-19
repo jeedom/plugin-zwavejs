@@ -926,7 +926,7 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function namingAction($_nodeId) {
-		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . __('Envoi des noms et locations pour le nœud', __FILE__) . ' ' . $_nodeId);
+		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . __('Envoie des noms et locations pour le nœud', __FILE__) . ' ' . $_nodeId);
 		$allEqLogics = array();
 		if ($_nodeId == 'all') {
 			$allEqLogics = self::byType(__CLASS__);
@@ -1422,9 +1422,9 @@ class zwavejs extends eqLogic {
 					}
 				}
 				if ($numberPoll == 0) {
-					$polling = '<span title="Nombre de pollings actifs 0" style="font-size : 1.5em;"><i class="fas fa-check-circle icon_green" aria-hidden="true"></i></span>';
+					$polling = '<span title="Nombre de polling actif 0" style="font-size : 1.5em;"><i class="fas fa-check-circle icon_green" aria-hidden="true"></i></span>';
 				} else {
-					$polling = '<span title="Nombre de pollings actifs" class="label label-warning" style="font-size : 1em;">' . $numberPoll . '</span>';
+					$polling = '<span title="Nombre de polling actif" class="label label-warning" style="font-size : 1em;">' . $numberPoll . '</span>';
 				}
 				$healthPage .= '<td>' . $polling . '</td>';
 				
@@ -1436,9 +1436,9 @@ class zwavejs extends eqLogic {
 					}
 				}
 				if ($numberRefresh == 0) {
-					$refresh = '<span title="Nombre de refreshs actifs 0" style="font-size : 1.5em;"><i class="fas fa-check-circle icon_green" aria-hidden="true"></i></span>';
+					$refresh = '<span title="Nombre de refresh actif 0" style="font-size : 1.5em;"><i class="fas fa-check-circle icon_green" aria-hidden="true"></i></span>';
 				} else {
-					$refresh = '<span title="Nombre de refreshs actifs" class="label label-warning" style="font-size : 1em;">' . $numberRefresh . '</span>';
+					$refresh = '<span title="Nombre de refresh actif" class="label label-warning" style="font-size : 1em;">' . $numberRefresh . '</span>';
 				}
 				$healthPage .= '<td>' . $refresh . '</td>';
 
@@ -1486,9 +1486,9 @@ class zwavejs extends eqLogic {
 							$action = '<a href="/' . $eqLogic->getLinkToConfiguration() . '">' . __('Equipement', __FILE__) . '</a>';
 							if (config::byKey('notifyMissWakeup', __CLASS__, 1)==1){
 								if (version_compare(jeedom::version(),'4.4.0','>=')){
-									message::add('zwavejs',"L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId(). ", ne s'est pas reveillé au moins 4 fois. Il a peut-être un problème (batterie ou autres).", $action,'Wakeup-'.$eqLogic->getLogicalId(),true,'alertingReturnBack');
+									message::add('zwavejs',"L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId(). ", ne s'est pas reveillé au moins 4 fois. Il a peut être un problème (batterie ou autres).", $action,'Wakeup-'.$eqLogic->getLogicalId(),true,'alertingReturnBack');
 								} else {
-									message::add('zwavejs',"L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId(). ", ne s'est pas reveillé au moins 4 fois. Il a peut-être un problème (batterie ou autres).", $action,'Wakeup-'.$eqLogic->getLogicalId(),true);
+									message::add('zwavejs',"L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId(). ", ne s'est pas reveillé au moins 4 fois. Il a peut être un problème (batterie ou autres).", $action,'Wakeup-'.$eqLogic->getLogicalId(),true);
 								}
 							}
 							$eqLogic->setConfiguration('missedWakeup',true);
