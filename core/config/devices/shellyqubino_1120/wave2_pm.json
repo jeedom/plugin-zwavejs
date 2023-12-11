@@ -1,0 +1,19 @@
+{
+    "name": "Wave 2 PM",
+    "type": "Micromodule",
+    "comlink": "",
+    "remark": "",
+    "versions": {
+        "2": [
+            "129"
+        ]
+    },
+    "properties": {
+		"Switch": {"multi": [1,2],"replace": {"#endpoint#": "multiKey"}},
+        "Power": {"multi": [1,2],"replace": {"#endpoint#": "multiKey"}},
+        "Energy": {"multi": [1,2],"replace": {"#endpoint#": "multiKey"}},
+        "Notification|Heat":{"type":"heat-sensor","multi": [1,2],"replace": {"#endpoint#": "multiKey"}},
+        "Notification|over-current":{"type":"over-current","multi": [1,2],"replace": {"#endpoint#": "multiKey"}},
+        "Notification|mains":{"type":"mains","multi": [1,2],"replace": {"#endpoint#": "multiKey"}}
+    }
+}
