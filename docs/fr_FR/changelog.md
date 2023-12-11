@@ -27,6 +27,7 @@
 - Modification de la configuration *MCOhome Mh8FC-4* pour utiliser les propriétés
 - Modification de la configuration *Qubino ZMNKID - Flush OnOff Thermostat 2* pour utiliser les propriétés
 - Modification de la configuration *Widom Meta Wired Motor* pour utiliser la propriété Windows Covering
+- Modification de la configuration *Wenzhou TZ78* utilsiation du endpoint 0 en lieu et place du endpoint 1 (conformément à la remonté des utilisateurs)
 - Modification de l'image *MCOhome Mh8FC* (détourage)
 - Modification de l'image *MCOhome Mh8FC-4* (détourage)
 

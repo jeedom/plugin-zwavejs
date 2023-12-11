@@ -10,7 +10,7 @@
         ]
     },
     "properties": {
-        "Switch": {"replace": {"#endpoint#": 1}},
+        "Switch": {},
         "Scene": {}
     }
 }
