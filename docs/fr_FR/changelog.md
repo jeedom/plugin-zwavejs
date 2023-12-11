@@ -24,6 +24,7 @@
 
 - Modification de la configuration *MCOhome Mh8FC* pour utiliser les propriétés
 - Modification de la configuration *MCOhome Mh8FC-4* pour utiliser les propriétés
+- Modification de la configuration *Qubino ZMNKID - Flush OnOff Thermostat 2* pour utiliser les propriétés
 - Modification de l'image *MCOhome Mh8FC* (détourage)
 - Modification de l'image *MCOhome Mh8FC-4* (détourage)
 
