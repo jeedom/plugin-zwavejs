@@ -7,6 +7,6 @@
         ]
     },
     "properties": {
-        "Shutter": {"type":"downup"}
+        "Windowscovering": {}
     }
 }
