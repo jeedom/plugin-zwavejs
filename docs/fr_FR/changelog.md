@@ -20,6 +20,12 @@
 - Ajout de la configuration *Shelly Qubino Wave Shutter* (propriétés : Shutter, Power, Energy, Notification Mains, Notification Over-Current, Notification Heat-Sensor)
 - Ajout de la configuration *Shelly Qubino Wave 2PM* (propriétés : Switch, Power, Energy, Notification Mains, Notification Over-Current, Notification Heat-Sensor)
 
+**Modifications de Configurations**
+
+- Modification de la configuration *MCOhome Mh8FC* pour utiliser les propriétés
+- Modification de la configuration *MCOhome Mh8FC-4* pour utiliser les propriétés
+- Modification de l'image *MCOhome Mh8FC* (détourage)
+- Modification de l'image *MCOhome Mh8FC-4* (détourage)
 
 # 27/10/2023
 
