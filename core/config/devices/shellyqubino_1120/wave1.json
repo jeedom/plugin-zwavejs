@@ -1,0 +1,17 @@
+{
+    "name": "Wave 1",
+    "type": "Micromodule",
+    "comlink": "",
+    "remark": "",
+    "versions": {
+        "2": [
+            "131"
+        ]
+    },
+    "properties": {
+        "Switch": {},
+        "Notification|mains":{"type":"mains"},
+        "Notification|over-current":{"type":"over-current"},
+        "Notification|heat-sensort":{"type":"heat-sensor"}
+    }
+}

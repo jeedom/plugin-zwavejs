@@ -19,6 +19,7 @@
 - Ajout de la configuration *Shelly Qubino Wave 1* (propriétés : Switch, Power, Energy, Notification Mains, Notification Over-Current, Notification Heat-Sensor)
 - Ajout de la configuration *Shelly Qubino Wave Shutter* (propriétés : Shutter, Power, Energy, Notification Mains, Notification Over-Current, Notification Heat-Sensor)
 - Ajout de la configuration *Shelly Qubino Wave 2PM* (propriétés : Switch, Power, Energy, Notification Mains, Notification Over-Current, Notification Heat-Sensor)
+- Ajout de la configuration *Shelly Qubino Wave 1* (propriétés : Switch, Notification Mains, Notification Over-Current, Notification Heat-Sensor)  *doute s'il faut rajouter Power et Energy (faire un ticket si le device est censé remonter consommation mais je ne pense pas)*
 - Ajout d'une propriété *WindowsCovering*
 
 **Modifications de Configurations**
