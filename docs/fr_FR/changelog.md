@@ -24,6 +24,7 @@
 
 **Modifications de Configurations**
 
+- Modification de la configuration *Benext Keypad* pour utiliser les propriétés (copie du Zipato mais en version benext)
 - Modification de la configuration *MCOhome Mh8FC* pour utiliser les propriétés
 - Modification de la configuration *MCOhome Mh8FC-4* pour utiliser les propriétés
 - Modification de la configuration *Qubino ZMNKID - Flush OnOff Thermostat 2* pour utiliser les propriétés
