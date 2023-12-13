@@ -161,7 +161,11 @@ class zwavejs extends eqLogic {
 		$settings['zwave']['logEnabled'] = true;
 		$settings['zwave']['logToFile'] = false;
 		$settings['zwave']['serverEnabled'] = false;
-		$settings['zwave']['enableSoftReset'] = true;
+		if (config::byKey('softReset', __CLASS__,1) == 1){
+			$settings['zwave']['enableSoftReset'] = true;
+		} else {
+			$settings['zwave']['enableSoftReset'] = false;
+		}
 		$settings['zwave']['disclaimerVersion'] = 1;
 		$settings['zwave']['enableStatistics'] = false;
 		$settings['zwave']['deviceConfigPriorityDir'] = realpath(dirname(__FILE__) . '/../config/config');

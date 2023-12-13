@@ -85,6 +85,14 @@ if (!isConnect('admin')) {
 				</div>
 			</div>
 			<div class="form-group">
+				<label class="col-md-4 control-label">{{Soft Reset}}
+					<sup><i class="fas fa-question-circle tooltips" title="{{Ne pas toucher si vous ne savez pas ce qu'est cette option}}"></i></sup>
+				</label>
+				<div class="col-md-1">
+					<input type="checkbox" class="configKey" data-l1key="softReset" checked>
+				</div>
+			</div>
+			<div class="form-group">
 				<label class="col-md-4 control-label">{{Version ZwaveJS UI}}
 					<sup><i class="fas fa-question-circle tooltips" title="{{Version de la librairie ZwaveJS UI}}"></i></sup>
 				</label>
