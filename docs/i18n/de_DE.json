@@ -2,8 +2,11 @@
     "changelog.md": {
         "Changelog Z-Wave JS": "Änderungsprotokoll Z-Wave JS",
         "S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte": "Wenn es keine Informationen über die Aktualisierung gibt, bedeutet dies, dass es sich nur um die Aktualisierung von Dokumentation, Übersetzung oder Text handelt",
-        "11\/12\/2023": "12.11.2023",
+        "\/12\/2023": "\/12\/2023",
         "Améliorations": "Verbesserungen",
+        "Soft Reset": "Soft-Reset",
+        "Rajout d'une option permettant d'activer ou désactiver le": "Option zum Aktivieren oder Deaktivieren hinzugefügt",
+        "11\/12\/2023": "12.11.2023",
         "9.5.1": "9.5.1",
         "Passage à la version": "Zur Version wechseln",
         "de ZwaveJsUI (pour pouvoir choisir un port au format path nécessaire sur certaines VMs il faut mettre le core à jour": "von ZwaveJsUI (um einen Port im Pfadformat auswählen zu können, der auf bestimmten VMs erforderlich ist, müssen Sie den Kern aktualisieren",

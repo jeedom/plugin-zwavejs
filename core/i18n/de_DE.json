@@ -74,6 +74,8 @@
         "Cocher la case pour être notifié dans le centre de message Jeedom des noeuds morts et du retour à l'état Alive": "Aktivieren Sie das Kontrollkästchen, um im Jeedom-Nachrichtencenter über tote Knoten und die Rückkehr in den aktiven Zustand benachrichtigt zu werden",
         "Alertes de réveils manqués": "Verpasste Weckrufe",
         "Cocher la case pour être notifié dans le centre de message Jeedom des réveils manqués et du retour à la normal": "Aktivieren Sie das Kontrollkästchen, um im Jeedom-Nachrichtencenter über verpasste Weckrufe benachrichtigt zu werden und zum Normalzustand zurückzukehren",
+        "Soft Reset": "Soft-Reset",
+        "Ne pas toucher si vous ne savez pas ce qu'est cette option": "Berühren Sie sie nicht, wenn Sie diese Option nicht kennen",
         "Version ZwaveJS UI": "ZwaveJs UI-Version",
         "Version de la librairie ZwaveJS UI": "ZwaveJs UI-Bibliotheksversion",
         "Votre version de ZwaveJS UI n'est pas celle recommandée par le plugin. Vous utilisez actuellement la version ": "Ihre Version der ZwaveJS-Benutzeroberfläche ist nicht die vom Plugin empfohlene. Sie verwenden derzeit die Version",
