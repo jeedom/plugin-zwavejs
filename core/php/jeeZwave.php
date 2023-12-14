@@ -58,7 +58,7 @@ if (isset($results['controller'])) {
 			event::add('jeedom::alert', array(
 				'level' => 'warning',
 				'page' => 'zwavejs',
-				'message' => __('Un périphérique Z-Wave qui ne fait pas parti du réseau est en cours d\'exclusion.', __FILE__),
+				'message' => __('Un périphérique Z-Wave qui ne fait pas partie du réseau est en cours d\'exclusion.', __FILE__),
 			));
 		} else {
 			event::add('jeedom::alert', array(
