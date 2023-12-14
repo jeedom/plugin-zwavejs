@@ -6,7 +6,7 @@
     "nodejs" : {}
   },
   "npm": {
-    "yarn": {}
+    "yarn": {"reinstall" : true}
   },
   "pre-install" : {
     "script" : "plugins/zwavejs/resources/pre_install.sh"
