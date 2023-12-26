@@ -1,0 +1,46 @@
+{
+    "name": "Thermostat Z-TRM6",
+    "ref": "4512666",
+    "manufacturer": "Heatit",
+    "type": "Thermostat",
+    "reset": "",
+    "pairing": "Appuyer rapidement 3 fois sur le bouton d'inclusion situé à l'arrière du thermostat",
+    "remark": "Maintenir appuyé le bouton d'inclusion pendant 20 secondes",
+    "versions": {
+        "48": [
+            "12289"
+        ]
+    },
+    "properties": {
+        "Temperature": {"replace": {"#endpoint#": 2}},
+        "Thermostatmode": {},
+        "Thermostatoperatingstate": {},
+        "Thermostatmodeaction": {
+            "multi": [
+                "Off","Chaud","Froid","Energy Heat"
+            ],
+            "multiValue": {
+                "Off": 0,
+                "Chaud": 1,
+                "Froid": 2,
+                "Energy Heat": 11
+            }
+        },
+        "Thermostatsetpoint": {
+            "multi": [
+                "Chaud",
+                "Froid",
+                "Energy Heat"
+            ],
+            "multiProperty": {
+                "Chaud": 1,
+                "Froid": 2,
+                "Energy Heat": 11
+            }
+        },
+        "Power":{"replace": {"#endpoint#": 1}},
+        "Energy":{"replace": {"#endpoint#": 1}},
+        "Notification-overload":{"type":"over-load"},
+        "Notification-heatsensor":{"type":"heat-sensor"}
+    }
+}
