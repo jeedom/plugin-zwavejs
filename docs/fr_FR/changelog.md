@@ -14,7 +14,7 @@
 **Ajouts de Configurations**
 
 - Ajout de la configuration *HeatIt Z-TRM6* (propriétés : Temperature, ThermostatMode, ThermostatOperatingState, ThermostatModeAction, ThermostatSetpoint, Notification Heat-Sensor, Notification Over-Load)
-
+- Ajout de la configuration *Sunricher Remote Control 12 Button* (propriétés : CentralScene x12, Battery)
 
 # 11/12/2023
 
