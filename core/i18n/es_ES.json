@@ -530,7 +530,7 @@
     },
     "plugins\/zwavejs\/core\/php\/jeeZwave.php": {
         "Vous n\\'êtes pas autorisé à effectuer cette action": "No está autorizado para realizar esta acción",
-        "Un périphérique Z-Wave qui ne fait pas parti du réseau est en cours d\\'exclusion.": "Se excluye un dispositivo Z-Wave que no forma parte de la red",
+        "Un périphérique Z-Wave qui ne fait pas partie du réseau est en cours d\\'exclusion.": "Se excluye un dispositivo Z-Wave que no forma parte de la red",
         "Un périphérique Z-Wave est en cours d\\'exclusion.": "Se está excluyendo un dispositivo Z-Wave",
         "Début de l\\'intégration du nouveau module Z-Wave détecté. Pause de": "Detectado inicio de la integración del nuevo módulo Z-Wave. romper con",
         "pour synchronisation avec le module.": "para la sincronización con el módulo",
