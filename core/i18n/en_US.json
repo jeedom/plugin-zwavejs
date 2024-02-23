@@ -71,7 +71,7 @@
         "Suppression des périphériques exclus": "Deleting excluded devices",
         "Cocher la case pour supprimer automatiquement les équipements Jeedom correspondant à des périphériques exclus du contrôleur": "Check the box to automatically delete Jeedom equipment corresponding to devices excluded from the controller",
         "Alertes de noeuds morts": "Dead node alerts",
-        "Cocher la case pour être notifié dans le centre de message Jeedom des noeuds morts et du retour à l'état Alive": "Check the box to be notified in the Jeedom message center of dead nodes and the return to the Alive state",
+        "Cocher la case pour être notifié dans le centre de message Jeedom des noeuds morts et du retour à l'état Alive": "Tick the checkbox to be notified in the Jeedom message center of dead nodes and the return to the Alive state",
         "Alertes de réveils manqués": "Missed wake-up alerts",
         "Cocher la case pour être notifié dans le centre de message Jeedom des réveils manqués et du retour à la normal": "Check the box to be notified in the Jeedom message center of missed awakenings and return to normal",
         "Soft Reset": "Soft Reset",
@@ -553,10 +553,10 @@
         "Aucun fichier trouvé.": "No files found",
         "Répertoire de téléversement non trouvé : ": "Upload directory not found:",
         "Aucun fichier trouvé. Vérifiez le paramètre PHP (post size limit)": "No files found. Check the PHP setting (post size limit)",
-        "Le fichier est trop gros (maximum 500ko)": "The file is too big (maximum 500kB)",
+        "Le fichier est trop gros (maximum 500ko)": "The file is too large (maximum 500kB)",
         "Impossible de déplacer le fichier temporaire": "Unable to move temporary file",
         "Impossible de téléverser le fichier (limite du serveur web ?)": "Unable to upload file (webserver limit?)",
-        "Le fichier est trop gros (maximum 2mo)": "The file is too big (maximum 2mo)",
+        "Le fichier est trop gros (maximum 2mo)": "The file is too large (maximum 2mo)",
         "Aucune méthode correspondante": "No matching method"
     },
     "plugins\/zwavejs\/core\/class\/zwavejs.class.php": {
