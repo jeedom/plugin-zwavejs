@@ -240,6 +240,18 @@ class zwavejs extends eqLogic {
 		return $return;
 	}
 
+	public static function dependancy_info() {
+		$return = array();
+		$return['progress_file'] = jeedom::getTmpFolder(__CLASS__) . '/dependance';
+		$return['state'] = 'ok';
+		if (config::byKey('lastDependancyInstallTime', __CLASS__) == '') {
+			$return['state'] = 'nok';
+		} else if (!file_exists(__DIR__ . '/../../resources/zwave-js-ui/node_modules')) {
+			$return['state'] = 'nok';
+		}
+		return $return;
+	}
+
 	public static function deamon_info() {
 		$return = array();
 		$return['log'] = __CLASS__;
