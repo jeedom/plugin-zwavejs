@@ -123,6 +123,10 @@ class zwavejs extends eqLogic {
 	}
 	
 	public static function cronHourly() {
+		$deamon_info = self::deamon_info();
+		if ($deamon_info['state'] == 'ok') {
+			return;
+		}
 		self::getNodes('health');
 	}
 
