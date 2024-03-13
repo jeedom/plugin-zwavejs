@@ -1045,7 +1045,10 @@
         "Il est possible que vous ne puissiez pas ajouter vos captures d'écran à la création du ticket, pas d'inquiétude vous serez en mesure de les transmettre dans un second temps en réponse à votre demande": "You may not be able to add your screenshots when creating the ticket, don't worry you will be able to send them later in response to your request",
         "En actionnant physiquement le module, vous serez en mesure d'identifier la ligne dont les valeurs changent en conséquence dans la fenêtre des Valeurs du nœud et dont la commande ne serait pas créée ou fonctionnelle": "By physically operating the module, you will be able to identify the line whose values change accordingly in the Node Values window and whose command would not be created or functional",
         "En bout de ligne se trouve un bouton avec une icône en forme de stylo permettant de créer automatiquement la commande correspondante vous octroyant par la même la possibilité de pouvoir utiliser votre module malgré une configuration absente ou erronée": "At the end of the line is a button with a pen-shaped icon allowing you to automatically create the corresponding command, thereby giving you the possibility of being able to use your module despite an absent or erroneous configuration",
-        "Remplacer un module défaillant": "Replace a faulty module",
+        "Est-il possible d'utiliser Z-Wave JS UI en mode déporté": "Is it possible to use Z-Wave JS UI in remote mode",
+        "Le cahier de route de l'équipe Jeedom concernant le plugin Z-wave JS prévoit effectivement l'ajout de cette possibilité dans les prochains mois sans notion d'urgence car il ne s'agit pas d'une fonctionnalité primordiale au bon fonctionnement du plugin": "The Jeedom team's roadmap concerning the Z-wave JS plugin actually provides for the addition of this possibility in the coming months without any sense of urgency because it is not an essential functionality for the proper functioning of the plugin",
+        "Est-il possible d'activer le serveur websocket Z-Wave JS UI": "Is it possible to enable Z-Wave JS UI websocket server",
+        "Pour le bon fonctionnement du plugin et de Jeedom en général il n'est pas possible d'activer le serveur websocket Z-Wave JS UI toutefois le mode déporté à venir permettra les mêmes cas d'usage": "For the proper functioning of the plugin and Jeedom in general, it is not possible to activate the Z-Wave JS UI websocket server, however the upcoming remote mode will allow the same use cases",
         " IMPORTANT.": " IMPORTANT.",
         " IMPORTANT?": " IMPORTANT?",
         "IMPORTANT ": "IMPORTANT ",
@@ -1164,6 +1167,13 @@
         " Compatibilité]": " Compatibility]",
         "[Compatibilité]": "[Compatibility]",
         "*Compatibilité*": "*Compatibility*",
-        " Compatibilité*": " Compatibility*"
+        " Compatibilité*": " Compatibility*",
+        " FAQ.": " FAQs.",
+        " FAQ?": " FAQs?",
+        "FAQ ": "FAQs ",
+        " FAQ]": " FAQs]",
+        "[FAQ]": "[FAQs]",
+        "*FAQ*": "*FAQs*",
+        " FAQ*": " FAQs*"
     }
 }

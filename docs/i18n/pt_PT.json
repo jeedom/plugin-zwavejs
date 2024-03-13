@@ -1045,7 +1045,10 @@
         "Il est possible que vous ne puissiez pas ajouter vos captures d'écran à la création du ticket, pas d'inquiétude vous serez en mesure de les transmettre dans un second temps en réponse à votre demande": "Você pode não conseguir adicionar suas capturas de tela ao criar o ticket, não se preocupe, você poderá enviá-las mais tarde em resposta à sua solicitação",
         "En actionnant physiquement le module, vous serez en mesure d'identifier la ligne dont les valeurs changent en conséquence dans la fenêtre des Valeurs du nœud et dont la commande ne serait pas créée ou fonctionnelle": "Ao operar fisicamente o módulo, você poderá identificar a linha cujos valores mudam de acordo na janela Node Values e cujo comando não seria criado ou funcional",
         "En bout de ligne se trouve un bouton avec une icône en forme de stylo permettant de créer automatiquement la commande correspondante vous octroyant par la même la possibilité de pouvoir utiliser votre module malgré une configuration absente ou erronée": "No final da linha encontra-se um botão com um ícone em forma de caneta que lhe permite criar automaticamente o comando correspondente, dando-lhe assim a possibilidade de poder utilizar o seu módulo apesar de uma configuração ausente ou errada",
-        "Remplacer un module défaillant": "Substitua um módulo defeituoso",
+        "Est-il possible d'utiliser Z-Wave JS UI en mode déporté": "É possível usar Z-Wave JS UI em modo remoto",
+        "Le cahier de route de l'équipe Jeedom concernant le plugin Z-wave JS prévoit effectivement l'ajout de cette possibilité dans les prochains mois sans notion d'urgence car il ne s'agit pas d'une fonctionnalité primordiale au bon fonctionnement du plugin": "O roteiro da equipe Jeedom em relação ao plugin Z-wave JS na verdade prevê a adição desta possibilidade nos próximos meses sem qualquer senso de urgência porque não é uma funcionalidade essencial para o bom funcionamento do plugin",
+        "Est-il possible d'activer le serveur websocket Z-Wave JS UI": "É possível ativar o servidor websocket Z-Wave JS UI",
+        "Pour le bon fonctionnement du plugin et de Jeedom en général il n'est pas possible d'activer le serveur websocket Z-Wave JS UI toutefois le mode déporté à venir permettra les mêmes cas d'usage": "Para o bom funcionamento do plugin e do Jeedom em geral, não é possível ativar o servidor websocket Z-Wave JS UI, porém o próximo modo remoto permitirá os mesmos casos de uso",
         " IMPORTANT.": " IMPORTANTE.",
         " IMPORTANT?": " IMPORTANTE?",
         "IMPORTANT ": "IMPORTANTE ",
@@ -1164,6 +1167,13 @@
         " Compatibilité]": " Compatibilidade]",
         "[Compatibilité]": "[Compatibilidade]",
         "*Compatibilité*": "*Compatibilidade*",
-        " Compatibilité*": " Compatibilidade*"
+        " Compatibilité*": " Compatibilidade*",
+        " FAQ.": " Perguntas frequentes.",
+        " FAQ?": " Perguntas frequentes?",
+        "FAQ ": "Perguntas frequentes ",
+        " FAQ]": " Perguntas frequentes]",
+        "[FAQ]": "[Perguntas frequentes]",
+        "*FAQ*": "*Perguntas frequentes*",
+        " FAQ*": " Perguntas frequentes*"
     }
 }
