@@ -24,10 +24,14 @@ sendVarToJS('eqType', $plugin->getId());
 $eqLogics = eqLogic::byType($plugin->getId());
 $controllerStatus = config::byKey('controllerStatus', 'zwavejs', 'none');
 $driverStatus = config::byKey('driverStatus', 'zwavejs', 0);
+
+// mqtt2::publish(config::byKey('prefix','zwavejs', 'zwave') . '/driver/status/get');
+
 if (!zwavejs::isRunning()) {
-	echo '<div id="div_driverStatus"><div class="alert alert-danger" role="alert"> {{Le démon Z-Wave n\'est pas démarré.}}</div></div>';
+	echo "<div id='div_driverStatus'><div class='alert alert-danger' role='alert'> {{Le démon Z-Wave n&apos;est pas démarré.}}</div></div>";
 } else if ($driverStatus != 1) {
-	echo '<div id="div_driverStatus"><div class="alert alert-warning" role="alert"> {{Le driver Z-Wave n\'est pas initialisé, veuillez patienter. Si le message reste trop longtemps, veuillez vérifier la configuration du démon}}</div></div>';
+	echo "<div id='div_driverStatus'><div class='alert alert-warning' role='alert'> {{Le driver Z-Wave n&apos;est pas initialisé, veuillez patienter. 
+	Si le message reste trop longtemps, veuillez vérifier la configuration du démon}}</div></div>";
 } else {
 	echo '<div id="div_driverStatus"></div>';
 }
@@ -277,20 +281,19 @@ sendVarTojs('eqLogic_human_name', $tags);
 				</div>
 				<br><br>
 				<div class="table-responsive">
-					<table id="table_cmd" class="table table-bordered table-condensed">
+					<table id="table_cmd" class="table table-bordered table-condensed tablesorter">
 						<thead>
 							<tr>
-								<th class="hidden-xs" style="min-width:50px;"> ID</th>
-								<th style="min-width:150px;width:250px;">{{Nom}}</th>
-								<th>{{Type}}</th>
-								<th>{{Classe}}</th>
-								<th>{{Endpoint}}</th>
-								<th>{{Propriété}}</th>
-								<th style="min-width:130px;">{{Paramètres}}</th>
-								<th>{{Etat}}</th>
-								<th style="min-width:260px;width:400px;">{{Options}}</th>
-								<th style="min-width:80px;">{{Actions}}</th>
-								<th></th>
+								<th class="hidden-xs" style="min-width:50px; max-width:50px;">{{Id}}</th>
+								<th data-sortable="true" data-sorter="inputs" style="min-width:150px;width:250px;">{{Nom}}</th>
+								<th data-sorter="select-text">{{Type}}</th>
+								<th data-sortable="true" data-sorter="inputs">{{Classe}}</th>
+								<th data-sortable="true" data-sorter="inputs">{{Endpoint}}</th>
+								<th data-sortable="true" data-sorter="inputs" style="min-width:260px;width:400px;">{{Propriété}}</th>
+								<th data-sorter="false" data-filter="false" style="min-width:130px;">{{Paramètres}}</th>
+								<th data-sorter="false" data-filter="false">{{Etat}}</th>
+								<th data-sorter="false" data-filter="false" style="min-width:260px;width:400px;">{{Options}}</th>
+								<th data-sorter="false" data-filter="false" style="min-width:80px;">{{Actions}}</th>
 							</tr>
 						</thead>
 						<tbody>

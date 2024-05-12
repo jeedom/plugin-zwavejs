@@ -15,17 +15,18 @@
  * You should have received a copy of the GNU General Public License
  * along with Plugin zwavejs for jeedom. If not, see <http://www.gnu.org/licenses/>.
  */
+require_once dirname(__FILE__) . '/../../../core/php/core.inc.php';
 
 function zwavejs_install() {
-
+config::save('zwavejsVersion', 'N/A', __CLASS__);
 }
 
 function zwavejs_update() {
-
+config::save('zwavejsVersion', 'N/A', __CLASS__);
 }
 
 function zwavejs_remove() {
-
+config::save('zwavejsVersion', 'N/A', __CLASS__);
 }
 
 ?>

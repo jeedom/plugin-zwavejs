@@ -1,4 +1,5 @@
 nbproject/
+data/
 test.php
 core/config/common.config.php
 plugins

@@ -1,0 +1,31 @@
+#!/bin/bash
+#set -x
+image='zwavejs/zwave-js-ui'
+store='/root/store/zwavejs'
+device='/dev/serial/by-id/usb-0658_0200-if00'
+container_id=`sudo docker ps -a | grep -i $image|awk '{ print $1 }'`
+case $1 in
+        start)
+	echo 'starting image' $image
+	docker run -d --privileged --rm  --name zwave-js-ui \
+		-p 8091:8091 \
+		--device=$device:/dev/zwave \
+ 		-v $store:/usr/src/app/store \
+		$image ;;
+	stop)
+		[ "$container_id" == "" ] && echo $image 'not running' && exit 1;
+		echo 'removing container ' $container_id
+#        	sudo docker stop $container_id
+        	sudo docker rm -f $container_id ;;
+	status)
+		echo "image: " `sudo docker images |grep $image`
+		[ "$container_id" == "" ] && container_id='not running' ;
+		echo "container: " $container_id ;;
+        restart)
+                $0 stop
+                $0 start ;;
+        *)
+                echo "usage: $0 {start|stop|restart|status}"
+                exit 1 ;;
+esac
+
