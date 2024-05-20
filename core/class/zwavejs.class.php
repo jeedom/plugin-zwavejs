@@ -146,6 +146,8 @@ class zwavejs extends eqLogic {
 		self::isValidKey(config::byKey('s2key_access', __CLASS__, '')) ? true : config::save('s2key_access', self::generateRandomKey(), __CLASS__);
 		self::isValidKey(config::byKey('s2key_unauth', __CLASS__, '')) ? true : config::save('s2key_unauth', self::generateRandomKey(), __CLASS__);
 		self::isValidKey(config::byKey('s2key_auth', __CLASS__, '')) ? true : config::save('s2key_auth', self::generateRandomKey(), __CLASS__);
+		self::isValidKey(config::byKey('s2key_auth_long', __CLASS__, '')) ? true : config::save('s2key_auth_long', self::generateRandomKey(), __CLASS__);
+		self::isValidKey(config::byKey('s2key_access_long', __CLASS__, '')) ? true : config::save('s2key_access_long', self::generateRandomKey(), __CLASS__);
 		self::isValidKey(config::byKey('s0key', __CLASS__, '')) ? true : config::save('s0key', self::generateRandomKey(), __CLASS__);
 
 		$settings['mqtt']['name'] = 'Jeedom';
@@ -178,6 +180,10 @@ class zwavejs extends eqLogic {
 			'S0_Legacy' => config::byKey('s0key', __CLASS__),
 			'S2_Unauthenticated' => config::byKey('s2key_unauth', __CLASS__),
 			'S2_Authenticated' => config::byKey('s2key_auth', __CLASS__)
+		);
+		$settings['zwave']['securityKeysLongRange'] = array(
+			'S2_AccessControl' => config::byKey('s2key_access_long', __CLASS__),
+			'S2_Authenticated' => config::byKey('s2key_auth_long', __CLASS__)
 		);
 
 		$settings['gateway']['type'] = 0;

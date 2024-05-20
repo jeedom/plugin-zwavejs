@@ -1,0 +1,15 @@
+{
+    "name": "Neo Signal Repeater",
+    "comlink": "",
+    "remark": "",
+    "imglink": "",
+    "versions": {
+        "16": [
+            "1814"
+        ]
+    },
+    "properties": {
+        "Temperature": {},
+        "Humidity": {}
+    }
+}

@@ -161,6 +161,24 @@ if (!isConnect('admin')) {
 					</span>
 				</div>
 			</div>
+			<div class="form-group">
+				<label class="col-md-4 control-label">{{Clé de Sécurité S2 Authenticated Long Range}}</label>
+				<div class="input-group col-md-7">
+					<input class="configKey roundedLeft form-control" data-l1key="s2key_auth_long" placeholder="{{Clé de sécurité S2 Authenticated Long Range}}">
+					<span class="input-group-btn">
+						<a class="btn btn-default form-control randomKey roundedRight" data-key="s2key_auth_long"><i class="fas fa-sync-alt"></i></a>
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-4 control-label">{{Clé de Sécurité S2 Access Control Long Range}}</label>
+				<div class="input-group col-md-7">
+					<input class="configKey roundedLeft form-control" data-l1key="s2key_access_long" placeholder="{{Clé de Sécurité S2 Access Control Long Range}}">
+					<span class="input-group-btn">
+						<a class="btn btn-default form-control randomKey roundedRight" data-key="s2key_access_long"><i class="fas fa-sync-alt"></i></a>
+					</span>
+				</div>
+			</div>
 		</div>
 	</fieldset>
 </form>

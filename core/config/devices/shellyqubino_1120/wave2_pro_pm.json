@@ -1,0 +1,18 @@
+{
+    "name": "Wave Pro 2 PM",
+    "type": "Micromodule",
+    "comlink": "",
+    "remark": "",
+    "versions": {
+        "2": [
+            "141"
+        ]
+    },
+    "properties": {
+		"Switch": {"multi": [1,2],"replace": {"#endpoint#": "multiKey"}},
+        "Power": {"multi": [1,2],"replace": {"#endpoint#": "multiKey"}},
+        "Energy": {"multi": [1,2],"replace": {"#endpoint#": "multiKey"}},
+        "Notification|over-current":{"type":"over-current","multi": [1,2],"replace": {"#endpoint#": "multiKey"}},
+        "Notification|over-voltage":{"type":"over-voltage","multi": [1,2],"replace": {"#endpoint#": "multiKey"}}
+    }
+}
