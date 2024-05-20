@@ -91,6 +91,9 @@
         "Clé de sécurité S2 Access Control": "Clé de Sécurité S2 Access Control",
         "Clé de Sécurité S2 Unauthenticated": "Clé de Sécurité S2 Unauthenticated",
         "Clé de sécurité S2 Unauthenticated": "Clé de Sécurité S2 Unauthenticated",
+        "Clé de Sécurité S2 Authenticated Long Range": "Clé de Sécurité S2 Authenticated Long Range",
+        "Clé de sécurité S2 Authenticated Long Range": "Clé de sécurité S2 Authenticated Long Range",
+        "Clé de Sécurité S2 Access Control Long Range": "Clé de Sécurité S2 Access Control Long Range",
         "Êtes-vous sûr de vouloir réinitialiser la clé": "Êtes-vous sûr de vouloir réinitialiser la clé",
         "La prise en compte sera effective après sauvegarde et relance du démon.": "La prise en compte sera effective après sauvegarde et relance du démon"
     },

@@ -91,6 +91,9 @@
         "Clé de sécurité S2 Access Control": "Sicherheitsschlüssel für die S2-Zugriffskontrolle",
         "Clé de Sécurité S2 Unauthenticated": "Nicht authentifizierter S2-Sicherheitsschlüssel",
         "Clé de sécurité S2 Unauthenticated": "Nicht authentifizierter S2-Sicherheitsschlüssel",
+        "Clé de Sécurité S2 Authenticated Long Range": "S2-authentifizierter Sicherheitsschlüssel mit großer Reichweite",
+        "Clé de sécurité S2 Authenticated Long Range": "S2-authentifizierter Sicherheitsschlüssel mit großer Reichweite",
+        "Clé de Sécurité S2 Access Control Long Range": "S2-Zugangskontroll-Sicherheitsschlüssel mit großer Reichweite",
         "Êtes-vous sûr de vouloir réinitialiser la clé": "Möchten Sie den Schlüssel wirklich zurücksetzen?",
         "La prise en compte sera effective après sauvegarde et relance du démon.": "Die Berücksichtigung wird erst nach Speichern und Neustart des Daemons wirksam"
     },

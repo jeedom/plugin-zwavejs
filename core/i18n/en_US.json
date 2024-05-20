@@ -91,6 +91,9 @@
         "Clé de sécurité S2 Access Control": "S2 Access Control Security Key",
         "Clé de Sécurité S2 Unauthenticated": "Unauthenticated S2 Security Key",
         "Clé de sécurité S2 Unauthenticated": "Unauthenticated S2 Security Key",
+        "Clé de Sécurité S2 Authenticated Long Range": "S2 Authenticated Long Range Security Key",
+        "Clé de sécurité S2 Authenticated Long Range": "S2 Authenticated Long Range Security Key",
+        "Clé de Sécurité S2 Access Control Long Range": "S2 Access Control Long Range Security Key",
         "Êtes-vous sûr de vouloir réinitialiser la clé": "Are you sure you want to reset the key",
         "La prise en compte sera effective après sauvegarde et relance du démon.": "The taking into account will be effective after saving and restarting the daemon"
     },

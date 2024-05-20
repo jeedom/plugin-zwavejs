@@ -91,6 +91,9 @@
         "Clé de sécurité S2 Access Control": "Clave de seguridad de control de acceso S2",
         "Clé de Sécurité S2 Unauthenticated": "Clave de seguridad S2 no autenticada",
         "Clé de sécurité S2 Unauthenticated": "Clave de seguridad S2 no autenticada",
+        "Clé de Sécurité S2 Authenticated Long Range": "Clave de seguridad de largo alcance autenticada S2",
+        "Clé de sécurité S2 Authenticated Long Range": "Clave de seguridad de largo alcance autenticada S2",
+        "Clé de Sécurité S2 Access Control Long Range": "Llave de seguridad de largo alcance de control de acceso S2",
         "Êtes-vous sûr de vouloir réinitialiser la clé": "¿Está seguro de que desea restablecer la clave?",
         "La prise en compte sera effective après sauvegarde et relance du démon.": "La toma en cuenta será efectiva después de guardar y reiniciar el daemon"
     },
