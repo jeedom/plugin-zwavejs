@@ -267,10 +267,15 @@ class zwavejs extends eqLogic {
 			$return['state'] = 'ok';
 		}
 		$port = config::byKey('port', __CLASS__);
-		$port = jeedom::getUsbMapping($port);
-		if (@!file_exists($port)) {
-			$return['launchable'] = 'nok';
-			$return['launchable_message'] = __("Le port n'est pas configuré", __FILE__);
+		if ($port == 'none') {
+		      $return['launchable'] = 'nok';
+		      $return['launchable_message'] = __("Le port n'est pas configuré", __FILE__);
+		}else{
+			$port = jeedom::getUsbMapping($port);
+			if (is_array($port) || @!file_exists($port)) {
+				$return['launchable'] = 'nok';
+				$return['launchable_message'] = __("Le port n'est pas configuré", __FILE__);
+			}
 		}
 		if (!class_exists('mqtt2')) {
 			$return['launchable'] = 'nok';
