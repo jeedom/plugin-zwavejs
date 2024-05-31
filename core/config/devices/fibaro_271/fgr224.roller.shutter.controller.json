@@ -1,0 +1,25 @@
+{
+    "name": "FGR-224 Volet roulant",
+    "type": "Volets",
+    "versions": {
+        "772": [
+            "4096"
+        ]
+    },
+    "properties": {
+		"Shutter":{"type":"covering"},
+        "CentralScene": {
+            "multi": [
+                1,2
+            ],
+            "replace": {
+                "#centralscene#": "multiKey"
+            }
+        },
+        "Energy": {"replace": {
+                "#endpoint#": 1
+            }},
+        "Notification|hardware": {"type":"hardware","replace": {"#endpoint#": 1}},
+        "Notification|over-current": {"type":"over-current","replace": {"#endpoint#": 1}}
+    }
+}
