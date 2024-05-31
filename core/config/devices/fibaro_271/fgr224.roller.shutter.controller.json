@@ -17,9 +17,9 @@
             }
         },
         "Energy": {"replace": {
-                "#endpoint#": 1
+                "#endpoint#": 0
             }},
-        "Notification|hardware": {"type":"hardware","replace": {"#endpoint#": 1}},
-        "Notification|over-current": {"type":"over-current","replace": {"#endpoint#": 1}}
+        "Notification|hardware": {"type":"hardware","replace": {"#endpoint#": 0}},
+        "Notification|over-current": {"type":"over-current","replace": {"#endpoint#": 0}}
     }
 }
