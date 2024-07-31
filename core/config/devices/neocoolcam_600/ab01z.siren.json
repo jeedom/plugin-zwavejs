@@ -10,98 +10,169 @@
             "4232"
         ]
     },
+    "properties": {
+        "Switch": {"type": "sirenState"}
+    },
     "commands": [
         {
-            "name": "Sirene",
-            "type": "info",
-            "isVisible": 1,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 37,
-                "endpoint": 0,
-                "property": "currentValue"
-            },
-            "subtype": "binary",
-            "display": {
-                "invertBinary": 1,
-                "generic_type": "DONT"
-            },
-            "template": {
-                "dashboard": "alert",
-                "mobile": "alert"
-            },
-            "unite": ""
-        },
-        {
-            "name": "On",
+            "name": "Sirène",
             "type": "action",
-            "isVisible": 1,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 37,
-                "endpoint": 0,
-                "property": "targetValue",
-                "value": "true"
-            },
-            "value": "Sirene",
-            "subtype": "other",
-            "display": {
-                "generic_type": "DONT"
-            }
-        },
-        {
-            "name": "Off",
-            "type": "action",
-            "isVisible": 1,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 37,
-                "endpoint": 0,
-                "property": "targetValue",
-                "value": "false"
-            },
-            "value": "Sirene",
-            "subtype": "other",
-            "display": {
-                "generic_type": "DONT"
-            }
-        },
-        {
-            "name": "Indicateur sonore",
-            "type": "action",
-            "isVisible": 1,
-            "isHistorized": 0,
-            "configuration": {
-                "class": 135,
-                "value": "type=setvalue&value=#slider#",
-                "index": 0,
-                "instance": 1,
-                "minValue": 1,
-                "maxValue": 10
-            },
-            "value": "Level",
-            "subtype": "slider",
-            "display": {
-                "generic_type": "DONT"
-            }
-        },
-        {
-            "name": "Level",
-            "type": "info",
             "isVisible": 0,
             "isHistorized": 0,
             "configuration": {
-                "minValue": 1,
-                "maxValue": 10,
                 "class": 135,
                 "endpoint": 0,
-                "property": "value"
+                "property": "value",
+                "value": "1"
             },
-            "subtype": "numeric",
+            "subtype": "other",
             "display": {
-                "generic_type": "DONT"
+                "generic_type": "LIGHT_ON"
+            }
+        },
+        {
+            "name": "Evacuation",
+            "type": "action",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 135,
+                "endpoint": 0,
+                "property": "value",
+                "value": "2"
             },
-            "unite": ""
+            "subtype": "other",
+            "display": {
+                "generic_type": "LIGHT_ON"
+            }
+        },
+        {
+            "name": "Alerte",
+            "type": "action",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 135,
+                "endpoint": 0,
+                "property": "value",
+                "value": "3"
+            },
+            "subtype": "other",
+            "display": {
+                "generic_type": "LIGHT_ON"
+            }
+        },
+        {
+            "name": "Ding Dong",
+            "type": "action",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 135,
+                "endpoint": 0,
+                "property": "value",
+                "value": "4"
+            },
+            "subtype": "other",
+            "display": {
+                "generic_type": "LIGHT_ON"
+            }
+        },
+        {
+            "name": "Police",
+            "type": "action",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 135,
+                "endpoint": 0,
+                "property": "value",
+                "value": "5"
+            },
+            "subtype": "other",
+            "display": {
+                "generic_type": "LIGHT_ON"
+            }
+        },
+        {
+            "name": "Cloche",
+            "type": "action",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 135,
+                "endpoint": 0,
+                "property": "value",
+                "value": "6"
+            },
+            "subtype": "other",
+            "display": {
+                "generic_type": "LIGHT_ON"
+            }
+        },
+        {
+            "name": "Multi",
+            "type": "action",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 135,
+                "endpoint": 0,
+                "property": "value",
+                "value": "7"
+            },
+            "subtype": "other",
+            "display": {
+                "generic_type": "LIGHT_ON"
+            }
+        },
+        {
+            "name": "Mélodie",
+            "type": "action",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 135,
+                "endpoint": 0,
+                "property": "value",
+                "value": "8"
+            },
+            "subtype": "other",
+            "display": {
+                "generic_type": "LIGHT_ON"
+            }
+        },
+        {
+            "name": "Mélodie 2",
+            "type": "action",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 135,
+                "endpoint": 0,
+                "property": "value",
+                "value": "9"
+            },
+            "subtype": "other",
+            "display": {
+                "generic_type": "LIGHT_ON"
+            }
+        },
+        {
+            "name": "Mélodie 3",
+            "type": "action",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 135,
+                "endpoint": 0,
+                "property": "value",
+                "value": "10"
+            },
+            "subtype": "other",
+            "display": {
+                "generic_type": "LIGHT_ON"
+            }
         }
     ]
 }
