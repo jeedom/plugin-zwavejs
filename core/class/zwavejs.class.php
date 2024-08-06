@@ -28,6 +28,15 @@ class zwavejs extends eqLogic {
 
 	private function getValueLabels($_key, $_value) {
 		$labelArray = array(
+			"64-mode" => array(
+				"0" => __('Inactif', __FILE__),
+				"1" => __('En Chauffe', __FILE__),
+				"2" => __('En Refroidissement', __FILE__),
+				"3" => __('Auto', __FILE__),
+				"5" => __('Resume (on)', __FILE__),
+				"6" => __('Ventillation', __FILE__),
+				"8" => __('Asséchement', __FILE__)
+			),
 			"66-state" => array(
 				"0" => __('Inactif', __FILE__),
 				"1" => __('En Chauffe', __FILE__),
@@ -41,6 +50,12 @@ class zwavejs extends eqLogic {
 				"9" => __('Refroidissement 2nd', __FILE__),
 				"10" => __('Chauffe 2nd Aux', __FILE__),
 				"11" => __('Chauffe 3ème Aux', __FILE__)
+			),
+			"68-mode" => array(
+				"0" => __('Auto Bas', __FILE__),
+				"1" => __('Bas', __FILE__),
+				"3" => __('Haut', __FILE__),
+				"5" => __('Moyen', __FILE__)
 			),
 			"91-scene" => array(
 				"0" => __('Appui 1x', __FILE__),
