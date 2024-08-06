@@ -459,6 +459,8 @@
         "Min": "Mínimo",
         "Max": "Máx.",
         "Unité": "Unidade",
+        "Liste : valeur|texte (séparées par un point-virgule)": "Lista: valor|texto (separado por ponto e vírgula)",
+        "Liste : valeur|texte": "Lista: valor|texto",
         "Tester": "Teste",
         "Supprimer la règle": "Excluir regra"
     },
