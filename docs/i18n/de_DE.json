@@ -2,6 +2,9 @@
     "changelog.md": {
         "Changelog Z-Wave JS": "Änderungsprotokoll Z-Wave JS",
         "S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte": "Wenn es keine Informationen über die Aktualisierung gibt, bedeutet dies, dass es sich nur um die Aktualisierung von Dokumentation, Übersetzung oder Text handelt",
+        "27\/09\/2024": "27.09.2024",
+        "Changement des versions minimum, core 4": "Änderung der Mindestversionen, Core 4",
+        "4 et OS Debian 11 minimum": "4 und OS Debian 11 mindestens",
         "26\/09\/2024": "26.09.2024",
         "Améliorations": "Verbesserungen",
         "9.20.0": "9.20.0",
