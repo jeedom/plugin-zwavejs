@@ -311,8 +311,8 @@
     },
     "plugins\/zwavejs\/desktop\/php\/zwavejs.php": {
         "Accès non autorisé": "Accès non autorisé",
-        "Le démon Z-Wave n\\'est pas démarré.": "Le démon Z-Wave n\\'est pas démarré",
-        "Le driver Z-Wave n\\'est pas initialisé, veuillez patienter. Si le message reste trop longtemps, veuillez vérifier la configuration du démon": "Le driver Z-Wave n\\'est pas initialisé, veuillez patienter. Si le message reste trop longtemps, veuillez vérifier la configuration du démon",
+        "Le démon Z-Wave n’est pas démarré.": "Le démon Z-Wave n’est pas démarré",
+        "Le driver Z-Wave n’est pas initialisé, veuillez patienter. Si le message reste trop longtemps, veuillez vérifier la configuration du démon": "Le driver Z-Wave n’est pas initialisé, veuillez patienter. Si le message reste trop longtemps, veuillez vérifier la configuration du démon",
         "Une inclusion est en cours": "Une inclusion est en cours",
         "Une exclusion est en cours": "Une exclusion est en cours",
         "Gestion": "Gestion",
