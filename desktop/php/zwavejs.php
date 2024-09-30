@@ -25,9 +25,9 @@ $eqLogics = eqLogic::byType($plugin->getId());
 $controllerStatus = config::byKey('controllerStatus', 'zwavejs', 'none');
 $driverStatus = config::byKey('driverStatus', 'zwavejs', 0);
 if (!zwavejs::isRunning()) {
-	echo '<div id="div_driverStatus"><div class="alert alert-danger" role="alert"> {{Le démon Z-Wave n\'est pas démarré.}}</div></div>';
+	echo '<div id="div_driverStatus"><div class="alert alert-danger" role="alert"> {{Le démon Z-Wave n’est pas démarré.}}</div></div>';
 } else if ($driverStatus != 1) {
-	echo '<div id="div_driverStatus"><div class="alert alert-warning" role="alert"> {{Le driver Z-Wave n\'est pas initialisé, veuillez patienter. Si le message reste trop longtemps, veuillez vérifier la configuration du démon}}</div></div>';
+	echo '<div id="div_driverStatus"><div class="alert alert-warning" role="alert"> {{Le driver Z-Wave n’est pas initialisé, veuillez patienter. Si le message reste trop longtemps, veuillez vérifier la configuration du démon}}</div></div>';
 } else {
 	echo '<div id="div_driverStatus"></div>';
 }
