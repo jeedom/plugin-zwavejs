@@ -205,6 +205,29 @@
 			}
 		}
 	],
+"over-voltage": 
+	[
+		{
+			"name": "Surcharge Voltage",
+			"type": "info",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 113,
+				"endpoint": "#endpoint#",
+				"property": "Power Management-Over-voltage status",
+				"calculValueOffset": "#value#==7"
+			},
+			"subtype": "binary",
+			"display": {
+				"invertBinary": "1"
+			},
+			"template": {
+				"dashboard": "timeAlert",
+				"mobile": "timeAlert"
+			}
+		}
+	],
 "over-load": 
 	[
 		{

@@ -1,0 +1,14 @@
+{
+    "name": "Wave Pro 2",
+    "type": "Micromodule",
+    "comlink": "",
+    "remark": "",
+    "versions": {
+        "2": [
+            "140"
+        ]
+    },
+    "properties": {
+		"Switch": {"multi": [1,2],"replace": {"#endpoint#": "multiKey"}}
+    }
+}

@@ -28,34 +28,34 @@ if (!isConnect('admin')) {
 				echo '<div class="alert alert-warning">{{Le plugin jMQTT est installé, veuillez vérifier la configuration du broker dans le plugin jMQTT et la reporter, si nécessaire, dans le plugin MQTT Manager.}}</div>';
 			}
 			?>
-       			<div class="form-group">
-           			<label class="col-lg-4 control-label">{{Mode ZWave}}
-         				<sup><i class="fas fa-question-circle tooltips" title="{{Mode du deamon ZWaveJS}}"></i></sup>
-           			</label>
-           			<div class="col-md-7">
-           				<select class="configKey form-control" data-l1key="zwavejs_mode">
-             					<option value="local">{{local}}</option>
-             					<option value="remote">{{docker distant}}</option>
-           				</select>
-            			</div>
-        		</div>
+			<div class="form-group">
+				<label class="col-lg-4 control-label">{{Mode ZWave}}
+					<sup><i class="fas fa-question-circle tooltips" title="{{Mode du deamon ZWaveJS. défaut: local}}"></i></sup>
+				</label>
+				<div class="col-md-7">
+					<select class="configKey form-control" data-l1key="zwavejs_mode">
+						<option value="local">{{local (défaut)}}</option>
+						<option value="remote">{{distant}}</option>
+					</select>
+				</div>
+			</div>
 			<p/>
-        		<div class="form-group zwaveMode remote">
-            			<label class="col-lg-4 control-label">{{IP container ZWaveJS}}
-					 <sup><i class="fas fa-question-circle tooltips" title="{{Adresse IP du container ZWaveJS}}"></i></sup>
+			<div class="form-group zwaveMode remote">
+				<label class="col-lg-4 control-label">{{IP ZWaveJS}}
+					 <sup><i class="fas fa-question-circle tooltips" title="{{Adresse IP du serveur ZWaveJS}}"></i></sup>
 				</label>
-            			<div class="col-md-7">
-               				 <input class="configKey form-control" data-l1key="zwavejs_adminip" />
-            			</div>
-        		</div>
-        		<div class="form-group zwaveMode remote">
-            			<label class="col-lg-4 control-label">{{Port container ZWaveJS}}
-					 <sup><i class="fas fa-question-circle tooltips" title="{{Port d'administration du container ZWaveJS, défaut 8091}}"></i></sup>
+				<div class="col-md-7">
+					 <input class="configKey form-control" data-l1key="zwavejs_adminip" />
+				</div>
+			</div>
+			<div class="form-group zwaveMode remote">
+				<label class="col-lg-4 control-label">{{Port ZWaveJS}}
+					 <sup><i class="fas fa-question-circle tooltips" title="{{Port d'administration du serveur ZWaveJS, défaut 8091}}"></i></sup>
 				</label>
-            			<div class="col-md-7">
-                			<input class="configKey form-control" data-l1key="zwavejs_adminport" />
-            			</div>
-        		</div>
+				<div class="col-md-7">
+					<input class="configKey form-control" data-l1key="zwavejs_adminport" />
+				</div>
+			</div>
 
 
 			<div class="form-group zwaveMode local">
@@ -128,27 +128,31 @@ if (!isConnect('admin')) {
                                 <div class="col-md-6">
                                         <a class="btn btn-xs btn-warning" id="bt_installZWaveJS"><i class="fas fa-plus-square"></i> {{Installer ZWaveJS}}</a>
                                         <a class="btn btn-xs btn-danger" id="bt_uninstallZWaveJS"><i class="fas fa-minus-square"></i> {{Désinstaller ZWaveJS}}</a>
+					<a class="btn btn-xs btn-btn-primary" id="bt_refreshZWaveJS"><i class="fas fa-sync"></i></a>
                                 </div>
                                 <?php
-                                	if (zwavejs::checkZWaveJSVersion() == 'N/A')
-                                		echo '<span class="label label-danger">NOK</span>';
-                                	else
-                                		echo '<span class="label label-success">OK</span>';
+					$mode = config::byKey('zwavejs_mode', 'zwavejs', '');
+					if (($mode == 'local') && (config::byKey('zwavejsVersion', 'zwavejs') == 'N/A'))
+						echo '<span class="label label-danger">NOK</span>';
+					else
+						echo '<span class="label label-success">OK</span>';
                                 ?>
                         </div>
                         <div class="form-group zwaveMode remote">
                                 <label class="col-md-4 control-label tooltips" style="position:relative;top:-5px;">{{Communication ZWaveJS}}
-                                        <sup><i class="fas fa-question-circle tooltips" title="{{Communication avec container ZWaveJS }}"></i></sup>
+                                        <sup><i class="fas fa-question-circle tooltips" title="{{Communication avec service ZWaveJS }}"></i></sup>
                                 </label>
                                 <div class="col-md-8">
                                    <?php
-                               		$mode = config::byKey('zwavejs_mode', 'zwavejs', '');
-					if (!zwavejs::remoteZwaveIsAlive())
-                                               	echo '<span class="col-sm-1 label label-danger">NOK</span>';
-                                        else
-                                               	echo '<span class="col-sm-1 label label-success">OK</span>';
+					$mode = config::byKey('zwavejs_mode', 'zwavejs', '');
+					if ($mode == 'remote') {
+						if (!zwavejs::checkZWaveJSSvc())
+							echo '<span class="col-sm-1 label label-danger">NOK</span>';
+						else
+							echo '<span class="col-sm-1 label label-success">OK</span>';
+					}
                                    ?>
-   				   <span class="col-sm-1"></span>
+				   <span class="col-sm-1"></span>
                                    <a class="btn btn-xs btn-primary" id="bt_testZWave" style="position:relative;top:-5px;">
                                         <i class="fas fa-sync"></i> {{Tester}}</a>
                                 </div>
@@ -156,26 +160,20 @@ if (!isConnect('admin')) {
 
                         <div class="form-group">
                                 <label class="col-md-4 control-label">{{Version ZwaveJS}}
-                                        <sup><i class="fas fa-question-circle tooltips" title="{{Version de la librairie ZwaveJS. Si docker distant: mis à jour après le démarrage du deamon}}"></i></sup>
+                                        <sup><i class="fas fa-question-circle tooltips" title="{{Version de la librairie ZwaveJS. Si mode distant: mis à jour après le démarrage du deamon}}"></i></sup>
                                 </label>
                                 <div class="col-md-7">
                                 <?php
-                                $mode = config::byKey('zwavejs_mode', 'zwavejs', '');
-                                if ($mode == 'local')
-                                        config::save('zwavejsVersion', zwavejs::checkZWaveJSVersion(), 'zwavejs');
-                                else {
-					$v = config::byKey('zwavejsVersion', 'zwavejs', '');
-                                        if (empty($v))
-						config::save('zwavejsVersion', 'N/A','zwavejs');
-				}
                                 $localVersion =config::byKey('zwavejsVersion', 'zwavejs', 'N/A');
+				if (empty($localVersion))
+					config::save('zwavejsVersion', 'N/A','zwavejs');
                                 $wantedVersion = config::byKey('wantedVersion', 'zwavejs', '');
 
-                                if (($mode == 'local') and ($localVersion != $wantedVersion)) {
+                                if ($localVersion != $wantedVersion) {
                                         echo '<span class="label label-warning">' . $localVersion . '</span><br>';
-                                        echo "<div class='alert alert-danger text-center'>{{ ZwaveJS UI n'est pas installé ou votre version n'est pas celle recommandée par le plugin.
+                                        echo "<div class='alert alert-danger text-center'>{{ ZwaveJS UI n'est pas détecté ou votre version n'est pas celle recommandée par le plugin.
                                                 Vous utilisez actuellement la version }}<code>". $localVersion .'</code>. {{ Le plugin nécessite la version }}<code>' . $wantedVersion .'</code>.
-                                                {{Veuillez réinstaller la librairie. }}</div>';
+                                              </div>';
                                 } else
                                         echo '<span class="label label-success">' . $localVersion . '</span><br>';
                                 ?>
@@ -224,17 +222,35 @@ if (!isConnect('admin')) {
 					</span>
 				</div>
 			</div>
+                        <div class="form-group">
+                                <label class="col-md-4 control-label">{{Clé de Sécurité S2 Authenticated Long Range}}</label>
+                                <div class="input-group col-md-7">
+                                        <input class="configKey roundedLeft form-control" data-l1key="s2key_auth_long" placeholder="{{Clé de sécurité S2 Authenticated Long Range}}">
+                                        <span class="input-group-btn">
+                                                <a class="btn btn-default form-control randomKey roundedRight" data-key="s2key_auth_long"><i class="fas fa-sync-alt"></i></a>
+                                        </span>
+                                </div>
+                        </div>
+                        <div class="form-group">
+                                <label class="col-md-4 control-label">{{Clé de Sécurité S2 Access Control Long Range}}</label>
+                                <div class="input-group col-md-7">
+                                        <input class="configKey roundedLeft form-control" data-l1key="s2key_access_long" placeholder="{{Clé de Sécurité S2 Access Control Long Range}}">
+                                        <span class="input-group-btn">
+                                                <a class="btn btn-default form-control randomKey roundedRight" data-key="s2key_access_long"><i class="fas fa-sync-alt"></i></a>
+                                        </span>
+                                </div>
+                        </div>
 		</div>
 	</fieldset>
 </form>
 
 <script>
 	$('.configKey[data-l1key=zwavejs_mode]').off('change').on('change', function() {
-    		$('.zwaveMode').hide()
-    		if ($(this).value() == 'remote')
-			$('.remote').show()
-    		else
+		$('.zwaveMode').hide()
+		if ($(this).value() == 'local')
 			$('.local').show()
+		else
+			$('.remote').show()
 	})
 
         $('#bt_installZWaveJS').off('click').on('click', function() {
@@ -281,10 +297,32 @@ if (!isConnect('admin')) {
                 })
         })
 
+	$('#bt_refreshZWaveJS').off('click').on('click', function() {
+                $.ajax({ type: "POST", url: "plugins/zwavejs/core/ajax/zwavejs.ajax.php",
+                        data: {
+                                action: "checkZWaveJSVersion"
+                        },
+                        dataType: 'json',
+                        error: function(error) {
+                                $.fn.showAlert({ message: error.message, level: 'danger'
+                                })
+                        },
+                        success: function(data) {
+                                if (data.state != 'ok') {
+                                        $.fn.showAlert({ message: data.result, level: 'danger'
+                                        })
+                                        return
+                                } else {
+                                        $('.pluginDisplayCard[data-plugin_id=' + $('#span_plugin_id').text() + ']').click()
+                                }
+                        }
+                })
+        })
+
         $('#bt_testZWave').off('click').on('click', function() {
                 $.ajax({ type: "POST", url: "plugins/zwavejs/core/ajax/zwavejs.ajax.php",
                         data: {
-                                action: "testRemoteZWave"
+                                action: "checkZWaveJSSvc"
                         },
                         dataType: 'json',
                         error: function(error) {
@@ -324,9 +362,54 @@ if (!isConnect('admin')) {
 			}
 		})
 	})
-/*
+
+	$('body').off('zwavejs::install_terminated').on('zwavejs::install_terminated', function(_event, _options) {
+                $.ajax({ type: "POST", url: "plugins/zwavejs/core/ajax/zwavejs.ajax.php",
+                        data: {
+                                action: "checkZWaveJSVersion"
+                        },
+                        dataType: 'json',
+                        error: function(error) {
+                                $.fn.showAlert({ message: error.message, level: 'danger'
+                                })
+                        },
+                        success: function(data) {
+                                if (data.state != 'ok') {
+                                        $.fn.showAlert({ message: data.result, level: 'danger'
+                                        })
+                                        return
+                                } else {
+                                        $('.pluginDisplayCard[data-plugin_id=' + $('#span_plugin_id').text() + ']').click()
+                                }
+                        }
+                })
+        })
+
+        $('body').off('zwavejs::version_updated').on('zwavejs::version_updated', function(_event, _options) {
+                $.ajax({ type: "POST", url: "plugins/zwavejs/core/ajax/zwavejs.ajax.php",
+                        data: {
+                                action: "checkZWaveJSSvc"
+                        },
+                        dataType: 'json',
+                        error: function(error) {
+                                $.fn.showAlert({ message: error.message, level: 'danger'
+                                })
+                        },
+                        success: function(data) {
+                                if (data.state != 'ok') {
+                                        $.fn.showAlert({ message: data.result, level: 'danger'
+                                        })
+                                        return
+                                } else {
+                                        $('.pluginDisplayCard[data-plugin_id=' + $('#span_plugin_id').text() + ']').click()
+                                }
+                        }
+                })
+        })
+
+
+
 $('body').off('zwavejs::dependancy_end').on('zwavejs::dependancy_end', function(_event, _options) {
   window.location.reload()
 })
-*/
 </script>

@@ -370,5 +370,98 @@
 				"generic_type": "FLAP_STATE"
 			}
 		}
+	],
+"covering": 
+	[
+		{
+			"name": "Positionnement",
+			"type": "action",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"minValue": 0,
+				"maxValue": 99,
+				"class": 106,
+				"endpoint": "#endpoint#",
+				"property": "targetValue-13",
+				"value": "#slider#"
+			},
+			"value": "Etat",
+			"subtype": "slider",
+			"display": {
+				"generic_type": "FLAP_SLIDER"
+			},
+			"template": {
+				"dashboard": "timeShutter",
+				"mobile": "timeShutter"
+			}
+		},
+		{
+			"name": "Haut",
+			"type": "action",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 106,
+				"endpoint": "#endpoint#",
+				"property": "levelChangeUp-13",
+				"value": "true"
+			},
+			"subtype": "other",
+			"display": {
+				"icon": "<i class=\"fas fa-arrow-up\"></i>",
+				"generic_type": "FLAP_UP"
+			}
+		},
+		{
+			"name": "Stop",
+			"type": "action",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 106,
+				"endpoint": "#endpoint#",
+				"property": "levelChangeUp-13",
+				"value": ""
+			},
+			"subtype": "other",
+			"display": {
+				"icon": "<i class=\"fas fa-stop\"></i>",
+				"generic_type": "FLAP_STOP"
+			}
+		},
+		{
+			"name": "Bas",
+			"type": "action",
+			"isVisible": 1,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 106,
+				"endpoint": "#endpoint#",
+				"property": "levelChangeDown-13",
+				"value": "true"
+			},
+			"subtype": "other",
+			"display": {
+				"icon": "<i class=\"fas fa-arrow-down\"></i>",
+				"generic_type": "FLAP_DOWN"
+			}
+		},
+		{
+			"name": "Etat",
+			"type": "info",
+			"isVisible": 0,
+			"isHistorized": 0,
+			"configuration": {
+				"class": 106,
+				"endpoint": "#endpoint#",
+				"property": "currentValue-13"
+			},
+			"subtype": "numeric",
+			"unite": "%",
+			"display": {
+				"generic_type": "FLAP_STATE"
+			}
+		}
 	]
 }

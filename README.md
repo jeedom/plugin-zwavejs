@@ -3,27 +3,29 @@
 ![Logo Jeedom](docs/images/jeedom.png)
 ![Logo Plugin](docs/images/zwavejs.png)
 
-Version améliorée du plugin officiel [zwavejs](https://github.com/jeedom/plugin-zwavejs)
-
+Version améliorée du plugin officiel [zwavejs](https://github.com/jeedom/plugin-zwavejs) avec antenne ZWaveJS distante.
+<br>
+Le plugin a été testé avec une antenne docker mais il doit également fonctionner avec une install yarn.
 
 ## Mode local
-Attention l'installation des dépendances n'installe plus le deamon local, il faut utiliser le bouton `ìnstaller ZwaveJS`. 
+Attention l'installation des dépendances n'installe plus le deamon local, il faut utiliser le bouton `ìnstaller ZwaveJS`.
 <br>La version `zwave-js-ui` qui sera installée et le préfixe MQTT par défaut se trouvent dans le fichier `core/config/zwavejs.config.ini`
-<br>L'avancement de l'installation se trouve dans la log `zwavejs_packages`. Le voyant doit être vert et à OK et la version doit s'afficher en dessous une fois l'installation terminée.
+
+<br> L'installation se lance en tâche de fond et prend un certain temps. Vous pouvez vérifier le statut avec le bouton `rafraichir`
+<br> L'avancement de l'installation se trouve dans le fichier de log `zwavejs_packages`.
+<br> Le voyant doit être vert et à OK et la version doit s'afficher en dessous une fois l'installation terminée.
 
 ![Page configuration local](docs/images/zwavejs1.png)
 
 <p>
-Pour plus d'infos voir la [doc](https://doc.jeedom.com/fr_FR/plugins/automation%20protocol/zwavejs) du plugin ZWaveJS
 
-## Mode remote docker (non managé)
+Le fonctionnement est identique à celui du plugin officel. Pour plus d'infos voir la [doc](https://doc.jeedom.com/fr_FR/plugins/automation%20protocol/zwavejs) du plugin ZWaveJS
 
-### Installation de l'image
-Installer l'image `zwave-js-ui` sur le docker distant:
+## Mode distant (non managé)
+Ce mode est réservé aux utilisateurs expérimentés sachant utiliser la ligne de commande.
+<bR>
 
-	$ sudo docker pull zwavejs/zwave-js-ui
-
-Copier et extraire l'archive générée `data/store/remote/docker_config.tar.gz` dans un répertoire local sur la machine distante ex:
+Copier et extraire l'archive générée `data/remote/docker_config.tar.gz` dans un répertoire local sur la machine distante ex:
 
 	$ sudo mkdir -p /root/store/zwavejs
 	$ cd /root/store/zwavejs
@@ -34,10 +36,21 @@ Vous devez obtenir l'arborescence suivante:
 	/root/store/zwavejs/config.json
 	/root/store/zwavejs/config/
 
-### Démarrage et arrêt du container
-<p>Copier et utiliser le script `resources/zwavejs` sur la machine distante pour gérer le container:
+<p>Copier et utiliser le script `resources/zwavejs` sur la machine distante pour gérer le container
 
-	$ sudo zwavejs 
+### Installation de l'image
+
+Installer l'image `zwave-js-ui` sur le docker distant:
+
+	$ sudo docker pull zwavejs/zwave-js-ui
+
+ou installation + démarrage du container:
+
+	$ sudo zwavejs start
+
+### Démarrage et arrêt du container
+
+	$ sudo zwavejs
 	usage: zwavejs {start|stop|restart|status}
 
 Si vous utilisez un répertoire local différent de `/root/store/zwavejs` modifiez le dans le script
@@ -57,13 +70,13 @@ Au bout de quelques secondes le driver doit passer à `Connected` (icône rond v
 ### Paramètrage du plugin:
 Page de configuration du plugin:
 
-* IP du container distant
-* Port d'administration du container (défaut 8091)
+* IP ZWaveJS: adresse du service de l'antenne distante (docker ou pas)
+* Port ZWaveJS: Port d'administration du service (défaut 8091)
 * Préfixe MQTT (défaut zwave)
-* Communication container `ZWaveJS UI` et bouton `Tester`: vert si le container est démarré et disponible
-* Version ZWaveJS UI: version de l'image
+* Communication ZWaveJS et bouton `Tester`: vert si le service distant est démarré et disponible
+* Version ZWaveJS: version du service distant
 
-Vérifiez la communication en cliquant sur le bouton `Tester` 
+Vérifiez la communication en cliquant sur le bouton `Tester`
 <br>Le voyant `communication` doit passer au vert:
 
 ![Page configuration remote](docs/images/zwavejs3.png)

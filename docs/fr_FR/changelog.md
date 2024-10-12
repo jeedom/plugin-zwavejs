@@ -4,6 +4,53 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
+# 27/09/2024
+
+- Changement des versions minimum, core 4.4 et OS Debian 11 minimum
+
+# 26/09/2024
+
+**Améliorations**
+
+- Passage à la version *9.20.0* de ZwaveJsUI
+- Préparation pour merge le mode distant dans la prochaine version
+- Nettoyage de code
+
+**Ajouts de Configurations**
+
+- Ajout de la configuration *Neo Signal Repeater +* (propriétés : Temperature, Humidity)
+- Ajout de la configuration *Fibaro FGR224* (propriétés : Switch, Power, Energy, Notification Over-Current, Notification Over-Voltage)
+
+**Modifications de Configurations**
+
+- Modification de la configuration *Fibaro Fgrgbwm442* pour utiliser les propriétés
+- Modification de la configuration *Fibaro FGD212* amélioration des propriétés Notification
+
+# 20/05/2024
+
+**Améliorations**
+
+- Passage à la version *9.12.0* de ZwaveJsUI
+- Rajout et gestion des deux nouvelles clés de sécurités S2 Long Range
+
+**Ajouts de Configurations**
+
+- Ajout de la configuration *Neo Signal Repeater* (propriétés : Temperature, Humidity)
+- Ajout de la configuration *Shelly Qubino Wave 1* (propriétés : Switch, Notification Mains, Notification Over-Current, Notification Heat-Sensor) 
+- Ajout de la configuration *Shelly Qubino Wave 1 PM* (propriétés : Switch, Power, Energy, Notification Mains, Notification Over-Current, Notification Heat-Sensor)
+- Ajout de la configuration *Shelly Qubino Wave Pro 1* (propriétés : Switch, Notification Mains, Notification Heat-Sensor) 
+- Ajout de la configuration *Shelly Qubino Wave Pro 1 PM* (propriétés : Switch, Power, Energy, Notification Mains, Notification Over-Current, Notification Over-Voltage, Notification Heat-Sensor)
+- Ajout de la configuration *Shelly Qubino Wave 2 PM* (propriétés : Switch, Power, Energy, Notification Mains, Notification Over-Current, Notification Heat-Sensor)
+- Ajout de la configuration *Shelly Qubino Wave Pro 2* (propriétés : Switch)
+- Ajout de la configuration *Shelly Qubino Wave Pro 2 PM* (propriétés : Switch, Power, Energy, Notification Over-Current, Notification Over-Voltage)
+- Ajout de la configuration *Shelly Qubino Wave I4* (propriétés : Central Scene)
+- Ajout de la configuration *Shelly Qubino Wave Shutter* (propriétés : Shutter, Power, Energy, Notification Mains, Notification Over-Current, Notification Heat-Sensor)
+- Ajout d'une sous propriété *notification-overvoltage* pour la propriété *Notification*
+
+**Modifications de Configurations**
+
+- Modification de la configuration *Neo Plug* pour utiliser les propriétés (*attention certains modèles veulent s'inclure en S2 alors que le fabricant ne fournit aucun DSK, inclure en choisissant non sécurisé au lieu du mode automatique*)
+
 # 27/02/2024
 
 **Améliorations**

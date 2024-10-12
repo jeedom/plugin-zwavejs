@@ -36,7 +36,7 @@ if (!isConnect('admin')) {
 		height: 100%;
 		width: 100%
 	}
-	
+
 	#graph_network_route {
 		height: 80%;
 		width: 97%;
@@ -305,10 +305,10 @@ if (!isConnect('admin')) {
 								<td>{{Remise à zéro du contrôleur.}} <b>{{Remet à zéro le contrôleur et efface ses paramètres de configuration réseau.}}</b></td>
 							</tr>
 							<tr>
-								<td><a class="btn btn-danger controller_action" target="_blank" 
+								<td><a class="btn btn-danger controller_action" target="_blank"
 									<?php
-                								$ip = config::byKey('zwavejs_adminip', 'zwavejs');
-                								$port = config::byKey('zwavejs_adminport', 'zwavejs');
+										$ip = config::byKey('zwavejs_adminip', 'zwavejs');
+										$port = config::byKey('zwavejs_adminport', 'zwavejs');
 										echo 'href="http://' . $ip . ':' . $port. '"';
 									?>
 								><i class="fas fa-external-link-square-alt "></i> {{Interface ZwaveJs UI}}</a></td>

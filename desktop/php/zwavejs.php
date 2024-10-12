@@ -23,13 +23,12 @@ $plugin = plugin::byId('zwavejs');
 sendVarToJS('eqType', $plugin->getId());
 $eqLogics = eqLogic::byType($plugin->getId());
 $controllerStatus = config::byKey('controllerStatus', 'zwavejs', 'none');
+$mode = config::byKey('zwavejs_mode',  'zwavejs', '');
 $driverStatus = config::byKey('driverStatus', 'zwavejs', 0);
 
-// mqtt2::publish(config::byKey('prefix','zwavejs', 'zwave') . '/driver/status/get');
-
 if (!zwavejs::isRunning()) {
-	echo "<div id='div_driverStatus'><div class='alert alert-danger' role='alert'> {{Le démon Z-Wave n&apos;est pas démarré.}}</div></div>";
-} else if ($driverStatus != 1) {
+	echo "<div id='div_driverStatus'><div class='alert alert-danger' role='alert'> {{Le service ZWaveJS n&apos;est pas démarré.}}</div></div>";
+} else if (($mode == 'local') && ($driverStatus != 1)) {
 	echo "<div id='div_driverStatus'><div class='alert alert-warning' role='alert'> {{Le driver Z-Wave n&apos;est pas initialisé, veuillez patienter. 
 	Si le message reste trop longtemps, veuillez vérifier la configuration du démon}}</div></div>";
 } else {

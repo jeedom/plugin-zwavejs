@@ -299,10 +299,10 @@ try {
 		ajax::success();
 	}
 
-	if (init('action') == 'testRemoteZWave') {
-		zwavejs::remoteZwaveIsAlive();
-        	ajax::success();
-    	}
+	if (init('action') == 'checkZWaveJSSvc') {
+		zwavejs::checkZWaveJSSvc();
+		ajax::success();
+	}
 
         if (init('action') == 'installZWaveJS') {
                 zwavejs::executeAsync ('installZWaveJS');
@@ -310,9 +310,20 @@ try {
         }
 
         if (init('action') == 'uninstallZWaveJS') {
-                zwavejs::uninstallZWaveJS();
-                event::add('jeedom::alert', array('level' => 'info', 'page' => 'zwavejs',
-                'message' => __("Deamon local zwave-js-ui désinstallé", __FILE__)));
+		if (zwavejs::isRunning()) {
+			event::add('jeedom::alert', array('level' => 'info', 'page' => 'zwavejs',
+			'message' => __("Le deamon est démarré, merci de l'arrêter avant de désinstaller", __FILE__)));
+
+		} else {
+			zwavejs::uninstallZWaveJS();
+			event::add('jeedom::alert', array('level' => 'info', 'page' => 'zwavejs',
+			'message' => __("Librairie zwave-js-ui désinstallée", __FILE__)));
+		}
+                ajax::success();
+        }
+
+        if (init('action') == 'checkZWaveJSVersion') {
+                zwavejs::checkZWaveJSVersion();
                 ajax::success();
         }
 
