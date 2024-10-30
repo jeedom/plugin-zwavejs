@@ -28,6 +28,15 @@ if (!isConnect('admin')) {
 				echo '<div class="alert alert-warning">{{Le plugin jMQTT est installé, veuillez vérifier la configuration du broker dans le plugin jMQTT et la reporter, si nécessaire, dans le plugin MQTT Manager.}}</div>';
 			}
 			?>
+			 <div class="form-group">
+				<label class="col-md-4 control-label">{{Mode}}</label>
+				<div class="col-md-3">
+					<select class="configKey form-control" data-l1key="zwavejs::mode" id="sel_z2mMode">
+					<option value="distant">{{Distant}}</option>
+					<option value="local">{{Local}}</option>
+					</select>
+				</div>
+			</div>
 			<div class="form-group">
 				<label class="col-md-4 control-label">{{Port du contrôleur Z-Wave}}
 					<sup><i class="fas fa-question-circle tooltips" title="{{Renseigner le port utilisé par le contrôleur Z-Wave}}"></i></sup>

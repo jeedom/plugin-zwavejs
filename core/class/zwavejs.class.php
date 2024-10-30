@@ -138,6 +138,10 @@ class zwavejs extends eqLogic {
 	}
 	
 	public static function cronHourly() {
+		if(config::byKey('zwavejs::mode', 'zwavejs') == 'distant'){
+			self::getNodes('health');
+			return;
+		}
 		$deamon_info = self::deamon_info();
 		if ($deamon_info['state'] != 'ok') {
 			return;
@@ -146,6 +150,9 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function configureSettings($_path) {
+		if(config::byKey('zwavejs::mode', 'zwavejs') == 'distant'){
+			return;
+		}
 		$file = $_path . '/settings.json';
 		$settings = array();
 		if (file_exists($file)) {
@@ -250,6 +257,24 @@ class zwavejs extends eqLogic {
 		return $data;
 	}
 
+	public static function postConfig_zwavejs_mode($_value) {
+		$plugin = plugin::byId('zwavejs');
+		if ($_value == 'local') {
+		  $plugin->dependancy_changeAutoMode(1);
+		  $plugin->deamon_info(1);
+		  $dependancy_info = $plugin->dependancy_info(true);
+		  if ($dependancy_info['state'] == 'nok' && config::byKey('dependancyAutoMode', $plugin->getId(), 1) == 1) {
+			try {
+			  $plugin->dependancy_install();
+			} catch (Exception $e) {
+			}
+		  }
+		} else {
+		  $plugin->dependancy_changeAutoMode(0);
+		  $plugin->deamon_info(0);
+		}
+	  }
+
 	public static function additionnalDependancyCheck() {
 		$return = array();
 		$return['state'] = 'ok';
@@ -274,6 +299,13 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function deamon_info() {
+		if(config::byKey('zwavejs::mode', 'zwavejs') == 'distant'){
+			$return = array();
+			$return['log'] = __CLASS__;
+			$return['launchable'] = 'ok';
+			$return['state'] = 'ok';
+			return $return;
+		  }
 		$return = array();
 		$return['log'] = __CLASS__;
 		$return['launchable'] = 'ok';
@@ -311,6 +343,9 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function isRunning() {
+		if(config::byKey('zwavejs::mode', 'zwavejs') == 'distant'){
+			return true;
+		}
 		if (!empty(system::ps('server/bin/www.js'))) {
 			return true;
 		}
@@ -318,6 +353,9 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function deamon_start($_debug = false) {
+		if(config::byKey('zwavejs::mode', 'zwavejs') == 'distant'){
+			return;
+		}
 		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . 'Inscription au plugin mqtt2');
 		config::save('controllerStatus', 'none', __CLASS__);
 		config::save('driverStatus', 0, __CLASS__);
@@ -379,6 +417,9 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function deamon_stop() {
+		if(config::byKey('zwavejs::mode', 'zwavejs') == 'distant'){
+			return;
+		}
 		log::add(__CLASS__, 'info', __('Arrêt du démon ZwaveJS', __FILE__));
 		config::save('controllerStatus', 'none', __CLASS__);
 		$find = 'server/bin/www.js';
