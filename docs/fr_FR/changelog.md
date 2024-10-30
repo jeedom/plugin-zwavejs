@@ -4,7 +4,7 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
-- Ajout du mode distant (en beta et attention cela réduit les fonctions du plugins)
+- Ajout du mode distant (en beta et attention cela réduit les fonctions du plugins), bien lire la documentation le passage en mode distant à un fort impact sur la simplicité d'utilisation et meme la compatibilité avec certain module
 
 # 27/09/2024
 
