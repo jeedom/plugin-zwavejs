@@ -276,6 +276,11 @@ class zwavejs extends eqLogic {
 	  }
 
 	public static function additionnalDependancyCheck() {
+		if(config::byKey('zwavejs::mode', 'zwavejs') == 'distant'){
+			$return = array();
+			$return['state'] = 'ok';
+			return $return;
+		}
 		$return = array();
 		$return['state'] = 'ok';
 		if (config::byKey('lastDependancyInstallTime', __CLASS__) == '') {
@@ -287,6 +292,11 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function dependancy_info() {
+		if(config::byKey('zwavejs::mode', 'zwavejs') == 'distant'){
+			$return = array();
+			$return['state'] = 'ok';
+			return $return;
+		}
 		$return = array();
 		$return['progress_file'] = jeedom::getTmpFolder(__CLASS__) . '/dependance';
 		$return['state'] = 'ok';
@@ -305,7 +315,7 @@ class zwavejs extends eqLogic {
 			$return['launchable'] = 'ok';
 			$return['state'] = 'ok';
 			return $return;
-		  }
+		}
 		$return = array();
 		$return['log'] = __CLASS__;
 		$return['launchable'] = 'ok';
