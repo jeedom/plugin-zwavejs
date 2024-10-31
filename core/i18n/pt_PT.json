@@ -59,6 +59,9 @@
     "plugins\/zwavejs\/plugin_info\/configuration.php": {
         "401 - Accès non autorisé": "401 - Acesso não autorizado",
         "Le plugin jMQTT est installé, veuillez vérifier la configuration du broker dans le plugin jMQTT et la reporter, si nécessaire, dans le plugin MQTT Manager.": "O plugin jMQTT está instalado, verifique a configuração do broker no plugin jMQTT e informe, se necessário, no plugin MQTT Manager",
+        "Mode": "Moda",
+        "Distant": "Remoto",
+        "Local": "Local",
         "Port du contrôleur Z-Wave": "Porta do controlador Z-Wave",
         "Renseigner le port utilisé par le contrôleur Z-Wave": "Digite a porta usada pelo controlador Z-Wave",
         "Aucun": "Não",

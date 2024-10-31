@@ -59,6 +59,9 @@
     "plugins\/zwavejs\/plugin_info\/configuration.php": {
         "401 - Accès non autorisé": "401 - Unauthorized Access",
         "Le plugin jMQTT est installé, veuillez vérifier la configuration du broker dans le plugin jMQTT et la reporter, si nécessaire, dans le plugin MQTT Manager.": "The jMQTT plugin is installed, please check the configuration of the broker in the jMQTT plugin and report it, if necessary, in the MQTT Manager plugin",
+        "Mode": "Fashion",
+        "Distant": "Distant",
+        "Local": "Local",
         "Port du contrôleur Z-Wave": "Z-Wave controller port",
         "Renseigner le port utilisé par le contrôleur Z-Wave": "Enter the port used by the Z-Wave controller",
         "Aucun": "None",
@@ -346,7 +349,7 @@
         "Modèle": "Model",
         "Configuration recommandée": "Recommended Setup",
         "Firmware": "Firmware",
-        "Mode": "Mode",
+        "Mode": "Fashion",
         "Permet de recréer les commandes en fonction du mode de fonctionnement du module désiré. Sauver le mode puis sur la page de commande rechargez vos commandes": "Allows you to recreate the commands according to the operating mode of the desired module. Save the mode then on the order page reload your orders",
         "Nombre de commandes actuelles en ignorant les 4 commandes techniques de chaque équipement du plugin": "Number of current commands ignoring the 4 technical commands of each equipment of the plugin",
         "Visuel": "Visual",
