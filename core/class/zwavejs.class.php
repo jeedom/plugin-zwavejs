@@ -174,11 +174,16 @@ class zwavejs extends eqLogic {
 
 		$settings['mqtt']['name'] = 'Jeedom';
 		$settings['mqtt']['host'] = $mqttInfos['ip'];
+		if(!isset($mqttInfos['protocol'])){
+			$mqttInfos['protocol'] = 'mqtt';
+		}
+		$settings['mqtt']['host'] = $mqttInfos['protocol'].'://'.$mqttInfos['ip'];
 		$settings['mqtt']['port'] = $mqttInfos['port'];
 		$settings['mqtt']['auth'] = true;
 		$settings['mqtt']['username'] = $mqttInfos['user'];
 		$settings['mqtt']['password'] = $mqttInfos['password'];
 		$settings['mqtt']['prefix'] = config::byKey('prefix', __CLASS__, 'zwave');
+		$settings['mqtt']['allowSelfsigned'] = true;
 		//if ($port != 'auto') {
 		//	$port = jeedom::getUsbMapping($port);
 		//	exec(system::getCmdSudo() . 'chmod 777 ' . $port . ' > /dev/null 2>&1');
