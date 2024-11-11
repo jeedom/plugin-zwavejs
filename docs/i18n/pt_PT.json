@@ -3,6 +3,7 @@
         "Changelog Z-Wave JS": "Changelog Z-Wave JS",
         "S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte": "Se não houver informação sobre a atualização, significa que se trata apenas da atualização da documentação, tradução ou texto",
         "Ajout du mode distant (en beta et attention cela réduit les fonctions du plugins), bien lire la documentation le passage en mode distant à un fort impact sur la simplicité d'utilisation et meme la compatibilité avec certain module": "Adição do modo remoto (em beta e cuidado, isso reduz as funções dos plugins), leia a documentação com atenção, mudar para o modo remoto tem forte impacto na facilidade de uso e até na compatibilidade com determinados módulos",
+        "Support du protocole mqtts": "Suporte ao protocolo mqtts",
         "27\/09\/2024": "27\/09\/2024",
         "Changement des versions minimum, core 4": "Mudança de versões mínimas, core 4",
         "4 et OS Debian 11 minimum": "4 e SO Debian 11 no mínimo",

@@ -349,7 +349,7 @@
         "Modèle": "Model",
         "Configuration recommandée": "Recommended Setup",
         "Firmware": "Firmware",
-        "Mode": "Fashion",
+        "Mode": "Mode",
         "Permet de recréer les commandes en fonction du mode de fonctionnement du module désiré. Sauver le mode puis sur la page de commande rechargez vos commandes": "Allows you to recreate the commands according to the operating mode of the desired module. Save the mode then on the order page reload your orders",
         "Nombre de commandes actuelles en ignorant les 4 commandes techniques de chaque équipement du plugin": "Number of current commands ignoring the 4 technical commands of each equipment of the plugin",
         "Visuel": "Visual",
