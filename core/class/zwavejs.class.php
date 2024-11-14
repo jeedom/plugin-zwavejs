@@ -21,7 +21,7 @@
 
 
 class zwavejs extends eqLogic {
-	
+
 	public static function dependancy_end() {
 		config::save('zwavejsVersion', config::byKey('wantedVersion', __CLASS__), __CLASS__);
 	}
@@ -136,9 +136,9 @@ class zwavejs extends eqLogic {
 			}
 		}
 	}
-	
+
 	public static function cronHourly() {
-		if(config::byKey('zwavejs::mode', 'zwavejs') == 'distant'){
+		if (config::byKey('zwavejs::mode', 'zwavejs') == 'distant') {
 			self::getNodes('health');
 			return;
 		}
@@ -150,7 +150,7 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function configureSettings($_path) {
-		if(config::byKey('zwavejs::mode', 'zwavejs') == 'distant'){
+		if (config::byKey('zwavejs::mode', 'zwavejs') == 'distant') {
 			return;
 		}
 		$file = $_path . '/settings.json';
@@ -174,10 +174,10 @@ class zwavejs extends eqLogic {
 
 		$settings['mqtt']['name'] = 'Jeedom';
 		$settings['mqtt']['host'] = $mqttInfos['ip'];
-		if(!isset($mqttInfos['protocol'])){
+		if (!isset($mqttInfos['protocol'])) {
 			$mqttInfos['protocol'] = 'mqtt';
 		}
-		$settings['mqtt']['host'] = $mqttInfos['protocol'].'://'.$mqttInfos['ip'];
+		$settings['mqtt']['host'] = $mqttInfos['protocol'] . '://' . $mqttInfos['ip'];
 		$settings['mqtt']['port'] = $mqttInfos['port'];
 		$settings['mqtt']['auth'] = true;
 		$settings['mqtt']['username'] = $mqttInfos['user'];
@@ -194,7 +194,7 @@ class zwavejs extends eqLogic {
 		$settings['zwave']['logEnabled'] = true;
 		$settings['zwave']['logToFile'] = false;
 		$settings['zwave']['serverEnabled'] = false;
-		if (config::byKey('softReset', __CLASS__,1) == 1){
+		if (config::byKey('softReset', __CLASS__, 1) == 1) {
 			$settings['zwave']['enableSoftReset'] = true;
 		} else {
 			$settings['zwave']['enableSoftReset'] = false;
@@ -265,23 +265,23 @@ class zwavejs extends eqLogic {
 	public static function postConfig_zwavejs_mode($_value) {
 		$plugin = plugin::byId('zwavejs');
 		if ($_value == 'local') {
-		  $plugin->dependancy_changeAutoMode(1);
-		  $plugin->deamon_info(1);
-		  $dependancy_info = $plugin->dependancy_info(true);
-		  if ($dependancy_info['state'] == 'nok' && config::byKey('dependancyAutoMode', $plugin->getId(), 1) == 1) {
-			try {
-			  $plugin->dependancy_install();
-			} catch (Exception $e) {
+			$plugin->dependancy_changeAutoMode(1);
+			$plugin->deamon_info(1);
+			$dependancy_info = $plugin->dependancy_info(true);
+			if ($dependancy_info['state'] == 'nok' && config::byKey('dependancyAutoMode', $plugin->getId(), 1) == 1) {
+				try {
+					$plugin->dependancy_install();
+				} catch (Exception $e) {
+				}
 			}
-		  }
 		} else {
-		  $plugin->dependancy_changeAutoMode(0);
-		  $plugin->deamon_info(0);
+			$plugin->dependancy_changeAutoMode(0);
+			$plugin->deamon_info(0);
 		}
-	  }
+	}
 
 	public static function additionnalDependancyCheck() {
-		if(config::byKey('zwavejs::mode', 'zwavejs') == 'distant'){
+		if (config::byKey('zwavejs::mode', 'zwavejs') == 'distant') {
 			$return = array();
 			$return['state'] = 'ok';
 			return $return;
@@ -297,7 +297,7 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function dependancy_info() {
-		if(config::byKey('zwavejs::mode', 'zwavejs') == 'distant'){
+		if (config::byKey('zwavejs::mode', 'zwavejs') == 'distant') {
 			$return = array();
 			$return['state'] = 'ok';
 			return $return;
@@ -314,7 +314,7 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function deamon_info() {
-		if(config::byKey('zwavejs::mode', 'zwavejs') == 'distant'){
+		if (config::byKey('zwavejs::mode', 'zwavejs') == 'distant') {
 			$return = array();
 			$return['log'] = __CLASS__;
 			$return['launchable'] = 'ok';
@@ -330,9 +330,9 @@ class zwavejs extends eqLogic {
 		}
 		$port = config::byKey('port', __CLASS__);
 		if ($port == 'none') {
-		      $return['launchable'] = 'nok';
-		      $return['launchable_message'] = __("Le port n'est pas configuré", __FILE__);
-		}else{
+			$return['launchable'] = 'nok';
+			$return['launchable_message'] = __("Le port n'est pas configuré", __FILE__);
+		} else {
 			$port = jeedom::getUsbMapping($port);
 			if (is_array($port) || @!file_exists($port)) {
 				$return['launchable'] = 'nok';
@@ -358,7 +358,7 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function isRunning() {
-		if(config::byKey('zwavejs::mode', 'zwavejs') == 'distant'){
+		if (config::byKey('zwavejs::mode', 'zwavejs') == 'distant') {
 			return true;
 		}
 		if (!empty(system::ps('server/bin/www.js'))) {
@@ -368,7 +368,7 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function deamon_start($_debug = false) {
-		if(config::byKey('zwavejs::mode', 'zwavejs') == 'distant'){
+		if (config::byKey('zwavejs::mode', 'zwavejs') == 'distant') {
 			return;
 		}
 		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . 'Inscription au plugin mqtt2');
@@ -408,7 +408,7 @@ class zwavejs extends eqLogic {
 		$cmd .= ' KEY_S2_Authenticated=' . config::byKey('s2key_auth', __CLASS__);
 		$cmd .= ' KEY_S2_AccessControl=' . config::byKey('s2key_access', __CLASS__);
 		$cmd .= ' SESSION_SECRET=' . 'jeedomSession';
-		$cmd .= ' yarn start';
+		$cmd .= ' npm start';
 		log::add(__CLASS__, 'info', __('Démarrage du démon ZwaveJS', __FILE__) . ' : ' . $cmd);
 		exec(system::getCmdSudo() . $cmd . ' >> ' . log::getPathToLog('zwavejsd') . ' 2>&1 &');
 		$i = 0;
@@ -432,7 +432,7 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function deamon_stop() {
-		if(config::byKey('zwavejs::mode', 'zwavejs') == 'distant'){
+		if (config::byKey('zwavejs::mode', 'zwavejs') == 'distant') {
 			return;
 		}
 		log::add(__CLASS__, 'info', __('Arrêt du démon ZwaveJS', __FILE__));
@@ -536,13 +536,12 @@ class zwavejs extends eqLogic {
 			// log::add(__CLASS__, 'debug', $key);
 			if ($key == 'api') {
 				self::handleApi($value);
-			}
-			else if ($key == 'version') {
+			} else if ($key == 'version') {
 				config::save('zwavejsVersion', $value['value'], __CLASS__);
 				event::add('zwavejs::dependancy_end', array());
-				if (config::byKey('wantedVersion', __CLASS__) != config::byKey('zwavejsVersion', __CLASS__)){
+				if (config::byKey('wantedVersion', __CLASS__) != config::byKey('zwavejsVersion', __CLASS__)) {
 					sleep(2);
-					message::add('zwavejs',__("Votre version de ZwaveJS UI n'est pas celle recommandée par le plugin. Vous utilisez actuellement la version ", __FILE__). config::byKey('zwavejsVersion', __CLASS__) .'. '.__('Le plugin nécessite la version ', __FILE__). config::byKey('wantedVersion', __CLASS__) .'. '.__('Veuillez relancer les dépendances pour mettre à jour la librairie.', __FILE__));
+					message::add('zwavejs', __("Votre version de ZwaveJS UI n'est pas celle recommandée par le plugin. Vous utilisez actuellement la version ", __FILE__) . config::byKey('zwavejsVersion', __CLASS__) . '. ' . __('Le plugin nécessite la version ', __FILE__) . config::byKey('wantedVersion', __CLASS__) . '. ' . __('Veuillez relancer les dépendances pour mettre à jour la librairie.', __FILE__));
 				}
 			}
 		}
@@ -569,11 +568,11 @@ class zwavejs extends eqLogic {
 		foreach ($_api as $key => $value) {
 			if ($key == 'abortFirmwareUpdate') {
 				if (isset($value['success']) && $value['success']) {
-					event::add('zwavejs::firmware_update',array('node' => $value['args'][0], 'cancel'=>true));
+					event::add('zwavejs::firmware_update', array('node' => $value['args'][0], 'cancel' => true));
 				}
 			} else if ($key == 'restoreNVM') {
 				if (isset($value['success']) && !$value['success']) {
-					event::add('zwavejs::restoreNVM',array('message' => $value['message']));
+					event::add('zwavejs::restoreNVM', array('message' => $value['message']));
 				}
 			} else if ($key == 'getInfo') {
 				self::addFileEvent('getInfo', $value['result']);
@@ -774,7 +773,7 @@ class zwavejs extends eqLogic {
 			} else if ($key == 'node_firmware_update_progress') {
 				$nodeData = $value['data'][0];
 				$updateData = $value['data'][1];
-				event::add('zwavejs::firmware_update',array('node' => $nodeData['id'], 'progress'=>$updateData['progress'],'files'=>$updateData['currentFile'].'/'.$updateData['totalFiles']));
+				event::add('zwavejs::firmware_update', array('node' => $nodeData['id'], 'progress' => $updateData['progress'], 'files' => $updateData['currentFile'] . '/' . $updateData['totalFiles']));
 			}
 		}
 	}
@@ -838,7 +837,7 @@ class zwavejs extends eqLogic {
 				log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . __('Accorder la securité', __FILE__));
 				$securityClasses = $value['data'][0]['securityClasses'];
 				$clientSideAuth = $value['data'][0]['clientSideAuth'];
-				event::add('zwavejs::grant_security_classes', array('classes'=>$securityClasses, 'auth'=>$clientSideAuth));
+				event::add('zwavejs::grant_security_classes', array('classes' => $securityClasses, 'auth' => $clientSideAuth));
 			} else if ($key == 'validate_dsk') {
 				log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . __('Validation DSK', __FILE__));
 				event::add('zwavejs::validate_dsk', $value['data'][0]);
@@ -891,10 +890,10 @@ class zwavejs extends eqLogic {
 			if ($eqLogic->getIsEnable()) {
 				// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . "Le nœud avec l'id : " . $node['id'] . ' existe ' . $eqLogic->getHumanName());
 			}
-			$eqLogic->handleNotificationUpdate($change,$cc);
+			$eqLogic->handleNotificationUpdate($change, $cc);
 		}
 	}
-	
+
 	public static function handleNodeValueUpdate($_value_update) {
 		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . "Traitement d'un update de value d'un node");
 		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . json_encode($_value_update));
@@ -925,13 +924,13 @@ class zwavejs extends eqLogic {
 						$eqLogic->updateCmd('0-0-nodeStatus', $data['status']);
 						if ($data['status'] == 'Awake') {
 							$eqLogic->setConfiguration('lastWakeUp', time());
-							if ($eqLogic->getConfiguration('missedWakeup', false)){
+							if ($eqLogic->getConfiguration('missedWakeup', false)) {
 								$action = '<a href="/' . $eqLogic->getLinkToConfiguration() . '">' . __('Equipement', __FILE__) . '</a>';
-								if (config::byKey('notifyMissWakeup', __CLASS__, 1)==1 && $eqLogic->getIsEnable()==1){
-									if (version_compare(jeedom::version(),'4.4.0','>=')){
-										message::add('zwavejs',"L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId(). ', vient de se réveiller après avoir raté au minimum 4 réveils.', $action,'Awake-'.$eqLogic->getLogicalId(),true,'alerting');
+								if (config::byKey('notifyMissWakeup', __CLASS__, 1) == 1 && $eqLogic->getIsEnable() == 1) {
+									if (version_compare(jeedom::version(), '4.4.0', '>=')) {
+										message::add('zwavejs', "L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId() . ', vient de se réveiller après avoir raté au minimum 4 réveils.', $action, 'Awake-' . $eqLogic->getLogicalId(), true, 'alerting');
 									} else {
-										message::add('zwavejs',"L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId(). ', vient de se réveiller après avoir raté au minimum 4 réveils.', $action,'Awake-'.$eqLogic->getLogicalId(),true);
+										message::add('zwavejs', "L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId() . ', vient de se réveiller après avoir raté au minimum 4 réveils.', $action, 'Awake-' . $eqLogic->getLogicalId(), true);
 									}
 								}
 							}
@@ -940,21 +939,21 @@ class zwavejs extends eqLogic {
 						}
 						if ($data['status'] == 'Dead' && $currentValue == 'Alive') {
 							$action = '<a href="/' . $eqLogic->getLinkToConfiguration() . '">' . __('Equipement', __FILE__) . '</a>';
-							if (config::byKey('notifyDead', __CLASS__, 1)==1 && $eqLogic->getIsEnable()==1){
-								if (version_compare(jeedom::version(),'4.4.0','>=')){
-									message::add('zwavejs',"L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId(). ', vient de passer au statut Dead.', $action,'Dead-'.$eqLogic->getLogicalId(),true,'alerting');
+							if (config::byKey('notifyDead', __CLASS__, 1) == 1 && $eqLogic->getIsEnable() == 1) {
+								if (version_compare(jeedom::version(), '4.4.0', '>=')) {
+									message::add('zwavejs', "L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId() . ', vient de passer au statut Dead.', $action, 'Dead-' . $eqLogic->getLogicalId(), true, 'alerting');
 								} else {
-									message::add('zwavejs',"L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId(). ', vient de passer au statut Dead.', $action,'Dead-'.$eqLogic->getLogicalId(),true);
+									message::add('zwavejs', "L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId() . ', vient de passer au statut Dead.', $action, 'Dead-' . $eqLogic->getLogicalId(), true);
 								}
 							}
 						}
 						if ($data['status'] == 'Alive' && $currentValue == 'Dead') {
 							$action = '<a href="/' . $eqLogic->getLinkToConfiguration() . '">' . __('Equipement', __FILE__) . '</a>';
-							if (config::byKey('notifyDead', __CLASS__, 1)==1 && $eqLogic->getIsEnable()==1){
-								if (version_compare(jeedom::version(),'4.4.0','>=')){
-									message::add('zwavejs',"L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId(). ', vient de passer au statut Alive.', $action,'Alive-'.$eqLogic->getLogicalId(),true,'alertingReturnBack');
+							if (config::byKey('notifyDead', __CLASS__, 1) == 1 && $eqLogic->getIsEnable() == 1) {
+								if (version_compare(jeedom::version(), '4.4.0', '>=')) {
+									message::add('zwavejs', "L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId() . ', vient de passer au statut Alive.', $action, 'Alive-' . $eqLogic->getLogicalId(), true, 'alertingReturnBack');
 								} else {
-									message::add('zwavejs',"L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId(). ', vient de passer au statut Alive.', $action,'Alive-'.$eqLogic->getLogicalId(),true);
+									message::add('zwavejs', "L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId() . ', vient de passer au statut Alive.', $action, 'Alive-' . $eqLogic->getLogicalId(), true);
 								}
 							}
 						}
@@ -979,12 +978,12 @@ class zwavejs extends eqLogic {
 		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . 'Publication Mqtt Value' . $_node . ' ' . $_path . ' ' . json_encode($_args));
 		mqtt2::publish(config::byKey('prefix', __CLASS__, 'zwave') . '/' . $_node . '/' . $_path . '/set', $_args);
 	}
-	
+
 	public static function cleanHistory() {
 		foreach (self::byType(__CLASS__) as $eqLogic) {
-			$eqLogic->setCache('waiting',array());
+			$eqLogic->setCache('waiting', array());
 		}
-		return ;
+		return;
 	}
 
 	public static function getInfo() {
@@ -1067,15 +1066,15 @@ class zwavejs extends eqLogic {
 		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . $_fullpath . ' ' . $_value);
 		$detailsPath = explode('-', $_fullpath, 2);
 		$value = $_value;
-		if (strpos($_fullpath,'userCode') !== false){
-			if (strpos($_value,'0x') !== false){
-				$value = array("type"=>"Buffer", "data"=>array_map('hexdec', str_split(str_replace('0x','',$_value), 2)));
+		if (strpos($_fullpath, 'userCode') !== false) {
+			if (strpos($_value, '0x') !== false) {
+				$value = array("type" => "Buffer", "data" => array_map('hexdec', str_split(str_replace('0x', '', $_value), 2)));
 			} else {
-				$value = '"'.$_value.'"';
+				$value = '"' . $_value . '"';
 			}
 		}
 		self::publishMqttValue($detailsPath[0], str_replace('-', '/', $detailsPath[1]), $value);
-		self::handleSetHistory($_fullpath,$_value);
+		self::handleSetHistory($_fullpath, $_value);
 	}
 
 	public static function setPolling($_nodeId, $_cc, $_endpoint, $_property, $_value) {
@@ -1096,11 +1095,11 @@ class zwavejs extends eqLogic {
 			$endpoint = $elements[2];
 			$property = $elements[3];
 			$logical = $class . '-' . $endpoint . '-' . $property;
-			if (in_array($class,array('112','132','99'))){
-				$waiting = $eqLogic->getCache('waiting',array());
-				$waiting[$logical] = array('value'=>$_value,'date'=>date("d/m/Y H:i:s")); 
+			if (in_array($class, array('112', '132', '99'))) {
+				$waiting = $eqLogic->getCache('waiting', array());
+				$waiting[$logical] = array('value' => $_value, 'date' => date("d/m/Y H:i:s"));
 				log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . $logical . ' ' . $_value);
-				$eqLogic->setCache('waiting',$waiting);
+				$eqLogic->setCache('waiting', $waiting);
 			}
 		}
 	}
@@ -1166,27 +1165,27 @@ class zwavejs extends eqLogic {
 		$args['type'] = 'inclusion';
 		self::publishMqttApi($api, $args);
 	}
-	
+
 	public static function grantSecurity($_security, $_auth) {
 		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . __('Grant Security', __FILE__) . ' ' . $_security . ' ' . $_auth);
 		$auth = false;
 		$security = array();
-		if ($_auth != "false"){
+		if ($_auth != "false") {
 			$auth = true;
 		}
 		foreach ($_security as $class) {
-			$security[]= intval($class);
+			$security[] = intval($class);
 		}
 		$args = array('args' => array(array('securityClasses' => $security, 'clientSideAuth' => $auth)));
 		self::publishMqttApi('grantSecurityClasses', $args);
 	}
-	
+
 	public static function validateDSK($_dsk) {
 		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . __('Validation DSK', __FILE__) . ' ' . $_dsk);
 		$args = array('args' => array($_dsk));
 		self::publishMqttApi('validateDSK', $args);
 	}
-	
+
 	public static function abortInclusion() {
 		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . __('Annulation Inclusion', __FILE__));
 		$args = array();
@@ -1265,7 +1264,7 @@ class zwavejs extends eqLogic {
 	public static function constructValuePage($_nodeId, $_values, $_nodeStatus) {
 		$nodeValuesDict = array();
 		$eqLogic = self::byLogicalId($_nodeId, __CLASS__);
-		$waiting = $eqLogic->getCache('waiting',array());
+		$waiting = $eqLogic->getCache('waiting', array());
 		$nodeValues = '<div class="panel-group" id="accordionValues">';
 		foreach ($_values as $key => $value) {
 			$value['oriKey'] = $key;
@@ -1297,7 +1296,7 @@ class zwavejs extends eqLogic {
 					$nodeValues .= '<td>' . $data['property'] . '</td>';
 					$prop = $data['property'];
 				}
-				$globProperty=$cc.'-'.$data['endpoint'].'-'.$prop;
+				$globProperty = $cc . '-' . $data['endpoint'] . '-' . $prop;
 				if (isset($data['description'])) {
 					$nodeValues .= '<td style="width:30%">' . $data['label'] . ' <sup><i class="fas fa-question-circle tooltips" title="' . $data['description'] . '"></i><sup></td>';
 				} else {
@@ -1305,10 +1304,10 @@ class zwavejs extends eqLogic {
 				}
 				$nodeValues .= '<td style="width:30%">';
 				$waitingValue = '';
-				if (isset($waiting[$globProperty])){
-					if ($waiting[$globProperty]['value'] == $data['value']){
+				if (isset($waiting[$globProperty])) {
+					if ($waiting[$globProperty]['value'] == $data['value']) {
 						unset($waiting[$globProperty]);
-						$eqLogic->setCache('waiting',$waiting);
+						$eqLogic->setCache('waiting', $waiting);
 					} else {
 						$waitingValue = $waiting[$globProperty]['value'];
 					}
@@ -1380,8 +1379,8 @@ class zwavejs extends eqLogic {
 				if ($tooltip != '') {
 					$span .= ' <sup><i class="fas fa-question-circle tooltips" title="' . $tooltip . '"></i></sup>';
 				}
-				if ($waitingValue != ''){
-					$span.=' <i class="fas fa-user-clock icon_orange" title="Paramètre demandé"><sup>'.$waitingValue.'</sup></i>';
+				if ($waitingValue != '') {
+					$span .= ' <i class="fas fa-user-clock icon_orange" title="Paramètre demandé"><sup>' . $waitingValue . '</sup></i>';
 				}
 				$updates[str_replace(' ', '_', $data['id'])] = array('value' => $span);
 				$nodeValues .= '<span class="' . str_replace(' ', '_', $data['id']) . '">' . $span . '</span>';
@@ -1427,7 +1426,7 @@ class zwavejs extends eqLogic {
 					$nodeValues .= ' data-type="' . $data['type'] . '"';
 					$nodeValues .= ' data-label="' . $data['label'] . '"';
 					$nodeValues .= ' data-path="' . $data['id'] . '"';
-					if (isset($data['unit'])){
+					if (isset($data['unit'])) {
 						$nodeValues .= ' data-unit="' . $data['unit'] . '"';
 					} else {
 						$nodeValues .= ' data-unit=""';
@@ -1442,7 +1441,7 @@ class zwavejs extends eqLogic {
 					$nodeValues .= ' data-type="' . $data['type'] . '"';
 					$nodeValues .= ' data-label="' . $data['label'] . '"';
 					$nodeValues .= ' data-path="' . $data['id'] . '"';
-					if (isset($data['unit'])){
+					if (isset($data['unit'])) {
 						$nodeValues .= ' data-unit="' . $data['unit'] . '"';
 					} else {
 						$nodeValues .= ' data-unit=""';
@@ -1528,7 +1527,7 @@ class zwavejs extends eqLogic {
 					$polling = '<span title="Nombre de polling actif" class="label label-warning" style="font-size : 1em;">' . $numberPoll . '</span>';
 				}
 				$healthPage .= '<td>' . $polling . '</td>';
-				
+
 				$numberRefresh = 0;
 				if (is_object($eqLogic)) {
 					$refreshes = $eqLogic->getConfiguration('refreshes', array());
@@ -1583,16 +1582,16 @@ class zwavejs extends eqLogic {
 						} else {
 							$next = self::secondsToTime($values['values']['132-0-wakeUpInterval']['value'] - $wakedup);
 						}
-						if ($wakedup > 3*$values['values']['132-0-wakeUpInterval']['value']) {
+						if ($wakedup > 3 * $values['values']['132-0-wakeUpInterval']['value']) {
 							$action = '<a href="/' . $eqLogic->getLinkToConfiguration() . '">' . __('Equipement', __FILE__) . '</a>';
-							if (config::byKey('notifyMissWakeup', __CLASS__, 1)==1 && $eqLogic->getIsEnable()==1){
-								if (version_compare(jeedom::version(),'4.4.0','>=')){
-									message::add('zwavejs',"L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId(). ", ne s'est pas reveillé au moins 4 fois. Il a peut être un problème (batterie ou autres).", $action,'Wakeup-'.$eqLogic->getLogicalId(),true,'alertingReturnBack');
+							if (config::byKey('notifyMissWakeup', __CLASS__, 1) == 1 && $eqLogic->getIsEnable() == 1) {
+								if (version_compare(jeedom::version(), '4.4.0', '>=')) {
+									message::add('zwavejs', "L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId() . ", ne s'est pas reveillé au moins 4 fois. Il a peut être un problème (batterie ou autres).", $action, 'Wakeup-' . $eqLogic->getLogicalId(), true, 'alertingReturnBack');
 								} else {
-									message::add('zwavejs',"L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId(). ", ne s'est pas reveillé au moins 4 fois. Il a peut être un problème (batterie ou autres).", $action,'Wakeup-'.$eqLogic->getLogicalId(),true);
+									message::add('zwavejs', "L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId() . ", ne s'est pas reveillé au moins 4 fois. Il a peut être un problème (batterie ou autres).", $action, 'Wakeup-' . $eqLogic->getLogicalId(), true);
 								}
 							}
-							$eqLogic->setConfiguration('missedWakeup',true);
+							$eqLogic->setConfiguration('missedWakeup', true);
 							$eqLogic->save();
 						}
 						$healthPage .= '<br><i class="fas fa-arrow-right icon_blue" title="' . __('Prochain réveil estimé', __FILE__) . '" aria-hidden="true"></i> <span title="' . __('Prochain réveil estimé', __FILE__) . '" style="font-size : 0.7em;">' . $next . '</span>';
@@ -1752,25 +1751,26 @@ class zwavejs extends eqLogic {
 			}
 		}
 	}
-	
+
 	public static function getWaiting() {
 		$globWaiting = array();
 		foreach (self::byType(__CLASS__) as $eqLogic) {
-			$waitings = $eqLogic->getCache('waiting',array());
+			$waitings = $eqLogic->getCache('waiting', array());
 			if (is_object($eqLogic)) {
 				$image = 'plugins/zwavejs/core/config/devices/' . $eqLogic->getImgFilePath();
 				if (!is_file(dirname(__FILE__) . '/../config/devices/' . $eqLogic->getImgFilePath())) {
 					$image = 'plugins/zwavejs/plugin_info/zwavejs_icon.png';
 				}
-				foreach ($waitings as $property=>$data){
-					$globWaiting[] = array('id'=>$eqLogic->getLogicalId(),
-										'eqId'=>$eqLogic->getId(),
-										'image'=>$image,
-										'name'=>$eqLogic->getHumanName(true),
-										'property'=>$property,
-										'value'=>$data['value'],
-										'date'=>$data['date']
-									);
+				foreach ($waitings as $property => $data) {
+					$globWaiting[] = array(
+						'id' => $eqLogic->getLogicalId(),
+						'eqId' => $eqLogic->getId(),
+						'image' => $image,
+						'name' => $eqLogic->getHumanName(true),
+						'property' => $property,
+						'value' => $data['value'],
+						'date' => $data['date']
+					);
 				}
 			}
 		}
@@ -1800,17 +1800,17 @@ class zwavejs extends eqLogic {
 			$this->updateCmd($cmdId, $_change['newValue']);
 		}
 	}
-	
+
 	public function handleNotificationUpdate($_change, $_cc) {
 		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . 'Notification pour le node ' . $this->getHumanName());
 		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . $this->getHumanName() . ' ' . json_encode($_change) . ' sur la CC ' . $_cc);
-		foreach ($_change as $key => $value){
+		foreach ($_change as $key => $value) {
 			if ($key == 'parameters') {
-				foreach ($value as $keyparam => $valueparam){
-					$this->updateCmd($_cc.'-'.'0-notification-'.$key.'-'.$keyparam, $valueparam);
+				foreach ($value as $keyparam => $valueparam) {
+					$this->updateCmd($_cc . '-' . '0-notification-' . $key . '-' . $keyparam, $valueparam);
 				}
 			} else {
-				$this->updateCmd($_cc.'-'.'0-notification-'.$key, $value);
+				$this->updateCmd($_cc . '-' . '0-notification-' . $key, $value);
 			}
 		}
 	}
@@ -1821,7 +1821,7 @@ class zwavejs extends eqLogic {
 			"Air_temperature" => "Air temperature"
 		);
 		//log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . $_cmdId . ' ' . $_value);
-		$waiting = $this->getCache('waiting',array());
+		$waiting = $this->getCache('waiting', array());
 		$_cmdId = str_replace('_', ' ', $_cmdId);
 		$cmdId = explode('-', $_cmdId, 3);
 		$class = $cmdId[0];
@@ -1867,10 +1867,10 @@ class zwavejs extends eqLogic {
 			// log::add(__CLASS__, 'debug', $label);
 			$this->checkAndUpdateCmd($_cmdId . '-label', $label);
 		}
-		if (isset($waiting[$_cmdId])){
-			if ($waiting[$_cmdId]['value'] == $_value){
+		if (isset($waiting[$_cmdId])) {
+			if ($waiting[$_cmdId]['value'] == $_value) {
 				unset($waiting[$_cmdId]);
-				$this->setCache('waiting',$waiting);
+				$this->setCache('waiting', $waiting);
 			}
 		}
 	}
@@ -2018,7 +2018,7 @@ class zwavejs extends eqLogic {
 							$command['name'] = $details['name'];
 						}
 						if (isset($details['filterVisible'])) {
-							if (in_array($command['name'],$details['filterVisible']['commands'])){
+							if (in_array($command['name'], $details['filterVisible']['commands'])) {
 								$command['isVisible'] = $details['filterVisible']['value'];
 							}
 						}
@@ -2120,8 +2120,8 @@ class zwavejs extends eqLogic {
 		$result = array();
 		$result['interview'] = $this->getConfiguration('interview', false);
 		$command_counter = 0;
-		foreach ($this->getCmd() as $cmd){
-			if (!in_array($cmd->getLogicalId(),array('0-0-nodeStatus','0-0-pingNode','0-0-healNode','0-0-isFailedNode'))){
+		foreach ($this->getCmd() as $cmd) {
+			if (!in_array($cmd->getLogicalId(), array('0-0-nodeStatus', '0-0-pingNode', '0-0-healNode', '0-0-isFailedNode'))) {
 				$command_counter += 1;
 			}
 		}
@@ -2296,25 +2296,24 @@ class zwavejs extends eqLogic {
 
 	public function pollValue($_class) {
 		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . $_class);
-		if (stripos($_class,'-value-') === false) {
+		if (stripos($_class, '-value-') === false) {
 			$command = explode('-', $_class, 3);
 			$args = array('args' => array(array('nodeId' => intval($this->getLogicalId()), 'commandClass' => intval($command[1]), 'endpoint' => intval($command[0]), 'property' => $command[2])));
-		}
-		else {
+		} else {
 			$command = explode('-', $_class, 4);
-			$args = array('args' => array(array('nodeId' => intval($this->getLogicalId()), 'commandClass' => intval($command[1]), 'endpoint' => intval($command[0]), 'property' => $command[2], 'propertyKey' => intval($command[3]))));			
+			$args = array('args' => array(array('nodeId' => intval($this->getLogicalId()), 'commandClass' => intval($command[1]), 'endpoint' => intval($command[0]), 'property' => $command[2], 'propertyKey' => intval($command[3]))));
 		}
 		log::add(__CLASS__, 'debug', $this->getHumanName() . '[' . __FUNCTION__ . '] ' . json_encode($args));
 		self::publishMqttApi('pollValue', $args);
 	}
-	
-	public function refreshIfNeeded($_path,$_value) {
+
+	public function refreshIfNeeded($_path, $_value) {
 		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . $_path . ' ' . $_value);
 		$refreshes = $this->getConfiguration('refreshes', '');
-		if (is_array($refreshes) && count($refreshes) >0 ) {
+		if (is_array($refreshes) && count($refreshes) > 0) {
 			foreach ($refreshes as $refresh) {
 				$source = $refresh['refresh::source'];
-				if (strpos(str_replace('/','-',$_path).'-'.$_value,$source) !== false){
+				if (strpos(str_replace('/', '-', $_path) . '-' . $_value, $source) !== false) {
 					log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] Found refresh');
 					$cmd = 'php ' . dirname(__FILE__) . '/../../core/php/refresher.php id=' . $this->getId();
 					$cmd .= ' target=' . $refresh['refresh::target'] . '';
@@ -2380,7 +2379,7 @@ class zwavejsCmd extends cmd {
 			return;
 		}
 		if ($property == 'refreshNodeCC') {
-			zwavejs::refreshNodeCC(intval($node),intval($cc));
+			zwavejs::refreshNodeCC(intval($node), intval($cc));
 			return;
 		}
 		if ($cc == 0 && $endpoint == 0) {
@@ -2417,6 +2416,6 @@ class zwavejsCmd extends cmd {
 			return;
 		}
 		zwavejs::publishMqttValue($node, $path, $value);
-		$eqLogic->refreshIfNeeded($path,$value);
+		$eqLogic->refreshIfNeeded($path, $value);
 	}
 }
