@@ -7,8 +7,8 @@ BASEDIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 cd $BASEDIR
 cd zwave-js-ui
-sudo yarn install
-sudo yarn run build
+sudo npm install
+sudo npm run build
 chown -R www-data:www-data *
 
 if [ -e /dev/ttyAMA0 ];  then 
@@ -37,4 +37,3 @@ then
   fi
 fi
 echo "Everything is successfully installed!"
-
