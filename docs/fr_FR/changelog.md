@@ -4,7 +4,7 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
-- Passage à la version *9.27.2* de ZwaveJsUI
+- Passage à la version *9.26.0* de ZwaveJsUI
 - Ajout du mode distant *(Attention: cela réduit les fonctionnalités du plugin)*. Bien lire la documentation, le passage en mode distant à un fort impact sur la simplicité d'utilisation et la compatibilité de certains modules
 - Support du protocole mqtts
 
