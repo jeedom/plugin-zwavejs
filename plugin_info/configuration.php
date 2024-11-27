@@ -28,6 +28,12 @@ if (!isConnect('admin')) {
 				echo '<div class="alert alert-warning">{{Le plugin jMQTT est installé, veuillez vérifier la configuration du broker dans le plugin jMQTT et la reporter, si nécessaire, dans le plugin MQTT Manager.}}</div>';
 			}
 			?>
+			<div class="form-group">
+				<label class="col-md-4 control-label">{{ZwaveJs UI}}</label>
+				<div class="col-md-3">
+					<a class="btn btn-danger controller_action" target="_blank" href="http://<?php echo network::getNetworkAccess('internal', 'ip') ?>:8091" title="Aucun support ne sera fait en cas de changement d'un réglage du menu configuration de ZwaveJS UI. Vous pouvez changez le mot de passe utilisateur si vous le souhaitez. Vous pouvez utiliser les fonctionnalités. Mais ne changez aucun réglage. Les identifiants par défaut sont : admin/zwave"><i class="fas fa-external-link-square-alt "></i> {{Interface ZwaveJs UI}}</a></td>					
+				</div>
+			</div>
 			 <div class="form-group">
 				<label class="col-md-4 control-label">{{Mode}}</label>
 				<div class="col-md-3">
@@ -126,6 +132,7 @@ if (!isConnect('admin')) {
 				?>
 				</div>
 			</div>
+
 			<br>
 		</div>
 

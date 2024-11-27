@@ -17,6 +17,9 @@
 var nodes = {}
 var networkTree = {}
 
+
+
+
 $('#bt_syncEqLogic').off('click').on('click', function() {
   jeedom.zwavejs.network.getNodes({
     info: 'getNodes',
