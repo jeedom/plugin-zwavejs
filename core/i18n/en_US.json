@@ -59,6 +59,8 @@
     "plugins\/zwavejs\/plugin_info\/configuration.php": {
         "401 - Accès non autorisé": "401 - Unauthorized Access",
         "Le plugin jMQTT est installé, veuillez vérifier la configuration du broker dans le plugin jMQTT et la reporter, si nécessaire, dans le plugin MQTT Manager.": "The jMQTT plugin is installed, please check the configuration of the broker in the jMQTT plugin and report it, if necessary, in the MQTT Manager plugin",
+        "ZwaveJs UI": "ZwaveJs UI",
+        "Interface ZwaveJs UI": "ZwaveJs UI Interface",
         "Mode": "Fashion",
         "Distant": "Distant",
         "Local": "Local",
@@ -195,7 +197,7 @@
         "Hard reset": "Hard reset",
         "Remise à zéro du contrôleur.": "Controller reset",
         "Remet à zéro le contrôleur et efface ses paramètres de configuration réseau.": "Resets the controller and clears its network configuration settings",
-        "Interface ZwaveJs UI": "ZwaveJs UI",
+        "Interface ZwaveJs UI": "ZwaveJs UI Interface",
         "Aucun support": "No support",
         "ne sera fait en cas de changement d'un réglage du": "will only be made if a setting of the",
         "menu configuration de ZwaveJS UI": "ZwaveJS UI configuration menu",
