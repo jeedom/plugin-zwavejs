@@ -25,9 +25,11 @@ $eqLogics = eqLogic::byType($plugin->getId());
 $controllerStatus = config::byKey('controllerStatus', 'zwavejs', 'none');
 $driverStatus = config::byKey('driverStatus', 'zwavejs', 0);
 if (!zwavejs::isRunning()) {
-	echo '<div id="div_driverStatus"><div class="alert alert-danger" role="alert"> {{Le démon Z-Wave n’est pas démarré.}}</div></div>';
+	echo '<div id="div_driverStatus"><div class="alert alert-danger" role="alert">';
+	echo "{{Le démon Z-Wave n'est pas démarré.}}</div></div>";
 } else if ($driverStatus != 1) {
-	echo '<div id="div_driverStatus"><div class="alert alert-warning" role="alert"> {{Le driver Z-Wave n’est pas initialisé, veuillez patienter. Si le message reste trop longtemps, veuillez vérifier la configuration du démon}}</div></div>';
+	echo '<div id="div_driverStatus"><div class="alert alert-warning" role="alert">';
+	echo "{{Le driver Z-Wave n'est pas initialisé, veuillez patienter. Si le message reste trop longtemps, veuillez vérifier la configuration du démon}}</div></div>";
 } else {
 	echo '<div id="div_driverStatus"></div>';
 }
@@ -36,7 +38,7 @@ switch ($controllerStatus) {
 		echo '<div id="div_inclusionAlert"></div>';
 		break;
 	case 'inclusion':
-		echo '<div id="div_inclusionAlert"><div class="alert alert-warning" role="alert"> {{Une inclusion est en cours}}</div></div>';
+		echo '<div id="div_inclusionAlert"><div class="alert alert-warning" role="alert">{{Une inclusion est en cours}}</div></div>';
 		break;
 	case 'exclusion':
 		echo '<div id="div_inclusionAlert"><div class="alert alert-warning" role="alert">{{Une exclusion est en cours}}</div></div>';
@@ -225,7 +227,7 @@ sendVarTojs('eqLogic_human_name', $tags);
 							</div>
 							<div class="form-group">
 								<label class="col-sm-4 control-label">{{Commandes}}
-								<sup><i class="fas fa-question-circle tooltips" title="{{Nombre de commandes actuelles en ignorant les 4 commandes techniques de chaque équipement du plugin}}"></i></sup></label>
+									<sup><i class="fas fa-question-circle tooltips" title="{{Nombre de commandes actuelles en ignorant les 4 commandes techniques de chaque équipement du plugin}}"></i></sup></label>
 								<div class="col-sm-6">
 									<span class="label label-info">
 										<span class="command_number"></span>
@@ -298,7 +300,7 @@ sendVarTojs('eqLogic_human_name', $tags);
 					</table>
 				</div>
 			</div>
-			
+
 			<div role="tabpanel" class="tab-pane" id="optionstab">
 				<br>
 				<legend><i class="fas fa-sync"></i> {{Rafraîchissement}}</legend>
