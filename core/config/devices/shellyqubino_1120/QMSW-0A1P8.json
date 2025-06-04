@@ -1,0 +1,21 @@
+{
+    "name": "QMSW-0A1P8",
+    "type": "Micromodule",
+    "comlink": "",
+    "remark": "",
+    "versions": {
+        "2": [
+            "143"
+        ]
+    },
+    "properties": {
+        "Switch": {},
+        "Indicator": {},
+        "Power": {},
+        "Energy": {},
+        "Notification|mains":{"type":"mains"},
+        "Notification|heat-sensor":{"type":"heat-sensor"},
+        "Notification|power-status":{"type":"power-status"},
+        "Notification|alarmLevel":{"type":"alarmLevel"}
+    }
+}

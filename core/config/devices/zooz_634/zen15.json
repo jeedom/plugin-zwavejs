@@ -1,0 +1,24 @@
+{
+    "name": "ZEN15 - Power Switch",
+    "ref": "ZEN15",
+    "manufacturer": "Zooz",
+    "type": "Relais",
+    "remark": "",
+    "versions": {
+        "257": [
+            "13"
+        ]
+    },
+    "properties": { 
+        "switch": {},
+        "Notification|alarmLevel":{"type":"alarmLevel"},
+        "Notification|power-status":{"type":"power-status"},        
+        "scene" : {},
+        "Indicator" : {},
+        "voltage" : {},
+        "Power" : {},
+        "energy" : {},
+        "current" : {}
+
+    }
+}

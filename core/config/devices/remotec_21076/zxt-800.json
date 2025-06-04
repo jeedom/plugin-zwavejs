@@ -1,0 +1,36 @@
+{
+    "name": "Thermostat ZXT-800",
+    "ref": "ZXT-800",
+    "manufacturer": "Remotec",
+    "type": "Thermostat",
+    "reset": "",
+    "pairing": "",
+    "remark": "",
+    "documentation": "",
+    "buylink": "",
+    "versions": {
+        "4": [
+            "33938"
+        ]
+    },
+    "properties": {
+        "air temperature": {},
+        "Thermostatmode": {},
+        "Thermostatoperatingstate": {},
+        "Thermostatsetpoint": {
+                "multi": [
+                    "Chaud",
+                    "Froid"
+                ],
+                "multiProperty": {
+                    "Chaud": 1,
+                    "Froid": 2
+                },
+                "replace": {
+                "#endpoint#": 1
+                }
+            },
+        "Thermostatfanmode": {},
+        "Indicator": {}  
+    }
+}

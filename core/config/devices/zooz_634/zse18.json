@@ -1,0 +1,24 @@
+{
+    "name": "ZSE 18 - MOTION SENSOR",
+    "ref": "ZES18",
+    "manufacturer": "Zooz",
+    "type": "Mouvement, Vibration, Magnétisme",
+    "remark": "",
+    "versions": {
+        "769": [
+            "18"
+        ]
+    },
+    "properties": {
+        "Motion": {},
+        "Battery": {},
+        "Notification|alarmLevel":{"type":"alarmLevel"},
+        "Notification|power-status":{"type":"power-status"},
+        "Notification|motion":{"type":"motion"},
+        "Notification|magnetic":{"type":"magnetic"},
+        "Indicator": {}  
+
+
+
+    }
+}
