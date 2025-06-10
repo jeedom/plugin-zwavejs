@@ -1,0 +1,30 @@
+{
+    "name": "MH-S412 Double",
+    "type": "Interrupteur",
+    "documentation": "https://doc.jeedom.com/#language#/zwave/mco.MH-S412_Double_-_Interrupteur",
+    "comlink": "2889-mcohome-interrupteur-tactile-en-verre-z-wave-2-charges-blanc",
+    "remark": "",
+    "imglink": "mco.mhs412",
+    "ignore": true,
+    "versions": {
+        "16642": [
+            "514"
+        ],
+        "16637": [
+            "20738"
+        ]
+    },
+    "properties": { 
+        "Switch": {
+            "multi": [
+                1,
+                2
+            ],
+            "replace": {
+                "#endpoint#": "multiKey"
+            }
+        },
+        "scene" : {},
+        "centralscene" : {}
+    }
+}
