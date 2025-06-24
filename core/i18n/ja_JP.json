@@ -654,6 +654,8 @@
         "Dernier réveil": "Dernier réveil",
         "Prochain réveil estimé": "Prochain réveil estimé",
         "Intervalle de réveil": "Intervalle de réveil",
+        "Création d'une commande info": "Création d'une commande info",
+        "Création d'une commande action": "Création d'une commande action",
         "Démon démarré depuis moins de 30 secondes et commande avec retour d'état Jeedom, on ignore": "Démon démarré depuis moins de 30 secondes et commande avec retour d'état Jeedom, on ignore",
         "sera ignoré": "sera ignoré",
         "Application de la valeur": "Application de la valeur",

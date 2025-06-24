@@ -654,6 +654,8 @@
         "Dernier réveil": "Letzter Wecker",
         "Prochain réveil estimé": "Nächstes geschätztes Erwachen",
         "Intervalle de réveil": "Weckintervall",
+        "Création d'une commande info": "Création d'une commande info",
+        "Création d'une commande action": "Création d'une commande action",
         "Démon démarré depuis moins de 30 secondes et commande avec retour d'état Jeedom, on ignore": "Demon startete für weniger als 30 Sekunden und Befehl mit Jeedom-Status-Feedback, wir ignorieren",
         "sera ignoré": "wird ignoriert",
         "Application de la valeur": "Wert anwenden",

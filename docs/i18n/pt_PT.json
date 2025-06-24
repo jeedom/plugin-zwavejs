@@ -9,6 +9,8 @@
         "Ajout du mode distant": "Adicionado modo remoto",
         "Bien lire la documentation, le passage en mode distant à un fort impact sur la simplicité d'utilisation et la compatibilité de certains modules": "Leia atentamente a documentação, mudar para o modo remoto tem um forte impacto na facilidade de uso e na compatibilidade de determinados módulos",
         "Support du protocole mqtts": "Suporte ao protocolo mqtts",
+        "24\/06\/2025": "",
+        "Correction d'un bug qui se produisait sous PHP8 lors de la création des commandes manquantes": "",
         "10\/06\/2025": "10\/06\/2025",
         "Mco Home MH-S412 double": "Mco Home MH-S412 double",
         "Fixe de la configuration": "Fixe de la configuration",
