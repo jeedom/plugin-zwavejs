@@ -1,0 +1,16 @@
+{
+    "name": "0-10V Dimmer",
+    "ref": "ZEN54_LR",
+    "manufacturer": "Zooz",
+    "type": "Relais",
+    "remark": "",
+    "versions": {
+        "2308": [
+            "536"
+        ]
+    },
+    "properties": { 
+        "Multilevel": {},
+        "Indicator" : {}
+    }
+}

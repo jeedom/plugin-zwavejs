@@ -29,6 +29,21 @@ if (!isConnect('admin')) {
 			}
 			?>
 			<div class="form-group">
+				<label class="col-md-4 control-label">{{ZwaveJs UI}}</label>
+				<div class="col-md-3">
+					<a class="btn btn-danger controller_action" target="_blank" href="http://<?php echo network::getNetworkAccess('internal', 'ip') ?>:8091" title="Aucun support ne sera fait en cas de changement d'un réglage du menu configuration de ZwaveJS UI. Vous pouvez changez le mot de passe utilisateur si vous le souhaitez. Vous pouvez utiliser les fonctionnalités. Mais ne changez aucun réglage. Les identifiants par défaut sont : admin/zwave"><i class="fas fa-external-link-square-alt "></i> {{Interface ZwaveJs UI}}</a></td>					
+				</div>
+			</div>
+			<!-- <div class="form-group">
+				<label class="col-md-4 control-label">{{Mode}}</label>
+				<div class="col-md-3">
+					<select class="configKey form-control" data-l1key="zwavejs::mode" id="sel_zwavejsMode">
+					<option value="distant">{{Distant}}</option>
+					<option value="local">{{Local}}</option>
+					</select>
+				</div>
+			</div> -->
+			<div class="form-group zwavejs_mode local">
 				<label class="col-md-4 control-label">{{Port du contrôleur Z-Wave}}
 					<sup><i class="fas fa-question-circle tooltips" title="{{Renseigner le port utilisé par le contrôleur Z-Wave}}"></i></sup>
 				</label>
@@ -84,7 +99,7 @@ if (!isConnect('admin')) {
 					<input type="checkbox" class="configKey" data-l1key="notifyMissWakeup" checked>
 				</div>
 			</div>
-			<div class="form-group">
+			<div class="form-group zwavejs_mode local">
 				<label class="col-md-4 control-label">{{Soft Reset}}
 					<sup><i class="fas fa-question-circle tooltips" title="{{Ne pas toucher si vous ne savez pas ce qu'est cette option}}"></i></sup>
 				</label>
@@ -92,7 +107,7 @@ if (!isConnect('admin')) {
 					<input type="checkbox" class="configKey" data-l1key="softReset" checked>
 				</div>
 			</div>
-			<div class="form-group">
+			<div class="form-group zwavejs_mode local">
 				<label class="col-md-4 control-label">{{Version ZwaveJS UI}}
 					<sup><i class="fas fa-question-circle tooltips" title="{{Version de la librairie ZwaveJS UI}}"></i></sup>
 				</label>
@@ -117,10 +132,11 @@ if (!isConnect('admin')) {
 				?>
 				</div>
 			</div>
+
 			<br>
 		</div>
 
-		<div class="col-lg-6">
+		<div class="col-lg-6 zwavejs_mode local">
 			<div class="alert alert-info text-center">{{Les clés de sécurités sont à conserver précieusement. Si vous perdez vos clés les périphériques inclus en sécurisés devront être réappairés. Les clés peuvent être spécifiées, si les champs sont vides ou invalides le plugin en générera et vous pourrez les voir ensuite.}}
 				<br>{{Si votre contrôleur a été utilisé avec le plugin Openzwave et que vous aviez inclus des modules en sécurisés la clé S0 est}} :
 				<code>0102030405060708090A0B0C0D0E0F10</code>
@@ -184,6 +200,13 @@ if (!isConnect('admin')) {
 </form>
 
 <script>
+	$('#sel_zwavejsMode').off('change').on('change', function() {
+		$('.zwavejs_mode').hide();
+		if ($(this).value() != '') {
+		$('.zwavejs_mode.' + $(this).value()).show();
+		}
+	})
+	
 	$('.randomKey').off('click').on('click', function() {
 		var el = $(this)
 		bootbox.confirm('{{Êtes-vous sûr de vouloir réinitialiser la clé}}' + ' ' + el.attr('data-key') + ' ? {{La prise en compte sera effective après sauvegarde et relance du démon.}}', function(result) {

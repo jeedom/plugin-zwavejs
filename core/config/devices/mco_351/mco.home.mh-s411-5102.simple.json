@@ -1,0 +1,31 @@
+{
+    "name": "MH-S411 Simple",
+    "type": "Interrupteur",
+    "comlink": "2888-mcohome-interrupteur-tactile-en-verre-z-wave-1-charge-blanc-2015032300123",
+    "remark": "",
+    "imglink": "mco.mhs411",
+    "ignore": true,
+    "versions": {
+        "16642": [
+            "513"
+        ],
+        "16657": [
+            "4866",
+            "20738"
+        ]
+    },
+    "properties": { 
+        "switch": {"replace": {
+                "#endpoint#": 1
+            }},
+        "scene" : {},
+        "centralscene" : {}
+    }
+
+}
+
+
+
+
+
+

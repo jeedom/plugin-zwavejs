@@ -138,6 +138,10 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function cronHourly() {
+		if (config::byKey('zwavejs::mode', 'zwavejs') == 'distant') {
+			self::getNodes('health');
+			return;
+		}
 		$deamon_info = self::deamon_info();
 		if ($deamon_info['state'] != 'ok') {
 			return;
@@ -146,6 +150,9 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function configureSettings($_path) {
+		if (config::byKey('zwavejs::mode', 'zwavejs') == 'distant') {
+			return;
+		}
 		$file = $_path . '/settings.json';
 		$settings = array();
 		if (file_exists($file)) {
@@ -167,11 +174,16 @@ class zwavejs extends eqLogic {
 
 		$settings['mqtt']['name'] = 'Jeedom';
 		$settings['mqtt']['host'] = $mqttInfos['ip'];
+		if (!isset($mqttInfos['protocol'])) {
+			$mqttInfos['protocol'] = 'mqtt';
+		}
+		$settings['mqtt']['host'] = $mqttInfos['protocol'] . '://' . $mqttInfos['ip'];
 		$settings['mqtt']['port'] = $mqttInfos['port'];
 		$settings['mqtt']['auth'] = true;
 		$settings['mqtt']['username'] = $mqttInfos['user'];
 		$settings['mqtt']['password'] = $mqttInfos['password'];
 		$settings['mqtt']['prefix'] = config::byKey('prefix', __CLASS__, 'zwave');
+		$settings['mqtt']['allowSelfsigned'] = true;
 		//if ($port != 'auto') {
 		//	$port = jeedom::getUsbMapping($port);
 		//	exec(system::getCmdSudo() . 'chmod 777 ' . $port . ' > /dev/null 2>&1');
@@ -250,7 +262,30 @@ class zwavejs extends eqLogic {
 		return $data;
 	}
 
+	public static function postConfig_zwavejs_mode($_value) {
+		$plugin = plugin::byId('zwavejs');
+		if ($_value == 'local') {
+			$plugin->dependancy_changeAutoMode(1);
+			$plugin->deamon_info(1);
+			$dependancy_info = $plugin->dependancy_info(true);
+			if ($dependancy_info['state'] == 'nok' && config::byKey('dependancyAutoMode', $plugin->getId(), 1) == 1) {
+				try {
+					$plugin->dependancy_install();
+				} catch (Exception $e) {
+				}
+			}
+		} else {
+			$plugin->dependancy_changeAutoMode(0);
+			$plugin->deamon_info(0);
+		}
+	}
+
 	public static function additionnalDependancyCheck() {
+		if (config::byKey('zwavejs::mode', 'zwavejs') == 'distant') {
+			$return = array();
+			$return['state'] = 'ok';
+			return $return;
+		}
 		$return = array();
 		$return['state'] = 'ok';
 		if (config::byKey('lastDependancyInstallTime', __CLASS__) == '') {
@@ -262,6 +297,11 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function dependancy_info() {
+		if (config::byKey('zwavejs::mode', 'zwavejs') == 'distant') {
+			$return = array();
+			$return['state'] = 'ok';
+			return $return;
+		}
 		$return = array();
 		$return['progress_file'] = jeedom::getTmpFolder(__CLASS__) . '/dependance';
 		$return['state'] = 'ok';
@@ -274,6 +314,13 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function deamon_info() {
+		if (config::byKey('zwavejs::mode', 'zwavejs') == 'distant') {
+			$return = array();
+			$return['log'] = __CLASS__;
+			$return['launchable'] = 'ok';
+			$return['state'] = 'ok';
+			return $return;
+		}
 		$return = array();
 		$return['log'] = __CLASS__;
 		$return['launchable'] = 'ok';
@@ -311,6 +358,9 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function isRunning() {
+		if (config::byKey('zwavejs::mode', 'zwavejs') == 'distant') {
+			return true;
+		}
 		if (!empty(system::ps('server/bin/www.js'))) {
 			return true;
 		}
@@ -318,6 +368,9 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function deamon_start($_debug = false) {
+		if (config::byKey('zwavejs::mode', 'zwavejs') == 'distant') {
+			return;
+		}
 		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . 'Inscription au plugin mqtt2');
 		config::save('controllerStatus', 'none', __CLASS__);
 		config::save('driverStatus', 0, __CLASS__);
@@ -379,6 +432,9 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function deamon_stop() {
+		if (config::byKey('zwavejs::mode', 'zwavejs') == 'distant') {
+			return;
+		}
 		log::add(__CLASS__, 'info', __('Arrêt du démon ZwaveJS', __FILE__));
 		config::save('controllerStatus', 'none', __CLASS__);
 		$find = 'server/bin/www.js';
@@ -1592,7 +1648,7 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function autoCreateCommandInfo($_path, $_type, $_label, $_unit, $_max, $_min, $_currentValue) {
-		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . _("Création d'une commande info", __FILE__) . ' ' . $_path);
+		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . __("Création d'une commande info", __FILE__) . ' ' . $_path);
 		$elements = explode('-', str_replace('_', ' ', $_path), 4);
 		$eqLogic = self::byLogicalId($elements[0], __CLASS__);
 		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . print_r($elements, true));
@@ -1636,7 +1692,7 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function autoCreateCommandAction($_path, $_type, $_label, $_unit, $_max, $_min, $_currentValue) {
-		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . _("Création d'une commande action", __FILE__) . ' ' . $_path);
+		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . __("Création d'une commande action", __FILE__) . ' ' . $_path);
 		$elements = explode('-', str_replace('_', ' ', $_path), 4);
 		$eqLogic = self::byLogicalId($elements[0], __CLASS__);
 		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . print_r($elements, true));

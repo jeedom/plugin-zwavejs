@@ -1,0 +1,20 @@
+{
+    "name": "ZAC38 - Range extender",
+    "ref": "ZAC38",
+    "manufacturer": "Zooz",
+    "type": "Range Extender",
+    "remark": "",
+    "versions": {
+        "4": [
+            "1296"
+        ]
+    },
+    "properties": { 
+        "switch": {},
+        "Notification|alarmLevel":{"type":"alarmLevel"},
+        "Notification|mains":{"type":"mains"},        
+        "Indicator" : {},
+        "Battery" : {}
+
+    }
+}
