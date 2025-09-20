@@ -10,8 +10,8 @@ source ../core/config/zwavejs.config.ini  &> /dev/null
 
 if [ -f "${BASEDIR}/../data/wanted_zwavejs_version" ]; then
     wanted_zwavejs_version=$(cat "${BASEDIR}/../data/wanted_zwavejs_version")
-    if [ ! -z "${wanted_zwavejs_version}" ];then
-       $wantedVersion = $wanted_zwavejs_version
+    if [ -n "${wanted_zwavejs_version}" ];then
+       wantedVersion=$wanted_zwavejs_version
     fi
 fi
 
