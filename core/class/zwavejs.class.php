@@ -228,6 +228,17 @@ class zwavejs extends eqLogic {
 		file_put_contents($file, json_encode($settings, JSON_FORCE_OBJECT));
 	}
 
+	public static function postConfig_wanted_zwavejs_version($_value = null) {
+    	if($_value == null || trim($_value) == null){
+      		if(file_exists(__DIR__.'/../../data/wanted_zwavejs_version')){
+       			unlink(__DIR__.'/../../data/wanted_zwavejs_version');
+      		}
+    	} else{
+			$_value = preg_replace('/v*(\d+\.\d+\.\d+)/', "$1", $_value, 1);
+			file_put_contents(__DIR__.'/../../data/wanted_zwavejs_version', $_value);
+    	}
+  	}  
+  
 	public static function addFileEvent($_file, $_data) {
 		$status_path = dirname(__FILE__) . '/../../data/status';
 		if (!is_dir($status_path)) {
