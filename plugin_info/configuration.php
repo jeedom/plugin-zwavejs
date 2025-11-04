@@ -87,13 +87,13 @@ if (!isConnect('admin')) {
 			<br>
 			<div class="form-group">
 				<label class="col-md-4 control-label">{{Alertes de noeuds morts}}
-					<sup><i class="fas fa-question-circle tooltips" title="{{Cocher la case pour être notifié dans le centre de message Jeedom des noeuds morts et du retour à l'état Alive}}"></i></sup>
+					<sup><i class="fas fa-question-circle tooltips" title="{{Cocher la case pour être notifié dans le centre de messages Jeedom des noeuds morts et du retour à l'état Alive}}"></i></sup>
 				</label>
 				<div class="col-md-1">
 					<input type="checkbox" class="configKey" data-l1key="notifyDead" checked>
 				</div>
 				<label class="col-md-4 control-label">{{Alertes de réveils manqués}}
-					<sup><i class="fas fa-question-circle tooltips" title="{{Cocher la case pour être notifié dans le centre de message Jeedom des réveils manqués et du retour à la normal}}"></i></sup>
+					<sup><i class="fas fa-question-circle tooltips" title="{{Cocher la case pour être notifié dans le centre de messages Jeedom des réveils manqués et du retour à la normale}}"></i></sup>
 				</label>
 				<div class="col-md-1">
 					<input type="checkbox" class="configKey" data-l1key="notifyMissWakeup" checked>
