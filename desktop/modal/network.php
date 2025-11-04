@@ -272,7 +272,7 @@ if (!isConnect('admin')) {
 								</tr>
 								<tr>
 									<td class="node-interview-not-completed-color"><i class="fas fa-square fa-2x"></i></td>
-									<td>{{Interview non completé}}</td>
+									<td>{{Interview non complété}}</td>
 								</tr>
 							</tbody>
 						</table>
@@ -306,7 +306,7 @@ if (!isConnect('admin')) {
 							</tr>
 							<tr>
 								<td><a class="btn btn-danger controller_action" target="_blank" href="http://<?php echo network::getNetworkAccess('internal', 'ip') ?>:8091"><i class="fas fa-external-link-square-alt "></i> {{Interface ZwaveJs UI}}</a></td>
-								<td><b>{{Aucun support}}</b> {{ne sera fait en cas de changement d'un réglage du}}<b> {{menu configuration de ZwaveJS UI}}</b>. {{Vous pouvez changez le mot de passe utilisateur si vous le souhaitez. Vous pouvez utiliser les fonctionnalités.}}<b> {{Mais ne changez aucun réglage.}}</b> {{Les identifiants par défaut sont}} : <span class="label label-info">admin/zwave</span></td>
+								<td><b>{{Aucun support}}</b> {{ne sera fait en cas de changement d'un réglage du}}<b> {{menu configuration de ZwaveJS UI}}</b>. {{Vous pouvez changer le mot de passe utilisateur si vous le souhaitez. Vous pouvez utiliser les fonctionnalités.}}<b> {{Mais ne changez aucun réglage.}}</b> {{Les identifiants par défaut sont}} : <span class="label label-info">admin/zwave</span></td>
 							</tr>
 						</table>
 					</div>

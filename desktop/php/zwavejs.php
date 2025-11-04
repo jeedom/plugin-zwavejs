@@ -263,9 +263,9 @@ sendVarTojs('eqLogic_human_name', $tags);
 				</div>
 				<div class="nocommand" style="display:none">
 					<div class="alert alert-info" role="alert"> {{Le nœud n'a pas encore de}} <b>{{commande}}</b>. {{Cela peut arriver et peut avoir différentes causes :}}
-						<br><br>{{Soit le module c'est initié trop tôt et dans ce cas, il vous suffit de cliquer sur}}<b> {{"Synchroniser"}} </b>{{sur la page précédente et ensuite de cliquer sur}} <b>{{"Recharger commandes"}} </b>{{sur la page du tableau de commandes.}}
+						<br><br>{{Soit le module s'est initié trop tôt et dans ce cas, il vous suffit de cliquer sur}}<b> {{"Synchroniser"}} </b>{{sur la page précédente et ensuite de cliquer sur}} <b>{{"Recharger commandes"}} </b>{{sur la page du tableau de commandes.}}
 						<br><br>{{Soit le module n'a pas encore de configuration Jeedom. Vous pouvez le vérifier en cliquant sur le bouton}} <b>{{"Nœud"}}</b> {{ sur la page d'équipement. Si vous ne voyez pas de configuration à côté de}} <b>{{"Configuration Jeedom"}}. </b>{{ Alors vous pouvez aller dans }} <b>{{"Valeurs"}}</b> {{ et créer les commandes dont vous avez besoin en cliquant sur les crayons.}}
-						<br><br>{{Soit cela est normal, dans le cas d'un répéteur ou d'un controlleur par exemple}}
+						<br><br>{{Soit cela est normal, dans le cas d'un répéteur ou d'un contrôleur par exemple}}
 					</div>
 				</div>
 			</div>
@@ -309,7 +309,7 @@ sendVarTojs('eqLogic_human_name', $tags);
 						<div class="alert alert-warning col-xs-10 col-xs-offset-1">
 							{{Cette section permet de définir des règles de rafraîchissement automatique après action. Il est primordial de ne rien mettre ici sans raison valable sous peine de pénaliser votre réseau Z-Wave. Cette possibilité est disponible pour gérer certains très rares modules qui ont des bugs.}}
 							<br>
-							{{Si c'est nécessaire, cette section sera sûrement prérempli par la configuration Jeedom. La durée totale (nombre x attente) ne peut pas excéder 100s}}
+							{{Si c'est nécessaire, cette section sera sûrement préremplie par la configuration Jeedom. La durée totale (nombre x attente) ne peut pas excéder 100s}}
 							<br><br>
 							<a class="btn btn-default col-xs-6 col-xs-offset-3" id="bt_addRefresh"><i class="fas fa-plus"></i> {{Ajouter une Règle}}</a>
 						</div>
