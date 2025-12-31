@@ -34,7 +34,7 @@ if (!isConnect('admin')) {
 					<a class="btn btn-danger controller_action" target="_blank" href="http://<?php echo network::getNetworkAccess('internal', 'ip') ?>:8091" title="Aucun support ne sera fait en cas de changement d'un réglage du menu configuration de ZwaveJS UI. Vous pouvez changez le mot de passe utilisateur si vous le souhaitez. Vous pouvez utiliser les fonctionnalités. Mais ne changez aucun réglage. Les identifiants par défaut sont : admin/zwave"><i class="fas fa-external-link-square-alt "></i> {{Interface ZwaveJs UI}}</a></td>					
 				</div>
 			</div>
-			 <div class="form-group">
+			<!-- <div class="form-group">
 				<label class="col-md-4 control-label">{{Mode}}</label>
 				<div class="col-md-3">
 					<select class="configKey form-control" data-l1key="zwavejs::mode" id="sel_zwavejsMode">
@@ -42,7 +42,7 @@ if (!isConnect('admin')) {
 					<option value="local">{{Local}}</option>
 					</select>
 				</div>
-			</div>
+			</div> -->
 			<div class="form-group zwavejs_mode local">
 				<label class="col-md-4 control-label">{{Port du contrôleur Z-Wave}}
 					<sup><i class="fas fa-question-circle tooltips" title="{{Renseigner le port utilisé par le contrôleur Z-Wave}}"></i></sup>
@@ -87,13 +87,13 @@ if (!isConnect('admin')) {
 			<br>
 			<div class="form-group">
 				<label class="col-md-4 control-label">{{Alertes de noeuds morts}}
-					<sup><i class="fas fa-question-circle tooltips" title="{{Cocher la case pour être notifié dans le centre de message Jeedom des noeuds morts et du retour à l'état Alive}}"></i></sup>
+					<sup><i class="fas fa-question-circle tooltips" title="{{Cocher la case pour être notifié dans le centre de messages Jeedom des noeuds morts et du retour à l'état Alive}}"></i></sup>
 				</label>
 				<div class="col-md-1">
 					<input type="checkbox" class="configKey" data-l1key="notifyDead" checked>
 				</div>
 				<label class="col-md-4 control-label">{{Alertes de réveils manqués}}
-					<sup><i class="fas fa-question-circle tooltips" title="{{Cocher la case pour être notifié dans le centre de message Jeedom des réveils manqués et du retour à la normal}}"></i></sup>
+					<sup><i class="fas fa-question-circle tooltips" title="{{Cocher la case pour être notifié dans le centre de messages Jeedom des réveils manqués et du retour à la normale}}"></i></sup>
 				</label>
 				<div class="col-md-1">
 					<input type="checkbox" class="configKey" data-l1key="notifyMissWakeup" checked>

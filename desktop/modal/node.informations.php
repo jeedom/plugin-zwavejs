@@ -80,7 +80,7 @@ include_file('3rdparty', 'jsonTree/jsonTree', 'js', 'zwavejs');
 									<p><b>{{Dernière activité}} : </b><span class="getNodeInfo-lastActive label label-info" style="font-size : 1em;"></span></p>
 									<p class="wakeupInfo" style="display:none;"><b>{{Dernier réveil}} : </b><span class="getNodeInfo-lastWakeup label label-info" style="font-size : 1em;"></span></p>
 									<p class="wakeupInfo" style="display:none;"><b>{{Prochain réveil estimé}} : </b><span class="getNodeInfo-nextWakeup label label-info" style="font-size : 1em;"></span></p>
-									<p class="wakeupInfo" style="display:none;"><b>{{Interval de réveil configuré}} : </b><span class="getNodeInfo-configWakeup label label-info" style="font-size : 1em;"></span></p>
+									<p class="wakeupInfo" style="display:none;"><b>{{Intervalle de réveil configuré}} : </b><span class="getNodeInfo-configWakeup label label-info" style="font-size : 1em;"></span></p>
 								</div>
 							</div>
 						</div>

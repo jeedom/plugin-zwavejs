@@ -1,0 +1,27 @@
+{
+    "name": "ZSE 11 - Q SENSOR",
+    "ref": "ZES11",
+    "manufacturer": "Zooz",
+    "type": "Mouvement,Luminosité,Température,Humidité",
+    "remark": "",
+    "versions": {
+        "513": [
+            "6"
+        ]
+    },
+    "properties": {
+        "Motion": {},
+        "Temperature": {},
+        "Luminance": {},
+        "Humidity": {},
+        "Battery": {},
+        "Notification|alarmLevel":{"type":"alarmLevel"},
+        "Notification|power-status":{"type":"power-status"},
+        "Notification|motion":{"type":"motion"},
+        "Notification|battery-maintenance":{"type":"battery-maintenance"},
+        "Indicator": {}  
+
+
+
+    }
+}

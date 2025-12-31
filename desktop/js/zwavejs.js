@@ -312,7 +312,7 @@ $('body').off('zwavejs::grant_security_classes').on('zwavejs::grant_security_cla
   } else {
     dialog_message += '<label class="checkbox-inline" style="color:red"><input type="checkbox" class="clientauth" disabled>{{Client Authentification}}</label></br>';
   }
-  dialog_message+="</br><div class='alert alert-info'>{{Vous ne pouvez pas activer une classe de sécurité non supporté. Dans la majorité des cas, ne modifiez rien. Si vous annulez l'inclusion S2, le module s'incluera en non sécurisé.}}</div>"
+  dialog_message+="</br><div class='alert alert-info'>{{Vous ne pouvez pas activer une classe de sécurité non supportée. Dans la majorité des cas, ne modifiez rien. Si vous annulez l'inclusion S2, le module s'incluera en non sécurisé.}}</div>"
   dialog_message += '</form>'
   bootbox.dialog({
       title: dialog_title,
@@ -477,7 +477,7 @@ $('#bt_autoDetectModule').off('click').on('click', function() {
         className: "btn-success",
         callback: function() {
           if ($("input[name='command']:checked").val() == "1") {
-            bootbox.confirm('{{Etes-vous sûr de vouloir récréer toutes les commandes ? Cela va supprimer les commandes existantes}}', function(result) {
+            bootbox.confirm('{{Etes-vous sûr de vouloir recréer toutes les commandes ? Cela va supprimer les commandes existantes}}', function(result) {
               if (result) {
                 $.ajax({
                   type: "POST",

@@ -24,14 +24,6 @@ Regarding the configuration of the plugin, the essential point is the correct se
 
 Other possible settings are :
 
-- **Fashion** : allows you to choose whether you want to operate in local mode (default and highly recommended) or remote (case where you have installed and configured zwavejs yourself, be careful it must of course be on the same mqtt broker as jeedom). Remote mode has some constraints : 
-- more demon management of course
-- more dependency management
-- more zwavejs version management
-- loss of certain automatic detections on the module's zwave class
-- of course no automatic configuration of zwavejs it is up to you to manage the conf file with all the information that goes well in it
-- the specific modules added by jeedom (in addition to those supported by zwavejs) will of course no longer be compatible
-
 - **Apply the recommended configuration** : directly applies the configuration set recommended by the Jeedom team when including a new module *(conseillé)*.
 
 - **Deleting excluded devices** : automatically removes devices excluded from the Z-Wave network if checked. Otherwise, the equipment is kept in Jeedom even if it has been excluded from the network. The equipment will then have to be deleted manually or reused by assigning it a new Z-Wave identifier.
@@ -56,9 +48,9 @@ Several scenarios are possible :
 
 - **You are already using the MQTT Manager plugin** : No intervention is necessary, the Z-Wave JS plugin will automatically retrieve the connection information to the MQTT broker.
 
-- **You are already using an MQTT broker via a plugin other than MQTT Manager** : In this situation, you must select the mode **remote broker** and provide login information *(address and authentication)* in the MQTT Manager plugin configuration.
+<!-- - **Vous utilisez déjà un broker MQTT via un autre plugin que MQTT Manager** : Dans cette situation, il faut sélectionner le mode **broker distant** and indiquer les informations de connexion *(adresse and authentification)* dans la configuration du plugin MQTT Manager.
 
-- **You want to use an MQTT broker under Docker** : All you have to do is select the mode **local broker docker** in MQTT Manager plugin configuration before installing `Mosquitto`.
+- **You want to use an MQTT broker under Docker** : All you have to do is select the mode **local broker docker** in MQTT Manager plugin configuration before installing `Mosquitto`. -->
 
 In any case, the MQTT Manager plugin daemon must be started before you can move on. Otherwise a message will warn you, preventing the start of the Z-Wave JS daemon.
 
@@ -187,6 +179,12 @@ Then, once certain that the module itself is well recognized and that its values
 - Screenshots of **each block** from the window of **Node values**
 
 To go further, you can physically activate the module and take screenshots of the consecutive value changes, still in the Values window of the node.
+
+>**INFORMATION**
+>
+>Le traitement d'une demande de support peut nécessiter un certain délai.
+Si vous souhaitez créer le fichier d'intégration de manière autonome, vous pouvez suivre les instructions détaillées dans le [Guide d'intégration](procedure_integration.md).
+
 
 >**IMPORTANT**
 >

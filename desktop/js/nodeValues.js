@@ -168,7 +168,7 @@ $("body").off("click", ".createCommandInfo").on("click", ".createCommandInfo", f
 
 $("body").off("click", ".createCommandAction").on("click", ".createCommandAction", function(e) {
 	var obj = $(this)
-	bootbox.confirm('{{Etes-vous sûr de vouloir créer la ou les commande(s)}} : ' + obj.data('label') + ' (' + obj.data('path') + ') ? {{Les commandes existantes ne seront pas crées.}}', function(result) {
+	bootbox.confirm('{{Etes-vous sûr de vouloir créer la ou les commande(s)}} : ' + obj.data('label') + ' (' + obj.data('path') + ') ? {{Les commandes existantes ne seront pas créées.}}', function(result) {
 		if (result) {
 			$.ajax({
 				type: "POST",

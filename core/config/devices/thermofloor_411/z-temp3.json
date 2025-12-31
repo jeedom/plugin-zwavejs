@@ -1,0 +1,36 @@
+{
+    "name": "Thermostat Z-TEMP3",
+    "ref": "5430599",
+    "manufacturer": "Heatit",
+    "type": "Thermostat",
+    "reset": "",
+    "pairing": "",
+    "remark": "",
+    "documentation": "",
+    "buylink": "",
+    "versions": {
+        "49": [
+            "12545"
+        ]
+    },
+    "properties": {
+        "air temperature": {},
+        "Humidity": {},
+        "Thermostatmode": {},
+        "Thermostatoperatingstate": {},
+        "Thermostatsetpoint": {
+                "multi": [
+                    "Chaud",
+                    "Froid",
+                    "Energy Heat"
+                ],
+                "multiProperty": {
+                    "Chaud": 1,
+                    "Froid": 2,
+                    "Energy Heat": 11
+                }
+            },
+        "Battery": {},
+        "Indicator": {}  
+    }
+}

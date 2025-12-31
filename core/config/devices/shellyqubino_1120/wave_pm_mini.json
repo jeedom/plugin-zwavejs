@@ -1,0 +1,22 @@
+{
+    "name": "WAVE PM Mini - Relay",
+    "ref": "WAVE_PM_MINI",
+    "manufacturer": "shellyqubino",
+    "type": "Relay",
+    "remark": "",
+    "versions": {
+        "7": [
+            "129"
+        ]
+    },
+    "properties": { 
+        "Power": {},
+        "Energy": {},
+        "Notification|over-current":{"type":"over-current"},
+        "Notification|over-voltage":{"type":"over-voltage"},
+        "Notification|heat-sensort":{"type":"heat-sensor"},
+        "Notification|alarmLevel":{"type":"alarmLevel"},
+        "Notification|mains":{"type":"mains"},        
+        "Indicator" : {}
+    }
+}

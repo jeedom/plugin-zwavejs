@@ -1659,7 +1659,7 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function autoCreateCommandInfo($_path, $_type, $_label, $_unit, $_max, $_min, $_currentValue) {
-		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . _("Création d'une commande info", __FILE__) . ' ' . $_path);
+		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . __("Création d'une commande info", __FILE__) . ' ' . $_path);
 		$elements = explode('-', str_replace('_', ' ', $_path), 4);
 		$eqLogic = self::byLogicalId($elements[0], __CLASS__);
 		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . print_r($elements, true));
@@ -1703,7 +1703,7 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function autoCreateCommandAction($_path, $_type, $_label, $_unit, $_max, $_min, $_currentValue) {
-		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . _("Création d'une commande action", __FILE__) . ' ' . $_path);
+		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . __("Création d'une commande action", __FILE__) . ' ' . $_path);
 		$elements = explode('-', str_replace('_', ' ', $_path), 4);
 		$eqLogic = self::byLogicalId($elements[0], __CLASS__);
 		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . print_r($elements, true));
@@ -2420,7 +2420,7 @@ class zwavejsCmd extends cmd {
 			$eqLogic->setNodeValue($fullPath, $value);
 			return;
 		}
-		if (substr($value, 0, 3) == 'set') {
+		if (is_string($value) && substr($value, 0, 3) == 'set') {
 			$fullPath = $node . '-' . $cc . '-' . $endpoint . '-' . $property;
 			$val = explode('-', $value, 2)[1];
 			$eqLogic->setNodeValue($fullPath, $val);
