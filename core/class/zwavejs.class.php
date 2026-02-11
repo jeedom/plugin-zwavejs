@@ -188,7 +188,13 @@ class zwavejs extends eqLogic {
 		//	$port = jeedom::getUsbMapping($port);
 		//	exec(system::getCmdSudo() . 'chmod 777 ' . $port . ' > /dev/null 2>&1');
 		//}
-		$settings['zwave']['port'] = jeedom::getUsbMapping(config::byKey('port', __CLASS__));
+		$port = config::byKey('port', __CLASS__);
+		if ($port == 'tcp') {
+			$settings['zwave']['port'] = 'tcp://' . config::byKey('tcp_ip_port', __CLASS__);
+		} else {
+			$settings['zwave']['port'] = jeedom::getUsbMapping($port);
+		}
+
 		$settings['zwave']['commandsTimeout'] = 60;
 		$settings['zwave']['logLevel'] = 'error';
 		$settings['zwave']['logEnabled'] = true;
@@ -332,6 +338,16 @@ class zwavejs extends eqLogic {
 		if ($port == 'none') {
 			$return['launchable'] = 'nok';
 			$return['launchable_message'] = __("Le port n'est pas configuré", __FILE__);
+		} elseif ($port == 'tcp') {
+			if (config::byKey('tcp_ip_port', __CLASS__) == '') {
+				$return['launchable'] = 'nok';
+				$return['launchable_message'] = __("Le port TCP n'est pas configuré", __FILE__);
+			}
+			$parts = explode(':', config::byKey('tcp_ip_port', __CLASS__));
+			if (count($parts) != 2 || !is_numeric($parts[1])) {
+				$return['launchable'] = 'nok';
+				$return['launchable_message'] = __("Le port TCP n'est pas valide", __FILE__);
+			}
 		} else {
 			$port = jeedom::getUsbMapping($port);
 			if (is_array($port) || @!file_exists($port)) {
