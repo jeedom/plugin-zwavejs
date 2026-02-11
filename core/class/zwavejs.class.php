@@ -2409,7 +2409,7 @@ class zwavejsCmd extends cmd {
 			$eqLogic->setNodeValue($fullPath, $value);
 			return;
 		}
-		if (substr($value, 0, 3) == 'set') {
+		if (is_string($value) && substr($value, 0, 3) == 'set') {
 			$fullPath = $node . '-' . $cc . '-' . $endpoint . '-' . $property;
 			$val = explode('-', $value, 2)[1];
 			$eqLogic->setNodeValue($fullPath, $val);
