@@ -61,6 +61,7 @@
         "Le plugin jMQTT est installé, veuillez vérifier la configuration du broker dans le plugin jMQTT et la reporter, si nécessaire, dans le plugin MQTT Manager.": "Le plugin jMQTT est installé, veuillez vérifier la configuration du broker dans le plugin jMQTT et la reporter, si nécessaire, dans le plugin MQTT Manager",
         "ZwaveJs UI": "ZwaveJs UI",
         "Interface ZwaveJs UI": "Interface ZwaveJs UI",
+        "A configurer": "A configurer",      
         "Mode": "Mode",
         "Distant": "Distant",
         "Local": "Local",
