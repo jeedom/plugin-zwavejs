@@ -944,7 +944,7 @@ class zwavejs extends eqLogic {
 							if ($eqLogic->getConfiguration('missedWakeup', false)) {
 								$action = '<a href="/' . $eqLogic->getLinkToConfiguration() . '">' . __('Equipement', __FILE__) . '</a>';
 								if (config::byKey('notifyMissWakeup', __CLASS__, 1) == 1 && $eqLogic->getIsEnable() == 1) {
-									message::add('zwavejs', "L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId() . ', vient de se réveiller après avoir raté au minimum 4 réveils.', $action, 'Awake-' . $eqLogic->getLogicalId(), true, 'alerting');
+									message::add('zwavejs', sprintf(__("L'équipement : %s avec le nodeId : %s, vient de se réveiller après avoir raté au minimum 4 réveils.", __FILE__), $eqLogic->getHumanName(true), $eqLogic->getLogicalId()), $action, 'Awake-' . $eqLogic->getLogicalId(), true, 'alerting');
 								}
 							}
 							$eqLogic->setConfiguration('missedWakeup', false);
@@ -953,13 +953,13 @@ class zwavejs extends eqLogic {
 						if ($data['status'] == 'Dead' && $currentValue == 'Alive') {
 							$action = '<a href="/' . $eqLogic->getLinkToConfiguration() . '">' . __('Equipement', __FILE__) . '</a>';
 							if (config::byKey('notifyDead', __CLASS__, 1) == 1 && $eqLogic->getIsEnable() == 1) {
-								message::add('zwavejs', "L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId() . ', vient de passer au statut Dead.', $action, 'Dead-' . $eqLogic->getLogicalId(), true, 'alerting');
+								message::add('zwavejs', sprintf(__("L'équipement : %s avec le nodeId : %s, vient de passer au statut Dead.", __FILE__), $eqLogic->getHumanName(true), $eqLogic->getLogicalId()), $action, 'Dead-' . $eqLogic->getLogicalId(), true, 'alerting');
 							}
 						}
 						if ($data['status'] == 'Alive' && $currentValue == 'Dead') {
 							$action = '<a href="/' . $eqLogic->getLinkToConfiguration() . '">' . __('Equipement', __FILE__) . '</a>';
 							if (config::byKey('notifyDead', __CLASS__, 1) == 1 && $eqLogic->getIsEnable() == 1) {
-								message::add('zwavejs', "L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId() . ', vient de passer au statut Alive.', $action, 'Alive-' . $eqLogic->getLogicalId(), true, 'alertingReturnBack');
+								message::add('zwavejs', sprintf(__("L'équipement : %s avec le nodeId : %s, vient de passer au statut Alive.", __FILE__), $eqLogic->getHumanName(true), $eqLogic->getLogicalId()), $action, 'Alive-' . $eqLogic->getLogicalId(), true, 'alertingReturnBack');
 							}
 						}
 					} else if (isset($data['value'])) {
@@ -1586,7 +1586,7 @@ class zwavejs extends eqLogic {
 						if ($wakedup > 3 * $values['values']['132-0-wakeUpInterval']['value']) {
 							$action = '<a href="/' . $eqLogic->getLinkToConfiguration() . '">' . __('Equipement', __FILE__) . '</a>';
 							if (config::byKey('notifyMissWakeup', __CLASS__, 1) == 1 && $eqLogic->getIsEnable() == 1) {
-								message::add('zwavejs', "L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId() . ", ne s'est pas reveillé au moins 4 fois. Il a peut être un problème (batterie ou autres).", $action, 'Wakeup-' . $eqLogic->getLogicalId(), true, 'alertingReturnBack');
+								message::add('zwavejs', sprintf(__("L'équipement : %s avec le nodeId : %s, ne s'est pas reveillé au moins 4 fois. Il a peut être un problème (batterie ou autres).", __FILE__), $eqLogic->getHumanName(true), $eqLogic->getLogicalId()), $action, 'Wakeup-' . $eqLogic->getLogicalId(), true, 'alertingReturnBack');
 							}
 							$eqLogic->setConfiguration('missedWakeup', true);
 							$eqLogic->save();
