@@ -1477,11 +1477,7 @@ class zwavejs extends eqLogic {
 				$eqLogic = self::byLogicalId($values['id'], __CLASS__);
 				$productDetails = '<sup><i class="fas fa-question-circle tooltips" title="' . $values['manufacturer'] . ' ' . $values['productDescription'] . ' Firmware : ' . $values['firmwareVersion'] . '"></i><sup>';
 				if (is_object($eqLogic)) {
-					$image = 'plugins/zwavejs/core/config/devices/' . $eqLogic->getImgFilePath();
-					if (!is_file(dirname(__FILE__) . '/../config/devices/' . $eqLogic->getImgFilePath())) {
-						$image = 'plugins/zwavejs/plugin_info/zwavejs_icon.png';
-					}
-					$healthPage .= '<td><img src="' . $image . '" height="40"/> <a href="index.php?v=d&p=zwavejs&m=zwavejs&id=' . $eqLogic->getId() . '">' . $eqLogic->getHumanName(true) .  '</a>' . ' ' . $productDetails . '</td>';
+					$healthPage .= '<td><img src="' . $eqLogic->getImage() . '" height="40"/> <a href="index.php?v=d&p=zwavejs&m=zwavejs&id=' . $eqLogic->getId() . '">' . $eqLogic->getHumanName(true) .  '</a>' . ' ' . $productDetails . '</td>';
 				} else {
 					$healthPage .= '<td><img src="plugins/zwavejs/plugin_info/zwavejs_icon.png" height="40"/> ' . $values['productLabel'] . ' - ' . $values['productDescription'] . ' ' . $productDetails . '</td>';
 				}
@@ -1606,11 +1602,7 @@ class zwavejs extends eqLogic {
 				$healthPage .= '<tr><td>' . $values['id'] . '</td>';
 				$eqLogic = self::byLogicalId($values['id'], __CLASS__);
 				if (is_object($eqLogic)) {
-					$image = 'plugins/zwavejs/core/config/devices/' . $eqLogic->getImgFilePath();
-					if (!is_file(dirname(__FILE__) . '/../config/devices/' . $eqLogic->getImgFilePath())) {
-						$image = 'plugins/zwavejs/plugin_info/zwavejs_icon.png';
-					}
-					$healthPage .= '<td><img src="' . $image . '" height="40"/>' . $eqLogic->getHumanName(true) . '</td>';
+					$healthPage .= '<td><img src="' . $eqLogic->getImage() . '" height="40"/>' . $eqLogic->getHumanName(true) . '</td>';
 				} else {
 					$healthPage .= '<td><img src="plugins/zwavejs/plugin_info/zwavejs_icon.png" height="40"/> ' . $values['productLabel'] . ' - ' . $values['productDescription'] . '</td>';
 				}
@@ -1758,15 +1750,11 @@ class zwavejs extends eqLogic {
 		foreach (self::byType(__CLASS__) as $eqLogic) {
 			$waitings = $eqLogic->getCache('waiting', array());
 			if (is_object($eqLogic)) {
-				$image = 'plugins/zwavejs/core/config/devices/' . $eqLogic->getImgFilePath();
-				if (!is_file(dirname(__FILE__) . '/../config/devices/' . $eqLogic->getImgFilePath())) {
-					$image = 'plugins/zwavejs/plugin_info/zwavejs_icon.png';
-				}
 				foreach ($waitings as $property => $data) {
 					$globWaiting[] = array(
 						'id' => $eqLogic->getLogicalId(),
 						'eqId' => $eqLogic->getId(),
-						'image' => $image,
+						'image' => $eqLogic->getImage(),
 						'name' => $eqLogic->getHumanName(true),
 						'property' => $property,
 						'value' => $data['value'],
@@ -2279,7 +2267,7 @@ class zwavejs extends eqLogic {
 	public function getImage() {
 		$file = 'plugins/zwavejs/core/config/devices/' . $this->getImgFilePath();
 		if (!is_file(__DIR__ . '/../../../../' . $file)) {
-			return 'plugins/zwavejs/plugin_info/zwavejs_icon.png';
+			return parent::getImage();
 		}
 		return $file;
 	}
