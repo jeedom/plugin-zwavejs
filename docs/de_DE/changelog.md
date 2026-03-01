@@ -4,9 +4,14 @@
 >
 >Wenn es keine Informationen über die Aktualisierung gibt, bedeutet dies, dass es sich nur um die Aktualisierung von Dokumentation, Übersetzung oder Text handelt.
 
-# 
+# 24/02/2026
 
-- Zur Version wechseln ** de ZwaveJsUI (beta) *()*
+- Support des images d'équipement personnalisées (Jeedom 4.5) lorsqu'aucune image n'est définie par le plugin (ex: pour le contrôleur)
+- Ajout des traductions manquantes pour les messages arrivant dans le centre de notifications
+
+# 21/02/2026
+
+- Zur Version wechseln *11.12.0* de ZwaveJsUI (beta) *(semble résoudre les alertes "Dead" intempestives)*
 
 # 11/02/2026
 
