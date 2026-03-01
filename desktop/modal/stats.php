@@ -39,8 +39,7 @@ if (!isConnect('admin')) {
 			<?php
 			$eqLogics = eqLogic::byType('zwavejs');
 			foreach ($eqLogics as $eqLogic) {
-				$nameTd = '<td><img src="' . $eqLogic->getImage() . '" height="40"/> <a href="index.php?v=d&p=zwavejs&m=zwavejs&id=' . $eqLogic->getId() . '">' . $eqLogic->getHumanName(true) .  '</a></td>';
-				$healthPage .= '<td><span class="label label-info" style="font-size : 1em;">' . $values['endpointsCount'] . '</span></td>';
+				$nameTd = '<td><img src="' . $eqLogic->getImage() . '" height="40"/> <a href="index.php?v=d&p=zwavejs&m=zwavejs&id=' . $eqLogic->getId() . '">' . $eqLogic->getHumanName(true) . '</a></td>';
 				$nodeId = $eqLogic->getLogicalId();
 				echo '<tr>';
 				echo '<td><span class="label label-primary">' . $nodeId . '</span></td>';
