@@ -54,7 +54,7 @@
 			"valueSize": 2,
 			"minValue": 5000,
 			"maxValue": 6500,
-			"defaultValue": 6500,
+			"defaultValue": 6500
 		}
 	]
 }
