@@ -22,7 +22,7 @@
 
 # 21/02/2026
 
-- Passage à la version *11.12.0* de ZwaveJsUI (beta) *(semble résoudre les alertes "Dead" intempestives)*
+- Passage à la version *11.12.0* de ZwaveJsUI (beta) *(corrige les alertes "Dead" intempestives)*
 
 # 11/02/2026
 
