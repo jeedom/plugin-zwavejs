@@ -2265,9 +2265,15 @@ class zwavejs extends eqLogic {
 	}
 
 	public function getImage() {
+		$default = parent::getImage();
+		$plugin = plugin::byId(__CLASS__);
+		if ($default != $plugin->getPathImgIcon()) {
+			return $default; // this is a custom image uploaded by the user, we keep it
+		}
+
 		$file = 'plugins/zwavejs/core/config/devices/' . $this->getImgFilePath();
 		if (!is_file(__DIR__ . '/../../../../' . $file)) {
-			return parent::getImage();
+			return $default;
 		}
 		return $file;
 	}
