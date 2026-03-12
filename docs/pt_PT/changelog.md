@@ -4,6 +4,17 @@
 >
 >Se não houver informação sobre a atualização, significa que se trata apenas da atualização da documentação, tradução ou texto.
 
+# 
+
+- Configuração adicionada *)* (propriedades : )
+- Configuração adicionada *)* (propriedades : )
+- Configuração adicionada ** (propriedades : )
+-  ** ()
+
+# 02/03/2026
+
+- Correction mineure sur la page *Statistiques*
+
 # 24/02/2026
 
 - Support des images d'équipement personnalisées (Jeedom 4.5) lorsqu'aucune image n'est définie par le plugin (ex: pour le contrôleur)

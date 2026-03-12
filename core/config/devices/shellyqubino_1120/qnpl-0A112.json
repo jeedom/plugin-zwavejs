@@ -1,0 +1,55 @@
+{
+    "name": "QLPL-0A112",
+    "type": "Prise",
+    "comlink": "",
+    "remark": "",
+    "versions": {
+        "2": [
+            "135"
+        ]
+    },
+    "properties": {
+        "Switch": {"type": "prise"},
+        "Indicator": {},
+        "Power": {},
+        "Energy": {},
+        "Notification|heat-sensor": {"type": "heat-sensor"},
+        "Notification|over-current": {"type": "over-current"},
+        "Notification|over-voltage": {"type": "over-voltage"},
+        "Notification|alarmLevel": {"type": "alarmLevel"}
+    },
+    "commands": [
+        {
+            "name": "Reset consommation kWh",
+            "type": "action",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 50,
+                "endpoint": 0,
+                "property": "reset-65537",
+                "value": "true"
+            },
+            "subtype": "other",
+            "display": {
+                "generic_type": "DONT"
+            }
+        },
+        {
+            "name": "Identify",
+            "type": "action",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 135,
+                "endpoint": 0,
+                "property": "identify",
+                "value": "true"
+            },
+            "subtype": "other",
+            "display": {
+                "generic_type": "DONT"
+            }
+        }
+    ]
+}

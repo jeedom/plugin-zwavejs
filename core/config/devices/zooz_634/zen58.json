@@ -1,0 +1,20 @@
+{
+    "name": "Zooz / Low Voltage XS Relay",
+    "ref": "ZEN58",
+    "manufacturer": "Zooz",
+    "type": "Relais",
+    "remark": "",
+    "versions": {
+        "4": [
+            "802"
+        ]
+    },
+    "properties": {
+        "Switch": {"type": "switch"},
+        "Power": {},
+        "Energy": {},
+        "Voltage": {},
+        "Current": {},
+        "Indicator": {}
+    }
+}
