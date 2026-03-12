@@ -17,7 +17,7 @@
 
 # 24/02/2026
 
-- Support des images d’équipement personnalisées (Jeedom 4.5) lorsqu'aucune image n'est définie par le plugin (ex: pour le contrôleur)
+- Support des images d’équipement personnalisées (Jeedom 4.5)
 - Ajout des traductions manquantes pour les messages arrivant dans le centre de notifications
 
 # 21/02/2026
