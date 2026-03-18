@@ -287,17 +287,11 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function additionnalDependancyCheck() {
-		if (config::byKey('zwavejs::mode', 'zwavejs') == 'distant') {
-			$return = array();
-			$return['state'] = 'ok';
-			return $return;
-		}
 		$return = array();
-		$return['state'] = 'ok';
-		if (config::byKey('lastDependancyInstallTime', __CLASS__) == '') {
-			$return['state'] = 'nok';
-		} else if (!file_exists(__DIR__ . '/../../resources/zwave-js-ui/node_modules')) {
-			$return['state'] = 'nok';
+		if (config::byKey('zwavejs::mode', __CLASS__) === 'local') {
+			if (!file_exists(__DIR__ . '/../../resources/zwave-js-ui/node_modules')) {
+				$return['state'] = 'nok';
+			}
 		}
 		return $return;
 	}
