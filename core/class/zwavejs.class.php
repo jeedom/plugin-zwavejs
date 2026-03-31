@@ -188,7 +188,13 @@ class zwavejs extends eqLogic {
 		//	$port = jeedom::getUsbMapping($port);
 		//	exec(system::getCmdSudo() . 'chmod 777 ' . $port . ' > /dev/null 2>&1');
 		//}
-		$settings['zwave']['port'] = jeedom::getUsbMapping(config::byKey('port', __CLASS__));
+		$port = config::byKey('port', __CLASS__);
+		if ($port == 'tcp') {
+			$settings['zwave']['port'] = 'tcp://' . config::byKey('tcp_ip_port', __CLASS__);
+		} else {
+			$settings['zwave']['port'] = jeedom::getUsbMapping($port);
+		}
+
 		$settings['zwave']['commandsTimeout'] = 60;
 		$settings['zwave']['logLevel'] = 'error';
 		$settings['zwave']['logEnabled'] = true;
@@ -281,34 +287,11 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function additionnalDependancyCheck() {
-		if (config::byKey('zwavejs::mode', 'zwavejs') == 'distant') {
-			$return = array();
-			$return['state'] = 'ok';
-			return $return;
-		}
 		$return = array();
-		$return['state'] = 'ok';
-		if (config::byKey('lastDependancyInstallTime', __CLASS__) == '') {
-			$return['state'] = 'nok';
-		} else if (!file_exists(__DIR__ . '/../../resources/zwave-js-ui/node_modules')) {
-			$return['state'] = 'nok';
-		}
-		return $return;
-	}
-
-	public static function dependancy_info() {
-		if (config::byKey('zwavejs::mode', 'zwavejs') == 'distant') {
-			$return = array();
-			$return['state'] = 'ok';
-			return $return;
-		}
-		$return = array();
-		$return['progress_file'] = jeedom::getTmpFolder(__CLASS__) . '/dependance';
-		$return['state'] = 'ok';
-		if (config::byKey('lastDependancyInstallTime', __CLASS__) == '') {
-			$return['state'] = 'nok';
-		} else if (!file_exists(__DIR__ . '/../../resources/zwave-js-ui/node_modules')) {
-			$return['state'] = 'nok';
+		if (config::byKey('zwavejs::mode', __CLASS__) === 'local') {
+			if (!file_exists(__DIR__ . '/../../resources/zwave-js-ui/node_modules')) {
+				$return['state'] = 'nok';
+			}
 		}
 		return $return;
 	}
@@ -332,6 +315,16 @@ class zwavejs extends eqLogic {
 		if ($port == 'none') {
 			$return['launchable'] = 'nok';
 			$return['launchable_message'] = __("Le port n'est pas configuré", __FILE__);
+		} elseif ($port == 'tcp') {
+			if (config::byKey('tcp_ip_port', __CLASS__) == '') {
+				$return['launchable'] = 'nok';
+				$return['launchable_message'] = __("Le port TCP n'est pas configuré", __FILE__);
+			}
+			$parts = explode(':', config::byKey('tcp_ip_port', __CLASS__));
+			if (count($parts) != 2 || !is_numeric($parts[1])) {
+				$return['launchable'] = 'nok';
+				$return['launchable_message'] = __("Le port TCP n'est pas valide", __FILE__);
+			}
 		} else {
 			$port = jeedom::getUsbMapping($port);
 			if (is_array($port) || @!file_exists($port)) {
@@ -912,6 +905,7 @@ class zwavejs extends eqLogic {
 	public static function handleNodeValueUpdateDirect($_nodeId, $_value_update) {
 		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . "Traitement d'un update de value d'un node direct");
 		//log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . $_nodeId . ' ' . json_encode($_value_update));
+		/** @var zwavejs */
 		$eqLogic = self::byLogicalId($_nodeId, __CLASS__);
 		$flatten = self::flatten_array($_value_update);
 		// log::add(__CLASS__, 'debug', json_encode($flatten, true));
@@ -927,11 +921,7 @@ class zwavejs extends eqLogic {
 							if ($eqLogic->getConfiguration('missedWakeup', false)) {
 								$action = '<a href="/' . $eqLogic->getLinkToConfiguration() . '">' . __('Equipement', __FILE__) . '</a>';
 								if (config::byKey('notifyMissWakeup', __CLASS__, 1) == 1 && $eqLogic->getIsEnable() == 1) {
-									if (version_compare(jeedom::version(), '4.4.0', '>=')) {
-										message::add('zwavejs', "L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId() . ', vient de se réveiller après avoir raté au minimum 4 réveils.', $action, 'Awake-' . $eqLogic->getLogicalId(), true, 'alerting');
-									} else {
-										message::add('zwavejs', "L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId() . ', vient de se réveiller après avoir raté au minimum 4 réveils.', $action, 'Awake-' . $eqLogic->getLogicalId(), true);
-									}
+									message::add('zwavejs', sprintf(__("L'équipement : %s avec le nodeId : %s, vient de se réveiller après avoir raté au minimum 4 réveils.", __FILE__), $eqLogic->getHumanName(true), $eqLogic->getLogicalId()), $action, 'Awake-' . $eqLogic->getLogicalId(), true, 'alerting');
 								}
 							}
 							$eqLogic->setConfiguration('missedWakeup', false);
@@ -940,21 +930,13 @@ class zwavejs extends eqLogic {
 						if ($data['status'] == 'Dead' && $currentValue == 'Alive') {
 							$action = '<a href="/' . $eqLogic->getLinkToConfiguration() . '">' . __('Equipement', __FILE__) . '</a>';
 							if (config::byKey('notifyDead', __CLASS__, 1) == 1 && $eqLogic->getIsEnable() == 1) {
-								if (version_compare(jeedom::version(), '4.4.0', '>=')) {
-									message::add('zwavejs', "L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId() . ', vient de passer au statut Dead.', $action, 'Dead-' . $eqLogic->getLogicalId(), true, 'alerting');
-								} else {
-									message::add('zwavejs', "L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId() . ', vient de passer au statut Dead.', $action, 'Dead-' . $eqLogic->getLogicalId(), true);
-								}
+								message::add('zwavejs', sprintf(__("L'équipement : %s avec le nodeId : %s, vient de passer au statut Dead.", __FILE__), $eqLogic->getHumanName(true), $eqLogic->getLogicalId()), $action, 'Dead-' . $eqLogic->getLogicalId(), true, 'alerting');
 							}
 						}
 						if ($data['status'] == 'Alive' && $currentValue == 'Dead') {
 							$action = '<a href="/' . $eqLogic->getLinkToConfiguration() . '">' . __('Equipement', __FILE__) . '</a>';
 							if (config::byKey('notifyDead', __CLASS__, 1) == 1 && $eqLogic->getIsEnable() == 1) {
-								if (version_compare(jeedom::version(), '4.4.0', '>=')) {
-									message::add('zwavejs', "L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId() . ', vient de passer au statut Alive.', $action, 'Alive-' . $eqLogic->getLogicalId(), true, 'alertingReturnBack');
-								} else {
-									message::add('zwavejs', "L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId() . ', vient de passer au statut Alive.', $action, 'Alive-' . $eqLogic->getLogicalId(), true);
-								}
+								message::add('zwavejs', sprintf(__("L'équipement : %s avec le nodeId : %s, vient de passer au statut Alive.", __FILE__), $eqLogic->getHumanName(true), $eqLogic->getLogicalId()), $action, 'Alive-' . $eqLogic->getLogicalId(), true, 'alertingReturnBack');
 							}
 						}
 					} else if (isset($data['value'])) {
@@ -1472,11 +1454,7 @@ class zwavejs extends eqLogic {
 				$eqLogic = self::byLogicalId($values['id'], __CLASS__);
 				$productDetails = '<sup><i class="fas fa-question-circle tooltips" title="' . $values['manufacturer'] . ' ' . $values['productDescription'] . ' Firmware : ' . $values['firmwareVersion'] . '"></i><sup>';
 				if (is_object($eqLogic)) {
-					$image = 'plugins/zwavejs/core/config/devices/' . $eqLogic->getImgFilePath();
-					if (!is_file(dirname(__FILE__) . '/../config/devices/' . $eqLogic->getImgFilePath())) {
-						$image = 'plugins/zwavejs/plugin_info/zwavejs_icon.png';
-					}
-					$healthPage .= '<td><img src="' . $image . '" height="40"/> <a href="index.php?v=d&p=zwavejs&m=zwavejs&id=' . $eqLogic->getId() . '">' . $eqLogic->getHumanName(true) .  '</a>' . ' ' . $productDetails . '</td>';
+					$healthPage .= '<td><img src="' . $eqLogic->getImage() . '" height="40"/> <a href="index.php?v=d&p=zwavejs&m=zwavejs&id=' . $eqLogic->getId() . '">' . $eqLogic->getHumanName(true) .  '</a>' . ' ' . $productDetails . '</td>';
 				} else {
 					$healthPage .= '<td><img src="plugins/zwavejs/plugin_info/zwavejs_icon.png" height="40"/> ' . $values['productLabel'] . ' - ' . $values['productDescription'] . ' ' . $productDetails . '</td>';
 				}
@@ -1585,11 +1563,7 @@ class zwavejs extends eqLogic {
 						if ($wakedup > 3 * $values['values']['132-0-wakeUpInterval']['value']) {
 							$action = '<a href="/' . $eqLogic->getLinkToConfiguration() . '">' . __('Equipement', __FILE__) . '</a>';
 							if (config::byKey('notifyMissWakeup', __CLASS__, 1) == 1 && $eqLogic->getIsEnable() == 1) {
-								if (version_compare(jeedom::version(), '4.4.0', '>=')) {
-									message::add('zwavejs', "L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId() . ", ne s'est pas reveillé au moins 4 fois. Il a peut être un problème (batterie ou autres).", $action, 'Wakeup-' . $eqLogic->getLogicalId(), true, 'alertingReturnBack');
-								} else {
-									message::add('zwavejs', "L'équipement : " . $eqLogic->getHumanName(true) . ' avec le nodeId : ' . $eqLogic->getLogicalId() . ", ne s'est pas reveillé au moins 4 fois. Il a peut être un problème (batterie ou autres).", $action, 'Wakeup-' . $eqLogic->getLogicalId(), true);
-								}
+								message::add('zwavejs', sprintf(__("L'équipement : %s avec le nodeId : %s, ne s'est pas reveillé au moins 4 fois. Il a peut être un problème (batterie ou autres).", __FILE__), $eqLogic->getHumanName(true), $eqLogic->getLogicalId()), $action, 'Wakeup-' . $eqLogic->getLogicalId(), true, 'alertingReturnBack');
 							}
 							$eqLogic->setConfiguration('missedWakeup', true);
 							$eqLogic->save();
@@ -1605,11 +1579,7 @@ class zwavejs extends eqLogic {
 				$healthPage .= '<tr><td>' . $values['id'] . '</td>';
 				$eqLogic = self::byLogicalId($values['id'], __CLASS__);
 				if (is_object($eqLogic)) {
-					$image = 'plugins/zwavejs/core/config/devices/' . $eqLogic->getImgFilePath();
-					if (!is_file(dirname(__FILE__) . '/../config/devices/' . $eqLogic->getImgFilePath())) {
-						$image = 'plugins/zwavejs/plugin_info/zwavejs_icon.png';
-					}
-					$healthPage .= '<td><img src="' . $image . '" height="40"/>' . $eqLogic->getHumanName(true) . '</td>';
+					$healthPage .= '<td><img src="' . $eqLogic->getImage() . '" height="40"/>' . $eqLogic->getHumanName(true) . '</td>';
 				} else {
 					$healthPage .= '<td><img src="plugins/zwavejs/plugin_info/zwavejs_icon.png" height="40"/> ' . $values['productLabel'] . ' - ' . $values['productDescription'] . '</td>';
 				}
@@ -1757,15 +1727,11 @@ class zwavejs extends eqLogic {
 		foreach (self::byType(__CLASS__) as $eqLogic) {
 			$waitings = $eqLogic->getCache('waiting', array());
 			if (is_object($eqLogic)) {
-				$image = 'plugins/zwavejs/core/config/devices/' . $eqLogic->getImgFilePath();
-				if (!is_file(dirname(__FILE__) . '/../config/devices/' . $eqLogic->getImgFilePath())) {
-					$image = 'plugins/zwavejs/plugin_info/zwavejs_icon.png';
-				}
 				foreach ($waitings as $property => $data) {
 					$globWaiting[] = array(
 						'id' => $eqLogic->getLogicalId(),
 						'eqId' => $eqLogic->getId(),
-						'image' => $image,
+						'image' => $eqLogic->getImage(),
 						'name' => $eqLogic->getHumanName(true),
 						'property' => $property,
 						'value' => $data['value'],
@@ -2276,9 +2242,15 @@ class zwavejs extends eqLogic {
 	}
 
 	public function getImage() {
+		$default = parent::getImage();
+		$plugin = plugin::byId(__CLASS__);
+		if ($default != $plugin->getPathImgIcon()) {
+			return $default; // this is a custom image uploaded by the user, we keep it
+		}
+
 		$file = 'plugins/zwavejs/core/config/devices/' . $this->getImgFilePath();
 		if (!is_file(__DIR__ . '/../../../../' . $file)) {
-			return 'plugins/zwavejs/plugin_info/zwavejs_icon.png';
+			return $default;
 		}
 		return $file;
 	}

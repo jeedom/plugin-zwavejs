@@ -31,7 +31,7 @@ if (!isConnect('admin')) {
 			<div class="form-group">
 				<label class="col-md-4 control-label">{{ZwaveJs UI}}</label>
 				<div class="col-md-3">
-					<a class="btn btn-danger controller_action" target="_blank" href="http://<?php echo network::getNetworkAccess('internal', 'ip') ?>:8091" title="Aucun support ne sera fait en cas de changement d'un réglage du menu configuration de ZwaveJS UI. Vous pouvez changez le mot de passe utilisateur si vous le souhaitez. Vous pouvez utiliser les fonctionnalités. Mais ne changez aucun réglage. Les identifiants par défaut sont : admin/zwave"><i class="fas fa-external-link-square-alt "></i> {{Interface ZwaveJs UI}}</a></td>					
+					<a class="btn btn-danger controller_action" target="_blank" href="http://<?php echo network::getNetworkAccess('internal', 'ip') ?>:8091" title="Aucun support ne sera fait en cas de changement d'un réglage du menu configuration de ZwaveJS UI. Vous pouvez changez le mot de passe utilisateur si vous le souhaitez. Vous pouvez utiliser les fonctionnalités. Mais ne changez aucun réglage. Les identifiants par défaut sont : admin/zwave"><i class="fas fa-external-link-square-alt "></i> {{Interface ZwaveJs UI}}</a></td>
 				</div>
 			</div>
 			<!-- <div class="form-group">
@@ -50,6 +50,7 @@ if (!isConnect('admin')) {
 				<div class="col-md-7">
 					<select class="configKey form-control" data-l1key="port">
 						<option value="none">{{Aucun}}</option>
+						<option value="tcp">{{Passerelle TCP distante}}</option>
 						<?php
 						foreach (jeedom::getUsbMapping('', true) as $name => $value) {
 							echo '<option value="' . $name . '">' . $name . ' (' . $value . ')</option>';
@@ -60,6 +61,14 @@ if (!isConnect('admin')) {
 						?>
 						<option value="/dev/serial/by-id/usb-0658_0200-if00">{{Utile pour certains Raspberry (/dev/serial/by-id/usb-0658_0200-if00)}}</option>
 					</select>
+				</div>
+			</div>
+			<div class="form-group zwavejs_port tcp" style="display:none;">
+				<label class="col-md-4 control-label">{{Passerelle TCP distante}} <sub>(IP:PORT)</sub>
+					<sup><i class="fas fa-question-circle tooltips" title="{{Renseignez l'adresse de la passerelle distante}}"></i></sup>
+				</label>
+				<div class="col-md-3">
+					<input class="configKey form-control" data-l1key="tcp_ip_port" />
 				</div>
 			</div>
 			<div class="form-group">
@@ -112,24 +121,24 @@ if (!isConnect('admin')) {
 					<sup><i class="fas fa-question-circle tooltips" title="{{Version de la librairie ZwaveJS UI}}"></i></sup>
 				</label>
 				<div class="col-md-7">
-				<?php
-				$file = dirname(__FILE__) . '/../resources/zwave-js-ui/package.json';
-				$package = array();
-				if (file_exists($file)) {
-					$package = json_decode(file_get_contents($file), true);
-				}
-				if (isset($package['version'])){
-					config::save('zwavejsVersion', $package['version'], 'zwavejs');
-				}
-				$localVersion = config::byKey('zwavejsVersion', 'zwavejs', 'N/A');
-				$wantedVersion = config::byKey('wantedVersion', 'zwavejs', '');
-				if ($localVersion != $wantedVersion) {
-					echo '<span class="label label-warning">' . $localVersion . '</span><br>';
-					echo "<div class='alert alert-danger text-center'>{{Votre version de ZwaveJS UI n'est pas celle recommandée par le plugin. Vous utilisez actuellement la version }}<code>". $localVersion .'</code>. {{ Le plugin nécessite la version }}<code>'. $wantedVersion .'</code>. {{Veuillez relancer les dépendances pour mettre à jour la librairie. Relancez ensuite le démon pour voir la nouvelle version.}}</div>';
-				} else {
-					echo '<span class="label label-success">' . $localVersion . '</span><br>';
-				}
-				?>
+					<?php
+					$file = dirname(__FILE__) . '/../resources/zwave-js-ui/package.json';
+					$package = array();
+					if (file_exists($file)) {
+						$package = json_decode(file_get_contents($file), true);
+					}
+					if (isset($package['version'])) {
+						config::save('zwavejsVersion', $package['version'], 'zwavejs');
+					}
+					$localVersion = config::byKey('zwavejsVersion', 'zwavejs', 'N/A');
+					$wantedVersion = config::byKey('wantedVersion', 'zwavejs', '');
+					if ($localVersion != $wantedVersion) {
+						echo '<span class="label label-warning">' . $localVersion . '</span><br>';
+						echo "<div class='alert alert-danger text-center'>{{Votre version de ZwaveJS UI n'est pas celle recommandée par le plugin. Vous utilisez actuellement la version }}<code>" . $localVersion . '</code>. {{ Le plugin nécessite la version }}<code>' . $wantedVersion . '</code>. {{Veuillez relancer les dépendances pour mettre à jour la librairie. Relancez ensuite le démon pour voir la nouvelle version.}}</div>';
+					} else {
+						echo '<span class="label label-success">' . $localVersion . '</span><br>';
+					}
+					?>
 				</div>
 			</div>
 
@@ -200,13 +209,20 @@ if (!isConnect('admin')) {
 </form>
 
 <script>
+	$('.configKey[data-l1key="port"]').off('change').on('change', function() {
+		$('.zwavejs_port').hide();
+		if ($(this).value() == 'tcp') {
+			$('.zwavejs_port.' + $(this).value()).show();
+		}
+	})
+
 	$('#sel_zwavejsMode').off('change').on('change', function() {
 		$('.zwavejs_mode').hide();
 		if ($(this).value() != '') {
-		$('.zwavejs_mode.' + $(this).value()).show();
+			$('.zwavejs_mode.' + $(this).value()).show();
 		}
 	})
-	
+
 	$('.randomKey').off('click').on('click', function() {
 		var el = $(this)
 		bootbox.confirm('{{Êtes-vous sûr de vouloir réinitialiser la clé}}' + ' ' + el.attr('data-key') + ' ? {{La prise en compte sera effective après sauvegarde et relance du démon.}}', function(result) {
@@ -228,8 +244,8 @@ if (!isConnect('admin')) {
 			}
 		})
 	})
-	
-$('body').off('zwavejs::dependancy_end').on('zwavejs::dependancy_end', function(_event, _options) {
-  window.location.reload()
-})
+
+	$('body').off('zwavejs::dependancy_end').on('zwavejs::dependancy_end', function(_event, _options) {
+		window.location.reload()
+	})
 </script>
