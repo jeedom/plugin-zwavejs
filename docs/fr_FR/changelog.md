@@ -4,6 +4,10 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
+# 31/03/2026
+
+- Passage à la version *11.12.0* de ZwaveJsUI (stable)
+
 # 16/03/2026
 
 - Configuration automatique du plugin sur les boxes officielles *(Jeedom 4.5.3 mini)*
