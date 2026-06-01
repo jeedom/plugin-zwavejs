@@ -6,8 +6,12 @@
 
 # 
 
+- Cambiar a versión *11.15.1* de ZwaveJsUI (stable)
+
+# 31/03/2026
+
 - Cambiar a versión *11.12.0* de ZwaveJsUI (stable)
-- Cambiar a versión ** de ZwaveJsUI (beta)
+- Cambiar a versión *11.15.1* de ZwaveJsUI (beta)
 
 # 16/03/2026
 
