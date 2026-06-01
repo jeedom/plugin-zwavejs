@@ -4,6 +4,10 @@
 >
 >If there is no information on the update, it means that it concerns only the update of documentation, translation or text.
 
+# 
+
+- Switch to version *11.15.1* de ZwaveJsUI (stable)
+
 # 31/03/2026
 
 - Switch to version *11.12.0* de ZwaveJsUI (stable)
