@@ -76,7 +76,7 @@ if (!isConnect('admin')) {
 					<sup><i class="fas fa-question-circle tooltips" title="{{Préfixe à utiliser dans MQTT}}"></i></sup>
 				</label>
 				<div class="col-md-7">
-					<input type="text" class="configKey form-control" data-l1key="prefix" placeholder="{{}}">
+					<input type="text" class="configKey form-control" data-l1key="prefix" placeholder="">
 				</div>
 			</div>
 			<div class="form-group">

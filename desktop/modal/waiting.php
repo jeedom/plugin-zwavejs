@@ -30,7 +30,7 @@ if (!isConnect('admin')) {
 				<th>{{Paramètres}}</th>
 				<th>{{Valeurs}}</th>
 				<th>{{Date}}</th>
-				<th>{{}}</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
