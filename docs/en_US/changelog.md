@@ -7,7 +7,7 @@
 # 01/06/2026
 
 - Switch to version *11.15.1* de ZwaveJsUI (stable)
-- Switch to version ** de ZwaveJsUI (beta)
+- Switch to version *11.19.0* de ZwaveJsUI (beta)
 
 # 31/03/2026
 

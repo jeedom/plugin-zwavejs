@@ -7,7 +7,7 @@
 # 01/06/2026
 
 - Zur Version wechseln *11.15.1* de ZwaveJsUI (stable)
-- Zur Version wechseln ** de ZwaveJsUI (beta)
+- Zur Version wechseln *11.19.0* de ZwaveJsUI (beta)
 
 # 31/03/2026
 
