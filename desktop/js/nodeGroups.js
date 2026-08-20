@@ -135,7 +135,7 @@ function node_read_associations() {
 				var bodylist = ''
 				for (group in nodes[nodeId]['groups']) {
 					groupInfo = nodes[nodeId]['groups'][group]
-					bodylist += '<tr><td>' + groupInfo['value'] + ' - ' + groupInfo['text'] + '</td><td>' + groupInfo['endpoint'] + '</td><td>' + groupInfo['isLifeline'] + '</td><td>' + groupInfo['maxNodes'] + '</td></tr>'
+					bodylist += '<tr><td>' + groupInfo['value'] + ' - ' + groupInfo['title'] + '</td><td>' + groupInfo['endpoint'] + '</td><td>' + groupInfo['isLifeline'] + '</td><td>' + groupInfo['maxNodes'] + '</td></tr>'
 				}
 				for (item in NodeAssociations['data']) {
 					asso = NodeAssociations['data'][item]
@@ -144,7 +144,7 @@ function node_read_associations() {
 						nodeGroups = nodes[nodeId]['groups']
 						for (groupNode in nodeGroups) {
 							if (nodeGroups[groupNode]['value'] == asso['groupId'] && nodeGroups[groupNode]['endpoint'] == asso['endpoint']) {
-								groupId += ' - ' + nodeGroups[groupNode]['text']
+								groupId += ' - ' + nodeGroups[groupNode]['title']
 								break
 							}
 						}
@@ -172,7 +172,7 @@ function node_read_associations() {
 				if (selectGroup == '') {
 					selectGroup = '<option value="">{{Aucun}}</option>'
 					for (group in listGroups) {
-						selectGroup += '<option value=' + listGroups[group]['endpoint'] + '-' + listGroups[group]['value'] + '>' + listGroups[group]['value'] + ' - ' + listGroups[group]['text'] + ' (' + +listGroups[group]['endpoint'] + ')</option>'
+						selectGroup += '<option value=' + listGroups[group]['endpoint'] + '-' + listGroups[group]['value'] + '>' + listGroups[group]['value'] + ' - ' + listGroups[group]['title'] + ' (' + +listGroups[group]['endpoint'] + ')</option>'
 					}
 					$('.selectGroup').empty().append(selectGroup)
 					var selectTargetNode = '<option value="">{{Aucun}}</option>'
