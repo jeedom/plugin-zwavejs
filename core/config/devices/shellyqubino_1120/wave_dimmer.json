@@ -1,0 +1,20 @@
+{
+    "name": "Wave Dimmer",
+    "type": "Micromodule",
+    "comlink": "",
+    "remark": "",
+    "versions": {
+        "1": [
+            "131"
+        ]
+    },
+    "properties": {
+        "Multilevel": {"type": "onlevel","replace": {"#endpoint#": 1}},
+        "Power": {"type": "multilevel","replace": {"#endpoint#": 1}},
+       	"Power": {"replace": {"#endpoint#": 1}},
+        "Energy": {"replace": {"#endpoint#": 1}},
+        "Notification|Heat":{"type":"heat-sensor","replace": {"#endpoint#": 1}},
+        "Notification|over-current":{"type":"over-current","replace": {"#endpoint#": 1}},
+        "Notification|mains":{"type":"mains","replace": {"#endpoint#": 1}}
+    }
+}
