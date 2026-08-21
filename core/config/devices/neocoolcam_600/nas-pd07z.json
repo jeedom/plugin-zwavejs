@@ -1,0 +1,35 @@
+{
+    "name": "Neo Coolcam Motion Sensor",
+    "type": "Multicapteurs",
+    "documentation": "",
+    "comlink": "",
+    "remark": "",
+    "imglink": "shenzen_neo.nas-pd07z",
+    "configuration": {
+        "battery_type": "2x3V CR123A"
+    },
+    "firmProperties": 1,
+    "versions": {
+        "16": [
+            "1824"
+        ]
+    },
+    "properties": {
+		"default": {
+			"Motion": {
+				"type": "binary-any"
+			},
+			"Temperature": {},
+			"Luminance": {},
+			"Tamper": {
+				"type": "alarm"
+			},
+			"Battery": {}
+		},
+		">=3.3": {
+            "Motion": {},
+			"Luminance": {},
+			"Battery": {}
+        }
+    }
+}
