@@ -1,0 +1,19 @@
+{
+    "name": "Door Sensor",
+    "type": "Ouverture",
+    "comlink": "",
+    "remark": "Variante Product Type 512 / Product ID 4130",
+    "imglink": "shenzen_neo.nas-ds01z",
+    "configuration": {
+        "battery_type": "1x3V CR14250"
+    },
+    "versions": {
+        "512": [
+            "4130"
+        ]
+    },
+    "properties": {
+        "Opening": {},
+        "Battery": {}
+    }
+}
