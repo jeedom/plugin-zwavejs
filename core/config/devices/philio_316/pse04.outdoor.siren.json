@@ -1,0 +1,63 @@
+{
+    "name": "PSE04 - Multiple Sound Siren",
+    "type": "Sirène",
+    "comlink": "",
+    "remark": "",
+    "imglink": "fortrezz.pse04",
+    "versions": {
+        "4": [
+            "132"
+        ]
+    },
+    "properties": {
+		"default": {
+			"Motion": {
+				"type": "binary-any"
+			},
+			"Luminance": {},
+			"Tamper": {
+				"type": "alarm"
+			},
+			"Battery": {}
+		}
+    },
+    "commands": [
+        {
+            "name": "All Off",
+            "type": "action",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "minValue": 0,
+                "maxValue": 4,
+                "class": 121,
+                "endpoint": 0,
+                "property": "toneId",
+                "value": "4"
+            },
+            "subtype": "other",
+            "display": {
+                "generic_type": "DONT"
+            }
+        },
+        {
+            "name": "Stop",
+            "type": "action",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "configuration": {
+                "class": 38,
+                "value": "0",
+                "index": 0,
+                "instance": 1,
+                "minValue": 0,
+                "maxValue": 4,
+                "property": "toneId"
+            },
+            "subtype": "other",
+            "display": {
+                "generic_type": "DONT"
+            }
+        }
+    ]
+}
