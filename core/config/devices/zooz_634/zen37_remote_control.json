@@ -1,0 +1,30 @@
+{
+    "name": "Zooz Soft Remote",
+    "type": "Télécommande",
+    "documentation": "",
+    "comlink": "",
+    "remark": "",
+    "imglink": "ZOOZ Z37 Soft Rmote",
+    "configuration": {
+    "battery_type": "1x3,6V LIR2032"
+    },
+    "versions": {
+        "28672": [
+            "61443"
+        ]
+    },
+    "properties": {
+        "CentralScene": {
+            "multi": [
+                1,
+                2,
+                3,
+                4
+            ],
+            "replace": {
+                "#centralscene#": "multiKey"
+            }
+        },
+        "Battery": {}
+    }
+}
