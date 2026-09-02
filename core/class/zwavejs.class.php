@@ -370,7 +370,7 @@ class zwavejs extends eqLogic {
 
 	public static function isRunning() {
 		if (config::byKey('zwavejs::mode', __CLASS__) == 'distant') {
-          	return (config::byKey('mqtt2Registered', __CLASS__, 0) == 1);
+			return (__CLASS__ == mqtt2::getPluginForTopic(config::byKey('prefix', __CLASS__, 'zwave')));
 		}
 		if (!empty(system::ps('server/bin/www.js'))) {
 			return true;
@@ -385,12 +385,10 @@ class zwavejs extends eqLogic {
     	}
     	if (method_exists('mqtt2', 'removePluginTopicByPlugin')) {
       		mqtt2::removePluginTopicByPlugin(__CLASS__);
-  			config::save('mqtt2Registered', 0, __CLASS__);
     	}
 		if (config::byKey('zwavejs::mode', __CLASS__) == 'distant') {
 	   		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . 'Inscription au plugin mqtt2');
 	   		mqtt2::addPluginTopic(__CLASS__, config::byKey('prefix', __CLASS__, 'zwave'));
-  			config::save('mqtt2Registered', 1, __CLASS__);
 		}
   	}  
 
