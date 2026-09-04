@@ -1,5 +1,5 @@
 {
-    "name": "Neo Coolcam Motion Sensor",
+    "name": "NAS-PD07Z 5 in 1 Motion Sensor",
     "type": "Multicapteurs",
     "documentation": "",
     "comlink": "",
@@ -8,22 +8,21 @@
     "configuration": {
         "battery_type": "2x3V CR123A"
     },
-    "firmProperties": 1,
     "versions": {
         "16": [
             "1824"
         ]
     },
     "properties": {
-		"default": {
-			"Motion": {
-				"type": "binary-any"
-			},
-			"Luminance": {},
-			"Tamper": {
-				"type": "alarm"
-			},
-			"Battery": {}
-		}
+        "Motion": {
+            "type": "binary-motion"
+        },
+        "Luminance": {},
+        "Temperature": {},
+        "Humidity": {},
+        "Tamper": {
+            "type": "binary-tamper"
+        },
+        "Battery": {}
     }
 }
