@@ -1,0 +1,26 @@
+{
+    "name": "PSE04 - Multiple Sound Siren",
+    "type": "Sirène",
+    "comlink": "",
+    "remark": "",
+    "imglink": "philio.pse04",
+    "versions": {
+        "4": [
+            "132"
+        ]
+    },
+    "properties": {
+        "Temperature": {},
+        "Battery": {},
+        "Tamper": {
+            "returnStateTime": 1,
+            "returnStateValue": 0
+        },
+        "Sound": {
+            "replace": {
+                "#listSound#": "0|Stop;1|Fire;2|Ambulance;3|Police;4|Alarm;5|Ding dong;6|Beep",
+                "#stopSound#": "0"
+            }
+        }
+    }
+}
