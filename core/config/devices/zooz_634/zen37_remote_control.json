@@ -1,12 +1,12 @@
 {
-    "name": "Zooz Soft Remote",
+    "name": "ZEN37 800LR Wall Remote",
     "type": "Télécommande",
     "documentation": "",
     "comlink": "",
     "remark": "",
-    "imglink": "ZOOZ Z37 Soft Rmote",
+    "imglink": "zooz.zen37",
     "configuration": {
-    "battery_type": "1x3,6V LIR2032"
+        "battery_type": "1x3,6V LIR2032"
     },
     "versions": {
         "28672": [
