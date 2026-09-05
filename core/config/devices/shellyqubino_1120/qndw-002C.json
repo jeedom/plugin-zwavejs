@@ -40,6 +40,18 @@
                 "dashboard": "timeDoor",
                 "mobile": "timeDoor"
             }
+        },
+        {
+            "name": "Tilt",
+            "type": "info",
+            "isVisible": 1,
+            "isHistorized": 1,
+            "configuration": {
+                "class": 113,
+                "endpoint": 0,
+                "property": "Access Control-Door tilt state"
+            },
+            "subtype": "binary"
         }
     ]
 }
