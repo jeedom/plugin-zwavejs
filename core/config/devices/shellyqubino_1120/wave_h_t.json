@@ -1,0 +1,20 @@
+{
+    "name": "Wave H&T",
+    "type": "Multicapteurs",
+    "comlink": "",
+    "remark": "",
+    "imglink": "",
+    "configuration": {
+        "battery_type": "1x3V CR123A"
+    },
+    "versions": {
+        "256": [
+            "131"
+        ]
+    },
+    "properties": {
+        "Temperature": {},
+        "Humidity": {},
+        "Battery": {}
+    }
+}
