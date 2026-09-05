@@ -1,0 +1,20 @@
+{
+    "name": "Wave Motion",
+    "type": "Détecteur",
+    "comlink": "",
+    "remark": "",
+    "imglink": "",
+    "configuration": {
+        "battery_type": "1x3V CR2477"
+    },
+    "versions": {
+        "256": [
+            "130"
+        ]
+    },
+    "properties": {
+        "Motion": {},
+        "Luminance": {},
+        "Battery": {}
+    }
+}
