@@ -1,0 +1,15 @@
+{
+    "name": "Home Assistant Connect ZWA-2",
+    "type": "Contrôleur",
+    "comlink": "",
+    "remark": "",
+    "imglink": "",
+    "versions": {
+        "1": [
+            "1"
+        ]
+    },
+    "properties": {
+        "Controller": {}
+    }
+}

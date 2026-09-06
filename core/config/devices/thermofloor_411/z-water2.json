@@ -1,0 +1,46 @@
+{
+    "name": "Z-Water2",
+    "ref": "4512495",
+    "manufacturer": "Heatit",
+    "type": "Rail-Din",
+    "reset": "Maintenir appuyé le bouton reset : la LED clignote vert après 3 secondes puis rapidement après 20 secondes, relâcher à ce moment",
+    "pairing": "Appuyer 3 fois rapidement sur le bouton reset",
+    "remark": "9 relais libres de potentiel (endpoints 1 à 9) et 2 entrées de sonde de température NTC (endpoints 10 et 11)",
+    "documentation": "https://media.heatit.com/2924",
+    "buylink": "",
+    "versions": {
+        "4": [
+            "523"
+        ]
+    },
+    "properties": {
+        "Switch": {
+            "multi": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+            ],
+            "replace": {
+                "#endpoint#": "multiKey"
+            }
+        },
+        "air temperature|Entrée 1": {
+            "replace": {
+                "#endpoint#": 10
+            },
+            "split": 1
+        },
+        "air temperature|Entrée 2": {
+            "replace": {
+                "#endpoint#": 11
+            },
+            "split": 1
+        }
+    }
+}

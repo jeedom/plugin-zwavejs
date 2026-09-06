@@ -18,6 +18,20 @@
         "Humidity": {},
         "Thermostatmode": {},
         "Thermostatoperatingstate": {},
+        "Thermostatmodeaction": {
+            "multi": [
+                "Off",
+                "Chaud",
+                "Froid",
+                "Energy Heat"
+            ],
+            "multiValue": {
+                "Off": 0,
+                "Chaud": 1,
+                "Froid": 2,
+                "Energy Heat": 11
+            }
+        },
         "Thermostatsetpoint": {
                 "multi": [
                     "Chaud",

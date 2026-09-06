@@ -1,0 +1,30 @@
+{
+    "name": "ZEN37 800LR Wall Remote",
+    "type": "Télécommande",
+    "documentation": "",
+    "comlink": "",
+    "remark": "",
+    "imglink": "zooz.zen37",
+    "configuration": {
+        "battery_type": "1x3,6V LIR2032"
+    },
+    "versions": {
+        "28672": [
+            "61443"
+        ]
+    },
+    "properties": {
+        "CentralScene": {
+            "multi": [
+                1,
+                2,
+                3,
+                4
+            ],
+            "replace": {
+                "#centralscene#": "multiKey"
+            }
+        },
+        "Battery": {}
+    }
+}

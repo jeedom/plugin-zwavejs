@@ -1,16 +1,15 @@
 {
-    "name": "Wave Shutter",
+    "name": "Wave Dimmer",
     "type": "Micromodule",
     "comlink": "",
     "remark": "",
     "versions": {
-        "3": [
-            "130",
+        "1": [
             "131"
         ]
     },
     "properties": {
-		"Shutter": {"type":"downup","replace": {"#endpoint#": 1}},
+        "Multilevel": {"type": "onlevel","replace": {"#endpoint#": 1}},
         "Power": {"replace": {"#endpoint#": 1}},
         "Energy": {"replace": {"#endpoint#": 1}},
         "Notification|Heat":{"type":"heat-sensor","replace": {"#endpoint#": 1}},
