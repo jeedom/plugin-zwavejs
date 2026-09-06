@@ -7,6 +7,7 @@
 # 06/09/2026
 
 - Passage à la version *11.21.1* de ZwaveJsUI (stable)
+- Passage à la version *11.23.0* de ZwaveJsUI (beta)
 - Correction de l'affichage des noms de groupes
 
 **Ajouts de Configurations**
