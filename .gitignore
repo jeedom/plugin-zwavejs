@@ -13,3 +13,4 @@ docs/.sass-cache/
 .remote-sync.json
 .history
 .vscode
+*.bak

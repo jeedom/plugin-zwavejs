@@ -117,6 +117,17 @@ if (!isConnect('admin')) {
 				</div>
 			</div>
 			<div class="form-group zwavejs_mode local">
+				<label class="col-md-4 control-label">{{Version voulue (réservé aux utilisateurs avancés)}}
+					<sup><i class="fas fa-question-circle tooltips" title="{{Laisser vide pour installer la dernière version disponible <br/>Si vous voulez forcer une installation précise, cliquez sur le bouton &#x2192; Liste des versions <br/> Encodez la version voulue et pensez à sauvegarder avant de relancer les dépendances}}"></i></sup>
+				</label>
+				<div class="col-md-3">
+					<input class="configKey form-control" data-l1key="wanted_zwavejs_version" />
+				</div>
+				<div class="col-md-3">
+					<a class="btn btn-info" href="https://github.com/zwave-js/zwave-js-ui/tags" target="_blank">{{Liste des versions}}</a>
+				</div>
+			</div>  
+			<div class="form-group">
 				<label class="col-md-4 control-label">{{Version ZwaveJS UI}}
 					<sup><i class="fas fa-question-circle tooltips" title="{{Version de la librairie ZwaveJS UI}}"></i></sup>
 				</label>
