@@ -32,9 +32,6 @@ function network_load_dataTable() {
   var routingTable = ''
   var routingTableHeader = ''
   $.each(devicesRouting, function(nodeId, node) {
-    if (nodeId == 255) {
-      return
-    }
     if (skipPortableAndVirtual && node.deviceClass.basic == 1) {
       return
     }
@@ -53,8 +50,6 @@ function network_load_dataTable() {
     }
     routingTable += '</td><td style="width: 35px">' + nodeId + '</td>'
     $.each(devicesRouting, function(nnodeId, nnode) {
-      if (nnodeId == 255)
-        return
       if (skipPortableAndVirtual && nnode.deviceClass.basic == 1)
         return
       var rtClass
