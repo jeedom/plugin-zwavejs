@@ -329,84 +329,84 @@ function network_route_load_data() {
         'img': nodes[z].img,
       })
     }
-	if (nodes[z].id == controllerId) {
-        continue
+    if (nodes[z].id == controllerId) {
+      continue
     }
-    if (typeof nodes[z].statistics != 'undefined' &&  typeof nodes[z].statistics.lwr != 'undefined' && typeof nodes[z].statistics.lwr.repeaters != 'undefined' && nodes[z].statistics.lwr.repeaters.length < 1) {
+    if (typeof nodes[z].statistics != 'undefined' && typeof nodes[z].statistics.lwr != 'undefined' && typeof nodes[z].statistics.lwr.repeaters != 'undefined' && nodes[z].statistics.lwr.repeaters.length < 1) {
       if (typeof nodes[controllerId] != 'undefined') {
         graph.addLink(z, controllerId, { isdash: 0, lengthfactor: 0.6 })
       }
     } else {
-        if (typeof nodes[z].statistics != 'undefined' &&  typeof nodes[z].statistics.lwr != 'undefined' && typeof nodes[z].statistics.lwr.repeaters != 'undefined' ){
-			total = nodes[z].statistics.lwr.repeaters.length
-			count = 0
-			for (neighbour in nodes[z].statistics.lwr.repeaters) {
-				neighbourId = nodes[z].statistics.lwr.repeaters[neighbour]
-				if (typeof nodes[neighbourId] != 'undefined') {
-					if (count == 0) {
-						graph.addLink(z, neighbourId, { isdash: 0, lengthfactor: 0 })
-					} else {
-						neighbourIdprev = nodes[z].statistics.lwr.repeaters[neighbour-1]
-						graph.addLink(neighbourIdprev, neighbourId, { isdash: 0, lengthfactor: 0 })
-					}
-				}
-				if (count+1 == total){
-					countexist= 0
-					graph.forEachLinkedNode(neighbourId, function(node, link) {
-						if (link.toId == controllerId) {
-							countexist +=1
-						}
-					})
-					if (countexist == 0) {
-						graph.addLink(neighbourId, controllerId, { isdash: 0, lengthfactor: 0 })
-					}
-				}
-				count= count+1
-			}
-		}
+      if (typeof nodes[z].statistics != 'undefined' && typeof nodes[z].statistics.lwr != 'undefined' && typeof nodes[z].statistics.lwr.repeaters != 'undefined') {
+        total = nodes[z].statistics.lwr.repeaters.length
+        count = 0
+        for (neighbour in nodes[z].statistics.lwr.repeaters) {
+          neighbourId = nodes[z].statistics.lwr.repeaters[neighbour]
+          if (typeof nodes[neighbourId] != 'undefined') {
+            if (count == 0) {
+              graph.addLink(z, neighbourId, { isdash: 0, lengthfactor: 0 })
+            } else {
+              neighbourIdprev = nodes[z].statistics.lwr.repeaters[neighbour - 1]
+              graph.addLink(neighbourIdprev, neighbourId, { isdash: 0, lengthfactor: 0 })
+            }
+          }
+          if (count + 1 == total) {
+            countexist = 0
+            graph.forEachLinkedNode(neighbourId, function(node, link) {
+              if (link.toId == controllerId) {
+                countexist += 1
+              }
+            })
+            if (countexist == 0) {
+              graph.addLink(neighbourId, controllerId, { isdash: 0, lengthfactor: 0 })
+            }
+          }
+          count = count + 1
+        }
+      }
     }
   }
   var graphics = Viva.Graph.View.svgGraphics(),
     nodeSize = 24,
-    highlightRelatedNodes = function(nodeId, isOn, sourceId = '', count=0) {
+    highlightRelatedNodes = function(nodeId, isOn, sourceId = '', count = 0) {
       graph.forEachLinkedNode(nodeId, function(node, link) {
-		if (sourceId == '' && typeof nodes[nodeId].statistics != 'undefined' && typeof nodes[nodeId].statistics.lwr != 'undefined' && typeof nodes[nodeId].statistics.lwr.repeaters != 'undefined' && nodes[nodeId].statistics.lwr.repeaters[count] == link.toId) {
-		var linkUI = graphics.getLinkUI(link.id)
+        if (sourceId == '' && typeof nodes[nodeId].statistics != 'undefined' && typeof nodes[nodeId].statistics.lwr != 'undefined' && typeof nodes[nodeId].statistics.lwr.repeaters != 'undefined' && nodes[nodeId].statistics.lwr.repeaters[count] == link.toId) {
+          var linkUI = graphics.getLinkUI(link.id)
           if (linkUI) {
             linkUI.attr('stroke', isOn ? '#FF0000' : '#B7B7B7')
             linkUI.attr('marker-start', isOn ? 'url(#Triangle-red)' : 'url(#Triangle)')
           }
-		} else if (sourceId != '' && typeof nodes[sourceId].statistics != 'undefined' && typeof nodes[sourceId].statistics.lwr != 'undefined' && typeof nodes[sourceId].statistics.lwr.repeaters != 'undefined' && nodes[sourceId].statistics.lwr.repeaters[count] == link.toId && nodes[sourceId].statistics.lwr.repeaters.includes(link.fromId)) {
-			var linkUI = graphics.getLinkUI(link.id)
+        } else if (sourceId != '' && typeof nodes[sourceId].statistics != 'undefined' && typeof nodes[sourceId].statistics.lwr != 'undefined' && typeof nodes[sourceId].statistics.lwr.repeaters != 'undefined' && nodes[sourceId].statistics.lwr.repeaters[count] == link.toId && nodes[sourceId].statistics.lwr.repeaters.includes(link.fromId)) {
+          var linkUI = graphics.getLinkUI(link.id)
           if (linkUI) {
             linkUI.attr('stroke', isOn ? '#FF0000' : '#B7B7B7')
             linkUI.attr('marker-start', isOn ? 'url(#Triangle-red)' : 'url(#Triangle)')
           }
-		} 
-		else {
-			if (link.toId == controllerId){
-				if (sourceId == '' && typeof nodes[nodeId].statistics != 'undefined' && typeof nodes[nodeId].statistics.lwr != 'undefined' && typeof nodes[nodeId].statistics.lwr.repeaters != 'undefined' && nodes[nodeId].statistics.lwr.repeaters.length==0){
-					var linkUI = graphics.getLinkUI(link.id)
-					if (linkUI) {
-						linkUI.attr('stroke', isOn ? '#FF0000' : '#B7B7B7')
-						linkUI.attr('marker-start', isOn ? 'url(#Triangle-red)' : 'url(#Triangle)')
-					}
-				} else if (sourceId != '' && typeof nodes[sourceId].statistics != 'undefined' && typeof nodes[sourceId].statistics.lwr != 'undefined' && typeof nodes[sourceId].statistics.lwr.repeaters != 'undefined' && nodes[sourceId].statistics.lwr.repeaters.length == count) {
-					var linkUI = graphics.getLinkUI(link.id)
-					if (linkUI) {
-						linkUI.attr('stroke', isOn ? '#FF0000' : '#B7B7B7')
-						linkUI.attr('marker-start', isOn ? 'url(#Triangle-red)' : 'url(#Triangle)')
-					}
-				}
-			}
-		}
-		if ( link.toId!= controllerId && link.toId != nodeId ){
-			if (sourceId == '' && typeof nodes[nodeId].statistics != 'undefined' && typeof nodes[nodeId].statistics.lwr != 'undefined' && typeof nodes[nodeId].statistics.lwr.repeaters != 'undefined' && nodes[nodeId].statistics.lwr.repeaters.includes(link.toId)) {
-				highlightRelatedNodes(link.toId, isOn, nodeId, count+1)
-			} else if (sourceId != '' && typeof nodes[sourceId].statistics != 'undefined' && typeof nodes[sourceId].statistics.lwr != 'undefined' && typeof nodes[sourceId].statistics.lwr.repeaters != 'undefined'  && nodes[sourceId].statistics.lwr.repeaters.includes(link.fromId)) {
-				highlightRelatedNodes(link.toId, isOn, sourceId,count+1)
-			}
-		}
+        }
+        else {
+          if (link.toId == controllerId) {
+            if (sourceId == '' && typeof nodes[nodeId].statistics != 'undefined' && typeof nodes[nodeId].statistics.lwr != 'undefined' && typeof nodes[nodeId].statistics.lwr.repeaters != 'undefined' && nodes[nodeId].statistics.lwr.repeaters.length == 0) {
+              var linkUI = graphics.getLinkUI(link.id)
+              if (linkUI) {
+                linkUI.attr('stroke', isOn ? '#FF0000' : '#B7B7B7')
+                linkUI.attr('marker-start', isOn ? 'url(#Triangle-red)' : 'url(#Triangle)')
+              }
+            } else if (sourceId != '' && typeof nodes[sourceId].statistics != 'undefined' && typeof nodes[sourceId].statistics.lwr != 'undefined' && typeof nodes[sourceId].statistics.lwr.repeaters != 'undefined' && nodes[sourceId].statistics.lwr.repeaters.length == count) {
+              var linkUI = graphics.getLinkUI(link.id)
+              if (linkUI) {
+                linkUI.attr('stroke', isOn ? '#FF0000' : '#B7B7B7')
+                linkUI.attr('marker-start', isOn ? 'url(#Triangle-red)' : 'url(#Triangle)')
+              }
+            }
+          }
+        }
+        if (link.toId != controllerId && link.toId != nodeId) {
+          if (sourceId == '' && typeof nodes[nodeId].statistics != 'undefined' && typeof nodes[nodeId].statistics.lwr != 'undefined' && typeof nodes[nodeId].statistics.lwr.repeaters != 'undefined' && nodes[nodeId].statistics.lwr.repeaters.includes(link.toId)) {
+            highlightRelatedNodes(link.toId, isOn, nodeId, count + 1)
+          } else if (sourceId != '' && typeof nodes[sourceId].statistics != 'undefined' && typeof nodes[sourceId].statistics.lwr != 'undefined' && typeof nodes[sourceId].statistics.lwr.repeaters != 'undefined' && nodes[sourceId].statistics.lwr.repeaters.includes(link.fromId)) {
+            highlightRelatedNodes(link.toId, isOn, sourceId, count + 1)
+          }
+        }
       })
     }
   graphics.node(function(node) {
@@ -421,13 +421,13 @@ function network_route_load_data() {
       nodesize = 16
     } else if (node.data.basic == 1) {
       nodecolor = '#A7C7E7'
-    } else if (typeof node.data.statistics != 'undefined' &&  typeof node.data.statistics.lwr != 'undefined' && typeof node.data.statistics.lwr.repeaters != 'undefined' && node.data.statistics.lwr.repeaters.length < 1) {
+    } else if (typeof node.data.statistics != 'undefined' && typeof node.data.statistics.lwr != 'undefined' && typeof node.data.statistics.lwr.repeaters != 'undefined' && node.data.statistics.lwr.repeaters.length < 1) {
       nodecolor = '#7BCC7B'
-    } else if (typeof node.data.statistics != 'undefined' &&  typeof node.data.statistics.lwr != 'undefined' && typeof node.data.statistics.lwr.repeaters != 'undefined' && node.data.statistics.lwr.repeaters.length == 1) {
+    } else if (typeof node.data.statistics != 'undefined' && typeof node.data.statistics.lwr != 'undefined' && typeof node.data.statistics.lwr.repeaters != 'undefined' && node.data.statistics.lwr.repeaters.length == 1) {
       nodecolor = '#E5E500'
-    } else if (typeof node.data.statistics != 'undefined' &&  typeof node.data.statistics.lwr != 'undefined' && typeof node.data.statistics.lwr.repeaters != 'undefined' && node.data.statistics.lwr.repeaters.length == 2) {
+    } else if (typeof node.data.statistics != 'undefined' && typeof node.data.statistics.lwr != 'undefined' && typeof node.data.statistics.lwr.repeaters != 'undefined' && node.data.statistics.lwr.repeaters.length == 2) {
       nodecolor = 'orange'
-    } else if (typeof node.data.statistics != 'undefined' &&  typeof node.data.statistics.lwr != 'undefined' && typeof node.data.statistics.lwr.repeaters != 'undefined' && node.data.statistics.lwr.repeaters.length == 3) {
+    } else if (typeof node.data.statistics != 'undefined' && typeof node.data.statistics.lwr != 'undefined' && typeof node.data.statistics.lwr.repeaters != 'undefined' && node.data.statistics.lwr.repeaters.length == 3) {
       nodecolor = 'red'
     } else {
       nodecolor = '#979797'
@@ -450,15 +450,15 @@ function network_route_load_data() {
     ui.append(circle)
     $(ui).hover(function() {
       var link = 'index.php?v=d&p=zwavejs&m=zwavejs&logical_id=' + node.id
-	  numneighbours = 0
-	  if (typeof node.data.statistics != 'undefined' && typeof node.data.statistics.lwr != 'undefined' && typeof node.data.statistics.lwr.repeaters != 'undefined'){
-		numneighbours = node.data.statistics.lwr.repeaters.length
+      numneighbours = 0
+      if (typeof node.data.statistics != 'undefined' && typeof node.data.statistics.lwr != 'undefined' && typeof node.data.statistics.lwr.repeaters != 'undefined') {
+        numneighbours = node.data.statistics.lwr.repeaters.length
       }
       interview = node.data.interview
-	  sentenceneighbours = numneighbours + ' {{saut(s)}}'
-	  if (numneighbours >0){
-		sentenceneighbours += ' [' + node.data.statistics.lwr.repeaters + ']'
-	  }
+      sentenceneighbours = numneighbours + ' {{saut(s)}}'
+      if (numneighbours > 0) {
+        sentenceneighbours += ' [' + node.data.statistics.lwr.repeaters + ']'
+      }
       if (node.id != controllerId) {
         linkname = '<a href="' + link + '">' + node.data.eqname + '</a>'
       } else {
@@ -785,24 +785,24 @@ function network_read_info() {
 }
 
 $("body").off("click", ".restoreBackup").on("click", ".restoreBackup", function(e) {
-    var backup = $(this).data('folder')
-    bootbox.confirm("{{Etes-vous sûr de vouloir restaurer cette sauvegarde sur le contrôleur ? Cette action effacera votre contrôleur complètement.}}", function(result) {
-      if (result) {
-        bootbox.confirm("{{Etes-vous certain de vouloir réaliser une restauration NVM maintenant ?}}", function(result) {
-          if (result) {
-            jeedom.zwavejs.nvmbackup.restore({
-              backup: backup,
-              error: function(error) {
-                $('#div_networkzwavejsAlert').showAlert({ message: error.message, level: 'danger' })
-              },
-              success: function() {
-                $('#div_networkzwavejsAlert').showAlert({ message: '{{Action réalisée avec succès}}', level: 'success' })
-              }
-            })
-          }
-        })
-      }
-    })
+  var backup = $(this).data('folder')
+  bootbox.confirm("{{Etes-vous sûr de vouloir restaurer cette sauvegarde sur le contrôleur ? Cette action effacera votre contrôleur complètement.}}", function(result) {
+    if (result) {
+      bootbox.confirm("{{Etes-vous certain de vouloir réaliser une restauration NVM maintenant ?}}", function(result) {
+        if (result) {
+          jeedom.zwavejs.nvmbackup.restore({
+            backup: backup,
+            error: function(error) {
+              $('#div_networkzwavejsAlert').showAlert({ message: error.message, level: 'danger' })
+            },
+            success: function() {
+              $('#div_networkzwavejsAlert').showAlert({ message: '{{Action réalisée avec succès}}', level: 'success' })
+            }
+          })
+        }
+      })
+    }
+  })
 })
 
 $("body").off("click", ".downloadBackup").on("click", ".downloadBackup", function(e) {
@@ -838,15 +838,15 @@ $('#uploadNVM').fileupload({
 })
 
 $('#uploadOTW').fileupload({
-	dataType: 'json',
-	replaceFileInput: false,
-	done: function(e, data) {
-	if (data.result.state != 'ok') {
-		$('#div_networkzwavejsAlert').showAlert({ message: data.result.result, level: 'danger' })
-		return
-	}
-	$('#div_networkzwavejsAlert').showAlert({ message: '{{Fichier(s) ajouté(s) avec succès}}', level: 'success' })
-	}
+  dataType: 'json',
+  replaceFileInput: false,
+  done: function(e, data) {
+    if (data.result.state != 'ok') {
+      $('#div_networkzwavejsAlert').showAlert({ message: data.result.result, level: 'danger' })
+      return
+    }
+    $('#div_networkzwavejsAlert').showAlert({ message: '{{Fichier(s) ajouté(s) avec succès}}', level: 'success' })
+  }
 })
 
 $('body').off('zwavejs::restoreNVM').on('zwavejs::restoreNVM', function(_event, _options) {
