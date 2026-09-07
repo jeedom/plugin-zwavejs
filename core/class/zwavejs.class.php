@@ -573,6 +573,9 @@ class zwavejs extends eqLogic {
 					config::save('controllerId', $value['result']['controllerId'], __CLASS__);
 				}
 			} else if ($key == 'getNodes') {
+				$value['result'] = array_filter($value['result'], function ($node) {
+					return $node['id'] != 255;
+				});
 				if ($value['origin']['type'] == 'sync') {
 					self::syncNodes($value['result']);
 				} else if ($value['origin']['type'] == 'stats') {
