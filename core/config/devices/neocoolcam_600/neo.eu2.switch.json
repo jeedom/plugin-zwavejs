@@ -1,0 +1,25 @@
+{
+    "name": "Neo Eu-2 Switch",
+    "type": "Interrupteur",
+    "comlink": "",
+    "remark": "",
+    "imglink": "",
+    "versions": {
+        "3": [
+            "4235"
+        ]
+    },
+    "properties": {
+        "Switch": {
+            "multi": [
+                1,
+                2
+            ],
+            "replace": {
+                "#endpoint#": "multiKey"
+            },
+            "dashboard": "light",
+            "mobile": "light"
+        }
+    }
+}
