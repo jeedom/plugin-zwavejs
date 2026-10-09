@@ -81,8 +81,6 @@
         "Le message reçu n'est pas un message Z-Wave": "Il messaggio ricevuto non è un messaggio Z-Wave",
         "Le plugin MQTT Manager n'est pas installé": "Il plugin MQTT Manager non è installato",
         "Le plugin nécessite la version ": "Il plugin richiede la versione ",
-        "Le port TCP n'est pas configuré": "La porta TCP non è configurata",
-        "Le port TCP n'est pas valide": "La porta TCP non è valida",
         "Le port n'est pas configuré": "La porta non è configurata",
         "Moyen": "Medio",
         "Nouveau module Z-Wave détecté. L'équipement sera créé lorsque l'interview sera terminé.": "Rilevato un nuovo modulo Z-Wave. Il dispositivo verrà creato al termine dell'interrogazione.",
