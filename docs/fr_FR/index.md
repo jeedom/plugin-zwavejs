@@ -20,7 +20,9 @@ Le reste des dépendances consiste au téléchargement, à la compilation et à 
 
 ## Configuration du plugin
 
-Concernant la configuration du plugin, le point primordial est la bonne sélection du **port du contrôleur Z-Wave** correspondant à l'interface physique sur laquelle le contrôleur est connecté.
+Il existe 2 modes pour le plugin : local, tout est sur votre Jeedom, c'est le mode recommandé. Pour les utilisateurs avancés, il est possible d'utiliser le mode distant; dans ce cas Jeedom ne gère pas Zigbee2MQTT, celui doit etre installé par vos soins (en général sur un docker sur jeedom ou sur une autre machine). Attention en mode distant il faut que Mqtt manager et ZwaveJS soient connectés au même broker mqtt (mosquitto)
+
+Concernant la configuration du plugin, si vous etes en mode local, le point primordial est la bonne sélection du **port du contrôleur Z-Wave** correspondant à l'interface physique sur laquelle le contrôleur est connecté.
 
 Les autres paramétrages possibles sont :
 

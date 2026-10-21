@@ -138,7 +138,7 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function cronHourly() {
-		if (config::byKey('zwavejs::mode', 'zwavejs') == 'distant') {
+		if (config::byKey('zwavejs::mode', __CLASS__) == 'distant') {
 			self::getNodes('health');
 			return;
 		}
@@ -150,7 +150,7 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function configureSettings($_path) {
-		if (config::byKey('zwavejs::mode', 'zwavejs') == 'distant') {
+		if (config::byKey('zwavejs::mode', __CLASS__) == 'distant') {
 			return;
 		}
 		$file = $_path . '/settings.json';
@@ -287,49 +287,67 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function additionnalDependancyCheck() {
+		if (config::byKey('zwavejs::mode', __CLASS__) == 'distant') {
+			$return = array();
+			$return['state'] = 'ok';
+			return $return;
+		}
 		$return = array();
-		if (config::byKey('zwavejs::mode', __CLASS__) === 'local') {
-			if (!file_exists(__DIR__ . '/../../resources/zwave-js-ui/node_modules')) {
-				$return['state'] = 'nok';
-			}
+		$return['state'] = 'ok';
+		if (config::byKey('lastDependancyInstallTime', __CLASS__) == '') {
+			$return['state'] = 'nok';
+		} else if (!file_exists(__DIR__ . '/../../resources/zwave-js-ui/node_modules')) {
+			$return['state'] = 'nok';
+		}
+		return $return;
+	}
+
+	public static function dependancy_info() {
+		if (config::byKey('zwavejs::mode', __CLASS__) == 'distant') {
+			$return = array();
+			$return['state'] = 'ok';
+			return $return;
+		}
+		$return = array();
+		$return['progress_file'] = jeedom::getTmpFolder(__CLASS__) . '/dependance';
+		$return['state'] = 'ok';
+		if (config::byKey('lastDependancyInstallTime', __CLASS__) == '') {
+			$return['state'] = 'nok';
+		} else if (!file_exists(__DIR__ . '/../../resources/zwave-js-ui/node_modules')) {
+			$return['state'] = 'nok';
 		}
 		return $return;
 	}
 
 	public static function deamon_info() {
-		if (config::byKey('zwavejs::mode', 'zwavejs') == 'distant') {
-			$return = array();
-			$return['log'] = __CLASS__;
-			$return['launchable'] = 'ok';
-			$return['state'] = 'ok';
-			return $return;
-		}
 		$return = array();
 		$return['log'] = __CLASS__;
 		$return['launchable'] = 'ok';
 		$return['state'] = 'nok';
+    	switch (config::byKey('zwavejs::mode', __CLASS__)) {
+      	case 'local':
+	        break;
+	    case 'distant':
+            break;
+      	default:
+        	$return['launchable'] = 'nok';
+        	$return['launchable_message'] = __("Veuillez sélectionner le mode d'installation", __FILE__);
+        	return $return;
+    	}      
 		if (self::isRunning()) {
 			$return['state'] = 'ok';
 		}
-		$port = config::byKey('port', __CLASS__);
-		if ($port == 'none') {
-			$return['launchable'] = 'nok';
-			$return['launchable_message'] = __("Le port n'est pas configuré", __FILE__);
-		} elseif ($port == 'tcp') {
-			if (config::byKey('tcp_ip_port', __CLASS__) == '') {
-				$return['launchable'] = 'nok';
-				$return['launchable_message'] = __("Le port TCP n'est pas configuré", __FILE__);
-			}
-			$parts = explode(':', config::byKey('tcp_ip_port', __CLASS__));
-			if (count($parts) != 2 || !is_numeric($parts[1])) {
-				$return['launchable'] = 'nok';
-				$return['launchable_message'] = __("Le port TCP n'est pas valide", __FILE__);
-			}
-		} else {
-			$port = jeedom::getUsbMapping($port);
-			if (is_array($port) || @!file_exists($port)) {
+        if (config::byKey('zwavejs::mode', __CLASS__) == 'local') {
+			$port = config::byKey('port', __CLASS__);
+			if ($port == 'none') {
 				$return['launchable'] = 'nok';
 				$return['launchable_message'] = __("Le port n'est pas configuré", __FILE__);
+			} else {
+				$port = jeedom::getUsbMapping($port);
+				if (is_array($port) || @!file_exists($port)) {
+					$return['launchable'] = 'nok';
+					$return['launchable_message'] = __("Le port n'est pas configuré", __FILE__);
+				}
 			}
 		}
 		if (!class_exists('mqtt2')) {
@@ -351,24 +369,37 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function isRunning() {
-		if (config::byKey('zwavejs::mode', 'zwavejs') == 'distant') {
-			return true;
+		if (config::byKey('zwavejs::mode', __CLASS__) == 'distant') {
+			return (__CLASS__ == mqtt2::getPluginForTopic(config::byKey('prefix', __CLASS__, 'zwave')));
 		}
 		if (!empty(system::ps('server/bin/www.js'))) {
 			return true;
 		}
 		return false;
 	}
+  
+  	public static function postConfig_prefix($_value = null) {
+   		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . ' --> prefix: ' . config::byKey('prefix', __CLASS__, 'zwave'));
+    	if (!class_exists('mqtt2')) {
+    	  	return;
+    	}
+    	if (method_exists('mqtt2', 'removePluginTopicByPlugin')) {
+      		mqtt2::removePluginTopicByPlugin(__CLASS__);
+    	}
+		if (config::byKey('zwavejs::mode', __CLASS__) == 'distant') {
+	   		log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . 'Inscription au plugin mqtt2');
+	   		mqtt2::addPluginTopic(__CLASS__, config::byKey('prefix', __CLASS__, 'zwave'));
+		}
+  	}  
 
 	public static function deamon_start($_debug = false) {
-		if (config::byKey('zwavejs::mode', 'zwavejs') == 'distant') {
+		if (config::byKey('zwavejs::mode', __CLASS__) == 'distant') {
 			return;
 		}
 		// log::add(__CLASS__, 'debug', '[' . __FUNCTION__ . '] ' . 'Inscription au plugin mqtt2');
 		config::save('controllerStatus', 'none', __CLASS__);
 		config::save('driverStatus', 0, __CLASS__);
 		self::deamon_stop();
-		mqtt2::addPluginTopic(__CLASS__, config::byKey('prefix', __CLASS__, 'zwave'));
 		$deamon_info = self::deamon_info();
 		if ($deamon_info['launchable'] != 'ok') {
 			throw new Exception(__('Veuillez vérifier la configuration', __FILE__));
@@ -425,7 +456,7 @@ class zwavejs extends eqLogic {
 	}
 
 	public static function deamon_stop() {
-		if (config::byKey('zwavejs::mode', 'zwavejs') == 'distant') {
+		if (config::byKey('zwavejs::mode', __CLASS__) == 'distant') {
 			return;
 		}
 		log::add(__CLASS__, 'info', __('Arrêt du démon ZwaveJS', __FILE__));
