@@ -1,8 +1,9 @@
 {
-    "name": "Ibt4Zwave",
-    "type": "Prise",
+    "name": "IBT4ZWAVE",
+    "type": "Portail",
     "comlink": "",
-    "remark": "",
+    "remark": "Interface BusT4 vers Z-Wave pour motorisations de portail et porte de garage Nice",
+    "imglink": "",
     "versions": {
         "9216": [
             "4096"
@@ -12,4 +13,5 @@
         "Multilevel": {
             "type": "onlevel-barrier"
         }
+    }
 }
