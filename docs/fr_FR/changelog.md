@@ -4,6 +4,17 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
+# 21/10/2026
+
+**Ajouts de Configurations**
+
+- Ajout de la configuration *Neo Coolcam Light Switch 2 Channel (EU-2)* (propriétés : Switch x2)
+
+**Modifications de Configurations**
+
+- Correction de la configuration *Kaipule PIR Ceiling Sensor* (propriétés Motion et Tamper de Z-Wave JS à la place de l'ancienne syntaxe OpenZWave)
+- Correction de la configuration *Nice IBT4ZWAVE* (fichier invalide non chargé, type Portail)
+
 # 06/09/2026
 
 - Passage à la version *11.21.1* de ZwaveJsUI (stable)
