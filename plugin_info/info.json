@@ -19,8 +19,8 @@
 	"hasDependency": true,
 	"hasOwnDeamon": true,
 	"maxDependancyInstallTime": 45,
-	"changelog": "https://doc.jeedom.com/#language#/plugins/automation protocol/zwavejs/changelog",
-	"documentation": "https://doc.jeedom.com/#language#/plugins/automation protocol/zwavejs/",
+	"changelog": "https://doc.jeedom.com/plugins/automation protocol/zwavejs/#language#/changelog",
+	"documentation": "https://doc.jeedom.com/plugins/automation protocol/zwavejs/#language#/",
 	"language": [
 		"de_DE",
 		"en_US",
@@ -38,6 +38,6 @@
 		"v4",
 		"atlas"
 	],
-	"changelog_beta": "https://doc.jeedom.com/#language#/plugins/automation protocol/zwavejs/beta/changelog",
-	"documentation_beta": "https://doc.jeedom.com/#language#/plugins/automation protocol/zwavejs/beta"
+	"changelog_beta": "https://doc.jeedom.com/plugins/automation protocol/zwavejs/beta/#language#/changelog",
+	"documentation_beta": "https://doc.jeedom.com/plugins/automation protocol/zwavejs/beta/#language#/"
 }
